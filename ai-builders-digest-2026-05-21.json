@@ -1,0 +1,267 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-05-21",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天这批内容如果连起来看，会很清楚地看到：模型变强当然重要，但真正决定它能不能落地的，已经越来越是下面那层东西了。比如搜索好不好用、MCP 怎么设计、权限怎么收、团队里谁来把这些东西接进真实工作流。也就是说，大家现在比拼的，已经不只是模型能力本身，而是谁更会把这些能力翻译成真正能跑的产品和组织方式。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-05-21 source feeds.",
+  "sections": [
+    {
+      "title": "AI-Native Internet Plumbing / AI 原生互联网底座",
+      "desc": "这组内容其实都在回答同一个问题：当 AI 真开始替人操作软件时，下面那层接口到底该怎么重做。",
+      "cards": [
+        {
+          "authorKey": "x:danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/2057122805657821240",
+          "en": {
+            "rewrite": [
+              "Dan Shipper frames the Stainless acquisition as a sign that the AI stack's boring middle layer is becoming strategic.",
+              "APIs, SDKs, and MCP servers are no longer passive plumbing. They are becoming the execution substrate that determines whether agents can actually do useful work reliably.",
+              "His strongest design takeaway is that the winning interface layer may converge toward code execution plus documentation lookup, instead of giant menus of brittle tools."
+            ],
+            "original": [
+              "Anthropic just acquired developer tool startup StainlessAPI, whose biggest customers were OpenAI and Google.",
+              "Alex essentially walks me through the design thinking for building APIs, SDKs, and MCP servers that Anthropic paid a reported $300 million for.",
+              "The future of MCP is code execution. Instead of giving models hundreds of tools, Alex believes the most powerful setup will be a simple code execution tool and a doc search tool."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Dan Shipper 这条最有意思的地方，是他把 Stainless 被收购这件事讲明白了。",
+              "重点不只是收购金额，而是这家公司刚好卡在一个很关键的位置：API、SDK、MCP 这些东西，决定了 agent 到底能不能稳定把事情做成。",
+              "他的判断也很直白：未来更靠谱的方式，也许不是给模型塞几百个工具，而是让它自己写代码、跑 SDK，遇到问题再去查文档。"
+            ],
+            "original": [
+              "Dan 说，这次 Anthropic 收购 Stainless，让他此前和 Alex Rattray 那期对谈的意义完全不一样了。",
+              "那期对谈本质上是在讲：为什么 API、SDK、MCP server 这层东西，会在 AI 时代变得这么值钱。",
+              "他的核心提炼是：MCP 的未来更像 code execution + doc search，而不是海量工具列表。"
+            ]
+          }
+        },
+        {
+          "authorKey": "podcast:ai-and-i-by-every",
+          "authorName": "AI & I by Every",
+          "authorTag": "AI 商业与产品深访播客",
+          "sourceUrl": "https://www.youtube.com/playlist?list=PLuMcoKK9mKgHtW_o9h5sGO2vXrffKHwJL",
+          "en": {
+            "rewrite": [
+              "This episode gives the cleanest systems view of the day: the internet was built for humans and software clients, and now the stack has to be reinterpreted for language models as first-class operators.",
+              "Alex Rattray argues that MCP becomes fragile when teams expose too much product surface at once. The winning pattern today is fewer tools, tighter schemas, clearer names, and sometimes a dynamic discovery flow.",
+              "His deeper bet is that agent infrastructure may move from giant tool catalogs toward code execution, documentation lookup, and API-layer security with granular permissions."
+            ],
+            "original": [
+              "The internet runs on computers talking to each other, but its entire architecture was built for a pre AI world. Now we're trying to hook AI up to the internet with MCP, Model Context Protocol.",
+              "MCP is hard to scale because exposing everything a human can do in a dashboard means exposing huge APIs, which can burn through the model's context budget.",
+              "The future may be code execution plus doc search rather than giant tool catalogs. Security should happen at the API layer through OAuth scopes and granular permissions."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "这期播客最有价值的地方，是它把一个平时很容易讲虚的题目讲得很具体：如果 AI 真的要替人去用软件，那软件之间怎么连接就得重新设计。",
+              "Alex Rattray 反复提醒的一点也很实用：MCP 不是工具越多越好。你把整个 API 全倒给模型，最后往往不是更强，而是更乱。",
+              "所以他更看好的方向，是给模型更少但更有用的入口，比如代码执行、文档检索，再把权限和安全稳稳收在 API 层。"
+            ],
+            "original": [
+              "Alex Rattray 认为，MCP 要想真正跑起来，就不能简单镜像整个产品的 API 表面。",
+              "如果工具太多、schema 太长、返回结果太重，模型很快就会在 context 和选择上失真。",
+              "因此更现实的方向，是给模型更少但更强的入口，再让安全在 API 层用权限和 scope 兜住。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Infra Winners in the Agent Stack / Agent 时代的基础设施赢家",
+      "desc": "模型越强，越能看出哪些底层工具是真的有用，尤其是搜索和 agent 工作流这一层。",
+      "cards": [
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2057202833251000503",
+          "en": {
+            "rewrite": [
+              "Garry Tan is making a strong infrastructure call, not a casual endorsement.",
+              "In his framing, web search is now a core dependency for agents, and Exa is emerging as the default layer for that job in real operator workflows like YC, OpenClaw, and Hermes.",
+              "That makes this less about brand preference and more about which tools are becoming the default stack primitives for agents."
+            ],
+            "original": [
+              "Exa is what I trust for all my agents. We use it at YC. We use it in all my OpenClaw and Hermes Agents.",
+              "There is no other option that is as fast, as reliable, and as complete.",
+              "When your agents need to search the web, accept no substitutes."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan 这条其实很像一句很直接的采购判断。",
+              "当 agent 真开始替人查资料、跑流程之后，web search 就不再只是一个附加功能了，而会变成整条链路里很关键的一层。",
+              "他提到 YC、OpenClaw、Hermes 都在用 Exa，这种话比空泛夸奖更有信息量，因为它说明有些工具已经开始变成默认选项了。"
+            ],
+            "original": [
+              "Garry Tan 说，Exa 是他所有 agent 默认信任的搜索层，YC 和他自己的 OpenClaw、Hermes agents 都在用。",
+              "重点在于他强调的不只是快，而是 fast、reliable、complete 这三个属性同时成立。",
+              "这意味着 agent 时代的 web search，已经开始出现非常清晰的基础设施赢家。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2057119153337545096",
+          "en": {
+            "rewrite": [
+              "Swyx points to a business category that compounds with model progress instead of getting commoditized by it.",
+              "His claim is operational: he is already seeing a direct correlation between model performance and agent-lab revenue, with a visible discontinuity in late 2025.",
+              "That makes 'a business that gets better when models get better' feel less like a slogan and more like an investable company pattern."
+            ],
+            "original": [
+              "I think Sam Altman's mythical 'build a business that gets better when models get better' is basically what I called Agent Labs here.",
+              "Seeing a very direct correlation with model performance and agent lab revenue.",
+              "Discontinuity in Q4 2025."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx 这条讲得很明白：有一类公司不会因为模型变强而被冲掉，反而会跟着一起变强。",
+              "更重要的是，他说的不是抽象愿景，而是已经看到模型表现和 Agent Labs 收入之间出现了很直接的关系。",
+              "换句话说，这类公司真正厉害的地方，是它能把模型升级，直接变成自己的增长。"
+            ],
+            "original": [
+              "Swyx 把 Sam Altman 那句“build a business that gets better when models get better”翻译成了他所说的 Agent Labs。",
+              "他说自己已经看到模型性能和 agent lab revenue 之间的非常直接的相关性。",
+              "这意味着某些 AI-native 公司，会随着模型进步自动变得更强。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "New Jobs, New Team Shapes / 新岗位与新团队形态",
+      "desc": "AI 落地不是公司里多装一个工具那么简单，它正在慢慢改写岗位分工和团队配合方式。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2057315272156135501",
+          "en": {
+            "rewrite": [
+              "Levie's argument is that AI deployment is not a one-time migration project. Agents change human workflows directly, which creates a long tail of technical implementation plus change management.",
+              "His deeper point is speed. Models evolve too fast for best practices to settle, so today's scaffolding can quickly become tomorrow's drag.",
+              "That is why he sees roles like FDEs as durable rather than transitional: they sit at the boundary between technical capability, workflow redesign, and enterprise adoption."
+            ],
+            "original": [
+              "This is a job that is going to be around as long as AI keeps changing rapidly, which it inevitably will.",
+              "With agents, the work to implement them is not only highly technical, but they directly impact the underlying workflows that people participate in.",
+              "Every model change means either something new can be done that wasn't possible before, or some piece of scaffolding is now redundant or holding you back."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 这条说得很实在：企业里的 AI 落地岗位，不会只是短期过渡一下就消失。",
+              "因为 agent 不是只接一层技术接口，它会直接碰到员工每天怎么工作，所以每次部署都带着流程调整和组织协调。",
+              "再加上模型变化太快，很多做法今天刚定下来，明天可能又得改，这就让 FDE 这类角色变得很难被省掉。"
+            ],
+            "original": [
+              "Levie 说，这类工作会一直存在，因为 AI 会持续快速变化。",
+              "Agent 的实施既高度技术化，又会直接影响人们参与其中的底层工作流，因此天然带着 change management 属性。",
+              "每一次模型升级都可能让某些旧脚手架失效，也可能让原本做不到的事情突然变得可行。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2057324988009685208",
+          "en": {
+            "rewrite": [
+              "Zara's core idea is that AI-native teams invert old role assumptions.",
+              "ICs need to think more like managers by delegating, specifying standards, and verifying agent output, while managers need to become more builder-like and hands-on again.",
+              "She pairs that with a broader capability model: deeper domain expertise, wider adjacent knowledge, and strong AI fluency on top."
+            ],
+            "original": [
+              "In an AI-native team, ICs should start thinking like managers: how to delegate tasks to agents, how to set standards and verify output.",
+              "Managers should start thinking like ICs: how to be more hands-on builders instead of just doing people management.",
+              "This T-shape will apply to not just developers but every job function."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zara 这条最有意思的地方，是她把 AI-native 团队到底会怎么变，说得很具体。",
+              "以后 IC 不能只顾着自己把活做完，也得学会拆任务、交给 agent、再回来验收；而 manager 也不能只做协调，得重新变得更 hands-on。",
+              "她后面提到的 T-shape 也很好理解：专业要更深，相关知识面要更宽，再加上一层会用 AI 的能力。"
+            ],
+            "original": [
+              "Zara 认为，在 AI-native 团队里，IC 应该开始像 manager 一样思考：如何把任务委派给 agent，如何制定标准并验证输出。",
+              "同时 managers 也要像 IC 一样思考，重新变得更 hands-on，而不是只做人事管理。",
+              "这种 T-shape 不只适用于开发者，而会适用于每一种工作职能。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Frontier Capability to Product Surface / 从前沿能力到产品表面",
+      "desc": "同一天里，一边是模型在往前冲能力上限，另一边是这些能力开始被做成普通人也能直接用的产品。",
+      "cards": [
+        {
+          "authorKey": "x:sama",
+          "sourceUrl": "https://x.com/sama/status/2057218997503086888",
+          "en": {
+            "rewrite": [
+              "Taken together, Sam Altman's posts sketch OpenAI's current stack of ambition: AI should accelerate science, accelerate companies, and eventually become personal leverage for everyone.",
+              "The math result matters because it acts as a proof point that frontier progress is still translating into genuinely new capability, not just better demos.",
+              "His line about having 'complicated feelings' keeps the milestone from reading like pure triumphalism and hints at the emotional weight of these advances."
+            ],
+            "original": [
+              "Three of the things we are most excited about: 1. AGI accelerating research 2. AGI accelerating companies 3. personal AGI accelerating everyone in achieving their goals.",
+              "A general-purpose model solved a major open problem in mathematics. We'll be saying this a lot over the coming years, but this is a kinda big milestone.",
+              "I'm very excited for AI to greatly extend our understanding of the world, but still, I have complicated feelings today."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Sam Altman 这两条放在一起看，其实是在讲 OpenAI 现在相信 AI 最先会在哪些地方真正起作用：做研究、跑公司、帮助个人。",
+              "而“通用模型解开数学开放问题”这件事，则像是在给这个叙事再加一个很硬的例子，说明模型能力还在继续往前推。",
+              "但他又补了一句 complicated feelings，这也让这条内容不只是庆祝，更像是在说：大家都知道自己正在走到一个很不一样的阶段。"
+            ],
+            "original": [
+              "Altman 说，他们最兴奋的三件事，是 AGI 加速 research、加速 companies，以及 personal AGI 加速每个人实现目标。",
+              "同时他又说，一个 general-purpose model 解决了一个数学开放问题，这会成为未来反复出现的句子。",
+              "但他也补了一句：自己今天的心情是复杂的。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:GoogleLabs",
+          "sourceUrl": "https://x.com/GoogleLabs/status/2057179491693470166",
+          "en": {
+            "rewrite": [
+              "Google Labs is showing the productization side of frontier AI. Project Genie is no longer just a flashy experiment; it is becoming a subscriber-facing experience.",
+              "The framing is simple and powerful: move from playing games to designing them in minutes by choosing characters, setting the scene, and letting the model do the rest.",
+              "This is what capability packaging looks like when it starts crossing over from demo culture into consumer product surfaces."
+            ],
+            "original": [
+              "Project Genie is now fully available to all Google AI Ultra subscribers globally.",
+              "From playing the games to designing the games in minutes.",
+              "Just choose your characters, set the scene, and let Project Genie do the rest."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Google Labs 这组更新说明，生成式互动内容已经不只是发布会上的概念展示了。",
+              "Project Genie 现在讲的是一件普通用户也能立刻听懂的事：以前你是玩游戏，现在你几分钟就能自己把游戏场景和角色做出来。",
+              "如果说前面的 Sam 在讲能力继续往前推，这张卡更像是在讲，这些能力已经开始被包装成真正可以卖给用户的产品了。"
+            ],
+            "original": [
+              "Google Labs 说，Project Genie 现在已经面向全球 Google AI Ultra 订阅用户开放。",
+              "它的口号很直接：从 playing the games 走向 designing the games in minutes。",
+              "用户只需要挑角色、设场景，剩下的就交给模型。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

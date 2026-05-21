@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Builders Digest · 2026-05-21</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ed;
+    --accent: #c0392b;
+    --accent-light: #e8d5c4;
+    --border: #d4cdc0;
+    --muted: #7a7265;
+    --tag-bg: #e8e2d6;
+    --en-bg: #ffffff;
+    --cn-bg: #faf7f2;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  .masthead, .intro, .section-header, .feed, footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .masthead { padding-top: 48px; }
+  .masthead-rule { border: none; border-top: 3px solid var(--ink); margin: 0 0 12px; }
+  .masthead-inner { display: flex; justify-content: center; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; letter-spacing: -0.4px; }
+  .masthead-subtitle { margin-top: 8px; padding-bottom: 10px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  .edition-strip {
+    position: relative;
+    margin-top: 8px;
+    min-height: 46px;
+    padding: 10px 132px 12px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.34);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+
+  .edition-strip .edition-sep { margin: 0 8px; color: #b8ae9f; }
+  .edition-strip-text { display: block; }
+  .edition-return-link { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; padding: 6px 10px; border: 1px dashed rgba(192, 57, 43, 0.55); border-radius: 999px; color: var(--accent); text-decoration: none; font-size: 12px; line-height: 1; letter-spacing: 0.06em; background: rgba(255, 255, 255, 0.45); transition: background 160ms ease, border-color 160ms ease, transform 160ms ease; }
+  .edition-return-link:hover, .edition-return-link:focus-visible { background: rgba(255, 255, 255, 0.82); border-color: var(--accent); transform: translateY(-50%) translateX(-1px); }
+  .edition-return-link:focus-visible { outline: none; }
+  .intro { padding-top: 22px; }
+  .intro-inner { max-width: 920px; margin: 0 auto; padding: 0 0 0 18px; border-left: 3px solid #d9cdbc; }
+  .intro-kicker { margin: 0 0 8px; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .intro p { margin: 0; max-width: none; color: var(--muted); font-size: clamp(15px, 1.6vw, 16px); line-height: 1.9; text-wrap: pretty; font-family: 'Noto Serif SC', serif; overflow-wrap: anywhere; }
+
+  .section-header { margin-top: 40px; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; margin: 0 0 6px; }
+  .section-desc { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+
+  .feed { display: flex; flex-direction: column; gap: 20px; }
+  .card { background: var(--en-bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .card-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid #eee7dd; flex-wrap: wrap; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .avatar-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .avatar.is-fallback img { display: none; }
+  .avatar.is-fallback .avatar-fallback { display: flex; }
+
+  .author-info { flex: 1; min-width: 160px; }
+  .author-name { font-weight: 600; font-size: 15px; }
+  .author-name-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .author-handle { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+  .author-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; background: var(--tag-bg); color: var(--muted); padding: 4px 8px; border-radius: 999px; }
+  .author-tag.is-inline { padding: 3px 8px; }
+
+  .card-controls { margin-left: auto; display: inline-flex; gap: 8px; }
+  .view-toggle { border: 1px solid var(--border); background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 999px; font-size: 12px; line-height: 1; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; }
+  .view-toggle.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .card-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .lang-col { padding: 18px 20px 22px; }
+  .lang-col.en { background: var(--en-bg); border-right: 1px solid #f0ece4; }
+  .lang-col.cn { background: var(--cn-bg); font-family: 'Noto Serif SC', serif; }
+  .lang-label { margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+  .content-shell { position: relative; transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .content-variant { position: absolute; inset: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(4px); transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; will-change: opacity, transform; }
+  .content-variant.is-active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+  .content-variant p, .content-variant li { margin: 0 0 12px; font-size: 14px; }
+  .content-variant ol { margin: 0 0 12px 20px; padding: 0; }
+  .inline-code { display: inline-block; font-family: 'IBM Plex Mono', monospace; background: #f4efe7; padding: 3px 6px; border-radius: 6px; margin-bottom: 8px; }
+
+  .card-footer { padding: 12px 20px 16px; border-top: 1px solid #eee7dd; background: #fcfaf6; }
+  .card-footer a { color: var(--accent); text-decoration: none; font-size: 14px; }
+  footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 680px) {
+    .masthead-inner { align-items: center; }
+    .edition-strip { padding-right: 12px; padding-left: 12px; }
+    .edition-strip-text { padding-right: 0; }
+    .edition-return-link { position: static; transform: none; margin-top: 8px; font-size: 11px; }
+    .card-controls { margin-left: 0; }
+    .card-body { grid-template-columns: 1fr; }
+    .lang-col.en { border-right: none; border-bottom: 1px solid #f0ece4; }
+    .edition-strip .edition-sep { margin: 0 5px; }
+    .intro-inner { padding-left: 14px; }
+    .intro p { line-height: 1.84; }
+  }
+</style>
+</head>
+<body data-publish-date="2026-05-21" data-edition-name="双语精选版" data-view-label-rewrite="速读" data-view-label-original="原文" data-author-identities-path="/Users/mac/.follow-builders/assets/author-identities.json" data-avatar-manifest-path="/Users/mac/.follow-builders/assets/avatar-manifest.json">
+  <header class="masthead">
+    <hr class="masthead-rule">
+    <div class="masthead-inner">
+      <div class="masthead-title">AI Builders Digest</div>
+    </div>
+    <div class="masthead-subtitle">Bilingual edition · 双语对照版</div>
+    <div class="edition-strip">
+      <span class="edition-strip-text" id="edition-strip-text">第 21 期｜2026-05-21｜双语精选版｜8 条精选｜8 位作者｜4 个主题</span>
+      <a class="edition-return-link" href="./index.html">返回目录</a>
+    </div>
+  </header>
+
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="今天这批内容如果连起来看，会很清楚地看到：模型变强当然重要，但真正决定它能不能落地的，已经越来越是下面那层东西了。比如搜索好不好用、MCP 怎么设计、权限怎么收、团队里谁来把这些东西接进真实工作流。也就是说，大家现在比拼的，已经不只是模型能力本身，而是谁更会把这些能力翻译成真正能跑的产品和组织方式。">
+    <div class="intro-inner">
+      <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
+      <p class="intro-copy">今天这批内容如果连起来看，会很清楚地看到：模型变强当然重要，但真正决定它能不能落地的，已经越来越是下面那层东西了。比如搜索好不好用、MCP 怎么设计、权限怎么收、团队里谁来把这些东西接进真实工作流。也就是说，大家现在比拼的，已经不只是模型能力本身，而是谁更会把这些能力翻译成真正能跑的产品和组织方式。</p>
+    </div>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 01</div>
+    <h2 class="section-title">AI-Native Internet Plumbing / AI 原生互联网底座</h2>
+    <p class="section-desc">这组内容其实都在回答同一个问题：当 AI 真开始替人操作软件时，下面那层接口到底该怎么重做。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:danshipper" data-author-name="Dan Shipper" data-author-tag="CEO @ Every" data-author-handle="@danshipper" data-author-avatar="./assets/avatars/x-danshipper.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="./assets/avatars/x-danshipper.jpg" alt="Dan Shipper avatar"><span class="avatar-fallback">DS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Dan Shipper</div>
+            <div class="author-tag is-inline">CEO @ Every</div>
+          </div>
+          <div class="author-handle">@danshipper</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Dan Shipper frames the Stainless acquisition as a sign that the AI stack&#39;s boring middle layer is becoming strategic.</p>
+              <p>APIs, SDKs, and MCP servers are no longer passive plumbing. They are becoming the execution substrate that determines whether agents can actually do useful work reliably.</p>
+              <p>His strongest design takeaway is that the winning interface layer may converge toward code execution plus documentation lookup, instead of giant menus of brittle tools.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Anthropic just acquired developer tool startup StainlessAPI, whose biggest customers were OpenAI and Google.</p>
+              <p>Alex essentially walks me through the design thinking for building APIs, SDKs, and MCP servers that Anthropic paid a reported $300 million for.</p>
+              <p>The future of MCP is code execution. Instead of giving models hundreds of tools, Alex believes the most powerful setup will be a simple code execution tool and a doc search tool.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Dan Shipper 这条最有意思的地方，是他把 Stainless 被收购这件事讲明白了。</p>
+              <p>重点不只是收购金额，而是这家公司刚好卡在一个很关键的位置：API、SDK、MCP 这些东西，决定了 agent 到底能不能稳定把事情做成。</p>
+              <p>他的判断也很直白：未来更靠谱的方式，也许不是给模型塞几百个工具，而是让它自己写代码、跑 SDK，遇到问题再去查文档。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Dan 说，这次 Anthropic 收购 Stainless，让他此前和 Alex Rattray 那期对谈的意义完全不一样了。</p>
+              <p>那期对谈本质上是在讲：为什么 API、SDK、MCP server 这层东西，会在 AI 时代变得这么值钱。</p>
+              <p>他的核心提炼是：MCP 的未来更像 code execution + doc search，而不是海量工具列表。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/danshipper/status/2057122805657821240" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="podcast:ai-and-i-by-every" data-author-name="AI &amp; I by Every" data-author-tag="AI 商业与产品深访播客" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="AI &amp; I by Every avatar"><span class="avatar-fallback">A&amp;</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">AI &amp; I by Every</div>
+            <div class="author-tag is-inline">AI 商业与产品深访播客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>This episode gives the cleanest systems view of the day: the internet was built for humans and software clients, and now the stack has to be reinterpreted for language models as first-class operators.</p>
+              <p>Alex Rattray argues that MCP becomes fragile when teams expose too much product surface at once. The winning pattern today is fewer tools, tighter schemas, clearer names, and sometimes a dynamic discovery flow.</p>
+              <p>His deeper bet is that agent infrastructure may move from giant tool catalogs toward code execution, documentation lookup, and API-layer security with granular permissions.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The internet runs on computers talking to each other, but its entire architecture was built for a pre AI world. Now we&#39;re trying to hook AI up to the internet with MCP, Model Context Protocol.</p>
+              <p>MCP is hard to scale because exposing everything a human can do in a dashboard means exposing huge APIs, which can burn through the model&#39;s context budget.</p>
+              <p>The future may be code execution plus doc search rather than giant tool catalogs. Security should happen at the API layer through OAuth scopes and granular permissions.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>这期播客最有价值的地方，是它把一个平时很容易讲虚的题目讲得很具体：如果 AI 真的要替人去用软件，那软件之间怎么连接就得重新设计。</p>
+              <p>Alex Rattray 反复提醒的一点也很实用：MCP 不是工具越多越好。你把整个 API 全倒给模型，最后往往不是更强，而是更乱。</p>
+              <p>所以他更看好的方向，是给模型更少但更有用的入口，比如代码执行、文档检索，再把权限和安全稳稳收在 API 层。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Alex Rattray 认为，MCP 要想真正跑起来，就不能简单镜像整个产品的 API 表面。</p>
+              <p>如果工具太多、schema 太长、返回结果太重，模型很快就会在 context 和选择上失真。</p>
+              <p>因此更现实的方向，是给模型更少但更强的入口，再让安全在 API 层用权限和 scope 兜住。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.youtube.com/playlist?list=PLuMcoKK9mKgHtW_o9h5sGO2vXrffKHwJL" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 02</div>
+    <h2 class="section-title">Infra Winners in the Agent Stack / Agent 时代的基础设施赢家</h2>
+    <p class="section-desc">模型越强，越能看出哪些底层工具是真的有用，尤其是搜索和 agent 工作流这一层。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:garrytan" data-author-name="Garry Tan" data-author-tag="CEO @ Y Combinator" data-author-handle="@garrytan" data-author-avatar="./assets/avatars/x-garrytan.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="./assets/avatars/x-garrytan.jpg" alt="Garry Tan avatar"><span class="avatar-fallback">GT</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Garry Tan</div>
+            <div class="author-tag is-inline">CEO @ Y Combinator</div>
+          </div>
+          <div class="author-handle">@garrytan</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Garry Tan is making a strong infrastructure call, not a casual endorsement.</p>
+              <p>In his framing, web search is now a core dependency for agents, and Exa is emerging as the default layer for that job in real operator workflows like YC, OpenClaw, and Hermes.</p>
+              <p>That makes this less about brand preference and more about which tools are becoming the default stack primitives for agents.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Exa is what I trust for all my agents. We use it at YC. We use it in all my OpenClaw and Hermes Agents.</p>
+              <p>There is no other option that is as fast, as reliable, and as complete.</p>
+              <p>When your agents need to search the web, accept no substitutes.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Garry Tan 这条其实很像一句很直接的采购判断。</p>
+              <p>当 agent 真开始替人查资料、跑流程之后，web search 就不再只是一个附加功能了，而会变成整条链路里很关键的一层。</p>
+              <p>他提到 YC、OpenClaw、Hermes 都在用 Exa，这种话比空泛夸奖更有信息量，因为它说明有些工具已经开始变成默认选项了。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Garry Tan 说，Exa 是他所有 agent 默认信任的搜索层，YC 和他自己的 OpenClaw、Hermes agents 都在用。</p>
+              <p>重点在于他强调的不只是快，而是 fast、reliable、complete 这三个属性同时成立。</p>
+              <p>这意味着 agent 时代的 web search，已经开始出现非常清晰的基础设施赢家。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/garrytan/status/2057202833251000503" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:swyx" data-author-name="Swyx" data-author-tag="Writer / Builder" data-author-handle="@swyx" data-author-avatar="./assets/avatars/x-swyx.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="./assets/avatars/x-swyx.jpg" alt="Swyx avatar"><span class="avatar-fallback">S</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Swyx</div>
+            <div class="author-tag is-inline">Writer / Builder</div>
+          </div>
+          <div class="author-handle">@swyx</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx points to a business category that compounds with model progress instead of getting commoditized by it.</p>
+              <p>His claim is operational: he is already seeing a direct correlation between model performance and agent-lab revenue, with a visible discontinuity in late 2025.</p>
+              <p>That makes &#39;a business that gets better when models get better&#39; feel less like a slogan and more like an investable company pattern.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I think Sam Altman&#39;s mythical &#39;build a business that gets better when models get better&#39; is basically what I called Agent Labs here.</p>
+              <p>Seeing a very direct correlation with model performance and agent lab revenue.</p>
+              <p>Discontinuity in Q4 2025.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx 这条讲得很明白：有一类公司不会因为模型变强而被冲掉，反而会跟着一起变强。</p>
+              <p>更重要的是，他说的不是抽象愿景，而是已经看到模型表现和 Agent Labs 收入之间出现了很直接的关系。</p>
+              <p>换句话说，这类公司真正厉害的地方，是它能把模型升级，直接变成自己的增长。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Swyx 把 Sam Altman 那句“build a business that gets better when models get better”翻译成了他所说的 Agent Labs。</p>
+              <p>他说自己已经看到模型性能和 agent lab revenue 之间的非常直接的相关性。</p>
+              <p>这意味着某些 AI-native 公司，会随着模型进步自动变得更强。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/swyx/status/2057119153337545096" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 03</div>
+    <h2 class="section-title">New Jobs, New Team Shapes / 新岗位与新团队形态</h2>
+    <p class="section-desc">AI 落地不是公司里多装一个工具那么简单，它正在慢慢改写岗位分工和团队配合方式。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:levie" data-author-name="Aaron Levie" data-author-tag="CEO @ Box" data-author-handle="@levie" data-author-avatar="./assets/avatars/x-levie.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="./assets/avatars/x-levie.jpg" alt="Aaron Levie avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie</div>
+            <div class="author-tag is-inline">CEO @ Box</div>
+          </div>
+          <div class="author-handle">@levie</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Levie&#39;s argument is that AI deployment is not a one-time migration project. Agents change human workflows directly, which creates a long tail of technical implementation plus change management.</p>
+              <p>His deeper point is speed. Models evolve too fast for best practices to settle, so today&#39;s scaffolding can quickly become tomorrow&#39;s drag.</p>
+              <p>That is why he sees roles like FDEs as durable rather than transitional: they sit at the boundary between technical capability, workflow redesign, and enterprise adoption.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>This is a job that is going to be around as long as AI keeps changing rapidly, which it inevitably will.</p>
+              <p>With agents, the work to implement them is not only highly technical, but they directly impact the underlying workflows that people participate in.</p>
+              <p>Every model change means either something new can be done that wasn&#39;t possible before, or some piece of scaffolding is now redundant or holding you back.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie 这条说得很实在：企业里的 AI 落地岗位，不会只是短期过渡一下就消失。</p>
+              <p>因为 agent 不是只接一层技术接口，它会直接碰到员工每天怎么工作，所以每次部署都带着流程调整和组织协调。</p>
+              <p>再加上模型变化太快，很多做法今天刚定下来，明天可能又得改，这就让 FDE 这类角色变得很难被省掉。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Levie 说，这类工作会一直存在，因为 AI 会持续快速变化。</p>
+              <p>Agent 的实施既高度技术化，又会直接影响人们参与其中的底层工作流，因此天然带着 change management 属性。</p>
+              <p>每一次模型升级都可能让某些旧脚手架失效，也可能让原本做不到的事情突然变得可行。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/levie/status/2057315272156135501" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:zarazhangrui" data-author-name="Zara Zhang" data-author-tag="Builder" data-author-handle="@zarazhangrui" data-author-avatar="./assets/avatars/x-zarazhangrui.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="./assets/avatars/x-zarazhangrui.jpg" alt="Zara Zhang avatar"><span class="avatar-fallback">ZZ</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Zara Zhang</div>
+            <div class="author-tag is-inline">Builder</div>
+          </div>
+          <div class="author-handle">@zarazhangrui</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zara&#39;s core idea is that AI-native teams invert old role assumptions.</p>
+              <p>ICs need to think more like managers by delegating, specifying standards, and verifying agent output, while managers need to become more builder-like and hands-on again.</p>
+              <p>She pairs that with a broader capability model: deeper domain expertise, wider adjacent knowledge, and strong AI fluency on top.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>In an AI-native team, ICs should start thinking like managers: how to delegate tasks to agents, how to set standards and verify output.</p>
+              <p>Managers should start thinking like ICs: how to be more hands-on builders instead of just doing people management.</p>
+              <p>This T-shape will apply to not just developers but every job function.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zara 这条最有意思的地方，是她把 AI-native 团队到底会怎么变，说得很具体。</p>
+              <p>以后 IC 不能只顾着自己把活做完，也得学会拆任务、交给 agent、再回来验收；而 manager 也不能只做协调，得重新变得更 hands-on。</p>
+              <p>她后面提到的 T-shape 也很好理解：专业要更深，相关知识面要更宽，再加上一层会用 AI 的能力。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Zara 认为，在 AI-native 团队里，IC 应该开始像 manager 一样思考：如何把任务委派给 agent，如何制定标准并验证输出。</p>
+              <p>同时 managers 也要像 IC 一样思考，重新变得更 hands-on，而不是只做人事管理。</p>
+              <p>这种 T-shape 不只适用于开发者，而会适用于每一种工作职能。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/zarazhangrui/status/2057324988009685208" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 04</div>
+    <h2 class="section-title">Frontier Capability to Product Surface / 从前沿能力到产品表面</h2>
+    <p class="section-desc">同一天里，一边是模型在往前冲能力上限，另一边是这些能力开始被做成普通人也能直接用的产品。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:sama" data-author-name="Sam Altman" data-author-tag="CEO @ OpenAI" data-author-handle="@sama" data-author-avatar="./assets/avatars/x-sama.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="./assets/avatars/x-sama.jpg" alt="Sam Altman avatar"><span class="avatar-fallback">SA</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Sam Altman</div>
+            <div class="author-tag is-inline">CEO @ OpenAI</div>
+          </div>
+          <div class="author-handle">@sama</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Taken together, Sam Altman&#39;s posts sketch OpenAI&#39;s current stack of ambition: AI should accelerate science, accelerate companies, and eventually become personal leverage for everyone.</p>
+              <p>The math result matters because it acts as a proof point that frontier progress is still translating into genuinely new capability, not just better demos.</p>
+              <p>His line about having &#39;complicated feelings&#39; keeps the milestone from reading like pure triumphalism and hints at the emotional weight of these advances.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Three of the things we are most excited about: 1. AGI accelerating research 2. AGI accelerating companies 3. personal AGI accelerating everyone in achieving their goals.</p>
+              <p>A general-purpose model solved a major open problem in mathematics. We&#39;ll be saying this a lot over the coming years, but this is a kinda big milestone.</p>
+              <p>I&#39;m very excited for AI to greatly extend our understanding of the world, but still, I have complicated feelings today.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Sam Altman 这两条放在一起看，其实是在讲 OpenAI 现在相信 AI 最先会在哪些地方真正起作用：做研究、跑公司、帮助个人。</p>
+              <p>而“通用模型解开数学开放问题”这件事，则像是在给这个叙事再加一个很硬的例子，说明模型能力还在继续往前推。</p>
+              <p>但他又补了一句 complicated feelings，这也让这条内容不只是庆祝，更像是在说：大家都知道自己正在走到一个很不一样的阶段。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Altman 说，他们最兴奋的三件事，是 AGI 加速 research、加速 companies，以及 personal AGI 加速每个人实现目标。</p>
+              <p>同时他又说，一个 general-purpose model 解决了一个数学开放问题，这会成为未来反复出现的句子。</p>
+              <p>但他也补了一句：自己今天的心情是复杂的。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/sama/status/2057218997503086888" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:GoogleLabs" data-author-name="Google Labs" data-author-tag="Google Product Team" data-author-handle="@GoogleLabs" data-author-avatar="./assets/avatars/x-GoogleLabs.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="./assets/avatars/x-GoogleLabs.jpg" alt="Google Labs avatar"><span class="avatar-fallback">GL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Google Labs</div>
+            <div class="author-tag is-inline">Google Product Team</div>
+          </div>
+          <div class="author-handle">@GoogleLabs</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Google Labs is showing the productization side of frontier AI. Project Genie is no longer just a flashy experiment; it is becoming a subscriber-facing experience.</p>
+              <p>The framing is simple and powerful: move from playing games to designing them in minutes by choosing characters, setting the scene, and letting the model do the rest.</p>
+              <p>This is what capability packaging looks like when it starts crossing over from demo culture into consumer product surfaces.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Project Genie is now fully available to all Google AI Ultra subscribers globally.</p>
+              <p>From playing the games to designing the games in minutes.</p>
+              <p>Just choose your characters, set the scene, and let Project Genie do the rest.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Google Labs 这组更新说明，生成式互动内容已经不只是发布会上的概念展示了。</p>
+              <p>Project Genie 现在讲的是一件普通用户也能立刻听懂的事：以前你是玩游戏，现在你几分钟就能自己把游戏场景和角色做出来。</p>
+              <p>如果说前面的 Sam 在讲能力继续往前推，这张卡更像是在讲，这些能力已经开始被包装成真正可以卖给用户的产品了。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Google Labs 说，Project Genie 现在已经面向全球 Google AI Ultra 订阅用户开放。</p>
+              <p>它的口号很直接：从 playing the games 走向 designing the games in minutes。</p>
+              <p>用户只需要挑角色、设场景，剩下的就交给模型。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/GoogleLabs/status/2057179491693470166" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <footer data-source-note="Source: Follow Builders curated daily digest. Rebuilt from the 2026-05-21 source feeds.">Source: Follow Builders curated daily digest. Rebuilt from the 2026-05-21 source feeds.</footer>
+
+  <script>
+    function formatIssueNumber(publishDateString) {
+      const baseDate = new Date('2026-05-01T00:00:00+08:00');
+      const publishDate = new Date(publishDateString + 'T00:00:00+08:00');
+      if (Number.isNaN(baseDate.getTime()) || Number.isNaN(publishDate.getTime())) return null;
+      const diffDays = Math.round((publishDate - baseDate) / (1000 * 60 * 60 * 24));
+      return diffDays + 1;
+    }
+
+    function getTemplateAuthorSources() {
+      const sources = window.AI_BUILDERS_TEMPLATE_SOURCES || {};
+      return { identities: sources.identities || {}, avatars: sources.avatars || {} };
+    }
+
+    function getAuthorInitials(name) {
+      return (name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(function(part) { return part[0]; }).join('').toUpperCase();
+    }
+
+    function hydrateTemplateCopy() {
+      const intro = document.querySelector('.intro');
+      if (intro) {
+        const kicker = intro.querySelector('.intro-kicker');
+        const copy = intro.querySelector('.intro-copy');
+        if (kicker) kicker.textContent = intro.dataset.kicker || '';
+        if (copy) copy.textContent = intro.dataset.text || '';
+      }
+
+      const footer = document.querySelector('footer');
+      if (footer) footer.textContent = footer.dataset.sourceNote || '';
+
+      const rewriteLabel = document.body.dataset.viewLabelRewrite || '速读';
+      const originalLabel = document.body.dataset.viewLabelOriginal || '原文';
+      document.querySelectorAll('.view-toggle').forEach(function(button) {
+        if (button.dataset.viewTarget === 'rewrite') button.textContent = rewriteLabel;
+        if (button.dataset.viewTarget === 'original') button.textContent = originalLabel;
+      });
+    }
+
+    function hydrateAuthorMeta() {
+      const sources = getTemplateAuthorSources();
+      document.querySelectorAll('.card').forEach(function(card) {
+        const authorKey = card.dataset.authorKey || '';
+        const identity = sources.identities[authorKey] || {};
+        const avatarEntry = sources.avatars[authorKey] || {};
+
+        const name = identity.name || card.dataset.authorName || '';
+        const rawHandle = identity.handle || card.dataset.authorHandle || '';
+        const handle = rawHandle && rawHandle.startsWith('@') ? rawHandle : (rawHandle ? '@' + rawHandle : '');
+        const tag = identity.label || card.dataset.authorTag || '';
+        const avatar = avatarEntry.fileUrl || avatarEntry.localPath || card.dataset.authorAvatar || '';
+
+        const nameNode = card.querySelector('.author-name');
+        const tagNode = card.querySelector('.author-tag');
+        const handleNode = card.querySelector('.author-handle');
+        const avatarNode = card.querySelector('.avatar');
+        const avatarImg = card.querySelector('.avatar img');
+        const avatarFallback = card.querySelector('.avatar-fallback');
+
+        if (nameNode) nameNode.textContent = name;
+        if (tagNode) tagNode.textContent = tag;
+        if (handleNode) handleNode.textContent = handle;
+        if (avatarImg) {
+          avatarImg.src = avatar;
+          avatarImg.alt = name ? name + ' avatar' : 'Author avatar';
+        }
+        if (avatarNode) avatarNode.classList.toggle('is-fallback', !avatar);
+        if (avatarFallback) avatarFallback.textContent = getAuthorInitials(name);
+      });
+    }
+
+    function updateEditionStrip() {
+      const publishDate = document.body.dataset.publishDate;
+      const editionName = document.body.dataset.editionName || '双语精选版';
+      const editionStrip = document.getElementById('edition-strip-text');
+      if (!publishDate || !editionStrip) return;
+
+      const issueNumber = formatIssueNumber(publishDate);
+      if (!issueNumber || issueNumber < 1) return;
+
+      const selectedCount = document.querySelectorAll('.card').length;
+      const authorCount = new Set([].slice.call(document.querySelectorAll('.author-handle')).map(function(node) { return node.textContent.trim(); }).filter(Boolean)).size;
+      const themeCount = document.querySelectorAll('.section-header').length;
+      const parts = ['第 ' + issueNumber + ' 期', publishDate, editionName, selectedCount + ' 条精选', authorCount + ' 位作者', themeCount + ' 个主题'];
+      editionStrip.innerHTML = parts.map(function(part) { return '<span class="edition-item">' + part + '</span>'; }).join('<span class="edition-sep">|</span>');
+    }
+
+    function measureVariantHeight(variant) {
+      const prevPosition = variant.style.position;
+      const prevInset = variant.style.inset;
+      const prevVisibility = variant.style.visibility;
+      const prevPointerEvents = variant.style.pointerEvents;
+      const prevOpacity = variant.style.opacity;
+      const prevTransform = variant.style.transform;
+      const prevTransition = variant.style.transition;
+      const prevOverflowY = variant.style.overflowY;
+      const prevDisplay = variant.style.display;
+
+      variant.style.position = 'relative';
+      variant.style.inset = 'auto';
+      variant.style.visibility = 'hidden';
+      variant.style.pointerEvents = 'none';
+      variant.style.opacity = '1';
+      variant.style.transform = 'none';
+      variant.style.transition = 'none';
+      variant.style.overflowY = 'visible';
+      variant.style.display = 'block';
+
+      const height = variant.scrollHeight;
+
+      variant.style.position = prevPosition;
+      variant.style.inset = prevInset;
+      variant.style.visibility = prevVisibility;
+      variant.style.pointerEvents = prevPointerEvents;
+      variant.style.opacity = prevOpacity;
+      variant.style.transform = prevTransform;
+      variant.style.transition = prevTransition;
+      variant.style.overflowY = prevOverflowY;
+      variant.style.display = prevDisplay;
+
+      return Math.ceil(height);
+    }
+
+    function getTargetHeight(shell, target) {
+      const variant = shell.querySelector('.content-variant[data-view="' + target + '"]');
+      return measureVariantHeight(variant);
+    }
+
+    function syncShellHeights() {
+      document.querySelectorAll('.content-shell').forEach(function(shell) {
+        const active = shell.querySelector('.content-variant.is-active');
+        const target = active ? active.dataset.view : 'rewrite';
+        shell.style.height = getTargetHeight(shell, target) + 'px';
+      });
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', function() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(syncShellHeights, 120);
+    });
+
+    document.querySelectorAll('.card').forEach(function(card) {
+      const buttons = card.querySelectorAll('.view-toggle');
+      const shells = card.querySelectorAll('.content-shell');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const target = button.dataset.viewTarget;
+          if (button.classList.contains('is-active')) return;
+
+          buttons.forEach(function(btn) {
+            btn.classList.toggle('is-active', btn === button);
+          });
+
+          shells.forEach(function(shell) {
+            const current = shell.querySelector('.content-variant.is-active');
+            const next = shell.querySelector('.content-variant[data-view="' + target + '"]');
+            if (!current || !next || current === next) return;
+
+            shell.style.height = shell.offsetHeight + 'px';
+            requestAnimationFrame(function() {
+              current.classList.remove('is-active');
+              next.classList.add('is-active');
+              shell.style.height = getTargetHeight(shell, target) + 'px';
+            });
+          });
+        });
+      });
+    });
+
+    hydrateTemplateCopy();
+    hydrateAuthorMeta();
+    updateEditionStrip();
+    syncShellHeights();
+  </script>
+</body>
+</html>

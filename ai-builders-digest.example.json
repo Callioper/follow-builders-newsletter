@@ -1,0 +1,76 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-05-19",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "这期更像一份面向 AI 从业者的“底层变量日报”：人才结构在重估，eval 正从学术 benchmark 回到真实用户 traces，注意力和资本结构也比“把产品做出来”本身更决定结果。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-05-19 source draft.",
+  "sections": [
+    {
+      "title": "AI 时代的人才重估 / Talent Repricing in the AI Era",
+      "desc": "最有价值的人不是“会不会被 AI 替代”，而是有没有足够深的专业能力去驾驭 AI。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2056219645796090197",
+          "en": {
+            "rewrite": [
+              "Right now there’s a temporary mismatch between the jobs that used to be sought after in some fields and the new jobs that are becoming in demand in those fields.",
+              "When you realize that AI is going to make coding abundant, you realize everyone will need technical talent to implement agentic systems. This means the types of roles engineers should be thinking about radically expands.",
+              "The job may be different from what it was 5 years ago when thinking about tech, but the demand for the skills are still there."
+            ],
+            "original": [
+              "Right now there’s a temporary mismatch between the jobs that used to be sought after in some fields and the new jobs that are becoming in demand in those fields.",
+              "For instance, if you studied CS, for years the general direction of travel was often to join a tech company and build customer-facing software in some form. A significant portion of the CS pipeline from college to hire was built for this.",
+              "When you realize that AI is going to make coding abundant, you realize everyone will need technical talent to implement agentic systems. This means the types of roles engineers should be thinking about radically expands.",
+              "I was talking to a Fortune 500 pharma CEO a week ago that commented on how much more technical talent they need right now. The job may be different from what it was 5 years ago when thinking about tech, but the demand for the skills are still there. And this is what I’m hearing from every CIO and CEO across nearly every industry right now.",
+              "We definitely need colleges to wake up to this; but we equally need companies think about how they craft pipelines into these jobs."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "很多行业正在出现新的错配：过去热门的岗位，和现在真正开始被需要的岗位，已经不是一回事。",
+              "如果 AI 会让写代码本身变得更充裕，那么几乎所有行业都会更需要技术人才去落地 agentic systems，这会直接扩大工程师应该考虑的岗位范围。",
+              "岗位形态会变，但对技术能力的需求并没有消失。"
+            ],
+            "original": [
+              "眼下很多行业都出现了一种暂时性的错配：过去最热门的岗位，和现在真正开始被需要的岗位，已经不是一回事。以 CS 专业为例，过去很多人的标准路径是进入科技公司，去做面向客户的软件；整个从大学到招聘的 pipeline 也是围绕这件事搭起来的。",
+              "但如果你接受“AI 会让写代码本身变得更充裕”这个判断，那下一步就会看到，几乎所有行业都需要更强的技术人才去落地 agentic systems。这意味着工程师应该考虑的岗位范围会急剧扩张。我上周和一家《财富》500 强制药公司的 CEO 聊天，对方就提到，他们现在对技术人才的需求明显更高。岗位形态也许和 5 年前理解中的 tech job 不一样了，但对这类能力的需求并没有消失。我几乎从各行各业的 CIO 和 CEO 那里都听到类似判断。",
+              "大学当然需要尽快醒过来；但同样重要的是，公司也得重新思考，怎么为这些新岗位建立进入路径。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:sama",
+          "sourceUrl": "https://x.com/sama/status/2056165722804654196",
+          "en": {
+            "rewrite": [
+              "ChatGPT Images 2.0 💚 India.",
+              "Already more than 1 billion images created there; awesome to see."
+            ],
+            "original": [
+              "ChatGPT Images 2.0 💚 India.",
+              "Already more than 1 billion images created there; awesome to see."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "ChatGPT Images 2.0 在印度已经生成了超过 10 亿张图片。",
+              "这意味着生成式图像能力已经进入了大规模、持续使用的阶段，而不只是一次性的 demo 热度。"
+            ],
+            "original": [
+              "ChatGPT Images 2.0 在印度的使用量已经超过 10 亿张图片，这说明生成式图像能力已经不只是 demo，而是在非常大规模的用户场景里持续被消耗。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

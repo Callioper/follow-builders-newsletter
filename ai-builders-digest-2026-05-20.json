@@ -1,0 +1,299 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-05-20",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天最值得看的一条线，不是某个单独的新产品，而是 AI 开始更深地进入公司怎么运转这件事里了。一边是前沿研究者重新回到实验室，一边是 agent 开始从 demo 走向更长期在线的产品，另一边企业已经在认真算 token 成本、容量和权限这些现实问题。这说明 AI 讨论正在从“能不能做”往前走，走到“到底该怎么真的用起来”。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-05-20 source feeds.",
+  "sections": [
+    {
+      "title": "Frontier Talent Re-Sorts / 前沿人才重新洗牌",
+      "desc": "有些时候，比起一个新产品上线，更能说明风向的反而是谁回到了哪间实验室。",
+      "cards": [
+        {
+          "authorKey": "x:karpathy",
+          "sourceUrl": "https://x.com/karpathy/status/2056753169888334312",
+          "en": {
+            "rewrite": [
+              "Andrej Karpathy announced that he has joined Anthropic, framing the move as a return to frontier R&D at a moment he believes will be especially formative for LLMs.",
+              "The signal is larger than a career update: when one of the field's most influential builders decides lab affiliation matters right now, it suggests the next phase of frontier work is accelerating.",
+              "He also leaves the door open to resume his education work later, which makes this feel like a deliberate refocus rather than a total reset."
+            ],
+            "original": [
+              "Personal update: I've joined Anthropic.",
+              "I think the next few years at the frontier of LLMs will be especially formative. I am very excited to join the team here and get back to R&D.",
+              "I remain deeply passionate about education and plan to resume my work on it in time."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Karpathy 宣布加入 Anthropic。表面上看，这像是一条人事消息，但它更像是在告诉大家：接下来几年，前沿研发会很重要。",
+              "他的判断很直接，真正关键的变化还在前面，所以他决定重新回到一线做研究。",
+              "不过他也补了一句，说自己并没有放下教育这条线，只是眼下先把重心放回 frontier R&D。"
+            ],
+            "original": [
+              "Karpathy 宣布自己加入 Anthropic，并把这次转身定义为“回到前沿研发”的选择。",
+              "他认为未来几年会是 LLM frontier 非常关键的阶段，因此实验室归属会比平时更重要。",
+              "不过他也明确说，自己对教育依然非常有热情，未来会回到那条线。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Ambient Agents Become Real Products / 常驻式 Agent 开始成为产品",
+      "desc": "Agent 不再只是你打开窗口问一句答一句，它开始更像一个长期在线、会主动帮你做事的产品。",
+      "cards": [
+        {
+          "authorKey": "x:joshwoodward",
+          "sourceUrl": "https://x.com/joshwoodward/status/2056873495116845485",
+          "en": {
+            "rewrite": [
+              "Gemini Spark positions Google's agent effort as a persistent personal layer, not just another chat interface.",
+              "The promise is explicit: a 24/7 agent that proactively manages tasks and helps navigate your digital life while still operating under your direction.",
+              "That rollout language matters too. Moving from trusted testers to paid beta access makes this look like the early shape of a real agent product, not a research demo."
+            ],
+            "original": [
+              "Introducing Gemini Spark!",
+              "Our 24/7 personal AI agent designed to proactively manage tasks and help you navigate your digital life, all under your direction.",
+              "Coming to trusted testers this week, and as a Beta for US Google AI Ultra subscribers next week!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Google 现在想做的，已经不只是一个你有问题才会打开来问的聊天入口了。",
+              "Gemini Spark 的意思很明确：它希望这个 agent 能长期在线，主动帮你管任务、处理日常数字生活，但最后的控制权还在你手里。",
+              "这也说明，大厂现在做 agent，已经开始从“做个功能看看”往“做成一个真产品”走。"
+            ],
+            "original": [
+              "Josh Woodward 直接把 Gemini Spark 定义成一个 24/7 personal AI agent。",
+              "它不是等用户每次打开来问，而是要主动管理任务、帮助处理数字生活，同时保留用户控制权。",
+              "先给 trusted testers，再给 Google AI Ultra 订阅用户 beta，这已经很像产品化 rollout。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:GoogleLabs",
+          "sourceUrl": "https://x.com/GoogleLabs/status/2056872996988756228",
+          "en": {
+            "rewrite": [
+              "Project Genie is evolving from a neat generative demo into a more complete creation platform.",
+              "The biggest shift is grounding: users can now generate worlds from real places through Google Maps Street View, which ties imagination back to physical context.",
+              "Library and external sharing features complete the loop by making generated worlds persistent, editable, and socially distributable."
+            ],
+            "original": [
+              "Have you explored Project Genie yet? We just launched a huge set of updates! You can now simulate worlds grounded in Google Maps Street View, manage your creations in a new library, and share them externally.",
+              "Street View Grounding: You can now generate worlds starting from real places.",
+              "Library: You can now store and organize your generated worlds. External sharing: You can now share your generated worlds."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Project Genie 这次更新，重点不只是“还能生成什么”，而是它开始和真实世界接上了。",
+              "用户现在可以从真实地点出发去生成世界，这让它不再只是凭空想象，而是和现实地图、真实场景有了关系。",
+              "再加上作品库和分享功能，它看起来也越来越不像一次性试玩，而像一个可以留下来继续做的创作工具。"
+            ],
+            "original": [
+              "Google Labs 宣布 Project Genie 更新：可以用 Google Maps Street View 的真实地点来生成世界。",
+              "同时新增作品库和外部分享能力，意味着这些生成结果不再只是一次性试玩。",
+              "它正在从一个 demo 感很强的能力，变成更完整的创作产品。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Enterprise AI Means Cost, Capacity, and Control / 企业 AI 进入成本、容量与边界阶段",
+      "desc": "企业现在关心的，已经不是能不能上 AI，而是钱怎么算、算力怎么拿、权限怎么管。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2056965292753146019",
+          "en": {
+            "rewrite": [
+              "Levie's posts capture the real enterprise shift: the question is no longer whether to use AI, but how to budget and govern it.",
+              "CIOs are already experimenting with workload routing, spend caps, and differentiated agent access, yet no one feels they have a settled operating model.",
+              "At the same time, model quality keeps improving. Box's internal evals suggest Gemini 3.5 Flash materially lifts complex document work, which only intensifies the pressure to adopt."
+            ],
+            "original": [
+              "Token costs will become a dominant topic in enterprises going forward with AI. Just got out of a dinner with many Fortune 500 enterprise CIOs and this was the most heated topic.",
+              "A mix of strategies are being employed, but basically no one feels like they have the right solution: prioritizing workloads to different models, giving out access to better or worse agents by user type, setting different spend caps by team.",
+              "Gemini 3.5 Flash is out, and it's a major jump over Gemini 3 Flash in model capability for knowledge work. In our tests, the model delivered a 12 percentage point jump on complex document tasks."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Levie 这几条推文最有意思的地方，是它们把企业现在真正头疼的问题说得很具体。",
+              "大家已经不再问“要不要上 AI”，而是在问 token 成本怎么分、预算怎么控、不同人能用到什么级别的 agent。",
+              "偏偏这个时候模型还在继续变强。Box 的测试又说明，Gemini 3.5 Flash 在复杂文档任务上确实进步了，所以企业会更想用，但也更需要把账算清楚。"
+            ],
+            "original": [
+              "Levie 说，token 成本已经成了 Fortune 500 CIO 晚餐桌上最热的话题。",
+              "大家都在尝试不同策略：不同模型路由、不同用户权限、不同团队 spend cap，但还没有谁觉得自己找到了真正正确的解法。",
+              "而模型又还在继续变强，这让企业侧的预算、权限和 ROI 框架更难稳定下来。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:sama",
+          "sourceUrl": "https://x.com/sama/status/2056933166875857290",
+          "en": {
+            "rewrite": [
+              "Altman is treating tokens as more than metered usage. They are becoming a financing instrument, a distribution lever, and a capacity contract.",
+              "The $2M token offer for every YC startup is effectively a bet on compute-native companies built around abundant model access.",
+              "At the same time, OpenAI is selling longer-term discounted commitments to customers seeking capacity certainty, which makes compute look increasingly like an economic resource with allocation politics."
+            ],
+            "original": [
+              "I am excited to see what will happen with tokenmaxxing startups, both for how they work internally and the products they can build.",
+              "OpenAI offered to invest $2M in tokens into every startup in the current YC batch.",
+              "Customers are increasingly asking us for certainty on capacity. We are offering discounted tokens for 1-3 year commits."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Altman 这组话放在一起看，会发现 token 现在已经不只是“用多少付多少钱”这么简单了。",
+              "给 YC 创业公司每家 200 万美元 token，本质上是在提前把算力发给应用层，让他们先跑起来。",
+              "而另一边，OpenAI 又在跟大客户谈更长期的容量承诺。这说明算力这件事，已经开始同时影响融资、销售和客户关系。"
+            ],
+            "original": [
+              "Altman 一边在谈 tokenmaxxing startups，一边宣布给本期 YC 创业公司每家 200 万美元 token 投入。",
+              "同时他也说，客户越来越在意 capacity certainty，因此 OpenAI 会提供 1 到 3 年 commitment 的折扣 token。",
+              "这让 token 更像一种算力金融工具，而不只是单纯的 API 计费单位。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2056865808832397344",
+          "en": {
+            "rewrite": [
+              "Nikunj offers a useful stage model for the market: assistant, then coworker, then autonomous worker.",
+              "His point is not that autonomy works today, but that the enabling stack is getting real fast through long-horizon task data, better harnesses, and stronger recursive correction.",
+              "That turns autonomy from science-fiction rhetoric into a product roadmap for a large class of jobs."
+            ],
+            "original": [
+              "We have already gone from assistant -> coworker -> and soon entering autonomous workers.",
+              "\"Autonomy\" truly doesn't work yet, but the harnesses and the model capabilities are going to get us there within this area for a large faction of jobs.",
+              "This is evident from labs' desire to collect long horizon task data, model harnesses allowing longer and longer tasks, and how good these models are able to recursively correct mistakes."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj 给了一个很容易理解的分法：AI 先是助手，后来像同事，接下来才会慢慢走向真正能独立做事。",
+              "他的重点不是说“自治今天已经成了”，而是说，支撑它的那套东西正在慢慢补齐。",
+              "比如更长任务的数据、能跑更久的 harness、还有模型自己发现并修正错误的能力，这几样东西合在一起，才让 autonomy 看起来不再只是口号。"
+            ],
+            "original": [
+              "Nikunj 认为，我们已经从 assistant 进入 coworker 阶段，很快会迈向 autonomous workers。",
+              "虽然 autonomy 现在还不真正成立，但模型 harness 和能力演进已经在把大批工作岗位往那个方向推。",
+              "他给出的依据也很具体：labs 正在收集 long-horizon task data，模型也越来越能长链路执行并递归修错。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "AI-Native Builder Loops / AI 原生开发闭环",
+      "desc": "大家开始慢慢摸出一套更像样的 AI 开发流程：先测、再拆、边做边验，不是靠灵感硬冲。",
+      "cards": [
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2056877529991205072",
+          "en": {
+            "rewrite": [
+              "Swyx is defining an AI-native SDLC, not just a prompt recipe.",
+              "The loop starts with tests and explicit visual QA, then moves into planning, file isolation, logging, error boundaries, and slice-by-slice execution until the work is actually done.",
+              "The final step is post-deploy verification and bug steering, which makes the workflow operational and continuous rather than one-shot."
+            ],
+            "original": [
+              "There's 4 parts to this AI SDLC.",
+              "1. Have ~50 tests in place and use computer vision to visually spot check design and UX issues on mobile, desktop, ipad, ultrawide.",
+              "2. /plan break up and edit hot paths so you isolate files for easier editing and reading. Add proper logging and error boundaries. 3. Map out all remaining work, proceed on the next slice, do not stop until all work is done. 4. Periodically spot check deployed functionality and steer bugs as it goes along."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx 这条最有价值的地方，是他没有把 AI 写代码说成“给个 prompt 就行”。",
+              "他讲的是一整套流程：先把测试和视觉验收准备好，再去拆任务、补日志、加错误边界。",
+              "也就是说，AI 不是帮你省掉过程，而是让你更像样地把过程走完。"
+            ],
+            "original": [
+              "Swyx 把 AI SDLC 拆成四步：先准备测试和视觉验收，再做 /plan 和热点路径拆分，然后按 slice 连续推进，最后部署后继续 spot check 和修 bug。",
+              "这套流程强调的不是‘快出结果’，而是让 AI 真正进入一个可交付、可验证、可持续迭代的闭环。",
+              "它很像把 AI 写代码从技巧，升级成团队级工作流。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:ryolu_",
+          "sourceUrl": "https://x.com/ryolu_/status/2056892527626817935",
+          "en": {
+            "rewrite": [
+              "Ryo Lu's workflow suggests consolidation: one strong general-purpose model can now cover planning, building, iteration, and debugging.",
+              "The important detail is context continuity, especially for UI work where flow matters as much as raw correctness.",
+              "By connecting the loop back to Jira, the model stops being just an editor assistant and starts acting across the backlog-execution boundary."
+            ],
+            "original": [
+              "I now use: Composer 2.5 for planning, Composer 2.5 for building and iterations, Composer 2.5 for debugging.",
+              "A great all-rounder, especially for UI work. Gets you in flow with Design Mode in Cursor.",
+              "Turn the backlog into reality. Just @cursor_ai in jira."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Ryo Lu 这条很像在说，很多人现在已经不想在一堆工具之间来回切了。",
+              "如果一个模型能同时做 planning、building、iteration 和 debugging，那最重要的好处其实是上下文不断，做事会顺很多。",
+              "再加上它能直接接到 Jira backlog，这条链路就不只是在写代码，而是开始连到真实的任务管理里了。"
+            ],
+            "original": [
+              "Ryo Lu 现在用同一个 Composer 2.5 做 planning、build、iteration 和 debugging。",
+              "他特别强调 UI 工作里的 flow 感，以及 Design Mode 带来的连续体验。",
+              "再加一句“只要在 Jira 里 @cursor_ai 就能把 backlog 变成现实”，说明这条链路已经从代码编辑器外溢到任务系统。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Rebuilding Enterprise Software From Scratch / 用 AI 从底层重做企业软件",
+      "desc": "这期长内容最有意思的地方，是它在认真讨论：下一代企业软件到底该怎么从头重做。",
+      "cards": [
+        {
+          "authorKey": "podcast:training-data",
+          "sourceUrl": "https://www.youtube.com/watch?v=j7ypvRUFY7M",
+          "en": {
+            "rewrite": [
+              "The core Serval thesis is that next-generation enterprise software should make automation creation simpler than doing the work manually.",
+              "In that framing, the breakthrough is not replacing workflows and databases, but generating and maintaining them with AI quickly enough to match changing business processes.",
+              "Jake Stauch also argues that the real product moat is not raw model strength, but the controls, approvals, permissions, and boundaries that make enterprises comfortable deploying AI widely."
+            ],
+            "original": [
+              "We want to be the tool that actually closes the gap between what you think your job is gonna be and what your job actually is.",
+              "If it were actually easier to build the automation, you would build the automation. You want that decision to be very easy to opt for the automation, not the manual step.",
+              "For us, we think the product is the boundaries. The product is the controls. The product is actually what limits the capabilities of the model."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "这期访谈最值得记的一点，是它没有把 AI-native 企业软件讲成一个很飘的概念。",
+              "Jake Stauch 讲得很实在：如果搭自动化比手工处理还容易，人自然就会去选自动化。这才是企业软件真正该追求的体验。",
+              "更重要的是，他觉得企业最后买不买单，看的也不只是模型强不强，而是权限、审批、边界这些能不能把风险兜住。"
+            ],
+            "original": [
+              "Serval 想做的是缩小“你以为工作应该怎么做”和“工作实际怎么做”之间的落差。",
+              "如果自动化真的比手工处理更容易，人们就会自然选择自动化，而不是继续人工操作。",
+              "在他们看来，真正的产品不是模型本身，而是 controls、boundaries 和 permission layer。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
