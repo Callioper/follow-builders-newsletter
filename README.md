@@ -265,7 +265,14 @@
 ├── ai-builders-digest-2026-05-21-rerun.html
 ├── ai-builders-digest.example.json
 ├── ai-builders-digest.example.html
+├── launchd/
+│   └── com.luolan.follow-builders-newsletter.plist.template
 ├── render-ai-builders-digest.js
+├── scripts/
+│   ├── build-daily-newsletter-json.js
+│   ├── install-launchd.sh
+│   ├── publish-daily-newsletter.sh
+│   └── update-index-archive.js
 ├── sync-site-avatars.js
 └── assets/
     └── avatars/
@@ -316,6 +323,66 @@ node render-ai-builders-digest.js ai-builders-digest-2026-05-21.json ai-builders
 
 ---
 
+## 自动发布链路（V1）
+
+目前已经补上本机自动发布的第一版链路，思路是：
+
+```text
+09:00 launchd 定时触发
+  -> scripts/publish-daily-newsletter.sh
+  -> OpenClaw 读取最新 Follow Builders feed
+  -> 生成当天 ai-builders-digest-YYYY-MM-DD.json
+  -> render-ai-builders-digest.js 渲染 HTML
+  -> sync-site-avatars.js 同步站内头像资源
+  -> scripts/update-index-archive.js 更新首页目录
+  -> git commit
+  -> git push origin main
+  -> GitHub Pages 自动刷新
+```
+
+这意味着，后续的日更不再只是“生成内容”，而是直接走到“生成页面并发布上线”。
+
+### 相关脚本
+
+- `scripts/build-daily-newsletter-json.js`  
+  负责调用 OpenClaw，根据最新 Follow Builders feed 生成当天的结构化 issue JSON。
+
+- `scripts/publish-daily-newsletter.sh`  
+  每日总控脚本。负责拉最新 feed、调用 agent 生成 JSON、渲染 HTML、更新首页、提交并推送。
+
+- `scripts/update-index-archive.js`  
+  根据现有 issue JSON 自动重建首页 archive 列表；已有旧条目也会被保留。
+
+- `scripts/install-launchd.sh`  
+  将 `launchd` 模板安装到 `~/Library/LaunchAgents/`，注册每天早上 `09:00` 自动运行任务。
+
+- `launchd/com.luolan.follow-builders-newsletter.plist.template`  
+  本机定时任务模板。安装时会自动替换成本地仓库路径。
+
+### 手动试跑
+
+如果想先手动跑一遍当天链路：
+
+```bash
+bash scripts/publish-daily-newsletter.sh
+```
+
+如果只想验证渲染和归档更新，不触发 agent、不推送 GitHub：
+
+```bash
+SKIP_AGENT=1 SKIP_PUSH=1 SKIP_GIT_PULL=1 NEWSLETTER_DATE=2026-05-21 bash scripts/publish-daily-newsletter.sh
+```
+
+### 安装 09:00 定时任务
+
+```bash
+bash scripts/install-launchd.sh
+```
+
+安装完成后，系统会在每天 `09:00`（`Asia/Shanghai`）自动执行发布脚本。
+
+---
+
 ## 部署目标
 
 本项目接下来的部署目标是：
@@ -333,7 +400,7 @@ node render-ai-builders-digest.js ai-builders-digest-2026-05-21.json ai-builders
 ## 后续方向
 
 - 接入更多日期与连续期数
-- 将 feed -> JSON -> HTML 的流程进一步自动化
-- 补齐 GitHub Pages 发布配置
-- 形成稳定的每日更新机制
+- 持续优化每日选题和摘要质量
+- 将本机定时链路继续抽象为更易迁移的发布方案
+- 视需要补充失败告警与运行日志观察
 
