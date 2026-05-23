@@ -14,6 +14,7 @@ HTML_PATH="${ISSUES_DIR}/ai-builders-digest-${DATE}-rerun.html"
 INDEX_PATH="${REPO_ROOT}/index.html"
 
 FOLLOW_BUILDERS_SCRIPTS="${FOLLOW_BUILDERS_SCRIPTS:-${HOME}/.claude/skills/follow-builders/scripts}"
+ALLOW_GIT_PULL_FAILURE="${ALLOW_GIT_PULL_FAILURE:-0}"
 
 GIT_AUTHOR_NAME_DEFAULT="${GIT_AUTHOR_NAME_DEFAULT:-luolan0214}"
 GIT_AUTHOR_EMAIL_DEFAULT="${GIT_AUTHOR_EMAIL_DEFAULT:-luolan0214@users.noreply.github.com}"
@@ -37,7 +38,13 @@ if [[ -n "$(git -C "${REPO_ROOT}" status --porcelain)" ]]; then
 fi
 
 if [[ "${SKIP_GIT_PULL:-0}" != "1" ]]; then
-  git -C "${REPO_ROOT}" pull --rebase origin main
+  if ! git -C "${REPO_ROOT}" pull --rebase origin main; then
+    if [[ "${ALLOW_GIT_PULL_FAILURE}" == "1" ]]; then
+      echo "git pull failed; continuing with the current local main checkout." >&2
+    else
+      exit 1
+    fi
+  fi
 fi
 
 if [[ "${SKIP_AGENT:-0}" != "1" ]]; then
