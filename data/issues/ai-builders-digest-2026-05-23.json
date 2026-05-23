@@ -1,0 +1,215 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-05-23",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天这批内容放在一起看，会发现大家讨论的焦点正在从「模型还能不能更强」往两个方向分岔。一边是 Garry Tan 和 Levie 在说：当技术变化快到市场还没法消化的时候，真正值钱的已经不是模型本身，而是谁能更快地把它变成产品、填进空白市场、或者解决安全这些新冒出来的瓶颈。另一边是 Swyx 和 Oriol Vinyals 在认真讨论：模型要想继续往前走，靠单纯堆参数的效率可能不够了，得想清楚世界模型、continual learning 这些更根本的问题。两边的共同点是，大家都在告别「直接用就行」的幻想，开始面对真正的工程和组织问题。"
+  },
+  "archive": {
+    "title": "填空市场日报",
+    "desc": "Bar-is-zero 市场框架走红，安全工程师即将短缺，同时模型研究者开始正视 world model 与 continual learning 的深层挑战。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-05-23 source feeds.",
+  "sections": [
+    {
+      "title": "Startup Strategy & Market Gaps / 创业策略与市场空白",
+      "desc": "当市场本身还没来得及形成竞争的时候，创业公司该怎么想、怎么做？",
+      "cards": [
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2058043367704195271",
+          "en": {
+            "rewrite": [
+              "Garry Tan is reworking Geoffrey Moore's Crossing the Chasm for a new kind of market. His argument: Moore's framework assumes there's an existing solution the buyer is comparing you to. But when the alternative is literally nothing—that is, the bar is zero—the chasm doesn't exist.",
+              "Buyers start acting like visionaries because they have to buy. They'll tolerate a 60% solution because 60% of something beats 100% of nothing.",
+              "The practical takeaway for founders: if you're in a bar-is-zero market, stop worrying about whole product, references, and pragmatist buyers. Ship the 60% solution and iterate from there."
+            ],
+            "original": [
+              "Geoffrey Moore says startups die in the chasm because pragmatist buyers demand a 'whole product.' But Moore's model assumes there's an EXISTING solution the buyer is comparing you to.",
+              "When the *bar is zero*, when the alternative is literally 'we die' or 'we do this entirely by hand with 2,000 people'? The chasm doesn't exist for those.",
+              "The companies I get most excited about aren't disrupting incumbents. They're filling voids. If you're in a market where the bar is zero, stop worrying about whole product, stop worrying about crossing the chasm. Ship the 60% solution."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan 在重新解读 Geoffrey Moore 的经典理论。他的核心观点是：Moore 的「跨越鸿沟」框架有一个隐含假设——买家已经有一个现成的解决方案可以比较。",
+              "但如果买家面前根本没有替代方案，也就是他说的「bar is zero」，那鸿沟就不存在了。买家会像早期 adopter 一样行动，因为他们不得不买。",
+              "他对创始人的建议很直白：如果你的市场本身就是空白，别纠结什么完整产品、客户推荐、务实买家，先把 60% 的方案推出去。"
+            ],
+            "original": [
+              "Garry Tan 说，Geoffrey Moore 认为创业公司死于鸿沟，因为务实买家要求「whole product」。但 Moore 的框架假设买家有一个现有方案可以比较。",
+              "当 bar is zero，当替代方案就是「我们完了」或「我们用 2000 人手工做」的时候，鸿沟不存在。",
+              "他最兴奋的公司不是在颠覆 incumbents，而是在填补空白。如果市场 bar is zero，就别纠结完整产品了，先 ship 60% 的方案。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2058006473620463985",
+          "en": {
+            "rewrite": [
+              "Aaron Levie is calling a Jevons paradox for security engineering. AI makes it far easier to find security issues, which means the new bottleneck is reviewing, triaging, and fixing them.",
+              "Far from AI eliminating security engineers, the flood of newly discoverable vulnerabilities creates more demand for human judgment and follow-through.",
+              "His one-liner captures it: 'We're about to enter a security engineer boom.'"
+            ],
+            "original": [
+              "We've made it far easier to create and find security issues, which means the new bottleneck is our ability to actually review, respond to, and fix the issues.",
+              "Far from AI magically solving all of this, there still is major triage work and human judgment required to do the follow on work to actually protect systems.",
+              "As a result, we're about to enter a security engineer boom. Jevons paradox all over again."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 在说一个很经典的 Jevons paradox：AI 让发现安全漏洞变得更容易了，但新的瓶颈变成了人来审核、分诊和修复这些漏洞。",
+              "所以 AI 并没有消灭安全工程师的需求，反而因为漏洞发现量暴增，对人的判断力和后续处理的需求更大了。",
+              "他的判断很简洁：「我们即将迎来安全工程师的爆发期。」"
+            ],
+            "original": [
+              "Levie 说，AI 让创建和发现安全问题变得容易得多，但新的瓶颈变成了我们审核、响应和修复这些问题的能力。",
+              "AI 远没有神奇地解决一切，仍然需要大量分诊工作和人类判断来做后续处理以真正保护系统。",
+              "结果就是我们将进入安全工程师的 boom 时期。典型的 Jevons paradox。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "World Models & The Deep Research Questions / 世界模型与深层研究问题",
+      "desc": "模型要想继续突破，单纯堆参数可能不够了——这里在讨论接下来真正需要解开的难题。",
+      "cards": [
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2058073815301972368",
+          "en": {
+            "rewrite": [
+              "Swyx is co-signing a framework for what kinds of learning transformers do well today and where they hit limitations.",
+              "His key point: throwing more params and more power at a demonstrably inefficient paradigm will eventually be outclassed by a simpler solution that can hypothesize and seek truth rather than backfit a house of cards.",
+              "But he also acknowledges the bitter lesson—it may be simpler to just scale, and we may hit AGI anyway because human intelligence just isn't that smart nor plentiful."
+            ],
+            "original": [
+              "A very handy mental framework for what kinds of learning transformers do well today, and why it runs into limitations.",
+              "Throwing more params, more power, more everything at a demonstrably inefficient paradigm will be outclassed by the simple solution that can hypothesize and seek truth rather than backfit a house of cards.",
+              "Although the bitter lesson is it is simpler to scale and we may hit AGI anyway because human intelligence just isn't that smart nor plentiful."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx 在认同一个关于 transformer 学习能力的分析框架：它能做什么，又在哪里撞墙。",
+              "他的核心判断是：往一个已经被证明低效的范式上堆参数、堆算力，最终会被一个更简洁的方案超过——那种能提出假设并寻找真相的方案，而不是不断后拟合一个纸牌屋。",
+              "但他也承认 bitter lesson 的力量：也许单纯 scale 就是更简单的路径，人类智能本身也没那么聪明和充足，所以 AGI 也许靠堆就能到。"
+            ],
+            "original": [
+              "Swyx 认同一个框架，用来理解 transformer 今天擅长什么学习、在哪里遇到限制。",
+              "往一个已被证明低效的范式上堆更多参数、更多算力、更多一切，最终会被更简单的方案超越——能假设和寻求真相的方案，而非后拟合一个纸牌屋。",
+              "不过 bitter lesson 告诉我们，scale 更简单，也许靠堆就能达到 AGI，因为人类智能本身也没那么聪明和充裕。"
+            ]
+          }
+        },
+        {
+          "authorKey": "podcast:unsupervised-learning",
+          "authorName": "Unsupervised Learning",
+          "authorTag": "AI 模型前沿深访播客",
+          "sourceUrl": "https://www.youtube.com/watch?v=NQczevdpxq0",
+          "en": {
+            "rewrite": [
+              "Oriol Vinyals, Gemini co-lead, gives the most grounded view of where model research actually stands. His key insight: the 'GPT moment' for video and images hasn't happened yet. Current multimodal recipes mix everything together and get good results, but the pure transfer from visual data to conceptual understanding—without language as a crutch—is still unsolved.",
+              "On continual learning, he's betting on a file-system-style nonparametric approach: models write their thoughts to files, structure them in directories, and read them back later. This is more practical than integrating memories into weights, which creates a nightmare for serving one model at scale to different users.",
+              "On innovation itself, he's honest: he hasn't seen truly outstanding ideas generated by models yet. The models understand mechanistic details of training superhumanly, but the leap to genuinely novel ideas—especially in machine learning itself—hasn't happened."
+            ],
+            "original": [
+              "Probably what I would characterize as the GPT moment of video and images, I'm not sure we quite have seen that. Could we train on all the videos ever produced and get to the same level of understanding that language models using language get to?",
+              "The mechanism that is fairly good at the moment is adding this kind of knowledge base into a file system. It's a bit more convenient than integrating those back into the weights because even from a practical point of view, we try to serve one model at scale.",
+              "I don't think I've seen truly outstanding ideas that a model has generated yet, but I am sure I will very soon."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Oriol Vinyals 作为 Gemini 的 co-lead，给出了一个很实在的判断：视频和图像的「GPT 时刻」还没到。现在的多模态方案是把所有东西混在一起训练，效果不错，但如果想纯粹从视觉数据中提取概念理解——不依赖语言做拐杖——这个问题还没解决。",
+              "关于 continual learning，他更看好文件系统式的方式：模型把想法写到文件里，用目录结构组织，需要时再读回来。这比把记忆整合进权重里更实际，因为你没法给每个用户维护一份不同的权重。",
+              "谈到模型创新本身，他很诚实：到目前为止还没看到模型真正产生过出色的 idea。模型对训练机制的机械性理解已经超越人类，但跳到真正新颖的想法——尤其是在机器学习本身——这一步还没发生。"
+            ],
+            "original": [
+              "Oriol 认为，视频和图像的 GPT 时刻可能还没到。能不能纯粹通过训练所有视频数据，达到语言模型通过语言达到的那种理解水平？这还是个开放问题。",
+              "关于持续学习，他更看好基于文件系统的非参数方式，比把记忆整合进权重里更实用，因为至少从服务角度，给每个用户维护不同权重的模型是不现实的。",
+              "关于模型创新能力，他说还没有看到真正杰出的 idea 由模型产生，但他确信很快就会看到。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Engineering Practice & AI Dev Flow / 工程实践与 AI 开发流程",
+      "desc": "越来越多人开始总结：用 AI 写代码不是给个 prompt 就行，得有一套真正能跑的工作流。",
+      "cards": [
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2057876022553690327",
+          "en": {
+            "rewrite": [
+              "Swyx is prototyping a new pattern for AI engineering: Kakuna, a system of skills with checklists that harden your codebase. The idea is you /plan with it, then let it /goal for a day, and it comes back with the same functionality but all the boring hardening work done—plus an audit of its own work.",
+              "His framing is memorable: instead of a 'dark factory,' go 'mullet factory'—party in front (ship unique lovable features), dark in the back (timeless production principles). It's the anti-entropy, anti-slop part of the development cycle, broken out as its own thing.",
+              "The deeper point is about subagent parallelism and encoding strong opinions on how AI engineers should design apps for both human and agent access, DevOps, and product management."
+            ],
+            "original": [
+              "Kakuna: skills with checklists that only know how to harden your codebase. /plan with it then let it /goal for a day, it comes back with same functionality but all the boring stuff done for you + an audit of its own work.",
+              "Instead of dark factory, go 'mullet factory' - party in front (ship unique lovable features), dark in the back (timeless production principles).",
+              "Basically its the antientropy/antislop part of symphony broken out as its own thing. Focus on subagent parallelism and encodes strong opinions on how AI engineers should design apps."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx 在试验一个新的 AI 工程模式：Kakuna——一套带着 checklist 的 skill，专门用来加固代码库。你先用它做 /plan，然后让它自己跑一天，它会把所有枯燥的加固工作做完，还附带一份自我审计报告。",
+              "他给这个模式起了个很形象的名字：别搞「dark factory」，搞「mullet factory」——前面 party（做出独特、让人喜欢的功能），后面 dark（把经典的生产原则执行到位）。本质上就是把开发周期里反熵增、反 slop 的那部分单独拎出来。",
+              "更深层的东西是关于 subagent 并行化，以及如何把 AI 工程师设计应用时该有的强观点编码进系统里。"
+            ],
+            "original": [
+              "Swyx 提出了 Kakuna：一套只做代码加固的 skill + checklist 系统。/plan 之后让它跑一天，回来时功能不变但所有枯燥工作都做完了。",
+              "他的框架是「mullet factory」——前面 party（ship 独特功能），后面 dark（生产原则），而不是全黑工厂。",
+              "本质上是把反熵增/反 slop 的部分独立出来，聚焦 subagent 并行和 AI 工程师设计应用的强观点编码。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Career & Skills in the AI Era / AI 时代的职业与技能",
+      "desc": "AI 在改变工作方式，但人该怎么应对？这里有几条很实际的建议。",
+      "cards": [
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2057830781352034322",
+          "en": {
+            "rewrite": [
+              "Peter Yang's list is notable because it's not about resisting AI—it's about building the kind of leverage and optionality that make you resilient regardless of what happens.",
+              "His most concrete advice: learn Codex or Claude Code as training grounds for working with AI agents. Build side projects to revive atrophied builder skills. Develop a GitHub history so your work is visible. Become top 10% at one craft, because AI gets people to average fast, which means customers pay more for genuine human craft and taste.",
+              "His closing line is provocative: 'Entrepreneurship is the safest job in the AI era anyway.'"
+            ],
+            "original": [
+              "I hate seeing all the mass layoffs. Here are 6 things you can do as an employee to take back control: 1. Read the signals. 2. Learn Codex or Claude Code. 3. Build side projects. 4. Develop a GitHub history. 5. Become top 10% at your craft. 6. Let the market determine your value.",
+              "AI gets people to average really fast. But that just means customers are willing to pay more for human craft and taste. Pick one skill you genuinely enjoy working on and put in the reps until you're in the top 10% at it.",
+              "And if all else fails, consider becoming a founder. I think entrepreneurship is the safest job in the AI era anyway."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 这份清单有意思的地方在于，它不是在教你怎么对抗 AI，而是在说怎么让自己在任何情况下都有选择。",
+              "最实用的建议：学 Codex 或 Claude Code，这是跟 agent 协作最好的训练场；做 side project 把生疏的 builder 技能找回来；积累 GitHub 记录让工作可见；在一个手艺上做到 top 10%，因为 AI 能让人快速达到平均水平，但这也意味着客户更愿意为真正的手艺和品味付费。",
+              "他最后一句很挑动：「说到底，创业反而是 AI 时代最安全的工作。」"
+            ],
+            "original": [
+              "Peter Yang 列了 6 件事帮助员工重新掌握主动权：读懂信号、学 Codex 或 Claude Code、做 side project、积累 GitHub 记录、在一个技能上做到 top 10%、让市场决定你的价值。",
+              "AI 让人快速达到平均，但这反而意味着客户更愿意为人类的手艺和品味付费。",
+              "如果都不行，考虑创业。他认为创业反而是 AI 时代最安全的工作。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
