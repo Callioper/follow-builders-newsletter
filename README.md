@@ -346,7 +346,11 @@ node scripts/render-ai-builders-digest.js data/issues/ai-builders-digest-2026-05
 目前已经补上本机自动发布的第一版链路，思路是：
 
 ```text
-09:00 launchd 定时触发
+08:00 / 08:30 / 08:50 / 10:00 / 11:00 / 12:00 / 16:00 launchd 多次触发
+  -> scripts/run-scheduled-newsletter-publisher.sh
+  -> 自动补跑最近缺失日期
+  -> 自动重试瞬时失败
+  -> 成功后后续触发自动跳过
   -> scripts/publish-daily-newsletter.sh
   -> OpenClaw 读取最新 Follow Builders feed
   -> 生成当天 ai-builders-digest-YYYY-MM-DD.json
@@ -368,11 +372,14 @@ node scripts/render-ai-builders-digest.js data/issues/ai-builders-digest-2026-05
 - `scripts/publish-daily-newsletter.sh`  
   每日总控脚本。负责拉最新 feed、调用 agent 生成 JSON、渲染 HTML、更新首页、提交并推送。
 
+- `scripts/run-scheduled-newsletter-publisher.sh`  
+  定时调度包装脚本。负责早间尝试、白天补跑、失败重试，以及成功后的自动跳过。
+
 - `scripts/update-index-archive.js`  
   根据现有 issue JSON 自动重建首页 archive 列表；已有旧条目也会被保留。
 
 - `scripts/install-launchd.sh`  
-  将 `launchd` 模板安装到 `~/Library/LaunchAgents/`，注册每天早上 `09:00` 自动运行任务。
+  将 `launchd` 模板安装到 `~/Library/LaunchAgents/`，注册早间尝试与白天补跑任务。
 
 - `launchd/com.luolan.follow-builders-newsletter.plist.template`  
   本机定时任务模板。安装时会自动替换成本地仓库路径。
@@ -391,13 +398,13 @@ bash scripts/publish-daily-newsletter.sh
 SKIP_AGENT=1 SKIP_PUSH=1 SKIP_GIT_PULL=1 NEWSLETTER_DATE=2026-05-21 bash scripts/publish-daily-newsletter.sh
 ```
 
-### 安装 09:00 定时任务
+### 安装自动发布定时任务
 
 ```bash
 bash scripts/install-launchd.sh
 ```
 
-安装完成后，系统会在每天 `09:00`（`Asia/Shanghai`）自动执行发布脚本。
+安装完成后，系统会在每天 `08:00 / 08:30 / 08:50 / 10:00 / 11:00 / 12:00 / 16:00`（`Asia/Shanghai`）自动执行发布脚本，并在开机/登录后立即补跑一次。
 
 ---
 

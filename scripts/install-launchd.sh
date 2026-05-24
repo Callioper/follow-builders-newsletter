@@ -19,6 +19,7 @@ sed \
 
 chmod 644 "${TARGET_PATH}"
 chmod +x "${REPO_ROOT}/scripts/publish-daily-newsletter.sh"
+chmod +x "${REPO_ROOT}/scripts/run-scheduled-newsletter-publisher.sh"
 
 launchctl bootout "gui/${USER_UID}" "${TARGET_PATH}" >/dev/null 2>&1 || true
 launchctl bootstrap "gui/${USER_UID}" "${TARGET_PATH}"
@@ -27,4 +28,5 @@ launchctl enable "gui/${USER_UID}/com.luolan.follow-builders-newsletter"
 echo "Installed launchd job:"
 echo "  ${TARGET_PATH}"
 echo
-echo "It is scheduled to run every day at 09:00 Asia/Shanghai."
+echo "It is scheduled to run at 08:00 / 08:30 / 08:50 / 10:00 / 11:00 / 12:00 / 16:00 Asia/Shanghai."
+echo "RunAtLoad is enabled so the publisher catches up after reboot/login as well."

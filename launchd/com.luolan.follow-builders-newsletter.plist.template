@@ -8,7 +8,7 @@
     <key>ProgramArguments</key>
     <array>
       <string>/bin/bash</string>
-      <string>__REPO_ROOT__/scripts/publish-daily-newsletter.sh</string>
+      <string>__REPO_ROOT__/scripts/run-scheduled-newsletter-publisher.sh</string>
     </array>
 
     <key>WorkingDirectory</key>
@@ -22,18 +22,66 @@
       <string>__HOME__</string>
       <key>TZ</key>
       <string>Asia/Shanghai</string>
+      <key>PUBLISH_LOOKBACK_DAYS</key>
+      <string>2</string>
+      <key>PUBLISH_RETRY_ATTEMPTS</key>
+      <string>2</string>
+      <key>PUBLISH_RETRY_SLEEP_SECONDS</key>
+      <string>90</string>
+      <key>OPENCLAW_TIMEOUT_SECONDS</key>
+      <string>1800</string>
+      <key>ALLOW_GIT_PULL_FAILURE</key>
+      <string>1</string>
     </dict>
 
     <key>StartCalendarInterval</key>
-    <dict>
-      <key>Hour</key>
-      <integer>9</integer>
-      <key>Minute</key>
-      <integer>0</integer>
-    </dict>
+    <array>
+      <dict>
+        <key>Hour</key>
+        <integer>8</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+      </dict>
+      <dict>
+        <key>Hour</key>
+        <integer>8</integer>
+        <key>Minute</key>
+        <integer>30</integer>
+      </dict>
+      <dict>
+        <key>Hour</key>
+        <integer>8</integer>
+        <key>Minute</key>
+        <integer>50</integer>
+      </dict>
+      <dict>
+        <key>Hour</key>
+        <integer>10</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+      </dict>
+      <dict>
+        <key>Hour</key>
+        <integer>11</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+      </dict>
+      <dict>
+        <key>Hour</key>
+        <integer>12</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+      </dict>
+      <dict>
+        <key>Hour</key>
+        <integer>16</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+      </dict>
+    </array>
 
     <key>RunAtLoad</key>
-    <false/>
+    <true/>
 
     <key>StandardOutPath</key>
     <string>__HOME__/Library/Logs/follow-builders-newsletter.log</string>
