@@ -45,7 +45,7 @@
     </array>
 
     <key>RunAtLoad</key>
-    <true/>
+    <false/>
 
     <key>StandardOutPath</key>
     <string>__HOME__/Library/Logs/follow-builders-newsletter.log</string>

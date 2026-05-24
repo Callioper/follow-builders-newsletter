@@ -404,7 +404,7 @@ SKIP_AGENT=1 SKIP_PUSH=1 SKIP_GIT_PULL=1 NEWSLETTER_DATE=2026-05-21 bash scripts
 bash scripts/install-launchd.sh
 ```
 
-安装完成后，系统会在每天 `19:00`（`Asia/Shanghai`）自动执行发布脚本，并在开机/登录后立即补跑一次。
+安装完成后，系统会在每天 `19:00`（`Asia/Shanghai`）自动执行发布脚本。
 
 ---
 
