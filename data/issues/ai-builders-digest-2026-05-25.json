@@ -1,0 +1,257 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-05-25",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天这批内容的核心话题是「AI 到底在真正改变什么」。Peter Yang 说他拿了种子轮但暂时不招人，因为用 AI agent 理解一个岗位比自己上手做更有效；Levie 则从另一个角度提醒：CEO 特别容易陷入 AI 错觉，因为他们离最后一公里的真实工作太远，看到的都是 happy path 的 demo。同一天里，Nikunj 在展示如何用 Claude Code 逆向工程任何网站的 API，TRQ 在讲他用 Bun 重写遗留系统时学到的东西——这些都是关于「真正能用起来」的实践，而不是抽象的 demo。"
+  },
+  "archive": {
+    "title": "实战应用日报",
+    "desc": "AI agent 开始真正进入初创企业的运营层和工程层：不招人也能跑起来的 founder、能逆向工程任何网站 API 的开发者、以及那些因为看不见最后一公里而被 AI demo 误导的 CEO。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-05-25 source feeds.",
+  "sections": [
+    {
+      "title": "The CEO's AI Blindspot / CEO 的 AI 盲区",
+      "desc": "两条从不同角度说同一件事的内容：CEO 看到的 AI 和一线工作者看到的 AI，中间隔着巨大的认知差。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2058582370253701432",
+          "en": {
+            "rewrite": [
+              "Aaron Levie diagnoses a specific executive pathology: CEOs are uniquely prone to AI psychosis because they are far enough from the last mile of work that they only see the happy path. They prototype a product but never review the code for production. They generate a contract but never verify the terms or wire up legacy systems.",
+              "His prescription is blunt: the best thing a CEO can do is use AI a ton personally, to come out the other side with an appreciation for both the upside and the real work that goes into making agents sustainable in the enterprise.",
+              "With 4865 likes, this clearly struck a nerve across the entire tech industry."
+            ],
+            "original": [
+              "CEOs are uniquely prone to AI psychosis because they're sufficiently distant from the last mile of work that still has to happen to generate most value with AI.",
+              "So when they play with AI, they see the happy path results, often not considering the next 10 or 20 things that have to happen to get sustainable results from agents.",
+              "The best thing you can do as a CEO is to use AI a *ton* to figure out the real implications of agents in the enterprise."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 诊断了一种很具体的「高管病」：CEO 特别容易被 AI 的表面效果迷惑，因为他们离最后一公里的实际工作太远了。他们看到「我做出了一个很酷的产品原型」，但不需要去 review 代码、修 bug、推上线；他们看到「我生成了一份合同」，但不需要逐条验证条款、也不需要把历史合同全部对接上。",
+              "他的建议很直白：CEO 最好的做法就是自己大量使用 AI，亲自走过一遍完整的流程，才能真正理解 agent 在企业里落地的 upside 和真实工作量。",
+              "4865 个赞，说明整条科技行业都被戳中了。"
+            ],
+            "original": [
+              "Levie 说，CEO 特别容易陷入 AI 错觉，因为他们离最后一公里的实际工作太远。",
+              "玩 AI 时只看到 happy path，不考虑后面还有 10-20 件事要做才能得到可持续的结果。",
+              "CEO 最好的做法是自己大量使用 AI，真正理解 agent 在企业里的意义和实际工作量。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:realmadhuguru",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2058591611245011157",
+          "en": {
+            "rewrite": [
+              "This thread complements Levie's diagnosis with the organizational mechanics: CEOs feel AI FOMO but lack the muscle for hands-on work, so they set sweeping imprecise mandates. Employees respond with performative low-effort demos to meet coarse goals.",
+              "The predictable outcome: two years pass with no real progress, and a startup with hands-on leadership disrupts you."
+            ],
+            "original": [
+              "CEOs feel AI FOMO, but many of them and their lieutenants have gotten used to arms-length leadership and lack the muscle to get hands-on with AI.",
+              "So they set sweeping, imprecise AI mandates for their company. This leads to performative, low-effort demos from employees trying to meet the coarse goals.",
+              "Next thing you know it's been two years with no real progress and a startup with hands-on leadership is disrupting you."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "这条和 Levie 的帖子是同一件事的两面：CEO 们有 AI FOMO，但又没有亲自动手的能力，所以只会下一些模糊的、大而化之的「AI 战略」。员工为了应付这些粗略的目标，做出一堆表演性质的 demo。",
+              "然后两年过去了，真正的进展为零，而一个领导者亲自动手的创业公司已经把你颠覆了。"
+            ],
+            "original": [
+              "CEO 有 AI FOMO，但习惯了遥控式管理，没有亲自动手的能力。于是下达模糊的 AI 指令，员工用表演性质的 demo 应付。",
+              "两年后没任何实际进展，而 hands-on 的创业公司已经把你颠覆了。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Agent-Native Startup Operations / Agent 原生的初创运营",
+      "desc": "当 founder 决定暂时不招人而是用 AI，运营一家公司的方式就变了。",
+      "cards": [
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2058609058714968194",
+          "en": {
+            "rewrite": [
+              "Peter Yang shares a quote from a founder who raised $2M but isn't hiring: as a founder you want to understand every job before you hire for it, and agents are faster to onboard and retain all training so you can improve them over time.",
+              "This is not «AI replacing workers» framing. It is «use agents to deeply understand a role before hiring a human for it»—a genuinely new operational pattern."
+            ],
+            "original": [
+              "I've raised a $2M seed round, but I'm not going to hire anybody for a while.",
+              "As a startup founder, you want to understand every job and do it and feel the pain before you hire.",
+              "The reality is that an agent is a lot faster to onboard and they retain all the training so you can improve it over time."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 引用了一位创始人的话：拿了 200 万美元种子轮，但暂时不招人。理由是，作为创始人你应该先理解每个岗位、亲自做过、感受过痛点，然后再招人。而 agent 上手更快，而且会保留所有训练，你可以不断优化它。",
+              "这不是「AI 取代员工」的叙事，而是「先用 agent 深度理解一个岗位，再决定要不要招人」——一种真正全新的运营模式。"
+            ],
+            "original": [
+              "一位创始人说：拿了种子轮但不急着招人。创始人应该先理解每个岗位、感受痛点。",
+              "Agent 上手更快，保留所有训练，可以持续优化。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2058640897236140034",
+          "en": {
+            "rewrite": [
+              "Zara Zhang shares a vignette that captures the IC-to-manager pendulum swinging back: an engineering manager she ran into just voluntarily transitioned back to being an IC and has never been happier, because she can finally get her hands on building again.",
+              "Combined with her observation about OpenAI open-sourcing Codex, the picture is clear: the people closest to the tools are the ones having the most fun right now."
+            ],
+            "original": [
+              "Ran into a friend who was an engineering manager; she just voluntarily transitioned to be an IC and has never been happier because she can finally get her hands on building again."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zara Zhang 分享了一个小故事：碰到一位做工程经理的朋友，她主动转回了 IC，说自己从未这么开心过，因为终于可以重新动手做东西了。",
+              "结合她同一天观察到 OpenAI 开源了 Codex，画面很清楚：离工具最近的人，现在是玩得最开心的。"
+            ],
+            "original": [
+              "Zara 碰到一位工程经理朋友，对方主动转回 IC，说从未这么开心，因为终于可以重新动手 building 了。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Engineering at the Edge / 前沿工程实践",
+      "desc": "两条非常具体的工程洞察：一条关于遗留代码的新价值，一条关于用 Claude Code 做网站 API 逆向工程。",
+      "cards": [
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2058576195000660319",
+          "en": {
+            "rewrite": [
+              "TRQ's takeaway from the Bun rewrite is counterintuitive: legacy codebases are about to become incredibly valuable—not as running software, but as a source for distilling code into new forms.",
+              "His logic: every game should be crossplatform, all legacy software should work on the web, and we don't need COBOL anymore. If models can ingest a massive legacy codebase and translate it into something modern, the codebase itself becomes a training asset, not a liability.",
+              "With 1413 likes and 133 likes on the follow-up clarifying that models aren't quite there yet but will get there, this thesis clearly resonated."
+            ],
+            "original": [
+              "My main takeaway from the Bun rewrite is that legacy codebases will be incredibly valuable as a source for \"distilling\" code into new forms.",
+              "Every game should be crossplatform, all legacy software should work on the web, we don't need COBOL anymore."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "TRQ 从 Bun 重写里得出了一个反直觉的结论：遗留代码库即将变得极其有价值——不是作为正在运行的软件，而是作为把代码「蒸馏」成新形式的原料。",
+              "他的逻辑是：每个游戏都应该跨平台，所有遗留软件都应该能在 web 上跑，COBOL 不再需要了。如果模型能吃下一个巨大的遗留代码库然后把它翻译成现代化的东西，那代码库本身就变成了资产而不是负担。",
+              "1413 个赞，以及补充说「模型还没完全到位，但会到的」那条 133 个赞，说明这个论点击中了很多人的共鸣。"
+            ],
+            "original": [
+              "TRQ 从 Bun 重写中得出的结论：遗留代码库会成为「蒸馏」代码到新形式的宝贵资源。",
+              "每个游戏都应跨平台，所有遗留软件都应 web 化，不再需要 COBOL。模型会到达那个水平的。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2058783316753686558",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari shares a detailed workflow for using Claude Code to reverse-engineer any website's API. The trick: point Claude Code at browser_harness or Playwright, ask it to sniff network requests, click around the sections you want, and let it figure out the API structure, auth requirements, and rate limits from the logs.",
+              "He uses this for side projects, monitoring, and scraping. His forward-looking claim: every website will soon need to be headless, we'll need mechanisms for agents to pay websites programmatically, and just as we have llms.txt for data, we'll soon need tools.txt for agents."
+            ],
+            "original": [
+              "Reverse engineering APIs through network requests is one of the most fun things you can do with Claude Code to automate tasks.",
+              "SO many websites are impossible to navigate deterministically via the DOM or through screenshots. I just point Claude Code to use browser_harness and ask it to sniff network requests.",
+              "Every website will soon need to be headless, and we'll need tools.txt for agents to determine what tools exist that can be leveraged."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kothari 分享了一个用 Claude Code 逆向工程任何网站 API 的详细工作流。诀窍是：让 Claude Code 用 browser_harness 或 Playwright 嗅探网络请求，你在页面上点击想要的数据区域，它就能从日志里分析出 API 结构、认证方式和频率限制。",
+              "他用这个做 side project、网站监控和数据采集。他的前瞻性判断是：每个网站很快都需要支持 headless 访问，我们需要让 agent 能自动向网站付费的机制，而且就像有了 llms.txt 做数据索引一样，很快还需要 tools.txt 让 agent 知道有哪些工具可用。"
+            ],
+            "original": [
+              "Nikunj 说用 Claude Code 通过网络请求逆向工程 API 是最有趣的事之一。",
+              "很多网站无法通过 DOM 或截图确定性导航，让 Claude Code 嗅探网络请求更有效。",
+              "每个网站很快都需要 headless 化，需要 tools.txt 让 agent 知道可用的工具。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Taste, Agency & the Builder Mindset / 品味、主观能动性与 Builder 心态",
+      "desc": "当工具变得足够强大时，决定结果质量的就不是工具本身，而是用工具的人的品味和行动力。",
+      "cards": [
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2058769355916411099",
+          "en": {
+            "rewrite": [
+              "Garry Tan distills the current moment into one line: high agency high taste is the unlock these days. When the tools level the playing field for execution speed, what differentiates outcomes is the ability to act independently and the judgment to know what good looks like."
+            ],
+            "original": [
+              "High agency high taste is the unlock these days."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan 把当前这个阶段浓缩成一句话：高主观能动性 + 高品味，就是现在的关键。当工具把执行速度拉平之后，决定结果差异的，就是能不能自己主动做事，以及有没有判断好坏的品味。"
+            ],
+            "original": [
+              "Garry Tan 说：高主观能动性 + 高品味，就是现在这个时代的 unlock。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2058750970998505505",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch keeps it simple: How do you build a great brand? Build a great product. In an era where AI lets anyone ship fast, the brands that endure will be the ones backed by genuinely good products, not just good marketing."
+            ],
+            "original": [
+              "How do you build a great brand? Build a great product."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch 说得非常简洁：怎么建立好品牌？做出好产品。在 AI 让所有人都能快速 ship 的时代，能活下来的品牌，靠的是真正好的产品，而不是好的营销。"
+            ],
+            "original": [
+              "Rauchg：怎么建好品牌？做好产品。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2058604604422815832",
+          "en": {
+            "rewrite": [
+              "Zara Zhang notes a meaningful shift: OpenAI is becoming more open, and Codex is now open source. For the builder community, this matters because it lowers the barrier to building on top of these tools and contributing back."
+            ],
+            "original": [
+              "OpenAI being more open. Also I just realized recently that Codex is open source."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zara Zhang 注意到了一个有意义的变化：OpenAI 正在变得更开放，而且 Codex 现在是开源的。对 builder 社区来说，这件事的意义在于降低了基于这些工具构建和贡献的门槛。"
+            ],
+            "original": [
+              "Zara 说 OpenAI 变得更开放了，而且最近才意识到 Codex 是开源的。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

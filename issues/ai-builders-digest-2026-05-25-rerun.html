@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Builders Digest · 2026-05-25</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ed;
+    --accent: #c0392b;
+    --accent-light: #e8d5c4;
+    --border: #d4cdc0;
+    --muted: #7a7265;
+    --tag-bg: #e8e2d6;
+    --en-bg: #ffffff;
+    --cn-bg: #faf7f2;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  .masthead, .intro, .section-header, .feed, footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .masthead { padding-top: 48px; }
+  .masthead-rule { border: none; border-top: 3px solid var(--ink); margin: 0 0 12px; }
+  .masthead-inner { display: flex; justify-content: center; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; letter-spacing: -0.4px; }
+  .masthead-subtitle { margin-top: 8px; padding-bottom: 10px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  .edition-strip {
+    position: relative;
+    margin-top: 8px;
+    min-height: 46px;
+    padding: 10px 132px 12px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.34);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+
+  .edition-strip .edition-sep { margin: 0 8px; color: #b8ae9f; }
+  .edition-strip-text { display: block; }
+  .edition-return-link { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; padding: 6px 10px; border: 1px dashed rgba(192, 57, 43, 0.55); border-radius: 999px; color: var(--accent); text-decoration: none; font-size: 12px; line-height: 1; letter-spacing: 0.06em; background: rgba(255, 255, 255, 0.45); transition: background 160ms ease, border-color 160ms ease, transform 160ms ease; }
+  .edition-return-link:hover, .edition-return-link:focus-visible { background: rgba(255, 255, 255, 0.82); border-color: var(--accent); transform: translateY(-50%) translateX(-1px); }
+  .edition-return-link:focus-visible { outline: none; }
+  .intro { padding-top: 22px; }
+  .intro-inner { max-width: 920px; margin: 0 auto; padding: 0 0 0 18px; border-left: 3px solid #d9cdbc; }
+  .intro-kicker { margin: 0 0 8px; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .intro p { margin: 0; max-width: none; color: var(--muted); font-size: clamp(15px, 1.6vw, 16px); line-height: 1.9; text-wrap: pretty; font-family: 'Noto Serif SC', serif; overflow-wrap: anywhere; }
+
+  .section-header { margin-top: 40px; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; margin: 0 0 6px; }
+  .section-desc { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+
+  .feed { display: flex; flex-direction: column; gap: 20px; }
+  .card { background: var(--en-bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .card-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid #eee7dd; flex-wrap: wrap; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .avatar-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .avatar.is-fallback img { display: none; }
+  .avatar.is-fallback .avatar-fallback { display: flex; }
+
+  .author-info { flex: 1; min-width: 160px; }
+  .author-name { font-weight: 600; font-size: 15px; }
+  .author-name-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .author-handle { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+  .author-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; background: var(--tag-bg); color: var(--muted); padding: 4px 8px; border-radius: 999px; }
+  .author-tag.is-inline { padding: 3px 8px; }
+
+  .card-controls { margin-left: auto; display: inline-flex; gap: 8px; }
+  .view-toggle { border: 1px solid var(--border); background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 999px; font-size: 12px; line-height: 1; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; }
+  .view-toggle.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .card-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .lang-col { padding: 18px 20px 22px; }
+  .lang-col.cn { background: var(--cn-bg); border-right: 1px solid #f0ece4; font-family: 'Noto Serif SC', serif; }
+  .lang-col.en { background: var(--en-bg); }
+  .lang-label { margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+  .content-shell { position: relative; transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .content-variant { position: absolute; inset: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(4px); transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; will-change: opacity, transform; }
+  .content-variant.is-active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+  .content-variant p, .content-variant li { margin: 0 0 12px; font-size: 14px; }
+  .content-variant ol { margin: 0 0 12px 20px; padding: 0; }
+  .inline-code { display: inline-block; font-family: 'IBM Plex Mono', monospace; background: #f4efe7; padding: 3px 6px; border-radius: 6px; margin-bottom: 8px; }
+
+  .card-footer { padding: 12px 20px 16px; border-top: 1px solid #eee7dd; background: #fcfaf6; }
+  .card-footer a { color: var(--accent); text-decoration: none; font-size: 14px; }
+  footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 680px) {
+    .masthead-inner { align-items: center; }
+    .edition-strip { padding-right: 12px; padding-left: 12px; }
+    .edition-strip-text { padding-right: 0; }
+    .edition-return-link { position: static; transform: none; margin-top: 8px; font-size: 11px; }
+    .card-controls { margin-left: 0; }
+    .card-body { grid-template-columns: 1fr; }
+    .lang-col.cn { border-right: none; border-bottom: 1px solid #f0ece4; }
+    .edition-strip .edition-sep { margin: 0 5px; }
+    .intro-inner { padding-left: 14px; }
+    .intro p { line-height: 1.84; }
+  }
+</style>
+</head>
+<body data-publish-date="2026-05-25" data-issue-number="07" data-edition-name="双语精选版" data-view-label-rewrite="速读" data-view-label-original="原文" data-author-identities-path="/Users/mac/.follow-builders/assets/author-identities.json" data-avatar-manifest-path="/Users/mac/.follow-builders/assets/avatar-manifest.json">
+  <header class="masthead">
+    <hr class="masthead-rule">
+    <div class="masthead-inner">
+      <div class="masthead-title">AI Builders Digest</div>
+    </div>
+    <div class="masthead-subtitle">Bilingual edition · 双语对照版</div>
+    <div class="edition-strip">
+      <span class="edition-strip-text" id="edition-strip-text">第 07 期｜2026-05-25｜双语精选版｜9 条精选｜8 位作者｜4 个主题</span>
+      <a class="edition-return-link" href="../index.html">返回目录</a>
+    </div>
+  </header>
+
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="今天这批内容的核心话题是「AI 到底在真正改变什么」。Peter Yang 说他拿了种子轮但暂时不招人，因为用 AI agent 理解一个岗位比自己上手做更有效；Levie 则从另一个角度提醒：CEO 特别容易陷入 AI 错觉，因为他们离最后一公里的真实工作太远，看到的都是 happy path 的 demo。同一天里，Nikunj 在展示如何用 Claude Code 逆向工程任何网站的 API，TRQ 在讲他用 Bun 重写遗留系统时学到的东西——这些都是关于「真正能用起来」的实践，而不是抽象的 demo。">
+    <div class="intro-inner">
+      <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
+      <p class="intro-copy">今天这批内容的核心话题是「AI 到底在真正改变什么」。Peter Yang 说他拿了种子轮但暂时不招人，因为用 AI agent 理解一个岗位比自己上手做更有效；Levie 则从另一个角度提醒：CEO 特别容易陷入 AI 错觉，因为他们离最后一公里的真实工作太远，看到的都是 happy path 的 demo。同一天里，Nikunj 在展示如何用 Claude Code 逆向工程任何网站的 API，TRQ 在讲他用 Bun 重写遗留系统时学到的东西——这些都是关于「真正能用起来」的实践，而不是抽象的 demo。</p>
+    </div>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 01</div>
+    <h2 class="section-title">The CEO&#39;s AI Blindspot / CEO 的 AI 盲区</h2>
+    <p class="section-desc">两条从不同角度说同一件事的内容：CEO 看到的 AI 和一线工作者看到的 AI，中间隔着巨大的认知差。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:levie" data-author-name="Aaron Levie" data-author-tag="CEO @ Box" data-author-handle="@levie" data-author-avatar="../assets/avatars/x-levie.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-levie.jpg" alt="Aaron Levie avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie</div>
+            <div class="author-tag is-inline">CEO @ Box</div>
+          </div>
+          <div class="author-handle">@levie</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie 诊断了一种很具体的「高管病」：CEO 特别容易被 AI 的表面效果迷惑，因为他们离最后一公里的实际工作太远了。他们看到「我做出了一个很酷的产品原型」，但不需要去 review 代码、修 bug、推上线；他们看到「我生成了一份合同」，但不需要逐条验证条款、也不需要把历史合同全部对接上。</p>
+              <p>他的建议很直白：CEO 最好的做法就是自己大量使用 AI，亲自走过一遍完整的流程，才能真正理解 agent 在企业里落地的 upside 和真实工作量。</p>
+              <p>4865 个赞，说明整条科技行业都被戳中了。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Levie 说，CEO 特别容易陷入 AI 错觉，因为他们离最后一公里的实际工作太远。</p>
+              <p>玩 AI 时只看到 happy path，不考虑后面还有 10-20 件事要做才能得到可持续的结果。</p>
+              <p>CEO 最好的做法是自己大量使用 AI，真正理解 agent 在企业里的意义和实际工作量。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie diagnoses a specific executive pathology: CEOs are uniquely prone to AI psychosis because they are far enough from the last mile of work that they only see the happy path. They prototype a product but never review the code for production. They generate a contract but never verify the terms or wire up legacy systems.</p>
+              <p>His prescription is blunt: the best thing a CEO can do is use AI a ton personally, to come out the other side with an appreciation for both the upside and the real work that goes into making agents sustainable in the enterprise.</p>
+              <p>With 4865 likes, this clearly struck a nerve across the entire tech industry.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>CEOs are uniquely prone to AI psychosis because they&#39;re sufficiently distant from the last mile of work that still has to happen to generate most value with AI.</p>
+              <p>So when they play with AI, they see the happy path results, often not considering the next 10 or 20 things that have to happen to get sustainable results from agents.</p>
+              <p>The best thing you can do as a CEO is to use AI a *ton* to figure out the real implications of agents in the enterprise.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/levie/status/2058582370253701432" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:realmadhuguru" data-author-name="Madhu Guru" data-author-tag="AI Builder" data-author-handle="@realmadhuguru" data-author-avatar="../assets/avatars/x-realmadhuguru.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-realmadhuguru.jpg" alt="Madhu Guru avatar"><span class="avatar-fallback">MG</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Madhu Guru</div>
+            <div class="author-tag is-inline">AI Builder</div>
+          </div>
+          <div class="author-handle">@realmadhuguru</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>这条和 Levie 的帖子是同一件事的两面：CEO 们有 AI FOMO，但又没有亲自动手的能力，所以只会下一些模糊的、大而化之的「AI 战略」。员工为了应付这些粗略的目标，做出一堆表演性质的 demo。</p>
+              <p>然后两年过去了，真正的进展为零，而一个领导者亲自动手的创业公司已经把你颠覆了。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>CEO 有 AI FOMO，但习惯了遥控式管理，没有亲自动手的能力。于是下达模糊的 AI 指令，员工用表演性质的 demo 应付。</p>
+              <p>两年后没任何实际进展，而 hands-on 的创业公司已经把你颠覆了。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>This thread complements Levie&#39;s diagnosis with the organizational mechanics: CEOs feel AI FOMO but lack the muscle for hands-on work, so they set sweeping imprecise mandates. Employees respond with performative low-effort demos to meet coarse goals.</p>
+              <p>The predictable outcome: two years pass with no real progress, and a startup with hands-on leadership disrupts you.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>CEOs feel AI FOMO, but many of them and their lieutenants have gotten used to arms-length leadership and lack the muscle to get hands-on with AI.</p>
+              <p>So they set sweeping, imprecise AI mandates for their company. This leads to performative, low-effort demos from employees trying to meet the coarse goals.</p>
+              <p>Next thing you know it&#39;s been two years with no real progress and a startup with hands-on leadership is disrupting you.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/realmadhuguru/status/2058591611245011157" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 02</div>
+    <h2 class="section-title">Agent-Native Startup Operations / Agent 原生的初创运营</h2>
+    <p class="section-desc">当 founder 决定暂时不招人而是用 AI，运营一家公司的方式就变了。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:petergyang" data-author-name="Peter Yang" data-author-tag="Product @ Roblox" data-author-handle="@petergyang" data-author-avatar="../assets/avatars/x-petergyang.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-petergyang.jpg" alt="Peter Yang avatar"><span class="avatar-fallback">PY</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Yang</div>
+            <div class="author-tag is-inline">Product @ Roblox</div>
+          </div>
+          <div class="author-handle">@petergyang</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang 引用了一位创始人的话：拿了 200 万美元种子轮，但暂时不招人。理由是，作为创始人你应该先理解每个岗位、亲自做过、感受过痛点，然后再招人。而 agent 上手更快，而且会保留所有训练，你可以不断优化它。</p>
+              <p>这不是「AI 取代员工」的叙事，而是「先用 agent 深度理解一个岗位，再决定要不要招人」——一种真正全新的运营模式。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>一位创始人说：拿了种子轮但不急着招人。创始人应该先理解每个岗位、感受痛点。</p>
+              <p>Agent 上手更快，保留所有训练，可以持续优化。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang shares a quote from a founder who raised $2M but isn&#39;t hiring: as a founder you want to understand every job before you hire for it, and agents are faster to onboard and retain all training so you can improve them over time.</p>
+              <p>This is not «AI replacing workers» framing. It is «use agents to deeply understand a role before hiring a human for it»—a genuinely new operational pattern.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I&#39;ve raised a $2M seed round, but I&#39;m not going to hire anybody for a while.</p>
+              <p>As a startup founder, you want to understand every job and do it and feel the pain before you hire.</p>
+              <p>The reality is that an agent is a lot faster to onboard and they retain all the training so you can improve it over time.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/petergyang/status/2058609058714968194" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:zarazhangrui" data-author-name="Zara Zhang" data-author-tag="Builder" data-author-handle="@zarazhangrui" data-author-avatar="../assets/avatars/x-zarazhangrui.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-zarazhangrui.jpg" alt="Zara Zhang avatar"><span class="avatar-fallback">ZZ</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Zara Zhang</div>
+            <div class="author-tag is-inline">Builder</div>
+          </div>
+          <div class="author-handle">@zarazhangrui</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zara Zhang 分享了一个小故事：碰到一位做工程经理的朋友，她主动转回了 IC，说自己从未这么开心过，因为终于可以重新动手做东西了。</p>
+              <p>结合她同一天观察到 OpenAI 开源了 Codex，画面很清楚：离工具最近的人，现在是玩得最开心的。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Zara 碰到一位工程经理朋友，对方主动转回 IC，说从未这么开心，因为终于可以重新动手 building 了。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zara Zhang shares a vignette that captures the IC-to-manager pendulum swinging back: an engineering manager she ran into just voluntarily transitioned back to being an IC and has never been happier, because she can finally get her hands on building again.</p>
+              <p>Combined with her observation about OpenAI open-sourcing Codex, the picture is clear: the people closest to the tools are the ones having the most fun right now.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Ran into a friend who was an engineering manager; she just voluntarily transitioned to be an IC and has never been happier because she can finally get her hands on building again.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/zarazhangrui/status/2058640897236140034" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 03</div>
+    <h2 class="section-title">Engineering at the Edge / 前沿工程实践</h2>
+    <p class="section-desc">两条非常具体的工程洞察：一条关于遗留代码的新价值，一条关于用 Claude Code 做网站 API 逆向工程。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:trq212" data-author-name="Thariq" data-author-tag="Claude Code @ Anthropic" data-author-handle="@trq212" data-author-avatar="../assets/avatars/x-trq212.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-trq212.jpg" alt="Thariq avatar"><span class="avatar-fallback">T</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Thariq</div>
+            <div class="author-tag is-inline">Claude Code @ Anthropic</div>
+          </div>
+          <div class="author-handle">@trq212</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>TRQ 从 Bun 重写里得出了一个反直觉的结论：遗留代码库即将变得极其有价值——不是作为正在运行的软件，而是作为把代码「蒸馏」成新形式的原料。</p>
+              <p>他的逻辑是：每个游戏都应该跨平台，所有遗留软件都应该能在 web 上跑，COBOL 不再需要了。如果模型能吃下一个巨大的遗留代码库然后把它翻译成现代化的东西，那代码库本身就变成了资产而不是负担。</p>
+              <p>1413 个赞，以及补充说「模型还没完全到位，但会到的」那条 133 个赞，说明这个论点击中了很多人的共鸣。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>TRQ 从 Bun 重写中得出的结论：遗留代码库会成为「蒸馏」代码到新形式的宝贵资源。</p>
+              <p>每个游戏都应跨平台，所有遗留软件都应 web 化，不再需要 COBOL。模型会到达那个水平的。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>TRQ&#39;s takeaway from the Bun rewrite is counterintuitive: legacy codebases are about to become incredibly valuable—not as running software, but as a source for distilling code into new forms.</p>
+              <p>His logic: every game should be crossplatform, all legacy software should work on the web, and we don&#39;t need COBOL anymore. If models can ingest a massive legacy codebase and translate it into something modern, the codebase itself becomes a training asset, not a liability.</p>
+              <p>With 1413 likes and 133 likes on the follow-up clarifying that models aren&#39;t quite there yet but will get there, this thesis clearly resonated.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>My main takeaway from the Bun rewrite is that legacy codebases will be incredibly valuable as a source for &quot;distilling&quot; code into new forms.</p>
+              <p>Every game should be crossplatform, all legacy software should work on the web, we don&#39;t need COBOL anymore.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/trq212/status/2058576195000660319" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:nikunj" data-author-name="Nikunj Kothari" data-author-tag="Partner @ FPV Ventures" data-author-handle="@nikunj" data-author-avatar="../assets/avatars/x-nikunj.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-nikunj.jpg" alt="Nikunj Kothari avatar"><span class="avatar-fallback">NK</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Nikunj Kothari</div>
+            <div class="author-tag is-inline">Partner @ FPV Ventures</div>
+          </div>
+          <div class="author-handle">@nikunj</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj Kothari 分享了一个用 Claude Code 逆向工程任何网站 API 的详细工作流。诀窍是：让 Claude Code 用 browser_harness 或 Playwright 嗅探网络请求，你在页面上点击想要的数据区域，它就能从日志里分析出 API 结构、认证方式和频率限制。</p>
+              <p>他用这个做 side project、网站监控和数据采集。他的前瞻性判断是：每个网站很快都需要支持 headless 访问，我们需要让 agent 能自动向网站付费的机制，而且就像有了 llms.txt 做数据索引一样，很快还需要 tools.txt 让 agent 知道有哪些工具可用。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Nikunj 说用 Claude Code 通过网络请求逆向工程 API 是最有趣的事之一。</p>
+              <p>很多网站无法通过 DOM 或截图确定性导航，让 Claude Code 嗅探网络请求更有效。</p>
+              <p>每个网站很快都需要 headless 化，需要 tools.txt 让 agent 知道可用的工具。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj Kothari shares a detailed workflow for using Claude Code to reverse-engineer any website&#39;s API. The trick: point Claude Code at browser_harness or Playwright, ask it to sniff network requests, click around the sections you want, and let it figure out the API structure, auth requirements, and rate limits from the logs.</p>
+              <p>He uses this for side projects, monitoring, and scraping. His forward-looking claim: every website will soon need to be headless, we&#39;ll need mechanisms for agents to pay websites programmatically, and just as we have llms.txt for data, we&#39;ll soon need tools.txt for agents.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Reverse engineering APIs through network requests is one of the most fun things you can do with Claude Code to automate tasks.</p>
+              <p>SO many websites are impossible to navigate deterministically via the DOM or through screenshots. I just point Claude Code to use browser_harness and ask it to sniff network requests.</p>
+              <p>Every website will soon need to be headless, and we&#39;ll need tools.txt for agents to determine what tools exist that can be leveraged.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/nikunj/status/2058783316753686558" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 04</div>
+    <h2 class="section-title">Taste, Agency &amp; the Builder Mindset / 品味、主观能动性与 Builder 心态</h2>
+    <p class="section-desc">当工具变得足够强大时，决定结果质量的就不是工具本身，而是用工具的人的品味和行动力。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:garrytan" data-author-name="Garry Tan" data-author-tag="CEO @ Y Combinator" data-author-handle="@garrytan" data-author-avatar="../assets/avatars/x-garrytan.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-garrytan.jpg" alt="Garry Tan avatar"><span class="avatar-fallback">GT</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Garry Tan</div>
+            <div class="author-tag is-inline">CEO @ Y Combinator</div>
+          </div>
+          <div class="author-handle">@garrytan</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Garry Tan 把当前这个阶段浓缩成一句话：高主观能动性 + 高品味，就是现在的关键。当工具把执行速度拉平之后，决定结果差异的，就是能不能自己主动做事，以及有没有判断好坏的品味。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Garry Tan 说：高主观能动性 + 高品味，就是现在这个时代的 unlock。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Garry Tan distills the current moment into one line: high agency high taste is the unlock these days. When the tools level the playing field for execution speed, what differentiates outcomes is the ability to act independently and the judgment to know what good looks like.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>High agency high taste is the unlock these days.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/garrytan/status/2058769355916411099" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:rauchg" data-author-name="Guillermo Rauch" data-author-tag="CEO @ Vercel" data-author-handle="@rauchg" data-author-avatar="../assets/avatars/x-rauchg.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-rauchg.jpg" alt="Guillermo Rauch avatar"><span class="avatar-fallback">GR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Guillermo Rauch</div>
+            <div class="author-tag is-inline">CEO @ Vercel</div>
+          </div>
+          <div class="author-handle">@rauchg</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch 说得非常简洁：怎么建立好品牌？做出好产品。在 AI 让所有人都能快速 ship 的时代，能活下来的品牌，靠的是真正好的产品，而不是好的营销。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Rauchg：怎么建好品牌？做好产品。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch keeps it simple: How do you build a great brand? Build a great product. In an era where AI lets anyone ship fast, the brands that endure will be the ones backed by genuinely good products, not just good marketing.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>How do you build a great brand? Build a great product.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/rauchg/status/2058750970998505505" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:zarazhangrui" data-author-name="Zara Zhang" data-author-tag="Builder" data-author-handle="@zarazhangrui" data-author-avatar="../assets/avatars/x-zarazhangrui.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-zarazhangrui.jpg" alt="Zara Zhang avatar"><span class="avatar-fallback">ZZ</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Zara Zhang</div>
+            <div class="author-tag is-inline">Builder</div>
+          </div>
+          <div class="author-handle">@zarazhangrui</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zara Zhang 注意到了一个有意义的变化：OpenAI 正在变得更开放，而且 Codex 现在是开源的。对 builder 社区来说，这件事的意义在于降低了基于这些工具构建和贡献的门槛。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Zara 说 OpenAI 变得更开放了，而且最近才意识到 Codex 是开源的。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zara Zhang notes a meaningful shift: OpenAI is becoming more open, and Codex is now open source. For the builder community, this matters because it lowers the barrier to building on top of these tools and contributing back.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>OpenAI being more open. Also I just realized recently that Codex is open source.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/zarazhangrui/status/2058604604422815832" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <footer data-source-note="Source: Follow Builders curated daily digest. Rebuilt from the 2026-05-25 source feeds.">Source: Follow Builders curated daily digest. Rebuilt from the 2026-05-25 source feeds.</footer>
+
+  <script>
+    function getTemplateAuthorSources() {
+      const sources = window.AI_BUILDERS_TEMPLATE_SOURCES || {};
+      return { identities: sources.identities || {}, avatars: sources.avatars || {} };
+    }
+
+    function getAuthorInitials(name) {
+      return (name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(function(part) { return part[0]; }).join('').toUpperCase();
+    }
+
+    function hydrateTemplateCopy() {
+      const intro = document.querySelector('.intro');
+      if (intro) {
+        const kicker = intro.querySelector('.intro-kicker');
+        const copy = intro.querySelector('.intro-copy');
+        if (kicker) kicker.textContent = intro.dataset.kicker || '';
+        if (copy) copy.textContent = intro.dataset.text || '';
+      }
+
+      const footer = document.querySelector('footer');
+      if (footer) footer.textContent = footer.dataset.sourceNote || '';
+
+      const rewriteLabel = document.body.dataset.viewLabelRewrite || '速读';
+      const originalLabel = document.body.dataset.viewLabelOriginal || '原文';
+      document.querySelectorAll('.view-toggle').forEach(function(button) {
+        if (button.dataset.viewTarget === 'rewrite') button.textContent = rewriteLabel;
+        if (button.dataset.viewTarget === 'original') button.textContent = originalLabel;
+      });
+    }
+
+    function hydrateAuthorMeta() {
+      const sources = getTemplateAuthorSources();
+      document.querySelectorAll('.card').forEach(function(card) {
+        const authorKey = card.dataset.authorKey || '';
+        const identity = sources.identities[authorKey] || {};
+        const avatarEntry = sources.avatars[authorKey] || {};
+
+        const name = identity.name || card.dataset.authorName || '';
+        const rawHandle = identity.handle || card.dataset.authorHandle || '';
+        const handle = rawHandle && rawHandle.startsWith('@') ? rawHandle : (rawHandle ? '@' + rawHandle : '');
+        const tag = identity.label || card.dataset.authorTag || '';
+        const avatar = avatarEntry.fileUrl || avatarEntry.localPath || card.dataset.authorAvatar || '';
+
+        const nameNode = card.querySelector('.author-name');
+        const tagNode = card.querySelector('.author-tag');
+        const handleNode = card.querySelector('.author-handle');
+        const avatarNode = card.querySelector('.avatar');
+        const avatarImg = card.querySelector('.avatar img');
+        const avatarFallback = card.querySelector('.avatar-fallback');
+
+        if (nameNode) nameNode.textContent = name;
+        if (tagNode) tagNode.textContent = tag;
+        if (handleNode) handleNode.textContent = handle;
+        if (avatarImg) {
+          avatarImg.src = avatar;
+          avatarImg.alt = name ? name + ' avatar' : 'Author avatar';
+        }
+        if (avatarNode) avatarNode.classList.toggle('is-fallback', !avatar);
+        if (avatarFallback) avatarFallback.textContent = getAuthorInitials(name);
+      });
+    }
+
+    function updateEditionStrip() {
+      const publishDate = document.body.dataset.publishDate;
+      const editionName = document.body.dataset.editionName || '双语精选版';
+      const editionStrip = document.getElementById('edition-strip-text');
+      if (!publishDate || !editionStrip) return;
+
+      const issueNumber = document.body.dataset.issueNumber || '';
+      if (!issueNumber) return;
+
+      const selectedCount = document.querySelectorAll('.card').length;
+      const authorCount = new Set([].slice.call(document.querySelectorAll('.author-handle')).map(function(node) { return node.textContent.trim(); }).filter(Boolean)).size;
+      const themeCount = document.querySelectorAll('.section-header').length;
+      const parts = ['第 ' + issueNumber + ' 期', publishDate, editionName, selectedCount + ' 条精选', authorCount + ' 位作者', themeCount + ' 个主题'];
+      editionStrip.innerHTML = parts.map(function(part) { return '<span class="edition-item">' + part + '</span>'; }).join('<span class="edition-sep">|</span>');
+    }
+
+    function measureVariantHeight(variant) {
+      const prevPosition = variant.style.position;
+      const prevInset = variant.style.inset;
+      const prevVisibility = variant.style.visibility;
+      const prevPointerEvents = variant.style.pointerEvents;
+      const prevOpacity = variant.style.opacity;
+      const prevTransform = variant.style.transform;
+      const prevTransition = variant.style.transition;
+      const prevOverflowY = variant.style.overflowY;
+      const prevDisplay = variant.style.display;
+
+      variant.style.position = 'relative';
+      variant.style.inset = 'auto';
+      variant.style.visibility = 'hidden';
+      variant.style.pointerEvents = 'none';
+      variant.style.opacity = '1';
+      variant.style.transform = 'none';
+      variant.style.transition = 'none';
+      variant.style.overflowY = 'visible';
+      variant.style.display = 'block';
+
+      const height = variant.scrollHeight;
+
+      variant.style.position = prevPosition;
+      variant.style.inset = prevInset;
+      variant.style.visibility = prevVisibility;
+      variant.style.pointerEvents = prevPointerEvents;
+      variant.style.opacity = prevOpacity;
+      variant.style.transform = prevTransform;
+      variant.style.transition = prevTransition;
+      variant.style.overflowY = prevOverflowY;
+      variant.style.display = prevDisplay;
+
+      return Math.ceil(height);
+    }
+
+    function getTargetHeight(shell, target) {
+      const variant = shell.querySelector('.content-variant[data-view="' + target + '"]');
+      return measureVariantHeight(variant);
+    }
+
+    function syncShellHeights() {
+      document.querySelectorAll('.content-shell').forEach(function(shell) {
+        const active = shell.querySelector('.content-variant.is-active');
+        const target = active ? active.dataset.view : 'rewrite';
+        shell.style.height = getTargetHeight(shell, target) + 'px';
+      });
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', function() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(syncShellHeights, 120);
+    });
+
+    document.querySelectorAll('.card').forEach(function(card) {
+      const buttons = card.querySelectorAll('.view-toggle');
+      const shells = card.querySelectorAll('.content-shell');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const target = button.dataset.viewTarget;
+          if (button.classList.contains('is-active')) return;
+
+          buttons.forEach(function(btn) {
+            btn.classList.toggle('is-active', btn === button);
+          });
+
+          shells.forEach(function(shell) {
+            const current = shell.querySelector('.content-variant.is-active');
+            const next = shell.querySelector('.content-variant[data-view="' + target + '"]');
+            if (!current || !next || current === next) return;
+
+            shell.style.height = shell.offsetHeight + 'px';
+            requestAnimationFrame(function() {
+              current.classList.remove('is-active');
+              next.classList.add('is-active');
+              shell.style.height = getTargetHeight(shell, target) + 'px';
+            });
+          });
+        });
+      });
+    });
+
+    hydrateTemplateCopy();
+    hydrateAuthorMeta();
+    updateEditionStrip();
+    syncShellHeights();
+  </script>
+</body>
+</html>
