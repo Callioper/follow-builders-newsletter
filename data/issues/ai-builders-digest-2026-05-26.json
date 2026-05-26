@@ -1,0 +1,222 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-05-26",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天这批内容有一条很清楚的主线：AI 时代的准备工作变了。Peter Yang 引用 Ryan Carson 的话说，以前做 MVP 的最佳实践是「先别搞系统，先出货」，现在反过来了——你得先把文档和 skill file 建好，agent 才能帮你干活。Steipete 也在说同一件事：写 skill 的时候要 token efficient，别在 context 里塞废话。Levie 继续他前天的逻辑，这次用 Goldman Sachs CEO 的例子讲工作为什么不会消失。而 Nikunj 的态度可能是今天最鲜明的：「手里握着外星超级智能，你居然还想用老方法做事？」"
+  },
+  "archive": {
+    "title": "系统先行日报",
+    "desc": "AI 时代的 MVP 逻辑反转了：先把文档和系统搭好，agent 才能跑起来；同时 token 效率成为新工程纪律，而岗位争论继续从华尔街到硅谷。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-05-26 source feeds.",
+  "sections": [
+    {
+      "title": "The New MVP Playbook / 新的 MVP 方法论",
+      "desc": "当 AI agent 成为你的主力员工时，创业的准备工作就彻底变了。",
+      "cards": [
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2059029752858775581",
+          "en": {
+            "rewrite": [
+              "Peter Yang passes along a lesson from Ryan Carson that inverts the old startup playbook: what used to feel like procrastination—building systems instead of shipping the MVP—is now a prerequisite for shipping effectively with AI agents.",
+              "Carson's quote: 'We used to say just do the bare minimum to get the MVP out. Don't spend time on systems. It's literally reversed now. You have to spend a lot of time setting up your documentation. Build all that into a cron job with a skill file, and suddenly you're doing the work of 10 people.'",
+              "This is a real operational insight from someone shipping 10 PRs a day, not a theoretical framework."
+            ],
+            "original": [
+              "What used to feel like procrastination (building systems instead of the MVP) is now a prerequisite to ship effectively with AI agents.",
+              "We used to say just do the bare minimum to get the MVP out. Don't spend time on systems. It's literally reversed now.",
+              "You have to spend a lot of time setting up your documentation. Build all that into a cron job with a skill file, and suddenly you're doing the work of 10 people."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 传递了 Ryan Carson 的一个教训，直接把旧的创业方法论翻转了：以前觉得是拖延症的行为——不先出货而是先搭系统——现在变成了用 AI agent 高效出货的前提条件。",
+              "Carson 原话：「以前我们说做 MVP 就做最少的量，别花时间搞系统。现在完全反过来了。你得花大量时间把文档建好，把这些全部打包成 cron job + skill file，然后突然你一个人就能干十个人的活。」",
+              "这是一个每天 ship 10 个 PR 的人的真实操作经验，不是理论框架。"
+            ],
+            "original": [
+              "以前觉得是拖延的搭系统行为，现在变成了用 AI agent 出货的前提。",
+              "Carson 说：以前 MVP 就是做最少量，现在反过来了，要花大量时间建文档和 skill file。",
+              "搭好之后一个人能干十个人的活。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2059099566377693305",
+          "en": {
+            "rewrite": [
+              "Peter Yang gives a concise tool comparison: Codex is very good, especially at using the browser to test its own work. But for any design-related or frontend tasks, Claude still wins.",
+              "This kind of practical head-to-head from someone using both tools daily is more useful than most benchmark reports."
+            ],
+            "original": [
+              "Codex is very good. I'm especially impressed by how it uses the browse to test its own work.",
+              "But any design related / frontend tasks, Claude still wins."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 给了一个简洁的工具对比：Codex 很好用，特别是它会用浏览器自己测试自己的工作，这一点让他印象深刻。但如果是设计相关或前端的任务，Claude 还是更强。",
+              "这种每天在用两个工具的人给出的实战对比，比大多数 benchmark 报告都有用。"
+            ],
+            "original": [
+              "Codex 很好，尤其擅长用浏览器自测。但设计和前端任务 Claude 仍然更强。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Token Efficiency as Engineering Discipline / Token 效率成为新工程纪律",
+      "desc": "当 context 窗口里塞的每一个 token 都在消耗成本和注意力时，精简就不再只是好习惯，而是工程要求。",
+      "cards": [
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2058917897590673525",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger's 3921-like tweet is a direct engineering rebuke: when you write skills, ask your agent to be token efficient and relax grammar. Too many skills write books in the description, and all that crap gets loaded into every context window.",
+              "He even wrote a skill that finds the worst offenders. The message is clear: token waste is a real cost, not a cosmetic issue.",
+              "With 3921 likes, this is the most resonant engineering-practice tweet of the day."
+            ],
+            "original": [
+              "Folks: when you write skills, ask your agent to be token efficient, relax grammar. I see too many skills that write books in the skill description, and all that crap is loaded into every context.",
+              "I wrote a skill that finds the worst offenders."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger 这条 3921 赞的推文是一次直接的工程训诫：写 skill 的时候，让 agent 注重 token 效率，别太在意语法。他看到太多 skill 在描述里写成了一本书，而那些废话每次都会被加载进 context 窗口。",
+              "他甚至写了一个 skill 来找出最严重的违规者。信号很清楚：token 浪费是真实成本，不是美观问题。",
+              "3921 个赞，这是今天工程实践类共鸣最强的一条。"
+            ],
+            "original": [
+              "Steipete 说：写 skill 时要让 agent 注意 token 效率，别在描述里写书，那些废话每次都加载进 context。",
+              "他写了一个 skill 来找最严重的 token 浪费者。3921 赞。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2058922222790525272",
+          "en": {
+            "rewrite": [
+              "Steinberger continues his dependency purge at OpenClaw: killed Sharp and Jimp, replaced them with photon, a small WebAssembly that runs compiled Rust for image processing. 2MB vs 140MB.",
+              "This is the engineering counterpart to his token-efficiency message: strip away bloat everywhere, whether it is in your context window or your node_modules."
+            ],
+            "original": [
+              "OpenClaw's dependency purge continues. Killed Sharp and Jimp. Replaced it with photon, a small WebAssembly that runs compiled Rust for image processing. 2MB vs 140MB."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Steinberger 继续在 OpenClaw 里清理依赖：干掉了 Sharp 和 Jimp，换成 photon——一个用 WebAssembly 跑编译好的 Rust 的小模块，做图像处理。2MB 对比 140MB。",
+              "这和他的 token 效率信息是同一个精神的工程实践：到处砍掉臃肿，不管是在 context 窗口里还是在 node_modules 里。"
+            ],
+            "original": [
+              "OpenClaw 继续清理依赖，用 photon（WebAssembly + Rust）替代 Sharp 和 Jimp。2MB vs 140MB。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Jobs, Automation & the Static-World Fallacy / 岗位、自动化与静态世界谬误",
+      "desc": "Levie 继续他的岗位讨论，这次从华尔街找到了新的论据。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2059025559896883489",
+          "en": {
+            "rewrite": [
+              "Aaron Levie uses Goldman Sachs CEO David Solomon as his latest data point against AI job pessimism. His core argument: if you looked at productivity gains from the past few decades—before AI—you'd have predicted zero jobs left. Instead, we just constantly demand more from everything.",
+              "The mechanism: instead of automating a task and delivering the same value cheaper, someone in the market uses the automation to do more, which raises everyone's expectations. More financial analysis, more comprehensive legal advice, more tailored services, deeper medical advice.",
+              "His closing frame: 'When you move from believing the world is static and you'll have a better view of how jobs evolve due to AI.'"
+            ],
+            "original": [
+              "The CEO of Goldman Sachs is taking the other side on the pessimistic takes on AI and jobs.",
+              "What happens is we constantly just demand more from everything. Instead of automating a task and delivering the same value proposition, but cheaper, we just expect more from the overall product or service.",
+              "When you move from believing the world is static, you'll have a better view of how jobs evolve due to AI."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 拿 Goldman Sachs CEO David Solomon 当最新论据，反驳 AI 消灭岗位的悲观论。他的核心逻辑是：如果你回看过去几十年的生产力提升——在 AI 出现之前——你也会预测工作岗位会归零。但实际上，我们只是不断对一切要求更多。",
+              "机制是这样的：自动化了一个任务之后，不是以更便宜的价格交付同样的价值，而是市场上总有人用自动化做更多的事，然后拉高所有人的期望。更多的金融分析、更全面的法律建议、更定制化的服务、更深入的医学诊断。",
+              "他的收尾：「当你不再假设世界是静止的，你对 AI 如何改变岗位的看法就会清楚得多。」"
+            ],
+            "original": [
+              "Levie 引用 Goldman Sachs CEO 反驳 AI 悲观论。",
+              "核心机制：自动化后不是便宜地交付同样价值，而是有人做得更多，拉高所有人的期望。",
+              "别把世界当静止的，才能看清 AI 如何改变岗位。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Builder Mindset / Builder 心态",
+      "desc": "在工具越来越强的时代，决定结果的是人的态度——要不要亲自动手、要不要保持好奇。",
+      "cards": [
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2058927145519562867",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari pushes back on people who question why a VC is building: the space moves so fast that the only way to stay at the frontier is by building. Priors need to be rethought every few months.",
+              "His deeper point is about curiosity: 'We have alien super intelligence in our hands and you want to spend hours doing it the same way just because it's comfortable?'",
+              "His sign-off: 'Automate or get automated is the bitter lesson we all need to learn. And have a lot of fun along the way.'"
+            ],
+            "original": [
+              "The space is moving so fast that the only way you can learn and stay at the frontier is by building. Priors need to be rethought every few months.",
+              "It's also SO much fun to explore the edges of these models and discover new capabilities that haven't been documented yet.",
+              "Automate or get automated is the bitter lesson we all need to learn. And have a lot of fun along the way."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kothari 回怼那些质疑「你是 VC 为什么要自己写代码」的人：这个领域变化太快了，唯一能留在前沿的方式就是自己动手做。之前的经验每隔几个月就得重新想一遍。",
+              "他更深的观点是关于好奇心：「手里握着外星超级智能，你居然还想花好几个小时用老方法做事，就因为那样更舒服？」",
+              "他的收尾：「自动化或者被自动化，这是所有人都得学的 bitter lesson。顺便享受过程的乐趣。」"
+            ],
+            "original": [
+              "领域变化太快，只有自己动手做才能留在前沿。先验知识每隔几个月就要重新审视。",
+              "手里有外星超级智能，还想用老方法做事？",
+              "自动化或被自动化，这是 bitter lesson。享受过程。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:AmandaAskell",
+          "sourceUrl": "https://x.com/AmandaAskell/status/2058994218484338726",
+          "en": {
+            "rewrite": [
+              "Amanda Askell's brief post is a quiet but sharp signal: she hasn't written a personal blog post in over 5 years, so any posts claiming to be by her are not hers. In an era of AI-generated content, the authenticity problem is already here—and even people at the frontier labs are having to explicitly disclaim.",
+              "Her wry 'Maybe it should' at the end suggests she might start writing again, precisely because authenticity now has a premium it didn't before."
+            ],
+            "original": [
+              "I haven't written a personal blog post in over 5 years so if you see posts that claim to be written by me, they're not. I'll update if this ever changes. Maybe it should."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Amanda Askell 这条很短但信号很锋利：她已经超过 5 年没写过个人博客了，所以任何声称是她写的文章都不是她写的。在 AI 生成内容泛滥的时代，真实性问题已经到了眼前——连前沿实验室的人都需要主动声明真伪。",
+              "她最后那句「也许我应该开始写了」带着一点讽刺，暗示正因为真实性现在有了以前没有的溢价，她可能反而会重新开始写。"
+            ],
+            "original": [
+              "Amanda Askell 说 5 年没写博客了，任何声称是她写的都不是。也许应该开始写了。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
