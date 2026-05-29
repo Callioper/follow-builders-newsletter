@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>AI Builders Digest</title>
+    <link>https://callioper.github.io/follow-builders-newsletter</link>
+    <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 29 May 2026 08:00:00 GMT</lastBuildDate>
+    <managingEditor>Hermes Agent</managingEditor>
+    <generator>Hermes Agent</generator>
+    <image>
+      <url>https://callioper.github.io/follow-builders-newsletter/assets/avatars/avatar-placeholder.png</url>
+      <title>AI Builders Digest</title>
+      <link>https://callioper.github.io/follow-builders-newsletter</link>
+    </image>
+    <item>
+      <title>2026-05-29 · 企业AI部署悖论日报</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-05-29-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-05-29-rerun.html</guid>
+      <pubDate>Fri, 29 May 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[今天只有一期播客，但信息量很大。Box CEO Aaron Levie 在 MAD Podcast 上讲了一个反直觉的现象：AI 模型的进步反而在拖慢企业的实际部署——每次建好新架构，下一代模型就把它淘汰了。同时他提出了一套新的分析框架：tokenmaxxing 的真实含义不是降低成本，而是重新思考软件的价值构成；headless 软件正在让传统 SaaS 的界面层变得多余；企业内部正在出现一种新的 FDE 角色——不是替代人类，而是帮人类更好地驾驭 AI。这期内容值得认真读。]]></description>
+      <category>Tokenmaxxing 与企业 AI 的新逻辑 / Tokenmaxxing: The New Enterprise AI Logic</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
+    <item>
+      <title>2026-05-27 · 工作流成型日报</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-05-27-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-05-27-rerun.html</guid>
+      <pubDate>Wed, 27 May 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[今天的内容有几条特别值得放在一起看。TRQ 发现了一个让 Claude Code 做非技术工作的通用技巧——把文件丢进文件夹，告诉它可以写脚本和 HTML——然后一下子打开了财务、医疗、视频编辑等一整套场景。Steipete 说 autoreview 是他加过的最有影响力的 skill，能自动 review PR 里的边界情况，有时候跑好几个小时。Zara Zhang 更新了她的 coding agent 使用习惯：现在 Codex 和 Claude Code 各占一半，前者像一个靠谱的工程师，后者像一个更好的 PM 和设计师。放在一起看，这些都是「AI 工作流正在成型」的真实证据。]]></description>
+      <category>The Claude Code Trick for Everything / Claude Code 做非技术工作的通用解法, Agent Workflow Patterns / Agent 工作流模式, Startup Strategy in the AI Era / AI 时代的创业策略, Jobs, Specialization &amp; the Model Frontier / 岗位、专精与模型前沿</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
+    <item>
+      <title>2026-05-26 · 系统先行日报</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-05-26-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-05-26-rerun.html</guid>
+      <pubDate>Tue, 26 May 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[今天这批内容有一条很清楚的主线：AI 时代的准备工作变了。Peter Yang 引用 Ryan Carson 的话说，以前做 MVP 的最佳实践是「先别搞系统，先出货」，现在反过来了——你得先把文档和 skill file 建好，agent 才能帮你干活。Steipete 也在说同一件事：写 skill 的时候要 token efficient，别在 context 里塞废话。Levie 继续他前天的逻辑，这次用 Goldman Sachs CEO 的例子讲工作为什么不会消失。而 Nikunj 的态度可能是今天最鲜明的：「手里握着外星超级智能，你居然还想用老方法做事？」]]></description>
+      <category>The New MVP Playbook / 新的 MVP 方法论, Token Efficiency as Engineering Discipline / Token 效率成为新工程纪律, Jobs, Automation &amp; the Static-World Fallacy / 岗位、自动化与静态世界谬误, The Builder Mindset / Builder 心态</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
+    <item>
+      <title>2026-05-25 · 实战应用日报</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-05-25-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-05-25-rerun.html</guid>
+      <pubDate>Mon, 25 May 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[今天这批内容的核心话题是「AI 到底在真正改变什么」。Peter Yang 说他拿了种子轮但暂时不招人，因为用 AI agent 理解一个岗位比自己上手做更有效；Levie 则从另一个角度提醒：CEO 特别容易陷入 AI 错觉，因为他们离最后一公里的真实工作太远，看到的都是 happy path 的 demo。同一天里，Nikunj 在展示如何用 Claude Code 逆向工程任何网站的 API，TRQ 在讲他用 Bun 重写遗留系统时学到的东西——这些都是关于「真正能用起来」的实践，而不是抽象的 demo。]]></description>
+      <category>The CEO&apos;s AI Blindspot / CEO 的 AI 盲区, Agent-Native Startup Operations / Agent 原生的初创运营, Engineering at the Edge / 前沿工程实践, Taste, Agency &amp; the Builder Mindset / 品味、主观能动性与 Builder 心态</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
+    <item>
+      <title>2026-05-24 · 速度竞赛日报</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-05-24-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-05-24-rerun.html</guid>
+      <pubDate>Sun, 24 May 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[今天这批内容放在一起看，有一条很清晰的主线：AI 已经从「能不能做」正式进入了「谁能做得更快、更便宜、更好用」的阶段。Garry Tan 下午花了几个小时就 fine-tune 了一个 397B 的模型，Steipete 用 Codex 给所有人搭了一个 GitHub dashboard，Rauchg 收到 1400 条回复来盘点开发者到底在用什么工具做产品。这些都不是 demo，而是真正在发生的事。与此同时，Levie 和 Nikunj 在从不同角度提醒同一件事：别把「某个任务被自动化了」等同于「这个岗位消失了」——历史反复证明，任务被接走之后，工作本身只会变得更大、更多、更高质。]]></description>
+      <category>Speed, Cost &amp; the New AI Infra / 速度、成本与 AI 新基建, What Developers Are Actually Building / 开发者到底在做什么, Jobs, Tasks &amp; the Expansion Effect / 岗位、任务与扩张效应, Agent Engineering in Practice / Agent 工程实践</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
+    <item>
+      <title>2026-05-23 · 填空市场日报</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-05-23-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-05-23-rerun.html</guid>
+      <pubDate>Sat, 23 May 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[今天这批内容放在一起看，会发现大家讨论的焦点正在从「模型还能不能更强」往两个方向分岔。一边是 Garry Tan 和 Levie 在说：当技术变化快到市场还没法消化的时候，真正值钱的已经不是模型本身，而是谁能更快地把它变成产品、填进空白市场、或者解决安全这些新冒出来的瓶颈。另一边是 Swyx 和 Oriol Vinyals 在认真讨论：模型要想继续往前走，靠单纯堆参数的效率可能不够了，得想清楚世界模型、continual learning 这些更根本的问题。两边的共同点是，大家都在告别「直接用就行」的幻想，开始面对真正的工程和组织问题。]]></description>
+      <category>Startup Strategy &amp; Market Gaps / 创业策略与市场空白, World Models &amp; The Deep Research Questions / 世界模型与深层研究问题, Engineering Practice &amp; AI Dev Flow / 工程实践与 AI 开发流程, Career &amp; Skills in the AI Era / AI 时代的职业与技能</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
+    <item>
+      <title>2026-05-22 · AI 底座日报</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-05-22-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-05-22-rerun.html</guid>
+      <pubDate>Fri, 22 May 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[今天这批内容放在一起看，会看到一条很清晰的线：AI 的接口层正在被认真重做。Stainless 被 Anthropic 收购，MCP 怎么设计才算好用、Exa 为什么跑出来成为 agent 搜索的默认选项——这些都不是抽象讨论，而是真有人在付钱、在做选择。与此同时，Sam Altman 在说模型解开了数学开放问题，Google 在把 Genie 做成真正的订阅产品。一边是底座在变，一边是能力在往前推，两边合起来，说明这一轮的竞争已经不只是谁家模型更强了。]]></description>
+      <category>MCP &amp; API Layer / AI 原生接口层, Infra Winners in the Agent Stack / Agent 基础设施赢家, New Jobs, New Team Shapes / 新岗位与新团队形态, Frontier Capability to Product Surface / 从前沿能力到产品表面</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
+    <item>
+      <title>2026-05-21 · 接口底座日报</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-05-21-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-05-21-rerun.html</guid>
+      <pubDate>Thu, 21 May 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[今天这批内容如果连起来看，会很清楚地看到：模型变强当然重要，但真正决定它能不能落地的，已经越来越是下面那层东西了。比如搜索好不好用、MCP 怎么设计、权限怎么收、团队里谁来把这些东西接进真实工作流。也就是说，大家现在比拼的，已经不只是模型能力本身，而是谁更会把这些能力翻译成真正能跑的产品和组织方式。]]></description>
+      <category>AI-Native Internet Plumbing / AI 原生互联网底座, Infra Winners in the Agent Stack / Agent 时代的基础设施赢家, New Jobs, New Team Shapes / 新岗位与新团队形态, Frontier Capability to Product Surface / 从前沿能力到产品表面</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
+    <item>
+      <title>2026-05-20 · 组织重构日报</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-05-20-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-05-20-rerun.html</guid>
+      <pubDate>Wed, 20 May 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[今天最值得看的一条线，不是某个单独的新产品，而是 AI 开始更深地进入公司怎么运转这件事里了。一边是前沿研究者重新回到实验室，一边是 agent 开始从 demo 走向更长期在线的产品，另一边企业已经在认真算 token 成本、容量和权限这些现实问题。这说明 AI 讨论正在从“能不能做”往前走，走到“到底该怎么真的用起来”。]]></description>
+      <category>Frontier Talent Re-Sorts / 前沿人才重新洗牌, Ambient Agents Become Real Products / 常驻式 Agent 开始成为产品, Enterprise AI Means Cost, Capacity, and Control / 企业 AI 进入成本、容量与边界阶段, AI-Native Builder Loops / AI 原生开发闭环, Rebuilding Enterprise Software From Scratch / 用 AI 从底层重做企业软件</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
+  </channel>
+</rss>
