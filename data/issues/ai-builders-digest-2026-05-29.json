@@ -1,0 +1,61 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-05-29",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天只有一期播客，但信息量很大。Box CEO Aaron Levie 在 MAD Podcast 上讲了一个反直觉的现象：AI 模型的进步反而在拖慢企业的实际部署——每次建好新架构，下一代模型就把它淘汰了。同时他提出了一套新的分析框架：tokenmaxxing 的真实含义不是降低成本，而是重新思考软件的价值构成；headless 软件正在让传统 SaaS 的界面层变得多余；企业内部正在出现一种新的 FDE 角色——不是替代人类，而是帮人类更好地驾驭 AI。这期内容值得认真读。"
+  },
+  "archive": {
+    "title": "企业AI部署悖论日报",
+    "desc": "AI 模型的快速进步正在让企业部署变得更慢，而非更快——技术越强，旧架构淘汰越快，这是 Levie 在 MAD Podcast 上提出的核心悖论。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-05-29 source feeds.",
+  "sections": [
+    {
+      "title": "Tokenmaxxing 与企业 AI 的新逻辑 / Tokenmaxxing: The New Enterprise AI Logic",
+      "desc": "Levie 在 MAD Podcast 上提出了一个反直觉的企业 AI 分析框架：模型进步越快，企业部署反而越慢——因为每次建好新架构，下一代就把它淘汰了。",
+      "cards": [
+        {
+          "authorKey": "podcast:mad-podcast",
+          "authorName": "The MAD Podcast with Matt Turck",
+          "authorTag": "Firstmark 旗下 AI 创投播客",
+          "sourceUrl": "https://www.youtube.com/watch?v=Gs2styCcwro",
+          "en": {
+            "rewrite": [
+              "Aaron Levie lays out the core paradox of enterprise AI deployment: every time enterprises build a standard architecture around a new model generation, the next breakthrough arrives and makes that architecture obsolete. The technology is advancing so fast that it paradoxically slows down rollout, not speeds it up.",
+              "His solution framework for startups: move away from traditional SaaS pricing and think about token-based value metrics. The new question isn't 'how many seats' but 'how much intelligence are you consuming.' This is what he calls tokenmaxxing—reframing the business model around actual AI consumption.",
+              "On headless software: the next wave separates the AI reasoning layer from the user interface entirely. The intelligence becomes a backend service, not a frontend product. This means enterprise software winners will be defined by their AI layer quality, not their UI.",
+              "He predicts the rise of internal FDEs—Foundational model Deployment Engineers inside enterprises who specialize in integrating and orchestrating multiple AI capabilities. These are the new high-value technical hires that replace traditional infrastructure roles.",
+              "For startups, his core advice: find whitespace where incumbents can't move fast enough. The incumbents are trapped by their legacy architecture and enterprise sales cycles. A startup that builds natively for the AI era can win in the time incumbents spend debating their response."
+            ],
+            "original": [
+              "The problem is is the breakthroughs keep happening faster than the customer can implement any kind of standard architecture. And those breakthroughs oftentimes make obsolete the last thing you implemented. It's this really bittersweet thing, which is like the technology is getting so advanced that it makes obsolete the prior thing that you implemented, which actually means that the rollout takes longer.",
+              "The MAD Podcast is a production of Firstmark, a venture capital firm based in New York.",
+              "Box CEO Aaron Levie discusses enterprise AI deployment, token costs, headless software, internal FDEs, and startup strategy in the AI era."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 揭示了企业 AI 部署的核心悖论：每次企业围绕新一代模型建好标准架构，下一代突破就来了，把那个架构淘汰掉。技术进步得太快，反而拖慢了在企业里的推广速度，而不是加速。",
+              "他的解决方案框架给创业者的建议：离开传统 SaaS 定价方式，思考基于 token 的价值指标。新问题不再是「有多少个座位」，而是「你消耗了多少智能」。这就是他所说的 tokenmaxxing——围绕实际 AI 消耗重新思考商业模式。",
+              "关于 headless 软件：下一波浪潮是把 AI 推理层和用户界面彻底分离。智能成为后端服务，而不是前端产品。这意味着企业软件的赢家将由 AI 层质量决定，而不是 UI。",
+              "他预测企业内部 FDE（Foundational model Deployment Engineers）的崛起——这类新角色专门负责整合和编排多种 AI 能力。这将取代传统基础设施岗位，成为新的高价值技术招聘方向。",
+              "对创业者的核心建议：在现有玩家无法快速移动的地方找到空白。现有玩家被遗留架构和企业销售周期困住了。在他们还在讨论如何应对的时间里，一个为 AI 时代原生打造的创业公司可以直接取胜。"
+            ],
+            "original": [
+              "技术进步越快，客户越难建起标准架构，因为每次建好，上一代的突破就把你的实现淘汰了。这是一个苦涩的悖论：技术越先进，推广越慢。",
+              "MAD Podcast 是 Firstmark 旗下的产品，Firstmark 是位于纽约的风险投资机构。",
+              "Box CEO Aaron Levie 讨论企业 AI 部署、token 成本、headless 软件、内部 FDE 和 AI 时代的创业策略。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
