@@ -57,7 +57,7 @@ ${jsonPath}
    - footerNote
    - sections
 
-6. sections 内请按网页杂志格式组织 4-5 个主题，精选 7-10 条卡片内容。
+6. sections 内请按网页杂志格式组织内容。常规情况下精选 7-10 条卡片、4-5 个主题；如果当天 feed 内容较少，也必须基于真实内容生成轻量日报，可以只有 1 个主题、1 张卡片。
    每个 card 尽量保持：
    - authorKey
    - sourceUrl
@@ -71,8 +71,8 @@ ${jsonPath}
    - title 简短，像“接口底座日报”“组织重构日报”这种
    - desc 1 句话，概括当天主线
 
-8. 如果今天的 feed 没有足够内容，不要编造；不要写 HTML；不要更新首页；不要运行 git。
-   如果确实无内容，请不要创建这个 JSON 文件，并在结束时明确输出：NO_CONTENT
+8. 不要编造，不要补外部信息。只有当 tweets 和 podcasts 都完全没有可用内容时，才不要创建 JSON，并在结束时明确输出：NO_CONTENT。
+   如果只有 1 条播客、少量 tweets、或任意真实内容，也要正常生成 JSON；可以在 intro 和 archive.desc 中说明这是轻量版/单主题版。
 
 9. 完成后只做一件事：把 JSON 覆盖写入
    ${jsonPath}
