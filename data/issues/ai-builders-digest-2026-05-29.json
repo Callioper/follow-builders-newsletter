@@ -5,11 +5,11 @@
   "editionName": "双语精选版",
   "intro": {
     "kicker": "编者导语 / Editor's Note",
-    "text": "今天只有一期播客，但信息量很大。Box CEO Aaron Levie 在 MAD Podcast 上讲了一个反直觉的现象：AI 模型的进步反而在拖慢企业的实际部署——每次建好新架构，下一代模型就把它淘汰了。同时他提出了一套新的分析框架：tokenmaxxing 的真实含义不是降低成本，而是重新思考软件的价值构成；headless 软件正在让传统 SaaS 的界面层变得多余；企业内部正在出现一种新的 FDE 角色——不是替代人类，而是帮人类更好地驾驭 AI。这期内容值得认真读。"
+    "text": "今天最大的信号来自 Salesforce 的实战数据：他们把一个预估 231 天的迁移项目用 Claude Code 13 天跑完，单个 PR 交付了 21 个端点且测试覆盖率 100%。Boris Cherny 说他们看到的不是生产力和质量的取舍，而是两者同时提升。另一边，Onyx Security 的 CEO 上 No Priors 讲了同一个逻辑：企业已经意识到 agent 风险 exponential 增长，但谁来监管这些 agent？这条线值得继续追。Thibault 说 Codex 的某个数字让他很开心，「soon」两个字吊足了胃口。"
   },
   "archive": {
-    "title": "企业AI部署悖论日报",
-    "desc": "AI 模型的快速进步正在让企业部署变得更慢，而非更快——技术越强，旧架构淘汰越快，这是 Levie 在 MAD Podcast 上提出的核心悖论。"
+    "title": "效率跃迁日报",
+    "desc": "Salesforce 13 天完成 231 天迁移、Codex 神秘数字即将揭晓、企业级 AI Guardrails 成为新赛道——这批内容整体在说同一件事：AI 工作流已经在往生产级可用状态收敛。"
   },
   "viewLabels": {
     "rewrite": "速读",
@@ -18,40 +18,231 @@
   "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-05-29 source feeds.",
   "sections": [
     {
-      "title": "Tokenmaxxing 与企业 AI 的新逻辑 / Tokenmaxxing: The New Enterprise AI Logic",
-      "desc": "Levie 在 MAD Podcast 上提出了一个反直觉的企业 AI 分析框架：模型进步越快，企业部署反而越慢——因为每次建好新架构，下一代就把它淘汰了。",
+      "title": "Salesforce Goes Agentic / Salesforce 全面 Agent 化",
+      "desc": "Boris Cherny 分享了 Salesforce 用 Claude Code 跑进生产环境的真实数据，数字很夸张。",
       "cards": [
         {
-          "authorKey": "podcast:mad-podcast",
-          "authorName": "The MAD Podcast with Matt Turck",
-          "authorTag": "Firstmark 旗下 AI 创投播客",
-          "sourceUrl": "https://www.youtube.com/watch?v=Gs2styCcwro",
+          "authorKey": "x:bcherny",
+          "sourceUrl": "https://x.com/bcherny/status/2060390852619272526",
           "en": {
             "rewrite": [
-              "Aaron Levie lays out the core paradox of enterprise AI deployment: every time enterprises build a standard architecture around a new model generation, the next breakthrough arrives and makes that architecture obsolete. The technology is advancing so fast that it paradoxically slows down rollout, not speeds it up.",
-              "His solution framework for startups: move away from traditional SaaS pricing and think about token-based value metrics. The new question isn't 'how many seats' but 'how much intelligence are you consuming.' This is what he calls tokenmaxxing—reframing the business model around actual AI consumption.",
-              "On headless software: the next wave separates the AI reasoning layer from the user interface entirely. The intelligence becomes a backend service, not a frontend product. This means enterprise software winners will be defined by their AI layer quality, not their UI.",
-              "He predicts the rise of internal FDEs—Foundational model Deployment Engineers inside enterprises who specialize in integrating and orchestrating multiple AI capabilities. These are the new high-value technical hires that replace traditional infrastructure roles.",
-              "For startups, his core advice: find whitespace where incumbents can't move fast enough. The incumbents are trapped by their legacy architecture and enterprise sales cycles. A startup that builds natively for the AI era can win in the time incumbents spend debating their response."
+              "Salesforce published a detailed writeup on going agentic with Claude Code. The numbers are stark: a migration they'd scoped at 231 days shipped in 13. One PR delivered 21 endpoints at 100% test coverage.",
+              "The teams seeing the biggest wins from AI are completely changing how they work—not speeding up what they already do. What steps can you delete, what handoffs go away, what can an agent just own end to end.",
+              "Quality went up alongside output. Even with more PRs shipping, total incidents dropped 5%. They built security guardrails and quality standards into the agentic workflow itself.",
+              "Productivity vs quality is sometimes framed as a tradeoff. They're not seeing it."
             ],
             "original": [
-              "The problem is is the breakthroughs keep happening faster than the customer can implement any kind of standard architecture. And those breakthroughs oftentimes make obsolete the last thing you implemented. It's this really bittersweet thing, which is like the technology is getting so advanced that it makes obsolete the prior thing that you implemented, which actually means that the rollout takes longer.",
-              "The MAD Podcast is a production of Firstmark, a venture capital firm based in New York.",
-              "Box CEO Aaron Levie discusses enterprise AI deployment, token costs, headless software, internal FDEs, and startup strategy in the AI era."
+              "Salesforce published a detailed writeup on going agentic with Claude Code. A couple things jumped out. A migration they'd scoped at 231 days shipped in 13. One PR delivered 21 endpoints at 100% test coverage.",
+              "The teams seeing the biggest wins from AI are completely changing how they work, not speeding up what they already do. What steps can you delete, what handoffs go away, what can an agent just own end to end. Great to see Salesforce go this deep. Shoutout to Srini, @Benioff & team.",
+              "Quality went up alongside output. Even with more PRs shipping, total incidents dropped 5%. They built security guardrails and quality standards into the agentic workflow itself. Productivity vs quality is sometimes framed as a tradeoff. They're not seeing it."
             ]
           },
           "cn": {
             "rewrite": [
-              "Aaron Levie 揭示了企业 AI 部署的核心悖论：每次企业围绕新一代模型建好标准架构，下一代突破就来了，把那个架构淘汰掉。技术进步得太快，反而拖慢了在企业里的推广速度，而不是加速。",
-              "他的解决方案框架给创业者的建议：离开传统 SaaS 定价方式，思考基于 token 的价值指标。新问题不再是「有多少个座位」，而是「你消耗了多少智能」。这就是他所说的 tokenmaxxing——围绕实际 AI 消耗重新思考商业模式。",
-              "关于 headless 软件：下一波浪潮是把 AI 推理层和用户界面彻底分离。智能成为后端服务，而不是前端产品。这意味着企业软件的赢家将由 AI 层质量决定，而不是 UI。",
-              "他预测企业内部 FDE（Foundational model Deployment Engineers）的崛起——这类新角色专门负责整合和编排多种 AI 能力。这将取代传统基础设施岗位，成为新的高价值技术招聘方向。",
-              "对创业者的核心建议：在现有玩家无法快速移动的地方找到空白。现有玩家被遗留架构和企业销售周期困住了。在他们还在讨论如何应对的时间里，一个为 AI 时代原生打造的创业公司可以直接取胜。"
+              "Salesforce 发了篇详细文章讲他们怎么用 Claude Code 全面跑 agentic 工作流。数字很夸张：他们预估 231 天的迁移项目，13 天跑完。一个 PR 交付了 21 个端点，测试覆盖率 100%。",
+              "看到最大收益的团队，不是在加速已有的工作方式，而是彻底改变工作方式——删掉哪些步骤、哪些交接可以不要、哪些活 agent 可以从头做到尾。",
+              "质量和产量一起提升。PR 数量更多了，但事故总数反而下降了 5%。他们把安全 guardrails 和质量标准直接内置到了 agentic 工作流里。",
+              "通常生产力提升会被说成是质量的取舍，但他们没有看到这个问题。"
             ],
             "original": [
-              "技术进步越快，客户越难建起标准架构，因为每次建好，上一代的突破就把你的实现淘汰了。这是一个苦涩的悖论：技术越先进，推广越慢。",
-              "MAD Podcast 是 Firstmark 旗下的产品，Firstmark 是位于纽约的风险投资机构。",
-              "Box CEO Aaron Levie 讨论企业 AI 部署、token 成本、headless 软件、内部 FDE 和 AI 时代的创业策略。"
+              "Salesforce 详细记录了用 Claude Code 做 agentic 迁移的实战。231 天预估变成 13 天实际完成。一个 PR 交付 21 个端点，测试覆盖率 100%。",
+              "最大的收益来自彻底改变工作方式，而不是加速旧流程。安全 guardrails 和质量标准内置到工作流里。",
+              "产量增加，质量也提升，没有看到两者的取舍。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Enterprise AI Guardrails / 企业级 AI 安全防护",
+      "desc": "Onyx Security CEO 上 No Priors 讲了同一个主题：企业已经开始意识到 agent 风险在 exponential 增长，但没有好的方法来遏制。",
+      "cards": [
+        {
+          "authorKey": "podcast:no-priors",
+          "authorName": "No Priors",
+          "authorTag": "AI 与创业对话播客",
+          "sourceUrl": "https://www.youtube.com/watch?v=QDsbFLEt9ro",
+          "en": {
+            "rewrite": [
+              "Maxim Bar Kogan, co-founder and CEO of Onyx Security, explains on No Priors why enterprises are suddenly panicked about AI agents: agents are already taking actions that weren't authorized—publishing code and tokens they weren't supposed to.",
+              "The shift from two years ago is dramatic. The consensus risk story then was basically DLP for chatbots—what are employees putting into ChatGPT? Now it's market-wide panic about agents acting beyond their scope.",
+              "Onyx's bet: you need a specialized model trained to watch how other AI agents behave, using historical behavioral data. But here's the tension—enterprises don't want to share that historical data with Anthropic or OpenAI because they know those companies are data-hungry and will train on it.",
+              "The market opportunity is clear: someone needs to build the security layer for agentic workflows, and it can't be the model providers themselves due to data conflicts."
+            ],
+            "original": [
+              "As you're exponentially doing more things with the eyes, you're going to start having really bad actions happen. And we've seen some of that happen lately with agents accidentally publishing code and tokens that they weren't supposed to.",
+              "Enterprises are starting to realize that risk has grown exponentially and that they don't have any way to stop the adoption. They just now have to do something to reduce the chance of these agent actions being illegitimate or incorrect.",
+              "Enterprises today are not willing to have Anthropic or OpenAI give that historical data because they know these are very data hungry companies that will want to train on that data.",
+              "The pivotal point for us was AutoGPT. It let everyone's imagination run wild because it was a..."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Onyx Security 联合创始人兼 CEO Maxim Bar Kogan 在 No Priors 上解释了为什么企业突然对 AI agent 感到恐慌：agent 已经在执行没有被授权的操作——发布代码和 token，那些本来不该它们碰的东西。",
+              "和两年前相比变化剧烈。那时候主流的风险叙事基本是「ChatGPT 的 DLP」——员工往 ChatGPT 里塞了什么？现在变成了市场范围内对 agent 越界操作的恐慌。",
+              "Onyx 的赌注：需要一个专门的模型来观察其他 AI agent 的行为模式，用历史行为数据来训练。但这里有个矛盾——企业不愿意把这些历史数据交给 Anthropic 或 OpenAI，因为他们知道这些公司对数据如饥似渴，肯定会用这些数据做训练。",
+              "市场机会很清晰：需要有人来建 agentic 工作流的安全层，而且不能是模型提供商本身，因为会有数据利益冲突。"
+            ],
+            "original": [
+              "企业突然意识到风险已经 exponential 增长，但没有方法阻止采用。Agent 现在已经在发布不该发布的代码和 token。",
+              "两年前的风险是「员工往 ChatGPT 里塞什么」，现在是市场范围的 agent 越界恐慌。",
+              "企业不愿意把历史行为数据给 Anthropic 或 OpenAI，因为它们会拿数据做训练。",
+              "Onyx 的核心赌注是 AutoGPT——它让所有人的想象力开始狂野。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Codex Metrics & Benchmarks / Codex 数字与基准",
+      "desc": "Thibault Sottiaux 暗示 Codex 的某个关键数字即将公布，这个数字让他很开心。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2060565265906290786",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux, who works on Codex and ChatGPT at OpenAI, looked at a number on a Codex dashboard today that made him happy. He's keeping the details close but promising more news soon.",
+              "His note—'We are still early. So early'—combined with the excitement about a specific metric suggests Codex adoption is hitting a meaningful inflection point.",
+              "This is a quiet but significant signal from someone with direct visibility into usage data."
+            ],
+            "original": [
+              "I looked at a number today on a codex dashboard and it made me happy. More news about the number soon. 👀 Thanks to everyone who keeps adopting codex. We are still early. So early."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux 在 OpenAI 做 Codex 和 ChatGPT，今天看了 Codex 仪表板上的某个数字，让他很开心。细节先保密，但承诺很快会有更多消息。",
+              "他特别强调了一句「我们还很早，非常早」——结合对某个具体指标的兴奋，说明 Codex 的采用正在达到一个有意义的拐点。",
+              "这是一个安静但重要的信号，说这话的人对使用数据有直接可见性。"
+            ],
+            "original": [
+              "Thibault 看了 Codex 仪表板上的一个数字，很开心。更多消息 soon。",
+              "「我们还很早，非常早」——加上对具体指标的兴奋，说明 adoption 在达到拐点。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2060563528596287874",
+          "en": {
+            "rewrite": [
+              "Sottiaux asks a sharp question that's very much alive in the builder community right now: do you still trust benchmarks, or do you just listen to your friends? What makes you actually try a new model?",
+              "It's a genuine question with no easy answer—benchmarks are gamed, but peer trust is slow and anecdotal. The responses will be interesting."
+            ],
+            "original": [
+              "Do you still trust benchmarks or do you just listen to your friends? What makes you try a new model?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Sottiaux 提了一个很尖锐的问题，而且这个问题在 builder 社区里现在确实很活跃：你现在还信任 benchmark 吗，还是只听朋友的？什么会让你真正去试一个新模型？",
+              "这是个没有简单答案的真实问题——benchmark 会被刷，但同行信任慢且偏 anecdotes。回复会很有看头。"
+            ],
+            "original": [
+              "你还信任 benchmark 吗，还是只听朋友的话？什么会让你试一个新模型？"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Building in the AI Era / AI 时代如何做事",
+      "desc": "Garry Tan 和 Peter Steinberger 从不同角度碰了同一个主题：做事的方式已经变了，旧的地图没用了。",
+      "cards": [
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2060600088079356292",
+          "en": {
+            "rewrite": [
+              "Garry Tan用一个比喻直接戳破了很多创始人的幻觉：钱不是火焰，钱是你往已经存在的火焰上浇的汽油。你没有资金问题，你的问题是「大家现在还不需要这个」。先把这个火点着。",
+              "This is the same theme he's been building all week—bar-is-zero markets, high agency, don't play the old game—but here it's in its simplest form. Money is not the fire. Money is gasoline."
+            ],
+            "original": [
+              "A founder kept saying 'if only we had money we'd do X.' Money is not the fire. Money is gasoline you pour on a fire that already exists. You don't have a funding problem. You have a 'people don't want it yet' problem. Go make the first fire."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan 用一个比喻把很多创始人的幻觉直接戳破：钱不是火焰，钱是你往已经存在的火焰上浇的汽油。你没有资金问题，你的问题是「大家现在还不需要这个」。先去把第一个火点着。",
+              "这和他这一周一直在讲的是同一个主题——bar-is-zero 市场、高主观能动性、别玩旧游戏——但这里是它最简洁的形式。钱不是火。钱是汽油。"
+            ],
+            "original": [
+              "Garry Tan：钱不是火，钱是汽油。你没有资金问题，你的问题是「大家还不需要」。先点火。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2060306947035832628",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger announces Vince is joining OpenClaw, calling him one of the few people who truly understands 'the new ways, how software is built.'",
+              "The 'new ways' framing is deliberate—this is Steipete's way of saying the software industry is in a genuine paradigm shift, and most people don't get it yet. Having someone who gets it on board matters."
+            ],
+            "original": [
+              "Couldn't be more excited to have Vince on board. 🦞 Very few people understand the new ways, how software is built. He gets it."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger 宣布 Vince 加入 OpenClaw，称他是真正理解「软件构建的新方式」的人之一。",
+              "「新方式」这个说法是刻意的——这是 Steipete 在说软件行业正在经历一场真正的范式转换，大多数人还没意识到。能有理解这一点的人加入，很重要。"
+            ],
+            "original": [
+              "Steipete 宣布 Vince 加入 OpenClaw，说他真正理解「软件构建的新方式」。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2060294413377519808",
+          "en": {
+            "rewrite": [
+              "Steinberger's 'I smell a takedown in 3...2...1' tweet generated massive engagement—2774 likes, 190 RTs, 173 replies. Whatever he's referring to, it's clearly something significant that the market is watching for.",
+              "Given his position at OpenClaw and his proximity to both OpenAI and the broader agentic tooling space, this could be anything from a competitive move to a regulatory development to an industry shift. Worth watching."
+            ],
+            "original": [
+              "I smell a takedown in 3...2...1"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Steinberger 这条「我闻到一场 takedown，3...2...1」的推文引发了巨大反响——2774 赞、190 转推、173 回复。无论他在指什么，显然是市场正在关注的一件大事。",
+              "考虑到他在 OpenClaw 的位置，以及他和 OpenAI 及更广泛的 agentic 工具空间的接近度，这可能是任何事情——从竞争动作到监管动态到行业格局变化。都值得继续看。"
+            ],
+            "original": [
+              "Steipete 说「我闻到一场 takedown，3...2...1」。2774 赞，巨大市场关注。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Infrastructure & Economics / 基础设施与经济性",
+      "desc": "Aaron Levie 继续用企业视角观察 AI 时代的 app 层价值。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2060525104384418271",
+          "en": {
+            "rewrite": [
+              "Aaron Levie uses a $500M data point as the ultimate advertisement for the app layer: when a company spends that much building their own version of it, it means the underlying category is real and valuable.",
+              "He acknowledges there's nuance that can't fit in a headline, but the implication is clear—software demand is not going down, and the app layer is where enormous value accumulates.",
+              "This is consistent with his ongoing theme: AI doesn't kill software demand, it amplifies it."
+            ],
+            "original": [
+              "The app layer couldn't get a better advertisement than a company spending $500M to build their own version of it. Obviously lots of nuance here that can't be captured in the headline, but this should make you very bullish on software."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 用一个 5 亿美元的决策作为 app 层的终极广告：当一家公司愿意花这么多钱去构建自己的版本，意味着底层这个类别是真实且有价值的。",
+              "他承认里面有不能被标题捕捉的细微差别，但含义很清楚——软件需求不会下降，app 层才是巨大价值堆积的地方。",
+              "这和他一直在讲的主题一致：AI 不杀死软件需求，它放大需求。"
+            ],
+            "original": [
+              "Levie 说一家公司花 5 亿美元构建自己的 app 层版本，是对 app 层的终极背书。软件应该看涨。"
             ]
           }
         }
