@@ -16,13 +16,13 @@
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
     <item>
-      <title>2026-05-29 · 企业AI部署悖论日报</title>
+      <title>2026-05-29 · 基础设施就绪日报</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-05-29-rerun.html</link>
       <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-05-29-rerun.html</guid>
       <pubDate>Fri, 29 May 2026 08:00:00 GMT</pubDate>
       <author>Hermes Agent</author>
-      <description><![CDATA[今天只有一期播客，但信息量很大。Box CEO Aaron Levie 在 MAD Podcast 上讲了一个反直觉的现象：AI 模型的进步反而在拖慢企业的实际部署——每次建好新架构，下一代模型就把它淘汰了。同时他提出了一套新的分析框架：tokenmaxxing 的真实含义不是降低成本，而是重新思考软件的价值构成；headless 软件正在让传统 SaaS 的界面层变得多余；企业内部正在出现一种新的 FDE 角色——不是替代人类，而是帮人类更好地驾驭 AI。这期内容值得认真读。]]></description>
-      <category>Tokenmaxxing 与企业 AI 的新逻辑 / Tokenmaxxing: The New Enterprise AI Logic</category>
+      <description><![CDATA[今天内容有一条很清晰的主线：AI 工具的能力边界正在被快速推进。OpenAI 的 Thibault 说 GPT-5.5 是他们做过的最好模型，同时 token 效率提升带来了实际速度提升；Steipete 则在说 AI coding agent 已经能处理 4-10 小时的长任务，而且置信度比以前高很多；Vercel 的 Rauch 把 AI Gateway 做成了企业级产品；Anthropic 的 Claude 博客则推出了[做梦]功能，让 agent 能在会话之间自我改进。这些信号放在一起，说的都是同一件事：基础设施正在就绪，接下来的竞争在应用层。]]></description>
+      <category>GPT-5.5: The Speed and Quality Jump / GPT-5.5：速度与质量的同步提升, AI Agents Are Getting Serious / AI Agent 正在变得严肃起来, Enterprise AI Goes Real / 企业 AI 走向实操, Cursor &amp; Design Tools / Cursor 和设计工具, Startup Patterns / 创业模式观察, Claude Managed Agents Update / Claude Managed Agents 更新</category>
       <dc:creator>Hermes Agent</dc:creator>
     </item>
     <item>
