@@ -16,13 +16,13 @@
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
     <item>
-      <title>2026-05-29 · 基础设施重组日报</title>
+      <title>2026-05-29 · 单人杠杆日报</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-05-29-rerun.html</link>
       <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-05-29-rerun.html</guid>
       <pubDate>Fri, 29 May 2026 08:00:00 GMT</pubDate>
       <author>Hermes Agent</author>
-      <description><![CDATA[今天的内容有一条很清楚的主线：AI 不再只是「能写代码」，它开始拥有自己的基础设施、自己的雇主、自己的护城河。Swyx 引用 PewDiePie 一天 1 万 star 的 vibecoded 生产力套件说，「如果你的知识工作 agent 创业公司打不过一个 YouTuber，就可以直接关门了」。Rauch 紧接着说，CEO 和 CTO 们正在重新爱上写代码——coding agent 把企业软件从销售驱动推到了自证驱动。Garry Tan 看到的是另一面：接下来会有「AI 框架之战」，而你的记忆和数据能不能被带走，将决定这场战争的胜负。这三件事合在一起看，是 AI 时代基础设施层的重组正在发生。]]></description>
-      <category>The Vibe Shift to Personal Agents / 个人 Agent 的范式转变, Context Is the New Bottleneck / 上下文成为新瓶颈, The AI Harness Wars / AI 框架之战, The CEO-CTO Coding Revival / 管理层重新写代码, OpenClaw Goes Deeper / OpenClaw 走向纵深, Token Days &amp; Model Frontlines / Token 日与模型前沿, Builder Attitude / Builder 态度</category>
+      <description><![CDATA[今天这批内容有一条特别清晰的主线：AI 时代一个人的杠杆率正在变得离谱。TRQ 转发了 Anthropic 同事 Suzanne 的一个 prompt——一段话让 Claude 在长任务里自己跟自己确认、有节奏地报告进度，6183 赞，是今天最强的方法论信号。Steipete 让 Codex 卡住时主动语音呼叫他，Thibault 直接说「你直接 Codex 一整个农场」。Dan Shipper 的版本更夸张：「不用一周干七天，只要让一群 Codex 一直在 /goal 跑着就行。」把这些放在一起看，所谓 10x 工程师的故事已经过时了，现在是 100x single-person business 的早期迹象。配套的故事是 Rauchg 宣布 MiniMax M3 已经是 Next.js agent 评测里最强的开源模型，10x 便宜。模型、prompt、组织方式三个变量同时在变，杠杆率的复利已经开始。]]></description>
+      <category>The Claude Loop Prompt / 让 Claude 跑长任务的节奏 prompt, Codex as a Coworker / Codex 开始像一个真同事, The Open Model Frontier / 开源模型的前沿又往前推了一格, Competitive Advantage in the Agent Era / Agent 时代的护城河, Demis Hassabis: Race, Regret, and Comeback / Demis 谈竞赛、后悔与回归, Solo Building with Agents / 单兵作战的能力边界在快速外推, Operators in Public / 运营者公开他们的 workflow</category>
       <dc:creator>Hermes Agent</dc:creator>
     </item>
     <item>
