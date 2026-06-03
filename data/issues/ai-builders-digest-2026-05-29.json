@@ -5,11 +5,11 @@
   "editionName": "双语精选版",
   "intro": {
     "kicker": "编者导语 / Editor's Note",
-    "text": "今天这批内容有一条特别清晰的主线：AI 时代一个人的杠杆率正在变得离谱。TRQ 转发了 Anthropic 同事 Suzanne 的一个 prompt——一段话让 Claude 在长任务里自己跟自己确认、有节奏地报告进度，6183 赞，是今天最强的方法论信号。Steipete 让 Codex 卡住时主动语音呼叫他，Thibault 直接说「你直接 Codex 一整个农场」。Dan Shipper 的版本更夸张：「不用一周干七天，只要让一群 Codex 一直在 /goal 跑着就行。」把这些放在一起看，所谓 10x 工程师的故事已经过时了，现在是 100x single-person business 的早期迹象。配套的故事是 Rauchg 宣布 MiniMax M3 已经是 Next.js agent 评测里最强的开源模型，10x 便宜。模型、prompt、组织方式三个变量同时在变，杠杆率的复利已经开始。"
+    "text": "今天有两条主轴值得一起看。第一条是 coding agent 的「主战场转移」——TRQ 把 Claude Code 的 Workflows 推成继 skills 和 subagents 之后最大的升级,Thibault 紧接着在 Codex 一边把企业版做出可以托管网站、改进 plugins、支持在文档/幻灯片/表格上做视觉批注,Amjad 和 Steipete 又分别在同一天宣布跟 Microsoft 的合作。一句话,agent 不再只是单人工具,它在快速变成企业级底座。第二条是「成本结构的变化开始被正视」——Levie 第一次把 token 预算放到 OpEx 高度讲 model routing 的必然性,Rauch 直接宣布 no-code 这个品类的底层假设[code is expensive]已经被 agent 推翻,Garry Tan 则在连发 PR 的间隙提醒:agent 不能替你找到用户。"
   },
   "archive": {
-    "title": "单人杠杆日报",
-    "desc": "Anthropic 的 Suzanne 给出 Claude 长任务节奏 prompt，Codex 开始会主动语音呼叫主人，MiniMax M3 在 Next.js 评测上 10x 便宜——单人杠杆率的复利已经启动。"
+    "title": "主战场转移日报",
+    "desc": "Coding agent 从单兵工具迁移到企业底座,成本结构变化和 SaaS 重估同步发生。"
   },
   "viewLabels": {
     "rewrite": "速读",
@@ -18,418 +18,430 @@
   "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-05-29 source feeds.",
   "sections": [
     {
-      "title": "The Claude Loop Prompt / 让 Claude 跑长任务的节奏 prompt",
-      "desc": "TRQ 转发的这条 prompt 是今天全网最高赞的方法论分享——它解决了 Claude Code 长任务最容易翻车的问题。",
+      "title": "Codex Crosses Into the Knowledge Worker / Codex 跨过工程师的边界",
+      "desc": "OpenAI 自家公布的 Codex 用户结构变化,叠加 Thibault 对 ChatGPT / agents 长期判断,意味着 Codex 正在从程序员工具变成默认助手。",
       "cards": [
         {
-          "authorKey": "x:trq212",
-          "sourceUrl": "https://x.com/trq212/status/2061545633560010826",
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2061924300698091760",
           "en": {
             "rewrite": [
-              "TRQ polled other Anthropic folks on how they stay in the loop with Claude and fully understand the work being done. The winning answer came from Suzanne: a single prompt that asks Claude to be honest, give short progress updates, and surface assumptions or risks at each step.",
-              "The mechanism is interesting: instead of trying to monitor the whole task, the agent narrates its work in small chunks. The user gets a steady stream of checkpoints they can actually scan, rather than a wall of text at the end.",
-              "6183 likes makes this the most resonant method-share of the day. Suzanne also mentioned she uses this together with voice mode so the agent can interrupt her naturally when it needs input."
+              "Zara Zhang pulls the most striking data point from OpenAI's latest Codex report: knowledge workers now represent about 20% of Codex users and are adopting it more than 3 times as fast as developers.",
+              "The fastest growing task types are Data Analysis (+110% week over week), Research (+37%), and Knowledge work overall. A year ago this product was [for programmers]; today the average user is a non-engineer analyst.",
+              "The implication: the unit economics and product surface of Codex are being pulled by a much larger audience than its original user base, which changes pricing, distribution, and feature priorities for OpenAI."
             ],
             "original": [
-              "Been asking others at Anthropic how they stay in the loop with Claude and fully understand the work being done. This is one of my favorites from Suzanne.",
-              "gist for the full prompt here: https://t.co/L0ffBeU1ua",
-              "Suzanne also mentioned she uses this with voice mode to make it easier to respond and more natural."
+              "From OpenAI's latest Codex report: Knowledge workers now represent about 20% of Codex users and are adopting it more than 3 times as fast as developers.",
+              "The fastest growing task types for knowledge workers are: Data Analysis (110% growth week over week); Research (+37%), and Knowledge work overall."
             ]
           },
           "cn": {
             "rewrite": [
-              "TRQ 问了 Anthropic 内部的同事：你们是怎么和 Claude 保持同步、并且完整理解它正在做的工作的？回答里他最喜欢的是 Suzanne 写的那段 prompt——一句话让 Claude 保持诚实、用短进度更新、在每一步把假设和风险说出来。",
-              "机制很有意思：不是试图监控整个任务，而是让 agent 用小段落把工作讲出来。用户拿到的是一段一段可以快速扫的 checkpoint，而不是任务结束后一整面墙的总结。",
-              "6183 个赞，是今天方法论分享里共鸣最强的一条。Suzanne 补充说，她还把这段 prompt 和 voice mode 配合用，这样 agent 在需要输入的时候能自然地打断她。"
+              "Zara Zhang 拎出 OpenAI 内部 Codex 报告里最值得看的一行数字:知识工作者已经占 Codex 用户的 20%,增速是开发者的 3 倍以上。",
+              "知识工作者里增速最快的是数据分析(周环比 +110%)、研究(+37%)和广义知识工作。一年前这个产品的对象还是[程序员],现在的典型用户其实是不写代码的分析师。",
+              "含义:Codex 的单位经济和产品面正在被一个比最初用户群大得多的群体拉动,OpenAI 的定价、分发和功能优先级都会因此改变。"
             ],
             "original": [
-              "TRQ 转发 Suzanne 的 prompt，让 Claude 短更新、暴露假设和风险。",
-              "6183 赞。Suzanne 还配合 voice mode 用，让 agent 能自然打断她。"
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "title": "Codex as a Coworker / Codex 开始像一个真同事",
-      "desc": "Codex 越来越像一个会主动找你的同事——卡住了会语音呼叫、可以一打一打地开。",
-      "cards": [
-        {
-          "authorKey": "x:steipete",
-          "sourceUrl": "https://x.com/steipete/status/2061574752574283858",
-          "en": {
-            "rewrite": [
-              "Peter Steinberger told Codex to use a voice service whenever it gets stuck and needs the user to unblock it. Now occasionally the agent just talks to him out of nowhere, asking for help.",
-              "His example: Codex pinged him during a long review run because it needed access to a repo. He calls it the coolest thing ever—the agent is no longer a tool you check on, it's a colleague that interrupts you.",
-              "683 likes confirms this is a real shift in how people relate to coding agents: the boundary between background process and teammate is dissolving."
-            ],
-            "original": [
-              "I told codex to use https://t.co/oHS8ombQcW whenever I'm distracted and it needs my help to be unblocked, and ever once it a while I hear it talking to me, and it's the coolest thing ever. (e.g. for review runs and it needs access to a repo)"
-            ]
-          },
-          "cn": {
-            "rewrite": [
-              "Peter Steinberger 给 Codex 设了一条规则：只要卡住、需要人来解锁，就用语音服务找他。结果偶尔他就听见 agent 自己开口说话，请他帮忙。",
-              "他的例子是：一次很长的 review 跑到一半，Codex 因为需要某个 repo 的权限，主动用语音呼叫他。他说这是他见过最酷的事——agent 不再是一个要你主动去查的工具，而是一个会打断你的同事。",
-              "683 个赞，说明这不是个例：coding agent 正在从「后台进程」变成「会找你的同事」。"
-            ],
-            "original": [
-              "Steipete 让 Codex 卡住时用语音服务呼叫他。他说这是最酷的事。",
-              "683 赞。"
-            ]
-          }
-        },
-        {
-          "authorKey": "x:danshipper",
-          "sourceUrl": "https://x.com/danshipper/status/2061443674311999739",
-          "en": {
-            "rewrite": [
-              "Dan Shipper's framing is the most quotable line of the day: you don't have to work 7 days a week if you just have a swarm of Codex's running on /goal all the time. But you'll probably want to.",
-              "The point is not that work expands to fill the time available. The point is that with enough agent parallelism, you can always be shipping at the edge of what is possible—which means the natural ceiling stops being the agent count and starts being the founder's appetite.",
-              "Shipper says the 'it happened' moment is when he saw the swarm in motion doing real work."
-            ],
-            "original": [
-              "you don't have to work 7 days a week if you just have a swarm of Codex's running on /goal all the time. But you'll probably want to",
-              "it happened!"
-            ]
-          },
-          "cn": {
-            "rewrite": [
-              "Dan Shipper 给出了今天最值得引用的金句：你不用一周干七天，只要让一群 Codex 一直在 /goal 跑着就行。不过你八成还是想干。",
-              "重点不是说工作会填满时间。重点是当 agent 并行度足够高，你就能一直贴着可能性边界在出货——自然的天花板不再取决于 agent 数量，而取决于创始人自己的胃口。",
-              "Shipper 说「it happened」的那一刻，就是他看到整群 agent 真的在动起来干活。"
-            ],
-            "original": [
-              "Dan Shipper：一群 Codex 在 /goal 跑着，你不用一周干七天。",
-              "不过你八成还是想干。it happened。"
+              "OpenAI 报告:知识工作者占 Codex 用户 20%,增速是开发者的 3 倍。",
+              "数据分析周增 110%,研究增 37%,广义知识工作全面爆发。"
             ]
           }
         },
         {
           "authorKey": "x:thsottiaux",
-          "sourceUrl": "https://x.com/thsottiaux/status/2061657264508006738",
+          "sourceUrl": "https://x.com/thsottiaux/status/2062057881424506950",
           "en": {
             "rewrite": [
-              "Thibault Sottiaux at OpenAI drops the pithiest one-liner of the day: 'You can just codex ... a farm.' The joke collapses what used to be a serious engineering project—provisioning, monitoring, scaling—into a verb the agent can do for you.",
-              "Combined with his 2984-like gag about renaming Codex to ChadGPT, the message is that Codex is no longer being treated as a tool, it's being treated as infrastructure you deploy."
+              "Thibault Sottiaux, who leads Codex and ChatGPT at OpenAI, frames the long view in one short post: ChatGPT is already a synonym for AI, and is about to become a synonym for agents too. There is much to build.",
+              "The 1100-like / 35-RT endorsement is the team leader publicly buying into the [agent] frame. When the head of the product calls his own roadmap [agents], you can bet the next 12 months of shipping reflect that.",
+              "Read alongside Zara's data: Codex is the distribution vehicle for that claim, and the data already shows it."
             ],
             "original": [
-              "You can just codex ... a farm",
-              "Should we rename Codex to ChadGPT?"
+              "ChatGPT — Whether you understand the name or not. It's here to stay. It's the past, the present, the future. Synonym with AI, soon synonym with agents. Much to build."
             ]
           },
           "cn": {
             "rewrite": [
-              "OpenAI 的 Thibault Sottiaux 抛出了今天最精炼的一句话：「You can just codex ... a farm」。这个玩笑把过去要认真做的工程项目——provisioning、监控、扩容——压成了一个 agent 可以替你做的动词。",
-              "再配合他那条 2984 赞的「要不要把 Codex 改名 ChadGPT」，信号很清楚：Codex 不再被当成一个工具，而是被当成你可以部署的基础设施。"
+              "Thibault Sottiaux(Codex 与 ChatGPT 负责人)用一条短帖讲了一个长期判断:ChatGPT 已经是 AI 的同义词,接下来它还要变成 agent 的同义词。事情还有很多要做的。",
+              "1100 赞、35 转推的量级,是产品负责人公开为[agent]这个框架背书。当产品线 leader 自己把路线图叫作[agents],未来 12 个月的发布节奏基本可以按这个口径去预期。",
+              "和 Zara 引用的数据放一起看:Codex 就是这个判断的载体,数据已经在支撑它。"
             ],
             "original": [
-              "Thibault：You can just codex ... a farm。",
-              "Codex 已经是基础设施，不是工具。"
+              "Thibault:ChatGPT 已是 AI 的同义词,接下来是 agent 的同义词。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2061876999564791952",
+          "en": {
+            "rewrite": [
+              "Thibault announces the daily-work upgrades to Codex: business plan users can now host and share websites directly from Codex, plugins and skills got a major upgrade for broader roles, and you can give feedback to the agent through visual annotations on docs, slides, and sheets.",
+              "The visual-annotation detail is the load-bearing one: agents that can read and react to markup on a document are usable by people who do not write code or prompts. That is exactly the non-engineer audience Zara just described.",
+              "This is what [Codex becomes a knowledge worker tool] looks like in product form."
+            ],
+            "original": [
+              "Tons of goodies for use of codex for day to day work. If you are on a business plan you can now host and share websites, we launched vastly improved plugins and skills for broad roles and you can give feedback to your agent through visual annotations in docs, slides, sheets and more."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault 公布了 Codex 在日常工作场景的一批升级:商业版用户可以直接在 Codex 里托管和分享网站,plugins 和 skills 做了一轮大改以适配更广的角色,而且你可以在文档、幻灯片、表格上用[视觉批注]给 agent 直接反馈。",
+              "真正起作用的是视觉批注这个细节:能在文档上做高亮批注、让 agent 读懂并修改,这件事只有不会写代码、也不会写 prompt 的人才用得上——正好是 Zara 说的那个非工程师用户群。",
+              "这就是[Codex 变成知识工作者工具]这件事在产品层面的具体形态。"
+            ],
+            "original": [
+              "Codex 商业版支持托管和分享网站,plugins 与 skills 大改,支持文档/幻灯片/表格视觉批注反馈。"
             ]
           }
         }
       ]
     },
     {
-      "title": "The Open Model Frontier / 开源模型的前沿又往前推了一格",
-      "desc": "Rauchg 宣布 MiniMax M3 在 Next.js agent 评测上拿到开源第一，10x 便宜，这是 2026 年开源模型叙事的关键节点之一。",
+      "title": "Claude Code Workflows Go Mainstream / Claude Code 工作流走向主流",
+      "desc": "TRQ 把 Workflows 推成自 skills / subagents 之后最大的升级,加上他在 Claude Blog 的同步发文,Claude Code 正在从[写代码的 REPL]变成[跑长任务的调度器]。",
       "cards": [
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2061907538741006796",
+          "en": {
+            "rewrite": [
+              "Thariq's headline take: Workflows are the biggest upgrade to Claude Code's capabilities since skills and subagents. He went deep with Sid to figure out best practices, examples, and more.",
+              "What excites him most is the non-technical tasks it unlocks — the same surface TRQ has been championing: drop a folder of files, let the agent script + render + iterate. A workflow lets that pattern run for hours, unattended, with explicit human checkpoints.",
+              "3339 likes / 236 RTs — this is the developer community signaling that [agent as long-running coworker] is now the model, not the demo."
+            ],
+            "original": [
+              "Workflows are the biggest upgrade to Claude Code's capabilities since skills and subagents. I dove deep into it with @sidbid to figure out best practices, examples and more. I'm particularly excited about the non-technical tasks it enables for Claude Code."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thariq 的核心判断:Workflows 是 Claude Code 自 skills 和 subagents 以来最大的一次升级。他跟 Sid 一起深入做了一轮最佳实践、案例和使用模式。",
+              "他最兴奋的是它解锁了非技术任务——也就是 TRQ 一直在推的那个模式:把文件夹丢进去,让 agent 写脚本、渲染 HTML、反复迭代。Workflows 让这个模式可以无人值守跑上几个小时,带明确的人工检查点。",
+              "3339 赞、236 转推——开发者社区在用投票说[agent 是能跑长任务的同事],不再是演示。"
+            ],
+            "original": [
+              "TRQ:Workflows 是 Claude Code 自 skills/subagents 后最大升级,最让人兴奋的是非技术任务场景。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2061907897928528349",
+          "en": {
+            "rewrite": [
+              "Companion to the tweet above: TRQ points readers to the official Claude Blog for the full Workflows write-up. The blog post is the canonical place to learn the new mental model.",
+              "The dual-channel pattern (Twitter hype + blog depth) is the same playbook that made skills and subagents stick. Workflows is being installed as a default workflow category, not a side feature."
+            ],
+            "original": [
+              "This is also available on the Claude Blog! https://t.co/ScXhdyz6YI"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "跟上一条配对:TRQ 指向 Claude 官方博客的 Workflows 完整文章,那里才是新思维模型的权威来源。",
+              "Twitter 制造氛围 + 博客讲深度的双渠道打法,跟当初 skills 和 subagents 走红的套路一样。Workflows 正在被塑造成一种默认的工作流分类,不是一个边角功能。"
+            ],
+            "original": [
+              "TRQ 指向 Claude Blog 的 Workflows 完整说明。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Model Routing & the Cost Story / 模型路由与成本叙事",
+      "desc": "Token 预算开始进 OpEx,no-code 的底层假设被推翻——成本结构和工具分层正在被一起重写。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2061974298760495132",
+          "en": {
+            "rewrite": [
+              "Aaron Levie names the inevitability: as token budgets take a larger share of operating expenses, model routing becomes the inevitable conclusion. This is also one of the biggest areas of differentiation for the applied AI layer.",
+              "The reason: a domain knows its own work patterns, and a smart router can pick the cheap model for 80% of calls and the frontier model for the 20% that actually need it. That is the applied layer's defensible moat — not access to the model.",
+              "Read this against the open-model frontier: a router is more valuable the more models you can route between."
+            ],
+            "original": [
+              "As token budgets take on a larger part of operating expenses over time, model routing is the inevitable conclusion. This is also one of the biggest areas of differentiation for the applied AI layer over time. By understanding the different work patterns in your domain, and having a router pick the right model for the right call, you can drive down cost significantly."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 把一件正在发生的事点出来了:token 预算在 OpEx 里占比越大,model routing 就越会成为必然结论。这也是应用 AI 层最大的差异化战场之一。",
+              "原因是:一个领域最了解自己的工作模式,一个聪明的路由器可以让 80% 的调用走便宜模型,20% 真正需要前沿模型的请求才走贵的。这就是应用层的防御性护城河——不是模型的访问权,而是路由的智能。",
+              "跟开源模型的前沿放在一起读:能路由的模型越多,路由器本身越值钱。"
+            ],
+            "original": [
+              "Levie:token 预算进 OpEx 后,model routing 是必然结论,也是应用层最大差异化。"
+            ]
+          }
+        },
         {
           "authorKey": "x:rauchg",
-          "sourceUrl": "https://x.com/rauchg/status/2061593874498531707",
+          "sourceUrl": "https://x.com/rauchg/status/2061934154732974376",
           "en": {
             "rewrite": [
-              "Guillermo Rauch announces that MiniMax M3 is now the leading open model on Next.js agent evaluations. It sits right behind Opus and GPT-5, but is 10x cheaper—and 20x cheaper on Vercel's AI Gateway this week.",
-              "The takeaway is structural: open models are no longer 'good enough', they are now winning on price-performance in production agent benchmarks. Closed-model labs lose pricing power precisely where agents are most cost-sensitive.",
-              "596 likes, plus 25 retweets—the developer audience is treating this as a meaningful threshold crossed, not a benchmark curiosity."
+              "Guillermo Rauch declares the death of an entire software category: [no-code]. The original category was built on the premise that code is expensive, difficult, and scarce. Coding agents have forever changed the equation — code is now cheap, easy, and abundant.",
+              "The thread continues into education (start with the language, the linguistic surface is your roadmap, human language is the new API) and into the rise of agent-first IDEs (Conductor as an ADE, agents taking remote dev mainstream).",
+              "Read with Levie: the cost story is not just about cheaper model calls, it is about an entire stack of assumptions being unwound."
             ],
             "original": [
-              "MiniMax M3 is now the leading open model on the Next.js agent evaluations (https://t.co/SnZ54XoRWV).",
-              "Right behind Opus &amp; GPT5, but 10× cheaper (And 20× cheaper right now on ▲ AI Gateway!)"
+              "YES-CODE. An entire category of software, 'no-code', was built under the presumption that code is expensive, difficult, and scarce. Coding agents have forever changed the equation. Code is now cheap, easy, and abundant."
             ]
           },
           "cn": {
             "rewrite": [
-              "Guillermo Rauch 宣布 MiniMax M3 已经成为 Next.js agent 评测上的开源第一。性能紧贴 Opus 和 GPT-5，但价格便宜 10x——而且本周在 Vercel 自家的 AI Gateway 上还便宜到 20x。",
-              "结构性的结论是：开源模型已经不止是「够用」，它们开始在生产级 agent 评测里赢性价比。闭源模型在 agent 最敏感的成本维度上正在丧失定价权。",
-              "596 个赞加 25 次转发——开发者群体把这当成一个被跨过的门槛，而不是一个 benchmark 趣闻。"
+              "Guillermo Rauch 宣布了一整个软件品类的死亡:no-code。这个品类原本的假设是[code 昂贵、稀缺、难写]。coding agent 永远地改写了这个等式——code 现在便宜、好写、充裕。",
+              "他的推文线继续展开到教育(从语言入手,语言表面就是路线图,人类语言是新的 API),以及 agent-first IDE 的崛起(Conductor 是为 agent 而生的 ADE,agent 把远程开发推上主流)。",
+              "跟 Levie 一起读:成本故事不只是模型调用变便宜,而是整整一堆假设在被拆掉。"
             ],
             "original": [
-              "Rauchg：MiniMax M3 成为 Next.js agent 评测上的开源第一，10x 便宜。",
-              "596 赞。开源模型在生产 agent 评测上开始赢性价比。"
+              "Rauch:no-code 假设 code 稀缺,agent 让 code 充裕,品类基础没了。"
             ]
           }
         }
       ]
     },
     {
-      "title": "Competitive Advantage in the Agent Era / Agent 时代的护城河",
-      "desc": "当每个对手都能用上同样的模型时，企业怎么建立差异？Levie 和 Garry Tan 从不同角度给出了答案。",
+      "title": "Agents Go Enterprise / Agent 进入企业级",
+      "desc": "同一天两个独立的 enterprise 大单:Steipete 把 OpenClaw 带进 Microsoft,Amjad 把 Replit 跟 Microsoft Fabric 接通。",
       "cards": [
         {
-          "authorKey": "x:levie",
-          "sourceUrl": "https://x.com/levie/status/2061662386680127688",
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2061874084649025728",
           "en": {
             "rewrite": [
-              "Aaron Levie poses the defining question of the era: when your competitor has access to the same AI models and intelligence, how do you build a durable advantage?",
-              "His answer, which he has been building toward for weeks: the moat is not the model, it is the proprietary workflow, the customer relationship, the data flywheel, the integration depth. Agents are commoditized; the context in which they run is not.",
-              "The implication for builders: the company that wins is not the one with the best agent, it's the one that wires the agent most tightly into the real operations of a real customer."
+              "Steinberger announces: it's been a privilege to work with Microsoft to bring claws to enterprises. 3400 likes / 234 RTs is a strong signal that the OpenClaw / [agent on your desktop] story is now landing at the enterprise level.",
+              "The partnership gives OpenClaw the kind of distribution that a startup cannot buy: trusted vendor status, IT-managed deployment, the Microsoft security review.",
+              "Combined with the other Steinberger post (observability and verifiable workspaces going into OpenClaw), this looks like a full enterprise posture being assembled piece by piece."
             ],
             "original": [
-              "As we enter the era of AI agents, one of the defining questions is how you develop competitive advantage when your competitor has access to the same AI models and intelligence as you."
+              "Such a privilege to work with Microsoft to bring claws to enterprises!"
             ]
           },
           "cn": {
             "rewrite": [
-              "Aaron Levie 抛出了这个时代的核心问题：当你的对手也能用上同样的 AI 模型和智能时，你怎么建立持续的优势？",
-              "他的答案是他最近几周一直在搭的那个结论：护城河不是模型本身，而是专有的工作流、客户关系、数据飞轮、集成的深度。Agent 会变成商品，能跑 Agent 的 context 不会。",
-              "对 builder 的含义是：赢的那家公司不是拥有最好 agent 的那家，而是把 agent 缝进真实客户真实运营里缝得最紧的那家。"
+              "Steinberger 宣布:跟 Microsoft 合作把 claws 带进企业。3400 赞、234 转推的量级,说明 OpenClaw 和[agent 跑在桌面上]这个故事正在企业级层面落地。",
+              "这次合作给了 OpenClaw 一种创业公司买不到的分发:可信供应商身份、IT 部门可以管的部署、Microsoft 的安全审查。",
+              "配合他另一条推文(把可观测性和可验证 workspace 装进 OpenClaw),看起来是一整套企业级姿态在一点点拼起来。"
             ],
             "original": [
-              "Levie：Agent 时代护城河不是模型，是专有 workflow、数据飞轮和客户集成深度。",
-              "Agent 会商品化，context 不会。"
-            ]
-          }
-        },
-        {
-          "authorKey": "x:levie",
-          "sourceUrl": "https://x.com/levie/status/2061612625574944804",
-          "en": {
-            "rewrite": [
-              "Levie reads the AWS-OpenAI partnership as a distribution play on both sides: AWS has massive enterprise traction with large committed contracts, so this opens up increased distribution for OpenAI's models. It also likely drives an increase in inference capacity and compute availability for OpenAI.",
-              "His framing: the agent era is pushing the big infra players into new combinations. Whoever controls the enterprise distribution will increasingly shape whose models customers actually run."
-            ],
-            "original": [
-              "AWS has massive enterprise traction, with large committed contracts from enterprises. So this partnership opens up both increased distribution for OpenAI's models, but also likely drives an increase in inference capacity and compute availability for OpenAI."
-            ]
-          },
-          "cn": {
-            "rewrite": [
-              "Levie 把 AWS-OpenAI 的合作解读成双向的 distribution 动作：AWS 在企业里根基深、合约大，所以这次合作一方面给 OpenAI 的模型打开了企业渠道，另一方面也给 OpenAI 带来了更多推理容量和算力。",
-              "他的框架是：Agent 时代正在把大的基础设施玩家推向新的组合。谁掌控企业渠道，谁就越来越能决定客户的模型到底跑在谁家。"
-            ],
-            "original": [
-              "Levie：AWS-OpenAI 合作是企业渠道 + 推理容量的双向 distribution 动作。"
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "title": "Demis Hassabis: Race, Regret, and Comeback / Demis 谈竞赛、后悔与回归",
-      "desc": "Sebastian Mallaby 给 Demis 写完传记后第一次完整访谈，关键信息是：竞赛是必然的，Demis 已经从单点安全转向集体行动问题，而 Google DeepMind 的回归比外界以为的早。",
-      "cards": [
-        {
-          "authorKey": "podcast:unsupervised-learning",
-          "authorName": "Unsupervised Learning",
-          "authorTag": "Redpoint AI 出品的 AI 行业访谈播客",
-          "sourceUrl": "https://www.youtube.com/@RedpointAI",
-          "en": {
-            "rewrite": [
-              "Biographer Sebastian Mallaby sat down with Demis Hassabis for over thirty hours for his new book The Infinity Machine. The strongest frame from the interview: the AI race was inevitable. When the technology is this strong, multiple labs in multiple countries are going to try to build it, full stop.",
-              "Demis's view has flipped: he started hoping for a singleton scenario—essentially DeepMind alone. He now believes safety is a collective action problem that only governments can solve. One safe lab doesn't make the world safer if the others aren't.",
-              "On the Google DeepMind comeback: people were too quick to crown OpenAI as the winner. As of late 2025, Gemini 3.0 was ahead on the leaderboards, before the recent Anthropic surge. The 'Google is too slow' narrative has aged badly."
-            ],
-            "original": [
-              "I think when you have this sort of supremely strong technology, there's gonna be multiple labs in multiple countries that are just desperate to try and build it.",
-              "He has swung from one extreme to the other. He began by thinking there could be a singleton scenario, just one lab. To the opposite extreme where he now sees that there's a very crowded field.",
-              "People were too quick to crown OpenAI and Sam Altman as the winner and underestimated both Demis as a person and Google DeepMind as a company."
-            ]
-          },
-          "cn": {
-            "rewrite": [
-              "传记作者 Sebastian Mallaby 为了写《The Infinity Machine》跟 Demis 坐下来谈了三四十个小时。访谈里最有力的一条框架是：AI 竞赛是必然的。当技术这么强的时候，多个国家、多个实验室一定会去争相建造它，没有第二种可能。",
-              "Demis 的看法已经翻转了：他最初希望出现一个 singleton 的局面——基本上就是 DeepMind 自己。现在他认为安全是一个只有政府才能解决的集体行动问题。一个实验室安全没用，如果其他的不安全。",
-              "关于 Google DeepMind 的回归：外界太早给 OpenAI 加冕了。到 2025 年底，Gemini 3.0 在 leaderboard 上其实是领先的，Anthropic 最近的崛起是后面的事。「Google 太慢」的叙事已经严重过期。"
-            ],
-            "original": [
-              "Demis：AI 竞赛是必然的，多个实验室多个国家一定会去争。",
-              "从 singleton 转向集体行动问题：安全只能由政府来解。",
-              "Google DeepMind 的回归比外界以为的早：2025 年底 Gemini 3.0 在 leaderboard 上其实领先。"
-            ]
-          }
-        },
-        {
-          "authorKey": "x:sama",
-          "sourceUrl": "https://x.com/sama/status/2061562575322492937",
-          "en": {
-            "rewrite": [
-              "Sam Altman flags the OpenAI Foundation as a separate workstream: the foundation is doing a lot of wonderful things, and helping society become resilient to AI is going to be incredibly important. Much more to come.",
-              "The signal is positioning: while competitors argue about model races, the OpenAI side is also building a public-facing story about societal resilience. The foundation becomes a soft-power asset in the regulatory conversation that Mallaby describes.",
-              "1661 likes and 129 retweets—read as a fundraising/legitimacy play, not a product announcement."
-            ],
-            "original": [
-              "The OpenAI Foundation is doing a lot of wonderful things.",
-              "Helping society become resilient to AI is going to be incredibly important. Much more to come here!"
-            ]
-          },
-          "cn": {
-            "rewrite": [
-              "Sam Altman 把 OpenAI 基金会单拎出来讲：基金会做了很多了不起的事，帮助社会对 AI 产生韧性这件事会极其重要，更多内容以后会公布。",
-              "信号是定位：当对手还在争模型竞赛时，OpenAI 这边在同时搭建一个面向公众的「社会韧性」叙事。基金会在 Mallaby 描述的那种监管对话里会变成一种软实力资产。",
-              "1661 个赞加 129 次转发——按融资和合法性叙事来读，不是产品发布。"
-            ],
-            "original": [
-              "Sam Altman 强调 OpenAI 基金会在做「让社会对 AI 有韧性」的工作，更多内容以后公布。",
-              "1661 赞，129 次转发。"
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "title": "Solo Building with Agents / 单兵作战的能力边界在快速外推",
-      "desc": "Peter Yang 整理的 Josh Shpigford 经验 + Amasad 的 prompt-to-business——单个人或极小团队能做的生意种类在肉眼可见地扩大。",
-      "cards": [
-        {
-          "authorKey": "x:petergyang",
-          "sourceUrl": "https://x.com/petergyang/status/2061452068792287622",
-          "en": {
-            "rewrite": [
-              "Peter Yang's top-6 takeaways from Josh Shpigford distill 25 years of solo-building experience into AI-agent-era advice. The standout rule: keep shipping even if the fear of embarrassment never goes away. Shpigford has been shipping solo for decades, and the embarrassment didn't go away—he just stopped letting it stop him.",
-              "The other lessons tighten around a clear thesis: build multiple small products with AI agents, treat the agents as your team, and pick problems that have a real dollar behind them rather than vanity distribution. The 2025 version of solo building is structurally different from the indie hacker era—the agents let you cover surface area that used to need three or four people."
-            ],
-            "original": [
-              "My top 6 takeaways from @Shpigford on how to build multiple products solo with AI agents: 1. Keep shipping even if the fear of embarrassment never goes away. After 25 years as a solo builder, Josh s..."
-            ]
-          },
-          "cn": {
-            "rewrite": [
-              "Peter Yang 整理的 Josh Shpigford 六条心得把 25 年单兵作战的经验压缩成 AI agent 时代的忠告。最出挑的一条是：持续出货，即使尴尬的恐惧从来不会消失。Shpigford 单干了二十多年，那种尴尬感并没有消失，他只是不再让它拦住自己。",
-              "其他几条汇成一个清楚的论点：用 AI agent 同时做多个小产品，把 agent 当团队用，去解决背后有真实美元的问题，而不是去做流量好看的项目。2025 年的单兵作战和 indie hacker 时代结构上不一样了——agent 让你能覆盖的表面积是以前要三四个人才能撑住的。"
-            ],
-            "original": [
-              "Peter Yang 整理 Josh Shpigford 单干 25 年的六条经验：第一条是持续出货，即使尴尬感没消失。",
-              "AI agent 时代单人能覆盖的表面积是以前 3-4 个人的活。"
+              "Steipete:跟 Microsoft 合作把 OpenClaw 带进企业。"
             ]
           }
         },
         {
           "authorKey": "x:amasad",
-          "sourceUrl": "https://x.com/amasad/status/2061575503434408106",
+          "sourceUrl": "https://x.com/amasad/status/2061893093696434578",
           "en": {
             "rewrite": [
-              "Amjad Masad's pitch is the cleanest version of the 'agents as a full team' argument: from one prompt, you get a website, a mobile app, monetization wired in, and a Delaware corp to operate from. Free to start.",
-              "Strip away the marketing and the underlying claim is that the fixed costs of starting a software business—setup, app shells, payment integration, legal structure—have collapsed to near zero. That changes who can compete and how fast.",
-              "167 likes and 15 retweets is modest for Amjad, but the message is the product positioning the company wants out there: a one-prompt-to-business story is exactly the narrative this market wants to believe is true."
+              "Amjad Masad announces a partnership with Microsoft: the Replit team is enabling everyone in the enterprise to build and deploy safe and secure Fabric data apps, on top of Microsoft's new Rayfin SDK.",
+              "Fabric is Microsoft's enterprise data platform; pairing it with Replit's agentic app builder means a business analyst can describe a data app and have it built and deployed into the existing data stack, without leaving the Microsoft estate.",
+              "Read with Steipete: in the same 24 hours, two independent agentic platforms both landed Microsoft enterprise partnerships. That is not coincidence — Microsoft is making its bet on [agent as the new app layer]."
             ],
             "original": [
-              "Prompt to business: - website - mobile app - monetization - Delaware corp. Start for free"
+              "Excited to partner with @Microsoft to enable everyone in the enterprise to build and deploy safe & secure Fabric data apps. This is possible thanks to Microsoft's new Rayfin SDK."
             ]
           },
           "cn": {
             "rewrite": [
-              "Amjad Masad 抛出了「agent 就是完整团队」最干净的版本：从一段 prompt 出发，你得到一个网站、一个移动 app、内嵌的变现通道，以及一家可以开张运营的特拉华州公司。免费起步。",
-              "把营销话术剥掉，底下的论断是：开一家软件公司的固定成本——搭架子、App 壳、支付集成、法律结构——已经压到了接近零。这改变了谁能参与竞争以及竞争的速度。",
-              "167 赞和 15 次转发对 Amjad 来说不算爆，但信息正是公司想推出去的产品定位：一段 prompt 到一家公司，恰好是这个市场最愿意相信的叙事。"
+              "Amjad Masad 宣布跟 Microsoft 的合作:Replit 团队要让企业里的每个人都能在 Microsoft 新出的 Rayfin SDK 上,构建和部署安全合规的 Fabric 数据应用。",
+              "Fabric 是 Microsoft 的企业数据平台;把它跟 Replit 的 agentic 应用构建器接上,意味着一个业务分析师描述一个数据应用,就能直接构建并部署到现有的数据栈里,不离开 Microsoft 的体系。",
+              "跟 Steipete 那条放一起读:24 小时内,两个独立的 agentic 平台都落地了 Microsoft 企业合作。这不是巧合——Microsoft 在押[agent 是新的应用层]。"
             ],
             "original": [
-              "Amjad：prompt → 网站 + 移动 app + 变现 + 特拉华公司。免费起步。",
-              "软件创业的固定成本已经压到接近零。"
+              "Amjad:Replit 联手 Microsoft,基于 Rayfin SDK 在 Fabric 上构建部署数据应用。"
             ]
           }
         }
       ]
     },
     {
-      "title": "Operators in Public / 运营者公开他们的 workflow",
-      "desc": "Matt Turck、Garry Tan、Nikunj、Aditya 等都在主动展示自己怎么用 agent、怎么构建公司——公开化本身就是一种信号。",
+      "title": "The Model Frontier Keeps Moving / 模型前沿继续往前推",
+      "desc": "Gemini 把 Thinking Levels 全面铺开,SWE 基准被质疑,VWE/ViBench 等更接近真实应用的评测开始被点名。",
       "cards": [
         {
-          "authorKey": "x:mattturck",
-          "sourceUrl": "https://x.com/mattturck/status/2061533386296963464",
+          "authorKey": "x:joshwoodward",
+          "sourceUrl": "https://x.com/joshwoodward/status/2062025667852812583",
           "en": {
             "rewrite": [
-              "Matt Turck shares a viral CEO-vs-CTO meme: the CEO says 'we have tens of thousands of AI agents running in production at massive scale right now', and the CTO is rendered as a small, defeated-looking figure with no comeback.",
-              "Read as truth, it captures the awkward gap between executive narrative and engineering reality at every company currently doing a public AI push. Read as comedy, it lands because the gap is real.",
-              "289 likes, 12 retweets. The point that survives the joke: 'tens of thousands of agents in production' is a phrase that has lost all information value—everyone says it, no one defines it."
+              "Josh Woodward (VP at Google, leading Gemini App, AI Studio, Labs) closes a long-standing papercut: Thinking Levels are now available on Gemini across Web, iOS, and Android.",
+              "215 likes on a feature-shipment post is mild, but the move is significant: parity in reasoning controls across surfaces means Google is treating [how hard should the model think] as a first-class user-facing axis, not a developer-only setting.",
+              "Read against Levie: a router that can pick thinking levels is meaningfully more powerful than one that just picks models."
             ],
             "original": [
-              "CEO: 'we have tens of thousands of AI agents running in production at massive scale right now'. CTO:"
+              "✅ Papercut fixed: Thinking Levels are now available on Gemini across Web, iOS, and Android."
             ]
           },
           "cn": {
             "rewrite": [
-              "Matt Turck 转了一个爆火的 CEO vs CTO meme：CEO 说「我们现在在生产环境里有几万个 AI agent 跑着，量级巨大」，CTO 被打成一个小小的、表情委屈的小人，毫无还嘴之力。",
-              "当事实读，它抓住了每家正在公开讲 AI 的公司里那种「高管叙事 vs 工程现实」的尴尬鸿沟。当笑话读，它能炸也是因为这道鸿沟是真实的。",
-              "289 个赞，12 次转发。玩笑背后留下的判断是：「生产环境里几万个 agent」这句话已经失去信息量——谁都在说，谁都没定义清楚。"
+              "Josh Woodward(Google VP,负责 Gemini App / AI Studio / Labs)关掉了一个长期 papercut:Thinking Levels 在 Web、iOS、Android 全端可用。",
+              "一条功能发布推能拿到 215 赞不算夸张,但这一步的份量在:跨端的推理档位对齐,意味着 Google 把[模型该想多深]当成一个面向用户的一等控制轴,不是只给开发者用的开关。",
+              "跟 Levie 一起读:一个能选 thinking level 的路由器,比一个只选模型的路由器强一个量级。"
             ],
             "original": [
-              "Matt Turck 转 CEO vs CTO meme：CEO 喊几万个 agent 上生产，CTO 毫无还嘴。",
-              "这句话已经失去信息量。"
+              "Gemini Thinking Levels 已在 Web/iOS/Android 全面铺开。"
             ]
           }
         },
         {
-          "authorKey": "x:garrytan",
-          "sourceUrl": "https://x.com/garrytan/status/2061568169354129640",
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2061878314311266552",
           "en": {
             "rewrite": [
-              "Garry Tan puts the GStack /office-hours workflow one click away: a single button to try it on your own product idea. The structural claim: founder-office-hours is now a thing you can rent from an AI.",
-              "Garry's stack has been the most-cited YC-region operator workflow of the past few months. The public release of a one-click version is the natural step—expose the exact thing that was previously a Garry-only advantage.",
-              "352 likes and 20 retweets. The YC audience is the natural customer for this kind of product, so the launch is also a distribution play disguised as a workflow share."
+              "Amjad argues that SWE benchmarks don't necessarily capture app-building capabilities, and points to ViBench as a better measure.",
+              "The claim lines up with what builders have been saying for months: the leaderboard models on SWE-bench are not always the models that ship the best end-to-end apps. The community is starting to look past the headline numbers.",
+              "Read with the model-routing story: a routing decision based only on SWE-bench scores will systematically pick the wrong model for app-building work."
             ],
             "original": [
-              "Want to try GStack /office-hours for your product idea as quickly as possible? It's one click here: https://t.co/8g3LJkrV6i"
+              "SWE benchmarks don't necessarily capture app building capabilities. ViBench does."
             ]
           },
           "cn": {
             "rewrite": [
-              "Garry Tan 把 GStack 的 /office-hours 工作流做成了一键版：按一个键就可以把它用在你自己的产品 idea 上。底层的论断是：founder-office-hours 现在已经是 AI 可以替你租的活。",
-              "Garry 这套工作流是过去几个月 YC 圈里被引用最多的运营者 workflow。一键版的公开发布是自然的下一步——把以前只是 Garry 独占优势的那个东西，开放出来。",
-              "352 赞和 20 次转发。YC 受众是这类产品天然的客户，所以这次发布也是一次 workflow 分享外壳下的渠道动作。"
+              "Amjad 提出一个观点:SWE 基准并不一定能反映 app 构建能力,VWE/ViBench 才更接近真实。",
+              "这个判断跟 builder 圈里这几个月的体感对得上:在 SWE-bench 上领先的模型,未必是端到端 app 构建效果最好的那个。社区开始不只看头条数字了。",
+              "跟 model routing 那条放一起:只按 SWE-bench 排名的路由决策,系统性地选错 app 构建工作的模型。"
             ],
             "original": [
-              "Garry Tan：GStack /office-hours 一键可用。",
-              "352 赞，20 次转发。"
+              "Amjad:SWE 基准不反映 app 构建能力,ViBench 更接近真实。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Builder Pace & SaaS Reality Check / Builder 节奏与 SaaS 现实",
+      "desc": "Garry Tan 一天连发,Nikunj 提醒别把单一因素当护城河,Peter Yang 谈 Devin 和 SaaS 死活,Builder 的当下心态一览。",
+      "cards": [
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2062052761945223266",
+          "en": {
+            "rewrite": [
+              "Garry Tan: GBrain is the agentic swiss army knife for retrieval and memory. 37 likes is low for a Garry post, but this is a tooling signal — YC's president is naming an open-source agent memory / retrieval project as a daily tool.",
+              "The interesting move: Tan is publicly installing an open-source memory layer into his own workflow. For a Y Combinator president to do that is a very different kind of endorsement than a VC tweeting about a portfolio company.",
+              "Read with Steipete's autoreview (last week) and Peter Yang's Devin piece below: the builder stack now has open-source memory, automated review, and opinionated agents as discrete pieces."
+            ],
+            "original": [
+              "GBrain is the agentic swiss army knife for retrieval and memory."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan:GBrain 是一个用于检索和记忆的 agentic 瑞士军刀。37 赞对 Garry 来说不算高,但这是个工具信号——YC 的总裁把一个开源 agent 记忆/检索项目当成日常工具来用。",
+              "有意思的点在于:Tan 公开把一个开源记忆层装进了自己的工作流。YC 总裁做这件事,跟 VC 发推讲自己投的公司,完全不是一种背书。",
+              "跟 Steipete 的 autoreview(上周)和 Peter Yang 谈 Devin 那条放一起读:builder 工具栈已经由开源记忆、自动 review、立场鲜明的 agent 这些独立模块拼起来了。"
+            ],
+            "original": [
+              "Garry:GBrain 是用于检索和记忆的 agentic 瑞士军刀。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2061936952400814392",
+          "en": {
+            "rewrite": [
+              "Peter Yang gives the Devin / Windsurf team credit for staying disciplined through the ups and downs and keeping at it. He knows many AI-native builders who love Devin now, and wants to find time to try it himself.",
+              "The market signal: in 18 months, [agentic dev tool] went from [AGI demo] to [thing serious builders have an opinion on]. The category is now settled enough for measured praise.",
+              "The follow-up thought: if Devin is winning builders back, the original [AGI or bust] framing was wrong — the right framing was always [reliable engineering coworker]."
+            ],
+            "original": [
+              "Have to give the Devin/Windsurf team flowers for staying disciplined through the ups and downs and keeping at it. I know many AI native builders who love Devin now. Will hopefully find some more time to try it myself."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 给 Devin / Windsurf 团队点赞,认为他们顶住了起起伏伏,一直在坚持做下来。他认识不少 AI native 的 builder 现在很喜欢 Devin,自己也想找时间再亲自试一下。",
+              "市场信号:18 个月里,[agentic 开发工具]从[AGI 演示]走到了[严肃 builder 有真实评价]的阶段。这个品类已经稳到可以给出有节制的赞许。",
+              "顺着想:如果 Devin 能把 builder 赢回来,说明一开始[AGI 一举搞定]的框架是错的——对的路一直是[靠谱的工程同事]。"
+            ],
+            "original": [
+              "Peter Yang 给 Devin 团队点赞:经得起起伏,builder 圈正在回流。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2061846283263103274",
+          "en": {
+            "rewrite": [
+              "Peter Yang's SaaS read: SaaS is not dead, but the simple, narrow SaaS is in trouble. Larger enterprise SaaS that can do multiple jobs (Figma) is probably fine. A simple SaaS for a narrow use case is harder to monetize because AI skills can often solve the same problem.",
+              "This is Rauch's YES-CODE frame, but for a different audience. Peter is talking to would-be SaaS founders, not builders: if your only moat is [a single function delivered through a web form], an agent skill will eat it.",
+              "The implication for the next 12 months: the B2B SaaS pipeline is going to bifurcate — multi-job platforms with embedded agents, on one side; thin point-solutions, on the other, under serious pressure."
+            ],
+            "original": [
+              "People are saying SaaS is not dead. I think larger enterprise SaaS that can do multiple jobs are probably fine (e.g., Figma). But if you're building a simple SaaS for a narrow use case, I think it's harder to monetize now because: 1. AI skills can often solve the same problem."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 对 SaaS 的判断:SaaS 没死,但简单、窄场景的 SaaS 日子难过。能做多件事的大型企业级 SaaS(Figma 这种)应该还行。如果只做一个窄场景的简单 SaaS,现在越来越难变现,原因之一是 AI skills 经常能直接解决同类问题。",
+              "这是 Rauch 那条 YES-CODE 的换一种说法,但面向的是潜在 SaaS 创始人,不是 builder:如果你的护城河只是[一个功能 + 一个网页表单],agent skill 会吃掉你。",
+              "对接下来 12 个月的含义:B2B SaaS 赛道会两极分化——一边是内嵌 agent 的多任务平台,另一边是窄场景的薄点工具,后者会承压。"
+            ],
+            "original": [
+              "Peter Yang:多任务企业 SaaS 没事,窄场景简单 SaaS 被 AI skills 挤压。"
             ]
           }
         },
         {
           "authorKey": "x:nikunj",
-          "sourceUrl": "https://x.com/nikunj/status/2061492724856234030",
+          "sourceUrl": "https://x.com/nikunj/status/2062033620773306763",
           "en": {
             "rewrite": [
-              "Nikunj Kothari's one-liner is a market-history punchline: all you had to do to make life-changing wealth was to invest in ~every public company along the 237. The bus route in Silicon Valley. The implied thesis is that the diversification you sneer at is the diversification that compounded.",
-              "It's also a meta-joke about how hard it is to pick winners. The 237 buses between Sand Hill and San Francisco were, in retrospect, a 20-year rolling portfolio of every AI company in the world.",
-              "4045 likes makes this the most popular pure 'builder humor' tweet of the day."
+              "Nikunj Kothari: the best founders treat the following as a necessary component of their business but NOT the entire business — AI / timing, funding, distribution / hype, market, product, revenue. He is seeing too many pitches that tout only one of these as the core reason.",
+              "The single-claim pitch is the AI-era disease. [We have the best model] or [we are first to market] or [we have viral distribution] is, on its own, a 2021-vintage pitch that the current cycle is rewarding less.",
+              "Read with Peter Yang's SaaS piece: in a market where thin moats are being eaten, the pitch that names a single component as the moat is the pitch that is least likely to fund."
             ],
             "original": [
-              "All you had to do to make life changing wealth was to invest in ~every public company along the 237"
+              "The best founders treat the following as a necessary component of their business but NOT the entire business: > AI / timing / why now > Funding > Distribution / hype > Market > Product > Revenue. I'm seeing too many pitches that are touting only one of these as the core reason."
             ]
           },
           "cn": {
             "rewrite": [
-              "Nikunj Kothari 的一句玩笑是市场史的冷幽默：想要赚到改变人生的财富，你只需要投资 237 沿线每一家上市公司。237 是硅谷的那条公交线。隐含的判断是：你嘴上嫌弃的分散投资，恰恰是真正复利的那一个。",
-              "这也是一句关于「赢家难选」的元玩笑。Sand Hill 和旧金山之间跑的 237 公交，事后看是一条二十年滚动组合——把全世界每一家 AI 公司都装进去了。",
-              "4045 个赞，让这条成为今天最受欢迎的「builder 幽默」。"
+              "Nikunj Kothari:最好的创始人把以下每一项都当作必要条件,而不是充分条件——AI / 时机 / 为何是现在、融资、分发 / 话题度、市场、产品、收入。他看到太多 pitch 只把其中一项讲成核心。",
+              "单点论调的 pitch 是 AI 时代的流行病。[我们模型最好]、[我们第一个入场]、[我们有病毒式分发]——单拎出来,这都是 2021 年那一代 pitch,这一周期对它们的奖励越来越少。",
+              "跟 Peter Yang 那篇 SaaS 现实放一起读:在薄护城河被吃掉的当下,把单一组件当护城河讲的 pitch,正是最难融到钱的 pitch。"
             ],
             "original": [
-              "Nikunj：赚到改变人生的财富，只需要投资 237 沿线每一家上市公司。",
-              "4045 赞。"
+              "Nikunj:AI/时机、融资、分发、市场、产品、收入都只是必要条件,不是充分条件。"
             ]
           }
-        },
+        }
+      ]
+    },
+    {
+      "title": "Podcast: Listen Labs and AI-First Customer Research / 播客:Listen Labs 的 AI 一手客户研究",
+      "desc": "Training Data 播客这一期请到 Listen Labs 创始人 Alfred Wahlforss:一年时间拿到 Fortune 500 中 20% 客户,靠的是 AI 跑大规模语音访谈。",
+      "cards": [
         {
-          "authorKey": "x:adityaag",
-          "sourceUrl": "https://x.com/adityaag/status/2061664255007469881",
+          "authorKey": "podcast:training-data",
+          "authorName": "Training Data",
+          "authorTag": "AI 工程与训练实践播客",
+          "sourceUrl": "https://www.youtube.com/watch?v=Rumft-rsEu4",
           "en": {
             "rewrite": [
-              "Aditya Agarwal flags Schrep and the Gigascale team as a partner South Park Commons portfolio companies rave about. The post is short, but the subtext is a talent-flow note: the people who used to build hyperscale infra at Meta are now building for AI-native companies, and SPC is the connective tissue.",
-              "17 likes and 1 retweet means the audience is small but the message is directed: if you're a portfolio founder choosing infra partners, here's a curated signal."
+              "Alfred Wahlforss, founder and CEO of Listen Labs, is on Training Data this week. Listen is an AI-first customer research platform that can run thousands of voice interviews simultaneously. A year after launch, Listen serves 20% of the Fortune 500 — Microsoft, Anthropic, Sweetgreen, NBC are customers.",
+              "The core strategy: get to a billion people in the audience, then stratify by what each person is an expert on — even something as niche as sneakers. Find the early-adopter / influencer segment for the topic, interview them first, and the insights are far more valuable than a generic sample.",
+              "The platform builds persistent profiles of people as it runs more interviews, then lets you search and find the right person to talk to. The competitive moat is the [interview graph]: each new interview makes every future one more accurate."
             ],
             "original": [
-              "Schrep and the Gigascale team are building something special. They have been incredible partners to @southpkcommons portfolio companies. @schrep is someone who I have looked up to for a long time..."
+              "Our goal is to get to a billion people in our audience and then to be able to stratify and know what exactly is this person an expert on. And it might be, you know, even something like sneakers. You have some people who are influencers and kind of early adopters. And if you're able to find that audience and interview them first, the insights are much more valuable.",
+              "We build profiles of people as we do more interviews in the platform, and then we can search and find the right person."
             ]
           },
           "cn": {
             "rewrite": [
-              "Aditya Agarwal 把 Schrep 和 Gigascale 团队点名推荐为 South Park Commons 投资组合公司反复夸赞的合作伙伴。推文很短，但底下是一条人才流向笔记：以前在 Meta 做超大规模基础设施的人，现在在给 AI 原生公司做基建，SPC 是中间那条线。",
-              "17 赞和 1 次转发说明受众不大，但信息是对准的：如果你是一个在挑基础设施合作伙伴的组合公司创始人，这里给了一条被策展过的信号。"
+              "Listen Labs 的创始人兼 CEO Alfred Wahlforss 上了这一期 Training Data。Listen 是一个 AI 一手的客户研究平台,可以同时跑几千场语音访谈。发布一年,客户已经覆盖 Fortune 500 的 20%——Microsoft、Anthropic、Sweetgreen、NBC 都在用。",
+              "核心策略:把用户规模做到十亿,然后按[这个人在哪个细分领域是专家]做分层——哪怕是球鞋这种小领域也行。找到该话题的早期采用者和影响者,先访谈他们,洞察价值远高于一个普通抽样。",
+              "平台会在访谈过程中持续给每个人建档,之后可以直接搜索找到最合适的人去谈。竞争护城河就是那张[访谈图谱]:每多跑一场访谈,未来的每一场都更准。"
             ],
             "original": [
-              "Aditya Agarwal 推荐 Schrep 和 Gigascale 团队作为 SPC 投资组合公司的基础设施合作方。"
+              "Listen 目标:十亿用户,按细分专长分层,先访谈早期采用者,洞察更值钱。",
+              "访谈图谱随规模增长,搜索可定位最合适的人。"
             ]
           }
         }

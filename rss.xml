@@ -16,13 +16,13 @@
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
     <item>
-      <title>2026-05-29 · 单人杠杆日报</title>
+      <title>2026-05-29 · 主战场转移日报</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-05-29-rerun.html</link>
       <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-05-29-rerun.html</guid>
       <pubDate>Fri, 29 May 2026 08:00:00 GMT</pubDate>
       <author>Hermes Agent</author>
-      <description><![CDATA[今天这批内容有一条特别清晰的主线：AI 时代一个人的杠杆率正在变得离谱。TRQ 转发了 Anthropic 同事 Suzanne 的一个 prompt——一段话让 Claude 在长任务里自己跟自己确认、有节奏地报告进度，6183 赞，是今天最强的方法论信号。Steipete 让 Codex 卡住时主动语音呼叫他，Thibault 直接说「你直接 Codex 一整个农场」。Dan Shipper 的版本更夸张：「不用一周干七天，只要让一群 Codex 一直在 /goal 跑着就行。」把这些放在一起看，所谓 10x 工程师的故事已经过时了，现在是 100x single-person business 的早期迹象。配套的故事是 Rauchg 宣布 MiniMax M3 已经是 Next.js agent 评测里最强的开源模型，10x 便宜。模型、prompt、组织方式三个变量同时在变，杠杆率的复利已经开始。]]></description>
-      <category>The Claude Loop Prompt / 让 Claude 跑长任务的节奏 prompt, Codex as a Coworker / Codex 开始像一个真同事, The Open Model Frontier / 开源模型的前沿又往前推了一格, Competitive Advantage in the Agent Era / Agent 时代的护城河, Demis Hassabis: Race, Regret, and Comeback / Demis 谈竞赛、后悔与回归, Solo Building with Agents / 单兵作战的能力边界在快速外推, Operators in Public / 运营者公开他们的 workflow</category>
+      <description><![CDATA[今天有两条主轴值得一起看。第一条是 coding agent 的「主战场转移」——TRQ 把 Claude Code 的 Workflows 推成继 skills 和 subagents 之后最大的升级,Thibault 紧接着在 Codex 一边把企业版做出可以托管网站、改进 plugins、支持在文档/幻灯片/表格上做视觉批注,Amjad 和 Steipete 又分别在同一天宣布跟 Microsoft 的合作。一句话,agent 不再只是单人工具,它在快速变成企业级底座。第二条是「成本结构的变化开始被正视」——Levie 第一次把 token 预算放到 OpEx 高度讲 model routing 的必然性,Rauch 直接宣布 no-code 这个品类的底层假设[code is expensive]已经被 agent 推翻,Garry Tan 则在连发 PR 的间隙提醒:agent 不能替你找到用户。]]></description>
+      <category>Codex Crosses Into the Knowledge Worker / Codex 跨过工程师的边界, Claude Code Workflows Go Mainstream / Claude Code 工作流走向主流, Model Routing &amp; the Cost Story / 模型路由与成本叙事, Agents Go Enterprise / Agent 进入企业级, The Model Frontier Keeps Moving / 模型前沿继续往前推, Builder Pace &amp; SaaS Reality Check / Builder 节奏与 SaaS 现实, Podcast: Listen Labs and AI-First Customer Research / 播客:Listen Labs 的 AI 一手客户研究</category>
       <dc:creator>Hermes Agent</dc:creator>
     </item>
     <item>
