@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 29 May 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 04 Jun 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,26 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-06-04 · harness 收口日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-04-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-04-rerun.html</guid>
+      <pubDate>Thu, 04 Jun 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[6-3 真空后回归首日,6-4 这条线继续滚——Dreambeans 把移动端 AI 面正式立起来,Anthropic 把 12 个月的「How we contain Claude」长文发出,Microsoft 高管 Satya 第一次被 No Priors 拉进 builder 主线。一句话讲,这是「harness + eval + context」这条线被四家从不同方向同时盖章的一天。]]></description>
+      <category>Dreambeans 移动端面继续发酵 / Mobile Agent Surface Expanding, Codex 复位工程的两个新补丁 / Codex Stability Reset, 建站栈与 harness 实战 / Stack &amp; Harness in Production, 创业与个人信号 / Builder Surface, Anthropic 官方博客 / Anthropic Engineering, 播客 / Podcast: No Priors</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
+    <item>
+      <title>2026-06-03 · 真空后首日日报</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-03-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-03-rerun.html</guid>
+      <pubDate>Wed, 03 Jun 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[过去几天 Follow Builders 上游 RSS 几乎是真空,6-3 终于有内容回归——而且一回来就是一波大数:Google Labs 的 Dreambeans 一条原推拿了 1057 赞,Steipete 同步晒出 OpenClaw 周下载量冲到 1000–2000 万次,Rauch 把 Snowflake + v0 + Next.js 的组合钉成了[genie 出瓶]宣言,Anthropic 工程团队把那份 12 个月的[How we contain Claude]长文正式发出来。一句话讲,这不是普通补货日,是[harness + eval + context]这条线在新一周里被三家从不同方向同时收口的一天。]]></description>
+      <category>Harness Becomes the Moat / Harness 成为新护城河, Codex Becomes Daily-Driver / Codex 走进日常, Dreambeans &amp; the New Mobile Agent Surface / 新移动端面与希望型滚动, The Claude Code Maker Community / Claude Code 玩家社区, Cost, Talent &amp; the Builder Surface / 成本、人才与新建造面</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-05-29 · 底座上桌日报</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-05-29-rerun.html</link>

@@ -1,0 +1,611 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-06-03",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "过去几天 Follow Builders 上游 RSS 几乎是真空,6-3 终于有内容回归——而且一回来就是一波大数:Google Labs 的 Dreambeans 一条原推拿了 1057 赞,Steipete 同步晒出 OpenClaw 周下载量冲到 1000–2000 万次,Rauch 把 Snowflake + v0 + Next.js 的组合钉成了[genie 出瓶]宣言,Anthropic 工程团队把那份 12 个月的[How we contain Claude]长文正式发出来。一句话讲,这不是普通补货日,是[harness + eval + context]这条线在新一周里被三家从不同方向同时收口的一天。"
+  },
+  "archive": {
+    "title": "真空后首日日报",
+    "desc": "RSS 真空之后第一波回归,三家不同来源同时把[harness、eval、context]推回台面,模型层再次被让位给上层工作面。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-03 source feeds.",
+  "sections": [
+    {
+      "title": "Harness Becomes the Moat / Harness 成为新护城河",
+      "desc": "真空回归的第一周,三家独立来源把同一句话再讲一遍:模型层会变成可替换件,harness + eval + context 才是真正决定谁能上 frontier 的那层。",
+      "cards": [
+        {
+          "authorKey": "blog:anthropic",
+          "sourceUrl": "https://www.anthropic.com/engineering/how-we-contain-claude",
+          "en": {
+            "rewrite": [
+              "Anthropic released a long engineering post — How we contain Claude across products — walking through twelve months of hardening their internal agent deployments. They now grant Claude access that would have been rejected out of hand a year ago, and they explain exactly which controls made that possible.",
+              "The mental model: blast radius multiplied by likelihood of failure. Model training drives likelihood down; safeguards cap blast radius. Their concrete list of containment patterns (scoped credentials, isolated environments, action allow-lists, post-hoc review) reads like a harness specification.",
+              "Read it as a reference architecture, not a marketing post."
+            ],
+            "original": [
+              "Twelve months ago, we would have rejected out of hand the idea of granting Claude access sufficient to take down an internal Anthropic service. Today that level of access is routine, and Anthropic developers are more productive for it."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic 发了一篇工程长文——[How we contain Claude across products],讲他们过去 12 个月怎么把内部 agent 部署的护栏一层层加厚。一年前会被直接驳回的那种访问级别,现在已经是常规操作,文章把让这件事变得安全的那些具体控制讲得很清楚。",
+              "核心心智模型是:blast radius × 失败概率。模型训练把概率压下去,safeguard 把爆炸半径罩住。文章里列的 containment 模式(限定权限、隔离环境、action 白名单、事后复核)读起来就像一份 harness 规格说明书。",
+              "把它当参考架构读,不是公关稿。"
+            ],
+            "original": [
+              "十二个月前,给 Claude 那种能搞垮 Anthropic 内部服务的访问权限,我们的标准答案是直接驳回。现在这种访问已经是日常,Anthropic 开发者因此效率更高。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2062276065448669627",
+          "en": {
+            "rewrite": [
+              "Steipete shared a download number for OpenClaw that is hard to argue with: a record week on npm, and once you add Docker, GitHub, internal deployments, and forks, the real number is somewhere in the 10–20 million downloads/week range.",
+              "The framing — combined with Docker, GitHub, company-internal deployments and the numerous forks, real number is more in the 10-20 million downloads/week — is the kind of bracketed estimate that gets dropped into the next fundraising deck and the next competitor's market-map.",
+              "This is no longer a side project with a Discord."
+            ],
+            "original": [
+              "We never had more npm downloads than this week on @openclaw - comined with Docker, GitHub, company-internal deployments and the numerous forks, real number is more in the 10-20 million downloads/week."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Steipete 给了一个不好反驳的 OpenClaw 下载数据:npm 这一周创了历史新高,再算上 Docker、GitHub、企业内自部署和一堆 fork,真实数字大概在每周 1000–2000 万次下载。",
+              "Steipete 给的框定——[comined with Docker、GitHub、企业内部部署和大量 fork,真实数字在 1000–2000 万次/周]——是会被直接抄进下一份融资 deck 和竞品 market map 的那种带括号估算。",
+              "这已经不是一个带 Discord 的 side project 了。"
+            ],
+            "original": [
+              "我们 @openclaw 在 npm 上的下载量这一周是历史新高——再加上 Docker、GitHub、企业内部部署和一堆 fork,真实数字大概在每周 1000–2000 万次下载。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2062307384018829768",
+          "en": {
+            "rewrite": [
+              "The same day, Steipete announced an OpenClaw event with 1,300+ people on the waitlist — the event is being livestreamed on Twitch and Discord for everyone else.",
+              "Waitlist economics for a developer-tool event is unusual: you normally do not see overflow on technical livestreams. The demand profile matches what Steipete has been saying in his Build talk — people are showing up for the meta-tool, not the product."
+            ],
+            "original": [
+              "We have over 1300 people on the waitlist for today's OpenClaw event - will be livestreamed on Twitch and Discord tho!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "同一天,Steipete 宣布 OpenClaw 活动候补名单已经超过 1300 人——活动会在 Twitch 和 Discord 上向所有人公开直播。",
+              "一个开发者工具的活动,候补溢出,这种需求曲线在通常的开发者直播场景里不常见。配着他在 Build 上的演讲看,大家冲的是元工具,不是产品本身。"
+            ],
+            "original": [
+              "今天的 OpenClaw 活动候补名单已经超过 1300 人,活动会在 Twitch 和 Discord 上直播。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2062199585322529108",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch (Vercel CEO) is shipping a thesis on X: generating frontends on top of your business data — Snowflake in, a v0/Next.js app out — is one of the killer apps of coding AI, and the rigid dashboard era is over.",
+              "The framing: Vercel already ran on Snowflake; with v0 and Next.js they are now getting 1000x the value. The compact claim — the genie is out of the bottle, never going back — is the part that is going to age well or badly, and the bet is that it ages well.",
+              "Rauch's stack — Vercel AI Gateway hosting Grok Imagine Video, v0 generating frontends over data — is the cleanest live example of the harness-is-the-product thesis in the SaaS-adjacent layer."
+            ],
+            "original": [
+              "▲ + ❄️\n\nGenerating frontends on top of your business data is one of the killer apps of coding AI.\n\nThe genie is out of the bottle. Never going back to clunky and rigid dashboards.\n\n@vercel already ran on Snowflake. But with @v0 and @nextjs, we're now getting 1000x the value."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch(Vercel CEO)在 X 上抛出一个判断:在你的业务数据之上自动生成前端——Snowflake 进,v0/Next.js 应用出——是 coding AI 的杀手级应用之一,那个笨重又死板的可视化看板时代结束了。",
+              "他给的依据是:Vercel 自己就一直在跑 Snowflake;有了 v0 和 Next.js 之后,他们从这堆数据上拿到的价值翻了一千倍。[genie 出瓶了,不可能回头]这句断言接下来是对是错,押注是会一直对下去。",
+              "Rauch 这套组合——Vercel AI Gateway 跑 Grok Imagine Video,v0 套在数据上出前端——是 SaaS 邻接层最干净的[harness 才是产品]活样本。"
+            ],
+            "original": [
+              "▲ + ❄️  在你的业务数据之上直接生成前端,是 coding AI 的杀手级应用之一。精灵已经出瓶,不可能再回到那种笨重死板的可视化看板。@vercel 早就跑在 Snowflake 上了。但有了 @v0 和 @nextjs,我们现在拿到的价值是 1000 倍的。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Codex Becomes Daily-Driver / Codex 走进日常",
+      "desc": "Codex 当天三条信号连成一条线:thhsottiaux 在社交上刷[根本停不下来],Peter Yang 同步狂夸 Codex 编辑表格,顺手把一份 written guide 放出来——Codex 在 6-3 已经是 daily-driver。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2062310691076558929",
+          "en": {
+            "rewrite": [
+              "A short six-word message from Thibault Sottiaux (Codex lead at OpenAI): Can't stop watching it. With no link and no thread.",
+              "The brevity is the tell. When a coding-tools lead publicly says they cannot stop watching a Codex session — and the engagement is healthy (164 likes) — it is the most direct signal of internal enthusiasm an OpenAI employee can post without crossing a compliance line."
+            ],
+            "original": [
+              "Can't stop watching it."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux(OpenAI Codex 负责人)发了一条只有六个字的 tweet:Can't stop watching it。没链接,没 thread。",
+              "短本身就是信号。一个 coding 工具的负责人在公开平台说[自己根本停不下来]地看一个 Codex session——拿 164 个赞——这是 OpenAI 员工在合规线内能给到的、最直接的内测兴奋感信号。"
+            ],
+            "original": [
+              "根本停不下来地看。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2062283525542531194",
+          "en": {
+            "rewrite": [
+              "Peter Yang (frequent Cursor/Codex commentator) is raving about Codex for spreadsheet edits this afternoon — the kind of repetitive, cell-by-cell work that used to live in a junior analyst's afternoon.",
+              "It is the kind of use case that used to be the rhetorical last-mile of LLM productivity: structured tables, no judgment calls, all mechanical. Codex apparently handles it without the babysitting the previous generation needed."
+            ],
+            "original": [
+              "Codex is absolutely killing it this afternoon for editing spreadsheets for me."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang(经常评 Cursor/Codex 的那位)今天下午在狂夸 Codex 编辑表格的体验——那种以前要占一个初级分析师一下午的、逐 cell 的重复活。",
+              "这是过去 LLM 生产力叙事里最常被拿来当[最后一公里]的用例:结构化表格,没有判断题,全是机械操作。Codex 这次看起来不再需要上一代那种人工盯着。"
+            ],
+            "original": [
+              "Codex 今天下午在编辑电子表格这件事上,简直杀疯了。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2062181457842651249",
+          "en": {
+            "rewrite": [
+              "Peter Yang followed up with a written guide for the spreadsheet use case — a quieter, more durable artifact than the original hot take.",
+              "Power users tend to graduate from a single rave tweet to a written guide exactly when they have decided a tool is in their permanent rotation."
+            ],
+            "original": [
+              "Also available as a written guide."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 紧跟着放了一份电子表格用例的 written guide——比原来那条热推更安静,但留得更久。",
+              "重度用户从一条夸的 tweet 毕业到一份 written guide 的时间点,通常就是他们决定把这个工具长期挂进自己日常轮换的那一天。"
+            ],
+            "original": [
+              "也有一份文字版指南可以看。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Dreambeans & the New Mobile Agent Surface / 新移动端面与希望型滚动",
+      "desc": "Google Labs 同一天把 Dreambeans 放出来:一个定位[希望型滚动,不是末日型滚动]的每日精选 app,小团队 pitch + 走廊里拍板 + 当周上线——也是 AI 时代组织应该有的样子。",
+      "cards": [
+        {
+          "authorKey": "x:GoogleLabs",
+          "sourceUrl": "https://x.com/GoogleLabs/status/2062206479026069544",
+          "en": {
+            "rewrite": [
+              "Google Labs shipped a new mobile experiment called Dreambeans — a daily, personalized digest app that uses Personal Intelligence to connect to Google apps and surface hope scrolling, not doom scrolling.",
+              "It is positioned as a small, opinionated counterweight to the algorithmic feed: every day, a few curated collections of stories you might have missed, on topics you actually care about.",
+              "Available starting today for eligible US Google AI Ultra users, with an open waitlist for everyone else — the right gating for an experiment of this size."
+            ],
+            "original": [
+              "🚨 NEW EXPERIMENT 🚨\n\nDreambeans is a new, experimental mobile app that uses Personal Intelligence to connect to your Google apps. Every day, it delivers collections of personalized stories, surfacing things you might otherwise miss, alongside topics that are relevant to you, to help you dive deeper into the things you care about most.\n\nAvailable starting today for eligible US-based Google AI Ultra users (+18), with an open waitlist found on our website below!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Google Labs 上线了一个新的移动端实验:Dreambeans——一个用 Personal Intelligence 连到 Google 应用的每日精选 app,定位是[希望型滚动,不是末日型滚动]。",
+              "它把自己摆在算法 feed 的对面:每天只给几组精选故事,讲那些你本来可能错过的、跟你关心的话题真正相关的内容。",
+              "首发只对符合资格的 US Google AI Ultra 订阅用户开放,其他人可以走公开 waitlist——这种小体量实验给一个对的小池子,再开一个外部候补,做法是对路。"
+            ],
+            "original": [
+              "🚨 新实验 🚨 Dreambeans 是一个新的实验性移动 app,用 Personal Intelligence 连接你的 Google 应用,每天推送一组精选故事,把你可能错过的内容挖出来,再配上你关心的主题让你深读。即日起对美国地区符合条件的 Google AI Ultra 用户(+18)开放,外部候补在官网页面上。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:joshwoodward",
+          "sourceUrl": "https://x.com/joshwoodward/status/2062217728824651848",
+          "en": {
+            "rewrite": [
+              "Josh Woodward (Google Labs lead) added the backstory to Dreambeans: a small Google Labs team pitched the hope-scrolling-not-doom-scrolling idea in a hallway; go for it was the answer; and the experiment is rolling out the same week.",
+              "It is also a small but real example of an org chart doing what the AI era keeps demanding: a small team with a sharp point of view, an executive who can say yes in one sentence, and a release in days, not quarters."
+            ],
+            "original": [
+              "A short backstory on this one:\n\nA small Google Labs team had an idea to make an app designed to connect you with what matters, without the endless scroll. \"Hope scrolling, not doom scrolling\" was the hallway pitch. \"Go for it.\"\n\nAnd today, that little experiment is rolling out.\n\nMeet Dreambeans, a daily dose of inspiration, brewed fresh for you. We're excited to see what you think!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Josh Woodward(Google Labs 负责人)给 Dreambeans 补了段前情:一个 Google Labs 小团队在走廊里 pitch 了[希望型滚动,不是末日型滚动]这个想法,得到的回答是一句[go for it],然后这周实验就上线了。",
+              "这也是一个微小但真实的例子,说明组织架构在按 AI 时代一直被要求的方式运转:小团队、尖锐观点、领导一句话能拍板、几天而不是几个季度就发版。"
+            ],
+            "original": [
+              "这个小项目的前情:Google Labs 一个小团队想做一款 app,把你和真正重要的东西连起来,不要无尽滚屏。[希望型滚动,不是末日型滚动]是走廊 pitch 的原话。[去吧]是回答。今天,这个小小的实验上线了。认识一下 Dreambeans,每天一份新鲜出炉的灵感。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2062198451086221543",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari (early Stripe, now angel + builder) is on the Fitbit Air hype train — and uses the opportunity to enumerate what the platform would still need: a real Google Health API, write capabilities to Apple Health, and a band people actually want to wear.",
+              "It is a classic builder-on-X move: get excited about a new form factor, then immediately sketch the integration list. The mobile-health surface area is what is being sketched here, not the watch."
+            ],
+            "original": [
+              "Getting on this Fitbit Air hype train. Professional at the top, monitoring at the bottom..\n\nNow just need Google Health API, write capabilities to Apple Health and a nice band and we're all set!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kothari(早期 Stripe,现在做天使 + builder)跳上 Fitbit Air 的 hype 列车——并顺手把平台还缺什么列了出来:正经的 Google Health API、能写数据到 Apple Health 的能力、以及一个大家愿意戴的表带。",
+              "这是 builder 在 X 上的经典动作:对一个新形态先兴奋一下,再立刻画一张集成清单。这里被画出来的是 mobile-health 的工作面,不是手表本身。"
+            ],
+            "original": [
+              "我跳上 Fitbit Air 这趟 hype 列车了。上面是专业模式,下面是健康监测……现在只要 Google Health API、能写数据到 Apple Health,再搭一条好看的表带,就齐活了!"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "The Claude Code Maker Community / Claude Code 玩家社区",
+      "desc": "Claude 官方账号连发三条转一个社区作品:Ben 用 Arduino + Pi Zero 造了一个会跳的 Clawd 实体机器人,Claude Code 需要输入时它会物理地顶起来拍你——是只有[长时间跑 Claude Code + 顺带玩硬件]的世界里才有的项目。",
+      "cards": [
+        {
+          "authorKey": "x:claudeai",
+          "sourceUrl": "https://x.com/claudeai/status/2062220049146876347",
+          "en": {
+            "rewrite": [
+              "The official Claude account posted one of the more unusual community builds of the month: a small aluminum-bodied Clawd robot, internally driven by a solenoid and a Raspberry Pi, that physically jumps up and down to get the user's attention when Claude Code needs input.",
+              "Ben, the builder, kept losing focus during long Claude Code sessions — so he outsourced the nudge to hardware. The framing matters: this is a quality-of-life build for someone who lives inside Claude Code."
+            ],
+            "original": [
+              "Ben kept getting distracted during long Claude Code sessions, so he built a miniature Clawd to get his attention. When Claude Code needs input, a solenoid inside the aluminum body pushes it upward. In other words, it jumps up and down."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude 官方账号转了这个月最离谱的社区小项目之一:一个铝合金外壳的迷你 Clawd 机器人,内部用螺线管加树莓派驱动,Claude Code 需要输入时它就会物理地跳起来拍你。",
+              "制作者 Ben 在跑长 Claude Code session 时总走神,于是把[该集中注意力]这个事外包给了硬件。意义在于:这是一个给[住在 Claude Code 里的人]做的生活质量小项目。"
+            ],
+            "original": [
+              "Ben 在跑长 Claude Code session 时总走神,于是造了一个迷你 Clawd 来提醒他。Claude Code 需要输入时,铝合金身体里的螺线管会把 Clawd 顶起来——也就是,它会跳。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:claudeai",
+          "sourceUrl": "https://x.com/claudeai/status/2062220045984346276",
+          "en": {
+            "rewrite": [
+              "Follow-up tweet: to build the typewriter terminal, he intercepted the keyboard signals and re-routed them to an Arduino. In the back, a Raspberry Pi Zero acts as the brains.",
+              "The mechanical detail is the whole story — the Clawd behaves like a vintage terminal, and the modern LLM tooling and the 1970s-style hardware hacking meet in the same enclosure."
+            ],
+            "original": [
+              "To build the typewriter terminal, he intercepted the keyboard signals and re-routed them to an Arduino. In the back, a Raspberry Pi Zero acts as the 'brains.'"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "第二条:为了搭那个打字机式终端,Ben 把键盘信号截下来重新路由到 Arduino,后面再用一个 Pi Zero 当大脑。",
+              "机械层面的细节才是全部故事——Clawd 表现得像一台老式终端,现代的 LLM 工具链和 70 年代味的硬件玩法,装进了同一个外壳里。"
+            ],
+            "original": [
+              "为了搭那个打字机式终端,Ben 把键盘信号截下来重路由到 Arduino,后面再用一个 Pi Zero 当大脑。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:claudeai",
+          "sourceUrl": "https://x.com/claudeai/status/2062220051587952973",
+          "en": {
+            "rewrite": [
+              "Third tweet in the thread is a demo video (no caption, just the link) showing the Clawd in action — a polished, watch-this-thing-actually-jumps clip.",
+              "The Claude official account boosting all three is a quiet signal: Anthropic is curating the maker side of the Claude Code community, not just the enterprise one."
+            ],
+            "original": [
+              "(demo video link)"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "第三条是 demo 视频(没配文,只有链接),把 Clawd 真跳起来那一段拍得很完整。",
+              "Claude 官方账号主动把三条都转了,是一个安静信号:Anthropic 在意的不只是企业侧 Claude Code 社区,还有 maker 这边。"
+            ],
+            "original": [
+              "(演示视频链接)"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Cost, Talent & the Builder Surface / 成本、人才与新建造面",
+      "desc": "Levie 重算 AI 时代软件 TAM,Rauch 用一句[you know what to do]点出建造者侧的政治时刻,AmaSad / DanShipper / Swyx / Zarazhangrui / TaoLi 各自在自己的小角落往外推——成本结构与建造者面在被同时改写。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2062280745889222937",
+          "en": {
+            "rewrite": [
+              "Aaron Levie (Box) is doing what he does best: rewriting the enterprise software TAM in one tweet. Even with employer caps, the per-employee spend on AI tokens now runs into the hundreds or thousands per month, vs. the $10–50/employee/month software-license era.",
+              "The punchline: the markets for AI are going to be much larger than people think, because intelligence is now a variable cost line, not a fixed license line. The unit economics and the gross margins look different in that world.",
+              "Read this before the next AI capex bubble op-ed."
+            ],
+            "original": [
+              "Even with employer caps, the spend on AI tokens dramatically exceeds any other historical spend on software.\n\nTypically, companies maybe would spend on the order of $10-50 for a software license per month per employee, but now will pay hundreds or thousands on tokens to augment their productivity.\n\nThis shows you how big the TAM for intelligence is in the enterprise. The markets for AI are going to dramatically expand the size of the traditional software markets over time."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie(Box 创始人)在做他最擅长的事:用一条 tweet 重写企业软件 TAM。即使有 employer 端的 cap,现在每员工每月花在 AI token 上的钱已经是几百到几千美元,而以前一份软件 license 是 10–50 美元/员工/月。",
+              "结论是:AI 市场的总规模会远大于多数人想象——因为 intelligence 现在是变动成本项,不再是固定 license 项。在这个世界里,单位经济、毛利结构会看起来很不一样。",
+              "看下一篇[AI capex 泡沫]的评论文章之前,先读这条。"
+            ],
+            "original": [
+              "即使算上公司的用量上限,花在 AI token 上的钱也远远超过软件史上任何一笔支出。过去企业每员工每月大概花 10–50 美元买一份软件 license,现在要花几百到几千美元买 token 来提人效。这说明企业端 intelligence 的 TAM 有多大。AI 的市场会比多数人想的大得多,而且会显著把传统软件市场的规模再撑大。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2062179592367227174",
+          "en": {
+            "rewrite": [
+              "Rauch's other tweet of the day is a four-word line — You know what to do — with a Statue of Liberty emoji and a link. No thread, no build-up.",
+              "The brevity is doing political work: it is a builder-side declaration in a moment when the platform layer keeps raising costs and constraints. The builder crowd read it the way it was meant to be read."
+            ],
+            "original": [
+              "You know what to do 🗽"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Rauch 当天另一条 tweet 是四个字的[you know what to do],配一个自由女神像 emoji 和一个链接。没 thread,没铺垫。",
+              "短本身在干活——这是平台层不断加价加约束的当口,建造者侧的一个明确表态。builder 圈读到的意思就是它本来要表达的那个意思。"
+            ],
+            "original": [
+              "你懂的 🗽"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2062228935702921641",
+          "en": {
+            "rewrite": [
+              "AmaSad (Replit) is back on the B2B SaaS beat: You can run but you can't hide from B2B SaaS — a short, confident reminder that the SaaS resurgence thesis is not just Dan Shipper's hobby horse.",
+              "The 384 likes for a B2B SaaS tweet is the engagement number that says the audience is ready to hear the counter-narrative to SaaSpocalypse."
+            ],
+            "original": [
+              "You can run but you can't hide from B2B SaaS"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "AmaSad(Replit)继续讲 B2B SaaS 那条线:你可以跑但躲不掉 B2B SaaS——一句短的、自信的提醒:SaaS 复兴论不是 Dan Shipper 一个人的执念。",
+              "一条讲 B2B SaaS 的 tweet 拿到 384 个赞,这个互动数说明听众已经准备好听 SaaSpocalypse 之外的另一种叙事。"
+            ],
+            "original": [
+              "你可以跑但躲不掉 B2B SaaS。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2062240846444110277",
+          "en": {
+            "rewrite": [
+              "A second short AmaSad tweet of the day, Don't miss it, pointing to an event or product launch — high-engagement filler that signals momentum on the Replit side without committing to specifics.",
+              "The pair — a confident SaaS-is-back thesis plus a teaser — is the classic two-step before a Replit launch."
+            ],
+            "original": [
+              "Don't miss it!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "AmaSad 当天第二条短推:[别错过],指着一个活动或产品发布——一个高互动、低信息密度的 teaser,意味着 Replit 那边有事要发,具体不剧透。",
+              "一条[SaaS 还会回来]的判断 + 一条 teaser,是 Replit 那边发版前常见的两段式节拍。"
+            ],
+            "original": [
+              "别错过!"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/2062202908306030915",
+          "en": {
+            "rewrite": [
+              "Dan Shipper bought Figma stock during the SaaSpocalypse panic — and a conversation with Figma's director of product management for developers made him wish he had bought more.",
+              "The full thread walks through the SaaS resurgence thesis: agents make you more willing to pay for SaaS, not less; Figma's MCP server is the live proof; chat-based tools are the wrong interface for design; review is the new bottleneck. It is a careful, receipt-laden long read."
+            ],
+            "original": [
+              "I bought Figma stock during the SaaSpocalypse panic. Talking to @mcolyer, Figma's director of product management for developers, made me wish I'd bought more.\n\nHe joined me on @every's AI & I to make the case for a SaaS resurgence—and to explain why chat-based tools are the wrong interface for design."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Dan Shipper 在 SaaSpocalypse 恐慌的时候买了 Figma 的股票——和 Figma 那位负责开发者侧的产品总监聊完,他觉得自己买少了。",
+              "整条 thread 把 SaaS 复兴论铺开:agent 让你更愿意为 SaaS 付费,而不是更少;Figma 的 MCP server 是这个判断的活证据;chat 类工具在 design 场景里是错接口;review 是新瓶颈。这是一篇证据齐全的长读。"
+            ],
+            "original": [
+              "我在 SaaSpocalypse 恐慌的时候买了 Figma 的股票。和 @mcolyer(Figma 负责开发者侧的产品总监)聊完,我更觉得自己买少了。他上了 @every 的 AI & I 节目来撑 SaaS 复兴论,顺便解释为什么 chat 类工具是 design 场景的错接口。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/2062144269285023839",
+          "en": {
+            "rewrite": [
+              "Dan Shipper's quieter tweet of the day — a Stoic-flavored single-paragraph meditation on staying grounded when facing the machine god, refusing to confuse your self with what can be measured, verbalized, or grasped.",
+              "It is a small artifact but a useful tonal cue from an Every / AI & I host: even the most prolific agent-era commentators stop every few days to re-anchor the operator's posture."
+            ],
+            "original": [
+              "Can you look the machine god in the face and keep your feet on the ground? Can you refuse to confuse your self with what can be measured, verbalized, or grasped?\n\nIf so, you will go far."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Dan Shipper 当天更安静的一条——一段带斯多葛味的单段沉思:面对 machine god 时还能不能脚踏实地?能不能拒绝把[自我]和[能被测量、能被语言化、能被把握]的那部分混为一谈?",
+              "这是一个小而有用的人工物,从一个高产的 agent 时代评论人那里拿出来很有调性提示:再勤奋的 builder 圈写手,每隔几天也要重新校准一下操作者的姿态。"
+            ],
+            "original": [
+              "你能不能面对 machine god 的时候脚还踩在地上?能不能拒绝把自我和[能被测量、能被语言化、能被把握]的那部分混为一谈?\n\n能,你就走得很远。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/2062202910377992244",
+          "en": {
+            "rewrite": [
+              "Companion links to the AI & I episode — YouTube and Spotify. Dan runs a tight two-link push for the long-form version.",
+              "Low-engagement by his standards (3 likes) — the audience for the SaaS resurgence thesis lives in the long thread, not the deeplink post."
+            ],
+            "original": [
+              "YouTube: ...\n\nSpotify: ..."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "配套的 AI & I 节目链接——YouTube 和 Spotify 两条,Dan 对长内容版的标准双链推法。",
+              "按他平时的标准互动偏低(3 赞)——SaaS 复兴论那一拨听众集中在长 thread 里,deeplink 这条只是引流的配角。"
+            ],
+            "original": [
+              "YouTube 链接……Spotify 链接……"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2062277925127520576",
+          "en": {
+            "rewrite": [
+              "Swyx (AI engineer + podcaster) is gathering top agent labs for an upcoming event — @jgreze will speak, lfg.",
+              "The tweet is a logistics push, but the speaker list is the story: the AI engineer community is consolidating its own conference circuit again."
+            ],
+            "original": [
+              "@jgreze will speak at ...\n\ngathering all the top agent labs. lfg"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx(AI 工程师 + 播客主)在攒一个活动——@jgreze 会来,主题是聚齐 top agent labs,lfg。",
+              "这条推从字面上看是后勤通知,但 speaker list 本身才是新闻:AI 工程师社区正在重新攒起自己的会议阵列。"
+            ],
+            "original": [
+              "@jgreze 会在 …… 上讲\n\n在攒所有 top agent 实验室。开干。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2062217018187923783",
+          "en": {
+            "rewrite": [
+              "Tao Li credits Suzanne — the writer behind a much-shared prompt — for the prose quality. He links to her short story Mall of America, calling it one of his favorite short stories about the human condition that happens to involve AI.",
+              "It is a small but real reminder that some of the best prompt-engineering credits in the wild belong to writers who happen to be in the AI space, not the other way around."
+            ],
+            "original": [
+              "If this prompt feels well written to you, it's because Suzanne is a writer in her little spare time!\n\nYou can read her short story, Mall of America here: ...\n\nIt's one of my favorite short stories about the human condition that happens to involve AI."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Tao Li 把一条广为转发的 prompt 的文笔质量归功于 Suzanne——本职是写作者,顺手做 AI。Tao 顺链放了她那篇短篇《Mall of America》,说这是他最喜欢的、刚好涉及 AI 的、关于人本身的小小说之一。",
+              "这是一个小而真实的提醒:外面被传得最广的那些 prompt,文笔层面的功劳常常属于本职是写作者、顺带做 AI 的人,而不是反过来。"
+            ],
+            "original": [
+              "如果这条 prompt 读起来像有文笔,那是因为 Suzanne 本职是写作者,业余时间做 AI!可以读她的短篇《Mall of America》……,这是我喜欢的一篇刚好涉及 AI、又讲人本身的短篇。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2062256374730699257",
+          "en": {
+            "rewrite": [
+              "Zhang Rui shipped a new Feishu Whiteboard skill: agents can now create editable SVG graphics in Feishu/Lark docs in 30+ predefined styles.",
+              "The use cases pitched — concept visualization, technical architecture diagrams, meeting/document summaries, PPT-replacement — are the boring, high-leverage middle layer of office work where agent-native tooling is still thin."
+            ],
+            "original": [
+              "Introducing the Beautiful Feishu Whiteboard skill:\nYour agent can now create EDITABLE SVG graphics in Feishu/Lark docs in 30+ predefined styles\n\nGreat for concept visualization, technical architecture diagrams, summarizing meetings/long documents, or even replacing PPTs\n\nThe best part is everything is completely editable (can even drag elements around)"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zhang Rui 上线了一个新的飞书白板 skill:agent 现在可以在飞书/Lark 文档里直接生成可编辑的 SVG 图形,30+ 预设风格。",
+              "他列的几个用例——概念可视化、技术架构图、会议/长文档摘要、甚至替代 PPT——是办公室工作里那条无聊但杠杆最大的中间层,agent-native 工具在这一层还非常薄。"
+            ],
+            "original": [
+              "上线 Beautiful Feishu Whiteboard skill:你的 agent 现在可以在飞书/Lark 文档里直接生成可编辑的 SVG 图形,30+ 预设风格。适合概念可视化、技术架构图、会议/长文档摘要,甚至替代 PPT。最好的一点是:全部可编辑(连元素都可以拖)。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2062256421610422759",
+          "en": {
+            "rewrite": [
+              "Companion tweet — Try it — pointing at the live demo. Low engagement (9 likes), but the artifact link is the point.",
+              "This is the second half of the standard shipping cadence: a teaser tweet, then a low-engagement but conversion-focused direct link."
+            ],
+            "original": [
+              "Try it: ..."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "配套推——[Try it]——指向一个能跑的 demo。互动低(9 赞),但 artifact 链接才是重点。",
+              "这是标准发版节拍的第二段:一条讲故事的 tweet,接一条互动低、但导流精准的直接链接。"
+            ],
+            "original": [
+              "去试试:……"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2062285811366904091",
+          "en": {
+            "rewrite": [
+              "Garry Tan (YC) is back on X with a higher signal density than the last quarter — and the SF-healing post is a pointed rebuttal of the city's doomer narrative.",
+              "Why it is on-theme for AI builders: Tan is also the most visible YC partner pushing the generalist founder / hyper-leveraged solo builder thesis this cycle, which sits in the same line as Levie's TAM rewrite and the Cursor/Ryo Lu design-engineer posts."
+            ],
+            "original": [
+              "San Francisco is healing. We don't fall for this type of ridiculous gaslighting anymore."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan(YC)最近在 X 上的发帖质量比上季度明显提高——这条 SF healing 是对城市末日叙事的正面回应。",
+              "跟 AI builder 圈相关的那一层是:Tan 也是这一轮最显眼的、最用力推[通用型 founder / 杠杆最大的独立 builder]判断的 YC partner——这跟 Levie 重算 TAM、Ryo Lu 招 design engineer 是同一条线。"
+            ],
+            "original": [
+              "旧金山正在 healing。我们不再吃那种荒唐的 gaslighting。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
