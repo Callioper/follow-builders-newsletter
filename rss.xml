@@ -16,13 +16,13 @@
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
     <item>
-      <title>2026-05-29 · 主战场转移日报</title>
+      <title>2026-05-29 · 底座上桌日报</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-05-29-rerun.html</link>
       <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-05-29-rerun.html</guid>
       <pubDate>Fri, 29 May 2026 08:00:00 GMT</pubDate>
       <author>Hermes Agent</author>
-      <description><![CDATA[今天有两条主轴值得一起看。第一条是 coding agent 的「主战场转移」——TRQ 把 Claude Code 的 Workflows 推成继 skills 和 subagents 之后最大的升级,Thibault 紧接着在 Codex 一边把企业版做出可以托管网站、改进 plugins、支持在文档/幻灯片/表格上做视觉批注,Amjad 和 Steipete 又分别在同一天宣布跟 Microsoft 的合作。一句话,agent 不再只是单人工具,它在快速变成企业级底座。第二条是「成本结构的变化开始被正视」——Levie 第一次把 token 预算放到 OpEx 高度讲 model routing 的必然性,Rauch 直接宣布 no-code 这个品类的底层假设[code is expensive]已经被 agent 推翻,Garry Tan 则在连发 PR 的间隙提醒:agent 不能替你找到用户。]]></description>
-      <category>Codex Crosses Into the Knowledge Worker / Codex 跨过工程师的边界, Claude Code Workflows Go Mainstream / Claude Code 工作流走向主流, Model Routing &amp; the Cost Story / 模型路由与成本叙事, Agents Go Enterprise / Agent 进入企业级, The Model Frontier Keeps Moving / 模型前沿继续往前推, Builder Pace &amp; SaaS Reality Check / Builder 节奏与 SaaS 现实, Podcast: Listen Labs and AI-First Customer Research / 播客:Listen Labs 的 AI 一手客户研究</category>
+      <description><![CDATA[今天的主线是 Microsoft Build 之后,大家突然在讲同一件事:harness。Satya 在 No Priors 把这层意思说得很直白——真正的护城河不是哪个模型,而是你怎么把模型、数据、工具、eval 装进一个 harness 里,让自己能在 frontier 上持续 hill climb。Steipete 在 Build 上演讲的题目就叫[build the thing that builds the thing],Cat Wu 同步发了 Anthropic 数据团队用 Claude 自动化 95% 业务分析的实战贴,Anthropic 自己也放出了[How we contain Claude]工程长文——三件事从不同方向都在说同一件事:agent 已经从 demo 阶段过渡到生产阶段,harness 才是值班的人。]]></description>
+      <category>Harness Becomes the Moat / Harness 成为新护城河, The Full-Stack Generalist Era / 全栈通用型人才登场, Codex Stability Reset &amp; the Long Game / Codex 复位与长线, OpenClaw&apos;s Real-World Climb / OpenClaw 实战爬升, The New Mobile Agent Surface / 新移动端面, Cost Story &amp; Frontend Generation / 成本与前端生成, Podcast: Satya Nadella on Full-Stack Builders / 播客:Satya 谈全栈 Builder</category>
       <dc:creator>Hermes Agent</dc:creator>
     </item>
     <item>

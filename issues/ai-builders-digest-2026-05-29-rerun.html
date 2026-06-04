@@ -130,365 +130,22 @@
     </div>
     <div class="masthead-subtitle">Bilingual edition · 双语对照版</div>
     <div class="edition-strip">
-      <span class="edition-strip-text" id="edition-strip-text">第 10 期｜2026-05-29｜双语精选版｜16 条精选｜12 位作者｜7 个主题</span>
+      <span class="edition-strip-text" id="edition-strip-text">第 10 期｜2026-05-29｜双语精选版｜19 条精选｜15 位作者｜7 个主题</span>
       <a class="edition-return-link" href="../index.html">返回目录</a>
     </div>
   </header>
 
-  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="今天有两条主轴值得一起看。第一条是 coding agent 的「主战场转移」——TRQ 把 Claude Code 的 Workflows 推成继 skills 和 subagents 之后最大的升级,Thibault 紧接着在 Codex 一边把企业版做出可以托管网站、改进 plugins、支持在文档/幻灯片/表格上做视觉批注,Amjad 和 Steipete 又分别在同一天宣布跟 Microsoft 的合作。一句话,agent 不再只是单人工具,它在快速变成企业级底座。第二条是「成本结构的变化开始被正视」——Levie 第一次把 token 预算放到 OpEx 高度讲 model routing 的必然性,Rauch 直接宣布 no-code 这个品类的底层假设[code is expensive]已经被 agent 推翻,Garry Tan 则在连发 PR 的间隙提醒:agent 不能替你找到用户。">
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="今天的主线是 Microsoft Build 之后,大家突然在讲同一件事:harness。Satya 在 No Priors 把这层意思说得很直白——真正的护城河不是哪个模型,而是你怎么把模型、数据、工具、eval 装进一个 harness 里,让自己能在 frontier 上持续 hill climb。Steipete 在 Build 上演讲的题目就叫[build the thing that builds the thing],Cat Wu 同步发了 Anthropic 数据团队用 Claude 自动化 95% 业务分析的实战贴,Anthropic 自己也放出了[How we contain Claude]工程长文——三件事从不同方向都在说同一件事:agent 已经从 demo 阶段过渡到生产阶段,harness 才是值班的人。">
     <div class="intro-inner">
       <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
-      <p class="intro-copy">今天有两条主轴值得一起看。第一条是 coding agent 的「主战场转移」——TRQ 把 Claude Code 的 Workflows 推成继 skills 和 subagents 之后最大的升级,Thibault 紧接着在 Codex 一边把企业版做出可以托管网站、改进 plugins、支持在文档/幻灯片/表格上做视觉批注,Amjad 和 Steipete 又分别在同一天宣布跟 Microsoft 的合作。一句话,agent 不再只是单人工具,它在快速变成企业级底座。第二条是「成本结构的变化开始被正视」——Levie 第一次把 token 预算放到 OpEx 高度讲 model routing 的必然性,Rauch 直接宣布 no-code 这个品类的底层假设[code is expensive]已经被 agent 推翻,Garry Tan 则在连发 PR 的间隙提醒:agent 不能替你找到用户。</p>
+      <p class="intro-copy">今天的主线是 Microsoft Build 之后,大家突然在讲同一件事:harness。Satya 在 No Priors 把这层意思说得很直白——真正的护城河不是哪个模型,而是你怎么把模型、数据、工具、eval 装进一个 harness 里,让自己能在 frontier 上持续 hill climb。Steipete 在 Build 上演讲的题目就叫[build the thing that builds the thing],Cat Wu 同步发了 Anthropic 数据团队用 Claude 自动化 95% 业务分析的实战贴,Anthropic 自己也放出了[How we contain Claude]工程长文——三件事从不同方向都在说同一件事:agent 已经从 demo 阶段过渡到生产阶段,harness 才是值班的人。</p>
     </div>
   </section>
 
   <section class="section-header">
     <div class="section-label">Theme 01</div>
-    <h2 class="section-title">Codex Crosses Into the Knowledge Worker / Codex 跨过工程师的边界</h2>
-    <p class="section-desc">OpenAI 自家公布的 Codex 用户结构变化,叠加 Thibault 对 ChatGPT / agents 长期判断,意味着 Codex 正在从程序员工具变成默认助手。</p>
-  </section>
-  <section class="feed">
-    <article class="card" data-author-key="x:zarazhangrui" data-author-name="Zhang Rui" data-author-tag="" data-author-handle="@zarazhangrui" data-author-avatar="../assets/avatars/x-zarazhangrui.jpg">
-      <div class="card-header">
-        <div class="avatar"><img src="../assets/avatars/x-zarazhangrui.jpg" alt="Zhang Rui avatar"><span class="avatar-fallback">ZR</span></div>
-        <div class="author-info">
-          <div class="author-name-row">
-            <div class="author-name">Zhang Rui</div>
-            <div class="author-tag is-inline"></div>
-          </div>
-          <div class="author-handle">@zarazhangrui</div>
-        </div>
-        <div class="card-controls">
-          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
-          <button class="view-toggle" type="button" data-view-target="original">原文</button>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="lang-col cn">
-          <div class="lang-label">中文</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>Zara Zhang 拎出 OpenAI 内部 Codex 报告里最值得看的一行数字:知识工作者已经占 Codex 用户的 20%,增速是开发者的 3 倍以上。</p>
-              <p>知识工作者里增速最快的是数据分析(周环比 +110%)、研究(+37%)和广义知识工作。一年前这个产品的对象还是[程序员],现在的典型用户其实是不写代码的分析师。</p>
-              <p>含义:Codex 的单位经济和产品面正在被一个比最初用户群大得多的群体拉动,OpenAI 的定价、分发和功能优先级都会因此改变。</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>OpenAI 报告:知识工作者占 Codex 用户 20%,增速是开发者的 3 倍。</p>
-              <p>数据分析周增 110%,研究增 37%,广义知识工作全面爆发。</p>
-            </div>
-          </div>
-        </div>
-        <div class="lang-col en">
-          <div class="lang-label">English</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>Zara Zhang pulls the most striking data point from OpenAI&#39;s latest Codex report: knowledge workers now represent about 20% of Codex users and are adopting it more than 3 times as fast as developers.</p>
-              <p>The fastest growing task types are Data Analysis (+110% week over week), Research (+37%), and Knowledge work overall. A year ago this product was [for programmers]; today the average user is a non-engineer analyst.</p>
-              <p>The implication: the unit economics and product surface of Codex are being pulled by a much larger audience than its original user base, which changes pricing, distribution, and feature priorities for OpenAI.</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>From OpenAI&#39;s latest Codex report: Knowledge workers now represent about 20% of Codex users and are adopting it more than 3 times as fast as developers.</p>
-              <p>The fastest growing task types for knowledge workers are: Data Analysis (110% growth week over week); Research (+37%), and Knowledge work overall.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card-footer"><a href="https://x.com/zarazhangrui/status/2061924300698091760" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
-    </article>
-
-    <article class="card" data-author-key="x:thsottiaux" data-author-name="Thibault Sottiaux" data-author-tag="OpenAI Codex &amp; ChatGPT" data-author-handle="@thsottiaux" data-author-avatar="../assets/avatars/x-thsottiaux.jpg">
-      <div class="card-header">
-        <div class="avatar"><img src="../assets/avatars/x-thsottiaux.jpg" alt="Thibault Sottiaux avatar"><span class="avatar-fallback">TS</span></div>
-        <div class="author-info">
-          <div class="author-name-row">
-            <div class="author-name">Thibault Sottiaux</div>
-            <div class="author-tag is-inline">OpenAI Codex &amp; ChatGPT</div>
-          </div>
-          <div class="author-handle">@thsottiaux</div>
-        </div>
-        <div class="card-controls">
-          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
-          <button class="view-toggle" type="button" data-view-target="original">原文</button>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="lang-col cn">
-          <div class="lang-label">中文</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>Thibault Sottiaux(Codex 与 ChatGPT 负责人)用一条短帖讲了一个长期判断:ChatGPT 已经是 AI 的同义词,接下来它还要变成 agent 的同义词。事情还有很多要做的。</p>
-              <p>1100 赞、35 转推的量级,是产品负责人公开为[agent]这个框架背书。当产品线 leader 自己把路线图叫作[agents],未来 12 个月的发布节奏基本可以按这个口径去预期。</p>
-              <p>和 Zara 引用的数据放一起看:Codex 就是这个判断的载体,数据已经在支撑它。</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>Thibault:ChatGPT 已是 AI 的同义词,接下来是 agent 的同义词。</p>
-            </div>
-          </div>
-        </div>
-        <div class="lang-col en">
-          <div class="lang-label">English</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>Thibault Sottiaux, who leads Codex and ChatGPT at OpenAI, frames the long view in one short post: ChatGPT is already a synonym for AI, and is about to become a synonym for agents too. There is much to build.</p>
-              <p>The 1100-like / 35-RT endorsement is the team leader publicly buying into the [agent] frame. When the head of the product calls his own roadmap [agents], you can bet the next 12 months of shipping reflect that.</p>
-              <p>Read alongside Zara&#39;s data: Codex is the distribution vehicle for that claim, and the data already shows it.</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>ChatGPT — Whether you understand the name or not. It&#39;s here to stay. It&#39;s the past, the present, the future. Synonym with AI, soon synonym with agents. Much to build.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card-footer"><a href="https://x.com/thsottiaux/status/2062057881424506950" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
-    </article>
-
-    <article class="card" data-author-key="x:thsottiaux" data-author-name="Thibault Sottiaux" data-author-tag="OpenAI Codex &amp; ChatGPT" data-author-handle="@thsottiaux" data-author-avatar="../assets/avatars/x-thsottiaux.jpg">
-      <div class="card-header">
-        <div class="avatar"><img src="../assets/avatars/x-thsottiaux.jpg" alt="Thibault Sottiaux avatar"><span class="avatar-fallback">TS</span></div>
-        <div class="author-info">
-          <div class="author-name-row">
-            <div class="author-name">Thibault Sottiaux</div>
-            <div class="author-tag is-inline">OpenAI Codex &amp; ChatGPT</div>
-          </div>
-          <div class="author-handle">@thsottiaux</div>
-        </div>
-        <div class="card-controls">
-          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
-          <button class="view-toggle" type="button" data-view-target="original">原文</button>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="lang-col cn">
-          <div class="lang-label">中文</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>Thibault 公布了 Codex 在日常工作场景的一批升级:商业版用户可以直接在 Codex 里托管和分享网站,plugins 和 skills 做了一轮大改以适配更广的角色,而且你可以在文档、幻灯片、表格上用[视觉批注]给 agent 直接反馈。</p>
-              <p>真正起作用的是视觉批注这个细节:能在文档上做高亮批注、让 agent 读懂并修改,这件事只有不会写代码、也不会写 prompt 的人才用得上——正好是 Zara 说的那个非工程师用户群。</p>
-              <p>这就是[Codex 变成知识工作者工具]这件事在产品层面的具体形态。</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>Codex 商业版支持托管和分享网站,plugins 与 skills 大改,支持文档/幻灯片/表格视觉批注反馈。</p>
-            </div>
-          </div>
-        </div>
-        <div class="lang-col en">
-          <div class="lang-label">English</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>Thibault announces the daily-work upgrades to Codex: business plan users can now host and share websites directly from Codex, plugins and skills got a major upgrade for broader roles, and you can give feedback to the agent through visual annotations on docs, slides, and sheets.</p>
-              <p>The visual-annotation detail is the load-bearing one: agents that can read and react to markup on a document are usable by people who do not write code or prompts. That is exactly the non-engineer audience Zara just described.</p>
-              <p>This is what [Codex becomes a knowledge worker tool] looks like in product form.</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>Tons of goodies for use of codex for day to day work. If you are on a business plan you can now host and share websites, we launched vastly improved plugins and skills for broad roles and you can give feedback to your agent through visual annotations in docs, slides, sheets and more.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card-footer"><a href="https://x.com/thsottiaux/status/2061876999564791952" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
-    </article>
-  </section>
-
-  <section class="section-header">
-    <div class="section-label">Theme 02</div>
-    <h2 class="section-title">Claude Code Workflows Go Mainstream / Claude Code 工作流走向主流</h2>
-    <p class="section-desc">TRQ 把 Workflows 推成自 skills / subagents 之后最大的升级,加上他在 Claude Blog 的同步发文,Claude Code 正在从[写代码的 REPL]变成[跑长任务的调度器]。</p>
-  </section>
-  <section class="feed">
-    <article class="card" data-author-key="x:trq212" data-author-name="Tao Li" data-author-tag="" data-author-handle="@trq212" data-author-avatar="../assets/avatars/x-trq212.jpg">
-      <div class="card-header">
-        <div class="avatar"><img src="../assets/avatars/x-trq212.jpg" alt="Tao Li avatar"><span class="avatar-fallback">TL</span></div>
-        <div class="author-info">
-          <div class="author-name-row">
-            <div class="author-name">Tao Li</div>
-            <div class="author-tag is-inline"></div>
-          </div>
-          <div class="author-handle">@trq212</div>
-        </div>
-        <div class="card-controls">
-          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
-          <button class="view-toggle" type="button" data-view-target="original">原文</button>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="lang-col cn">
-          <div class="lang-label">中文</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>Thariq 的核心判断:Workflows 是 Claude Code 自 skills 和 subagents 以来最大的一次升级。他跟 Sid 一起深入做了一轮最佳实践、案例和使用模式。</p>
-              <p>他最兴奋的是它解锁了非技术任务——也就是 TRQ 一直在推的那个模式:把文件夹丢进去,让 agent 写脚本、渲染 HTML、反复迭代。Workflows 让这个模式可以无人值守跑上几个小时,带明确的人工检查点。</p>
-              <p>3339 赞、236 转推——开发者社区在用投票说[agent 是能跑长任务的同事],不再是演示。</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>TRQ:Workflows 是 Claude Code 自 skills/subagents 后最大升级,最让人兴奋的是非技术任务场景。</p>
-            </div>
-          </div>
-        </div>
-        <div class="lang-col en">
-          <div class="lang-label">English</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>Thariq&#39;s headline take: Workflows are the biggest upgrade to Claude Code&#39;s capabilities since skills and subagents. He went deep with Sid to figure out best practices, examples, and more.</p>
-              <p>What excites him most is the non-technical tasks it unlocks — the same surface TRQ has been championing: drop a folder of files, let the agent script + render + iterate. A workflow lets that pattern run for hours, unattended, with explicit human checkpoints.</p>
-              <p>3339 likes / 236 RTs — this is the developer community signaling that [agent as long-running coworker] is now the model, not the demo.</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>Workflows are the biggest upgrade to Claude Code&#39;s capabilities since skills and subagents. I dove deep into it with @sidbid to figure out best practices, examples and more. I&#39;m particularly excited about the non-technical tasks it enables for Claude Code.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card-footer"><a href="https://x.com/trq212/status/2061907538741006796" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
-    </article>
-
-    <article class="card" data-author-key="x:trq212" data-author-name="Tao Li" data-author-tag="" data-author-handle="@trq212" data-author-avatar="../assets/avatars/x-trq212.jpg">
-      <div class="card-header">
-        <div class="avatar"><img src="../assets/avatars/x-trq212.jpg" alt="Tao Li avatar"><span class="avatar-fallback">TL</span></div>
-        <div class="author-info">
-          <div class="author-name-row">
-            <div class="author-name">Tao Li</div>
-            <div class="author-tag is-inline"></div>
-          </div>
-          <div class="author-handle">@trq212</div>
-        </div>
-        <div class="card-controls">
-          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
-          <button class="view-toggle" type="button" data-view-target="original">原文</button>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="lang-col cn">
-          <div class="lang-label">中文</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>跟上一条配对:TRQ 指向 Claude 官方博客的 Workflows 完整文章,那里才是新思维模型的权威来源。</p>
-              <p>Twitter 制造氛围 + 博客讲深度的双渠道打法,跟当初 skills 和 subagents 走红的套路一样。Workflows 正在被塑造成一种默认的工作流分类,不是一个边角功能。</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>TRQ 指向 Claude Blog 的 Workflows 完整说明。</p>
-            </div>
-          </div>
-        </div>
-        <div class="lang-col en">
-          <div class="lang-label">English</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>Companion to the tweet above: TRQ points readers to the official Claude Blog for the full Workflows write-up. The blog post is the canonical place to learn the new mental model.</p>
-              <p>The dual-channel pattern (Twitter hype + blog depth) is the same playbook that made skills and subagents stick. Workflows is being installed as a default workflow category, not a side feature.</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>This is also available on the Claude Blog! https://t.co/ScXhdyz6YI</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card-footer"><a href="https://x.com/trq212/status/2061907897928528349" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
-    </article>
-  </section>
-
-  <section class="section-header">
-    <div class="section-label">Theme 03</div>
-    <h2 class="section-title">Model Routing &amp; the Cost Story / 模型路由与成本叙事</h2>
-    <p class="section-desc">Token 预算开始进 OpEx,no-code 的底层假设被推翻——成本结构和工具分层正在被一起重写。</p>
-  </section>
-  <section class="feed">
-    <article class="card" data-author-key="x:levie" data-author-name="Aaron Levie" data-author-tag="Box CEO" data-author-handle="@levie" data-author-avatar="../assets/avatars/x-levie.jpg">
-      <div class="card-header">
-        <div class="avatar"><img src="../assets/avatars/x-levie.jpg" alt="Aaron Levie avatar"><span class="avatar-fallback">AL</span></div>
-        <div class="author-info">
-          <div class="author-name-row">
-            <div class="author-name">Aaron Levie</div>
-            <div class="author-tag is-inline">Box CEO</div>
-          </div>
-          <div class="author-handle">@levie</div>
-        </div>
-        <div class="card-controls">
-          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
-          <button class="view-toggle" type="button" data-view-target="original">原文</button>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="lang-col cn">
-          <div class="lang-label">中文</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>Aaron Levie 把一件正在发生的事点出来了:token 预算在 OpEx 里占比越大,model routing 就越会成为必然结论。这也是应用 AI 层最大的差异化战场之一。</p>
-              <p>原因是:一个领域最了解自己的工作模式,一个聪明的路由器可以让 80% 的调用走便宜模型,20% 真正需要前沿模型的请求才走贵的。这就是应用层的防御性护城河——不是模型的访问权,而是路由的智能。</p>
-              <p>跟开源模型的前沿放在一起读:能路由的模型越多,路由器本身越值钱。</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>Levie:token 预算进 OpEx 后,model routing 是必然结论,也是应用层最大差异化。</p>
-            </div>
-          </div>
-        </div>
-        <div class="lang-col en">
-          <div class="lang-label">English</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>Aaron Levie names the inevitability: as token budgets take a larger share of operating expenses, model routing becomes the inevitable conclusion. This is also one of the biggest areas of differentiation for the applied AI layer.</p>
-              <p>The reason: a domain knows its own work patterns, and a smart router can pick the cheap model for 80% of calls and the frontier model for the 20% that actually need it. That is the applied layer&#39;s defensible moat — not access to the model.</p>
-              <p>Read this against the open-model frontier: a router is more valuable the more models you can route between.</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>As token budgets take on a larger part of operating expenses over time, model routing is the inevitable conclusion. This is also one of the biggest areas of differentiation for the applied AI layer over time. By understanding the different work patterns in your domain, and having a router pick the right model for the right call, you can drive down cost significantly.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card-footer"><a href="https://x.com/levie/status/2061974298760495132" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
-    </article>
-
-    <article class="card" data-author-key="x:rauchg" data-author-name="Guillermo Rauch" data-author-tag="Vercel CEO" data-author-handle="@rauchg" data-author-avatar="../assets/avatars/x-rauchg.jpg">
-      <div class="card-header">
-        <div class="avatar"><img src="../assets/avatars/x-rauchg.jpg" alt="Guillermo Rauch avatar"><span class="avatar-fallback">GR</span></div>
-        <div class="author-info">
-          <div class="author-name-row">
-            <div class="author-name">Guillermo Rauch</div>
-            <div class="author-tag is-inline">Vercel CEO</div>
-          </div>
-          <div class="author-handle">@rauchg</div>
-        </div>
-        <div class="card-controls">
-          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
-          <button class="view-toggle" type="button" data-view-target="original">原文</button>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="lang-col cn">
-          <div class="lang-label">中文</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>Guillermo Rauch 宣布了一整个软件品类的死亡:no-code。这个品类原本的假设是[code 昂贵、稀缺、难写]。coding agent 永远地改写了这个等式——code 现在便宜、好写、充裕。</p>
-              <p>他的推文线继续展开到教育(从语言入手,语言表面就是路线图,人类语言是新的 API),以及 agent-first IDE 的崛起(Conductor 是为 agent 而生的 ADE,agent 把远程开发推上主流)。</p>
-              <p>跟 Levie 一起读:成本故事不只是模型调用变便宜,而是整整一堆假设在被拆掉。</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>Rauch:no-code 假设 code 稀缺,agent 让 code 充裕,品类基础没了。</p>
-            </div>
-          </div>
-        </div>
-        <div class="lang-col en">
-          <div class="lang-label">English</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>Guillermo Rauch declares the death of an entire software category: [no-code]. The original category was built on the premise that code is expensive, difficult, and scarce. Coding agents have forever changed the equation — code is now cheap, easy, and abundant.</p>
-              <p>The thread continues into education (start with the language, the linguistic surface is your roadmap, human language is the new API) and into the rise of agent-first IDEs (Conductor as an ADE, agents taking remote dev mainstream).</p>
-              <p>Read with Levie: the cost story is not just about cheaper model calls, it is about an entire stack of assumptions being unwound.</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>YES-CODE. An entire category of software, &#39;no-code&#39;, was built under the presumption that code is expensive, difficult, and scarce. Coding agents have forever changed the equation. Code is now cheap, easy, and abundant.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card-footer"><a href="https://x.com/rauchg/status/2061934154732974376" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
-    </article>
-  </section>
-
-  <section class="section-header">
-    <div class="section-label">Theme 04</div>
-    <h2 class="section-title">Agents Go Enterprise / Agent 进入企业级</h2>
-    <p class="section-desc">同一天两个独立的 enterprise 大单:Steipete 把 OpenClaw 带进 Microsoft,Amjad 把 Replit 跟 Microsoft Fabric 接通。</p>
+    <h2 class="section-title">Harness Becomes the Moat / Harness 成为新护城河</h2>
+    <p class="section-desc">Build 之后,三家独立说同一件事:模型层会变成可替换件,harness + eval + context 才是真正决定谁能上 frontier 的那层。</p>
   </section>
   <section class="feed">
     <article class="card" data-author-key="x:steipete" data-author-name="Peter Steinberger" data-author-tag="OpenClaw 创始人" data-author-handle="@steipete" data-author-avatar="../assets/avatars/x-steipete.jpg">
@@ -511,12 +168,12 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Steinberger 宣布:跟 Microsoft 合作把 claws 带进企业。3400 赞、234 转推的量级,说明 OpenClaw 和[agent 跑在桌面上]这个故事正在企业级层面落地。</p>
-              <p>这次合作给了 OpenClaw 一种创业公司买不到的分发:可信供应商身份、IT 部门可以管的部署、Microsoft 的安全审查。</p>
-              <p>配合他另一条推文(把可观测性和可验证 workspace 装进 OpenClaw),看起来是一整套企业级姿态在一点点拼起来。</p>
+              <p>Steipete 在 Build 上的演讲视频放出来了,题目就叫[build the thing that builds the thing]——造那个能造东西的东西。他不是在卖 OpenClaw 这个产品,他是在卖一种方法:让别的 builder 用 OpenClaw 去造他们自己的产品。</p>
+              <p>这场演讲跟 Anthropic 同周放出的[How we contain Claude]工程长文、Satya 在 No Priors 上说[微软第三幕是 harness 公司]形成三角呼应——三家不同来源指向同一个判断:价值捕获正在向 stack 上面那一层迁移,远离最底层的 token。</p>
+              <p>236 赞、35 转推——这种量级的 Build 演讲录播数据,通常是有人在现场命名了一个新类目。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Steipete:跟 Microsoft 合作把 OpenClaw 带进企业。</p>
+              <p>Steipete 在 MS Build 上讲:Build the thing that builds the thing。造那个造东西的东西。</p>
             </div>
           </div>
         </div>
@@ -524,73 +181,20 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Steinberger announces: it&#39;s been a privilege to work with Microsoft to bring claws to enterprises. 3400 likes / 234 RTs is a strong signal that the OpenClaw / [agent on your desktop] story is now landing at the enterprise level.</p>
-              <p>The partnership gives OpenClaw the kind of distribution that a startup cannot buy: trusted vendor status, IT-managed deployment, the Microsoft security review.</p>
-              <p>Combined with the other Steinberger post (observability and verifiable workspaces going into OpenClaw), this looks like a full enterprise posture being assembled piece by piece.</p>
+              <p>Steipete&#39;s Build talk is titled Build the thing that builds the thing — and the video is now public. The framing matters: he is not pitching OpenClaw as a product, he is pitching it as a meta-tool that other builders will use to build their own products.</p>
+              <p>The talk lands the same week Anthropic ships the [How we contain Claude] engineering post and Satya tells No Priors that the third act of Microsoft is the harness company. Three independent sources, one thesis: the value capture moves up the stack, away from raw tokens.</p>
+              <p>236 likes / 35 RTs for a Build talk recording is the kind of engagement reserved for founders who are naming a new category in real time.</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Such a privilege to work with Microsoft to bring claws to enterprises!</p>
+              <p>Here&#39;s the video of my talk at MS Build: Build the thing that builds the thing.</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="card-footer"><a href="https://x.com/steipete/status/2061874084649025728" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+      <div class="card-footer"><a href="https://x.com/steipete/status/2062390654022332691" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
     </article>
 
-    <article class="card" data-author-key="x:amasad" data-author-name="Romain" data-author-tag="" data-author-handle="@amasad" data-author-avatar="../assets/avatars/x-amasad.jpg">
-      <div class="card-header">
-        <div class="avatar"><img src="../assets/avatars/x-amasad.jpg" alt="Romain avatar"><span class="avatar-fallback">R</span></div>
-        <div class="author-info">
-          <div class="author-name-row">
-            <div class="author-name">Romain</div>
-            <div class="author-tag is-inline"></div>
-          </div>
-          <div class="author-handle">@amasad</div>
-        </div>
-        <div class="card-controls">
-          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
-          <button class="view-toggle" type="button" data-view-target="original">原文</button>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="lang-col cn">
-          <div class="lang-label">中文</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>Amjad Masad 宣布跟 Microsoft 的合作:Replit 团队要让企业里的每个人都能在 Microsoft 新出的 Rayfin SDK 上,构建和部署安全合规的 Fabric 数据应用。</p>
-              <p>Fabric 是 Microsoft 的企业数据平台;把它跟 Replit 的 agentic 应用构建器接上,意味着一个业务分析师描述一个数据应用,就能直接构建并部署到现有的数据栈里,不离开 Microsoft 的体系。</p>
-              <p>跟 Steipete 那条放一起读:24 小时内,两个独立的 agentic 平台都落地了 Microsoft 企业合作。这不是巧合——Microsoft 在押[agent 是新的应用层]。</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>Amjad:Replit 联手 Microsoft,基于 Rayfin SDK 在 Fabric 上构建部署数据应用。</p>
-            </div>
-          </div>
-        </div>
-        <div class="lang-col en">
-          <div class="lang-label">English</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>Amjad Masad announces a partnership with Microsoft: the Replit team is enabling everyone in the enterprise to build and deploy safe and secure Fabric data apps, on top of Microsoft&#39;s new Rayfin SDK.</p>
-              <p>Fabric is Microsoft&#39;s enterprise data platform; pairing it with Replit&#39;s agentic app builder means a business analyst can describe a data app and have it built and deployed into the existing data stack, without leaving the Microsoft estate.</p>
-              <p>Read with Steipete: in the same 24 hours, two independent agentic platforms both landed Microsoft enterprise partnerships. That is not coincidence — Microsoft is making its bet on [agent as the new app layer].</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>Excited to partner with @Microsoft to enable everyone in the enterprise to build and deploy safe &amp; secure Fabric data apps. This is possible thanks to Microsoft&#39;s new Rayfin SDK.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card-footer"><a href="https://x.com/amasad/status/2061893093696434578" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
-    </article>
-  </section>
-
-  <section class="section-header">
-    <div class="section-label">Theme 05</div>
-    <h2 class="section-title">The Model Frontier Keeps Moving / 模型前沿继续往前推</h2>
-    <p class="section-desc">Gemini 把 Thinking Levels 全面铺开,SWE 基准被质疑,VWE/ViBench 等更接近真实应用的评测开始被点名。</p>
-  </section>
-  <section class="feed">
-    <article class="card" data-author-key="x:joshwoodward" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+    <article class="card" data-author-key="x:_catwu" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
       <div class="card-header">
         <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
         <div class="author-info">
@@ -610,12 +214,12 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Josh Woodward(Google VP,负责 Gemini App / AI Studio / Labs)关掉了一个长期 papercut:Thinking Levels 在 Web、iOS、Android 全端可用。</p>
-              <p>一条功能发布推能拿到 215 赞不算夸张,但这一步的份量在:跨端的推理档位对齐,意味着 Google 把[模型该想多深]当成一个面向用户的一等控制轴,不是只给开发者用的开关。</p>
-              <p>跟 Levie 一起读:一个能选 thinking level 的路由器,比一个只选模型的路由器强一个量级。</p>
+              <p>Cat Wu 放出 Anthropic 数据团队的实战贴:95% 的业务分析查询现在由 Claude 自动化。文章本身就是内部 harness 纪律的公开版——evals、ablation、在线验证,全都有。</p>
+              <p>关键细节:这并不是一个单 agent,而是一条带 eval 门槛的流水线——生成的 SQL 必须先过一道置信度闸口才能上生产。Harness 决定模型能做什么,不是反过来。</p>
+              <p>280 赞对一篇工程长文来说是非常高的信号——大多数 builder 还在拼 prompt,生产团队早就转到 harness 设计了。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Gemini Thinking Levels 已在 Web/iOS/Android 全面铺开。</p>
+              <p>Anthropic 数据团队 95% 业务分析查询由 Claude 自动化,核心是 evals / ablations / online validation 的 harness 设计。</p>
             </div>
           </div>
         </div>
@@ -623,28 +227,28 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Josh Woodward (VP at Google, leading Gemini App, AI Studio, Labs) closes a long-standing papercut: Thinking Levels are now available on Gemini across Web, iOS, and Android.</p>
-              <p>215 likes on a feature-shipment post is mild, but the move is significant: parity in reasoning controls across surfaces means Google is treating [how hard should the model think] as a first-class user-facing axis, not a developer-only setting.</p>
-              <p>Read against Levie: a router that can pick thinking levels is meaningfully more powerful than one that just picks models.</p>
+              <p>Cat Wu just shipped the Anthropic data team&#39;s playbook: 95% of business analytics queries are now automated through Claude. The post is the public version of the harness discipline Anthropic has been building internally — evals, ablations, online validation.</p>
+              <p>The interesting detail: this is not a single agent, it is an eval-gated pipeline where a generated SQL query has to clear a confidence bar before it ships. The harness decides what the model is allowed to do, not the other way around.</p>
+              <p>280 likes for a long-form engineering writeup is high signal — most of the builder community is still chasing prompts, while the production teams have already moved on to harness design.</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>✅ Papercut fixed: Thinking Levels are now available on Gemini across Web, iOS, and Android.</p>
+              <p>Excited to share how Anthropic&#39;s data team has automated 95% of business analytics queries with Claude. Blog post covers how we approach evals, ablations, and online validation!</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="card-footer"><a href="https://x.com/joshwoodward/status/2062025667852812583" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+      <div class="card-footer"><a href="https://x.com/_catwu/status/2062408623565984209" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
     </article>
 
-    <article class="card" data-author-key="x:amasad" data-author-name="Romain" data-author-tag="" data-author-handle="@amasad" data-author-avatar="../assets/avatars/x-amasad.jpg">
+    <article class="card" data-author-key="blog:anthropic" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
       <div class="card-header">
-        <div class="avatar"><img src="../assets/avatars/x-amasad.jpg" alt="Romain avatar"><span class="avatar-fallback">R</span></div>
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
         <div class="author-info">
           <div class="author-name-row">
-            <div class="author-name">Romain</div>
+            <div class="author-name"></div>
             <div class="author-tag is-inline"></div>
           </div>
-          <div class="author-handle">@amasad</div>
+          <div class="author-handle"></div>
         </div>
         <div class="card-controls">
           <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
@@ -656,12 +260,12 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Amjad 提出一个观点:SWE 基准并不一定能反映 app 构建能力,VWE/ViBench 才更接近真实。</p>
-              <p>这个判断跟 builder 圈里这几个月的体感对得上:在 SWE-bench 上领先的模型,未必是端到端 app 构建效果最好的那个。社区开始不只看头条数字了。</p>
-              <p>跟 model routing 那条放一起:只按 SWE-bench 排名的路由决策,系统性地选错 app 构建工作的模型。</p>
+              <p>Anthropic 工程团队放出了迄今最长、最坦诚的一篇 agent 安全长文:How we contain Claude across products。主线一句话:风险指标换成了 blast radius,纪律换成了 containment,不是 supervision。</p>
+              <p>最值得引用的一句:一年前他们会直接拒绝给 Claude 那种能干掉自家内部服务的权限,如今这种权限已是常态。这个转变不是哲学层面的,是数据驱动的——用户对权限弹窗的通过率是 93%,人审循环的结构性弱点被量化出来了。</p>
+              <p>跟 Steipete 的 Build 演讲、Satya 的 harness 论放在一起读,三件事是同一个判断的三个面:agent 已经在生产里了,问题不再是上不上,是你怎么在它出错时把伤害圈起来。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Amjad:SWE 基准不反映 app 构建能力,ViBench 更接近真实。</p>
+              <p>一年前 Anthropic 会拒绝给 Claude 那么大的内部权限,如今这种权限已是常态,开发者反而更高效。风险结构变了,blast radius 成为新指标。</p>
             </div>
           </div>
         </div>
@@ -669,26 +273,118 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Amjad argues that SWE benchmarks don&#39;t necessarily capture app-building capabilities, and points to ViBench as a better measure.</p>
-              <p>The claim lines up with what builders have been saying for months: the leaderboard models on SWE-bench are not always the models that ship the best end-to-end apps. The community is starting to look past the headline numbers.</p>
-              <p>Read with the model-routing story: a routing decision based only on SWE-bench scores will systematically pick the wrong model for app-building work.</p>
+              <p>Anthropic engineering just published the longest, most honest post we have seen from them on agent security: How we contain Claude across products. The throughline: blast radius is the new risk metric, and containment is the discipline, not supervision.</p>
+              <p>The most quotable line: a year ago they would have rejected the access levels Claude now routinely holds. The shift is not philosophical — it is empirical. Users approve ~93% of permission prompts, which means human-in-the-loop supervision is structurally weaker than it looks.</p>
+              <p>Read this with Steipete&#39;s Build talk and Satya&#39;s harness thesis. All three are saying the same thing from different angles: the agent is already in production, the question is no longer if, it is how you cap the damage when it goes wrong.</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>SWE benchmarks don&#39;t necessarily capture app building capabilities. ViBench does.</p>
+              <p>Twelve months ago, we&#39;d have rejected out of hand the idea of granting Claude access sufficient to take down an internal Anthropic service. Today that level of access is routine, and Anthropic developers are more productive for it.</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="card-footer"><a href="https://x.com/amasad/status/2061878314311266552" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+      <div class="card-footer"><a href="https://www.anthropic.com/engineering/how-we-contain-claude" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
     </article>
   </section>
 
   <section class="section-header">
-    <div class="section-label">Theme 06</div>
-    <h2 class="section-title">Builder Pace &amp; SaaS Reality Check / Builder 节奏与 SaaS 现实</h2>
-    <p class="section-desc">Garry Tan 一天连发,Nikunj 提醒别把单一因素当护城河,Peter Yang 谈 Devin 和 SaaS 死活,Builder 的当下心态一览。</p>
+    <div class="section-label">Theme 02</div>
+    <h2 class="section-title">The Full-Stack Generalist Era / 全栈通用型人才登场</h2>
+    <p class="section-desc">Satya 的 podcast、Cursor 的招聘、YC 投资人的招聘——三股力量同步说:generalist 的杠杆在 agent 时代被放到了最大。</p>
   </section>
   <section class="feed">
+    <article class="card" data-author-key="x:ryolu_" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Ryo Lu 在帮 Cursor 招 design engineer。JD 几乎是 LinkedIn full-stack builder 范本的复刻:品味、系统思维、对快速精致体验的执念——并且明确说要招愿意造[帮设计师、工程师、agent 一起出货]的工具的人。</p>
+              <p>最有信息量的是最后那句:agent 已经和设计师、工程师并列。Cursor 招的不只是人机协作的衔接岗,他们是在招 agent 工具链本身的产品面。</p>
+              <p>1012 赞,本周点赞最高的招聘帖——而这个岗位几乎是 Satya 通用型人才论的标准答卷。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Cursor 招 design engineer,核心是[造让设计师、工程师、agent 一起出货的工具],agent 已经跟人并列。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Ryo Lu is hiring design engineers at Cursor. The job description reads like a LinkedIn full-stack builder ad: taste, systems thinking, deep care for fast polished experiences — and explicitly, people excited to build the tools that help designers, engineers, and agents ship quality code.</p>
+              <p>The interesting last clause: agents are now in the same sentence as designers and engineers. Cursor is not just hiring for the human + AI handoff, they are hiring for the agent-tooling product surface itself.</p>
+              <p>1012 likes for a single job posting — this is the most-upvoted [we are hiring] tweet of the week, and the role is a near-textbook match for Satya&#39;s generalist thesis.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Cursor is hiring design engineers. looking for people with taste, systems thinking, and deep care for fast, polished experiences – especially folks excited to build the tools that help designers, engineers, and agents ship quality code. know someone? tag them or DM me.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/ryolu_/status/2062352329903665471" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:adityaag" data-author-name="Aditya Agarwal" data-author-tag="" data-author-handle="@adityaag" data-author-avatar="../assets/avatars/x-adityaag.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-adityaag.jpg" alt="Aditya Agarwal avatar"><span class="avatar-fallback">AA</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aditya Agarwal</div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle">@adityaag</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aditya Agarwal(Facebook 早期工程、Dropbox 前 CTO、South Park Commons GP)在招人——真正有信息量的是名字:Harshit Madan 和 Rohan Choudhary 入伙。</p>
+              <p>潜台词是:哪怕在 GP / 基金层,合伙人下一波招的是 operator,不是 analyst。通用型 operator 重新吃香,这次还带 AI 部署预算。</p>
+              <p>20 赞的数字很低,但信号很静:前 CTO 转 VC 开始招 operator,意味着投资模型正在向 operator-led build 倾斜,跟 Satya 在企业端说的通用型人才论是同一回事。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>前 CTO 出身的 VC 招 operator 入伙,投资模型正在向 operator-led build 倾斜。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aditya Agarwal (ex-Facebook eng, ex-Dropbox CTO, now South Park Commons GP) is hiring — but the names are worth more than the headline. Harshit Madan and Rohan Choudhary joining the team.</p>
+              <p>The unstated point: even at the GP / fund-of-funds layer, the partners are signaling that their next hires are operators, not analysts. The generalist operator is back, this time with an AI deployment budget.</p>
+              <p>Low engagement (20 likes) but a quiet signal: when ex-CTO VCs start hiring, the venture model is shifting to operator-led builds, which is the same generalist thesis Satya was making on the enterprise side.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Very excited to welcome Harshit Madan and Rohan Choudhary to the team!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/adityaag/status/2062400706448081342" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
     <article class="card" data-author-key="x:garrytan" data-author-name="Garry Tan" data-author-tag="Y Combinator 总裁" data-author-handle="@garrytan" data-author-avatar="../assets/avatars/x-garrytan.jpg">
       <div class="card-header">
         <div class="avatar"><img src="../assets/avatars/x-garrytan.jpg" alt="Garry Tan avatar"><span class="avatar-fallback">GT</span></div>
@@ -709,12 +405,12 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Garry Tan:GBrain 是一个用于检索和记忆的 agentic 瑞士军刀。37 赞对 Garry 来说不算高,但这是个工具信号——YC 的总裁把一个开源 agent 记忆/检索项目当成日常工具来用。</p>
-              <p>有意思的点在于:Tan 公开把一个开源记忆层装进了自己的工作流。YC 总裁做这件事,跟 VC 发推讲自己投的公司,完全不是一种背书。</p>
-              <p>跟 Steipete 的 autoreview(上周)和 Peter Yang 谈 Devin 那条放一起读:builder 工具栈已经由开源记忆、自动 review、立场鲜明的 agent 这些独立模块拼起来了。</p>
+              <p>Garry Tan 本周被转最多的一条推很短,几乎是随口一句:San Francisco is healing. We don&#39;t fall for this type of ridiculous gaslighting anymore.2354 赞,98 转推。</p>
+              <p>放在全栈 Builder 的语境里读:潜台词是,孵化这一波 agent build 的城市重新成了 place to be。YC 一直在悄悄把 portfolio 向 agentic infra 倾斜,这条推是更广的 SF 生态接受这个转向的文化标记。</p>
+              <p>这不是一条 AI 推,是 Builder 心态推。通用型人才论需要一座城市,SF 在重新声明它就是那座。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Garry:GBrain 是用于检索和记忆的 agentic 瑞士军刀。</p>
+              <p>Garry Tan:旧金山在自愈,agent build 一波的城市重新成为 place to be。</p>
             </div>
           </div>
         </div>
@@ -722,17 +418,70 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Garry Tan: GBrain is the agentic swiss army knife for retrieval and memory. 37 likes is low for a Garry post, but this is a tooling signal — YC&#39;s president is naming an open-source agent memory / retrieval project as a daily tool.</p>
-              <p>The interesting move: Tan is publicly installing an open-source memory layer into his own workflow. For a Y Combinator president to do that is a very different kind of endorsement than a VC tweeting about a portfolio company.</p>
-              <p>Read with Steipete&#39;s autoreview (last week) and Peter Yang&#39;s Devin piece below: the builder stack now has open-source memory, automated review, and opinionated agents as discrete pieces.</p>
+              <p>Garry Tan&#39;s most-shared tweet of the week is a short, almost throwaway line: San Francisco is healing. We don&#39;t fall for this type of ridiculous gaslighting anymore. 2354 likes, 98 RTs.</p>
+              <p>Read in the full-stack builder context: the implicit claim is that the city that incubates the agent build wave is back as the place to be. YC has been quietly rotating its portfolio toward agentic infrastructure — this tweet is the cultural marker that the broader SF ecosystem has accepted the rotation.</p>
+              <p>It is not an AI tweet, it is a Builder-attitude tweet. The generalist thesis needs a place; SF is reaffirming it is that place.</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>GBrain is the agentic swiss army knife for retrieval and memory.</p>
+              <p>San Francisco is healing. We don&#39;t fall for this type of ridiculous gaslighting anymore.</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="card-footer"><a href="https://x.com/garrytan/status/2062052761945223266" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+      <div class="card-footer"><a href="https://x.com/garrytan/status/2062285811366904091" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 03</div>
+    <h2 class="section-title">Codex Stability Reset &amp; the Long Game / Codex 复位与长线</h2>
+    <p class="section-desc">Thibault 主动认错三次事故、给所有付费 plan 复位 usage limit;Peter Yang 在另一边狂夸 Codex 编辑表格的体验。Codex 在快速长大。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:thsottiaux" data-author-name="Thibault Sottiaux" data-author-tag="OpenAI Codex &amp; ChatGPT" data-author-handle="@thsottiaux" data-author-avatar="../assets/avatars/x-thsottiaux.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-thsottiaux.jpg" alt="Thibault Sottiaux avatar"><span class="avatar-fallback">TS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Thibault Sottiaux</div>
+            <div class="author-tag is-inline">OpenAI Codex &amp; ChatGPT</div>
+          </div>
+          <div class="author-handle">@thsottiaux</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thibault Sottiaux(Codex 负责人)公开发了一条认错推:过去 24 小时出了三起影响 Codex 可靠性的事故,三次都太多。给所有付费 plan 复了 usage limit。</p>
+              <p>同一天的另一条推里他说[lots of little vectors all pointing in the same direction]——事故不是随机的,是 stack 上每个点都在被一起推。复 limit 是正确的产品动作,公开认错是正确的社区动作。</p>
+              <p>8735 赞给一条可靠性贴——读者在奖励[自己点自己名]的创始人,尤其是在 Microsoft Build 周期前夜。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Thibault 主动认 24 小时内 3 次 Codex 事故,所有付费 plan 复位 usage limit。May the tokens flow again。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thibault Sottiaux (head of Codex) just posted a public mea culpa: three small incidents in 24 hours affected Codex reliability, three too many. He reset usage limits across all paid plans.</p>
+              <p>The interesting framing is [vectors all pointing in the same direction] in his other tweet of the day — incidents are not random, they are a sign that every part of the stack is being pushed at once. The reset is the right product call, the apology is the right community call.</p>
+              <p>8735 likes on the reliability post — readers reward founders who name their own failures, especially right before a major Microsoft Build cycle.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Hi. Over the last 24 hours we had three separate small incidents that affected Codex reliability. Those are three too many and we are taking active steps for them to not reproduce. I have reset usage limits for Codex across all paid plans. May the tokens flow again.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/thsottiaux/status/2062329981548802523" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
     </article>
 
     <article class="card" data-author-key="x:petergyang" data-author-name="Peter Yang" data-author-tag="" data-author-handle="@petergyang" data-author-avatar="../assets/avatars/x-petergyang.jpg">
@@ -755,12 +504,12 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Peter Yang 给 Devin / Windsurf 团队点赞,认为他们顶住了起起伏伏,一直在坚持做下来。他认识不少 AI native 的 builder 现在很喜欢 Devin,自己也想找时间再亲自试一下。</p>
-              <p>市场信号:18 个月里,[agentic 开发工具]从[AGI 演示]走到了[严肃 builder 有真实评价]的阶段。这个品类已经稳到可以给出有节制的赞许。</p>
-              <p>顺着想:如果 Devin 能把 builder 赢回来,说明一开始[AGI 一举搞定]的框架是错的——对的路一直是[靠谱的工程同事]。</p>
+              <p>Peter Yang 评 Codex:今天下午用它改表格,绝对在杀。重要的是用法——他拿 Codex 干的是终端用户的事(改表格),不是写代码,跟 Zara 上周拎出来的[知识工作者在 Codex 上反超开发者]那条 OpenAI 报告对得上。</p>
+              <p>他当天另一条推更有信息量:他想把 Codex 设成打开 ChatGPT 时的默认 tab。默认 tab 这个请求,是 agent 变成 OS 级表面的领先指标。</p>
+              <p>跟 Thibault 的可靠性推对读:产品已经好到用户想把它钉在启动面,团队现在要拼的是让可靠性追上这个需求。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Peter Yang 给 Devin 团队点赞:经得起起伏,builder 圈正在回流。</p>
+              <p>Peter Yang:Codex 今天下午改表格杀疯了,另一条推想把它设成 ChatGPT 默认 tab。</p>
             </div>
           </div>
         </div>
@@ -768,28 +517,28 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Peter Yang gives the Devin / Windsurf team credit for staying disciplined through the ups and downs and keeping at it. He knows many AI-native builders who love Devin now, and wants to find time to try it himself.</p>
-              <p>The market signal: in 18 months, [agentic dev tool] went from [AGI demo] to [thing serious builders have an opinion on]. The category is now settled enough for measured praise.</p>
-              <p>The follow-up thought: if Devin is winning builders back, the original [AGI or bust] framing was wrong — the right framing was always [reliable engineering coworker].</p>
+              <p>Peter Yang on Codex editing spreadsheets: it is absolutely killing it this afternoon. The framing matters — he is using Codex for end-user productivity (spreadsheet editing) not coding, which echoes the OpenAI report Zara surfaced last week about knowledge workers overtaking developers on Codex adoption.</p>
+              <p>The second tweet is the quieter but more important one: he wants to make Codex the default tab when he opens ChatGPT. The default-tab ask is the leading indicator of agent becoming OS-level surface.</p>
+              <p>Read together with Thibault&#39;s reliability post: the product is good enough that the user wants it pinned to the launch surface, and the team is now scrambling to make sure the reliability matches the demand.</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Have to give the Devin/Windsurf team flowers for staying disciplined through the ups and downs and keeping at it. I know many AI native builders who love Devin now. Will hopefully find some more time to try it myself.</p>
+              <p>Codex is absolutely killing it this afternoon for editing spreadsheets for me.</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="card-footer"><a href="https://x.com/petergyang/status/2061936952400814392" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+      <div class="card-footer"><a href="https://x.com/petergyang/status/2062283525542531194" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
     </article>
 
-    <article class="card" data-author-key="x:petergyang" data-author-name="Peter Yang" data-author-tag="" data-author-handle="@petergyang" data-author-avatar="../assets/avatars/x-petergyang.jpg">
+    <article class="card" data-author-key="x:thsottiaux" data-author-name="Thibault Sottiaux" data-author-tag="OpenAI Codex &amp; ChatGPT" data-author-handle="@thsottiaux" data-author-avatar="../assets/avatars/x-thsottiaux.jpg">
       <div class="card-header">
-        <div class="avatar"><img src="../assets/avatars/x-petergyang.jpg" alt="Peter Yang avatar"><span class="avatar-fallback">PY</span></div>
+        <div class="avatar"><img src="../assets/avatars/x-thsottiaux.jpg" alt="Thibault Sottiaux avatar"><span class="avatar-fallback">TS</span></div>
         <div class="author-info">
           <div class="author-name-row">
-            <div class="author-name">Peter Yang</div>
-            <div class="author-tag is-inline"></div>
+            <div class="author-name">Thibault Sottiaux</div>
+            <div class="author-tag is-inline">OpenAI Codex &amp; ChatGPT</div>
           </div>
-          <div class="author-handle">@petergyang</div>
+          <div class="author-handle">@thsottiaux</div>
         </div>
         <div class="card-controls">
           <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
@@ -801,12 +550,12 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Peter Yang 对 SaaS 的判断:SaaS 没死,但简单、窄场景的 SaaS 日子难过。能做多件事的大型企业级 SaaS(Figma 这种)应该还行。如果只做一个窄场景的简单 SaaS,现在越来越难变现,原因之一是 AI skills 经常能直接解决同类问题。</p>
-              <p>这是 Rauch 那条 YES-CODE 的换一种说法,但面向的是潜在 SaaS 创始人,不是 builder:如果你的护城河只是[一个功能 + 一个网页表单],agent skill 会吃掉你。</p>
-              <p>对接下来 12 个月的含义:B2B SaaS 赛道会两极分化——一边是内嵌 agent 的多任务平台,另一边是窄场景的薄点工具,后者会承压。</p>
+              <p>Thibault 当天第二条推,跟可靠性认错那条是阴阳面:OpenAI 内部很多小 vector 都指向同一方向,期待未来几周一起加总。</p>
+              <p>放在 Microsoft Build 的语境里读:Codex 即将有一次大的 surface 提升,Thibault 在给观众做预告。这两条推一起看——为颠簸道歉、这是 runway——是一个产品负责人在发布周期里能跑的最有纪律的 comms 节奏。</p>
+              <p>760 赞给一条 stay-tuned,是非常高的预期值,观众显然在等一个具体的事。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Peter Yang:多任务企业 SaaS 没事,窄场景简单 SaaS 被 AI skills 挤压。</p>
+              <p>Thibault:OpenAI 内部小 vector 都同向,期待未来几周加总——给 Build 前后的 Codex 升级做预告。</p>
             </div>
           </div>
         </div>
@@ -814,17 +563,261 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Peter Yang&#39;s SaaS read: SaaS is not dead, but the simple, narrow SaaS is in trouble. Larger enterprise SaaS that can do multiple jobs (Figma) is probably fine. A simple SaaS for a narrow use case is harder to monetize because AI skills can often solve the same problem.</p>
-              <p>This is Rauch&#39;s YES-CODE frame, but for a different audience. Peter is talking to would-be SaaS founders, not builders: if your only moat is [a single function delivered through a web form], an agent skill will eat it.</p>
-              <p>The implication for the next 12 months: the B2B SaaS pipeline is going to bifurcate — multi-job platforms with embedded agents, on one side; thin point-solutions, on the other, under serious pressure.</p>
+              <p>Second Thibault tweet of the day, the upbeat counterpart to the reliability apology: lots of little vectors at OpenAI all pointing in the same direction, excited to see them add up over the coming weeks.</p>
+              <p>Read this against the Microsoft Build context: Codex is on the verge of getting a major surface lift, and Thibault is preparing the audience for it. The two tweets together — sorry for the bumps, here is the runway — is the most disciplined comms pattern a product lead can run during a launch cycle.</p>
+              <p>760 likes for a &#39;stay tuned&#39; tweet is unusually high engagement; the audience is clearly expecting something concrete soon.</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>People are saying SaaS is not dead. I think larger enterprise SaaS that can do multiple jobs are probably fine (e.g., Figma). But if you&#39;re building a simple SaaS for a narrow use case, I think it&#39;s harder to monetize now because: 1. AI skills can often solve the same problem.</p>
+              <p>Lots of little vectors at OpenAI all pointing in the same direction. Excited to see it all add up and come together over the coming weeks.</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="card-footer"><a href="https://x.com/petergyang/status/2061846283263103274" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+      <div class="card-footer"><a href="https://x.com/thsottiaux/status/2062423528927015414" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 04</div>
+    <h2 class="section-title">OpenClaw&#39;s Real-World Climb / OpenClaw 实战爬升</h2>
+    <p class="section-desc">OpenClaw 一周 npm 下载量冲到历史新高、线上活动候补 1300 人、Anthropic 官号亲自转了一个 Clawd 实体机器人——生态从社区变成产品。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:steipete" data-author-name="Peter Steinberger" data-author-tag="OpenClaw 创始人" data-author-handle="@steipete" data-author-avatar="../assets/avatars/x-steipete.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-steipete.jpg" alt="Peter Steinberger avatar"><span class="avatar-fallback">PS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Steinberger</div>
+            <div class="author-tag is-inline">OpenClaw 创始人</div>
+          </div>
+          <div class="author-handle">@steipete</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Steipete 本周最大的一条推:OpenClaw 一周 npm 下载量历史新高,加上 Docker、GitHub、企业内部部署和大量 fork,真实数字在 1000-2000 万次/周。</p>
+              <p>这个量级的分发数据,意味着一个开发者工具从爱好项目正式变成基础设施。OpenClaw 已经不是[酷项目],它已经是有意义比例的 agent build 社区在用的承重层。</p>
+              <p>602 赞、29 转推——互动量跟声明的体量匹配。1000-2000 万次/周,成了现在所有 agent infra 公司对标的基准线。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Steipete:OpenClaw 一周 npm 下载量历史新高,合计 Docker/GitHub/企业部署/fork 真实数字 1000-2000 万次/周。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Steipete&#39;s biggest tweet of the week: OpenClaw had more npm downloads this week than ever, and the combined number across Docker, GitHub, internal deployments, and forks puts the real figure at 10-20 million downloads per week.</p>
+              <p>This is the kind of distribution number that makes a developer tool stop being a hobby and start being infrastructure. OpenClaw is no longer a cool project — it is a load-bearing layer for a meaningful slice of the agent build community.</p>
+              <p>602 likes / 29 RTs — the engagement matches the size of the claim. The 10-20M/week figure is the headline every agent infrastructure company benchmarks against now.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>We never had more npm downloads than this week on @openclaw - comined with Docker, GitHub, company-internal deployments and the numerous forks, real number is more in the 10-20 million downloads/week.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/steipete/status/2062276065448669627" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:steipete" data-author-name="Peter Steinberger" data-author-tag="OpenClaw 创始人" data-author-handle="@steipete" data-author-avatar="../assets/avatars/x-steipete.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-steipete.jpg" alt="Peter Steinberger avatar"><span class="avatar-fallback">PS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Steinberger</div>
+            <div class="author-tag is-inline">OpenClaw 创始人</div>
+          </div>
+          <div class="author-handle">@steipete</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Steipete 第二条:今天 OpenClaw 活动候补名单 1300+ 人,其他人在 Twitch 和 Discord 看直播。容量本身就是新闻——一个开发者工具的社区活动,候补规模已经到了线下 meetup 的体量,加上异步兜底观众一起算,这是一个正在长大的场。</p>
+              <p>这是一个品牌实时成熟的标志:受众不再是[Steipete 的关注者],是[OpenClaw 社区]——这是任何工具从个人项目跨到品类 leader 的那一刻。</p>
+              <p>206 赞、16 转推——数字很静,但 1300 这个候补量才是承重事实。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>OpenClaw 活动候补 1300+ 人,Twitch+Discord 直播兜底——社区已经独立于创始人存在。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Second Steipete: 1300+ people on the waitlist for today&#39;s OpenClaw event, livestreamed on Twitch and Discord for everyone else. The capacity is the story — a developer-tool community event is filling a meetup-sized room and an async-fallback audience at once.</p>
+              <p>This is a brand maturing in real time. The audience is no longer [Steipete&#39;s followers], it is [the OpenClaw community] — and that is the moment any tool crosses from personal project to category leader.</p>
+              <p>206 likes / 16 RTs — quiet, but the 1300 number is the load-bearing fact.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>We have over 1300 people on the waitlist for today&#39;s OpenClaw event - will be livestreamed on Twitch and Discord tho!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/steipete/status/2062307384018829768" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:claudeai" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic 官号 Claude 亲自转了一个 maker 项目:Ben 做了一个实体的 Clawd(龙虾吉祥物)——Claude Code 需要用户输入时,壳里的 solenoid 会把它顶起来,等于[跳起来叫你回来]。壳体是机加工铝,Arduino 拦截键盘信号,Raspberry Pi Zero 负责大脑。</p>
+              <p>信号点不在作品本身(它是个可爱的玩具),在 Anthropic 亲自转它。Claude 团队在公开嘉许[agent 作为物理存在]的美学,这是对[chat 框之后是什么]的一个软性产品方向信号。</p>
+              <p>112 赞 + 95 赞——数字不大,但 Anthropic 的官号放大才是真正的分发事件。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Anthropic 官号亲自转 Clawd 实体机器人:agent 已经从屏幕里走出来变成物理在场。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic&#39;s official Claude account just amplified a maker project: Ben built a physical Clawd (the lobster mascot) that jumps up and down on a solenoid when Claude Code needs user input. The body is machined aluminum; an Arduino reads intercepted keyboard signals; a Raspberry Pi Zero handles the brain.</p>
+              <p>The signal is not the build (it is a charming tinker toy) — the signal is Anthropic amplifying it. The Claude team is publicly celebrating the [agent as physical presence] aesthetic, which is a soft product direction signal for what comes after the chat box.</p>
+              <p>112 likes for the build post and 95 for the video — small numbers, but Anthropic&#39;s amplification is the real distribution event.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Ben kept getting distracted during long Claude Code sessions, so he built a miniature Clawd to get his attention. When Claude Code needs input, a solenoid inside the aluminum body pushes it upward. In other words, it jumps up and down.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/claudeai/status/2062220049146876347" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 05</div>
+    <h2 class="section-title">The New Mobile Agent Surface / 新移动端面</h2>
+    <p class="section-desc">Google Labs 推出 Dreambeans——一个[希望型滚动,不是末日型滚动]的移动端;Nikunj 在另一边琢磨 Fitbit Air。移动端在 agent 时代重新被想起。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:GoogleLabs" data-author-name="Google Labs" data-author-tag="Google AI" data-author-handle="@GoogleLabs" data-author-avatar="../assets/avatars/x-GoogleLabs.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-GoogleLabs.jpg" alt="Google Labs avatar"><span class="avatar-fallback">GL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Google Labs</div>
+            <div class="author-tag is-inline">Google AI</div>
+          </div>
+          <div class="author-handle">@GoogleLabs</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Google Labs 推出实验性新移动应用:Dreambeans。卖点是 Personal Intelligence——每天给你一组个性化故事,把你可能错过的内容捞出来,同时给相关主题一个往下挖的入口。</p>
+              <p>框架是 doom-scrolling 的反义:hope-scrolling。希望型滚动。这是 Google 最擅长的事——把无限滚动的范式重新钉到正和博弈的目的上,这次由一个 agent 从你其他 Google app 里拉内容。</p>
+              <p>1057 赞、97 转推——Google Labs 很少再出消费侧产品惊喜,这次互动量本身就是惊喜。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Google Labs 推 Dreambeans:Personal Intelligence + 希望型滚动,从你其他 Google app 里捞内容做每日个性化故事。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Google Labs launched a new experimental mobile app: Dreambeans. The pitch is Personal Intelligence — a daily collection of personalized stories that surface things you might otherwise miss, surfacing what is relevant to you and letting you dive deeper into topics that matter.</p>
+              <p>The framing is the opposite of doom-scrolling: hope-scrolling. The hallway pitch that got the team the green light. This is Google doing what Google does best — taking the infinite scroll pattern and re-stapling it to a positive-sum purpose, now with an agent pulling the content from your other Google apps.</p>
+              <p>1057 likes / 97 RTs — Google Labs rarely ships consumer product surprises anymore; the engagement is the surprise.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Dreambeans is a new, experimental mobile app that uses Personal Intelligence to connect to your Google apps. Every day, it delivers collections of personalized stories, surfacing things you might otherwise miss, alongside topics that are relevant to you, to help you dive deeper into topics.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/GoogleLabs/status/2062206479026069544" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:joshwoodward" data-author-name="" data-author-tag="" data-author-handle="" data-author-avatar="">
+      <div class="card-header">
+        <div class="avatar is-fallback"><img src="" alt="Author avatar"><span class="avatar-fallback"></span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name"></div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Josh Woodward 的那条 backstory 推是更长的版本:一个小 Google Labs 团队在走廊里 pitch 了[希望型滚动,不是末日型滚动],得到一句[go for it]。今天这个小实验作为 Dreambeans 正式发布。</p>
+              <p>501 赞、49 转推——是整个 Google Labs 帖里互动最高的一条。原因在框架:全文是一次为[大公司里小团队做有立场的产品]的辩护。</p>
+              <p>Agent 时代的信号:labs 模式回归。大公司重新允许小团队做有立场的 surface,因为造一个新移动体验的成本已经低到实验本身能自己回本。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Josh Woodward 公开 Dreambeans 的内部故事:[Hope scrolling, not doom scrolling] 走廊 pitch,得到 go for it——大公司里小团队做有立场产品的胜利。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Josh Woodward&#39;s backstory tweet is the longer read: a small Google Labs team pitched [Hope scrolling, not doom scrolling] in a hallway and got the [go for it] answer. Today that little experiment is rolling out as Dreambeans.</p>
+              <p>501 likes / 49 RTs — by far the highest-engagement tweet in the Google Labs thread. The reason is the framing: the entire post is a defense of small internal teams shipping opinionated consumer products inside a giant company.</p>
+              <p>The agent-era signal: the labs model is back. Bigcos are re-allowing small teams to ship opinionated surfaces because the cost of building a new mobile experience is now low enough that the experiment pays for itself.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>A short backstory on this one: A small Google Labs team had an idea to make an app designed to connect you with what matters, without the endless scroll. &quot;Hope scrolling, not doom scrolling&quot; was the hallway pitch. &quot;Go for it.&quot; And today, that little experiment is rolling out. Meet Dreambeans.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/joshwoodward/status/2062217728824651848" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
     </article>
 
     <article class="card" data-author-key="x:nikunj" data-author-name="Nikunj" data-author-tag="" data-author-handle="@nikunj" data-author-avatar="../assets/avatars/x-nikunj.jpg">
@@ -847,12 +840,12 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Nikunj Kothari:最好的创始人把以下每一项都当作必要条件,而不是充分条件——AI / 时机 / 为何是现在、融资、分发 / 话题度、市场、产品、收入。他看到太多 pitch 只把其中一项讲成核心。</p>
-              <p>单点论调的 pitch 是 AI 时代的流行病。[我们模型最好]、[我们第一个入场]、[我们有病毒式分发]——单拎出来,这都是 2021 年那一代 pitch,这一周期对它们的奖励越来越少。</p>
-              <p>跟 Peter Yang 那篇 SaaS 现实放一起读:在薄护城河被吃掉的当下,把单一组件当护城河讲的 pitch,正是最难融到钱的 pitch。</p>
+              <p>Nikunj Kothari(FPV Ventures,前 Meter 早期)聊 Fitbit Air:[上面专业感,下面监测感]。他想看到的硬件楔子是:Google Health API 写到表里、写权限到 Apple Health、再加一条好看的表带。</p>
+              <p>藏在产品点评里的是 API 请求——消费侧 agent 故事不会只靠单一供应商 stack 撑起来,需要 Cat Wu 那种跨平台 handoff 模式。</p>
+              <p>40 赞是个软数字,但 Nikunj 是真 seed/A 投资人,他这条[我会买什么]推,本质是对[跨平台个人健康 agent stack]的一次公开做市。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Nikunj:AI/时机、融资、分发、市场、产品、收入都只是必要条件,不是充分条件。</p>
+              <p>Nikunj:Fitbit Air 上面专业下面监测,但需要 Google Health API + Apple Health 写权限 + 跨平台 handoff。</p>
             </div>
           </div>
         </div>
@@ -860,33 +853,178 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Nikunj Kothari: the best founders treat the following as a necessary component of their business but NOT the entire business — AI / timing, funding, distribution / hype, market, product, revenue. He is seeing too many pitches that tout only one of these as the core reason.</p>
-              <p>The single-claim pitch is the AI-era disease. [We have the best model] or [we are first to market] or [we have viral distribution] is, on its own, a 2021-vintage pitch that the current cycle is rewarding less.</p>
-              <p>Read with Peter Yang&#39;s SaaS piece: in a market where thin moats are being eaten, the pitch that names a single component as the moat is the pitch that is least likely to fund.</p>
+              <p>Nikunj Kothari (FPV Ventures, ex-Meter early hire) on the Fitbit Air: [Professional at the top, monitoring at the bottom]. The hardware wedge he wants: Google Health API on the watch, write capabilities into Apple Health, and a nice band.</p>
+              <p>The interesting detail is the API request buried in the product take — the consumer agent story will not get built on the back of one vendor&#39;s stack. It needs the same cross-platform handoff Cat Wu is doing for analytics.</p>
+              <p>40 likes is a soft number, but Nikunj is a real seed/A investor; his [what I would buy] tweet is a public market-making signal for the cross-platform personal-health-agent stack.</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>The best founders treat the following as a necessary component of their business but NOT the entire business: &gt; AI / timing / why now &gt; Funding &gt; Distribution / hype &gt; Market &gt; Product &gt; Revenue. I&#39;m seeing too many pitches that are touting only one of these as the core reason.</p>
+              <p>Getting on this Fitbit Air hype train. Professional at the top, monitoring at the bottom. Now just need Google Health API, write capabilities to Apple Health and a nice band and we&#39;re all set!</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="card-footer"><a href="https://x.com/nikunj/status/2062033620773306763" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+      <div class="card-footer"><a href="https://x.com/nikunj/status/2062198451086221543" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 06</div>
+    <h2 class="section-title">Cost Story &amp; Frontend Generation / 成本与前端生成</h2>
+    <p class="section-desc">Levie 重新算 AI 时代的软件开支:Rauch 用 V0 把 Snowflake 数据直接渲染成前端——成本结构在被改写,工具分层在被重新画。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:levie" data-author-name="Aaron Levie" data-author-tag="Box CEO" data-author-handle="@levie" data-author-avatar="../assets/avatars/x-levie.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-levie.jpg" alt="Aaron Levie avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie</div>
+            <div class="author-tag is-inline">Box CEO</div>
+          </div>
+          <div class="author-handle">@levie</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie 本周被引最多的一条:就算加了雇主上限,AI token 支出也大幅超过历史上任何软件支出。以前公司每月给每个员工付 10-50 美元软件许可,现在给 token 付几百到几千美元去放大产能。</p>
+              <p>人/单月成本数字是 CFO 的新问题。历史 SaaS 预算框架(按席位、封顶、可预测)在结构上就不适合 agent 增强型 workforce。采购团队接下来 18 个月要重写预算模型。</p>
+              <p>219 赞、21 转推——Levie 已经成为企业 AI 预算再框架的公开评论员。每个员工每月几百到几千美元 token,是新基准线。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Levie:即使有雇主上限,AI token 支出也远超历史软件支出——人/月从 10-50 美元 SaaS 变成几百到几千美元 token。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie&#39;s most-quoted tweet of the week: even with employer caps, AI token spend dramatically exceeds any other historical software spend. Companies used to pay $10-50 per employee per month for software; now they pay hundreds or thousands on tokens to augment productivity.</p>
+              <p>The cost-per-employee number is the new CFO question. The historical SaaS budget framework (per-seat, capped, predictable) is structurally wrong for an agent-augmented workforce. Procurement teams will spend the next 18 months rewriting the budget model.</p>
+              <p>219 likes / 21 RTs — Levie is now the de facto public commentator on the enterprise AI budget reframe. The number — hundreds to thousands of dollars per employee per month on tokens — is the new baseline.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Even with employer caps, the spend on AI tokens dramatically exceeds any other historical spend on software. Typically, companies maybe would spend on the order of $10-50 for a software license per month per employee, but now will pay hundreds or thousands on tokens to augment their productivity.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/levie/status/2062280745889222937" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:levie" data-author-name="Aaron Levie" data-author-tag="Box CEO" data-author-handle="@levie" data-author-avatar="../assets/avatars/x-levie.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-levie.jpg" alt="Aaron Levie avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie</div>
+            <div class="author-tag is-inline">Box CEO</div>
+          </div>
+          <div class="author-handle">@levie</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Levie 第二条,就业数据反驳:就业数据继续跟很多人以为的相反。拿工程岗举例——AI 影响最大、感知风险最高的领域——公司现在因为 AI 启动了比以往更多的软件项目。</p>
+              <p>论点是把生产力 J 曲线套到工程上:AI 压低了一个项目的边际成本,公司就会启动更多项目,工程师人头天花板往上走,不是往下。Box 的客户在内容工作流里报的是同一个故事。</p>
+              <p>358 赞、49 转推——本周被 builder 截图转发给焦虑工程经理最多的一条。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Levie:就业数据反向——AI 让工程岗启动的项目比以往更多,人头天花板往上不是往下。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Second Levie tweet, the labor-market rebuttal: the jobs data continues to suggest the opposite of what a lot of people thought would happen. Engineering, as the prime example of the AI-impacted area, now has far more software projects than ever before because of AI.</p>
+              <p>The argument is the productivity-J-curve applied to engineering: AI compresses the marginal cost of a project, so companies start more projects, and the engineer headcount ceiling moves up rather than down. Same logic Box&#39;s customers are reporting in content workflows.</p>
+              <p>358 likes / 49 RTs — the tweet of the week that most product builders are screenshotting and forwarding to their worried engineering managers.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The jobs data coming out continues to suggest the opposite of what a lot of people had thought would happen. Just take engineering, as the prime example of the area with greatest AI impact (and perceived risk). Most companies now have far more software projects than ever before because of AI, and the headcount ceiling moves up, not down.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/levie/status/2062335852379066698" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:rauchg" data-author-name="Guillermo Rauch" data-author-tag="Vercel CEO" data-author-handle="@rauchg" data-author-avatar="../assets/avatars/x-rauchg.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-rauchg.jpg" alt="Guillermo Rauch avatar"><span class="avatar-fallback">GR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Guillermo Rauch</div>
+            <div class="author-tag is-inline">Vercel CEO</div>
+          </div>
+          <div class="author-handle">@rauchg</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch:在业务数据之上生成前端,是 coding AI 的一类 killer app。Vercel 早就跑在 Snowflake 上,有了 V0 和 Next.js,他们从同一层数据里拿到的价值涨了 1000 倍。</p>
+              <p>1000 倍这个数字是头条——它是 Vercel 自报数,但方向是对的:结构化语义层 + 中间一个 LLM + 上面前端生成器,把静态 dashboard 变成按需 surface。</p>
+              <p>268 赞、11 转推——Vercel 公开认领了[数据到前端]的 agent 流水线。对 SaaS 的含义跟 Satya 在 podcast 里说的是同一件:dashboard 正在被 agent 拆开再重新打包。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Rauch:V0 + Next.js 让 Vercel 在同一层 Snowflake 数据上拿到 1000 倍价值——dashboard 正在被 agent 拆开重打。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch: generating frontends on top of your business data is one of the killer apps of coding AI. Vercel already ran on Snowflake; with V0 and Next.js, they are now getting 1000x the value out of the same data layer.</p>
+              <p>The 1000x claim is the headline — it is a Vercel-self-reported number, but the directional point is correct: a structured semantic layer + an LLM in the middle + a frontend generator on top turns a static dashboard into an on-demand surface.</p>
+              <p>268 likes / 11 RTs — Vercel is publicly claiming the [data-to-frontend] agent pipeline. The implication for SaaS is the same one Satya made on the podcast: dashboards are getting unbundled and rebundled by agents.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Generating frontends on top of your business data is one of the killer apps of coding AI. The genie is out of the bottle. Never going back to clunky and rigid dashboards. Vercel already ran on Snowflake. But with V0 and Next.js, we&#39;re now getting 1000x the value.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/rauchg/status/2062199585322529108" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
     </article>
   </section>
 
   <section class="section-header">
     <div class="section-label">Theme 07</div>
-    <h2 class="section-title">Podcast: Listen Labs and AI-First Customer Research / 播客:Listen Labs 的 AI 一手客户研究</h2>
-    <p class="section-desc">Training Data 播客这一期请到 Listen Labs 创始人 Alfred Wahlforss:一年时间拿到 Fortune 500 中 20% 客户,靠的是 AI 跑大规模语音访谈。</p>
+    <h2 class="section-title">Podcast: Satya Nadella on Full-Stack Builders / 播客:Satya 谈全栈 Builder</h2>
+    <p class="section-desc">No Priors 这一期请到了 Microsoft CEO Satya Nadella:从 Azure 网络运维怎么用 agent 化、到 MAI 模型的 lineage,再到[第三幕是 harness 公司],他给企业 AI 时代画了一整张图。</p>
   </section>
   <section class="feed">
-    <article class="card" data-author-key="podcast:training-data" data-author-name="Training Data Podcast" data-author-tag="AI 播客" data-author-handle="" data-author-avatar="">
+    <article class="card" data-author-key="podcast:no-priors" data-author-name="No Priors" data-author-tag="AI 与创业对话播客" data-author-handle="" data-author-avatar="">
       <div class="card-header">
-        <div class="avatar is-fallback"><img src="" alt="Training Data Podcast avatar"><span class="avatar-fallback">TD</span></div>
+        <div class="avatar is-fallback"><img src="" alt="No Priors avatar"><span class="avatar-fallback">NP</span></div>
         <div class="author-info">
           <div class="author-name-row">
-            <div class="author-name">Training Data Podcast</div>
-            <div class="author-tag is-inline">AI 播客</div>
+            <div class="author-name">No Priors</div>
+            <div class="author-tag is-inline">AI 与创业对话播客</div>
           </div>
           <div class="author-handle"></div>
         </div>
@@ -900,13 +1038,14 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Listen Labs 的创始人兼 CEO Alfred Wahlforss 上了这一期 Training Data。Listen 是一个 AI 一手的客户研究平台,可以同时跑几千场语音访谈。发布一年,客户已经覆盖 Fortune 500 的 20%——Microsoft、Anthropic、Sweetgreen、NBC 都在用。</p>
-              <p>核心策略:把用户规模做到十亿,然后按[这个人在哪个细分领域是专家]做分层——哪怕是球鞋这种小领域也行。找到该话题的早期采用者和影响者,先访谈他们,洞察价值远高于一个普通抽样。</p>
-              <p>平台会在访谈过程中持续给每个人建档,之后可以直接搜索找到最合适的人去谈。竞争护城河就是那张[访谈图谱]:每多跑一场访谈,未来的每一场都更准。</p>
+              <p>Satya Nadella 上 No Priors,主线一句话:微软的第三幕是 harness 公司。论点是价值捕获从模型层搬到 harness——把模型、数据、工具、私域 evals 装到一起,让一家公司能在 frontier intelligence 上持续 hill climb。</p>
+              <p>他罕见地承认低估了部署的复杂度。粗一点的说法是[intelligence is log of compute,差不多对]——这句话对 benchmark 成立;真评估是用户在真实世界里能做出什么,这比 benchmark 暗示的难得多。</p>
+              <p>商业模式那一段最好:定价正在从 per-user 走向 per-usage,因为 per-user 一直是买家想要预算确定性的人造产物,不是真实价值产生方式的反映。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Listen 目标:十亿用户,按细分专长分层,先访谈早期采用者,洞察更值钱。</p>
-              <p>访谈图谱随规模增长,搜索可定位最合适的人。</p>
+              <p>Satya:我们的活不是跑 Azure 网络,是建那个跑 Azure 网络的 agentic 系统。</p>
+              <p>微软的第三幕是 harness / evals 公司。</p>
+              <p>Per-user 定价是预算确定性需求的人造产物,不是价值本身的形状。</p>
             </div>
           </div>
         </div>
@@ -914,18 +1053,19 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Alfred Wahlforss, founder and CEO of Listen Labs, is on Training Data this week. Listen is an AI-first customer research platform that can run thousands of voice interviews simultaneously. A year after launch, Listen serves 20% of the Fortune 500 — Microsoft, Anthropic, Sweetgreen, NBC are customers.</p>
-              <p>The core strategy: get to a billion people in the audience, then stratify by what each person is an expert on — even something as niche as sneakers. Find the early-adopter / influencer segment for the topic, interview them first, and the insights are far more valuable than a generic sample.</p>
-              <p>The platform builds persistent profiles of people as it runs more interviews, then lets you search and find the right person to talk to. The competitive moat is the [interview graph]: each new interview makes every future one more accurate.</p>
+              <p>Satya Nadella on No Priors, the headline frame: the third act of Microsoft is the harness company. The thesis is that the value capture moves from the model to the harness — the integration of model + data + tools + private evals that lets a company hill-climb on frontier intelligence.</p>
+              <p>He is unusually candid about underestimating deployment complexity. The crude line — [intelligence is log of compute, kind of works] — is true for benchmarks; the real eval is what users can do in the real world, and that is much harder than the benchmarks suggested.</p>
+              <p>The best business-model moment: pricing is moving from per-user to per-usage because per-user was always an artifact of buyer wanting budget certainty, not a reflection of how the value is actually produced.</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Our goal is to get to a billion people in our audience and then to be able to stratify and know what exactly is this person an expert on. And it might be, you know, even something like sneakers. You have some people who are influencers and kind of early adopters. And if you&#39;re able to find that audience and interview them first, the insights are much more valuable.</p>
-              <p>We build profiles of people as we do more interviews in the platform, and then we can search and find the right person.</p>
+              <p>Our job is not to do Azure networking. Our job is to build the agentic system that does Azure networking.</p>
+              <p>I think the third act of Microsoft historically, as an operating systems company and then become a cloud company, maybe, like, the third act is that you&#39;re a harness or eval&#39;s company.</p>
+              <p>per user pricing is really an artifact of someone creating a budget needing certainty.</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="card-footer"><a href="https://www.youtube.com/watch?v=Rumft-rsEu4" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+      <div class="card-footer"><a href="https://www.youtube.com/watch?v=Gs2styCcwro" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
     </article>
   </section>
 
