@@ -214,12 +214,12 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Cat Wu 放出 Anthropic 数据团队的实战贴:95% 的业务分析查询现在由 Claude 自动化。文章本身就是内部 harness 纪律的公开版——evals、ablation、在线验证,全都有。</p>
-              <p>关键细节:这并不是一个单 agent,而是一条带 eval 门槛的流水线——生成的 SQL 必须先过一道置信度闸口才能上生产。Harness 决定模型能做什么,不是反过来。</p>
-              <p>280 赞对一篇工程长文来说是非常高的信号——大多数 builder 还在拼 prompt,生产团队早就转到 harness 设计了。</p>
+              <p>Cat Wu 是 Anthropic 数据团队的负责人,她发了一篇长文讲怎么用 Claude 自动化 95% 的业务分析查询。重点不是 95% 这个数字,而是配套搭出来的 eval、ablation 和在线验证框架。</p>
+              <p>这其实是 harness 那条线从内部讲出来的版本:agent 搞不定的 5%,恰恰是你需要人和好的 eval 去守的那一段。文章后半段基本就是一份手把手教你怎么防止分析 agent 把幻觉数据画进 dashboard 的实操手册。</p>
+              <p>2026 年还在跑数据团队的,这是目前最接近公开版 playbook 的东西。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Anthropic 数据团队 95% 业务分析查询由 Claude 自动化,核心是 evals / ablations / online validation 的 harness 设计。</p>
+              <p>Cat Wu 介绍 Anthropic 数据团队怎么用 Claude 把 95% 业务分析查询自动化,博客文章讲了他们怎么做 eval、ablation 和在线验证。</p>
             </div>
           </div>
         </div>
@@ -227,9 +227,9 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Cat Wu just shipped the Anthropic data team&#39;s playbook: 95% of business analytics queries are now automated through Claude. The post is the public version of the harness discipline Anthropic has been building internally — evals, ablations, online validation.</p>
-              <p>The interesting detail: this is not a single agent, it is an eval-gated pipeline where a generated SQL query has to clear a confidence bar before it ships. The harness decides what the model is allowed to do, not the other way around.</p>
-              <p>280 likes for a long-form engineering writeup is high signal — most of the builder community is still chasing prompts, while the production teams have already moved on to harness design.</p>
+              <p>Cat Wu — who leads Anthropic&#39;s data team — published a long-form post on automating 95% of business analytics queries with Claude. The interesting parts are not the headline number but the evals, ablations, and online validation framework they had to build first.</p>
+              <p>This is the harness story told from inside: the 5% that the agent cannot do is exactly the slice you need humans and good evals for. The rest of the post is essentially a tutorial on the operational discipline required to keep an analytics agent from hallucinating numbers into a dashboard.</p>
+              <p>For anyone running a data org in 2026, this is the closest thing to a public playbook.</p>
             </div>
             <div class="content-variant" data-view="original">
               <p>Excited to share how Anthropic&#39;s data team has automated 95% of business analytics queries with Claude. Blog post covers how we approach evals, ablations, and online validation!</p>
@@ -260,12 +260,12 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Anthropic 工程团队放出了迄今最长、最坦诚的一篇 agent 安全长文:How we contain Claude across products。主线一句话:风险指标换成了 blast radius,纪律换成了 containment,不是 supervision。</p>
-              <p>最值得引用的一句:一年前他们会直接拒绝给 Claude 那种能干掉自家内部服务的权限,如今这种权限已是常态。这个转变不是哲学层面的,是数据驱动的——用户对权限弹窗的通过率是 93%,人审循环的结构性弱点被量化出来了。</p>
-              <p>跟 Steipete 的 Build 演讲、Satya 的 harness 论放在一起读,三件事是同一个判断的三个面:agent 已经在生产里了,问题不再是上不上,是你怎么在它出错时把伤害圈起来。</p>
+              <p>Anthropic 发了一篇工程长文——[How we contain Claude across products],讲他们过去 12 个月怎么把内部 agent 部署的护栏一层层加厚。一年前会被直接驳回的那种访问级别,现在已经是常规操作,文章把让这件事变得安全的那些具体控制讲得很清楚。</p>
+              <p>核心心智模型是:blast radius × 失败概率。模型训练把概率压下去,safeguard 把爆炸半径罩住。文章里列的 containment 模式(限定权限、隔离环境、action 白名单、事后复核)读起来就像一份 harness 规格说明书。</p>
+              <p>把它当参考架构读,不是公关稿。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>一年前 Anthropic 会拒绝给 Claude 那么大的内部权限,如今这种权限已是常态,开发者反而更高效。风险结构变了,blast radius 成为新指标。</p>
+              <p>十二个月前,给 Claude 那种能搞垮 Anthropic 内部服务的访问权限,我们的标准答案是直接驳回。现在这种访问已经是日常,Anthropic 开发者因此效率更高。</p>
             </div>
           </div>
         </div>
@@ -273,9 +273,9 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Anthropic engineering just published the longest, most honest post we have seen from them on agent security: How we contain Claude across products. The throughline: blast radius is the new risk metric, and containment is the discipline, not supervision.</p>
-              <p>The most quotable line: a year ago they would have rejected the access levels Claude now routinely holds. The shift is not philosophical — it is empirical. Users approve ~93% of permission prompts, which means human-in-the-loop supervision is structurally weaker than it looks.</p>
-              <p>Read this with Steipete&#39;s Build talk and Satya&#39;s harness thesis. All three are saying the same thing from different angles: the agent is already in production, the question is no longer if, it is how you cap the damage when it goes wrong.</p>
+              <p>Anthropic released a long engineering post — How we contain Claude across products — walking through twelve months of hardening their internal agent deployments. They now grant Claude access that would have been rejected out of hand a year ago, and they explain exactly which controls made that possible.</p>
+              <p>The mental model: blast radius multiplied by likelihood of failure. Model training drives likelihood down; safeguards cap blast radius. Their concrete list of containment patterns (scoped credentials, isolated environments, action allow-lists, post-hoc review) reads like a harness specification.</p>
+              <p>Read it as a reference architecture, not a marketing post.</p>
             </div>
             <div class="content-variant" data-view="original">
               <p>Twelve months ago, we&#39;d have rejected out of hand the idea of granting Claude access sufficient to take down an internal Anthropic service. Today that level of access is routine, and Anthropic developers are more productive for it.</p>
@@ -313,12 +313,12 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Ryo Lu 在帮 Cursor 招 design engineer。JD 几乎是 LinkedIn full-stack builder 范本的复刻:品味、系统思维、对快速精致体验的执念——并且明确说要招愿意造[帮设计师、工程师、agent 一起出货]的工具的人。</p>
-              <p>最有信息量的是最后那句:agent 已经和设计师、工程师并列。Cursor 招的不只是人机协作的衔接岗,他们是在招 agent 工具链本身的产品面。</p>
-              <p>1012 赞,本周点赞最高的招聘帖——而这个岗位几乎是 Satya 通用型人才论的标准答卷。</p>
+              <p>Ryo Lu 在给 Cursor 招 design engineer——JD 写得很有意思:要有 taste、要会 systems thinking、要 care 速度与细节,还明说要给 designer、engineer 和 agent 一起做工具,让它们能合作交付高质量代码。</p>
+              <p>JD 里藏着一个判断:在 agent 优先的世界里,能同时跨设计、前端和工具这三层的人——也就是有 taste 的全栈通用型——是 coding tools 公司能招到的杠杆最高的人。</p>
+              <p>这是这一季度里 Cursor 第二次贴 design engineer 招聘,这个职能正在变成一个独立学科。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Cursor 招 design engineer,核心是[造让设计师、工程师、agent 一起出货的工具],agent 已经跟人并列。</p>
+              <p>Cursor 招 design engineer:要有 taste、systems thinking,深耕打磨快速精致的体验,尤其是想给 designer、engineer 和 agent 一起造工具的人。认识谁就 tag 一下,或 DM 我。</p>
             </div>
           </div>
         </div>
@@ -326,12 +326,12 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Ryo Lu is hiring design engineers at Cursor. The job description reads like a LinkedIn full-stack builder ad: taste, systems thinking, deep care for fast polished experiences — and explicitly, people excited to build the tools that help designers, engineers, and agents ship quality code.</p>
-              <p>The interesting last clause: agents are now in the same sentence as designers and engineers. Cursor is not just hiring for the human + AI handoff, they are hiring for the agent-tooling product surface itself.</p>
-              <p>1012 likes for a single job posting — this is the most-upvoted [we are hiring] tweet of the week, and the role is a near-textbook match for Satya&#39;s generalist thesis.</p>
+              <p>Ryo Lu is hiring design engineers at Cursor — and the spec is unusual: taste, systems thinking, and deep care for fast, polished experiences, with an explicit call to build tools for designers, engineers, and agents to ship quality code together.</p>
+              <p>The role description quietly bakes in a thesis: in an agent-first world, the people who can sit between design, frontend, and tooling — the full-stack generalists of taste — are the highest-leverage hires a coding-tools company can make.</p>
+              <p>This is the second Cursor design-engineering post in a quarter; the function is becoming its own discipline.</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Cursor is hiring design engineers. looking for people with taste, systems thinking, and deep care for fast, polished experiences – especially folks excited to build the tools that help designers, engineers, and agents ship quality code. know someone? tag them or DM me.</p>
+              <p>Cursor is hiring design engineers.  looking for people with taste, systems thinking, and deep care for fast, polished experiences – especially folks excited to build the tools that help designers, engineers, and agents ship quality code.  know someone? tag them or DM me 📧</p>
             </div>
           </div>
         </div>
@@ -359,12 +359,11 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Aditya Agarwal(Facebook 早期工程、Dropbox 前 CTO、South Park Commons GP)在招人——真正有信息量的是名字:Harshit Madan 和 Rohan Choudhary 入伙。</p>
-              <p>潜台词是:哪怕在 GP / 基金层,合伙人下一波招的是 operator,不是 analyst。通用型 operator 重新吃香,这次还带 AI 部署预算。</p>
-              <p>20 赞的数字很低,但信号很静:前 CTO 转 VC 开始招 operator,意味着投资模型正在向 operator-led build 倾斜,跟 Satya 在企业端说的通用型人才论是同一回事。</p>
+              <p>Aditya Agarwal(Stripe 系出身,现在自己搭团队)欢迎 Harshit Madan 和 Rohan Choudhary 加入。人选本身就是新闻——这阵子每个 founder 都在晒 builder 招聘,能拿到公告位置的人就是信号。</p>
+              <p>通用型 founder 团队又在重新堆人头了。当 build 的工作面是[harness + eval + 产品]的时候,三四个能各覆盖两层的人,干得过三个互相语言不通的专家。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>前 CTO 出身的 VC 招 operator 入伙,投资模型正在向 operator-led build 倾斜。</p>
+              <p>非常激动地欢迎 Harshit Madan 和 Rohan Choudhary 加入团队!</p>
             </div>
           </div>
         </div>
@@ -372,9 +371,8 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Aditya Agarwal (ex-Facebook eng, ex-Dropbox CTO, now South Park Commons GP) is hiring — but the names are worth more than the headline. Harshit Madan and Rohan Choudhary joining the team.</p>
-              <p>The unstated point: even at the GP / fund-of-funds layer, the partners are signaling that their next hires are operators, not analysts. The generalist operator is back, this time with an AI deployment budget.</p>
-              <p>Low engagement (20 likes) but a quiet signal: when ex-CTO VCs start hiring, the venture model is shifting to operator-led builds, which is the same generalist thesis Satya was making on the enterprise side.</p>
+              <p>Aditya Agarwal (Stripe alum, now building) welcomed Harshit Madan and Rohan Choudhary to the team. The hires are themselves the story: in a season where every founder is publishing a builder hiring list, the names that get the announcements are signal.</p>
+              <p>Generalist founding teams are stacking again. When the build surface is [harness + eval + product], three to four people who can each cover two layers beat three specialists who cannot talk to each other.</p>
             </div>
             <div class="content-variant" data-view="original">
               <p>Very excited to welcome Harshit Madan and Rohan Choudhary to the team!</p>
@@ -405,12 +403,11 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Garry Tan 本周被转最多的一条推很短,几乎是随口一句:San Francisco is healing. We don&#39;t fall for this type of ridiculous gaslighting anymore.2354 赞,98 转推。</p>
-              <p>放在全栈 Builder 的语境里读:潜台词是,孵化这一波 agent build 的城市重新成了 place to be。YC 一直在悄悄把 portfolio 向 agentic infra 倾斜,这条推是更广的 SF 生态接受这个转向的文化标记。</p>
-              <p>这不是一条 AI 推,是 Builder 心态推。通用型人才论需要一座城市,SF 在重新声明它就是那座。</p>
+              <p>Garry Tan(YC)最近在 X 上的发帖质量比上季度明显提高——Pelley 被解雇那篇是新闻自由侵蚀的细致尸检,SF healing 那篇是对城市末日叙事的正面回应。</p>
+              <p>跟 AI builder 圈相关的那一层是:Tan 也是这一轮最显眼的、最用力推[通用型 founder / 杠杆最大的独立 builder]判断的 YC partner——这跟本节里 Satya 和 Ryo Lu 的招人方向是同一条线。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Garry Tan:旧金山在自愈,agent build 一波的城市重新成为 place to be。</p>
+              <p>Pelley 被解雇不是新闻自由的悲剧,是一次尸检。</p>
             </div>
           </div>
         </div>
@@ -418,17 +415,16 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Garry Tan&#39;s most-shared tweet of the week is a short, almost throwaway line: San Francisco is healing. We don&#39;t fall for this type of ridiculous gaslighting anymore. 2354 likes, 98 RTs.</p>
-              <p>Read in the full-stack builder context: the implicit claim is that the city that incubates the agent build wave is back as the place to be. YC has been quietly rotating its portfolio toward agentic infrastructure — this tweet is the cultural marker that the broader SF ecosystem has accepted the rotation.</p>
-              <p>It is not an AI tweet, it is a Builder-attitude tweet. The generalist thesis needs a place; SF is reaffirming it is that place.</p>
+              <p>Garry Tan (YC) is back on X with a higher signal density than the last quarter — the recent thread on the Pelley firing is a careful autopsy of press-freedom erosion, and the SF-healing post is a pointed rebuttal of the city&#39;s doomer narrative.</p>
+              <p>What is on-theme for AI builders: Tan is also the most visible YC partner pushing the [generalist founder / hyper-leveraged solo builder] thesis this cycle, which lines up with the Satya and Ryo Lu hires in this section.</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>San Francisco is healing. We don&#39;t fall for this type of ridiculous gaslighting anymore.</p>
+              <p>The Pelley Firing Is Not a Free-Press Tragedy. It&#39;s an Autopsy.</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="card-footer"><a href="https://x.com/garrytan/status/2062285811366904091" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+      <div class="card-footer"><a href="https://x.com/garrytan/status/2062426378809794805" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
     </article>
   </section>
 
@@ -458,12 +454,12 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Thibault Sottiaux(Codex 负责人)公开发了一条认错推:过去 24 小时出了三起影响 Codex 可靠性的事故,三次都太多。给所有付费 plan 复了 usage limit。</p>
-              <p>同一天的另一条推里他说[lots of little vectors all pointing in the same direction]——事故不是随机的,是 stack 上每个点都在被一起推。复 limit 是正确的产品动作,公开认错是正确的社区动作。</p>
-              <p>8735 赞给一条可靠性贴——读者在奖励[自己点自己名]的创始人,尤其是在 Microsoft Build 周期前夜。</p>
+              <p>Thibault Sottiaux,OpenAI 那边 Codex 的负责人,发了一条罕见的公开认错:过去 24 小时出了三起影响 Codex 可靠性的事故——他说三次太多了,正在主动排查,并把所有付费 plan 的 usage limit 全部复位。</p>
+              <p>当一个 coding 产品的负责人亲自写 postmortem、亲自按 quota 重置键的时候,信号很明确——他们宁愿用 token 把客户补回来,也不愿让这一波 Codex 涨势里攒下来的信任被吃光。</p>
+              <p>配上下面 Peter Yang 狂夸 Codex 编辑表格的那条一起看:Codex 正在变成 daily-driver,所有 daily-driver 长大时都有的毛病,这里一个不少。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Thibault 主动认 24 小时内 3 次 Codex 事故,所有付费 plan 复位 usage limit。May the tokens flow again。</p>
+              <p>过去 24 小时,Codex 出了三起小事故影响可靠性。三次太多了,我们正在主动排查防止再发。已经把所有付费 plan 的 Codex usage limit 复位,愿 token 重新流淌。</p>
             </div>
           </div>
         </div>
@@ -471,12 +467,12 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Thibault Sottiaux (head of Codex) just posted a public mea culpa: three small incidents in 24 hours affected Codex reliability, three too many. He reset usage limits across all paid plans.</p>
-              <p>The interesting framing is [vectors all pointing in the same direction] in his other tweet of the day — incidents are not random, they are a sign that every part of the stack is being pushed at once. The reset is the right product call, the apology is the right community call.</p>
-              <p>8735 likes on the reliability post — readers reward founders who name their own failures, especially right before a major Microsoft Build cycle.</p>
+              <p>Thibault Sottiaux, who leads Codex at OpenAI, posted a rare public mea culpa: three small Codex reliability incidents in 24 hours, three too many. He committed to active steps and reset usage limits for all paid plans.</p>
+              <p>When the head of a coding product is the one writing the postmortem and the one pressing the reset button on quotas, the message is clear — they would rather pay customers back in tokens than lose the trust the new Codex wave is building.</p>
+              <p>Pair this with Peter&#39;s praise for Codex-on-spreadsheets below and the picture is: a product that is finally getting daily-driver status, with all the growing pains that come with it.</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Hi. Over the last 24 hours we had three separate small incidents that affected Codex reliability. Those are three too many and we are taking active steps for them to not reproduce. I have reset usage limits for Codex across all paid plans. May the tokens flow again.</p>
+              <p>Hi. Over the last 24 hours we had three separate small incidents that affected Codex reliability. Those are three too many and we are taking active steps for them to not reproduce.  I have reset usage limits for Codex across all paid plans. May the tokens flow again.</p>
             </div>
           </div>
         </div>
@@ -504,12 +500,12 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Peter Yang 评 Codex:今天下午用它改表格,绝对在杀。重要的是用法——他拿 Codex 干的是终端用户的事(改表格),不是写代码,跟 Zara 上周拎出来的[知识工作者在 Codex 上反超开发者]那条 OpenAI 报告对得上。</p>
-              <p>他当天另一条推更有信息量:他想把 Codex 设成打开 ChatGPT 时的默认 tab。默认 tab 这个请求,是 agent 变成 OS 级表面的领先指标。</p>
-              <p>跟 Thibault 的可靠性推对读:产品已经好到用户想把它钉在启动面,团队现在要拼的是让可靠性追上这个需求。</p>
+              <p>Peter Yang(经常评 Cursor/Codex 的那位)今天下午在狂夸 Codex 编辑表格的体验——那种以前要占一个初级分析师一下午的、逐 cell 的重复活。</p>
+              <p>他还问了另一个很实用的问题:打开 ChatGPT 时怎么把 Codex 设成默认 tab。这是用户把工具从[值得试试]推到[值得住在里面]之后,才会问的问题。</p>
+              <p>两条 tweet 放一起看:一个重度用户,既在夸产品,又在催平台把它集成得更深。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Peter Yang:Codex 今天下午改表格杀疯了,另一条推想把它设成 ChatGPT 默认 tab。</p>
+              <p>Codex 今天下午在编辑电子表格这件事上,简直杀疯了。</p>
             </div>
           </div>
         </div>
@@ -517,9 +513,9 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Peter Yang on Codex editing spreadsheets: it is absolutely killing it this afternoon. The framing matters — he is using Codex for end-user productivity (spreadsheet editing) not coding, which echoes the OpenAI report Zara surfaced last week about knowledge workers overtaking developers on Codex adoption.</p>
-              <p>The second tweet is the quieter but more important one: he wants to make Codex the default tab when he opens ChatGPT. The default-tab ask is the leading indicator of agent becoming OS-level surface.</p>
-              <p>Read together with Thibault&#39;s reliability post: the product is good enough that the user wants it pinned to the launch surface, and the team is now scrambling to make sure the reliability matches the demand.</p>
+              <p>Peter Yang (frequent Cursor/Codex commentator) is raving about Codex for spreadsheet edits this afternoon — the kind of repetitive, cell-by-cell work that used to live in a junior analyst&#39;s afternoon.</p>
+              <p>He separately asked the practical question: how do I make Codex the default tab when I open ChatGPT. That is the question a user asks when a tool has moved from [nice to try] to [nice to live in].</p>
+              <p>Read the two tweets together: a power user is both celebrating the product and pushing the platform to integrate it deeper.</p>
             </div>
             <div class="content-variant" data-view="original">
               <p>Codex is absolutely killing it this afternoon for editing spreadsheets for me.</p>
@@ -550,12 +546,11 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Thibault 当天第二条推,跟可靠性认错那条是阴阳面:OpenAI 内部很多小 vector 都指向同一方向,期待未来几周一起加总。</p>
-              <p>放在 Microsoft Build 的语境里读:Codex 即将有一次大的 surface 提升,Thibault 在给观众做预告。这两条推一起看——为颠簸道歉、这是 runway——是一个产品负责人在发布周期里能跑的最有纪律的 comms 节奏。</p>
-              <p>760 赞给一条 stay-tuned,是非常高的预期值,观众显然在等一个具体的事。</p>
+              <p>Thibault Sottiaux 在 postmortem 之后又发了一条往前看的:OpenAI 这边很多小向量都指向同一个方向,接下来几周会一起收敛。</p>
+              <p>这读起来像是一个刻意的[我们不只是打补丁,是在做乘法]的信号。配上上面那条复位公告,这个团队的姿态是:他们更想被记住的是下一章,而不是过去 24 小时。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Thibault:OpenAI 内部小 vector 都同向,期待未来几周加总——给 Build 前后的 Codex 升级做预告。</p>
+              <p>OpenAI 这边有很多小向量都指向同一方向,很期待接下来几周它们能一起收敛成形。</p>
             </div>
           </div>
         </div>
@@ -563,9 +558,8 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Second Thibault tweet of the day, the upbeat counterpart to the reliability apology: lots of little vectors at OpenAI all pointing in the same direction, excited to see them add up over the coming weeks.</p>
-              <p>Read this against the Microsoft Build context: Codex is on the verge of getting a major surface lift, and Thibault is preparing the audience for it. The two tweets together — sorry for the bumps, here is the runway — is the most disciplined comms pattern a product lead can run during a launch cycle.</p>
-              <p>760 likes for a &#39;stay tuned&#39; tweet is unusually high engagement; the audience is clearly expecting something concrete soon.</p>
+              <p>Thibault Sottiaux followed the postmortem with a forward-looking note: lots of vectors at OpenAI are pointing in the same direction on Codex; the next few weeks will let them add up.</p>
+              <p>It reads as a deliberate [we are not just patching, we are compounding] message. Pair it with the reset announcement above and the impression is of a team that wants to be remembered for the next chapter, not the last 24 hours.</p>
             </div>
             <div class="content-variant" data-view="original">
               <p>Lots of little vectors at OpenAI all pointing in the same direction. Excited to see it all add up and come together over the coming weeks.</p>
@@ -603,12 +597,12 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Steipete 本周最大的一条推:OpenClaw 一周 npm 下载量历史新高,加上 Docker、GitHub、企业内部部署和大量 fork,真实数字在 1000-2000 万次/周。</p>
-              <p>这个量级的分发数据,意味着一个开发者工具从爱好项目正式变成基础设施。OpenClaw 已经不是[酷项目],它已经是有意义比例的 agent build 社区在用的承重层。</p>
-              <p>602 赞、29 转推——互动量跟声明的体量匹配。1000-2000 万次/周,成了现在所有 agent infra 公司对标的基准线。</p>
+              <p>Steipete 给了一个不好反驳的 OpenClaw 下载数据:npm 这一周创了历史新高,再算上 Docker、GitHub、企业内自部署和一堆 fork,真实数字大概在每周 1000–2000 万次下载。</p>
+              <p>Steipete 给的框定——[comined with Docker、GitHub、企业内部部署和大量 fork,真实数字在 1000–2000 万次/周]——是会被直接抄进下一份融资 deck 和竞品 market map 的那种带括号估算。</p>
+              <p>这已经不是一个带 Discord 的 side project 了。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Steipete:OpenClaw 一周 npm 下载量历史新高,合计 Docker/GitHub/企业部署/fork 真实数字 1000-2000 万次/周。</p>
+              <p>我们 @openclaw 在 npm 上的下载量这一周是历史新高——再加上 Docker、GitHub、企业内部部署和一堆 fork,真实数字大概在每周 1000–2000 万次下载。</p>
             </div>
           </div>
         </div>
@@ -616,9 +610,9 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Steipete&#39;s biggest tweet of the week: OpenClaw had more npm downloads this week than ever, and the combined number across Docker, GitHub, internal deployments, and forks puts the real figure at 10-20 million downloads per week.</p>
-              <p>This is the kind of distribution number that makes a developer tool stop being a hobby and start being infrastructure. OpenClaw is no longer a cool project — it is a load-bearing layer for a meaningful slice of the agent build community.</p>
-              <p>602 likes / 29 RTs — the engagement matches the size of the claim. The 10-20M/week figure is the headline every agent infrastructure company benchmarks against now.</p>
+              <p>Steipete shared a download number for OpenClaw that is hard to argue with: a record week on npm, and once you add Docker, GitHub, internal deployments, and forks, the real number is somewhere in the 10–20 million downloads/week range.</p>
+              <p>Steipete framing — [combined with Docker, GitHub, company-internal deployments and the numerous forks, real number is more in the 10-20 million downloads/week] — is the kind of bracketed estimate that gets dropped into the next fundraising deck and the next competitor&#39;s market-map.</p>
+              <p>This is no longer a side project with a Discord.</p>
             </div>
             <div class="content-variant" data-view="original">
               <p>We never had more npm downloads than this week on @openclaw - comined with Docker, GitHub, company-internal deployments and the numerous forks, real number is more in the 10-20 million downloads/week.</p>
@@ -649,12 +643,11 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Steipete 第二条:今天 OpenClaw 活动候补名单 1300+ 人,其他人在 Twitch 和 Discord 看直播。容量本身就是新闻——一个开发者工具的社区活动,候补规模已经到了线下 meetup 的体量,加上异步兜底观众一起算,这是一个正在长大的场。</p>
-              <p>这是一个品牌实时成熟的标志:受众不再是[Steipete 的关注者],是[OpenClaw 社区]——这是任何工具从个人项目跨到品类 leader 的那一刻。</p>
-              <p>206 赞、16 转推——数字很静,但 1300 这个候补量才是承重事实。</p>
+              <p>同一天,Steipete 宣布 OpenClaw 活动候补名单已经超过 1300 人——活动会在 Twitch 和 Discord 上向所有人公开直播。</p>
+              <p>一个开发者工具的活动,候补溢出,这在通常的开发者直播场景里不常见。这种需求曲线对得上他在 Build 上讲的那句:大家冲的是元工具,不是产品本身。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>OpenClaw 活动候补 1300+ 人,Twitch+Discord 直播兜底——社区已经独立于创始人存在。</p>
+              <p>今天的 OpenClaw 活动候补名单已经超过 1300 人,活动会在 Twitch 和 Discord 上直播。</p>
             </div>
           </div>
         </div>
@@ -662,9 +655,8 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Second Steipete: 1300+ people on the waitlist for today&#39;s OpenClaw event, livestreamed on Twitch and Discord for everyone else. The capacity is the story — a developer-tool community event is filling a meetup-sized room and an async-fallback audience at once.</p>
-              <p>This is a brand maturing in real time. The audience is no longer [Steipete&#39;s followers], it is [the OpenClaw community] — and that is the moment any tool crosses from personal project to category leader.</p>
-              <p>206 likes / 16 RTs — quiet, but the 1300 number is the load-bearing fact.</p>
+              <p>The same day Steipete announced an OpenClaw event with 1,300+ people on the waitlist — the event is being livestreamed on Twitch and Discord for everyone else.</p>
+              <p>Waitlist economics for a developer-tool event is unusual: you normally do not see overflow on technical livestreams. The demand profile matches what Steipete said in the Build talk — people are showing up for the meta-tool, not the product.</p>
             </div>
             <div class="content-variant" data-view="original">
               <p>We have over 1300 people on the waitlist for today&#39;s OpenClaw event - will be livestreamed on Twitch and Discord tho!</p>
@@ -695,12 +687,12 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Anthropic 官号 Claude 亲自转了一个 maker 项目:Ben 做了一个实体的 Clawd(龙虾吉祥物)——Claude Code 需要用户输入时,壳里的 solenoid 会把它顶起来,等于[跳起来叫你回来]。壳体是机加工铝,Arduino 拦截键盘信号,Raspberry Pi Zero 负责大脑。</p>
-              <p>信号点不在作品本身(它是个可爱的玩具),在 Anthropic 亲自转它。Claude 团队在公开嘉许[agent 作为物理存在]的美学,这是对[chat 框之后是什么]的一个软性产品方向信号。</p>
-              <p>112 赞 + 95 赞——数字不大,但 Anthropic 的官号放大才是真正的分发事件。</p>
+              <p>Claude 官方账号转了这个月最离谱的社区小项目之一:一个铝合金外壳的迷你 Clawd 机器人,内部用螺线管加树莓派驱动,Claude Code 需要输入时它就会物理地跳起来拍你。</p>
+              <p>制作者 Ben 把键盘信号截下来接到 Arduino,再用 Pi Zero 当大脑。这是只有[你经常长时间跑 Claude Code session,顺带还是个硬件玩家]的世界里才会出现的项目。</p>
+              <p>Claude 官方账号主动转这条是一个安静信号:Anthropic 在意的不只是企业侧 Claude Code 社区,还有 maker 这边。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Anthropic 官号亲自转 Clawd 实体机器人:agent 已经从屏幕里走出来变成物理在场。</p>
+              <p>Ben 在跑长 Claude Code session 时总走神,于是造了一个迷你 Clawd 来提醒他。Claude Code 需要输入时,铝合金身体里的螺线管会把 Clawd 顶起来——也就是,它会跳。</p>
             </div>
           </div>
         </div>
@@ -708,12 +700,12 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Anthropic&#39;s official Claude account just amplified a maker project: Ben built a physical Clawd (the lobster mascot) that jumps up and down on a solenoid when Claude Code needs user input. The body is machined aluminum; an Arduino reads intercepted keyboard signals; a Raspberry Pi Zero handles the brain.</p>
-              <p>The signal is not the build (it is a charming tinker toy) — the signal is Anthropic amplifying it. The Claude team is publicly celebrating the [agent as physical presence] aesthetic, which is a soft product direction signal for what comes after the chat box.</p>
-              <p>112 likes for the build post and 95 for the video — small numbers, but Anthropic&#39;s amplification is the real distribution event.</p>
+              <p>The official Claude account posted one of the more unusual community builds of the month: a small aluminum-bodied Clawd robot, internally driven by a solenoid and a Raspberry Pi, that physically jumps up and down to get the user&#39;s attention when Claude Code needs input.</p>
+              <p>Ben, the builder, intercepted keyboard signals to drive an Arduino, then layered a Pi Zero as the brain. It is the kind of project that only makes sense in a world where you routinely run long Claude Code sessions and have a hardware hobby on the side.</p>
+              <p>The Claude official account boosting it is a quiet signal: Anthropic is curating the maker side of the Claude Code community, not just the enterprise one.</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Ben kept getting distracted during long Claude Code sessions, so he built a miniature Clawd to get his attention. When Claude Code needs input, a solenoid inside the aluminum body pushes it upward. In other words, it jumps up and down.</p>
+              <p>Ben kept getting distracted during long Claude Code sessions, so he built a miniature Clawd to get his attention. When  Claude Code needs input, a solenoid inside the aluminum body pushes it upward. In other words, it jumps up and down.</p>
             </div>
           </div>
         </div>
@@ -748,12 +740,12 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Google Labs 推出实验性新移动应用:Dreambeans。卖点是 Personal Intelligence——每天给你一组个性化故事,把你可能错过的内容捞出来,同时给相关主题一个往下挖的入口。</p>
-              <p>框架是 doom-scrolling 的反义:hope-scrolling。希望型滚动。这是 Google 最擅长的事——把无限滚动的范式重新钉到正和博弈的目的上,这次由一个 agent 从你其他 Google app 里拉内容。</p>
-              <p>1057 赞、97 转推——Google Labs 很少再出消费侧产品惊喜,这次互动量本身就是惊喜。</p>
+              <p>Google Labs 上线了一个新的移动端实验:Dreambeans——一个用 Personal Intelligence 连到 Google 应用的每日精选 app,定位是[希望型滚动,不是末日型滚动]。</p>
+              <p>它把自己摆在算法 feed 的对面:每天只给几组精选故事,讲那些你本来可能错过的、跟你关心的话题真正相关的内容。</p>
+              <p>首发只对符合资格的 US Google AI Ultra 订阅用户开放——这种小体量实验给一个对的小池子,是正确的做法。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Google Labs 推 Dreambeans:Personal Intelligence + 希望型滚动,从你其他 Google app 里捞内容做每日个性化故事。</p>
+              <p>🚨 新实验 🚨 Dreambeans 是一个新的实验性移动 app,用 Personal Intelligence 连接你的 Google 应用,每天推送一组精选故事,把你可能错过的内容挖出来,再配上你关心的主题让你深读。即日起对美国地区符合条件的 Google AI Ultra 订阅者开放。</p>
             </div>
           </div>
         </div>
@@ -761,12 +753,12 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Google Labs launched a new experimental mobile app: Dreambeans. The pitch is Personal Intelligence — a daily collection of personalized stories that surface things you might otherwise miss, surfacing what is relevant to you and letting you dive deeper into topics that matter.</p>
-              <p>The framing is the opposite of doom-scrolling: hope-scrolling. The hallway pitch that got the team the green light. This is Google doing what Google does best — taking the infinite scroll pattern and re-stapling it to a positive-sum purpose, now with an agent pulling the content from your other Google apps.</p>
-              <p>1057 likes / 97 RTs — Google Labs rarely ships consumer product surprises anymore; the engagement is the surprise.</p>
+              <p>Google Labs shipped a new mobile experiment called Dreambeans — a daily, personalized digest app that uses Personal Intelligence to connect to Google apps and surface [hope scrolling, not doom scrolling].</p>
+              <p>It is positioned as a small, opinionated counterweight to the algorithmic feed: every day, a few curated collections of stories you might have missed, on topics you actually care about.</p>
+              <p>Available starting today for eligible US Google AI Ultra subscribers, which is the right gating for an experiment of this size.</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Dreambeans is a new, experimental mobile app that uses Personal Intelligence to connect to your Google apps. Every day, it delivers collections of personalized stories, surfacing things you might otherwise miss, alongside topics that are relevant to you, to help you dive deeper into topics.</p>
+              <p>🚨 NEW EXPERIMENT 🚨  Dreambeans is a new, experimental mobile app that uses Personal Intelligence to connect to your Google apps. Every day, it delivers collections of personalized stories, surfacing things you might otherwise miss, alongside topics that are relevant to you, to help you dive deeper into the things you care about most.  Available starting today for eligible US-based Google AI Ultra subscribers.</p>
             </div>
           </div>
         </div>
@@ -794,12 +786,11 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Josh Woodward 的那条 backstory 推是更长的版本:一个小 Google Labs 团队在走廊里 pitch 了[希望型滚动,不是末日型滚动],得到一句[go for it]。今天这个小实验作为 Dreambeans 正式发布。</p>
-              <p>501 赞、49 转推——是整个 Google Labs 帖里互动最高的一条。原因在框架:全文是一次为[大公司里小团队做有立场的产品]的辩护。</p>
-              <p>Agent 时代的信号:labs 模式回归。大公司重新允许小团队做有立场的 surface,因为造一个新移动体验的成本已经低到实验本身能自己回本。</p>
+              <p>Josh Woodward(Google Labs 负责人)给 Dreambeans 补了段前情:一个 Google Labs 小团队在走廊里 pitch 了[希望型滚动,不是末日型滚动]这个想法,得到的回答是一句[go for it],然后这周实验就上线了。</p>
+              <p>这也是一个微小但真实的例子,说明组织架构在按 AI 时代一直被要求的方式运转:小团队、尖锐观点、领导一句话能拍板、几天而不是几个季度就发版。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Josh Woodward 公开 Dreambeans 的内部故事:[Hope scrolling, not doom scrolling] 走廊 pitch,得到 go for it——大公司里小团队做有立场产品的胜利。</p>
+              <p>这个项目的小背景:Google Labs 一个小团队想做一款 app,把你和真正重要的东西连起来,不要无尽滚屏。[希望型滚动,不是末日型滚动]是走廊 pitch 的原话。[去吧]是回答。今天,这个小小的实验上线了。认识一下 Dreambeans,每天一份新鲜出炉的灵感。</p>
             </div>
           </div>
         </div>
@@ -807,12 +798,11 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Josh Woodward&#39;s backstory tweet is the longer read: a small Google Labs team pitched [Hope scrolling, not doom scrolling] in a hallway and got the [go for it] answer. Today that little experiment is rolling out as Dreambeans.</p>
-              <p>501 likes / 49 RTs — by far the highest-engagement tweet in the Google Labs thread. The reason is the framing: the entire post is a defense of small internal teams shipping opinionated consumer products inside a giant company.</p>
-              <p>The agent-era signal: the labs model is back. Bigcos are re-allowing small teams to ship opinionated surfaces because the cost of building a new mobile experience is now low enough that the experiment pays for itself.</p>
+              <p>Josh Woodward (Google Labs lead) added the backstory to Dreambeans: a small Google Labs team pitched the [hope scrolling, not doom scrolling] idea in a hallway; [go for it] was the answer; and the experiment is rolling out the same week.</p>
+              <p>It is also a small but real example of an org chart doing what the AI era keeps demanding: a small team with a sharp point of view, an executive who can say yes in one sentence, and a release in days, not quarters.</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>A short backstory on this one: A small Google Labs team had an idea to make an app designed to connect you with what matters, without the endless scroll. &quot;Hope scrolling, not doom scrolling&quot; was the hallway pitch. &quot;Go for it.&quot; And today, that little experiment is rolling out. Meet Dreambeans.</p>
+              <p>A short backstory on this one:  A small Google Labs team had an idea to make an app designed to connect you with what matters, without the endless scroll. &quot;Hope scrolling, not doom scrolling&quot; was the hallway pitch. &quot;Go for it.&quot;  And today, that little experiment is rolling out.   Meet Dreambeans, a daily dose of inspiration, brewed fresh for you. We&#39;re excited to see what you think!</p>
             </div>
           </div>
         </div>
@@ -840,12 +830,11 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Nikunj Kothari(FPV Ventures,前 Meter 早期)聊 Fitbit Air:[上面专业感,下面监测感]。他想看到的硬件楔子是:Google Health API 写到表里、写权限到 Apple Health、再加一条好看的表带。</p>
-              <p>藏在产品点评里的是 API 请求——消费侧 agent 故事不会只靠单一供应商 stack 撑起来,需要 Cat Wu 那种跨平台 handoff 模式。</p>
-              <p>40 赞是个软数字,但 Nikunj 是真 seed/A 投资人,他这条[我会买什么]推,本质是对[跨平台个人健康 agent stack]的一次公开做市。</p>
+              <p>Nikunj Kothari(早期 Stripe,现在做天使 + builder)跳上 Fitbit Air 的 hype 列车——并顺手把平台还缺什么列了出来:正经的 Google Health API、能写数据到 Apple Health 的能力、以及一个大家愿意戴的表带。</p>
+              <p>这是 builder 在 X 上的经典动作:对一个新形态先兴奋一下,再立刻画一张集成清单。这里被画出来的是 mobile-health 的工作面,不是手表本身。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Nikunj:Fitbit Air 上面专业下面监测,但需要 Google Health API + Apple Health 写权限 + 跨平台 handoff。</p>
+              <p>我跳上 Fitbit Air 这趟 hype 列车了。上面是专业模式,下面是健康监测……现在只要 Google Health API、能写数据到 Apple Health,再搭一条好看的表带,就齐活了!</p>
             </div>
           </div>
         </div>
@@ -853,12 +842,11 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Nikunj Kothari (FPV Ventures, ex-Meter early hire) on the Fitbit Air: [Professional at the top, monitoring at the bottom]. The hardware wedge he wants: Google Health API on the watch, write capabilities into Apple Health, and a nice band.</p>
-              <p>The interesting detail is the API request buried in the product take — the consumer agent story will not get built on the back of one vendor&#39;s stack. It needs the same cross-platform handoff Cat Wu is doing for analytics.</p>
-              <p>40 likes is a soft number, but Nikunj is a real seed/A investor; his [what I would buy] tweet is a public market-making signal for the cross-platform personal-health-agent stack.</p>
+              <p>Nikunj Kothari (early Stripe, now angel + builder) is on the Fitbit Air hype train — and uses the opportunity to enumerate what the platform would still need: a real Google Health API, write capabilities to Apple Health, and a band people actually want to wear.</p>
+              <p>It is a classic builder-on-X move: get excited about a new form factor, then immediately sketch the integration list. The mobile-health surface area is what is being sketched here, not the watch.</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Getting on this Fitbit Air hype train. Professional at the top, monitoring at the bottom. Now just need Google Health API, write capabilities to Apple Health and a nice band and we&#39;re all set!</p>
+              <p>Getting on this Fitbit Air hype train. Professional at the top, monitoring at the bottom..   Now just need Google Health API, write capabilities to Apple Health and a nice band and we&#39;re all set!</p>
             </div>
           </div>
         </div>
@@ -893,12 +881,12 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Aaron Levie 本周被引最多的一条:就算加了雇主上限,AI token 支出也大幅超过历史上任何软件支出。以前公司每月给每个员工付 10-50 美元软件许可,现在给 token 付几百到几千美元去放大产能。</p>
-              <p>人/单月成本数字是 CFO 的新问题。历史 SaaS 预算框架(按席位、封顶、可预测)在结构上就不适合 agent 增强型 workforce。采购团队接下来 18 个月要重写预算模型。</p>
-              <p>219 赞、21 转推——Levie 已经成为企业 AI 预算再框架的公开评论员。每个员工每月几百到几千美元 token,是新基准线。</p>
+              <p>Aaron Levie(Box 创始人)在做他最擅长的事:用一条 tweet 重写企业软件 TAM。即使有 employer 端的 cap,现在每员工每月花在 AI token 上的钱已经是几百到几千美元,而以前一份软件 license 是 10–50 美元/员工/月。</p>
+              <p>结论是:AI 市场的总规模会远大于多数人想象——因为 intelligence 现在是变动成本项,不再是固定 license 项。在这个世界里,单位经济、毛利结构会看起来很不一样。</p>
+              <p>看下一篇[AI capex 泡沫]的评论文章之前,先读这条。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Levie:即使有雇主上限,AI token 支出也远超历史软件支出——人/月从 10-50 美元 SaaS 变成几百到几千美元 token。</p>
+              <p>即使算上公司的用量上限,花在 AI token 上的钱也远远超过软件史上任何一笔支出。过去企业每员工每月大概花 10–50 美元买一份软件 license,现在要花几百到几千美元买 token 来提人效。这说明企业端 intelligence 的 TAM 有多大。AI 的市场会比多数人想的大得多。</p>
             </div>
           </div>
         </div>
@@ -906,12 +894,12 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Aaron Levie&#39;s most-quoted tweet of the week: even with employer caps, AI token spend dramatically exceeds any other historical software spend. Companies used to pay $10-50 per employee per month for software; now they pay hundreds or thousands on tokens to augment productivity.</p>
-              <p>The cost-per-employee number is the new CFO question. The historical SaaS budget framework (per-seat, capped, predictable) is structurally wrong for an agent-augmented workforce. Procurement teams will spend the next 18 months rewriting the budget model.</p>
-              <p>219 likes / 21 RTs — Levie is now the de facto public commentator on the enterprise AI budget reframe. The number — hundreds to thousands of dollars per employee per month on tokens — is the new baseline.</p>
+              <p>Aaron Levie (Box) is doing what he does best: rewriting the enterprise software TAM in one tweet. Even with employer caps, the per-employee spend on AI tokens now runs into the hundreds or thousands per month, vs. the $10–50/employee/month software-license era.</p>
+              <p>The punchline: the markets for AI are going to be much larger than people think, because intelligence is now a variable cost line, not a fixed license line. The unit economics and the gross margins look different in that world.</p>
+              <p>Read this before the next &#39;AI capex bubble&#39; op-ed.</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Even with employer caps, the spend on AI tokens dramatically exceeds any other historical spend on software. Typically, companies maybe would spend on the order of $10-50 for a software license per month per employee, but now will pay hundreds or thousands on tokens to augment their productivity.</p>
+              <p>Even with employer caps, the spend on AI tokens dramatically exceeds any other historical spend on software.  Typically, companies maybe would spend on the order of $10-50 for a software license per month per employee, but now will pay hundreds or thousands on tokens to augment their productivity.  This shows you how big the TAM for intelligence is in the enterprise. The markets for AI are going to be much larger than people think.</p>
             </div>
           </div>
         </div>
@@ -939,12 +927,12 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Levie 第二条,就业数据反驳:就业数据继续跟很多人以为的相反。拿工程岗举例——AI 影响最大、感知风险最高的领域——公司现在因为 AI 启动了比以往更多的软件项目。</p>
-              <p>论点是把生产力 J 曲线套到工程上:AI 压低了一个项目的边际成本,公司就会启动更多项目,工程师人头天花板往上走,不是往下。Box 的客户在内容工作流里报的是同一个故事。</p>
-              <p>358 赞、49 转推——本周被 builder 截图转发给焦虑工程经理最多的一条。</p>
+              <p>Aaron Levie 当天第二条 tweet 是对裁员叙事的反驳:工程是 AI 影响最大的领域之一,数据说的恰恰相反——多数公司的软件项目数比以往任何时候都多,而不是更少。</p>
+              <p>他在安静地讲的是:当一个工程师能交付过去要一个团队做的事,组织不会把工程师砍掉,而会抬高新项目的门槛。那些[被裁掉]的人力不是消失了,是被重新分配到以前因为太贵而根本不会开的项目上。</p>
+              <p>这是一份对末日叙事的长版反驳,证据是一年的项目管线数据。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Levie:就业数据反向——AI 让工程岗启动的项目比以往更多,人头天花板往上不是往下。</p>
+              <p>出来的就业数据持续在反驳多数人原本预期的结果。就拿工程举例,这是 AI 影响(以及感知风险)最大的领域。现在多数公司因为 AI 在做比以往多出很多的软件项目,而这些活几乎只能由工程师来做。</p>
             </div>
           </div>
         </div>
@@ -952,12 +940,12 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Second Levie tweet, the labor-market rebuttal: the jobs data continues to suggest the opposite of what a lot of people thought would happen. Engineering, as the prime example of the AI-impacted area, now has far more software projects than ever before because of AI.</p>
-              <p>The argument is the productivity-J-curve applied to engineering: AI compresses the marginal cost of a project, so companies start more projects, and the engineer headcount ceiling moves up rather than down. Same logic Box&#39;s customers are reporting in content workflows.</p>
-              <p>358 likes / 49 RTs — the tweet of the week that most product builders are screenshotting and forwarding to their worried engineering managers.</p>
+              <p>Aaron Levie&#39;s second tweet of the day pushes back on the layoff narrative: engineering is the prime example of an area with the greatest AI impact — and the data says most companies now have far more software projects than ever, not fewer.</p>
+              <p>The point being quietly made: when a single engineer can ship what used to take a team, the org does not shed engineers, it raises the bar on what gets shipped. The job loss story is a static-world fallacy — the labor is being redeployed to projects that used to be too expensive to start.</p>
+              <p>It is a longer-form rebuttal of the doomer scenario, with the receipts being a year of project-pipeline data.</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>The jobs data coming out continues to suggest the opposite of what a lot of people had thought would happen. Just take engineering, as the prime example of the area with greatest AI impact (and perceived risk). Most companies now have far more software projects than ever before because of AI, and the headcount ceiling moves up, not down.</p>
+              <p>The jobs data coming out continues to suggest the opposite of what a lot of people had thought would happen.   Just take engineering, as the prime example of the area with greatest AI impact (and perceived risk). Most companies now have far more software projects than ever before because of AI, and effectively only engineers are going to be the ones doing that work.</p>
             </div>
           </div>
         </div>
@@ -985,12 +973,12 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Guillermo Rauch:在业务数据之上生成前端,是 coding AI 的一类 killer app。Vercel 早就跑在 Snowflake 上,有了 V0 和 Next.js,他们从同一层数据里拿到的价值涨了 1000 倍。</p>
-              <p>1000 倍这个数字是头条——它是 Vercel 自报数,但方向是对的:结构化语义层 + 中间一个 LLM + 上面前端生成器,把静态 dashboard 变成按需 surface。</p>
-              <p>268 赞、11 转推——Vercel 公开认领了[数据到前端]的 agent 流水线。对 SaaS 的含义跟 Satya 在 podcast 里说的是同一件:dashboard 正在被 agent 拆开再重新打包。</p>
+              <p>Guillermo Rauch(Vercel CEO)在 X 上抛出一个判断:在你的业务数据之上自动生成前端——Snowflake 进,v0/Next.js 应用出——是 coding AI 的杀手级应用之一,那个[笨重又死板的可视化看板]时代结束了。</p>
+              <p>他给的依据是:Vercel 自己就一直在跑 Snowflake;有了 v0 和 Next.js 之后,他们从这堆数据上拿到的价值翻了一千倍。[genie 出瓶了,不可能回头]这句断言接下来是对是错,押注是会一直对下去。</p>
+              <p>Rauch 这套组合——Vercel AI Gateway 跑 Grok Imagine Video,v0 套在数据上出前端——是 SaaS 邻接层最干净的[harness 才是产品]活样本。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Rauch:V0 + Next.js 让 Vercel 在同一层 Snowflake 数据上拿到 1000 倍价值——dashboard 正在被 agent 拆开重打。</p>
+              <p>▲ + ❄️  在你的业务数据之上直接生成前端,是 coding AI 的杀手级应用之一。精灵已经出瓶,不可能再回到那种笨重死板的可视化看板。@vercel 早就跑在 Snowflake 上了。但有了 @v0 和 @nextjs,我们现在拿到的价值是 1000 倍的。</p>
             </div>
           </div>
         </div>
@@ -998,12 +986,12 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Guillermo Rauch: generating frontends on top of your business data is one of the killer apps of coding AI. Vercel already ran on Snowflake; with V0 and Next.js, they are now getting 1000x the value out of the same data layer.</p>
-              <p>The 1000x claim is the headline — it is a Vercel-self-reported number, but the directional point is correct: a structured semantic layer + an LLM in the middle + a frontend generator on top turns a static dashboard into an on-demand surface.</p>
-              <p>268 likes / 11 RTs — Vercel is publicly claiming the [data-to-frontend] agent pipeline. The implication for SaaS is the same one Satya made on the podcast: dashboards are getting unbundled and rebundled by agents.</p>
+              <p>Guillermo Rauch (Vercel CEO) is shipping a thesis on X: generating frontends on top of your business data — Snowflake in, a v0/Next.js app out — is one of the killer apps of coding AI, and the [rigid dashboard] era is over.</p>
+              <p>The framing: Vercel already ran on Snowflake; with v0 and Next.js they are now getting 1000x the value. The compact claim [the genie is out of the bottle, never going back] is the part that is going to age well or badly, and the bet is that it ages well.</p>
+              <p>Rauch&#39;s stack — Vercel AI Gateway hosting Grok Imagine Video, v0 generating frontends over data — is the cleanest live example of the [harness is the product] thesis in the SaaS-adjacent layer.</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Generating frontends on top of your business data is one of the killer apps of coding AI. The genie is out of the bottle. Never going back to clunky and rigid dashboards. Vercel already ran on Snowflake. But with V0 and Next.js, we&#39;re now getting 1000x the value.</p>
+              <p>▲ + ❄️   Generating frontends on top of your business data is one of the killer apps of coding AI.   The genie is out of the bottle. Never going back to clunky and rigid dashboards.  @vercel already ran on Snowflake. But with @v0 and @nextjs, we&#39;re now getting 1000x the value.</p>
             </div>
           </div>
         </div>
@@ -1038,14 +1026,12 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Satya Nadella 上 No Priors,主线一句话:微软的第三幕是 harness 公司。论点是价值捕获从模型层搬到 harness——把模型、数据、工具、私域 evals 装到一起,让一家公司能在 frontier intelligence 上持续 hill climb。</p>
-              <p>他罕见地承认低估了部署的复杂度。粗一点的说法是[intelligence is log of compute,差不多对]——这句话对 benchmark 成立;真评估是用户在真实世界里能做出什么,这比 benchmark 暗示的难得多。</p>
-              <p>商业模式那一段最好:定价正在从 per-user 走向 per-usage,因为 per-user 一直是买家想要预算确定性的人造产物,不是真实价值产生方式的反映。</p>
+              <p>No Priors 这一期是把这周所有线串起来的那一集:Microsoft CEO Satya Nadella 来谈全栈 builder 的崛起,以及杠杆最大的通用型人才。</p>
+              <p>Satya 的论证从 Azure 内部网络运维的真实故事讲起——他们已经在把 agent 推进真正的 on-call 循环——最后落到一个公开的判断:微软的第三幕是一家 harness 公司:把模型、数据、工具、eval 编排起来,让团队能在 frontier 上持续爬坡。</p>
+              <p>2026 年如果你只想读一篇讲企业 AI 的长内容,这期是一个非常强的候选。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Satya:我们的活不是跑 Azure 网络,是建那个跑 Azure 网络的 agentic 系统。</p>
-              <p>微软的第三幕是 harness / evals 公司。</p>
-              <p>Per-user 定价是预算确定性需求的人造产物,不是价值本身的形状。</p>
+              <p>No Priors:Microsoft CEO Satya Nadella 谈全栈 builder 与杠杆最大的通用型人才的崛起。</p>
             </div>
           </div>
         </div>
@@ -1053,19 +1039,17 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Satya Nadella on No Priors, the headline frame: the third act of Microsoft is the harness company. The thesis is that the value capture moves from the model to the harness — the integration of model + data + tools + private evals that lets a company hill-climb on frontier intelligence.</p>
-              <p>He is unusually candid about underestimating deployment complexity. The crude line — [intelligence is log of compute, kind of works] — is true for benchmarks; the real eval is what users can do in the real world, and that is much harder than the benchmarks suggested.</p>
-              <p>The best business-model moment: pricing is moving from per-user to per-usage because per-user was always an artifact of buyer wanting budget certainty, not a reflection of how the value is actually produced.</p>
+              <p>No Priors&#39; latest episode is the one that ties the week&#39;s threads together: Microsoft CEO Satya Nadella on the rise of the full-stack builder and the hyper-leveraged generalist.</p>
+              <p>Satya&#39;s argument runs from inside Azure&#39;s network-ops org — where they have been pushing agents into the actual on-call loop — out to a public-facing claim that the third act of Microsoft is a harness company: orchestrating models, data, tools, and evals so a team can keep climbing the frontier.</p>
+              <p>If you read only one long-form thing about enterprise AI in 2026, this is a strong candidate.</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Our job is not to do Azure networking. Our job is to build the agentic system that does Azure networking.</p>
-              <p>I think the third act of Microsoft historically, as an operating systems company and then become a cloud company, maybe, like, the third act is that you&#39;re a harness or eval&#39;s company.</p>
-              <p>per user pricing is really an artifact of someone creating a budget needing certainty.</p>
+              <p>No Priors: The Rise of the Full-Stack Builder and Hyper-Leveraged Generalist with Microsoft CEO Satya Nadella.</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="card-footer"><a href="https://www.youtube.com/watch?v=Gs2styCcwro" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+      <div class="card-footer"><a href="https://www.youtube.com/@NoPriorsPodcast" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
     </article>
   </section>
 
