@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 04 Jun 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 05 Jun 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-06-05 · 透明度叠满日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-05-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-05-rerun.html</guid>
+      <pubDate>Fri, 05 Jun 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[6-5 这天的 Follow Builders 主线非常清楚:Anthropic 同一天把三件事放出来——Claude Code 质量回退的完整 postmortem、Managed Agents 正式上 self-hosted sandbox、Connectors 扩到日常 app——再叠上 Alex Albert 一条原推把[Claude 80% 写自己的代码]内部数据公开,等于把「harness + eval + context」那条工程主线的官方答案一次性摆桌面上。另一面,OpenAI 这边 Dan Roberts 上 MAD Podcast 讲 RL 怎么把 AI 推上发现科学,Sam Altman 一天内连发 ChatGPT web app builder 和 memory 大版本。一句话讲,这是「模型层在被自己的产物反推」的一天,也是「builder 终于可以拿全栈来比」的一天。]]></description>
+      <category>Anthropic 透明度叠满 / Anthropic&apos;s Full-Stack Transparency Day, Codex 走进日常 / Codex Becomes Daily-Driver, AI 走向发现 / AI Starts Making Discoveries, 个性化软件 / Personal Software Is the Surface, 产品大版本与基建 / Big Product Drops &amp; Stack Updates</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-06-04 · harness 收口日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-04-rerun.html</link>

@@ -1,0 +1,539 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-06-05",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "6-5 这天的 Follow Builders 主线非常清楚:Anthropic 同一天把三件事放出来——Claude Code 质量回退的完整 postmortem、Managed Agents 正式上 self-hosted sandbox、Connectors 扩到日常 app——再叠上 Alex Albert 一条原推把[Claude 80% 写自己的代码]内部数据公开,等于把「harness + eval + context」那条工程主线的官方答案一次性摆桌面上。另一面,OpenAI 这边 Dan Roberts 上 MAD Podcast 讲 RL 怎么把 AI 推上发现科学,Sam Altman 一天内连发 ChatGPT web app builder 和 memory 大版本。一句话讲,这是「模型层在被自己的产物反推」的一天,也是「builder 终于可以拿全栈来比」的一天。"
+  },
+  "archive": {
+    "title": "透明度叠满日",
+    "desc": "Anthropic 三连发 + Claude 80% 内部数据 + ChatGPT 重大更新,「harness、eval、context」的工程主线被官方背书成桌面上最稳的那张牌。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-05 source feeds.",
+  "sections": [
+    {
+      "title": "Anthropic 透明度叠满 / Anthropic's Full-Stack Transparency Day",
+      "desc": "Anthropic 在同一天把 Claude Code 质量回退的官方 postmortem、Managed Agents 正式支持 self-hosted sandbox + MCP tunnel、Connectors 扩到日常 app 三件事一起放,等于把「harness + eval + context」这条工程主线一次性摆桌面上。",
+      "cards": [
+        {
+          "authorKey": "blog:anthropic",
+          "sourceUrl": "https://www.anthropic.com/engineering/april-23-postmortem",
+          "en": {
+            "rewrite": [
+              "Anthropic Engineering: a public postmortem of the March-April Claude Code quality regression — three independent changes (reasoning effort default, idle-think clearing, verbosity prompt) stacked into a broad-feeling degradation, all fixed by April 20 (v2.1.116). Subscription usage limits reset for all subscribers."
+            ],
+            "original": [
+              "An update on recent Claude Code quality reports",
+              "Over the past month, we've been looking into reports that Claude's responses have worsened for some users. We've traced these reports to three separate changes that affected Claude Code, the Claude Agent SDK, and Claude Cowork. The API was not impacted. All three issues have now been resolved as of April 20 (v2.1.116)."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic 工程团队正式放出 Claude Code 三四月质量回退的官方复盘——三个独立改动(reasoning effort 默认值、idle session 清空旧思考、降低啰嗦度的 system prompt)叠加起来,造成一整片用户感知到的[模型变笨]假象,已经在 4-20 全量修复(v2.1.116),并对所有订阅用户重置使用额度。"
+            ],
+            "original": [
+              "An update on recent Claude Code quality reports",
+              "Over the past month, we've been looking into reports that Claude's responses have worsened for some users. We've traced these reports to three separate changes that affected Claude Code, the Claude Agent SDK, and Claude Cowork. The API was not impacted. All three issues have now been resolved as of April 20 (v2.1.116)."
+            ]
+          }
+        },
+        {
+          "authorKey": "blog:anthropic",
+          "sourceUrl": "https://www.anthropic.com/engineering/managed-agents",
+          "en": {
+            "rewrite": [
+              "Anthropic Engineering: a deep dive on Managed Agents — virtualized session / harness / sandbox abstractions that decouple the 'brain' (the agent loop) from the 'hands' (the execution environment), so a single interface can outlive any one implementation."
+            ],
+            "original": [
+              "Scaling Managed Agents: Decoupling the brain from the hands",
+              "A common thread across this work is that harnesses encode assumptions about what Claude can't do on its own. However, those assumptions need to be frequently questioned because they can go stale as models improve. As just one example, in prior work we found that Claude Sonnet 4.5 would wrap up tasks prematurely as it sensed its context limit approaching—a behavior sometimes called 'context anxiety.' We addressed this by adding context resets to the harness. But when we used the same harness on Claude Opus 4.5, we found that the behavior was gone. The resets had become dead weight."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic 工程团队详解 Managed Agents:把 session、harness、sandbox 三件套都做成虚拟化抽象,让[大脑]——也就是 agent 调度循环——和[双手]——也就是实际执行环境——彻底解耦,这样单一接口可以撑过任何一种底层实现,不再养[宠物容器]。"
+            ],
+            "original": [
+              "Scaling Managed Agents: Decoupling the brain from the hands",
+              "A common thread across this work is that harnesses encode assumptions about what Claude can't do on its own. However, those assumptions need to be frequently questioned because they can go stale as models improve. As just one example, in prior work we found that Claude Sonnet 4.5 would wrap up tasks prematurely as it sensed its context limit approaching—a behavior sometimes called 'context anxiety.' We addressed this by adding context resets to the harness. But when we used the same harness on Claude Opus 4.5, we found that the behavior was gone. The resets had become dead weight."
+            ]
+          }
+        },
+        {
+          "authorKey": "blog:claudeai",
+          "sourceUrl": "https://claude.com/blog/claude-managed-agents-updates",
+          "en": {
+            "rewrite": [
+              "Claude product blog: Managed Agents now supports self-hosted sandboxes (Cloudflare / Daytona / Modal / Vercel) and private MCP tunnels — public beta and research preview, respectively, so the agent loop stays on Anthropic while file execution stays inside your perimeter."
+            ],
+            "original": [
+              "New in Claude Managed Agents: self-hosted sandboxes and MCP tunnels",
+              "Starting today, Claude Managed Agents can operate in a sandbox you control and connect to your private Model Context Protocol (MCP) servers. Both the sandbox where an agent executes tools and the services it reaches run within the established boundaries of your enterprise, under your security and runtime controls."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude 官方产品博客:Managed Agents 即日起支持 self-hosted sandbox(可接 Cloudflare / Daytona / Modal / Vercel)和私有 MCP tunnel——前者公测、后者研究预览。这样调度循环还在 Anthropic,真正动你文件和工具的执行面搬进企业自己的边界。"
+            ],
+            "original": [
+              "New in Claude Managed Agents: self-hosted sandboxes and MCP tunnels",
+              "Starting today, Claude Managed Agents can operate in a sandbox you control and connect to your private Model Context Protocol (MCP) servers. Both the sandbox where an agent executes tools and the services it reaches run within the established boundaries of your enterprise, under your security and runtime controls."
+            ]
+          }
+        },
+        {
+          "authorKey": "x:alexalbert__",
+          "sourceUrl": "https://x.com/alexalbert__/status/2062580571214389510",
+          "en": {
+            "rewrite": [
+              "Anthropic's Alex Albert publishes internal data: over 80% of code merged into the Anthropic codebase is now written by Claude; many researchers haven't hand-written code in months; the typical engineer ships 8x what they did in 2024; on the most open-ended tasks Claude's success rate jumped from ~26% to 76% in 6 months."
+            ],
+            "original": [
+              "We just published internal data on how much of Claude's development is already being done by Claude: - Over 80% of all code merged into our codebase is now written by Claude - It's been months since many researchers at Anthropic hand-wrote code - The typical Anthropic engineer ships 8x as much code as they did in 2024 - On the most open-ended engineering tasks, Claude's success rate jumped from ~26% to 76% in 6 months - When research sessions went off-track, Claude proposed a better next step than the human took 64% of the time. We're not at recursive self-improvement yet, but it could come sooner than people think."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic 的 Alex Albert 直接放出内部数据:合并进 Anthropic 代码库的 80% 以上代码现在由 Claude 自己写;很多研究员已经几个月没手写代码;典型工程师的代码产出是 2024 年的 8 倍;在最开放的工程任务上,Claude 一次成功率从 26% 跳到 76% 只用了 6 个月。"
+            ],
+            "original": [
+              "We just published internal data on how much of Claude's development is already being done by Claude: - Over 80% of all code merged into our codebase is now written by Claude - It's been months since many researchers at Anthropic hand-wrote code - The typical Anthropic engineer ships 8x as much code as they did in 2024 - On the most open-ended engineering tasks, Claude's success rate jumped from ~26% to 76% in 6 months - When research sessions went off-track, Claude proposed a better next step than the human took 64% of the time. We're not at recursive self-improvement yet, but it could come sooner than people think."
+            ]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2062728257359790292",
+          "en": {
+            "rewrite": [
+              "Box CEO Aaron Levie: the most important organizational skill in the AI era may be spotting and removing the new bottlenecks that appear as fast as the old ones dissolve — the rate at which a team can iterate on its bottlenecks becomes the real moat."
+            ],
+            "original": [
+              "Good thought provoking post from Anthropic. I think this paragraph points to the key element of the optimistic scenario of AI: 'There has been an explosion of new ideas, initiatives, tools, and simulations, as a result of Anthropic employees working with highly capable models—far more than we have the capacity to pursue. The rate at which organizations can spot and fix these bottlenecks may be a skill that improves over time, and it may become the most important skill for any organization.'"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box 创始人 Aaron Levie 引出 Anthropic 帖子最关键的一段:[现在被卡住的是把想法变成落地的速度]——组织快速识别并解决新瓶颈的能力,可能才是 AI 时代真正的新护城河。"
+            ],
+            "original": [
+              "Good thought provoking post from Anthropic. I think this paragraph points to the key element of the optimistic scenario of AI: 'There has been an explosion of new ideas, initiatives, tools, and simulations, as a result of Anthropic employees working with highly capable models—far more than we have the capacity to pursue. The rate at which organizations can spot and fix these bottlenecks may be a skill that improves over time, and it may become the most important skill for any organization.'"
+            ]
+          }
+        },
+        {
+          "authorKey": "blog:claudeai",
+          "sourceUrl": "https://claude.com/blog/connectors-for-everyday-life",
+          "en": {
+            "rewrite": [
+              "Claude product blog: connectors expand to everyday-life apps — AllTrails / Audible / Booking.com / Instacart / Spotify / Uber / Uber Eats / Tripadvisor etc. join the directory (now 200+), and Claude now suggests the right connector dynamically based on what you're asking."
+            ],
+            "original": [
+              "New connectors in Claude for everyday life",
+              "Today we're expanding what you can connect to Claude. Alongside the work tools you already use, you can now connect the apps you use throughout your week, including AllTrails, Instacart, Audible, Tripadvisor, Intuit TurboTax, and more."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude 官方产品博客:Connectors 扩到日常 app——AllTrails / Audible / Booking.com / Instacart / Spotify / Uber / Uber Eats / Tripadvisor 等 14 个一次性进目录(总数破 200),Claude 会根据对话内容动态建议最合适的 connector。"
+            ],
+            "original": [
+              "New connectors in Claude for everyday life",
+              "Today we're expanding what you can connect to Claude. Alongside the work tools you already use, you can now connect the apps you use throughout your week, including AllTrails, Instacart, Audible, Tripadvisor, Intuit TurboTax, and more."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Codex 走进日常 / Codex Becomes Daily-Driver",
+      "desc": "Codex 在 6-5 同时被官方和重度用户叠加更新:thsottiaux 把 Python SDK 放出来同时坦白一个 Pro/Plus token 计数 bug,Peter Yang 则记录下自己怎么用 Codex 重新组装一整天的工作流——这两件事合起来把 Codex 从[玩具]推向[生产工具]。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2062734215494664697",
+          "en": {
+            "rewrite": [
+              "OpenAI Thibault: Codex can now be called from your own Python programs via a new SDK (pip install openai-codex) — a meaningful unlock for orchestrating Codex inside larger agent pipelines."
+            ],
+            "original": [
+              "You can use codex within your own programs using the Python SDK. It's awesome. Built by @ah20im and friends.\n\npip install openai-codex"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenAI 的 Thibault Sottiaux:Codex 现在可以通过 Python SDK 在你自己的程序里被调用(pip install openai-codex)——这等于把 Codex 从一个 CLI 玩具,正式升级成可以被更大 agent 流水线编排的底层引擎。"
+            ],
+            "original": [
+              "You can use codex within your own programs using the Python SDK. It's awesome. Built by @ah20im and friends.\n\npip install openai-codex"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2062648326332539015",
+          "en": {
+            "rewrite": [
+              "OpenAI Thibault: a Codex bug was undercounting tokens served to some Pro/Plus accounts by a small amount, affecting <15% of users. Fixed today — publicly disclosed rather than silently patched."
+            ],
+            "original": [
+              "We're fixing a codex bug today that was causing us to undercount tokens being served to some Pro and Plus accounts by a small amount. This impacted < 15% of accounts.\n\nNot the kind of bug you want us to fix, but didn't want to do this silently and thought you should know."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenAI 的 Thibault:今天修了一个 Codex bug——在部分 Pro/Plus 账号上少算了服务 token(影响 <15% 用户)。没悄悄补,而是公开贴出来——这种透明度在 AI coding 工具里很少见。"
+            ],
+            "original": [
+              "We're fixing a codex bug today that was causing us to undercount tokens being served to some Pro and Plus accounts by a small amount. This impacted < 15% of accounts.\n\nNot the kind of bug you want us to fix, but didn't want to do this silently and thought you should know."
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2062740262338929110",
+          "en": {
+            "rewrite": [
+              "Peter Yang: spent the whole day wiring integrations and skills into Codex for his top creator workflows — convinced that anyone can claw back 50%+ of their knowledge-work time if they pre-build the system, with human checkpoints for taste."
+            ],
+            "original": [
+              "I spent the whole day today setting up integrations and skills in Codex for my top creator workflows. Now I'm convinced that you can save at least 50% of your time on any type of knowledge work if you just set up the system upfront. Note that all my workflows have human checkpoints along the way so I can apply my 'taste.'"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang:今天一整天都在 Codex 里搭自己最常用的创作者工作流——把集成和 skills 一次性配齐。结论是:任何知识工作只要把系统先搭好,都能抢回至少 50% 的时间,但关键节点都得留给人做[taste]判断。"
+            ],
+            "original": [
+              "I spent the whole day today setting up integrations and skills in Codex for my top creator workflows. Now I'm convinced that you can save at least 50% of your time on any type of knowledge work if you just set up the system upfront. Note that all my workflows have human checkpoints along the way so I can apply my 'taste.'"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2062743491365544361",
+          "en": {
+            "rewrite": [
+              "Peter Yang: Codex is great for logic but its frontend output still underperforms Claude — even with a /slides skill, Codex's slides look like a novice's first attempt, where Claude one-shots clean HTML."
+            ],
+            "original": [
+              "Also as great as Codex is (and I'm really starting to love it) the frontend design still leaves a lot to be desired. I have a /slides skill and you can guess which one Codex made vs. Claude. Yes I know I can make an image with ChatGPT first and then tell Codex to build it but Claude can one shot great looking HTML slides. Codex needs to fix this imo it's often a novice's first impression of a coding or knowledge work tool."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang:Codex 逻辑层越做越好,但前端设计这一关还是输给 Claude——他晒的 /slides 案例里,一眼就能分出哪份是 Codex 出的、哪份是 Claude 出的,Codex 在审美上还是新手级,这其实是 coding tool 给新人的第一印象。"
+            ],
+            "original": [
+              "Also as great as Codex is (and I'm really starting to love it) the frontend design still leaves a lot to be desired. I have a /slides skill and you can guess which one Codex made vs. Claude. Yes I know I can make an image with ChatGPT first and then tell Codex to build it but Claude can one shot great looking HTML slides. Codex needs to fix this imo it's often a novice's first impression of a coding or knowledge work tool."
+            ]
+          }
+        },
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2062556889171517499",
+          "en": {
+            "rewrite": [
+              "Anthropic Thariq: 'How dynamic workflows allow Claude Code to handle whole new types of tasks' — a walkthrough on letting Claude Code branch, loop and compose skills at runtime, instead of a single hard-coded agent graph."
+            ],
+            "original": [
+              "How dynamic workflows allow Claude Code to handle whole new types of tasks"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic 的 Thariq 发了一篇[动态工作流如何让 Claude Code 接管全新类型任务]——核心讲的是让 Claude Code 在运行时分叉、循环、组合 skills,而不是把 agent 流程图写死。"
+            ],
+            "original": [
+              "How dynamic workflows allow Claude Code to handle whole new types of tasks"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "AI 走向发现 / AI Starts Making Discoveries",
+      "desc": "OpenAI 的 Dan Roberts 在 MAD Podcast 详解 Foundations of RL 团队怎么把推理模型推到能做 Erdos 级别数学发现,另一边 YC / Garry Tan 看到商业聚变公司 Polaris 第一次私有资本冲到 1.5 亿度——发现与建造,两边同时加速。",
+      "cards": [
+        {
+          "authorKey": "podcast:mad-podcast",
+          "sourceUrl": "https://www.youtube.com/watch?v=oWOz2htozfI",
+          "en": {
+            "rewrite": [
+              "MAD Podcast: Matt Turck sits down with Dan Roberts, lead of OpenAI's Foundations of Reinforcement Learning team, on why AI is now crossing from 'solving problems we pose' into 'making open-ended scientific discoveries' — including the recent Erdős-problem work from OpenAI / DeepMind / Anthropic."
+            ],
+            "original": [
+              "OpenAI's Dan Roberts: Why AI Can Now Make Discoveries"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "MAD Podcast:Matt Turck 跟 OpenAI Foundations of RL 团队负责人 Dan Roberts 聊为什么 AI 终于跨过[替我们解题]的阶段,开始做开放式的科学发现——背景就是 OpenAI / DeepMind / Anthropic 最近同时解出一批 Erdos 公开题。"
+            ],
+            "original": [
+              "OpenAI's Dan Roberts: Why AI Can Now Make Discoveries"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:mattturck",
+          "sourceUrl": "https://x.com/mattturck/status/2062587000201580808",
+          "en": {
+            "rewrite": [
+              "Matt Turck on his Dan Roberts conversation: 'a wild week in mathematics' — the three frontier labs cracking long-open problems is being read as another signal that AI is moving from tool to autonomous scientist."
+            ],
+            "original": [
+              "Why AI Can Now Make Discoveries - my conversation with @danintheory, Lead of the Foundations of Reinforcement Learning team at @OpenAI. 00:00 Intro: AI's wild week in mathematics. 01:21 What OpenAI's Foundations of RL team does. 03:08 Dan's journey: from black holes and quantum gravity to frontier AI. 07:04 Are AI systems becoming useful for real science. 08:21 The AI math moment: Erdős, OpenAI, DeepMind, and Anthropic. 08:52 Why the OpenAI result was an act of exploration. 10:25 OpenAI vs. DeepMind: informal reasoning vs. formal proof. 12:13 RL 101: learning by doing, not just watching."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Matt Turck 给这场对谈定的标题:[为什么 AI 终于能做发现]——开场白直接讲[数学界这一周太疯狂],三家前沿实验室同时解 Erdos 公开题,被认为是 AI 从工具变成自主科学家的又一个信号。"
+            ],
+            "original": [
+              "Why AI Can Now Make Discoveries - my conversation with @danintheory, Lead of the Foundations of RL team at @OpenAI. 00:00 Intro: AI's wild week in mathematics. 01:21 What OpenAI's Foundations of RL team does. 03:08 Dan's journey: from black holes and quantum gravity to frontier AI. 07:04 Are AI systems becoming useful for real science. 08:21 The AI math moment: Erdős, OpenAI, DeepMind, and Anthropic. 08:52 Why the OpenAI result was an act of exploration. 10:25 OpenAI vs. DeepMind: informal reasoning vs. formal proof. 12:13 RL 101: learning by doing, not just watching."
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2062763109849411834",
+          "en": {
+            "rewrite": [
+              "Y Combinator's Garry Tan: two YC decacorns in a single day — one is Polaris, the first privately-funded machine to hit 150 million °C, building commercial fusion. 'This is the abundance future, built by people who actually ship.'"
+            ],
+            "original": [
+              "Two YC decacorns in one day and one of them is building commercial fusion. Polaris hit 150 million degrees C, first privately funded machine to do it. This is the abundance future, built by people who actually ship."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "YC 总裁 Garry Tan 一天之内数出两家 decacorn,其中一家是 Polaris——全球第一台私有资本做出 1.5 亿度的聚变机器。[这是丰沛的未来,是真在出货的人造出来的。]"
+            ],
+            "original": [
+              "Two YC decacorns in one day and one of them is building commercial fusion. Polaris hit 150 million degrees C, first privately funded machine to do it. This is the abundance future, built by people who actually ship."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "个性化软件 / Personal Software Is the Surface",
+      "desc": "这一天把[个人软件]这个 2020 年提出的判断彻底兑现——Nikunj 用 Granola + Claude Code 训练了一个[Nock skill]复刻自己,Thariq 重提 app 像[自家做的饭]的比喻,Spiral 4.0 把 writing style 模型变成 agent 可以调用的工具。",
+      "cards": [
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2062659649732825549",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari (Twenty): introduces the 'Nock skill' — fed 200+ Granola-captured 1:1 founder pitch notes into Claude Code, narrowed to 53 representative meetings, and produced an AI twin that can speak in his voice for investor conversations."
+            ],
+            "original": [
+              "Introducing the Nock skill (powered by @meetgranola) 👀 Someone recently asked me if I can be replaced by AI, and my ego initially said NO WAY.. Then, I thought about what's the best way to have the most accurate 'AI' representation of me for these conversations. So, I used @claudeai Code to pull >200 1:1 founder pitch meeting notes that were captured by Granola in the last couple of years. Focused all the notes to only things I asked. Distilled it further down to ~53 meetings where there was a lot of good discussion and debate."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Twenty 的 Nikunj Kothari 推出[Nock skill]——把 Granola 录的 200 多场 1:1 founder pitch 笔记喂给 Claude Code,挑出 53 场高质量讨论,做成一个[用我的语气说话]的 AI 分身,专门用来跟投资人开会。"
+            ],
+            "original": [
+              "Introducing the Nock skill (powered by @meetgranola) 👀 Someone recently asked me if I can be replaced by AI, and my ego initially said NO WAY.. Then, I thought about what's the best way to have the most accurate 'AI' representation of me for these conversations. So, I used @claudeai Code to pull >200 1:1 founder pitch meeting notes that were captured by Granola in the last couple of years. Focused all the notes to only things I asked. Distilled it further down to ~53 meetings where there was a lot of good discussion and debate."
+            ]
+          }
+        },
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2062605395101884916",
+          "en": {
+            "rewrite": [
+              "Anthropic Thariq revives the 2020 framing: 'An app can be a home-cooked meal' — in 2026 personal software is finally as personal as a handwritten letter, because the cost of writing your own tool has collapsed."
+            ],
+            "original": [
+              "An app can be a home-cooked meal (2020) — personal software was a bit early in 2020 but in 2026, it really can be as personal as a home cooked meal, or a handwritten letter."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic 的 Thariq 把 2020 年的判断重新提出来:[一个 app 可以像一桌家常菜]——2026 年,自己写软件这件事终于可以像手写信一样[私人和贴心],因为造工具的成本塌方式地降下来了。"
+            ],
+            "original": [
+              "An app can be a home-cooked meal (2020) — personal software was a bit early in 2020 but in 2026, it really can be as personal as a home cooked meal, or a handwritten letter."
+            ]
+          }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/2062628079869005876",
+          "en": {
+            "rewrite": [
+              "Every's Dan Shipper: Spiral 4.0 — a writing partner for you and your agent. Adds a stylometry-based Style Engine that extracts your voice from past work, plus MCP/CLI hooks so agents (Codex / Claude Code / OpenClaw) can call Spiral to keep all written output on-brand across a 30-person team."
+            ],
+            "original": [
+              "NEW: Spiral 4.0—a writing partner for you and your agent by @every. -> Stylometry: we built a new Style Engine based on the principles of stylometry to extract you and your brand's voice and produce great writing every time, based on examples of your past work. -> MCP and CLI: Spiral is now built to be used by your agent like Codex, Claude Code, OpenClaw and more so you can get great writing automatically. We use it every day internally to write landing pages, tweets, podcasts, marketing emails and more and to make sure it's ALL on-brand across our entire 30 person team @every."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Every 的 Dan Shipper 推出 Spiral 4.0——既是你的写作搭子,也是 agent 的写作搭子。新加的 Style Engine 用 stylometry 原理从你过去写的东西里抽语气,加上 MCP/CLI 接口,让 Codex / Claude Code / OpenClaw 都能直接调用,确保 30 人小团队所有输出都[一个味儿]。"
+            ],
+            "original": [
+              "NEW: Spiral 4.0—a writing partner for you and your agent by @every. -> Stylometry: we built a new Style Engine based on the principles of stylometry to extract you and your brand's voice and produce great writing every time, based on examples of your past work. -> MCP and CLI: Spiral is now built to be used by your agent like Codex, Claude Code, OpenClaw and more so you can get great writing automatically. We use it every day internally to write landing pages, tweets, podcasts, marketing emails and more and to make sure it's ALL on-brand across our entire 30 person team @every."
+            ]
+          }
+        },
+        {
+          "authorKey": "x:claudeai",
+          "sourceUrl": "https://x.com/claudeai/status/2062558332695556378",
+          "en": {
+            "rewrite": [
+              "Claude's official account features Anton Osika (Lovable): the most underrated moat in AI is trust — and earning it takes craft, care, and obsession, not pure model IQ."
+            ],
+            "original": [
+              "Anton Osika (@antonosika) is the co-founder and CEO of @lovable, where anyone can build software through conversation. His working thesis: the most underrated moat in AI is trust, and earning it takes craft, care, and obsession."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude 官方账号推送 Lovable 创始人 Anton Osika 的工作假设:AI 时代最被低估的护城河是[信任],而信任是用 craft、care 和 obsession 一点点挣出来的,不是比模型 IQ 能赢的。"
+            ],
+            "original": [
+              "Anton Osika (@antonosika) is the co-founder and CEO of @lovable, where anyone can build software through conversation. His working thesis: the most underrated moat in AI is trust, and earning it takes craft, care, and obsession."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "产品大版本与基建 / Big Product Drops & Stack Updates",
+      "desc": "OpenAI 这边 Sam Altman 一口气放两个大版本:ChatGPT 直接造并发布 web app,memory 系统大升级;Vercel 跟 Void 重新把 web 平台抱在一起;Replit 团队让[prompt to shop]落地;再加上 Swyx 收到的 Cog 第一个商用 eval 产品——全栈一整天。",
+      "cards": [
+        {
+          "authorKey": "x:sama",
+          "sourceUrl": "https://x.com/sama/status/2062661071761211561",
+          "en": {
+            "rewrite": [
+              "Sam Altman: 'build and publish web apps with ChatGPT' — non-developers can now ship a working web app straight from a ChatGPT conversation, and he openly admits he'd have killed for this as a kid (RIP HyperCard)."
+            ],
+            "original": [
+              "build and publish web apps with chatgpt! i really wish i had this when i was a kid, but i do miss hypercard."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Sam Altman:现在可以直接在 ChatGPT 里[造并发布 web app]——非开发者用对话就能把一个能跑的 web app 推上线。Sam 本人都说[小时候要有这个就好了]——顺带怀念了一下 HyperCard。"
+            ],
+            "original": [
+              "build and publish web apps with chatgpt! i really wish i had this when i was a kid, but i do miss hypercard."
+            ]
+          }
+        },
+        {
+          "authorKey": "x:sama",
+          "sourceUrl": "https://x.com/sama/status/2062660086787613116",
+          "en": {
+            "rewrite": [
+              "Sam Altman: a 'big upgrade to ChatGPT memory' rolling out today — the assistant now retains more context across sessions, which directly raises the ceiling on what one-shot workflows can deliver."
+            ],
+            "original": [
+              "big upgrade to chatgpt memory rolling out today!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Sam Altman:ChatGPT memory 今天大版本推送——跨会话能保留更多上下文,这意味着一次性工作流的天花板被再次抬高。"
+            ],
+            "original": [
+              "big upgrade to chatgpt memory rolling out today!"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2062535454130676193",
+          "en": {
+            "rewrite": [
+              "Vercel Guillermo Rauch: Vercel reaffirms its collaboration with the Void team — invests in @nitrojsdev, open runtimes, and native Vite support for Nuxt / Svelte / TanStack Start, locking in an open web platform narrative."
+            ],
+            "original": [
+              "Congrats Void team! We @vercel reaffirm our collaboration on an open platform for the web, with our investment in @nitrojsdev, open runtimes, and native support for Vite-based frameworks like Nuxt, Svelte, and TanStack Start 🫡"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch:祝贺 Void 团队,Vercel 重申跟 Void 的合作——投资 @nitrojsdev、open runtimes,并原生支持 Nuxt / Svelte / TanStack Start 这一票 Vite 系框架,把[开放 web 平台]这条叙事按死。"
+            ],
+            "original": [
+              "Congrats Void team! We @vercel reaffirm our collaboration on an open platform for the web, with our investment in @nitrojsdev, open runtimes, and native support for Vite-based frameworks like Nuxt, Svelte, and TanStack Start 🫡"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2062646796804145517",
+          "en": {
+            "rewrite": [
+              "Replit CEO Amjad Masad: 'Prompt to shop' — Replit now lets a user go from natural-language intent straight to a live, deployed shopping app, collapsing the line between idea and commerce-ready product."
+            ],
+            "original": [
+              "Prompt to shop"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Replit CEO Amjad Masad:[Prompt to shop]——从自然语言直接到一个能上线能收钱的购物 app,想法到产品的距离被再次压缩。"
+            ],
+            "original": [
+              "Prompt to shop"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2062611218196771017",
+          "en": {
+            "rewrite": [
+              "Swyx: the first eval product ships from Cog — private enterprise evals up to 100 hours of work, with a financial guarantee. To contextualize: METR's public evals cap out at ~16 hours. The category just moved an order of magnitude."
+            ],
+            "original": [
+              "Finally! the first eval ship from cog!!!!!!!!!! 👼🏼 To contextualize: @METR_Evals cap out at ~16 hours. Cog has private enterprise evals up to 100hrs, and is confident enough to put a financial guarantee on it 🤯 METR dataset: ML eng, GPU kernels, cybersecurity. Cog dataset: real life java/typescript/python/c# feature dev, bugfixes, migrat"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx:Cog 终于发了第一个商用 eval 产品——私有企业级 eval 能测到 100 小时工作时长,还敢挂金融担保。对比一下,METR 公开 eval 上限大约 16 小时,这个品类直接跨过一个数量级。"
+            ],
+            "original": [
+              "Finally! the first eval ship from cog!!!!!!!!!! 👼🏼 To contextualize: @METR_Evals cap out at ~16 hours. Cog has private enterprise evals up to 100hrs, and is confident enough to put a financial guarantee on it 🤯 METR dataset: ML eng, GPU kernels, cybersecurity. Cog dataset: real life java/typescript/python/c# feature dev, bugfixes, migrat"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:adityaag",
+          "sourceUrl": "https://x.com/adityaag/status/2062655784127971565",
+          "en": {
+            "rewrite": [
+              "Facebook co-founder Aditya Agarwal: many roles will now have engineering infused into them — 'Marketing Engineer' is the template for how a single job title absorbs AI as a first-class deliverable."
+            ],
+            "original": [
+              "A lot of roles will now have engineering infused into them. Marketing Engineer is a great example of this."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Facebook 联合创始人 Aditya Agarwal:很多岗位现在会主动把[工程]揉进来——[Marketing Engineer]就是一个模板,一个 job title 把 AI 当成一等公民交付物。"
+            ],
+            "original": [
+              "A lot of roles will now have engineering infused into them. Marketing Engineer is a great example of this."
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

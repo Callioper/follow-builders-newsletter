@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Builders Digest · 2026-06-05</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ed;
+    --accent: #c0392b;
+    --accent-light: #e8d5c4;
+    --border: #d4cdc0;
+    --muted: #7a7265;
+    --tag-bg: #e8e2d6;
+    --en-bg: #ffffff;
+    --cn-bg: #faf7f2;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  .masthead, .intro, .section-header, .feed, footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .masthead { padding-top: 48px; }
+  .masthead-rule { border: none; border-top: 3px solid var(--ink); margin: 0 0 12px; }
+  .masthead-inner { display: flex; justify-content: center; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; letter-spacing: -0.4px; }
+  .masthead-subtitle { margin-top: 8px; padding-bottom: 10px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  .edition-strip {
+    position: relative;
+    margin-top: 8px;
+    min-height: 46px;
+    padding: 10px 132px 12px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.34);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+
+  .edition-strip .edition-sep { margin: 0 8px; color: #b8ae9f; }
+  .edition-strip-text { display: block; }
+  .edition-return-link { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; padding: 6px 10px; border: 1px dashed rgba(192, 57, 43, 0.55); border-radius: 999px; color: var(--accent); text-decoration: none; font-size: 12px; line-height: 1; letter-spacing: 0.06em; background: rgba(255, 255, 255, 0.45); transition: background 160ms ease, border-color 160ms ease, transform 160ms ease; }
+  .edition-return-link:hover, .edition-return-link:focus-visible { background: rgba(255, 255, 255, 0.82); border-color: var(--accent); transform: translateY(-50%) translateX(-1px); }
+  .edition-return-link:focus-visible { outline: none; }
+  .intro { padding-top: 22px; }
+  .intro-inner { max-width: 920px; margin: 0 auto; padding: 0 0 0 18px; border-left: 3px solid #d9cdbc; }
+  .intro-kicker { margin: 0 0 8px; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .intro p { margin: 0; max-width: none; color: var(--muted); font-size: clamp(15px, 1.6vw, 16px); line-height: 1.9; text-wrap: pretty; font-family: 'Noto Serif SC', serif; overflow-wrap: anywhere; }
+
+  .section-header { margin-top: 40px; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; margin: 0 0 6px; }
+  .section-desc { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+
+  .feed { display: flex; flex-direction: column; gap: 20px; }
+  .card { background: var(--en-bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .card-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid #eee7dd; flex-wrap: wrap; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .avatar-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .avatar.is-fallback img { display: none; }
+  .avatar.is-fallback .avatar-fallback { display: flex; }
+
+  .author-info { flex: 1; min-width: 160px; }
+  .author-name { font-weight: 600; font-size: 15px; }
+  .author-name-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .author-handle { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+  .author-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; background: var(--tag-bg); color: var(--muted); padding: 4px 8px; border-radius: 999px; }
+  .author-tag.is-inline { padding: 3px 8px; }
+
+  .card-controls { margin-left: auto; display: inline-flex; gap: 8px; }
+  .view-toggle { border: 1px solid var(--border); background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 999px; font-size: 12px; line-height: 1; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; }
+  .view-toggle.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .card-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .lang-col { padding: 18px 20px 22px; }
+  .lang-col.cn { background: var(--cn-bg); border-right: 1px solid #f0ece4; font-family: 'Noto Serif SC', serif; }
+  .lang-col.en { background: var(--en-bg); }
+  .lang-label { margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+  .content-shell { position: relative; transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .content-variant { position: absolute; inset: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(4px); transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; will-change: opacity, transform; }
+  .content-variant.is-active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+  .content-variant p, .content-variant li { margin: 0 0 12px; font-size: 14px; }
+  .content-variant ol { margin: 0 0 12px 20px; padding: 0; }
+  .inline-code { display: inline-block; font-family: 'IBM Plex Mono', monospace; background: #f4efe7; padding: 3px 6px; border-radius: 6px; margin-bottom: 8px; }
+
+  .card-footer { padding: 12px 20px 16px; border-top: 1px solid #eee7dd; background: #fcfaf6; }
+  .card-footer a { color: var(--accent); text-decoration: none; font-size: 14px; }
+  footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 680px) {
+    .masthead-inner { align-items: center; }
+    .edition-strip { padding-right: 12px; padding-left: 12px; }
+    .edition-strip-text { padding-right: 0; }
+    .edition-return-link { position: static; transform: none; margin-top: 8px; font-size: 11px; }
+    .card-controls { margin-left: 0; }
+    .card-body { grid-template-columns: 1fr; }
+    .lang-col.cn { border-right: none; border-bottom: 1px solid #f0ece4; }
+    .edition-strip .edition-sep { margin: 0 5px; }
+    .intro-inner { padding-left: 14px; }
+    .intro p { line-height: 1.84; }
+  }
+</style>
+</head>
+<body data-publish-date="2026-06-05" data-issue-number="13" data-edition-name="双语精选版" data-view-label-rewrite="速读" data-view-label-original="原文" data-author-identities-path="/home/eclaw/.follow-builders/assets/author-identities.json" data-avatar-manifest-path="/home/eclaw/.follow-builders/assets/avatar-manifest.json">
+  <header class="masthead">
+    <hr class="masthead-rule">
+    <div class="masthead-inner">
+      <div class="masthead-title">AI Builders Digest</div>
+    </div>
+    <div class="masthead-subtitle">Bilingual edition · 双语对照版</div>
+    <div class="edition-strip">
+      <span class="edition-strip-text" id="edition-strip-text">第 13 期｜2026-06-05｜双语精选版｜24 条精选｜18 位作者｜5 个主题</span>
+      <a class="edition-return-link" href="../index.html">返回目录</a>
+    </div>
+  </header>
+
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="6-5 这天的 Follow Builders 主线非常清楚:Anthropic 同一天把三件事放出来——Claude Code 质量回退的完整 postmortem、Managed Agents 正式上 self-hosted sandbox、Connectors 扩到日常 app——再叠上 Alex Albert 一条原推把[Claude 80% 写自己的代码]内部数据公开,等于把「harness + eval + context」那条工程主线的官方答案一次性摆桌面上。另一面,OpenAI 这边 Dan Roberts 上 MAD Podcast 讲 RL 怎么把 AI 推上发现科学,Sam Altman 一天内连发 ChatGPT web app builder 和 memory 大版本。一句话讲,这是「模型层在被自己的产物反推」的一天,也是「builder 终于可以拿全栈来比」的一天。">
+    <div class="intro-inner">
+      <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
+      <p class="intro-copy">6-5 这天的 Follow Builders 主线非常清楚:Anthropic 同一天把三件事放出来——Claude Code 质量回退的完整 postmortem、Managed Agents 正式上 self-hosted sandbox、Connectors 扩到日常 app——再叠上 Alex Albert 一条原推把[Claude 80% 写自己的代码]内部数据公开,等于把「harness + eval + context」那条工程主线的官方答案一次性摆桌面上。另一面,OpenAI 这边 Dan Roberts 上 MAD Podcast 讲 RL 怎么把 AI 推上发现科学,Sam Altman 一天内连发 ChatGPT web app builder 和 memory 大版本。一句话讲,这是「模型层在被自己的产物反推」的一天,也是「builder 终于可以拿全栈来比」的一天。</p>
+    </div>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 01</div>
+    <h2 class="section-title">Anthropic 透明度叠满 / Anthropic&#39;s Full-Stack Transparency Day</h2>
+    <p class="section-desc">Anthropic 在同一天把 Claude Code 质量回退的官方 postmortem、Managed Agents 正式支持 self-hosted sandbox + MCP tunnel、Connectors 扩到日常 app 三件事一起放,等于把「harness + eval + context」这条工程主线一次性摆桌面上。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="blog:anthropic" data-author-name="Anthropic" data-author-tag="Anthropic 官方博客" data-author-handle="" data-author-avatar="../assets/avatars/blog-anthropic.png">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/blog-anthropic.png" alt="Anthropic avatar"><span class="avatar-fallback">A</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Anthropic</div>
+            <div class="author-tag is-inline">Anthropic 官方博客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic 工程团队正式放出 Claude Code 三四月质量回退的官方复盘——三个独立改动(reasoning effort 默认值、idle session 清空旧思考、降低啰嗦度的 system prompt)叠加起来,造成一整片用户感知到的[模型变笨]假象,已经在 4-20 全量修复(v2.1.116),并对所有订阅用户重置使用额度。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>An update on recent Claude Code quality reports</p>
+              <p>Over the past month, we&#39;ve been looking into reports that Claude&#39;s responses have worsened for some users. We&#39;ve traced these reports to three separate changes that affected Claude Code, the Claude Agent SDK, and Claude Cowork. The API was not impacted. All three issues have now been resolved as of April 20 (v2.1.116).</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic Engineering: a public postmortem of the March-April Claude Code quality regression — three independent changes (reasoning effort default, idle-think clearing, verbosity prompt) stacked into a broad-feeling degradation, all fixed by April 20 (v2.1.116). Subscription usage limits reset for all subscribers.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>An update on recent Claude Code quality reports</p>
+              <p>Over the past month, we&#39;ve been looking into reports that Claude&#39;s responses have worsened for some users. We&#39;ve traced these reports to three separate changes that affected Claude Code, the Claude Agent SDK, and Claude Cowork. The API was not impacted. All three issues have now been resolved as of April 20 (v2.1.116).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.anthropic.com/engineering/april-23-postmortem" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="blog:anthropic" data-author-name="Anthropic" data-author-tag="Anthropic 官方博客" data-author-handle="" data-author-avatar="../assets/avatars/blog-anthropic.png">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/blog-anthropic.png" alt="Anthropic avatar"><span class="avatar-fallback">A</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Anthropic</div>
+            <div class="author-tag is-inline">Anthropic 官方博客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic 工程团队详解 Managed Agents:把 session、harness、sandbox 三件套都做成虚拟化抽象,让[大脑]——也就是 agent 调度循环——和[双手]——也就是实际执行环境——彻底解耦,这样单一接口可以撑过任何一种底层实现,不再养[宠物容器]。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Scaling Managed Agents: Decoupling the brain from the hands</p>
+              <p>A common thread across this work is that harnesses encode assumptions about what Claude can&#39;t do on its own. However, those assumptions need to be frequently questioned because they can go stale as models improve. As just one example, in prior work we found that Claude Sonnet 4.5 would wrap up tasks prematurely as it sensed its context limit approaching—a behavior sometimes called &#39;context anxiety.&#39; We addressed this by adding context resets to the harness. But when we used the same harness on Claude Opus 4.5, we found that the behavior was gone. The resets had become dead weight.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic Engineering: a deep dive on Managed Agents — virtualized session / harness / sandbox abstractions that decouple the &#39;brain&#39; (the agent loop) from the &#39;hands&#39; (the execution environment), so a single interface can outlive any one implementation.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Scaling Managed Agents: Decoupling the brain from the hands</p>
+              <p>A common thread across this work is that harnesses encode assumptions about what Claude can&#39;t do on its own. However, those assumptions need to be frequently questioned because they can go stale as models improve. As just one example, in prior work we found that Claude Sonnet 4.5 would wrap up tasks prematurely as it sensed its context limit approaching—a behavior sometimes called &#39;context anxiety.&#39; We addressed this by adding context resets to the harness. But when we used the same harness on Claude Opus 4.5, we found that the behavior was gone. The resets had become dead weight.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.anthropic.com/engineering/managed-agents" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="blog:claudeai" data-author-name="Claude" data-author-tag="Claude 官方博客" data-author-handle="" data-author-avatar="../assets/avatars/blog-claudeai.png">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/blog-claudeai.png" alt="Claude avatar"><span class="avatar-fallback">C</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Claude</div>
+            <div class="author-tag is-inline">Claude 官方博客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Claude 官方产品博客:Managed Agents 即日起支持 self-hosted sandbox(可接 Cloudflare / Daytona / Modal / Vercel)和私有 MCP tunnel——前者公测、后者研究预览。这样调度循环还在 Anthropic,真正动你文件和工具的执行面搬进企业自己的边界。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>New in Claude Managed Agents: self-hosted sandboxes and MCP tunnels</p>
+              <p>Starting today, Claude Managed Agents can operate in a sandbox you control and connect to your private Model Context Protocol (MCP) servers. Both the sandbox where an agent executes tools and the services it reaches run within the established boundaries of your enterprise, under your security and runtime controls.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Claude product blog: Managed Agents now supports self-hosted sandboxes (Cloudflare / Daytona / Modal / Vercel) and private MCP tunnels — public beta and research preview, respectively, so the agent loop stays on Anthropic while file execution stays inside your perimeter.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>New in Claude Managed Agents: self-hosted sandboxes and MCP tunnels</p>
+              <p>Starting today, Claude Managed Agents can operate in a sandbox you control and connect to your private Model Context Protocol (MCP) servers. Both the sandbox where an agent executes tools and the services it reaches run within the established boundaries of your enterprise, under your security and runtime controls.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://claude.com/blog/claude-managed-agents-updates" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:alexalbert__" data-author-name="Alex Albert" data-author-tag="Anthropic Claude 关系负责人" data-author-handle="@alexalbert__" data-author-avatar="../assets/avatars/x-alexalbert__.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-alexalbert__.jpg" alt="Alex Albert avatar"><span class="avatar-fallback">AA</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Alex Albert</div>
+            <div class="author-tag is-inline">Anthropic Claude 关系负责人</div>
+          </div>
+          <div class="author-handle">@alexalbert__</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic 的 Alex Albert 直接放出内部数据:合并进 Anthropic 代码库的 80% 以上代码现在由 Claude 自己写;很多研究员已经几个月没手写代码;典型工程师的代码产出是 2024 年的 8 倍;在最开放的工程任务上,Claude 一次成功率从 26% 跳到 76% 只用了 6 个月。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>We just published internal data on how much of Claude&#39;s development is already being done by Claude: - Over 80% of all code merged into our codebase is now written by Claude - It&#39;s been months since many researchers at Anthropic hand-wrote code - The typical Anthropic engineer ships 8x as much code as they did in 2024 - On the most open-ended engineering tasks, Claude&#39;s success rate jumped from ~26% to 76% in 6 months - When research sessions went off-track, Claude proposed a better next step than the human took 64% of the time. We&#39;re not at recursive self-improvement yet, but it could come sooner than people think.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic&#39;s Alex Albert publishes internal data: over 80% of code merged into the Anthropic codebase is now written by Claude; many researchers haven&#39;t hand-written code in months; the typical engineer ships 8x what they did in 2024; on the most open-ended tasks Claude&#39;s success rate jumped from ~26% to 76% in 6 months.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>We just published internal data on how much of Claude&#39;s development is already being done by Claude: - Over 80% of all code merged into our codebase is now written by Claude - It&#39;s been months since many researchers at Anthropic hand-wrote code - The typical Anthropic engineer ships 8x as much code as they did in 2024 - On the most open-ended engineering tasks, Claude&#39;s success rate jumped from ~26% to 76% in 6 months - When research sessions went off-track, Claude proposed a better next step than the human took 64% of the time. We&#39;re not at recursive self-improvement yet, but it could come sooner than people think.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/alexalbert__/status/2062580571214389510" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:levie" data-author-name="Aaron Levie" data-author-tag="Box CEO" data-author-handle="@levie" data-author-avatar="../assets/avatars/x-levie.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-levie.jpg" alt="Aaron Levie avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie</div>
+            <div class="author-tag is-inline">Box CEO</div>
+          </div>
+          <div class="author-handle">@levie</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Box 创始人 Aaron Levie 引出 Anthropic 帖子最关键的一段:[现在被卡住的是把想法变成落地的速度]——组织快速识别并解决新瓶颈的能力,可能才是 AI 时代真正的新护城河。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Good thought provoking post from Anthropic. I think this paragraph points to the key element of the optimistic scenario of AI: &#39;There has been an explosion of new ideas, initiatives, tools, and simulations, as a result of Anthropic employees working with highly capable models—far more than we have the capacity to pursue. The rate at which organizations can spot and fix these bottlenecks may be a skill that improves over time, and it may become the most important skill for any organization.&#39;</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Box CEO Aaron Levie: the most important organizational skill in the AI era may be spotting and removing the new bottlenecks that appear as fast as the old ones dissolve — the rate at which a team can iterate on its bottlenecks becomes the real moat.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Good thought provoking post from Anthropic. I think this paragraph points to the key element of the optimistic scenario of AI: &#39;There has been an explosion of new ideas, initiatives, tools, and simulations, as a result of Anthropic employees working with highly capable models—far more than we have the capacity to pursue. The rate at which organizations can spot and fix these bottlenecks may be a skill that improves over time, and it may become the most important skill for any organization.&#39;</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/levie/status/2062728257359790292" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="blog:claudeai" data-author-name="Claude" data-author-tag="Claude 官方博客" data-author-handle="" data-author-avatar="../assets/avatars/blog-claudeai.png">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/blog-claudeai.png" alt="Claude avatar"><span class="avatar-fallback">C</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Claude</div>
+            <div class="author-tag is-inline">Claude 官方博客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Claude 官方产品博客:Connectors 扩到日常 app——AllTrails / Audible / Booking.com / Instacart / Spotify / Uber / Uber Eats / Tripadvisor 等 14 个一次性进目录(总数破 200),Claude 会根据对话内容动态建议最合适的 connector。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>New connectors in Claude for everyday life</p>
+              <p>Today we&#39;re expanding what you can connect to Claude. Alongside the work tools you already use, you can now connect the apps you use throughout your week, including AllTrails, Instacart, Audible, Tripadvisor, Intuit TurboTax, and more.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Claude product blog: connectors expand to everyday-life apps — AllTrails / Audible / Booking.com / Instacart / Spotify / Uber / Uber Eats / Tripadvisor etc. join the directory (now 200+), and Claude now suggests the right connector dynamically based on what you&#39;re asking.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>New connectors in Claude for everyday life</p>
+              <p>Today we&#39;re expanding what you can connect to Claude. Alongside the work tools you already use, you can now connect the apps you use throughout your week, including AllTrails, Instacart, Audible, Tripadvisor, Intuit TurboTax, and more.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://claude.com/blog/connectors-for-everyday-life" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 02</div>
+    <h2 class="section-title">Codex 走进日常 / Codex Becomes Daily-Driver</h2>
+    <p class="section-desc">Codex 在 6-5 同时被官方和重度用户叠加更新:thsottiaux 把 Python SDK 放出来同时坦白一个 Pro/Plus token 计数 bug,Peter Yang 则记录下自己怎么用 Codex 重新组装一整天的工作流——这两件事合起来把 Codex 从[玩具]推向[生产工具]。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:thsottiaux" data-author-name="Thibault Sottiaux" data-author-tag="OpenAI Codex &amp; ChatGPT" data-author-handle="@thsottiaux" data-author-avatar="../assets/avatars/x-thsottiaux.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-thsottiaux.jpg" alt="Thibault Sottiaux avatar"><span class="avatar-fallback">TS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Thibault Sottiaux</div>
+            <div class="author-tag is-inline">OpenAI Codex &amp; ChatGPT</div>
+          </div>
+          <div class="author-handle">@thsottiaux</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>OpenAI 的 Thibault Sottiaux:Codex 现在可以通过 Python SDK 在你自己的程序里被调用(pip install openai-codex)——这等于把 Codex 从一个 CLI 玩具,正式升级成可以被更大 agent 流水线编排的底层引擎。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>You can use codex within your own programs using the Python SDK. It&#39;s awesome. Built by @ah20im and friends.
+
+              pip install openai-codex</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>OpenAI Thibault: Codex can now be called from your own Python programs via a new SDK (pip install openai-codex) — a meaningful unlock for orchestrating Codex inside larger agent pipelines.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>You can use codex within your own programs using the Python SDK. It&#39;s awesome. Built by @ah20im and friends.
+
+              pip install openai-codex</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/thsottiaux/status/2062734215494664697" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:thsottiaux" data-author-name="Thibault Sottiaux" data-author-tag="OpenAI Codex &amp; ChatGPT" data-author-handle="@thsottiaux" data-author-avatar="../assets/avatars/x-thsottiaux.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-thsottiaux.jpg" alt="Thibault Sottiaux avatar"><span class="avatar-fallback">TS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Thibault Sottiaux</div>
+            <div class="author-tag is-inline">OpenAI Codex &amp; ChatGPT</div>
+          </div>
+          <div class="author-handle">@thsottiaux</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>OpenAI 的 Thibault:今天修了一个 Codex bug——在部分 Pro/Plus 账号上少算了服务 token(影响 &lt;15% 用户)。没悄悄补,而是公开贴出来——这种透明度在 AI coding 工具里很少见。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>We&#39;re fixing a codex bug today that was causing us to undercount tokens being served to some Pro and Plus accounts by a small amount. This impacted &lt; 15% of accounts.
+
+              Not the kind of bug you want us to fix, but didn&#39;t want to do this silently and thought you should know.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>OpenAI Thibault: a Codex bug was undercounting tokens served to some Pro/Plus accounts by a small amount, affecting &lt;15% of users. Fixed today — publicly disclosed rather than silently patched.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>We&#39;re fixing a codex bug today that was causing us to undercount tokens being served to some Pro and Plus accounts by a small amount. This impacted &lt; 15% of accounts.
+
+              Not the kind of bug you want us to fix, but didn&#39;t want to do this silently and thought you should know.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/thsottiaux/status/2062648326332539015" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:petergyang" data-author-name="Peter Yang" data-author-tag="" data-author-handle="@petergyang" data-author-avatar="../assets/avatars/x-petergyang.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-petergyang.jpg" alt="Peter Yang avatar"><span class="avatar-fallback">PY</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Yang</div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle">@petergyang</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang:今天一整天都在 Codex 里搭自己最常用的创作者工作流——把集成和 skills 一次性配齐。结论是:任何知识工作只要把系统先搭好,都能抢回至少 50% 的时间,但关键节点都得留给人做[taste]判断。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I spent the whole day today setting up integrations and skills in Codex for my top creator workflows. Now I&#39;m convinced that you can save at least 50% of your time on any type of knowledge work if you just set up the system upfront. Note that all my workflows have human checkpoints along the way so I can apply my &#39;taste.&#39;</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang: spent the whole day wiring integrations and skills into Codex for his top creator workflows — convinced that anyone can claw back 50%+ of their knowledge-work time if they pre-build the system, with human checkpoints for taste.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I spent the whole day today setting up integrations and skills in Codex for my top creator workflows. Now I&#39;m convinced that you can save at least 50% of your time on any type of knowledge work if you just set up the system upfront. Note that all my workflows have human checkpoints along the way so I can apply my &#39;taste.&#39;</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/petergyang/status/2062740262338929110" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:petergyang" data-author-name="Peter Yang" data-author-tag="" data-author-handle="@petergyang" data-author-avatar="../assets/avatars/x-petergyang.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-petergyang.jpg" alt="Peter Yang avatar"><span class="avatar-fallback">PY</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Yang</div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle">@petergyang</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang:Codex 逻辑层越做越好,但前端设计这一关还是输给 Claude——他晒的 /slides 案例里,一眼就能分出哪份是 Codex 出的、哪份是 Claude 出的,Codex 在审美上还是新手级,这其实是 coding tool 给新人的第一印象。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Also as great as Codex is (and I&#39;m really starting to love it) the frontend design still leaves a lot to be desired. I have a /slides skill and you can guess which one Codex made vs. Claude. Yes I know I can make an image with ChatGPT first and then tell Codex to build it but Claude can one shot great looking HTML slides. Codex needs to fix this imo it&#39;s often a novice&#39;s first impression of a coding or knowledge work tool.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang: Codex is great for logic but its frontend output still underperforms Claude — even with a /slides skill, Codex&#39;s slides look like a novice&#39;s first attempt, where Claude one-shots clean HTML.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Also as great as Codex is (and I&#39;m really starting to love it) the frontend design still leaves a lot to be desired. I have a /slides skill and you can guess which one Codex made vs. Claude. Yes I know I can make an image with ChatGPT first and then tell Codex to build it but Claude can one shot great looking HTML slides. Codex needs to fix this imo it&#39;s often a novice&#39;s first impression of a coding or knowledge work tool.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/petergyang/status/2062743491365544361" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:trq212" data-author-name="Tao Li" data-author-tag="" data-author-handle="@trq212" data-author-avatar="../assets/avatars/x-trq212.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-trq212.jpg" alt="Tao Li avatar"><span class="avatar-fallback">TL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Tao Li</div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle">@trq212</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic 的 Thariq 发了一篇[动态工作流如何让 Claude Code 接管全新类型任务]——核心讲的是让 Claude Code 在运行时分叉、循环、组合 skills,而不是把 agent 流程图写死。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>How dynamic workflows allow Claude Code to handle whole new types of tasks</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic Thariq: &#39;How dynamic workflows allow Claude Code to handle whole new types of tasks&#39; — a walkthrough on letting Claude Code branch, loop and compose skills at runtime, instead of a single hard-coded agent graph.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>How dynamic workflows allow Claude Code to handle whole new types of tasks</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/trq212/status/2062556889171517499" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 03</div>
+    <h2 class="section-title">AI 走向发现 / AI Starts Making Discoveries</h2>
+    <p class="section-desc">OpenAI 的 Dan Roberts 在 MAD Podcast 详解 Foundations of RL 团队怎么把推理模型推到能做 Erdos 级别数学发现,另一边 YC / Garry Tan 看到商业聚变公司 Polaris 第一次私有资本冲到 1.5 亿度——发现与建造,两边同时加速。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="podcast:mad-podcast" data-author-name="The MAD Podcast" data-author-tag="Matt Turck 主理的 AI 与数据播客" data-author-handle="" data-author-avatar="../assets/avatars/podcast-mad-podcast.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/podcast-mad-podcast.jpg" alt="The MAD Podcast avatar"><span class="avatar-fallback">TM</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">The MAD Podcast</div>
+            <div class="author-tag is-inline">Matt Turck 主理的 AI 与数据播客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>MAD Podcast:Matt Turck 跟 OpenAI Foundations of RL 团队负责人 Dan Roberts 聊为什么 AI 终于跨过[替我们解题]的阶段,开始做开放式的科学发现——背景就是 OpenAI / DeepMind / Anthropic 最近同时解出一批 Erdos 公开题。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>OpenAI&#39;s Dan Roberts: Why AI Can Now Make Discoveries</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>MAD Podcast: Matt Turck sits down with Dan Roberts, lead of OpenAI&#39;s Foundations of Reinforcement Learning team, on why AI is now crossing from &#39;solving problems we pose&#39; into &#39;making open-ended scientific discoveries&#39; — including the recent Erdős-problem work from OpenAI / DeepMind / Anthropic.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>OpenAI&#39;s Dan Roberts: Why AI Can Now Make Discoveries</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.youtube.com/watch?v=oWOz2htozfI" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:mattturck" data-author-name="Matt Turck" data-author-tag="First Mark Capital 合伙人 / MAD Podcast 主理人" data-author-handle="@mattturck" data-author-avatar="../assets/avatars/x-mattturck.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-mattturck.jpg" alt="Matt Turck avatar"><span class="avatar-fallback">MT</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Matt Turck</div>
+            <div class="author-tag is-inline">First Mark Capital 合伙人 / MAD Podcast 主理人</div>
+          </div>
+          <div class="author-handle">@mattturck</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Matt Turck 给这场对谈定的标题:[为什么 AI 终于能做发现]——开场白直接讲[数学界这一周太疯狂],三家前沿实验室同时解 Erdos 公开题,被认为是 AI 从工具变成自主科学家的又一个信号。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Why AI Can Now Make Discoveries - my conversation with @danintheory, Lead of the Foundations of RL team at @OpenAI. 00:00 Intro: AI&#39;s wild week in mathematics. 01:21 What OpenAI&#39;s Foundations of RL team does. 03:08 Dan&#39;s journey: from black holes and quantum gravity to frontier AI. 07:04 Are AI systems becoming useful for real science. 08:21 The AI math moment: Erdős, OpenAI, DeepMind, and Anthropic. 08:52 Why the OpenAI result was an act of exploration. 10:25 OpenAI vs. DeepMind: informal reasoning vs. formal proof. 12:13 RL 101: learning by doing, not just watching.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Matt Turck on his Dan Roberts conversation: &#39;a wild week in mathematics&#39; — the three frontier labs cracking long-open problems is being read as another signal that AI is moving from tool to autonomous scientist.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Why AI Can Now Make Discoveries - my conversation with @danintheory, Lead of the Foundations of Reinforcement Learning team at @OpenAI. 00:00 Intro: AI&#39;s wild week in mathematics. 01:21 What OpenAI&#39;s Foundations of RL team does. 03:08 Dan&#39;s journey: from black holes and quantum gravity to frontier AI. 07:04 Are AI systems becoming useful for real science. 08:21 The AI math moment: Erdős, OpenAI, DeepMind, and Anthropic. 08:52 Why the OpenAI result was an act of exploration. 10:25 OpenAI vs. DeepMind: informal reasoning vs. formal proof. 12:13 RL 101: learning by doing, not just watching.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/mattturck/status/2062587000201580808" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:garrytan" data-author-name="Garry Tan" data-author-tag="Y Combinator 总裁" data-author-handle="@garrytan" data-author-avatar="../assets/avatars/x-garrytan.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-garrytan.jpg" alt="Garry Tan avatar"><span class="avatar-fallback">GT</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Garry Tan</div>
+            <div class="author-tag is-inline">Y Combinator 总裁</div>
+          </div>
+          <div class="author-handle">@garrytan</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>YC 总裁 Garry Tan 一天之内数出两家 decacorn,其中一家是 Polaris——全球第一台私有资本做出 1.5 亿度的聚变机器。[这是丰沛的未来,是真在出货的人造出来的。]</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Two YC decacorns in one day and one of them is building commercial fusion. Polaris hit 150 million degrees C, first privately funded machine to do it. This is the abundance future, built by people who actually ship.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Y Combinator&#39;s Garry Tan: two YC decacorns in a single day — one is Polaris, the first privately-funded machine to hit 150 million °C, building commercial fusion. &#39;This is the abundance future, built by people who actually ship.&#39;</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Two YC decacorns in one day and one of them is building commercial fusion. Polaris hit 150 million degrees C, first privately funded machine to do it. This is the abundance future, built by people who actually ship.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/garrytan/status/2062763109849411834" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 04</div>
+    <h2 class="section-title">个性化软件 / Personal Software Is the Surface</h2>
+    <p class="section-desc">这一天把[个人软件]这个 2020 年提出的判断彻底兑现——Nikunj 用 Granola + Claude Code 训练了一个[Nock skill]复刻自己,Thariq 重提 app 像[自家做的饭]的比喻,Spiral 4.0 把 writing style 模型变成 agent 可以调用的工具。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:nikunj" data-author-name="Nikunj" data-author-tag="" data-author-handle="@nikunj" data-author-avatar="../assets/avatars/x-nikunj.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-nikunj.jpg" alt="Nikunj avatar"><span class="avatar-fallback">N</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Nikunj</div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle">@nikunj</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Twenty 的 Nikunj Kothari 推出[Nock skill]——把 Granola 录的 200 多场 1:1 founder pitch 笔记喂给 Claude Code,挑出 53 场高质量讨论,做成一个[用我的语气说话]的 AI 分身,专门用来跟投资人开会。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Introducing the Nock skill (powered by @meetgranola) 👀 Someone recently asked me if I can be replaced by AI, and my ego initially said NO WAY.. Then, I thought about what&#39;s the best way to have the most accurate &#39;AI&#39; representation of me for these conversations. So, I used @claudeai Code to pull &gt;200 1:1 founder pitch meeting notes that were captured by Granola in the last couple of years. Focused all the notes to only things I asked. Distilled it further down to ~53 meetings where there was a lot of good discussion and debate.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj Kothari (Twenty): introduces the &#39;Nock skill&#39; — fed 200+ Granola-captured 1:1 founder pitch notes into Claude Code, narrowed to 53 representative meetings, and produced an AI twin that can speak in his voice for investor conversations.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Introducing the Nock skill (powered by @meetgranola) 👀 Someone recently asked me if I can be replaced by AI, and my ego initially said NO WAY.. Then, I thought about what&#39;s the best way to have the most accurate &#39;AI&#39; representation of me for these conversations. So, I used @claudeai Code to pull &gt;200 1:1 founder pitch meeting notes that were captured by Granola in the last couple of years. Focused all the notes to only things I asked. Distilled it further down to ~53 meetings where there was a lot of good discussion and debate.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/nikunj/status/2062659649732825549" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:trq212" data-author-name="Tao Li" data-author-tag="" data-author-handle="@trq212" data-author-avatar="../assets/avatars/x-trq212.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-trq212.jpg" alt="Tao Li avatar"><span class="avatar-fallback">TL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Tao Li</div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle">@trq212</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic 的 Thariq 把 2020 年的判断重新提出来:[一个 app 可以像一桌家常菜]——2026 年,自己写软件这件事终于可以像手写信一样[私人和贴心],因为造工具的成本塌方式地降下来了。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>An app can be a home-cooked meal (2020) — personal software was a bit early in 2020 but in 2026, it really can be as personal as a home cooked meal, or a handwritten letter.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic Thariq revives the 2020 framing: &#39;An app can be a home-cooked meal&#39; — in 2026 personal software is finally as personal as a handwritten letter, because the cost of writing your own tool has collapsed.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>An app can be a home-cooked meal (2020) — personal software was a bit early in 2020 but in 2026, it really can be as personal as a home cooked meal, or a handwritten letter.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/trq212/status/2062605395101884916" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:danshipper" data-author-name="Dan Shipper" data-author-tag="" data-author-handle="@danshipper" data-author-avatar="../assets/avatars/x-danshipper.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-danshipper.jpg" alt="Dan Shipper avatar"><span class="avatar-fallback">DS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Dan Shipper</div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle">@danshipper</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Every 的 Dan Shipper 推出 Spiral 4.0——既是你的写作搭子,也是 agent 的写作搭子。新加的 Style Engine 用 stylometry 原理从你过去写的东西里抽语气,加上 MCP/CLI 接口,让 Codex / Claude Code / OpenClaw 都能直接调用,确保 30 人小团队所有输出都[一个味儿]。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>NEW: Spiral 4.0—a writing partner for you and your agent by @every. -&gt; Stylometry: we built a new Style Engine based on the principles of stylometry to extract you and your brand&#39;s voice and produce great writing every time, based on examples of your past work. -&gt; MCP and CLI: Spiral is now built to be used by your agent like Codex, Claude Code, OpenClaw and more so you can get great writing automatically. We use it every day internally to write landing pages, tweets, podcasts, marketing emails and more and to make sure it&#39;s ALL on-brand across our entire 30 person team @every.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Every&#39;s Dan Shipper: Spiral 4.0 — a writing partner for you and your agent. Adds a stylometry-based Style Engine that extracts your voice from past work, plus MCP/CLI hooks so agents (Codex / Claude Code / OpenClaw) can call Spiral to keep all written output on-brand across a 30-person team.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>NEW: Spiral 4.0—a writing partner for you and your agent by @every. -&gt; Stylometry: we built a new Style Engine based on the principles of stylometry to extract you and your brand&#39;s voice and produce great writing every time, based on examples of your past work. -&gt; MCP and CLI: Spiral is now built to be used by your agent like Codex, Claude Code, OpenClaw and more so you can get great writing automatically. We use it every day internally to write landing pages, tweets, podcasts, marketing emails and more and to make sure it&#39;s ALL on-brand across our entire 30 person team @every.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/danshipper/status/2062628079869005876" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:claudeai" data-author-name="Claude" data-author-tag="Anthropic Claude 官方账号" data-author-handle="@claudeai" data-author-avatar="../assets/avatars/x-claudeai.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-claudeai.jpg" alt="Claude avatar"><span class="avatar-fallback">C</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Claude</div>
+            <div class="author-tag is-inline">Anthropic Claude 官方账号</div>
+          </div>
+          <div class="author-handle">@claudeai</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Claude 官方账号推送 Lovable 创始人 Anton Osika 的工作假设:AI 时代最被低估的护城河是[信任],而信任是用 craft、care 和 obsession 一点点挣出来的,不是比模型 IQ 能赢的。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Anton Osika (@antonosika) is the co-founder and CEO of @lovable, where anyone can build software through conversation. His working thesis: the most underrated moat in AI is trust, and earning it takes craft, care, and obsession.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Claude&#39;s official account features Anton Osika (Lovable): the most underrated moat in AI is trust — and earning it takes craft, care, and obsession, not pure model IQ.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Anton Osika (@antonosika) is the co-founder and CEO of @lovable, where anyone can build software through conversation. His working thesis: the most underrated moat in AI is trust, and earning it takes craft, care, and obsession.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/claudeai/status/2062558332695556378" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 05</div>
+    <h2 class="section-title">产品大版本与基建 / Big Product Drops &amp; Stack Updates</h2>
+    <p class="section-desc">OpenAI 这边 Sam Altman 一口气放两个大版本:ChatGPT 直接造并发布 web app,memory 系统大升级;Vercel 跟 Void 重新把 web 平台抱在一起;Replit 团队让[prompt to shop]落地;再加上 Swyx 收到的 Cog 第一个商用 eval 产品——全栈一整天。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:sama" data-author-name="Sam Altman" data-author-tag="OpenAI CEO" data-author-handle="@sama" data-author-avatar="../assets/avatars/x-sama.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-sama.jpg" alt="Sam Altman avatar"><span class="avatar-fallback">SA</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Sam Altman</div>
+            <div class="author-tag is-inline">OpenAI CEO</div>
+          </div>
+          <div class="author-handle">@sama</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Sam Altman:现在可以直接在 ChatGPT 里[造并发布 web app]——非开发者用对话就能把一个能跑的 web app 推上线。Sam 本人都说[小时候要有这个就好了]——顺带怀念了一下 HyperCard。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>build and publish web apps with chatgpt! i really wish i had this when i was a kid, but i do miss hypercard.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Sam Altman: &#39;build and publish web apps with ChatGPT&#39; — non-developers can now ship a working web app straight from a ChatGPT conversation, and he openly admits he&#39;d have killed for this as a kid (RIP HyperCard).</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>build and publish web apps with chatgpt! i really wish i had this when i was a kid, but i do miss hypercard.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/sama/status/2062661071761211561" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:sama" data-author-name="Sam Altman" data-author-tag="OpenAI CEO" data-author-handle="@sama" data-author-avatar="../assets/avatars/x-sama.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-sama.jpg" alt="Sam Altman avatar"><span class="avatar-fallback">SA</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Sam Altman</div>
+            <div class="author-tag is-inline">OpenAI CEO</div>
+          </div>
+          <div class="author-handle">@sama</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Sam Altman:ChatGPT memory 今天大版本推送——跨会话能保留更多上下文,这意味着一次性工作流的天花板被再次抬高。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>big upgrade to chatgpt memory rolling out today!</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Sam Altman: a &#39;big upgrade to ChatGPT memory&#39; rolling out today — the assistant now retains more context across sessions, which directly raises the ceiling on what one-shot workflows can deliver.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>big upgrade to chatgpt memory rolling out today!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/sama/status/2062660086787613116" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:rauchg" data-author-name="Guillermo Rauch" data-author-tag="Vercel CEO" data-author-handle="@rauchg" data-author-avatar="../assets/avatars/x-rauchg.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-rauchg.jpg" alt="Guillermo Rauch avatar"><span class="avatar-fallback">GR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Guillermo Rauch</div>
+            <div class="author-tag is-inline">Vercel CEO</div>
+          </div>
+          <div class="author-handle">@rauchg</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Vercel CEO Guillermo Rauch:祝贺 Void 团队,Vercel 重申跟 Void 的合作——投资 @nitrojsdev、open runtimes,并原生支持 Nuxt / Svelte / TanStack Start 这一票 Vite 系框架,把[开放 web 平台]这条叙事按死。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Congrats Void team! We @vercel reaffirm our collaboration on an open platform for the web, with our investment in @nitrojsdev, open runtimes, and native support for Vite-based frameworks like Nuxt, Svelte, and TanStack Start 🫡</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Vercel Guillermo Rauch: Vercel reaffirms its collaboration with the Void team — invests in @nitrojsdev, open runtimes, and native Vite support for Nuxt / Svelte / TanStack Start, locking in an open web platform narrative.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Congrats Void team! We @vercel reaffirm our collaboration on an open platform for the web, with our investment in @nitrojsdev, open runtimes, and native support for Vite-based frameworks like Nuxt, Svelte, and TanStack Start 🫡</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/rauchg/status/2062535454130676193" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:amasad" data-author-name="Romain" data-author-tag="" data-author-handle="@amasad" data-author-avatar="../assets/avatars/x-amasad.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-amasad.jpg" alt="Romain avatar"><span class="avatar-fallback">R</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Romain</div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle">@amasad</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Replit CEO Amjad Masad:[Prompt to shop]——从自然语言直接到一个能上线能收钱的购物 app,想法到产品的距离被再次压缩。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Prompt to shop</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Replit CEO Amjad Masad: &#39;Prompt to shop&#39; — Replit now lets a user go from natural-language intent straight to a live, deployed shopping app, collapsing the line between idea and commerce-ready product.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Prompt to shop</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/amasad/status/2062646796804145517" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:swyx" data-author-name="Swyx" data-author-tag="AI 工程师" data-author-handle="@swyx" data-author-avatar="../assets/avatars/x-swyx.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-swyx.jpg" alt="Swyx avatar"><span class="avatar-fallback">S</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Swyx</div>
+            <div class="author-tag is-inline">AI 工程师</div>
+          </div>
+          <div class="author-handle">@swyx</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx:Cog 终于发了第一个商用 eval 产品——私有企业级 eval 能测到 100 小时工作时长,还敢挂金融担保。对比一下,METR 公开 eval 上限大约 16 小时,这个品类直接跨过一个数量级。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Finally! the first eval ship from cog!!!!!!!!!! 👼🏼 To contextualize: @METR_Evals cap out at ~16 hours. Cog has private enterprise evals up to 100hrs, and is confident enough to put a financial guarantee on it 🤯 METR dataset: ML eng, GPU kernels, cybersecurity. Cog dataset: real life java/typescript/python/c# feature dev, bugfixes, migrat</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx: the first eval product ships from Cog — private enterprise evals up to 100 hours of work, with a financial guarantee. To contextualize: METR&#39;s public evals cap out at ~16 hours. The category just moved an order of magnitude.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Finally! the first eval ship from cog!!!!!!!!!! 👼🏼 To contextualize: @METR_Evals cap out at ~16 hours. Cog has private enterprise evals up to 100hrs, and is confident enough to put a financial guarantee on it 🤯 METR dataset: ML eng, GPU kernels, cybersecurity. Cog dataset: real life java/typescript/python/c# feature dev, bugfixes, migrat</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/swyx/status/2062611218196771017" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:adityaag" data-author-name="Aditya Agarwal" data-author-tag="" data-author-handle="@adityaag" data-author-avatar="../assets/avatars/x-adityaag.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-adityaag.jpg" alt="Aditya Agarwal avatar"><span class="avatar-fallback">AA</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aditya Agarwal</div>
+            <div class="author-tag is-inline"></div>
+          </div>
+          <div class="author-handle">@adityaag</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Facebook 联合创始人 Aditya Agarwal:很多岗位现在会主动把[工程]揉进来——[Marketing Engineer]就是一个模板,一个 job title 把 AI 当成一等公民交付物。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>A lot of roles will now have engineering infused into them. Marketing Engineer is a great example of this.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Facebook co-founder Aditya Agarwal: many roles will now have engineering infused into them — &#39;Marketing Engineer&#39; is the template for how a single job title absorbs AI as a first-class deliverable.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>A lot of roles will now have engineering infused into them. Marketing Engineer is a great example of this.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/adityaag/status/2062655784127971565" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <footer data-source-note="Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-05 source feeds.">Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-05 source feeds.</footer>
+
+  <script>
+    function getTemplateAuthorSources() {
+      const sources = window.AI_BUILDERS_TEMPLATE_SOURCES || {};
+      return { identities: sources.identities || {}, avatars: sources.avatars || {} };
+    }
+
+    function getAuthorInitials(name) {
+      return (name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(function(part) { return part[0]; }).join('').toUpperCase();
+    }
+
+    function hydrateTemplateCopy() {
+      const intro = document.querySelector('.intro');
+      if (intro) {
+        const kicker = intro.querySelector('.intro-kicker');
+        const copy = intro.querySelector('.intro-copy');
+        if (kicker) kicker.textContent = intro.dataset.kicker || '';
+        if (copy) copy.textContent = intro.dataset.text || '';
+      }
+
+      const footer = document.querySelector('footer');
+      if (footer) footer.textContent = footer.dataset.sourceNote || '';
+
+      const rewriteLabel = document.body.dataset.viewLabelRewrite || '速读';
+      const originalLabel = document.body.dataset.viewLabelOriginal || '原文';
+      document.querySelectorAll('.view-toggle').forEach(function(button) {
+        if (button.dataset.viewTarget === 'rewrite') button.textContent = rewriteLabel;
+        if (button.dataset.viewTarget === 'original') button.textContent = originalLabel;
+      });
+    }
+
+    function hydrateAuthorMeta() {
+      const sources = getTemplateAuthorSources();
+      document.querySelectorAll('.card').forEach(function(card) {
+        const authorKey = card.dataset.authorKey || '';
+        const identity = sources.identities[authorKey] || {};
+        const avatarEntry = sources.avatars[authorKey] || {};
+
+        const name = identity.name || card.dataset.authorName || '';
+        const rawHandle = identity.handle || card.dataset.authorHandle || '';
+        const handle = rawHandle && rawHandle.startsWith('@') ? rawHandle : (rawHandle ? '@' + rawHandle : '');
+        const tag = identity.label || card.dataset.authorTag || '';
+        const avatar = avatarEntry.fileUrl || avatarEntry.localPath || card.dataset.authorAvatar || '';
+
+        const nameNode = card.querySelector('.author-name');
+        const tagNode = card.querySelector('.author-tag');
+        const handleNode = card.querySelector('.author-handle');
+        const avatarNode = card.querySelector('.avatar');
+        const avatarImg = card.querySelector('.avatar img');
+        const avatarFallback = card.querySelector('.avatar-fallback');
+
+        if (nameNode) nameNode.textContent = name;
+        if (tagNode) tagNode.textContent = tag;
+        if (handleNode) handleNode.textContent = handle;
+        if (avatarImg) {
+          avatarImg.src = avatar;
+          avatarImg.alt = name ? name + ' avatar' : 'Author avatar';
+        }
+        if (avatarNode) avatarNode.classList.toggle('is-fallback', !avatar);
+        if (avatarFallback) avatarFallback.textContent = getAuthorInitials(name);
+      });
+    }
+
+    function updateEditionStrip() {
+      const publishDate = document.body.dataset.publishDate;
+      const editionName = document.body.dataset.editionName || '双语精选版';
+      const editionStrip = document.getElementById('edition-strip-text');
+      if (!publishDate || !editionStrip) return;
+
+      const issueNumber = document.body.dataset.issueNumber || '';
+      if (!issueNumber) return;
+
+      const selectedCount = document.querySelectorAll('.card').length;
+      const authorCount = new Set([].slice.call(document.querySelectorAll('.author-handle')).map(function(node) { return node.textContent.trim(); }).filter(Boolean)).size;
+      const themeCount = document.querySelectorAll('.section-header').length;
+      const parts = ['第 ' + issueNumber + ' 期', publishDate, editionName, selectedCount + ' 条精选', authorCount + ' 位作者', themeCount + ' 个主题'];
+      editionStrip.innerHTML = parts.map(function(part) { return '<span class="edition-item">' + part + '</span>'; }).join('<span class="edition-sep">|</span>');
+    }
+
+    function measureVariantHeight(variant) {
+      const prevPosition = variant.style.position;
+      const prevInset = variant.style.inset;
+      const prevVisibility = variant.style.visibility;
+      const prevPointerEvents = variant.style.pointerEvents;
+      const prevOpacity = variant.style.opacity;
+      const prevTransform = variant.style.transform;
+      const prevTransition = variant.style.transition;
+      const prevOverflowY = variant.style.overflowY;
+      const prevDisplay = variant.style.display;
+
+      variant.style.position = 'relative';
+      variant.style.inset = 'auto';
+      variant.style.visibility = 'hidden';
+      variant.style.pointerEvents = 'none';
+      variant.style.opacity = '1';
+      variant.style.transform = 'none';
+      variant.style.transition = 'none';
+      variant.style.overflowY = 'visible';
+      variant.style.display = 'block';
+
+      const height = variant.scrollHeight;
+
+      variant.style.position = prevPosition;
+      variant.style.inset = prevInset;
+      variant.style.visibility = prevVisibility;
+      variant.style.pointerEvents = prevPointerEvents;
+      variant.style.opacity = prevOpacity;
+      variant.style.transform = prevTransform;
+      variant.style.transition = prevTransition;
+      variant.style.overflowY = prevOverflowY;
+      variant.style.display = prevDisplay;
+
+      return Math.ceil(height);
+    }
+
+    function getTargetHeight(shell, target) {
+      const variant = shell.querySelector('.content-variant[data-view="' + target + '"]');
+      return measureVariantHeight(variant);
+    }
+
+    function syncShellHeights() {
+      document.querySelectorAll('.content-shell').forEach(function(shell) {
+        const active = shell.querySelector('.content-variant.is-active');
+        const target = active ? active.dataset.view : 'rewrite';
+        shell.style.height = getTargetHeight(shell, target) + 'px';
+      });
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', function() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(syncShellHeights, 120);
+    });
+
+    document.querySelectorAll('.card').forEach(function(card) {
+      const buttons = card.querySelectorAll('.view-toggle');
+      const shells = card.querySelectorAll('.content-shell');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const target = button.dataset.viewTarget;
+          if (button.classList.contains('is-active')) return;
+
+          buttons.forEach(function(btn) {
+            btn.classList.toggle('is-active', btn === button);
+          });
+
+          shells.forEach(function(shell) {
+            const current = shell.querySelector('.content-variant.is-active');
+            const next = shell.querySelector('.content-variant[data-view="' + target + '"]');
+            if (!current || !next || current === next) return;
+
+            shell.style.height = shell.offsetHeight + 'px';
+            requestAnimationFrame(function() {
+              current.classList.remove('is-active');
+              next.classList.add('is-active');
+              shell.style.height = getTargetHeight(shell, target) + 'px';
+            });
+          });
+        });
+      });
+    });
+
+    hydrateTemplateCopy();
+    hydrateAuthorMeta();
+    updateEditionStrip();
+    syncShellHeights();
+  </script>
+</body>
+</html>
