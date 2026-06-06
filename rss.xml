@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 05 Jun 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 06 Jun 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-06-06 · 工位成型日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-06-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-06-rerun.html</guid>
+      <pubDate>Sat, 06 Jun 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[6-6 这天 Follow Builders 的主轴落到了「builder 工位」上:Vercel 把 agent filesystem 从 sandbox 生命周期里解耦,OpenAI 的 Thibault Sottiaux 直接拿一张图告诉你 Codex 接入后的[小毛病减少 + 渗透率上升]曲线,Garry Tan 终于放出那个磨了好几个月的新项目,Codeium / Replit 在做[设计即代码]的下一个形态。另一面,Figma 的 Matt Colyer 跑去 Every 的播客讲他们怎么从「SaaS 末日」叙事里走出来——结论是开发者人数从三千万到十亿,中间这一截全是 Figma 的金矿。一句话讲,这是「agent 桌面被越装越像 IDE」的一天,也是「创业叙事在回归工程回归」的一天。]]></description>
+      <category>Codex 走稳 + harness 实战 / Codex Calms Down, Harness Goes to Work, Agent infra 与额度扩容 / Agent Infra, Skills API, and Doubled Limits, 设计即代码 + 新工具亮相 / Design-in-Code Surfaces and Garry Tan&apos;s New Build, 建站思路 / Build for the Slope, 其余信号 / Misc Signals</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-06-05 · 透明度叠满日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-05-rerun.html</link>
