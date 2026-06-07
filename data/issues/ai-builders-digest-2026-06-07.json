@@ -1,0 +1,289 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-06-07",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "6-7 这天 Follow Builders 的主轴落在了「transformer 之后怎么办」这条老问题新进展上:Unsupervised Learning 把 transformer 论文共同作者 Lucas Kaiser 请上来,他自己承认「reasoning + chain of thought + tools」这套已经够惊人,但还有另一类「能从小数据跳到概念」的东西我们没摸到——所以「post-transformer 实验室」正在悄悄成立,问题是要花多少年。另一面,Madhu Guru 和 Box CEO Aaron Levie 在同一天用同一套话讲「模型路由」:企业 AI 已经走到 Phase 3,把任务拆给子 agent,按子任务路由到不同模型。再叠上 Swyx 那条「加州不强制 non-compete,比 GitHub+arXiv+HuggingFace 三个加起来更影响知识扩散」的判断——今天讲的是「上一波红利正在被制度性收口,新一波要靠换架构 + 换组织」。一句话讲,这是「transformer 还在,post-transformer 也在」的一天,也是「路由层变成新产品层」的一天。"
+  },
+  "archive": {
+    "title": "架构与制度日",
+    "desc": "Lucas Kaiser 公开讲 post-transformer 还在路上,Madhu+Levie 同日把「模型路由」摆成新分水岭,Swyx 一句「加州 non-compete 比三个开源平台加起来更影响知识扩散」点穿制度变量——技术主线和制度主线在 6-7 同一天交叉。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-07 source feeds.",
+  "sections": [
+    {
+      "title": "Post-transformer 与 Agent 的两难 / Post-Transformer Whispers and the Agent Inflection",
+      "desc": "Transformer 论文共同作者 Lucas Kaiser 上 Unsupervised Learning,自己承认「reasoning 不够通往真正的泛化」,post-transformer 实验室在偷偷成立;同时他自己每天用 Codex 写代码、10x 提速,承认「agent 是过去二十年他工作方式的最大变化」。",
+      "cards": [
+        {
+          "authorKey": "podcast:unsupervised-learning",
+          "sourceUrl": "https://www.youtube.com/watch?v=N1geOimmdDo",
+          "en": {
+            "rewrite": [
+              "Lucas Kaiser — co-author of the original transformer paper, ex-Google Brain, now at OpenAI — gives one of the most candid reads of where the field actually stands. His one-line summary: the current setup (transformer + chain of thought + RL + a shell and tools) is incredible, but it doesn't quite feel like us. It needs a trillion tokens to learn concepts that a human picks up almost for free.",
+              "He frames this as a 'feeling' that several post-transformer labs are now chasing in earnest — small models like TRM and HRM already do well on structured problems like Sudoku when you bolt on a bit of recurrence, and the open question is whether that recipe generalizes to language. He doesn't pretend to know the answer; he just notes the case for 'something else' has gotten stronger even as transformers have kept catching up.",
+              "On the agent side, Kaiser is blunt: this is the biggest change to how he works as an ML researcher in twenty years. He gives a concrete number — re-implementing an old paper used to take him three weeks, and Codex got him to a runnable state in two days. He is also clear about the failure mode: the agent will invent an auxiliary loss that nobody asked for, and you still have to hold the full mental model of what is actually running."
+            ],
+            "original": [
+              "If we we take the current transformers with reasoning, right, and and and agents and they have access to a shell and and and stuff, they can do amazing things. Right? It's incredible how far we've gotten, like, two years ago even, not to mention before transformers. I would have never believed that, you know, you just take this next word predictor, give it then chain of thought and a r l dot and tools, and that it will, I know every day spend hours talking to Codex, in my case, or other people just and it works. Right?",
+              "There is this feeling that we have not exploited all that is there in machine learning. Obviously, the exciting feeling is that maybe if we find out what's out, it could make what we have even more amazing. Maybe not. Maybe maybe it vanishes when you have that much data. Who knows?",
+              "I I I can fairly well quantify it because I I tried recently just on the on a private machine to reproduce a bunch of papers, like old papers that they were was always quite interested in? Even some of my papers that I lost code for. At least one of them I tried to reproduce before, and I knew it took me about three weeks to get to a runnable state. With Codecs, I could get there in two days. So it's about, let's say, a week to a day, that's already whether it's a 10x or a 5x, maybe I could have been faster back then."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Lucas Kaiser——原 transformer 论文的共同作者,前 Google Brain,现 OpenAI——给了一个相当坦诚的「我们现在到底在哪」判断。一句话版本:现在的组合(transformer + chain of thought + RL + 一个 shell 加工具)已经惊人,但「感觉还是不太像我们」——它要花一万亿个 token 才能学到人几乎免费就拿下的概念。",
+              "他把这个归类为一种「vibe」,但 vibe 后面是真事——好几个 post-transformer 实验室正在认真追这件事。小模型 TRM、HRM 加上一点 recurrence,已经能在 Sudoku 这类结构化问题上跑得很顺;悬念是这套配方能不能搬到语言。他的态度是「不知道答案,但 case for something else 确实在变强」,即便 transformer 自己也在一直追。",
+              "到 agent 这一面,Kaiser 讲得很直白:这是他过去二十年做 ML 研究,工作方式最大的一次变化。他给了一个具体数字——重做一篇老论文,以前要三周跑到能跑的状态,Codex 两。他也讲清楚 agent 的翻车模式:它会自己发明一个根本没人要的 aux loss,你还是要对「机器学习层面到底在跑什么」有完整的心智模型。"
+            ],
+            "original": [
+              "Lucas Kaiser:当前 transformer + 推理 + RL + shell 加工具,已经惊人;但「感觉还是不太像我们」——它要花一万亿 token 才学到人能直接拿下的概念。",
+              "现在 case for「还有别的东西」正在变强,即便 transformer 自己也在追;小模型 TRM、HRM 加点 recurrence 在结构化问题上跑得很顺,但能不能搬过来还不知道。",
+              "重做一篇老论文以前要三周,Codex 两天——10x 提速是常态;但 agent 会自作主张发明一个 aux loss,人还是要对「机器学习层面在跑什么」有完整心智模型。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "模型路由走到 Phase 3 / Model Routing Is the New Product Layer",
+      "desc": "Madhu Guru 在 Gemini 时期观察到企业用模型的三个阶段,Aaron Levie 用同一套话讲 token 成本上涨会把「路由能力」变成应用层的新护城河——两个独立观察拼成同一张图。",
+      "cards": [
+        {
+          "authorKey": "x:realmadhuguru",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2063342268472574268",
+          "en": {
+            "rewrite": [
+              "Madhu Guru (ex-Google Gemini / Veo) lays out the three phases he watched enterprises go through on model usage. Phase 1 (2024): default to the 'it' model — everyone used GPT regardless of task. Phase 2 (early 2025): over-correct, hunting for the smallest/cheapest model without eval muscle, and ship slower for it. Phase 3: the eval infrastructure and model diversity catch up, and the most sophisticated AI-native startups break the product into sub-agents and route each task to the right model — hardest reasoning to Claude, simplest to Gemini Flash-Lite or open weights.",
+              "Enterprises, as usual, follow the AI-native builders 6–9 months later."
+            ],
+            "original": [
+              "Routing to models is genuinely hard. It means mapping each task to the right model - which requires benchmarking models against your product's specific tasks and dialing in the quality/cost trade-off. And there is an opportunity in that difficulty. Here is the progression I saw with enterprises while on Gemini. Phase 1 (2024): Default to the \"it\" model. Everybody used GPT regardless of task. Phase 2 (early 2025): Over-optimize. Teams over-corrected, looking for the smallest/cheapest model for their task, but did not have evals sophisticated enough to map tasks to models. They ended up burning cycles and shipping slower. Phase 3: Nuanced routing."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Madhu Guru(前 Google Gemini / Veo)给企业用模型的过程画了三阶段。Phase 1(2024):默认「the it model」,不管什么任务都用 GPT。Phase 2(2025 年初):矫枉过正,没练出 eval 内功就开始找最小最便宜的模型,结果反而烧时间、还把上线速度拖慢。Phase 3:eval 基础设施和模型多样性都到位,最成熟的 AI-native 创业公司开始把产品拆成 sub-agent,按子任务路由到不同模型——最难的推理给 Claude,最轻的给 Gemini Flash-Lite 或开源模型。",
+              "企业跟 AI-native builder 的节奏,通常差 6 到 9 个月。"
+            ],
+            "original": [
+              "路由难就难在要把每个任务映射到对的模型——这需要按自家产品任务做 benchmark,在质量/成本之间做权衡。Madhu 在 Gemini 看到的三个阶段:Phase 1 默认 GPT,Phase 2 矫枉过正没 eval 内功,Phase 3 才出现真正的「按子任务路由」。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2063320673217609936",
+          "en": {
+            "rewrite": [
+              "Aaron Levie (Box CEO) pushes the same point from a different angle: token costs are suddenly one of the hottest topics in every enterprise conversation, and that is bullish for AI overall — it means these systems are running at a scale nobody predicted. But it also creates a new axis of differentiation at the applied AI layer: model routing.",
+              "The structural bet: as tokens take a larger share of any given workflow's cost, companies will insist that every dollar go to the most efficient model for the specific job. Frontier intelligence still wins on the high end (coding, legal, financial analysis, healthcare), but you peel off individual tasks to lower-cost models — open-weights or major labs — to deliver a cheaper end outcome.",
+              "The differentiation, per Levie, lives in the applied layer: knowing the workflows of your domain better than anyone else, having the best evals, the best ability to mix and match models for specific document types and specific legal questions. The companies whose business model is aligned to the customer's financial outcome will own this layer."
+            ],
+            "original": [
+              "Token costs are becoming one of the hottest topics for any enterprise I talk with right now. It's very bullish for AI in general because it means these systems are being used at a scale that wasn't contemplated before. It also gives way to another form of differentiation that will emerge for the applied AI layer, which is model routing. […] Frontier intelligence will always be relevant at the high end of tasks, like coding, legal and financial analysis, healthcare, and more. And dollars spent here will only go up over time. But, equally, you can peel off individual tasks to lower cost models (whether they're from open weights vendors or the major labs) and deliver a more efficient end outcome."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 从另一个角度讲同一件事:token 成本突然变成每一家企业都在谈的热点——这对整个 AI 行业是利好,说明系统被用到了一个没人预料过的规模。但同时也给应用层催出了一个新的分水岭:模型路由。",
+              "结构性的判断是:token 占了工作流成本的更大份额之后,企业一定会要求每一块钱都花在「最适合这个任务」的模型上。高端任务(写代码、法律、金融分析、医疗)依然吃 frontier 模型的份额;但拆出来的子任务,可以分给更便宜的模型(开源权重或大厂的低端线),整体把单次结果的成本打下来。",
+              "按 Levie 的判断,差异化会在应用层:比别人更懂你所在 domain 的工作流,有最好的 eval,能按文档类型、按法律问题去配模型。商业模型和客户的「钱花得值」绑在一起的公司,会卡住这一层。"
+            ],
+            "original": [
+              "Token 成本突然变成企业最热的话题——对 AI 整体是利好(说明用到了没被预料过的规模),同时给应用层催出新的分水岭:模型路由。高端任务依然吃 frontier,子任务分给便宜模型,关键是谁有最好的 eval 和 workflow 理解。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "编码 agent 的瘾 / Coding Agents: The Hook",
+      "desc": "Peter Yang 一周内连发三条 Codex 相关——把 thread 列表说成「比打游戏还上瘾」,顺手给 Codex 团队提了 thread 列表的产品化建议;Lucas Kaiser 那边的「10x 提速」刚好是这一条的官方背书。",
+      "cards": [
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2063486871037153558",
+          "en": {
+            "rewrite": [
+              "Peter Yang puts the agentic-coding effect in one line: 'this agentic coding crack is more addictive than video games'. The signal is not the words, it is the fact that an experienced builder publicly admits the loop has him — i.e. we are past the 'is it useful?' question and into the 'why can't I stop?' question."
+            ],
+            "original": [
+              "this agentic coding crack is more addictive than video games smh"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 一句话把 agentic coding 的成瘾性讲穿:「比打游戏还上瘾」。信号不在字面,在「一个经验丰富的 builder 公开承认自己被 loop 套住」——也就是「它到底有没有用」这个问题,已经被「为什么我停不下来」替代。"
+            ],
+            "original": [
+              "Agentic coding 的瘾比打游戏还大。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2063475353335869922",
+          "en": {
+            "rewrite": [
+              "Peter Yang, asking Codex PM @ajambrosino: Codex threads need first-class filtering / sorting — by 'all waiting for approval' and 'all currently working', not just by project. He is trying to keep it to 10 concurrent threads and it is already unwieldy.",
+              "The product tell: the bottleneck is no longer 'can the model code?'; it is 'can a human keep track of 10 agents in flight at once?' That is a tooling problem, and tooling problems get solved."
+            ],
+            "original": [
+              "There should be a way to filter or sort all my Codex threads in different ways vs. only by project. Like filter or sort by: - All waiting for approval - All currently working. I'm trying to keep it to 10 threads but it's already getting unwieldly. wdyt @ajambrosino ?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 直接 @ Codex PM @ajambrosino 提需求:Codex thread 列表需要一等公民的 filter / sort 能力——按「全部在等批准」「全部在跑」切,不只是按项目切。他自己想把并发控制在 10 条,已经 hold 不住了。",
+              "产品上能读出的信号:瓶颈已经不是「模型能不能写代码」,而是「一个人怎么同时盯 10 个 agent」。这是工具问题,工具问题最终都会解。"
+            ],
+            "original": [
+              "Codex thread 需要一等公民的 filter / sort——按「在等批准」「在跑」切,不只是按项目。10 条 thread 已经 hold 不住了,这是工具问题,不是模型问题。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "知识扩散的制度变量 / Non-Compete Quietly Beats Open Source",
+      "desc": "Swyx 一条高赞推把「研究论文为什么 alpha 死了」甩给一个很少被讨论的制度变量:加州不强制 non-compete,比 GitHub + arXiv + HuggingFace 三个加起来更影响知识扩散——他要新办的 @aidotengineer 大会,目标就是给这个 gap 补位。",
+      "cards": [
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2063432747432268259",
+          "en": {
+            "rewrite": [
+              "Swyx's read on why research paper alpha* and lab-driven publishing died: researchers realized they could walk out the door and get >$100m for the legally protected tacit knowledge they had — no need to fight a marketing department or push the work through arxiv.",
+              "His punchline: California's non-enforcement of non-competes has a bigger impact on knowledge spreading than GitHub, arXiv, and HuggingFace combined.",
+              "He tags this as the motivation for his new @aidotengineer conference — a product-centric industry conference meant to complement the paper-centric research conferences."
+            ],
+            "original": [
+              "one popular theory is that research paper alpha* and lab publishing ~died when researchers realized that instead of fighting with marketing depts they could simply walk out the door and get >$100m for their legally protected tacit knowledge gained. california non-noncompetes have a bigger impact on knowledge spreading than github, arxiv, and huggingface combined"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx 给「研究论文的 alpha 为什么死了」一个少被人讨论的制度性解释:研究者一旦发现「推开门就能拿一亿美金,卖的是法律保护下的 tacit knowledge」,就不需要再跟 marketing 部门打架,也不需要把工作挤进 arxiv。",
+              "他给了一个很重的 punchline:加州对 non-compete 的不强制执行,比 GitHub、arXiv、HuggingFace 三个加起来,对知识扩散的影响都大。",
+              "他把这归为新办的 @aidotengineer 大会的动机——做一个产品视角的产业大会,去补 paper 视角学术大会的空缺。"
+            ],
+            "original": [
+              "研究论文 alpha 死的一个解释:研究者推门就能拿一亿美金,卖 tacit knowledge——加州不强制 non-compete,比 GitHub+arXiv+HuggingFace 三个加起来更影响知识扩散。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "本地优先 + 世界模型 / Local-First and the World Model Cast",
+      "desc": "Garry Tan 出来讲 Paxel 跟云的关系:代码不上云,别的数据会;Nikunj 把 World Labs / Reactor 的创始人拉来做一期 world models 入门——两条线都在补「agent 之外还有什么新鲜事」。",
+      "cards": [
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2063418130714800487",
+          "en": {
+            "rewrite": [
+              "Garry Tan, clarifying Paxel's data posture: 'we never said we don't upload any user data to the cloud. We said the code (file contents) specifically doesn't.' So the local-first pitch is narrow but real: your code stays on device, and the rest of the surface area is fair game.",
+              "The roadmap hint matters more: as local models get better, Paxel will be able to do even more locally. The pitch is gradual offline expansion, not a one-shot privacy maximalism."
+            ],
+            "original": [
+              "We never said we don't upload any user data to the cloud. We said the code (file contents) specifically doesn't. Paxel is here to help you, and over time as local models get better, we'll be able to do even more locally. Can't wait, tbh."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan 出来给 Paxel 的数据策略划条线:「我们从来没说不上云,只是说代码(文件内容)不上云」。也就是 local-first 的承诺范围是窄的但是真的:你的代码在本地,其他一切按需上云。",
+              "更值得读的是那条 roadmap 暗示:本地模型越强,Paxel 能搬到本地的事越多——它的策略是「渐进式离线化」,不是「一刀切隐私最大化」。"
+            ],
+            "original": [
+              "Paxel 没说所有用户数据不上云,只说代码(文件内容)不上云。本地模型越强,以后能本地化的事越多——渐进式离线,不是一刀切。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2063263389238087745",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari (FPV Ventures) drops 'A Walk In The Park (part II)' with @taiuti, the founder of Reactor (the world-model company). A 30+ minute primer on what world models are, the origin story from text-to-3D, how they decided to start the company, GTA and games as the path into programming, building in stealth, picking investors with independent conviction, where world models will grow first, why low latency matters, becoming CEO and scaling the team.",
+              "Why it matters today: a year ago this would have been a fringe bet. Today it is the missing piece in anyone's mental model of the physical-world AI stack — robotics, simulation, autonomous driving all need it. The interview is a clean on-ramp for someone who has been hearing 'world models' for a year and still can't say what they actually are."
+            ],
+            "original": [
+              "A Walk In The Park (part II) feat @taiuti 🌎 (00:00) 👋 (01:10) What world models are (03:42) Origin story from text-to-3D to @reactorworld (09:22) Deciding to start the company (11:22) GTA, games, and the path into programming (15:09) Building in stealth and keeping secrets (18:32) Picking investors with independent conviction (21:43) Where world models will grow first (26:08) Why low latency matters (29:34) Becoming CEO and scaling the team (32:23) Final advice"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kothari(FPV Ventures)放出《A Walk In The Park》第二期,嘉宾是 Reactor(world model 公司)的创始人 @taiuti。30 多分钟的世界模型入门:什么是 world model、从 text-to-3D 起步的故事、怎么决定开公司、GTA 和游戏作为编程入口、stealth 模式怎么建、怎么挑「有独立 conviction 的投资人」、world model 第一个会爆的场景、低时延为什么重要、当 CEO 和扩团队。",
+              "为什么今天值得听:一年前这是边缘赌注,今天它是「物理世界 AI 栈」里人人都该有的一块拼图——机器人、仿真、自动驾驶都要它。如果你听过一年「world model」这个词但还讲不出它是什么,这期是一个干净的入口。"
+            ],
+            "original": [
+              "Nikunj 放出《Walk In The Park》二期,嘉宾是 Reactor world model 创始人 @taiuti——30 分钟入门,「world model 是什么、起源、低时延为什么重要、第一个会爆的场景」一次讲完。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "静态内容贬值 + LLM 意识 / Static Content Loses; LLMs Gain a Greek Frame",
+      "desc": "Zara Zhang 转了一条简短判断:静态内容在掉价,活人 + 即时互动在涨价;Dan Shipper 一晚上发了三条带古希腊哲学框架的推,把 LLM 意识问题从二元变成三元——techne, aidōs, dikē。",
+      "cards": [
+        {
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2063391758189572266",
+          "en": {
+            "rewrite": [
+              "Zara Zhang highlights a sentence from a recent talk: the value of static content is going down, the value of live interaction is going up. People want to connect with the human being behind a piece of work — content or software.",
+              "Her line that lands: 'raw & opinionated > polished & generic'. For builders, this is permission to ship a 12-minute YouTube instead of a 12-page PDF."
+            ],
+            "original": [
+              "Really enjoyed this talk! The value of static content is going down, the value of live interaction is going up. People want to connect with the human being behind a piece of work, whether it's content or software. Raw & opinionated > polished & generic"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zara Zhang 转了一条她听完很买账的演讲:静态内容在掉价,活人 + 即时互动在涨价;人想跟「作品背后那个人」连上,不管是内容还是软件。",
+              "她留下最值得记的一句:「生猛 + 有立场 > 精致 + 不得罪」。对 builder 来说,这等于被允许发一支 12 分钟 YouTube,不用交 12 页 PDF。"
+            ],
+            "original": [
+              "静态内容掉价,活人 + 即时互动涨价;「生猛 + 有立场 > 精致 + 不得罪」——对 builder 等于被允许发 12 分钟 YouTube,不用交 12 页 PDF。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/2063426632824562167",
+          "en": {
+            "rewrite": [
+              "Dan Shipper posts what is meant to be a frame-setter for the thread: 'LLMs are not conscious. LLMs are not not conscious. Both true.' The first is the boring engineering claim; the second is the honest philosophical one.",
+              "Follow-up tweet (2063436919967522848): Shipper adds two more Greek terms that he argues 'increase in value' for thinking about LLM behavior — Aidōs (reverence and responsiveness to others) and Dikē (the capacity to perceive what is right).",
+              "Follow-up tweet (2063438262841094604): Shipper explains the frame is borrowed from Plato's Protagoras, which pre-sages LLMs in its deep discussion of where knowledge comes from and whether virtue can be taught. It is not a productivity take; it is an attempt to give the LLM-and-mind debate a vocabulary more interesting than 'sentient / not sentient'."
+            ],
+            "original": [
+              "LLMs are not conscious. LLMs are not not conscious. Both true.",
+              "to add two more that increase in value: Aidōs — reverence and responsiveness to others, Dikē — the capacity to perceive what is right",
+              "my absolute favorite of Plato's Dialogues is a deep discussion of the limits of techne and the necessity of aidos and dike. Protagoras here, in the way he talks about where knowledge comes from and whether virtue can be taught, pre-sages LLMs"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Dan Shipper 一晚上发了一组用古希腊哲学框架给 LLM「意识」问题换词的推。核心句:「LLM 不是有意识的;LLM 也不是没有意识;两个都为真。」第一句是工程层面的老实话,第二句是哲学层面的诚实留白。",
+              "第二条(2063436919967522848):他补了两个他认为「价值在上升」的希腊词——Aidōs(对他人保持敬畏和响应)和 Dikē(识别「什么是对的」的能力)。",
+              "第三条(2063438262841094604):他把这个框架交代清楚——来自柏拉图《普罗泰戈拉》,里面深入讨论 techne(技艺/技术)的边界,以及 aidos 和 dike 的必要性。Shipper 的意思不是给 LLM 下一个意识判断,是给这场讨论换一个比「有没有意识」更值得谈的词汇。"
+            ],
+            "original": [
+              "LLM 不是有意识,也不是没有意识,两个都为真——Shipper 用古希腊词 techne / aidos / dike 给这场讨论换词,比「有没有意识」更值得谈。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

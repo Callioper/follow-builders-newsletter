@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 06 Jun 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 07 Jun 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-06-07 · 架构与制度日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-07-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-07-rerun.html</guid>
+      <pubDate>Sun, 07 Jun 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[6-7 这天 Follow Builders 的主轴落在了「transformer 之后怎么办」这条老问题新进展上:Unsupervised Learning 把 transformer 论文共同作者 Lucas Kaiser 请上来,他自己承认「reasoning + chain of thought + tools」这套已经够惊人,但还有另一类「能从小数据跳到概念」的东西我们没摸到——所以「post-transformer 实验室」正在悄悄成立,问题是要花多少年。另一面,Madhu Guru 和 Box CEO Aaron Levie 在同一天用同一套话讲「模型路由」:企业 AI 已经走到 Phase 3,把任务拆给子 agent,按子任务路由到不同模型。再叠上 Swyx 那条「加州不强制 non-compete,比 GitHub+arXiv+HuggingFace 三个加起来更影响知识扩散」的判断——今天讲的是「上一波红利正在被制度性收口,新一波要靠换架构 + 换组织」。一句话讲,这是「transformer 还在,post-transformer 也在」的一天,也是「路由层变成新产品层」的一天。]]></description>
+      <category>Post-transformer 与 Agent 的两难 / Post-Transformer Whispers and the Agent Inflection, 模型路由走到 Phase 3 / Model Routing Is the New Product Layer, 编码 agent 的瘾 / Coding Agents: The Hook, 知识扩散的制度变量 / Non-Compete Quietly Beats Open Source, 本地优先 + 世界模型 / Local-First and the World Model Cast, 静态内容贬值 + LLM 意识 / Static Content Loses; LLMs Gain a Greek Frame</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-06-06 · 工位成型日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-06-rerun.html</link>
