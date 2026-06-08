@@ -1,0 +1,419 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-06-08",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "6-8 这天 Follow Builders 的主轴押在了「loop」这个词上,而且是五条独立线同时押:Peter Steinberger 把「monthly reminder」讲成「别再 prompt coding agent,应该设计让 agent prompt 自己的 loop」,Boris Cherny 接着把 Opus 跑数小时的五条拆成 loop 原语(/goal、/loop、dynamic workflows、self-verify、auto mode + cloud),Sam Altman 一句「interesting recursive loop here maybe」给整天的 vibe 命名,Peter Yang 拿 dad joke 把 loop over prompt 收进家庭段子,Anthropic 当天发 dreaming + outcomes + multiagent,把「loop 是产品」做成 shipped feature——这是 agent 那一面;另一面,Rauchg 公开 Vercel AI Gateway 每月救回 1T+ token、零加价,Nikunj 命名「tokenmaxxing → tokenoptimizing」的 vibe shift,Levie 第二天跟进说「未来一两年用例会在 model family 之间分层」,三个独立 operator 收敛到「路由层是新产品层」一张图。一句话讲,这是「prompt 是中间态、loop 才是单位工作」的一天,也是「token economics 走完 V 形,路由变 moat」的一天。"
+  },
+  "archive": {
+    "title": "单位工作日",
+    "desc": "Steinberger + Cherny + Altman + Yang + Anthropic 五条线在 6-8 同一天把「loop over prompt」讲到文化和产品层都成型;Rauchg/Nikunj/Levie 三人独立收敛到「token 经济学 V 形拐点 + 路由层即 moat」,prompt 是中间态、loop 才是单位工作。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-08 source feeds.",
+  "sections": [
+    {
+      "title": "Loop 取代 prompt / Loops Eat Prompts",
+      "desc": "Steinberger 把「monthly reminder」讲成今年最狠的一条;Boris Cherny 接着把 Opus 的「长时跑」摊成 5 条 loop 原语;Sam Altman 一句「recursive loop」给整天的 vibe 命名;Peter Yang 用 dad joke 把 loop over prompt 收进家庭段子——单位工作正在从 prompt 移到 loop。",
+      "cards": [
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2063697162748260627",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger, in a tweet that pulled 13,700+ likes, makes this month's 'monthly reminder' land harder than usual: 'You shouldn't be prompting coding agents anymore. You should be designing loops that prompt your agents.'",
+              "The one-line shift: the unit of work used to be the prompt; the unit of work is becoming the loop. If the prompt is a question, the loop is a job description — durable across runs, easy to A/B, easy to delegate. The agent then becomes the executor inside a loop the human curates.",
+              "Steinberger's bio (Polyagentmorous ClawFather) tells you this is a man who runs a lot of agents in parallel. The fact that he frames the move as 'monthly reminder' — i.e. he's been saying it for at least a year — is the signal that this isn't a new take, it's a settled conviction."
+            ],
+            "original": [
+              "Here's your monthly reminder that you shouldn't be prompting coding agents anymore.\n\nYou should be designing loops that prompt your agents."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger 一条 13700+ 点赞的推,把「每月提醒」这一期说得比以往更狠:「别再 prompt 你的 coding agent 了,你应该设计让 agent 自己 prompt 自己的 loop。」",
+              "一句话的位移:单位工作以前是 prompt,现在正在变成 loop。prompt 是问题,loop 是岗位描述——可以跨 run 复用、可以 A/B、可以委托。然后 agent 退成「loop 里的执行者」,人退成「loop 的策展人」。",
+              "他的 bio 写「Polyagentmorphous ClawFather」,能跑并行 agent 的人。把这件事框成「monthly reminder」——也就是他至少说了一年——信号在于:这不是新看法,是一个已经定下来的 conviction。"
+            ],
+            "original": [
+              "Steinberger(13734L):别再 prompt coding agent 了,应该设计让 agent 自己 prompt 自己的 loop。单位工作从 prompt 移到 loop。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:bcherny",
+          "sourceUrl": "https://x.com/bcherny/status/2063792263067754658",
+          "en": {
+            "rewrite": [
+              "Boris Cherny (Claude Code at Anthropic) gives five concrete tips for running Opus autonomously for hours or days at a time. Three of them are loop primitives, not prompt tricks: 'Use /goal or /loop, to nudge Claude to keep going until it's done'; 'Use dynamic workflows, to have Claude orchestrate hundreds/thousands of agents to get a task done'; 'Make sure Claude has a way to self-verify its work end to end.'",
+              "The other two are about letting the loop survive: 'auto mode for permissions' so the agent isn't permission-blocked mid-loop; 'Claude Code in the cloud, so you can close your laptop.' Translation: the loop is the product, the laptop is incidental, the permission dialog is the friction.",
+              "He opens with a soft benchmark claim — 'Opus is the best model for long-running work' — but the actual content is operational. If you read it as a product manual for 'what an autonomous loop requires from the model,' it lines up exactly with steipete's reminder."
+            ],
+            "original": [
+              "Seeing a number of benchmarks showing Opus is the best model for long-running work.\n\nFive tips for running Opus autonomously for hours/days:\n\n1. Use auto mode for permissions, so Claude doesn't ask for approval\n2. Use dynamic workflows, to have Claude orchestrate hundreds/thousands of agents to get a task done\n3. Use /goal or /loop, to nudge Claude to keep going until it's done\n4. Use Claude Code in the cloud, so you can close your laptop (easiest way is the desktop or mobile app)\n5. Make sure Claude has a way to self-verify its work end to end: Claude in Chrome browser extension for web, iOS/Android sim MCP for mobile, a way to start the full web server or service for backend work"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Boris Cherny(Claude Code,Anthropic)给了五条把 Opus 跑成「数小时到数天」自主 loop 的具体建议。其中三条是 loop 原语,不是 prompt 技巧:/goal 或 /loop,让 Claude 一直做到完;dynamic workflows,让 Claude 编排成百上千的 agent 协同;给 Claude 一个端到端的 self-verify 通道。",
+              "另外两条决定 loop 能不能活下来:auto mode 取消权限弹窗,别让 agent 跑一半卡在确认框;Claude Code 跑在云上,这样你可以合上笔记本。换句话说:产品是 loop,笔记本是装饰,权限弹窗是摩擦。",
+              "开头那句「Opus 是长时任务最强模型」算是软广,真正内容是 operational——读成「一个自主 loop 对模型要什么」的产品手册,刚好和 steipete 的「monthly reminder」对得上。"
+            ],
+            "original": [
+              "Boris Cherny 跑 Opus 数小时的五条:/goal 或 /loop、dynamic workflows、self-verify 通道、auto mode 权限、云上跑——loop 是产品,prompt 是中间态。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:sama",
+          "sourceUrl": "https://x.com/sama/status/2063779477419901071",
+          "en": {
+            "rewrite": [
+              "Sam Altman, with characteristic compression: 'interesting recursive loop here maybe' — quoting/pointing at something that itself is an instance of recursion.",
+              "The tweet is short (2,500+ likes despite the ambiguity), but the framing matters. Altman is naming the vibe the rest of the day was full of: a 'recursive loop' is precisely the structure steipete, Cherny, and Peter Yang's wife (in a joke) were all describing. Even the word 'loop' keeps surfacing across the feed.",
+              "The 'maybe' is doing a lot of work. It's the public version of the same move Dan Shipper made yesterday with 'LLMs are not conscious. LLMs are not not conscious. Both true.' — hold two readings at once without resolving."
+            ],
+            "original": [
+              "interesting recursive loop here maybe https://t.co/ejXil4AGyX"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Sam Altman 用他特有的压缩能力发了一条:「interesting recursive loop here maybe」——指向/转发了某个本身就是 recursion 实例的东西。",
+              "推虽然短(2500+ 赞),但 framing 重要。Altman 是在给这一整天的 vibe 命名:「recursive loop」正是 steipete、Cherny、Peter Yang 老婆(在笑话里)都在描述的结构。整个 feed 里「loop」这个词反复浮出来。",
+              "那个「maybe」在做事——和昨天 Dan Shipper 说的「LLM 不是有意识,也不是没有意识,两个都为真」是同一个动作:把两个解读一起按住,先不解决。"
+            ],
+            "original": [
+              "Sam Altman 一句「interesting recursive loop here maybe」——给这一整天的 vibe 命名,递归 loop 就是 steipete/Cherny/Peter Yang 老婆都在描述的结构。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2063818032280170721",
+          "en": {
+            "rewrite": [
+              "Peter Yang goes for the dad joke, but it's a real cultural tell. Setup: 'My wife asked me to take out the trash. I said, you shouldn't be prompting me anymore. You should be designing loops.'",
+              "Punchline (from a follow-up): 'Wife: I did, the loop is called marriage and this is your daily cron job.'",
+              "Why it's worth quoting: it lands the steipete / Cherny / sama 'loop over prompt' thread as a household phrase. The author himself is laughing, but the structure — a daily cron job disguised as a relationship, a marriage modeled as a recurring prompt → loop — is the most concise description of the vibe shift I've seen all week. Also: it answers yesterday's unfinished 'finish the punch line' thread in one line."
+            ],
+            "original": [
+              "My wife asked me to take out the trash.\n\nI said, 'You shouldn't be prompting me anymore. You should be designing loops.'\n\nFinish the punch line of this dad joke please.",
+              "Wife: 'I did, the loop is called marriage and this is your daily cron job.'"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 玩了一个 dad joke,但它是真实的文化信号。setup:老婆让我倒垃圾,我答「你不能再 prompt 我了,你要设计 loop」。",
+              "punchline(下一条):「老婆:我设计了,这个 loop 叫 marriage,这是你的 daily cron job」。",
+              "值得引的原因:它把 steipete / Cherny / sama 这一组「loop over prompt」,讲成了一个家庭段子。Peter 自己也在笑,但「daily cron job 装成一段关系,marriage 建模成一条 recurring prompt → loop」是本周读到的最干净的 vibe shift 总结。顺便,这条把昨天他自己那个「finish the punch line」开放帖一行收掉了。"
+            ],
+            "original": [
+              "Peter Yang dad joke 的 punchline:「我设计了 loop,叫 marriage,这是你的 daily cron job」——loop over prompt 进家庭段子了。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Token 经济学的 V 形拐点 / The Token Economics Inflection",
+      "desc": "Rauchg 公开 Vercel AI Gateway 每月救回 1T+ token、零加价;Nikunj 命名「tokenmaxxing → tokenoptimizing」的 vibe shift;Levie 第二天跟进,说「未来一两年用例会在 model family 之间分层」,路由层变成独立产品层——三个独立 operator 收敛到同一张图。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2063714700618334260",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch (Vercel CEO) drops a number: Vercel AI Gateway recovers on average over 1 trillion tokens a month. He frames it as the Stripe-of-payments equivalent — 'smart retries on failed payments or credit card updates' — but for inference: redundancy, zero-data-retention enforcement, observability, usage APIs, caps.",
+              "The underrated line: '0️⃣ zero markup over the labs.' The point isn't revenue; it's that the gateway is the place where the application layer is now forced to make peace with inference-layer failure modes. As long as providers keep flaking, this is a 1T-token-a-month problem someone is going to keep solving.",
+              "Reads as a complement to nikunj's vibe-shift thread: tokenmaxxing created the surface area; tokenoptimizing is the response; the gateway sits in between, taking the friction of 'one of the labs just timed out on us' off the application's plate."
+            ],
+            "original": [
+              "Vercel AI Gateway recovers on average over 1T tokens a month 🤯 \n\nMuch like Stripe recovers revenue with smart retries on failed payments or credit card updates.\n\nAnd we do it with 0️⃣ zero markup over the labs; adding redundancy, zero-data retention enforcement, observability, usage APIs, caps, …\n\nhttps://t.co/OougSipbBX"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 放了个数字:Vercel AI Gateway 平均每月「救回」超过 1 万亿 token。他把这件事框成支付领域的 Stripe——「对失败支付和过期信用卡的智能重试」——只不过对 inference 也来一遍:冗余、零数据留存、observability、usage API、cap。",
+              "被低估的一句:「0️⃣ zero markup over the labs」。重点不是营收,而是 gateway 是当下应用层必须「跟 inference 层的失败模式和解」的地方。只要大模型供应商还在 flake,这就是一个月度 1T token 量级的问题,会有人一直解。",
+              "和 nikunj 那条 vibe shift 是配对的:tokenmaxxing 创造了这个 surface area,tokenoptimizing 是回应,gateway 坐在中间,把「某个 lab 突然超时」这种摩擦从应用层接走。"
+            ],
+            "original": [
+              "Vercel AI Gateway 每月救回 1T+ token,零加价——gateway 是应用层和 inference 层失败模式的「和解处」。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2063630238123483195",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari (Afore Capital) puts a name to something a lot of operators have been feeling: 'The vibe shift from tokenmaxxing and token anxiety to tokenoptimizing in just a few weeks is wild 😅'",
+              "His hot take: companies should still hand out generous token budgets. The risk of cutting back too early is that employees fall back to 'doing things how they have always been done' — i.e. the organizational muscle atrophies before the actual savings show up. The frugality discourse, applied to a still-raw technology, costs more in lost learning than it saves in dollars.",
+              "Pair this with Rauch's 1T tokens/month number and Levie's 'you can peel off individual tasks to lower-cost models' thread from yesterday — three independent operators converging on the same shape. The era of 'use the most expensive model for everything' is genuinely ending; the era of 'budget per task, route carefully' is genuinely starting."
+            ],
+            "original": [
+              "The vibe shift from tokenmaxxing and token anxiety to tokenoptimizing in just a few weeks is wild 😅\n\nMight be a hot take but I still believe companies should give copious amounts of token budget to employees to stay at the frontier and explore all the edges. \n\nOtherwise, it's way too easy to fall back to 'doing the things how they have always been done'."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kothari(Afore Capital)给一个最近很多 operator 都在感受的东西起了名字:「从 tokenmaxxing 和 token anxiety 到 tokenoptimizing 的 vibe shift,几周之内就发生了 😅」",
+              "他的 hot take:公司还是应该给员工慷慨的 token 预算。过早收紧的代价是组织肌肉先萎缩,真正的省钱还没看到。他说:对一项还在 raw 的技术,「省」这个 discourse 用上去,损失的学习比省的美元多。",
+              "把这条跟 Rauch 的 1T token/月、Levie 昨天那条「子任务可以分给更便宜模型」放一起——三个独立 operator 在往同一个 shape 收敛。「什么都用最贵模型」的时代真的在结束,「按任务设预算 + 路由」的时代真的在开始。"
+            ],
+            "original": [
+              "Nikunj:几周内 vibe shift 从 tokenmaxxing 到 tokenoptimizing——但公司别急着收紧预算,组织肌肉萎缩比省钱更贵。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2063835799096090749",
+          "en": {
+            "rewrite": [
+              "Aaron Levie, day-after follow-up to yesterday's routing thread: 'The numbers may be a bit extreme here, but unquestionably use-cases have to stratify in the next year or two between model families.' He predicts a real split — frontier intelligence for the high end, much cheaper models for high-volume workloads — and the layer that can route cleanly between them becomes a product layer in its own right.",
+              "The structural sentence: 'Agent orchestration that can cost optimize while still performing the task successfully will be in a strong position.' Translation: routing is the new abstraction. The model is the commodity; the routing is the moat.",
+              "Adds to Madhu Guru's three-phase framework from yesterday (Phase 3 = nuanced routing). Two days, two Box / ex-Google operators arriving at the same picture from opposite ends of the org chart."
+            ],
+            "original": [
+              "The numbers may be a bit extreme here, but unquestionably use-cases have to stratify in the next year or two between model families.\n\nWe'll see a split between frontier intelligence for high end tasks and work, and much cheaper models for high volume workloads that can sufficiently be peeled off to cheaper models. Frontier will still be far bigger than today because the use-cases will demand it, but the low-end will get quite a bit larger as well.\n\nThe big update here is that the layer that can efficiently route the workload to the right model will then become increasingly valuable since that becomes one of the new hard problems in AI agents. Agent orchestration that can cost optimize while still performing the task successfully will be in a strong position."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 在昨天那条 routing 后的第二天跟进:「数字可能有点极端,但毫无疑问,未来一两年用例会在不同 model family 之间分层」。他预测一个真正的分裂——高端任务用 frontier intelligence,高 volume 的 workload 用便宜模型——而能干净路由这两者的那一层,会变成独立的产品层。",
+              "结构性的那句:「Agent orchestration that can cost optimize while still performing the task successfully will be in a strong position.」翻译:路由是新抽象。模型是 commodity,路由才是 moat。",
+              "叠在 Madhu Guru 昨天的三阶段框架上(Phase 3 = 细致路由)——两天,Box 和 ex-Google 的两个 operator 从组织图的两端走到同一张图。"
+            ],
+            "original": [
+              "Levie 跟进:未来一两年用例在 model family 之间分层,高端 frontier + 高 volume 便宜模型,中间的路由层会变成独立产品层。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Claude Agent 平台的「dreaming」/ Claude's Self-Improving Agent Platform",
+      "desc": "Anthropic 把 dreaming、outcomes、multiagent orchestration 一起发,dreaming 是「session 之间反思 memory」的进程,outcomes 用独立 context 的 grader 评分——loop 在结构上就是产品,比标准 prompting loop 高 10 个点。",
+      "cards": [
+        {
+          "authorKey": "blog:anthropic",
+          "sourceUrl": "https://claude.com/blog/new-in-claude-managed-agents",
+          "en": {
+            "rewrite": [
+              "Anthropic ships a research preview of 'dreaming' in Claude Managed Agents — a scheduled process that reviews past agent sessions, extracts patterns, and curates memory so the agent self-improves. Three primitives land in the same release: dreaming (between-session memory refinement), outcomes (rubric-driven self-correction against a separate grader in its own context window), and multiagent orchestration (agents coordinating on a shared task).",
+              "The mechanism is what makes it interesting. The grader in 'outcomes' runs in its own context window, 'so it isn't influenced by the agent's reasoning.' That separation — agent writes, grader scores, agent rewrites — is exactly the loop that steipete and Cherny were describing. Anthropic is productizing the loop: the agent is no longer expected to evaluate its own work in-context; the loop is structurally the product.",
+              "Anthropic claims outcomes improved task success by up to 10 points over a standard prompting loop, with the largest gains on the hardest problems. Read this as: the most useful loop primitives in 2026 are not 'better prompts' — they're 'second instance in a separate context that scores you.'"
+            ],
+            "original": [
+              "Today we're launching dreaming in Claude Managed Agents as a research preview. Dreaming extends memory by reviewing past sessions to find patterns and help agents self-improve. We're also making outcomes, multiagent orchestration, and webhooks available to developers building with Managed Agents.\n\nDeliver better outcomes. With outcomes, you write a rubric describing what success looks like and the agent works toward it. A separate grader evaluates the output against your criteria in its own context window, so it isn't influenced by the agent's reasoning. When something isn't right, the grader pinpoints what needs to change and the agent takes another pass.\n\nIn testing, outcomes improved task success by up to 10 points over a standard prompting loop, with the largest gains on the hardest problems."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic 在 Claude Managed Agents 里发了「dreaming」的 research preview——一个周期性的进程,审看过去的 agent session,抽 pattern,curate memory,让 agent 自我改善。同一发版里还上了三个原语:dreaming(session 之间的 memory 精炼)、outcomes(按 rubric 自我批改,grader 跑在独立 context window)、multiagent orchestration(多 agent 协同)。",
+              "机制最值得读:outcomes 的 grader 跑在自己的 context window 里,「so it isn't influenced by the agent's reasoning」——这种「写一个,另一个打分,再回去改」的三段式,正好是 steipete 和 Cherny 讲的 loop。Anthropic 在把 loop 产品化:不再要求 agent 在原 context 里自我评估;loop 在结构上就是产品。",
+              "Anthropic 自己的数据:outcomes 比标准 prompting loop 在任务成功率上高 10 个点,难题上收益最大。可以这样读:2026 最有用的 loop 原语不是「更好的 prompt」,是「另一个 context 里的实例给你打分」。"
+            ],
+            "original": [
+              "Anthropic 推出 dreaming + outcomes + multiagent——outcomes 用独立 context 的 grader 评分,loop 在结构上就是产品,比标准 prompting loop 高 10 个点。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "MAD Podcast: Levie 的企业 AI 总账 / Levie's Enterprise AI Postmortem",
+      "desc": "Matt Turck 把 Aaron Levie 拉回 MAD Podcast,做了一场「State of Enterprise AI 2026」:tokenmaxxing 催出路由层、模型进步太快反而拖慢企业部署、AI 让「造」变易但没让「卖」变易;FDE(forward-deployed engineer)被点名未来三年最难被替代。",
+      "cards": [
+        {
+          "authorKey": "podcast:mad-podcast",
+          "sourceUrl": "https://www.youtube.com/watch?v=Gs2styCcwro",
+          "en": {
+            "rewrite": [
+              "Matt Turck has Aaron Levie back on the MAD Podcast for a 'State of Enterprise AI 2026' conversation that hits three themes worth holding in your head at the same time. (1) Tokenmaxxing: token cost has become a top-of-mind topic in every enterprise call, which is bullish for AI in general (it means the systems are running at a scale nobody predicted) but creates a new product layer — model routing. (2) The bittersweet paradox: model progress is so fast that the prior architecture you just implemented becomes obsolete mid-rollout, which is why enterprise deployment is slower than the lab demos suggest. (3) Rise of headless: as the software layer gets cheaper to produce, the hard part of enterprise software is no longer the software — it's go-to-market, consultative selling, implementation, integration. AI has made building easier; it has not made selling easier.",
+              "Levie's take on the 'AI-proof your job' question is the most concrete: the 'FDE' (forward-deployed engineer) role inside enterprises — sitting between vendor and customer, customizing the agent stack per deployment — is going to be the most-defended job of the next three years. The generalist builder who knows both the customer's domain and the agent's failure modes is rare, and getting rarer.",
+              "The three Twitter threads he posted this week (routing; the GTM-is-the-hard-part; the model-families split) are essentially the Twitter-sized cuts of this hour-long conversation. If you read the threads and want the texture — the failure cases, the customer stories, the 'it actually worked / it totally didn't' beats — the podcast is the place."
+            ],
+            "original": [
+              "Hi. I'm Matt Turf from Firstmark. Welcome to the Mad Podcast. Today, I'm excited to welcome back Aaron Levy, CEO of Box. Aaron is hands down one of the most deeply thoughtful CEOs in tech today when it comes to agentic AI, and he has a front row seat to how AI is actually being deployed inside the world's largest enterprises.\n\n[…]\n\nLet's just say you took GBT 5.5 or Opus, and you just snap the line right now. You could probably do this diffusion in, like, two years or three years, and we could probably all do the change management, like, collectively as an ecosystem. The problem is is the breakthroughs keep happening faster than the customer can implement any kind of standard architecture. And those breakthroughs oftentimes make obsolete the last thing you implemented. It's this really bittersweet thing, which is like the technology is getting so advanced that it makes obsolete the prior thing that you implemented, which actually means that the rollout takes longer."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Matt Turck 把 Aaron Levie 请回 MAD Podcast 做「State of Enterprise AI 2026」,整场值得同时拿住的三个主题。(1) Tokenmaxxing:token 成本变成每次企业对话的 top-of-mind,这件事对 AI 整体是利好(说明系统跑到了一个没人预料的规模),但同时催出了一个新的产品层——模型路由。(2) Bitter-sweet 悖论:模型进步太快,你刚布完的上一版架构马上过时——这就是为什么企业部署比实验室 demo 慢一截。(3) Headless 抬头:软件层越来越便宜,企业软件最难的就不再是「造软件」——而是 GTM、咨询式销售、落地、集成。AI 让「造」变易,没让「卖」变易。",
+              "Levie 对「怎么 AI-proof 自己工作」的回答最具体:企业里的「FDE」(forward-deployed engineer)——坐在供应商和客户之间、按客户场景定制 agent stack——会是未来三年最难被替代的岗位。同时懂客户 domain 和 agent 翻车模式的通才 builder,稀缺且越来越稀缺。",
+              "他这一周发的三条推(路由、GTM 才是难题、model family 分裂)其实就是这一小时长对话的推特版切片。读了推想看「客户故事、翻车现场、哪些真成了哪些彻底黄了」这些 texture,听 podcast 是去处。"
+            ],
+            "original": [
+              "Levie MAD Podcast 长版:tokenmaxxing 催出路由层、模型进步太快拖慢企业部署、AI 让「造」变易但没让「卖」变易;FDE 是最难被替代的岗位。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "训练数据是隐藏的高杠杆 / Training Data Is the Hidden High-Leverage",
+      "desc": "Madhu Guru 怼「数据标注 = 流水线」叙事,说 frontier 真正缺的是高经济价值任务的复杂 domain 数据;Amjad Masad 用 Replit 的「get to market, get the bag」跟它对读——ship 是数据策略,不只是 founder 话术。",
+      "cards": [
+        {
+          "authorKey": "x:realmadhuguru",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2063704354910347520",
+          "en": {
+            "rewrite": [
+              "Madhusudhan (Madhu Guru, ex-Google Gemini / Veo) pushes back on a popular misconception: training data is not the low-skill, grunt-work side of AI. 'The data required to advance the model frontier is the opposite. Labs need training data for high-economic-value tasks. And most of these tasks outside of SWE have little documentation — it is complex, domain-specific knowledge built over the years, spanning legacy tools that don't talk to each other.'",
+              "This is the inverse of the usual 'data labeling is the new piecework' narrative. The frontier-evals-tasks that actually move capability — legal workflows, financial close, healthcare protocols, supply-chain orchestration — are in domains where there is no clean internet, no Stack Overflow, no YouTube tutorial. The data has to be created by people who already operate inside those domains, often using tools that don't even talk to each other.",
+              "Why it lands today: the same day steipete is reframing work as 'designing loops' and Levie is reframing enterprise GTM as the new bottleneck, Madhu is reframing 'where the leverage actually is' in the supply side. Companies like Mercor, doing this kind of high-leverage data work, are 'deeply underappreciated.' Read the sentence twice: this is a builder, not a critic, telling the field to look up from model size and look at the data substrate."
+            ],
+            "original": [
+              "A common misconception is that training data is low skill, grunt work - scan some notebooks, mine the internet, create labeled samples.\n\nThe data required to advance the model frontier is the opposite. Labs need training data for high-economic-value tasks. And most of these tasks outside of SWE have little documentation - it is complex, domain-specific knowledge built over the years, spanning legacy tools that don't talk to each other.\n\nThat's why we have SWE agents and not knowledge work agents yet.\n\nThe companies creating this training data, such as Mercor, are doing extremely high-leverage, high-skill work. \n\nCritical to moving AI forward. And deeply underappreciated."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Madhusudhan(Madhu Guru,前 Google Gemini / Veo)怼一个流行误解:训练数据不是 AI 里「低技能、grunt work」那一面。「推进模型 frontier 需要的数据是反过来的。Lab 需要高经济价值任务的训练数据。这些任务里,SWE 之外几乎都没有现成文档——是跨年积累的、domain-specific 的复杂知识,中间夹着互相不说话的 legacy 工具。」",
+              "这是对「数据标注是新流水线」叙事的反向版本。真正能推进能力的 frontier eval 任务——法务 workflow、财务结账、医疗 protocol、供应链协同——所在 domain 没有干净的互联网、没有 Stack Overflow、没有 YouTube 教程。数据要由「已经在这些 domain 里工作的人」造出来,这些人用的工具彼此还经常不通话。",
+              "今天放这条为什么成立:同一天 steipete 把工作重新框成「设计 loop」,Levie 把企业 GTM 重新框成新瓶颈,Madhu 把「真正 leverage 在哪」重新框回供给侧。Mercor 之类的公司,做的是「high-leverage、高技能」的事,「deeply underappreciated」。这句话请读两遍:这不是批评者,是一个 builder 叫整个 field 抬头看一眼,别只盯着模型 size,也看看底下的数据 substrate。"
+            ],
+            "original": [
+              "Madhu Guru:训练数据不是低技能 grunt work,frontier 需要高经济价值任务的复杂数据——Mercor 之类「deeply underappreciated」。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2063744208587125142",
+          "en": {
+            "rewrite": [
+              "Amjad Masad (Replit CEO) celebrates a Replit milestone with the kind of line that gets pasted into pitch decks for the next decade: 'Replit is about removing all distractions and have you focus on what matters — getting to market and getting the bag.'",
+              "Read alongside Madhu Guru's training-data point: the very thing the lab layer is paying top dollar for (clean data from a domain) is the very thing Replit is structured to produce (shipping products that create data trails from real users). The 'get to market, get paid' posture isn't just a founder line — it's a data-acquisition strategy that compounds.",
+              "The 'Congrats!' at the end is doing two things: it's a community-recognition signal, and it's a quiet declaration of the loop — ship, learn, fund, ship. Replit as a platform is now optimizing for the time between the founder's 'I have an idea' and the first paying customer's feedback, and 'getting the bag' is just where that loop settles when it's healthy."
+            ],
+            "original": [
+              "Replit is about removing all distractions and have you focus on what matters — getting to market and getting the bag. Congrats! https://t.co/Z2gcG0WF0t"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Replit CEO Amjad Masad 用一句话庆祝一个 Replit 里程碑,这种话会被未来十年的 pitch deck 抄下来:「Replit 是把干扰全去掉,让你专注重要的事——get to market,getting the bag。」",
+              "和 Madhu Guru 的训练数据那段放一起读:lab 层最愿意付钱买的东西(干净 domain 数据),正是 Replit 在结构上生产的东西(ship 出产品,产生真实用户的数据 trail)。「get to market,get paid」不只是 founder 话术,它是一个会复利的数据获取策略。",
+              "结尾那个「Congrats!」在做两件事:社区认可信号,以及一个关于 loop 的低调宣言——ship、learn、fund、ship。Replit 作为一个平台,现在在优化「founder 一句『我有个 idea』」和「第一位付费客户的反馈」之间的时间,「getting the bag」只是这个 loop 健康时的稳态。"
+            ],
+            "original": [
+              "Replit 节点:「去掉干扰,让你专注 get to market,getting the bag」——和 Madhu 的训练数据论对读,「get paid」是 Replit 平台的复利型数据策略。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Builder 文化边角 / Builder Culture Corners",
+      "desc": "Garry Tan 发 GBrain v0.42.30「总结你思维怎么变」,顺手把 AI 教育列成新瓶颈;Zara Zhang 复盘 Frontend Slides 技能自然增长——HTML deck 越来越被读成「AI-native」;Aditya Agarwal 用 6 行讲完「财富放大深层欲望」,把 SV 的 loop 接到下一波 idea;Sottiaux 公开 Codex 100 天计划,每天挑一个 power user 给 10X limit。",
+      "cards": [
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2063785286367392095",
+          "en": {
+            "rewrite": [
+              "Garry Tan (Y Combinator) ships GBrain v0.42.30 — a feature that gives you a detailed summary of how your thinking has changed over time. The follow-up tweet (543 likes) makes the bigger point: 'Educating people on how to use the AI tools has become a serious bottleneck.'",
+              "Y Combinator is now running a project (at https://t.co/NH6AWPWWkY) explicitly aimed at that bottleneck. Read this as: a16z and YC are both moving from 'AI is the new electricity' rhetoric to 'AI is the new electricity AND most people don't know how to flip the switch' intervention programs. The marginal value in 2026 is not the model, it's the pedagogy.",
+              "The GBrain feature — a meta-tool that summarizes how your thinking has changed — is itself an instance of the day's loop theme. The agent doesn't just execute; it reflects on the loop the human is running and feeds that back. (This is the consumer-facing version of what Anthropic shipped as 'dreaming' on the same day.)"
+            ],
+            "original": [
+              "GBrain v0.42.30 can now give you a detailed summary of how your thinking has changed over time. https://t.co/lcj64PThft",
+              "Educating people on how to use the AI tools has become a serious bottleneck https://t.co/x624uLrMkb"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Y Combinator 的 Garry Tan 发了 GBrain v0.42.30——一个新功能,能给你「思维如何随时间变化」的详细总结。下一条推(543 赞)点了更大的题:「Educating people on how to use the AI tools has become a serious bottleneck」。",
+              "Y Combinator 现在在跑一个项目(at https://t.co/NH6AWPWWkY)专门啃这个瓶颈。可以这样读:a16z 和 YC 都在从「AI 是新电力」这种 rhetoric 转向「AI 是新电力 + 多数人不会用开关」式的介入项目。2026 的边际价值不在模型,在 pedagogy。",
+              "GBrain 这个功能——一个 meta 工具,总结你的思维怎么变了——本身就是今天 loop 主题的一个实例。Agent 不只是执行,它反思人跑的 loop,再把这个反馈回给人类。(这是同日 Anthropic 发「dreaming」的消费侧版本。)"
+            ],
+            "original": [
+              "Garry Tan 发 GBrain v0.42.30——总结你「思维怎么变了」,是同日 Anthropic「dreaming」的消费侧版本;YC 已经把 AI 教育当成独立项目跑。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2063638307586662539",
+          "en": {
+            "rewrite": [
+              "Zara Zhang (Follow Builders) reflects on why her Frontend Slides skill has grown so much organically: 'slides are inherently social. People see these cool slides and always ask how did you make it. And people tend to perceive those using HTML decks as more AI-native and AI-savvy.'",
+              "The thesis: static artifacts lose value the moment they're scannable by an agent; social, performative artifacts gain value. An HTML deck is a thing a builder shows their friend on a call; a PDF is a thing a builder emails to themselves a year later. The first is a moment of connection; the second is a moment of obligation.",
+              "Ties back to yesterday's Zara quote ('raw & opinionated > polished & generic') and to the day's loop theme: the loop here is show → ask 'how did you make it?' → fork the skill → show your own version. The skill propagates through conversation, not through SEO. That propagation loop is exactly what agent-built tools need to win in 2026."
+            ],
+            "original": [
+              "I think one reason that my Frontend Slides skill has grown so much organically is because slides are inherently social\n\nPeople see these cool slides and always ask 'how did you make it'. And people tend to perceive those using HTML decks as more AI-native and AI-savvy\n\nhttps://t.co/CiQpfibZn5"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Follow Builders 的 Zara Zhang 复盘她的 Frontend Slides skill 为什么自然长出来:「slides are inherently social。People see these cool slides and always ask how did you make it. And people tend to perceive those using HTML decks as more AI-native and AI-savvy」",
+              "thesis:静态 artifact 在 agent 能扫读的那一刻起就开始掉价;社交性、表演性的 artifact 在涨价。HTML deck 是 builder 在视频里给朋友看的东西;PDF 是 builder 一年后发邮件给自己看的东西。前者是 connect 时刻,后者是 obligation 时刻。",
+              "回扣到昨天 Zara 自己说的「raw & opinionated > polished & generic」,也回扣今天的 loop 主题:这里的 loop 是「show → 有人问怎么做的 → fork 技能 → 自己也做一个 show」。技能靠对话传播,不是 SEO。这个传播 loop 就是 2026 agent 工具需要赢下的传播路径。"
+            ],
+            "original": [
+              "Zara Zhang:Frontend Slides 长得自然,是因为 slides 本质是 social——HTML deck 越来越被读成「AI-native」,传播靠对话不是 SEO。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:adityaag",
+          "sourceUrl": "https://x.com/adityaag/status/2063731771284619521",
+          "en": {
+            "rewrite": [
+              "Aditya Agarwal (South Park Commons GP, ex-CTO Dropbox, early Facebook eng) has watched two IPOs from the inside. His line: 'Fabulous wealth tends to amplify deeper desires, not create new ones.' The mainstream narrative is 'early employees make lots of money and buy mansions and go to the beach.' For some, yes. But for a lot of folks, it is a chance to do even crazier and wackier stuff.",
+              "He reads the upcoming liquidity as a Silicon Valley loop: 'start new things, fund new things, keep the crazy loop of Silicon Valley going.' Read this as: the AI cycle's secondary effect is not the consumption stories, it's the foundation stories. The next thousand ambitious ideas will get funded by people who already made their money on the previous wave — and who have a deeper-than-average interest in doing it again.",
+              "The 'Onwards!' at the end is a small tell. The IPO-postmortem essay is one of the most over-written sub-genres in tech; Agarwal gets through it in 6 lines because the loop he actually wants to talk about is not the past, it's the next thing."
+            ],
+            "original": [
+              "I have had the chance to go through two IPOs (Meta and Dropbox).\n\nFabulous wealth tends to amplify deeper desires, not create new ones.\n\nThe mainstream narrative is: 'Early Employees make lots of money and buy mansions and go to the beach'.\n\nFor some: Yes, they want to chill. That is great. I am happy for them.\n\nBut for a lot of folks, it is a chance to do even crazier and wackier stuff. Start new things. Fund new things. Keep the crazy loop of Silicon Valley going.\n\nIt's going to be awesome to have a lot of folks with liquidity in the coming months. \n\nOnwards!."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "South Park Commons GP、前 Dropbox CTO、前 Facebook 早期工程的 Aditya Agarwal,亲历过两次 IPO。他的金句:「Fabulous wealth tends to amplify deeper desires, not create new ones.」主流叙事是「早期员工赚到大钱,买大房子,去海边」;对一些人是这样。但他观察到,对很多人,这是「做更 crazy、更 wacky 的事」的窗口。",
+              "他把即将到来的流动性读成 Silicon Valley 的 loop:「start new things, fund new things, keep the crazy loop of Silicon Valley going」。可以这样读:这一波 AI 周期真正的次级效应不是消费故事,是 foundation 故事。下一波一千个 ambitious 的 idea,会由「上一波已经赚过钱、对再来一次有平均线以上兴趣」的人来投。",
+              "结尾那个「Onwards!」是个小信号。IPO 复盘 essay 是科技圈写得最滥的子类型之一;Agarwal 6 行写完,因为他真正想聊的 loop 不是过去,是下一件事。"
+            ],
+            "original": [
+              "Aditya Agarwal(亲历两次 IPO):「财富放大深层欲望,不创造新欲望」——下一波 idea 由「上一波已经赚过、对再来一次有兴趣」的人投,这是 SV 的 loop。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2063748242681307611",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux (Codex & ChatGPT, OpenAI) announces a 100-day program: 'Over the next 100 days, we will select one person per day who does impressive or incredibly useful work with Codex and give them 10X usage limits for a month to see what they can do with it.' First one tomorrow.",
+              "The mechanical reading: OpenAI is trying to surface use cases that aren't visible in the average-usage curve. 10X usage limits for a month is enough runway for someone to actually break the model — or break themselves trying.",
+              "The cultural reading: this is OpenAI saying, explicitly, that the marginal learning from a power user is worth more than the inference subsidy. The bet is the same one Garry Tan just made with GBrain and YC's education project — the field's bottleneck in 2026 is not model capability, it's model *use*, and the people who use it unusually well are the most under-priced input in the system. (Pair with Peter Yang's punchline: a Codex power user, every day for 100 days, is itself a kind of loop.)"
+            ],
+            "original": [
+              "I have a new kind of big button that I can press for Codex. Over the next 100 days, we will select one person per day who does impressive or incredibly useful work with Codex and give them 10X usage limits for a month to see what they can do with it.\n\nFirst one tomorrow."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenAI 的 Thibault Sottiaux(Codex & ChatGPT)宣布一个 100 天计划:「接下来 100 天,我们每天挑一个用 Codex 做出 impressive 或 incredibly useful 工作的人,给一个月 10X usage limit,看他们能拿这个做出什么。」明天发第一个。",
+              "机制上的读法:OpenAI 试图让「在平均用量曲线里看不见」的 use case 浮上来。一个月 10X usage limit,够一个人真把模型用穿——或者把自己跑穿。",
+              "文化上的读法:这是 OpenAI 公开说「一个 power user 的边际学习」比「inference 补贴」更值得花。这个赌注和 Garry Tan 刚发的 GBrain、YC 的 AI 教育项目是同一个——2026 的瓶颈不在模型能力,在模型*用法*,那些「用得特别不寻常」的人是系统里最被低估的输入。(配 Peter Yang 的 punchline 一起读:一个 Codex power user,跑 100 天,本身就是一种 loop。)"
+            ],
+            "original": [
+              "Sottiaux:100 天计划,每天挑一个 Codex power user 给 10X limit——OpenAI 公开说 power user 的边际学习比 inference 补贴更值。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

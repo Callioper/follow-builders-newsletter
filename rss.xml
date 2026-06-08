@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 07 Jun 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 08 Jun 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-06-08 · 单位工作日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-08-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-08-rerun.html</guid>
+      <pubDate>Mon, 08 Jun 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[6-8 这天 Follow Builders 的主轴押在了「loop」这个词上,而且是五条独立线同时押:Peter Steinberger 把「monthly reminder」讲成「别再 prompt coding agent,应该设计让 agent prompt 自己的 loop」,Boris Cherny 接着把 Opus 跑数小时的五条拆成 loop 原语(/goal、/loop、dynamic workflows、self-verify、auto mode + cloud),Sam Altman 一句「interesting recursive loop here maybe」给整天的 vibe 命名,Peter Yang 拿 dad joke 把 loop over prompt 收进家庭段子,Anthropic 当天发 dreaming + outcomes + multiagent,把「loop 是产品」做成 shipped feature——这是 agent 那一面;另一面,Rauchg 公开 Vercel AI Gateway 每月救回 1T+ token、零加价,Nikunj 命名「tokenmaxxing → tokenoptimizing」的 vibe shift,Levie 第二天跟进说「未来一两年用例会在 model family 之间分层」,三个独立 operator 收敛到「路由层是新产品层」一张图。一句话讲,这是「prompt 是中间态、loop 才是单位工作」的一天,也是「token economics 走完 V 形,路由变 moat」的一天。]]></description>
+      <category>Loop 取代 prompt / Loops Eat Prompts, Token 经济学的 V 形拐点 / The Token Economics Inflection, Claude Agent 平台的「dreaming」/ Claude&apos;s Self-Improving Agent Platform, MAD Podcast: Levie 的企业 AI 总账 / Levie&apos;s Enterprise AI Postmortem, 训练数据是隐藏的高杠杆 / Training Data Is the Hidden High-Leverage, Builder 文化边角 / Builder Culture Corners</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-06-07 · 架构与制度日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-07-rerun.html</link>

@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Builders Digest · 2026-06-08</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ed;
+    --accent: #c0392b;
+    --accent-light: #e8d5c4;
+    --border: #d4cdc0;
+    --muted: #7a7265;
+    --tag-bg: #e8e2d6;
+    --en-bg: #ffffff;
+    --cn-bg: #faf7f2;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  .masthead, .intro, .section-header, .feed, footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .masthead { padding-top: 48px; }
+  .masthead-rule { border: none; border-top: 3px solid var(--ink); margin: 0 0 12px; }
+  .masthead-inner { display: flex; justify-content: center; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; letter-spacing: -0.4px; }
+  .masthead-subtitle { margin-top: 8px; padding-bottom: 10px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  .edition-strip {
+    position: relative;
+    margin-top: 8px;
+    min-height: 46px;
+    padding: 10px 132px 12px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.34);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+
+  .edition-strip .edition-sep { margin: 0 8px; color: #b8ae9f; }
+  .edition-strip-text { display: block; }
+  .edition-return-link { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; padding: 6px 10px; border: 1px dashed rgba(192, 57, 43, 0.55); border-radius: 999px; color: var(--accent); text-decoration: none; font-size: 12px; line-height: 1; letter-spacing: 0.06em; background: rgba(255, 255, 255, 0.45); transition: background 160ms ease, border-color 160ms ease, transform 160ms ease; }
+  .edition-return-link:hover, .edition-return-link:focus-visible { background: rgba(255, 255, 255, 0.82); border-color: var(--accent); transform: translateY(-50%) translateX(-1px); }
+  .edition-return-link:focus-visible { outline: none; }
+  .intro { padding-top: 22px; }
+  .intro-inner { max-width: 920px; margin: 0 auto; padding: 0 0 0 18px; border-left: 3px solid #d9cdbc; }
+  .intro-kicker { margin: 0 0 8px; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .intro p { margin: 0; max-width: none; color: var(--muted); font-size: clamp(15px, 1.6vw, 16px); line-height: 1.9; text-wrap: pretty; font-family: 'Noto Serif SC', serif; overflow-wrap: anywhere; }
+
+  .section-header { margin-top: 40px; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; margin: 0 0 6px; }
+  .section-desc { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+
+  .feed { display: flex; flex-direction: column; gap: 20px; }
+  .card { background: var(--en-bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .card-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid #eee7dd; flex-wrap: wrap; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .avatar-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .avatar.is-fallback img { display: none; }
+  .avatar.is-fallback .avatar-fallback { display: flex; }
+
+  .author-info { flex: 1; min-width: 160px; }
+  .author-name { font-weight: 600; font-size: 15px; }
+  .author-name-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .author-handle { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+  .author-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; background: var(--tag-bg); color: var(--muted); padding: 4px 8px; border-radius: 999px; }
+  .author-tag.is-inline { padding: 3px 8px; }
+
+  .card-controls { margin-left: auto; display: inline-flex; gap: 8px; }
+  .view-toggle { border: 1px solid var(--border); background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 999px; font-size: 12px; line-height: 1; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; }
+  .view-toggle.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .card-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .lang-col { padding: 18px 20px 22px; }
+  .lang-col.cn { background: var(--cn-bg); border-right: 1px solid #f0ece4; font-family: 'Noto Serif SC', serif; }
+  .lang-col.en { background: var(--en-bg); }
+  .lang-label { margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+  .content-shell { position: relative; transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .content-variant { position: absolute; inset: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(4px); transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; will-change: opacity, transform; }
+  .content-variant.is-active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+  .content-variant p, .content-variant li { margin: 0 0 12px; font-size: 14px; }
+  .content-variant ol { margin: 0 0 12px 20px; padding: 0; }
+  .inline-code { display: inline-block; font-family: 'IBM Plex Mono', monospace; background: #f4efe7; padding: 3px 6px; border-radius: 6px; margin-bottom: 8px; }
+
+  .card-footer { padding: 12px 20px 16px; border-top: 1px solid #eee7dd; background: #fcfaf6; }
+  .card-footer a { color: var(--accent); text-decoration: none; font-size: 14px; }
+  footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 680px) {
+    .masthead-inner { align-items: center; }
+    .edition-strip { padding-right: 12px; padding-left: 12px; }
+    .edition-strip-text { padding-right: 0; }
+    .edition-return-link { position: static; transform: none; margin-top: 8px; font-size: 11px; }
+    .card-controls { margin-left: 0; }
+    .card-body { grid-template-columns: 1fr; }
+    .lang-col.cn { border-right: none; border-bottom: 1px solid #f0ece4; }
+    .edition-strip .edition-sep { margin: 0 5px; }
+    .intro-inner { padding-left: 14px; }
+    .intro p { line-height: 1.84; }
+  }
+</style>
+</head>
+<body data-publish-date="2026-06-08" data-issue-number="16" data-edition-name="双语精选版" data-view-label-rewrite="速读" data-view-label-original="原文" data-author-identities-path="/home/eclaw/.follow-builders/assets/author-identities.json" data-avatar-manifest-path="/home/eclaw/.follow-builders/assets/avatar-manifest.json">
+  <header class="masthead">
+    <hr class="masthead-rule">
+    <div class="masthead-inner">
+      <div class="masthead-title">AI Builders Digest</div>
+    </div>
+    <div class="masthead-subtitle">Bilingual edition · 双语对照版</div>
+    <div class="edition-strip">
+      <span class="edition-strip-text" id="edition-strip-text">第 16 期｜2026-06-08｜双语精选版｜15 条精选｜15 位作者｜6 个主题</span>
+      <a class="edition-return-link" href="../index.html">返回目录</a>
+    </div>
+  </header>
+
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="6-8 这天 Follow Builders 的主轴押在了「loop」这个词上,而且是五条独立线同时押:Peter Steinberger 把「monthly reminder」讲成「别再 prompt coding agent,应该设计让 agent prompt 自己的 loop」,Boris Cherny 接着把 Opus 跑数小时的五条拆成 loop 原语(/goal、/loop、dynamic workflows、self-verify、auto mode + cloud),Sam Altman 一句「interesting recursive loop here maybe」给整天的 vibe 命名,Peter Yang 拿 dad joke 把 loop over prompt 收进家庭段子,Anthropic 当天发 dreaming + outcomes + multiagent,把「loop 是产品」做成 shipped feature——这是 agent 那一面;另一面,Rauchg 公开 Vercel AI Gateway 每月救回 1T+ token、零加价,Nikunj 命名「tokenmaxxing → tokenoptimizing」的 vibe shift,Levie 第二天跟进说「未来一两年用例会在 model family 之间分层」,三个独立 operator 收敛到「路由层是新产品层」一张图。一句话讲,这是「prompt 是中间态、loop 才是单位工作」的一天,也是「token economics 走完 V 形,路由变 moat」的一天。">
+    <div class="intro-inner">
+      <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
+      <p class="intro-copy">6-8 这天 Follow Builders 的主轴押在了「loop」这个词上,而且是五条独立线同时押:Peter Steinberger 把「monthly reminder」讲成「别再 prompt coding agent,应该设计让 agent prompt 自己的 loop」,Boris Cherny 接着把 Opus 跑数小时的五条拆成 loop 原语(/goal、/loop、dynamic workflows、self-verify、auto mode + cloud),Sam Altman 一句「interesting recursive loop here maybe」给整天的 vibe 命名,Peter Yang 拿 dad joke 把 loop over prompt 收进家庭段子,Anthropic 当天发 dreaming + outcomes + multiagent,把「loop 是产品」做成 shipped feature——这是 agent 那一面;另一面,Rauchg 公开 Vercel AI Gateway 每月救回 1T+ token、零加价,Nikunj 命名「tokenmaxxing → tokenoptimizing」的 vibe shift,Levie 第二天跟进说「未来一两年用例会在 model family 之间分层」,三个独立 operator 收敛到「路由层是新产品层」一张图。一句话讲,这是「prompt 是中间态、loop 才是单位工作」的一天,也是「token economics 走完 V 形,路由变 moat」的一天。</p>
+    </div>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 01</div>
+    <h2 class="section-title">Loop 取代 prompt / Loops Eat Prompts</h2>
+    <p class="section-desc">Steinberger 把「monthly reminder」讲成今年最狠的一条;Boris Cherny 接着把 Opus 的「长时跑」摊成 5 条 loop 原语;Sam Altman 一句「recursive loop」给整天的 vibe 命名;Peter Yang 用 dad joke 把 loop over prompt 收进家庭段子——单位工作正在从 prompt 移到 loop。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:steipete" data-author-name="Peter Steinberger" data-author-tag="OpenClaw 创始人" data-author-handle="@steipete" data-author-avatar="../assets/avatars/x-steipete.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-steipete.jpg" alt="Peter Steinberger avatar"><span class="avatar-fallback">PS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Steinberger</div>
+            <div class="author-tag is-inline">OpenClaw 创始人</div>
+          </div>
+          <div class="author-handle">@steipete</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Steinberger 一条 13700+ 点赞的推,把「每月提醒」这一期说得比以往更狠:「别再 prompt 你的 coding agent 了,你应该设计让 agent 自己 prompt 自己的 loop。」</p>
+              <p>一句话的位移:单位工作以前是 prompt,现在正在变成 loop。prompt 是问题,loop 是岗位描述——可以跨 run 复用、可以 A/B、可以委托。然后 agent 退成「loop 里的执行者」,人退成「loop 的策展人」。</p>
+              <p>他的 bio 写「Polyagentmorphous ClawFather」,能跑并行 agent 的人。把这件事框成「monthly reminder」——也就是他至少说了一年——信号在于:这不是新看法,是一个已经定下来的 conviction。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Steinberger(13734L):别再 prompt coding agent 了,应该设计让 agent 自己 prompt 自己的 loop。单位工作从 prompt 移到 loop。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Steinberger, in a tweet that pulled 13,700+ likes, makes this month&#39;s &#39;monthly reminder&#39; land harder than usual: &#39;You shouldn&#39;t be prompting coding agents anymore. You should be designing loops that prompt your agents.&#39;</p>
+              <p>The one-line shift: the unit of work used to be the prompt; the unit of work is becoming the loop. If the prompt is a question, the loop is a job description — durable across runs, easy to A/B, easy to delegate. The agent then becomes the executor inside a loop the human curates.</p>
+              <p>Steinberger&#39;s bio (Polyagentmorous ClawFather) tells you this is a man who runs a lot of agents in parallel. The fact that he frames the move as &#39;monthly reminder&#39; — i.e. he&#39;s been saying it for at least a year — is the signal that this isn&#39;t a new take, it&#39;s a settled conviction.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Here&#39;s your monthly reminder that you shouldn&#39;t be prompting coding agents anymore.
+
+              You should be designing loops that prompt your agents.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/steipete/status/2063697162748260627" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:bcherny" data-author-name="Boris Cherny" data-author-tag="Salesforce AI 工程负责人" data-author-handle="@bcherny" data-author-avatar="../assets/avatars/x-bcherny.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-bcherny.jpg" alt="Boris Cherny avatar"><span class="avatar-fallback">BC</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Boris Cherny</div>
+            <div class="author-tag is-inline">Salesforce AI 工程负责人</div>
+          </div>
+          <div class="author-handle">@bcherny</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Boris Cherny(Claude Code,Anthropic)给了五条把 Opus 跑成「数小时到数天」自主 loop 的具体建议。其中三条是 loop 原语,不是 prompt 技巧:/goal 或 /loop,让 Claude 一直做到完;dynamic workflows,让 Claude 编排成百上千的 agent 协同;给 Claude 一个端到端的 self-verify 通道。</p>
+              <p>另外两条决定 loop 能不能活下来:auto mode 取消权限弹窗,别让 agent 跑一半卡在确认框;Claude Code 跑在云上,这样你可以合上笔记本。换句话说:产品是 loop,笔记本是装饰,权限弹窗是摩擦。</p>
+              <p>开头那句「Opus 是长时任务最强模型」算是软广,真正内容是 operational——读成「一个自主 loop 对模型要什么」的产品手册,刚好和 steipete 的「monthly reminder」对得上。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Boris Cherny 跑 Opus 数小时的五条:/goal 或 /loop、dynamic workflows、self-verify 通道、auto mode 权限、云上跑——loop 是产品,prompt 是中间态。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Boris Cherny (Claude Code at Anthropic) gives five concrete tips for running Opus autonomously for hours or days at a time. Three of them are loop primitives, not prompt tricks: &#39;Use /goal or /loop, to nudge Claude to keep going until it&#39;s done&#39;; &#39;Use dynamic workflows, to have Claude orchestrate hundreds/thousands of agents to get a task done&#39;; &#39;Make sure Claude has a way to self-verify its work end to end.&#39;</p>
+              <p>The other two are about letting the loop survive: &#39;auto mode for permissions&#39; so the agent isn&#39;t permission-blocked mid-loop; &#39;Claude Code in the cloud, so you can close your laptop.&#39; Translation: the loop is the product, the laptop is incidental, the permission dialog is the friction.</p>
+              <p>He opens with a soft benchmark claim — &#39;Opus is the best model for long-running work&#39; — but the actual content is operational. If you read it as a product manual for &#39;what an autonomous loop requires from the model,&#39; it lines up exactly with steipete&#39;s reminder.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Seeing a number of benchmarks showing Opus is the best model for long-running work.
+
+              Five tips for running Opus autonomously for hours/days:
+
+              1. Use auto mode for permissions, so Claude doesn&#39;t ask for approval
+              2. Use dynamic workflows, to have Claude orchestrate hundreds/thousands of agents to get a task done
+              3. Use /goal or /loop, to nudge Claude to keep going until it&#39;s done
+              4. Use Claude Code in the cloud, so you can close your laptop (easiest way is the desktop or mobile app)
+              5. Make sure Claude has a way to self-verify its work end to end: Claude in Chrome browser extension for web, iOS/Android sim MCP for mobile, a way to start the full web server or service for backend work</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/bcherny/status/2063792263067754658" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:sama" data-author-name="Sam Altman" data-author-tag="OpenAI CEO" data-author-handle="@sama" data-author-avatar="../assets/avatars/x-sama.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-sama.jpg" alt="Sam Altman avatar"><span class="avatar-fallback">SA</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Sam Altman</div>
+            <div class="author-tag is-inline">OpenAI CEO</div>
+          </div>
+          <div class="author-handle">@sama</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Sam Altman 用他特有的压缩能力发了一条:「interesting recursive loop here maybe」——指向/转发了某个本身就是 recursion 实例的东西。</p>
+              <p>推虽然短(2500+ 赞),但 framing 重要。Altman 是在给这一整天的 vibe 命名:「recursive loop」正是 steipete、Cherny、Peter Yang 老婆(在笑话里)都在描述的结构。整个 feed 里「loop」这个词反复浮出来。</p>
+              <p>那个「maybe」在做事——和昨天 Dan Shipper 说的「LLM 不是有意识,也不是没有意识,两个都为真」是同一个动作:把两个解读一起按住,先不解决。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Sam Altman 一句「interesting recursive loop here maybe」——给这一整天的 vibe 命名,递归 loop 就是 steipete/Cherny/Peter Yang 老婆都在描述的结构。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Sam Altman, with characteristic compression: &#39;interesting recursive loop here maybe&#39; — quoting/pointing at something that itself is an instance of recursion.</p>
+              <p>The tweet is short (2,500+ likes despite the ambiguity), but the framing matters. Altman is naming the vibe the rest of the day was full of: a &#39;recursive loop&#39; is precisely the structure steipete, Cherny, and Peter Yang&#39;s wife (in a joke) were all describing. Even the word &#39;loop&#39; keeps surfacing across the feed.</p>
+              <p>The &#39;maybe&#39; is doing a lot of work. It&#39;s the public version of the same move Dan Shipper made yesterday with &#39;LLMs are not conscious. LLMs are not not conscious. Both true.&#39; — hold two readings at once without resolving.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>interesting recursive loop here maybe https://t.co/ejXil4AGyX</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/sama/status/2063779477419901071" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:petergyang" data-author-name="Peter Yang" data-author-tag="产品教练 / 创作者经济研究者" data-author-handle="@petergyang" data-author-avatar="../assets/avatars/x-petergyang.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-petergyang.jpg" alt="Peter Yang avatar"><span class="avatar-fallback">PY</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Yang</div>
+            <div class="author-tag is-inline">产品教练 / 创作者经济研究者</div>
+          </div>
+          <div class="author-handle">@petergyang</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang 玩了一个 dad joke,但它是真实的文化信号。setup:老婆让我倒垃圾,我答「你不能再 prompt 我了,你要设计 loop」。</p>
+              <p>punchline(下一条):「老婆:我设计了,这个 loop 叫 marriage,这是你的 daily cron job」。</p>
+              <p>值得引的原因:它把 steipete / Cherny / sama 这一组「loop over prompt」,讲成了一个家庭段子。Peter 自己也在笑,但「daily cron job 装成一段关系,marriage 建模成一条 recurring prompt → loop」是本周读到的最干净的 vibe shift 总结。顺便,这条把昨天他自己那个「finish the punch line」开放帖一行收掉了。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Peter Yang dad joke 的 punchline:「我设计了 loop,叫 marriage,这是你的 daily cron job」——loop over prompt 进家庭段子了。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang goes for the dad joke, but it&#39;s a real cultural tell. Setup: &#39;My wife asked me to take out the trash. I said, you shouldn&#39;t be prompting me anymore. You should be designing loops.&#39;</p>
+              <p>Punchline (from a follow-up): &#39;Wife: I did, the loop is called marriage and this is your daily cron job.&#39;</p>
+              <p>Why it&#39;s worth quoting: it lands the steipete / Cherny / sama &#39;loop over prompt&#39; thread as a household phrase. The author himself is laughing, but the structure — a daily cron job disguised as a relationship, a marriage modeled as a recurring prompt → loop — is the most concise description of the vibe shift I&#39;ve seen all week. Also: it answers yesterday&#39;s unfinished &#39;finish the punch line&#39; thread in one line.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>My wife asked me to take out the trash.
+
+              I said, &#39;You shouldn&#39;t be prompting me anymore. You should be designing loops.&#39;
+
+              Finish the punch line of this dad joke please.</p>
+              <p>Wife: &#39;I did, the loop is called marriage and this is your daily cron job.&#39;</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/petergyang/status/2063818032280170721" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 02</div>
+    <h2 class="section-title">Token 经济学的 V 形拐点 / The Token Economics Inflection</h2>
+    <p class="section-desc">Rauchg 公开 Vercel AI Gateway 每月救回 1T+ token、零加价;Nikunj 命名「tokenmaxxing → tokenoptimizing」的 vibe shift;Levie 第二天跟进,说「未来一两年用例会在 model family 之间分层」,路由层变成独立产品层——三个独立 operator 收敛到同一张图。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:rauchg" data-author-name="Guillermo Rauch" data-author-tag="Vercel CEO" data-author-handle="@rauchg" data-author-avatar="../assets/avatars/x-rauchg.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-rauchg.jpg" alt="Guillermo Rauch avatar"><span class="avatar-fallback">GR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Guillermo Rauch</div>
+            <div class="author-tag is-inline">Vercel CEO</div>
+          </div>
+          <div class="author-handle">@rauchg</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Vercel CEO Guillermo Rauch 放了个数字:Vercel AI Gateway 平均每月「救回」超过 1 万亿 token。他把这件事框成支付领域的 Stripe——「对失败支付和过期信用卡的智能重试」——只不过对 inference 也来一遍:冗余、零数据留存、observability、usage API、cap。</p>
+              <p>被低估的一句:「0️⃣ zero markup over the labs」。重点不是营收,而是 gateway 是当下应用层必须「跟 inference 层的失败模式和解」的地方。只要大模型供应商还在 flake,这就是一个月度 1T token 量级的问题,会有人一直解。</p>
+              <p>和 nikunj 那条 vibe shift 是配对的:tokenmaxxing 创造了这个 surface area,tokenoptimizing 是回应,gateway 坐在中间,把「某个 lab 突然超时」这种摩擦从应用层接走。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Vercel AI Gateway 每月救回 1T+ token,零加价——gateway 是应用层和 inference 层失败模式的「和解处」。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch (Vercel CEO) drops a number: Vercel AI Gateway recovers on average over 1 trillion tokens a month. He frames it as the Stripe-of-payments equivalent — &#39;smart retries on failed payments or credit card updates&#39; — but for inference: redundancy, zero-data-retention enforcement, observability, usage APIs, caps.</p>
+              <p>The underrated line: &#39;0️⃣ zero markup over the labs.&#39; The point isn&#39;t revenue; it&#39;s that the gateway is the place where the application layer is now forced to make peace with inference-layer failure modes. As long as providers keep flaking, this is a 1T-token-a-month problem someone is going to keep solving.</p>
+              <p>Reads as a complement to nikunj&#39;s vibe-shift thread: tokenmaxxing created the surface area; tokenoptimizing is the response; the gateway sits in between, taking the friction of &#39;one of the labs just timed out on us&#39; off the application&#39;s plate.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Vercel AI Gateway recovers on average over 1T tokens a month 🤯 
+
+              Much like Stripe recovers revenue with smart retries on failed payments or credit card updates.
+
+              And we do it with 0️⃣ zero markup over the labs; adding redundancy, zero-data retention enforcement, observability, usage APIs, caps, …
+
+              https://t.co/OougSipbBX</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/rauchg/status/2063714700618334260" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:nikunj" data-author-name="Nikunj Kothari" data-author-tag="Afore Capital 合伙人" data-author-handle="@nikunj" data-author-avatar="../assets/avatars/x-nikunj.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-nikunj.jpg" alt="Nikunj Kothari avatar"><span class="avatar-fallback">NK</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Nikunj Kothari</div>
+            <div class="author-tag is-inline">Afore Capital 合伙人</div>
+          </div>
+          <div class="author-handle">@nikunj</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj Kothari(Afore Capital)给一个最近很多 operator 都在感受的东西起了名字:「从 tokenmaxxing 和 token anxiety 到 tokenoptimizing 的 vibe shift,几周之内就发生了 😅」</p>
+              <p>他的 hot take:公司还是应该给员工慷慨的 token 预算。过早收紧的代价是组织肌肉先萎缩,真正的省钱还没看到。他说:对一项还在 raw 的技术,「省」这个 discourse 用上去,损失的学习比省的美元多。</p>
+              <p>把这条跟 Rauch 的 1T token/月、Levie 昨天那条「子任务可以分给更便宜模型」放一起——三个独立 operator 在往同一个 shape 收敛。「什么都用最贵模型」的时代真的在结束,「按任务设预算 + 路由」的时代真的在开始。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Nikunj:几周内 vibe shift 从 tokenmaxxing 到 tokenoptimizing——但公司别急着收紧预算,组织肌肉萎缩比省钱更贵。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj Kothari (Afore Capital) puts a name to something a lot of operators have been feeling: &#39;The vibe shift from tokenmaxxing and token anxiety to tokenoptimizing in just a few weeks is wild 😅&#39;</p>
+              <p>His hot take: companies should still hand out generous token budgets. The risk of cutting back too early is that employees fall back to &#39;doing things how they have always been done&#39; — i.e. the organizational muscle atrophies before the actual savings show up. The frugality discourse, applied to a still-raw technology, costs more in lost learning than it saves in dollars.</p>
+              <p>Pair this with Rauch&#39;s 1T tokens/month number and Levie&#39;s &#39;you can peel off individual tasks to lower-cost models&#39; thread from yesterday — three independent operators converging on the same shape. The era of &#39;use the most expensive model for everything&#39; is genuinely ending; the era of &#39;budget per task, route carefully&#39; is genuinely starting.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The vibe shift from tokenmaxxing and token anxiety to tokenoptimizing in just a few weeks is wild 😅
+
+              Might be a hot take but I still believe companies should give copious amounts of token budget to employees to stay at the frontier and explore all the edges. 
+
+              Otherwise, it&#39;s way too easy to fall back to &#39;doing the things how they have always been done&#39;.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/nikunj/status/2063630238123483195" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:levie" data-author-name="Aaron Levie" data-author-tag="Box CEO" data-author-handle="@levie" data-author-avatar="../assets/avatars/x-levie.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-levie.jpg" alt="Aaron Levie avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie</div>
+            <div class="author-tag is-inline">Box CEO</div>
+          </div>
+          <div class="author-handle">@levie</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie 在昨天那条 routing 后的第二天跟进:「数字可能有点极端,但毫无疑问,未来一两年用例会在不同 model family 之间分层」。他预测一个真正的分裂——高端任务用 frontier intelligence,高 volume 的 workload 用便宜模型——而能干净路由这两者的那一层,会变成独立的产品层。</p>
+              <p>结构性的那句:「Agent orchestration that can cost optimize while still performing the task successfully will be in a strong position.」翻译:路由是新抽象。模型是 commodity,路由才是 moat。</p>
+              <p>叠在 Madhu Guru 昨天的三阶段框架上(Phase 3 = 细致路由)——两天,Box 和 ex-Google 的两个 operator 从组织图的两端走到同一张图。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Levie 跟进:未来一两年用例在 model family 之间分层,高端 frontier + 高 volume 便宜模型,中间的路由层会变成独立产品层。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie, day-after follow-up to yesterday&#39;s routing thread: &#39;The numbers may be a bit extreme here, but unquestionably use-cases have to stratify in the next year or two between model families.&#39; He predicts a real split — frontier intelligence for the high end, much cheaper models for high-volume workloads — and the layer that can route cleanly between them becomes a product layer in its own right.</p>
+              <p>The structural sentence: &#39;Agent orchestration that can cost optimize while still performing the task successfully will be in a strong position.&#39; Translation: routing is the new abstraction. The model is the commodity; the routing is the moat.</p>
+              <p>Adds to Madhu Guru&#39;s three-phase framework from yesterday (Phase 3 = nuanced routing). Two days, two Box / ex-Google operators arriving at the same picture from opposite ends of the org chart.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The numbers may be a bit extreme here, but unquestionably use-cases have to stratify in the next year or two between model families.
+
+              We&#39;ll see a split between frontier intelligence for high end tasks and work, and much cheaper models for high volume workloads that can sufficiently be peeled off to cheaper models. Frontier will still be far bigger than today because the use-cases will demand it, but the low-end will get quite a bit larger as well.
+
+              The big update here is that the layer that can efficiently route the workload to the right model will then become increasingly valuable since that becomes one of the new hard problems in AI agents. Agent orchestration that can cost optimize while still performing the task successfully will be in a strong position.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/levie/status/2063835799096090749" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 03</div>
+    <h2 class="section-title">Claude Agent 平台的「dreaming」/ Claude&#39;s Self-Improving Agent Platform</h2>
+    <p class="section-desc">Anthropic 把 dreaming、outcomes、multiagent orchestration 一起发,dreaming 是「session 之间反思 memory」的进程,outcomes 用独立 context 的 grader 评分——loop 在结构上就是产品,比标准 prompting loop 高 10 个点。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="blog:anthropic" data-author-name="Anthropic" data-author-tag="Anthropic 官方博客" data-author-handle="" data-author-avatar="../assets/avatars/blog-anthropic.png">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/blog-anthropic.png" alt="Anthropic avatar"><span class="avatar-fallback">A</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Anthropic</div>
+            <div class="author-tag is-inline">Anthropic 官方博客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic 在 Claude Managed Agents 里发了「dreaming」的 research preview——一个周期性的进程,审看过去的 agent session,抽 pattern,curate memory,让 agent 自我改善。同一发版里还上了三个原语:dreaming(session 之间的 memory 精炼)、outcomes(按 rubric 自我批改,grader 跑在独立 context window)、multiagent orchestration(多 agent 协同)。</p>
+              <p>机制最值得读:outcomes 的 grader 跑在自己的 context window 里,「so it isn&#39;t influenced by the agent&#39;s reasoning」——这种「写一个,另一个打分,再回去改」的三段式,正好是 steipete 和 Cherny 讲的 loop。Anthropic 在把 loop 产品化:不再要求 agent 在原 context 里自我评估;loop 在结构上就是产品。</p>
+              <p>Anthropic 自己的数据:outcomes 比标准 prompting loop 在任务成功率上高 10 个点,难题上收益最大。可以这样读:2026 最有用的 loop 原语不是「更好的 prompt」,是「另一个 context 里的实例给你打分」。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Anthropic 推出 dreaming + outcomes + multiagent——outcomes 用独立 context 的 grader 评分,loop 在结构上就是产品,比标准 prompting loop 高 10 个点。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic ships a research preview of &#39;dreaming&#39; in Claude Managed Agents — a scheduled process that reviews past agent sessions, extracts patterns, and curates memory so the agent self-improves. Three primitives land in the same release: dreaming (between-session memory refinement), outcomes (rubric-driven self-correction against a separate grader in its own context window), and multiagent orchestration (agents coordinating on a shared task).</p>
+              <p>The mechanism is what makes it interesting. The grader in &#39;outcomes&#39; runs in its own context window, &#39;so it isn&#39;t influenced by the agent&#39;s reasoning.&#39; That separation — agent writes, grader scores, agent rewrites — is exactly the loop that steipete and Cherny were describing. Anthropic is productizing the loop: the agent is no longer expected to evaluate its own work in-context; the loop is structurally the product.</p>
+              <p>Anthropic claims outcomes improved task success by up to 10 points over a standard prompting loop, with the largest gains on the hardest problems. Read this as: the most useful loop primitives in 2026 are not &#39;better prompts&#39; — they&#39;re &#39;second instance in a separate context that scores you.&#39;</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Today we&#39;re launching dreaming in Claude Managed Agents as a research preview. Dreaming extends memory by reviewing past sessions to find patterns and help agents self-improve. We&#39;re also making outcomes, multiagent orchestration, and webhooks available to developers building with Managed Agents.
+
+              Deliver better outcomes. With outcomes, you write a rubric describing what success looks like and the agent works toward it. A separate grader evaluates the output against your criteria in its own context window, so it isn&#39;t influenced by the agent&#39;s reasoning. When something isn&#39;t right, the grader pinpoints what needs to change and the agent takes another pass.
+
+              In testing, outcomes improved task success by up to 10 points over a standard prompting loop, with the largest gains on the hardest problems.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://claude.com/blog/new-in-claude-managed-agents" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 04</div>
+    <h2 class="section-title">MAD Podcast: Levie 的企业 AI 总账 / Levie&#39;s Enterprise AI Postmortem</h2>
+    <p class="section-desc">Matt Turck 把 Aaron Levie 拉回 MAD Podcast,做了一场「State of Enterprise AI 2026」:tokenmaxxing 催出路由层、模型进步太快反而拖慢企业部署、AI 让「造」变易但没让「卖」变易;FDE(forward-deployed engineer)被点名未来三年最难被替代。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="podcast:mad-podcast" data-author-name="The MAD Podcast" data-author-tag="Matt Turck 主理的 AI 与数据播客" data-author-handle="" data-author-avatar="../assets/avatars/podcast-mad-podcast.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/podcast-mad-podcast.jpg" alt="The MAD Podcast avatar"><span class="avatar-fallback">TM</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">The MAD Podcast</div>
+            <div class="author-tag is-inline">Matt Turck 主理的 AI 与数据播客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Matt Turck 把 Aaron Levie 请回 MAD Podcast 做「State of Enterprise AI 2026」,整场值得同时拿住的三个主题。(1) Tokenmaxxing:token 成本变成每次企业对话的 top-of-mind,这件事对 AI 整体是利好(说明系统跑到了一个没人预料的规模),但同时催出了一个新的产品层——模型路由。(2) Bitter-sweet 悖论:模型进步太快,你刚布完的上一版架构马上过时——这就是为什么企业部署比实验室 demo 慢一截。(3) Headless 抬头:软件层越来越便宜,企业软件最难的就不再是「造软件」——而是 GTM、咨询式销售、落地、集成。AI 让「造」变易,没让「卖」变易。</p>
+              <p>Levie 对「怎么 AI-proof 自己工作」的回答最具体:企业里的「FDE」(forward-deployed engineer)——坐在供应商和客户之间、按客户场景定制 agent stack——会是未来三年最难被替代的岗位。同时懂客户 domain 和 agent 翻车模式的通才 builder,稀缺且越来越稀缺。</p>
+              <p>他这一周发的三条推(路由、GTM 才是难题、model family 分裂)其实就是这一小时长对话的推特版切片。读了推想看「客户故事、翻车现场、哪些真成了哪些彻底黄了」这些 texture,听 podcast 是去处。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Levie MAD Podcast 长版:tokenmaxxing 催出路由层、模型进步太快拖慢企业部署、AI 让「造」变易但没让「卖」变易;FDE 是最难被替代的岗位。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Matt Turck has Aaron Levie back on the MAD Podcast for a &#39;State of Enterprise AI 2026&#39; conversation that hits three themes worth holding in your head at the same time. (1) Tokenmaxxing: token cost has become a top-of-mind topic in every enterprise call, which is bullish for AI in general (it means the systems are running at a scale nobody predicted) but creates a new product layer — model routing. (2) The bittersweet paradox: model progress is so fast that the prior architecture you just implemented becomes obsolete mid-rollout, which is why enterprise deployment is slower than the lab demos suggest. (3) Rise of headless: as the software layer gets cheaper to produce, the hard part of enterprise software is no longer the software — it&#39;s go-to-market, consultative selling, implementation, integration. AI has made building easier; it has not made selling easier.</p>
+              <p>Levie&#39;s take on the &#39;AI-proof your job&#39; question is the most concrete: the &#39;FDE&#39; (forward-deployed engineer) role inside enterprises — sitting between vendor and customer, customizing the agent stack per deployment — is going to be the most-defended job of the next three years. The generalist builder who knows both the customer&#39;s domain and the agent&#39;s failure modes is rare, and getting rarer.</p>
+              <p>The three Twitter threads he posted this week (routing; the GTM-is-the-hard-part; the model-families split) are essentially the Twitter-sized cuts of this hour-long conversation. If you read the threads and want the texture — the failure cases, the customer stories, the &#39;it actually worked / it totally didn&#39;t&#39; beats — the podcast is the place.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Hi. I&#39;m Matt Turf from Firstmark. Welcome to the Mad Podcast. Today, I&#39;m excited to welcome back Aaron Levy, CEO of Box. Aaron is hands down one of the most deeply thoughtful CEOs in tech today when it comes to agentic AI, and he has a front row seat to how AI is actually being deployed inside the world&#39;s largest enterprises.
+
+              […]
+
+              Let&#39;s just say you took GBT 5.5 or Opus, and you just snap the line right now. You could probably do this diffusion in, like, two years or three years, and we could probably all do the change management, like, collectively as an ecosystem. The problem is is the breakthroughs keep happening faster than the customer can implement any kind of standard architecture. And those breakthroughs oftentimes make obsolete the last thing you implemented. It&#39;s this really bittersweet thing, which is like the technology is getting so advanced that it makes obsolete the prior thing that you implemented, which actually means that the rollout takes longer.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.youtube.com/watch?v=Gs2styCcwro" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 05</div>
+    <h2 class="section-title">训练数据是隐藏的高杠杆 / Training Data Is the Hidden High-Leverage</h2>
+    <p class="section-desc">Madhu Guru 怼「数据标注 = 流水线」叙事,说 frontier 真正缺的是高经济价值任务的复杂 domain 数据;Amjad Masad 用 Replit 的「get to market, get the bag」跟它对读——ship 是数据策略,不只是 founder 话术。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:realmadhuguru" data-author-name="Madhusudhan" data-author-tag="AI 工程师 / 开源贡献者" data-author-handle="@realmadhuguru" data-author-avatar="../assets/avatars/x-realmadhuguru.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-realmadhuguru.jpg" alt="Madhusudhan avatar"><span class="avatar-fallback">M</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Madhusudhan</div>
+            <div class="author-tag is-inline">AI 工程师 / 开源贡献者</div>
+          </div>
+          <div class="author-handle">@realmadhuguru</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Madhusudhan(Madhu Guru,前 Google Gemini / Veo)怼一个流行误解:训练数据不是 AI 里「低技能、grunt work」那一面。「推进模型 frontier 需要的数据是反过来的。Lab 需要高经济价值任务的训练数据。这些任务里,SWE 之外几乎都没有现成文档——是跨年积累的、domain-specific 的复杂知识,中间夹着互相不说话的 legacy 工具。」</p>
+              <p>这是对「数据标注是新流水线」叙事的反向版本。真正能推进能力的 frontier eval 任务——法务 workflow、财务结账、医疗 protocol、供应链协同——所在 domain 没有干净的互联网、没有 Stack Overflow、没有 YouTube 教程。数据要由「已经在这些 domain 里工作的人」造出来,这些人用的工具彼此还经常不通话。</p>
+              <p>今天放这条为什么成立:同一天 steipete 把工作重新框成「设计 loop」,Levie 把企业 GTM 重新框成新瓶颈,Madhu 把「真正 leverage 在哪」重新框回供给侧。Mercor 之类的公司,做的是「high-leverage、高技能」的事,「deeply underappreciated」。这句话请读两遍:这不是批评者,是一个 builder 叫整个 field 抬头看一眼,别只盯着模型 size,也看看底下的数据 substrate。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Madhu Guru:训练数据不是低技能 grunt work,frontier 需要高经济价值任务的复杂数据——Mercor 之类「deeply underappreciated」。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Madhusudhan (Madhu Guru, ex-Google Gemini / Veo) pushes back on a popular misconception: training data is not the low-skill, grunt-work side of AI. &#39;The data required to advance the model frontier is the opposite. Labs need training data for high-economic-value tasks. And most of these tasks outside of SWE have little documentation — it is complex, domain-specific knowledge built over the years, spanning legacy tools that don&#39;t talk to each other.&#39;</p>
+              <p>This is the inverse of the usual &#39;data labeling is the new piecework&#39; narrative. The frontier-evals-tasks that actually move capability — legal workflows, financial close, healthcare protocols, supply-chain orchestration — are in domains where there is no clean internet, no Stack Overflow, no YouTube tutorial. The data has to be created by people who already operate inside those domains, often using tools that don&#39;t even talk to each other.</p>
+              <p>Why it lands today: the same day steipete is reframing work as &#39;designing loops&#39; and Levie is reframing enterprise GTM as the new bottleneck, Madhu is reframing &#39;where the leverage actually is&#39; in the supply side. Companies like Mercor, doing this kind of high-leverage data work, are &#39;deeply underappreciated.&#39; Read the sentence twice: this is a builder, not a critic, telling the field to look up from model size and look at the data substrate.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>A common misconception is that training data is low skill, grunt work - scan some notebooks, mine the internet, create labeled samples.
+
+              The data required to advance the model frontier is the opposite. Labs need training data for high-economic-value tasks. And most of these tasks outside of SWE have little documentation - it is complex, domain-specific knowledge built over the years, spanning legacy tools that don&#39;t talk to each other.
+
+              That&#39;s why we have SWE agents and not knowledge work agents yet.
+
+              The companies creating this training data, such as Mercor, are doing extremely high-leverage, high-skill work. 
+
+              Critical to moving AI forward. And deeply underappreciated.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/realmadhuguru/status/2063704354910347520" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:amasad" data-author-name="Amjad Masad" data-author-tag="Replit CEO" data-author-handle="@amasad" data-author-avatar="../assets/avatars/x-amasad.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-amasad.jpg" alt="Amjad Masad avatar"><span class="avatar-fallback">AM</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Amjad Masad</div>
+            <div class="author-tag is-inline">Replit CEO</div>
+          </div>
+          <div class="author-handle">@amasad</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Replit CEO Amjad Masad 用一句话庆祝一个 Replit 里程碑,这种话会被未来十年的 pitch deck 抄下来:「Replit 是把干扰全去掉,让你专注重要的事——get to market,getting the bag。」</p>
+              <p>和 Madhu Guru 的训练数据那段放一起读:lab 层最愿意付钱买的东西(干净 domain 数据),正是 Replit 在结构上生产的东西(ship 出产品,产生真实用户的数据 trail)。「get to market,get paid」不只是 founder 话术,它是一个会复利的数据获取策略。</p>
+              <p>结尾那个「Congrats!」在做两件事:社区认可信号,以及一个关于 loop 的低调宣言——ship、learn、fund、ship。Replit 作为一个平台,现在在优化「founder 一句『我有个 idea』」和「第一位付费客户的反馈」之间的时间,「getting the bag」只是这个 loop 健康时的稳态。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Replit 节点:「去掉干扰,让你专注 get to market,getting the bag」——和 Madhu 的训练数据论对读,「get paid」是 Replit 平台的复利型数据策略。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Amjad Masad (Replit CEO) celebrates a Replit milestone with the kind of line that gets pasted into pitch decks for the next decade: &#39;Replit is about removing all distractions and have you focus on what matters — getting to market and getting the bag.&#39;</p>
+              <p>Read alongside Madhu Guru&#39;s training-data point: the very thing the lab layer is paying top dollar for (clean data from a domain) is the very thing Replit is structured to produce (shipping products that create data trails from real users). The &#39;get to market, get paid&#39; posture isn&#39;t just a founder line — it&#39;s a data-acquisition strategy that compounds.</p>
+              <p>The &#39;Congrats!&#39; at the end is doing two things: it&#39;s a community-recognition signal, and it&#39;s a quiet declaration of the loop — ship, learn, fund, ship. Replit as a platform is now optimizing for the time between the founder&#39;s &#39;I have an idea&#39; and the first paying customer&#39;s feedback, and &#39;getting the bag&#39; is just where that loop settles when it&#39;s healthy.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Replit is about removing all distractions and have you focus on what matters — getting to market and getting the bag. Congrats! https://t.co/Z2gcG0WF0t</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/amasad/status/2063744208587125142" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 06</div>
+    <h2 class="section-title">Builder 文化边角 / Builder Culture Corners</h2>
+    <p class="section-desc">Garry Tan 发 GBrain v0.42.30「总结你思维怎么变」,顺手把 AI 教育列成新瓶颈;Zara Zhang 复盘 Frontend Slides 技能自然增长——HTML deck 越来越被读成「AI-native」;Aditya Agarwal 用 6 行讲完「财富放大深层欲望」,把 SV 的 loop 接到下一波 idea;Sottiaux 公开 Codex 100 天计划,每天挑一个 power user 给 10X limit。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:garrytan" data-author-name="Garry Tan" data-author-tag="Y Combinator 总裁" data-author-handle="@garrytan" data-author-avatar="../assets/avatars/x-garrytan.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-garrytan.jpg" alt="Garry Tan avatar"><span class="avatar-fallback">GT</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Garry Tan</div>
+            <div class="author-tag is-inline">Y Combinator 总裁</div>
+          </div>
+          <div class="author-handle">@garrytan</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Y Combinator 的 Garry Tan 发了 GBrain v0.42.30——一个新功能,能给你「思维如何随时间变化」的详细总结。下一条推(543 赞)点了更大的题:「Educating people on how to use the AI tools has become a serious bottleneck」。</p>
+              <p>Y Combinator 现在在跑一个项目(at https://t.co/NH6AWPWWkY)专门啃这个瓶颈。可以这样读:a16z 和 YC 都在从「AI 是新电力」这种 rhetoric 转向「AI 是新电力 + 多数人不会用开关」式的介入项目。2026 的边际价值不在模型,在 pedagogy。</p>
+              <p>GBrain 这个功能——一个 meta 工具,总结你的思维怎么变了——本身就是今天 loop 主题的一个实例。Agent 不只是执行,它反思人跑的 loop,再把这个反馈回给人类。(这是同日 Anthropic 发「dreaming」的消费侧版本。)</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Garry Tan 发 GBrain v0.42.30——总结你「思维怎么变了」,是同日 Anthropic「dreaming」的消费侧版本;YC 已经把 AI 教育当成独立项目跑。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Garry Tan (Y Combinator) ships GBrain v0.42.30 — a feature that gives you a detailed summary of how your thinking has changed over time. The follow-up tweet (543 likes) makes the bigger point: &#39;Educating people on how to use the AI tools has become a serious bottleneck.&#39;</p>
+              <p>Y Combinator is now running a project (at https://t.co/NH6AWPWWkY) explicitly aimed at that bottleneck. Read this as: a16z and YC are both moving from &#39;AI is the new electricity&#39; rhetoric to &#39;AI is the new electricity AND most people don&#39;t know how to flip the switch&#39; intervention programs. The marginal value in 2026 is not the model, it&#39;s the pedagogy.</p>
+              <p>The GBrain feature — a meta-tool that summarizes how your thinking has changed — is itself an instance of the day&#39;s loop theme. The agent doesn&#39;t just execute; it reflects on the loop the human is running and feeds that back. (This is the consumer-facing version of what Anthropic shipped as &#39;dreaming&#39; on the same day.)</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>GBrain v0.42.30 can now give you a detailed summary of how your thinking has changed over time. https://t.co/lcj64PThft</p>
+              <p>Educating people on how to use the AI tools has become a serious bottleneck https://t.co/x624uLrMkb</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/garrytan/status/2063785286367392095" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:zarazhangrui" data-author-name="Zhang Rui" data-author-tag="Follow Builders 创始人 / 策展人" data-author-handle="@zarazhangrui" data-author-avatar="../assets/avatars/x-zarazhangrui.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-zarazhangrui.jpg" alt="Zhang Rui avatar"><span class="avatar-fallback">ZR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Zhang Rui</div>
+            <div class="author-tag is-inline">Follow Builders 创始人 / 策展人</div>
+          </div>
+          <div class="author-handle">@zarazhangrui</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Follow Builders 的 Zara Zhang 复盘她的 Frontend Slides skill 为什么自然长出来:「slides are inherently social。People see these cool slides and always ask how did you make it. And people tend to perceive those using HTML decks as more AI-native and AI-savvy」</p>
+              <p>thesis:静态 artifact 在 agent 能扫读的那一刻起就开始掉价;社交性、表演性的 artifact 在涨价。HTML deck 是 builder 在视频里给朋友看的东西;PDF 是 builder 一年后发邮件给自己看的东西。前者是 connect 时刻,后者是 obligation 时刻。</p>
+              <p>回扣到昨天 Zara 自己说的「raw &amp; opinionated &gt; polished &amp; generic」,也回扣今天的 loop 主题:这里的 loop 是「show → 有人问怎么做的 → fork 技能 → 自己也做一个 show」。技能靠对话传播,不是 SEO。这个传播 loop 就是 2026 agent 工具需要赢下的传播路径。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Zara Zhang:Frontend Slides 长得自然,是因为 slides 本质是 social——HTML deck 越来越被读成「AI-native」,传播靠对话不是 SEO。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zara Zhang (Follow Builders) reflects on why her Frontend Slides skill has grown so much organically: &#39;slides are inherently social. People see these cool slides and always ask how did you make it. And people tend to perceive those using HTML decks as more AI-native and AI-savvy.&#39;</p>
+              <p>The thesis: static artifacts lose value the moment they&#39;re scannable by an agent; social, performative artifacts gain value. An HTML deck is a thing a builder shows their friend on a call; a PDF is a thing a builder emails to themselves a year later. The first is a moment of connection; the second is a moment of obligation.</p>
+              <p>Ties back to yesterday&#39;s Zara quote (&#39;raw &amp; opinionated &gt; polished &amp; generic&#39;) and to the day&#39;s loop theme: the loop here is show → ask &#39;how did you make it?&#39; → fork the skill → show your own version. The skill propagates through conversation, not through SEO. That propagation loop is exactly what agent-built tools need to win in 2026.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I think one reason that my Frontend Slides skill has grown so much organically is because slides are inherently social
+
+              People see these cool slides and always ask &#39;how did you make it&#39;. And people tend to perceive those using HTML decks as more AI-native and AI-savvy
+
+              https://t.co/CiQpfibZn5</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/zarazhangrui/status/2063638307586662539" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:adityaag" data-author-name="Aditya Agarwal" data-author-tag="Dropbox Engineering VP / 前 Facebook 平台工程负责人" data-author-handle="@adityaag" data-author-avatar="../assets/avatars/x-adityaag.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-adityaag.jpg" alt="Aditya Agarwal avatar"><span class="avatar-fallback">AA</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aditya Agarwal</div>
+            <div class="author-tag is-inline">Dropbox Engineering VP / 前 Facebook 平台工程负责人</div>
+          </div>
+          <div class="author-handle">@adityaag</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>South Park Commons GP、前 Dropbox CTO、前 Facebook 早期工程的 Aditya Agarwal,亲历过两次 IPO。他的金句:「Fabulous wealth tends to amplify deeper desires, not create new ones.」主流叙事是「早期员工赚到大钱,买大房子,去海边」;对一些人是这样。但他观察到,对很多人,这是「做更 crazy、更 wacky 的事」的窗口。</p>
+              <p>他把即将到来的流动性读成 Silicon Valley 的 loop:「start new things, fund new things, keep the crazy loop of Silicon Valley going」。可以这样读:这一波 AI 周期真正的次级效应不是消费故事,是 foundation 故事。下一波一千个 ambitious 的 idea,会由「上一波已经赚过钱、对再来一次有平均线以上兴趣」的人来投。</p>
+              <p>结尾那个「Onwards!」是个小信号。IPO 复盘 essay 是科技圈写得最滥的子类型之一;Agarwal 6 行写完,因为他真正想聊的 loop 不是过去,是下一件事。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Aditya Agarwal(亲历两次 IPO):「财富放大深层欲望,不创造新欲望」——下一波 idea 由「上一波已经赚过、对再来一次有兴趣」的人投,这是 SV 的 loop。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aditya Agarwal (South Park Commons GP, ex-CTO Dropbox, early Facebook eng) has watched two IPOs from the inside. His line: &#39;Fabulous wealth tends to amplify deeper desires, not create new ones.&#39; The mainstream narrative is &#39;early employees make lots of money and buy mansions and go to the beach.&#39; For some, yes. But for a lot of folks, it is a chance to do even crazier and wackier stuff.</p>
+              <p>He reads the upcoming liquidity as a Silicon Valley loop: &#39;start new things, fund new things, keep the crazy loop of Silicon Valley going.&#39; Read this as: the AI cycle&#39;s secondary effect is not the consumption stories, it&#39;s the foundation stories. The next thousand ambitious ideas will get funded by people who already made their money on the previous wave — and who have a deeper-than-average interest in doing it again.</p>
+              <p>The &#39;Onwards!&#39; at the end is a small tell. The IPO-postmortem essay is one of the most over-written sub-genres in tech; Agarwal gets through it in 6 lines because the loop he actually wants to talk about is not the past, it&#39;s the next thing.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I have had the chance to go through two IPOs (Meta and Dropbox).
+
+              Fabulous wealth tends to amplify deeper desires, not create new ones.
+
+              The mainstream narrative is: &#39;Early Employees make lots of money and buy mansions and go to the beach&#39;.
+
+              For some: Yes, they want to chill. That is great. I am happy for them.
+
+              But for a lot of folks, it is a chance to do even crazier and wackier stuff. Start new things. Fund new things. Keep the crazy loop of Silicon Valley going.
+
+              It&#39;s going to be awesome to have a lot of folks with liquidity in the coming months. 
+
+              Onwards!.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/adityaag/status/2063731771284619521" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:thsottiaux" data-author-name="Thibault Sottiaux" data-author-tag="OpenAI Codex &amp; ChatGPT" data-author-handle="@thsottiaux" data-author-avatar="../assets/avatars/x-thsottiaux.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-thsottiaux.jpg" alt="Thibault Sottiaux avatar"><span class="avatar-fallback">TS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Thibault Sottiaux</div>
+            <div class="author-tag is-inline">OpenAI Codex &amp; ChatGPT</div>
+          </div>
+          <div class="author-handle">@thsottiaux</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>OpenAI 的 Thibault Sottiaux(Codex &amp; ChatGPT)宣布一个 100 天计划:「接下来 100 天,我们每天挑一个用 Codex 做出 impressive 或 incredibly useful 工作的人,给一个月 10X usage limit,看他们能拿这个做出什么。」明天发第一个。</p>
+              <p>机制上的读法:OpenAI 试图让「在平均用量曲线里看不见」的 use case 浮上来。一个月 10X usage limit,够一个人真把模型用穿——或者把自己跑穿。</p>
+              <p>文化上的读法:这是 OpenAI 公开说「一个 power user 的边际学习」比「inference 补贴」更值得花。这个赌注和 Garry Tan 刚发的 GBrain、YC 的 AI 教育项目是同一个——2026 的瓶颈不在模型能力,在模型*用法*,那些「用得特别不寻常」的人是系统里最被低估的输入。(配 Peter Yang 的 punchline 一起读:一个 Codex power user,跑 100 天,本身就是一种 loop。)</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Sottiaux:100 天计划,每天挑一个 Codex power user 给 10X limit——OpenAI 公开说 power user 的边际学习比 inference 补贴更值。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thibault Sottiaux (Codex &amp; ChatGPT, OpenAI) announces a 100-day program: &#39;Over the next 100 days, we will select one person per day who does impressive or incredibly useful work with Codex and give them 10X usage limits for a month to see what they can do with it.&#39; First one tomorrow.</p>
+              <p>The mechanical reading: OpenAI is trying to surface use cases that aren&#39;t visible in the average-usage curve. 10X usage limits for a month is enough runway for someone to actually break the model — or break themselves trying.</p>
+              <p>The cultural reading: this is OpenAI saying, explicitly, that the marginal learning from a power user is worth more than the inference subsidy. The bet is the same one Garry Tan just made with GBrain and YC&#39;s education project — the field&#39;s bottleneck in 2026 is not model capability, it&#39;s model *use*, and the people who use it unusually well are the most under-priced input in the system. (Pair with Peter Yang&#39;s punchline: a Codex power user, every day for 100 days, is itself a kind of loop.)</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I have a new kind of big button that I can press for Codex. Over the next 100 days, we will select one person per day who does impressive or incredibly useful work with Codex and give them 10X usage limits for a month to see what they can do with it.
+
+              First one tomorrow.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/thsottiaux/status/2063748242681307611" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <footer data-source-note="Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-08 source feeds.">Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-08 source feeds.</footer>
+
+  <script>
+    function getTemplateAuthorSources() {
+      const sources = window.AI_BUILDERS_TEMPLATE_SOURCES || {};
+      return { identities: sources.identities || {}, avatars: sources.avatars || {} };
+    }
+
+    function getAuthorInitials(name) {
+      return (name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(function(part) { return part[0]; }).join('').toUpperCase();
+    }
+
+    function hydrateTemplateCopy() {
+      const intro = document.querySelector('.intro');
+      if (intro) {
+        const kicker = intro.querySelector('.intro-kicker');
+        const copy = intro.querySelector('.intro-copy');
+        if (kicker) kicker.textContent = intro.dataset.kicker || '';
+        if (copy) copy.textContent = intro.dataset.text || '';
+      }
+
+      const footer = document.querySelector('footer');
+      if (footer) footer.textContent = footer.dataset.sourceNote || '';
+
+      const rewriteLabel = document.body.dataset.viewLabelRewrite || '速读';
+      const originalLabel = document.body.dataset.viewLabelOriginal || '原文';
+      document.querySelectorAll('.view-toggle').forEach(function(button) {
+        if (button.dataset.viewTarget === 'rewrite') button.textContent = rewriteLabel;
+        if (button.dataset.viewTarget === 'original') button.textContent = originalLabel;
+      });
+    }
+
+    function hydrateAuthorMeta() {
+      const sources = getTemplateAuthorSources();
+      document.querySelectorAll('.card').forEach(function(card) {
+        const authorKey = card.dataset.authorKey || '';
+        const identity = sources.identities[authorKey] || {};
+        const avatarEntry = sources.avatars[authorKey] || {};
+
+        const name = identity.name || card.dataset.authorName || '';
+        const rawHandle = identity.handle || card.dataset.authorHandle || '';
+        const handle = rawHandle && rawHandle.startsWith('@') ? rawHandle : (rawHandle ? '@' + rawHandle : '');
+        const tag = identity.label || card.dataset.authorTag || '';
+        const avatar = avatarEntry.fileUrl || avatarEntry.localPath || card.dataset.authorAvatar || '';
+
+        const nameNode = card.querySelector('.author-name');
+        const tagNode = card.querySelector('.author-tag');
+        const handleNode = card.querySelector('.author-handle');
+        const avatarNode = card.querySelector('.avatar');
+        const avatarImg = card.querySelector('.avatar img');
+        const avatarFallback = card.querySelector('.avatar-fallback');
+
+        if (nameNode) nameNode.textContent = name;
+        if (tagNode) tagNode.textContent = tag;
+        if (handleNode) handleNode.textContent = handle;
+        if (avatarImg) {
+          avatarImg.src = avatar;
+          avatarImg.alt = name ? name + ' avatar' : 'Author avatar';
+        }
+        if (avatarNode) avatarNode.classList.toggle('is-fallback', !avatar);
+        if (avatarFallback) avatarFallback.textContent = getAuthorInitials(name);
+      });
+    }
+
+    function updateEditionStrip() {
+      const publishDate = document.body.dataset.publishDate;
+      const editionName = document.body.dataset.editionName || '双语精选版';
+      const editionStrip = document.getElementById('edition-strip-text');
+      if (!publishDate || !editionStrip) return;
+
+      const issueNumber = document.body.dataset.issueNumber || '';
+      if (!issueNumber) return;
+
+      const selectedCount = document.querySelectorAll('.card').length;
+      const authorCount = new Set([].slice.call(document.querySelectorAll('.author-handle')).map(function(node) { return node.textContent.trim(); }).filter(Boolean)).size;
+      const themeCount = document.querySelectorAll('.section-header').length;
+      const parts = ['第 ' + issueNumber + ' 期', publishDate, editionName, selectedCount + ' 条精选', authorCount + ' 位作者', themeCount + ' 个主题'];
+      editionStrip.innerHTML = parts.map(function(part) { return '<span class="edition-item">' + part + '</span>'; }).join('<span class="edition-sep">|</span>');
+    }
+
+    function measureVariantHeight(variant) {
+      const prevPosition = variant.style.position;
+      const prevInset = variant.style.inset;
+      const prevVisibility = variant.style.visibility;
+      const prevPointerEvents = variant.style.pointerEvents;
+      const prevOpacity = variant.style.opacity;
+      const prevTransform = variant.style.transform;
+      const prevTransition = variant.style.transition;
+      const prevOverflowY = variant.style.overflowY;
+      const prevDisplay = variant.style.display;
+
+      variant.style.position = 'relative';
+      variant.style.inset = 'auto';
+      variant.style.visibility = 'hidden';
+      variant.style.pointerEvents = 'none';
+      variant.style.opacity = '1';
+      variant.style.transform = 'none';
+      variant.style.transition = 'none';
+      variant.style.overflowY = 'visible';
+      variant.style.display = 'block';
+
+      const height = variant.scrollHeight;
+
+      variant.style.position = prevPosition;
+      variant.style.inset = prevInset;
+      variant.style.visibility = prevVisibility;
+      variant.style.pointerEvents = prevPointerEvents;
+      variant.style.opacity = prevOpacity;
+      variant.style.transform = prevTransform;
+      variant.style.transition = prevTransition;
+      variant.style.overflowY = prevOverflowY;
+      variant.style.display = prevDisplay;
+
+      return Math.ceil(height);
+    }
+
+    function getTargetHeight(shell, target) {
+      const variant = shell.querySelector('.content-variant[data-view="' + target + '"]');
+      return measureVariantHeight(variant);
+    }
+
+    function syncShellHeights() {
+      document.querySelectorAll('.content-shell').forEach(function(shell) {
+        const active = shell.querySelector('.content-variant.is-active');
+        const target = active ? active.dataset.view : 'rewrite';
+        shell.style.height = getTargetHeight(shell, target) + 'px';
+      });
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', function() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(syncShellHeights, 120);
+    });
+
+    document.querySelectorAll('.card').forEach(function(card) {
+      const buttons = card.querySelectorAll('.view-toggle');
+      const shells = card.querySelectorAll('.content-shell');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const target = button.dataset.viewTarget;
+          if (button.classList.contains('is-active')) return;
+
+          buttons.forEach(function(btn) {
+            btn.classList.toggle('is-active', btn === button);
+          });
+
+          shells.forEach(function(shell) {
+            const current = shell.querySelector('.content-variant.is-active');
+            const next = shell.querySelector('.content-variant[data-view="' + target + '"]');
+            if (!current || !next || current === next) return;
+
+            shell.style.height = shell.offsetHeight + 'px';
+            requestAnimationFrame(function() {
+              current.classList.remove('is-active');
+              next.classList.add('is-active');
+              shell.style.height = getTargetHeight(shell, target) + 'px';
+            });
+          });
+        });
+      });
+    });
+
+    hydrateTemplateCopy();
+    hydrateAuthorMeta();
+    updateEditionStrip();
+    syncShellHeights();
+  </script>
+</body>
+</html>
