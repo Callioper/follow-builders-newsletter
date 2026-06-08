@@ -47,7 +47,10 @@
               "他从对谈中提炼了几个关键要点：MCP server 设计要精简；用 dynamic mode 管理复杂 API；MCP server 可以当业务 copilot 用；用 Claude Code 给公司搭一个知识大脑。",
               "他认为 MCP 的未来是 code execution + doc search，而不是一个越来越长的工具列表。"
             ]
-          }
+          },
+          "authorName": "Dan Shipper",
+          "authorHandle": "@danshipper",
+          "authorTag": "Every 联合创始人 / AI 写作工具链"
         },
         {
           "authorKey": "podcast:ai-and-i-by-every",
@@ -111,7 +114,10 @@
               "重点在于他强调的不只是快，而是 fast、reliable、complete 三个属性同时成立。",
               "当 agents 需要搜索网页时，不接受替代品。"
             ]
-          }
+          },
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁"
         },
         {
           "authorKey": "x:swyx",
@@ -137,7 +143,10 @@
               "Swyx 说，他们做了一个 Exa 和竞品的对比，1.5 小时内团队就一致选了 Exa。",
               "他提到了 Exa 创始人 William Bryk，说回到去年 pre-PMF 阶段的访谈，就能理解怎么识别一家正在经历代际爆发的公司。"
             ]
-          }
+          },
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师"
         },
         {
           "authorKey": "x:swyx",
@@ -163,7 +172,10 @@
               "Swyx 把 Sam Altman 那句「build a business that gets better when models get better」对应到了他所说的 Agent Labs。",
               "他说已经看到模型性能和 agent lab revenue 之间非常直接的相关性，Q4 2025 有明显跳变。"
             ]
-          }
+          },
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师"
         }
       ]
     },
@@ -197,7 +209,10 @@
               "Agent 的实施既高度技术化，又会直接影响人们参与其中的底层工作流，因此天然带着 change management 属性。",
               "每一次模型升级都可能让旧脚手架失效，也可能让原本做不到的事突然变得可行。"
             ]
-          }
+          },
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO"
         },
         {
           "authorKey": "x:zarazhangrui",
@@ -225,7 +240,10 @@
               "Managers 也要像 IC 一样，重新变得 hands-on，而不是只做人事管理。",
               "这种 T-shape 不只适用于开发者，会适用于所有工作职能：专业更深、面更宽、再加一层 AI 能力。"
             ]
-          }
+          },
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人"
         }
       ]
     },
@@ -259,7 +277,10 @@
               "同时一个 general-purpose model 解决了数学开放问题，这会成为未来反复出现的句子。",
               "但他也补了一句：自己今天心情复杂。"
             ]
-          }
+          },
+          "authorName": "Sam Altman",
+          "authorHandle": "@sama",
+          "authorTag": "OpenAI CEO"
         },
         {
           "authorKey": "x:GoogleLabs",
@@ -285,7 +306,10 @@
               "Google Labs 宣布 Project Genie 已经面向全球 Google AI Ultra 订阅用户开放。",
               "口号很直接：从 playing the games 走向 designing the games in minutes。用户只需要挑角色、设场景，剩下的交给模型。"
             ]
-          }
+          },
+          "authorName": "Google Labs",
+          "authorHandle": "@GoogleLabs",
+          "authorTag": "Google AI"
         },
         {
           "authorKey": "x:rauchg",
@@ -309,7 +333,10 @@
             "original": [
               "Guillermo Rauch 说，这将把 AI 带到 42% 的网站上，覆盖所有模型、所有提供商、所有模态（文本、图像、视频、音频）。"
             ]
-          }
+          },
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO"
         }
       ]
     }

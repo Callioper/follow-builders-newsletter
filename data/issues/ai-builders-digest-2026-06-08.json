@@ -43,7 +43,10 @@
             "original": [
               "Steinberger(13734L):别再 prompt coding agent 了,应该设计让 agent 自己 prompt 自己的 loop。单位工作从 prompt 移到 loop。"
             ]
-          }
+          },
+          "authorName": "Peter Steinberger",
+          "authorHandle": "@steipete",
+          "authorTag": "OpenClaw 创始人"
         },
         {
           "authorKey": "x:bcherny",
@@ -67,7 +70,10 @@
             "original": [
               "Boris Cherny 跑 Opus 数小时的五条:/goal 或 /loop、dynamic workflows、self-verify 通道、auto mode 权限、云上跑——loop 是产品,prompt 是中间态。"
             ]
-          }
+          },
+          "authorName": "Boris Cherny",
+          "authorHandle": "@bcherny",
+          "authorTag": "Salesforce AI 工程负责人"
         },
         {
           "authorKey": "x:sama",
@@ -91,7 +97,10 @@
             "original": [
               "Sam Altman 一句「interesting recursive loop here maybe」——给这一整天的 vibe 命名,递归 loop 就是 steipete/Cherny/Peter Yang 老婆都在描述的结构。"
             ]
-          }
+          },
+          "authorName": "Sam Altman",
+          "authorHandle": "@sama",
+          "authorTag": "OpenAI CEO"
         },
         {
           "authorKey": "x:petergyang",
@@ -116,7 +125,10 @@
             "original": [
               "Peter Yang dad joke 的 punchline:「我设计了 loop,叫 marriage,这是你的 daily cron job」——loop over prompt 进家庭段子了。"
             ]
-          }
+          },
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者"
         }
       ]
     },
@@ -146,7 +158,10 @@
             "original": [
               "Vercel AI Gateway 每月救回 1T+ token,零加价——gateway 是应用层和 inference 层失败模式的「和解处」。"
             ]
-          }
+          },
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO"
         },
         {
           "authorKey": "x:nikunj",
@@ -170,7 +185,10 @@
             "original": [
               "Nikunj:几周内 vibe shift 从 tokenmaxxing 到 tokenoptimizing——但公司别急着收紧预算,组织肌肉萎缩比省钱更贵。"
             ]
-          }
+          },
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人"
         },
         {
           "authorKey": "x:levie",
@@ -194,7 +212,10 @@
             "original": [
               "Levie 跟进:未来一两年用例在 model family 之间分层,高端 frontier + 高 volume 便宜模型,中间的路由层会变成独立产品层。"
             ]
-          }
+          },
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO"
         }
       ]
     },
@@ -224,7 +245,9 @@
             "original": [
               "Anthropic 推出 dreaming + outcomes + multiagent——outcomes 用独立 context 的 grader 评分,loop 在结构上就是产品,比标准 prompting loop 高 10 个点。"
             ]
-          }
+          },
+          "authorName": "Anthropic",
+          "authorTag": "Anthropic 官方博客"
         }
       ]
     },
@@ -254,7 +277,9 @@
             "original": [
               "Levie MAD Podcast 长版:tokenmaxxing 催出路由层、模型进步太快拖慢企业部署、AI 让「造」变易但没让「卖」变易;FDE 是最难被替代的岗位。"
             ]
-          }
+          },
+          "authorName": "The MAD Podcast",
+          "authorTag": "Matt Turck 主理的 AI 与数据播客"
         }
       ]
     },
@@ -284,7 +309,10 @@
             "original": [
               "Madhu Guru:训练数据不是低技能 grunt work,frontier 需要高经济价值任务的复杂数据——Mercor 之类「deeply underappreciated」。"
             ]
-          }
+          },
+          "authorName": "Madhusudhan",
+          "authorHandle": "@realmadhuguru",
+          "authorTag": "AI 工程师 / 开源贡献者"
         },
         {
           "authorKey": "x:amasad",
@@ -308,7 +336,10 @@
             "original": [
               "Replit 节点:「去掉干扰,让你专注 get to market,getting the bag」——和 Madhu 的训练数据论对读,「get paid」是 Replit 平台的复利型数据策略。"
             ]
-          }
+          },
+          "authorName": "Amjad Masad",
+          "authorHandle": "@amasad",
+          "authorTag": "Replit CEO"
         }
       ]
     },
@@ -339,7 +370,10 @@
             "original": [
               "Garry Tan 发 GBrain v0.42.30——总结你「思维怎么变了」,是同日 Anthropic「dreaming」的消费侧版本;YC 已经把 AI 教育当成独立项目跑。"
             ]
-          }
+          },
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁"
         },
         {
           "authorKey": "x:zarazhangrui",
@@ -363,7 +397,10 @@
             "original": [
               "Zara Zhang:Frontend Slides 长得自然,是因为 slides 本质是 social——HTML deck 越来越被读成「AI-native」,传播靠对话不是 SEO。"
             ]
-          }
+          },
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人"
         },
         {
           "authorKey": "x:adityaag",
@@ -387,7 +424,10 @@
             "original": [
               "Aditya Agarwal(亲历两次 IPO):「财富放大深层欲望,不创造新欲望」——下一波 idea 由「上一波已经赚过、对再来一次有兴趣」的人投,这是 SV 的 loop。"
             ]
-          }
+          },
+          "authorName": "Aditya Agarwal",
+          "authorHandle": "@adityaag",
+          "authorTag": "Dropbox Engineering VP / 前 Facebook 平台工程负责人"
         },
         {
           "authorKey": "x:thsottiaux",
@@ -411,7 +451,10 @@
             "original": [
               "Sottiaux:100 天计划,每天挑一个 Codex power user 给 10X limit——OpenAI 公开说 power user 的边际学习比 inference 补贴更值。"
             ]
-          }
+          },
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT"
         }
       ]
     }

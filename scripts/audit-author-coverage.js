@@ -69,6 +69,61 @@ function listIssueAuthorKeys() {
   return keys;
 }
 
+/**
+ * Walk every issue JSON, find cards whose authorKey is in ident/manifest but
+ * whose own authorName / authorHandle / authorTag fields are missing or empty.
+ *
+ * This catches a class of bug the 4-way check misses: a fully-registered
+ * authorKey in ident+manifest still produces blank `data-author-*` attributes
+ * in the rendered HTML if the JSON card itself doesn't carry the resolved
+ * fields. Observed 2026-06-08: 15 cards across one issue, all authorName/
+ * authorHandle/authorTag = null, audit reported "OK" because ident+manifest
+ * entries were complete.
+ *
+ * Returns: Array<{ authorKey, issue, fields: {name?: 'EMPTY'|'MISSING', handle?: ..., tag?: ...} }>
+ */
+function listCardsWithMissingFields(ident, manifest) {
+  if (!fs.existsSync(ISSUES_DIR)) return [];
+  const out = [];
+  const files = fs.readdirSync(ISSUES_DIR).filter(f => f.endsWith('.json')).sort();
+  for (const f of files) {
+    const issueName = f.replace(/^ai-builders-digest-/, '').replace(/\.json$/, '');
+    let j;
+    try {
+      j = JSON.parse(fs.readFileSync(path.join(ISSUES_DIR, f), 'utf8'));
+    } catch (_) { continue; }
+    for (const s of j.sections || []) {
+      for (const c of s.cards || []) {
+        const key = c.authorKey;
+        if (!key) continue;
+        const idEntry = ident[key] || {};
+        const mEntry = manifest[key] || {};
+        // Only flag cards whose authorKey is fully registered. Cards using
+        // an unregistered authorKey would already be caught by the 4-way check
+        // as MISSING_IDENT / MISSING_MANIFEST, so reporting them here is noise.
+        if (!idEntry.name || !mEntry.localPath) continue;
+        const fields = {};
+        const cardName = c.authorName;
+        const cardHandle = c.authorHandle;
+        const cardTag = c.authorTag;
+        if (cardName == null || cardName === '') fields.name = 'EMPTY';
+        // handle is only required for x:* authorKeys
+        if (key.startsWith('x:')) {
+          if (cardHandle == null || cardHandle === '') fields.handle = 'EMPTY';
+        }
+        // tag is always required when ident.label is set
+        if (idEntry.label) {
+          if (cardTag == null || cardTag === '') fields.tag = 'EMPTY';
+        }
+        if (Object.keys(fields).length) {
+          out.push({ authorKey: key, issue: issueName, fields });
+        }
+      }
+    }
+  }
+  return out;
+}
+
 function avatarReferencedInManifest(fname, manifest) {
   for (const m of Object.values(manifest)) {
     const lp = (m.localPath || '').split('/').pop();
@@ -151,6 +206,11 @@ function main() {
     .filter(f => !filterAuthor || f.includes(filterAuthor.replace(/[:/@]/g, '')))
     .sort();
 
+  // Cards whose own authorName/authorHandle/authorTag fields are empty even
+  // though ident+manifest have the authorKey registered. See listCardsWithMissingFields.
+  const cardsWithMissingFields = listCardsWithMissingFields(ident, manifest)
+    .filter(c => !filterAuthor || c.authorKey === filterAuthor);
+
   // Summary
   const counts = {
     identEntries: Object.keys(ident).length,
@@ -159,10 +219,11 @@ function main() {
     issueAuthorKeys: usedInIssues.size,
     issuesFound: findings.length,
     orphanFiles: orphanFiles.length,
+    cardsMissingFields: cardsWithMissingFields.length,
   };
 
   if (JSON_MODE) {
-    console.log(JSON.stringify({ counts, findings, orphanFiles }, null, 2));
+    console.log(JSON.stringify({ counts, findings, orphanFiles, cardsWithMissingFields }, null, 2));
   } else {
     console.log('=== Author Coverage Audit ===');
     console.log(`Ident entries:      ${counts.identEntries}`);
@@ -171,6 +232,7 @@ function main() {
     console.log(`Issue authorKeys:   ${counts.issueAuthorKeys}`);
     console.log(`Issues found:       ${counts.issuesFound}`);
     console.log(`Orphan avatar files: ${counts.orphanFiles}`);
+    console.log(`Cards missing fields: ${counts.cardsMissingFields}`);
     console.log();
 
     if (findings.length) {
@@ -194,12 +256,29 @@ function main() {
       console.log();
     }
 
-    if (!findings.length && !orphanFiles.length) {
-      console.log('OK — all authorKeys have ident + manifest + file, and all avatars are registered.');
+    if (cardsWithMissingFields.length) {
+      console.log('=== Cards with missing author fields (CARD_MISSING_FIELDS) ===');
+      // Group by issue for readable output
+      const byIssue = {};
+      for (const c of cardsWithMissingFields) {
+        (byIssue[c.issue] = byIssue[c.issue] || []).push(c);
+      }
+      for (const issue of Object.keys(byIssue).sort()) {
+        console.log(`  ${issue}:`);
+        for (const c of byIssue[issue]) {
+          const missing = Object.keys(c.fields).join('+');
+          console.log(`    ${c.authorKey.padEnd(28)}  [${missing}]`);
+        }
+      }
+      console.log();
+    }
+
+    if (!findings.length && !orphanFiles.length && !cardsWithMissingFields.length) {
+      console.log('OK — all authorKeys have ident + manifest + file, all cards have resolved fields.');
     }
   }
 
-  process.exit(findings.length || orphanFiles.length ? 1 : 0);
+  process.exit(findings.length || orphanFiles.length || cardsWithMissingFields.length ? 1 : 0);
 }
 
 main();

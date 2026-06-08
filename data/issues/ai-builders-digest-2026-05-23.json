@@ -47,7 +47,10 @@
               "当 bar is zero，当替代方案就是「我们完了」或「我们用 2000 人手工做」的时候，鸿沟不存在。",
               "他最兴奋的公司不是在颠覆 incumbents，而是在填补空白。如果市场 bar is zero，就别纠结完整产品了，先 ship 60% 的方案。"
             ]
-          }
+          },
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁"
         },
         {
           "authorKey": "x:levie",
@@ -75,7 +78,10 @@
               "AI 远没有神奇地解决一切，仍然需要大量分诊工作和人类判断来做后续处理以真正保护系统。",
               "结果就是我们将进入安全工程师的 boom 时期。典型的 Jevons paradox。"
             ]
-          }
+          },
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO"
         }
       ]
     },
@@ -109,7 +115,10 @@
               "往一个已被证明低效的范式上堆更多参数、更多算力、更多一切，最终会被更简单的方案超越——能假设和寻求真相的方案，而非后拟合一个纸牌屋。",
               "不过 bitter lesson 告诉我们，scale 更简单，也许靠堆就能达到 AGI，因为人类智能本身也没那么聪明和充裕。"
             ]
-          }
+          },
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师"
         },
         {
           "authorKey": "podcast:unsupervised-learning",
@@ -173,7 +182,10 @@
               "他的框架是「mullet factory」——前面 party（ship 独特功能），后面 dark（生产原则），而不是全黑工厂。",
               "本质上是把反熵增/反 slop 的部分独立出来，聚焦 subagent 并行和 AI 工程师设计应用的强观点编码。"
             ]
-          }
+          },
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师"
         }
       ]
     },
@@ -207,7 +219,10 @@
               "AI 让人快速达到平均，但这反而意味着客户更愿意为人类的手艺和品味付费。",
               "如果都不行，考虑创业。他认为创业反而是 AI 时代最安全的工作。"
             ]
-          }
+          },
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者"
         }
       ]
     }

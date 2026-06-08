@@ -47,7 +47,9 @@
               "现在 case for「还有别的东西」正在变强,即便 transformer 自己也在追;小模型 TRM、HRM 加点 recurrence 在结构化问题上跑得很顺,但能不能搬过来还不知道。",
               "重做一篇老论文以前要三周,Codex 两天——10x 提速是常态;但 agent 会自作主张发明一个 aux loss,人还是要对「机器学习层面在跑什么」有完整心智模型。"
             ]
-          }
+          },
+          "authorName": "Unsupervised Learning",
+          "authorTag": "Redpoint 出品的 AI 投资与技术播客"
         }
       ]
     },
@@ -75,7 +77,10 @@
             "original": [
               "路由难就难在要把每个任务映射到对的模型——这需要按自家产品任务做 benchmark,在质量/成本之间做权衡。Madhu 在 Gemini 看到的三个阶段:Phase 1 默认 GPT,Phase 2 矫枉过正没 eval 内功,Phase 3 才出现真正的「按子任务路由」。"
             ]
-          }
+          },
+          "authorName": "Madhusudhan",
+          "authorHandle": "@realmadhuguru",
+          "authorTag": "AI 工程师 / 开源贡献者"
         },
         {
           "authorKey": "x:levie",
@@ -99,7 +104,10 @@
             "original": [
               "Token 成本突然变成企业最热的话题——对 AI 整体是利好(说明用到了没被预料过的规模),同时给应用层催出新的分水岭:模型路由。高端任务依然吃 frontier,子任务分给便宜模型,关键是谁有最好的 eval 和 workflow 理解。"
             ]
-          }
+          },
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO"
         }
       ]
     },
@@ -125,7 +133,10 @@
             "original": [
               "Agentic coding 的瘾比打游戏还大。"
             ]
-          }
+          },
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者"
         },
         {
           "authorKey": "x:petergyang",
@@ -147,7 +158,10 @@
             "original": [
               "Codex thread 需要一等公民的 filter / sort——按「在等批准」「在跑」切,不只是按项目。10 条 thread 已经 hold 不住了,这是工具问题,不是模型问题。"
             ]
-          }
+          },
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者"
         }
       ]
     },
@@ -177,7 +191,10 @@
             "original": [
               "研究论文 alpha 死的一个解释:研究者推门就能拿一亿美金,卖 tacit knowledge——加州不强制 non-compete,比 GitHub+arXiv+HuggingFace 三个加起来更影响知识扩散。"
             ]
-          }
+          },
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师"
         }
       ]
     },
@@ -205,7 +222,10 @@
             "original": [
               "Paxel 没说所有用户数据不上云,只说代码(文件内容)不上云。本地模型越强,以后能本地化的事越多——渐进式离线,不是一刀切。"
             ]
-          }
+          },
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁"
         },
         {
           "authorKey": "x:nikunj",
@@ -227,7 +247,10 @@
             "original": [
               "Nikunj 放出《Walk In The Park》二期,嘉宾是 Reactor world model 创始人 @taiuti——30 分钟入门,「world model 是什么、起源、低时延为什么重要、第一个会爆的场景」一次讲完。"
             ]
-          }
+          },
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人"
         }
       ]
     },
@@ -255,7 +278,10 @@
             "original": [
               "静态内容掉价,活人 + 即时互动涨价;「生猛 + 有立场 > 精致 + 不得罪」——对 builder 等于被允许发 12 分钟 YouTube,不用交 12 页 PDF。"
             ]
-          }
+          },
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人"
         },
         {
           "authorKey": "x:danshipper",
@@ -281,7 +307,10 @@
             "original": [
               "LLM 不是有意识,也不是没有意识,两个都为真——Shipper 用古希腊词 techne / aidos / dike 给这场讨论换词,比「有没有意识」更值得谈。"
             ]
-          }
+          },
+          "authorName": "Dan Shipper",
+          "authorHandle": "@danshipper",
+          "authorTag": "Every 联合创始人 / AI 写作工具链"
         }
       ]
     }

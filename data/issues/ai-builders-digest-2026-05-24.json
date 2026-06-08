@@ -43,7 +43,10 @@
               "Garry Tan 说 Thinking Machines 让他下午几个小时就 fine-tune 了 Qwen3.5-397B。",
               "又快又好用的多模态，会让 personal AI 变得非常震撼。"
             ]
-          }
+          },
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁"
         },
         {
           "authorKey": "x:garrytan",
@@ -67,7 +70,10 @@
               "Garry Tan 发布了 GBrain 的最新评测，声称在 reranking 和 embedding 的成本、速度和检索成功率上是 SOTA。",
               "GBrain 在 LongMemEval 上比 MemPalace 高 1%，比 Vector RAG 高 38%。"
             ]
-          }
+          },
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁"
         },
         {
           "authorKey": "podcast:no-priors",
@@ -125,7 +131,10 @@
             "original": [
               "Rauchg 处理了 1400 条回复，发现 OpenAI 正在追赶 Anthropic，Codex 提及数超过 Claude Code，但按模型提及数 Claude 仍然占优。"
             ]
-          }
+          },
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO"
         },
         {
           "authorKey": "x:rauchg",
@@ -147,7 +156,10 @@
             "original": [
               "Rauchg 的原帖：给我看看你用 AI 做的、最让你自豪的东西。回复一个能用的产品 URL 和你主要用的模型/agent。2195 个赞。"
             ]
-          }
+          },
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO"
         },
         {
           "authorKey": "x:steipete",
@@ -171,7 +183,10 @@
               "Steipete 说他一直想要一个 GitHub dashboard，能看 repo、issue/PR、最近版本和 commit 数。",
               "于是他做了一个给所有人用的版本。"
             ]
-          }
+          },
+          "authorName": "Peter Steinberger",
+          "authorHandle": "@steipete",
+          "authorTag": "OpenClaw 创始人"
         },
         {
           "authorKey": "x:amasad",
@@ -193,7 +208,10 @@
             "original": [
               "一位用户说：用 Cursor 做了三个 app 觉得很快，但用 Replit 做产品完全被震惊了。一个周末完成 MVP，第一次提交就通过了 Apple 审核。"
             ]
-          }
+          },
+          "authorName": "Amjad Masad",
+          "authorHandle": "@amasad",
+          "authorTag": "Replit CEO"
         }
       ]
     },
@@ -227,7 +245,10 @@
               "即使任务被自动化了，岗位定义也会扩展——做更多任务、更高质量、或转向还没被自动化的部分。",
               "别把任务和岗位搞混了。"
             ]
-          }
+          },
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO"
         },
         {
           "authorKey": "x:nikunj",
@@ -251,7 +272,10 @@
               "Nikunj 说一年前写的 B2B 机会终于被更多公司看到。",
               "别再等了。叙事和氛围在产品同质化中极其重要。"
             ]
-          }
+          },
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人"
         }
       ]
     },
@@ -279,7 +303,10 @@
             "original": [
               "Steipete 建议：让 Codex 在大重构时维护 scratch-log，记录决策、tradeoff 和 review 修复，方便事后回看 agent 做了什么取舍。"
             ]
-          }
+          },
+          "authorName": "Peter Steinberger",
+          "authorHandle": "@steipete",
+          "authorTag": "OpenClaw 创始人"
         },
         {
           "authorKey": "x:adityaag",
@@ -302,7 +329,10 @@
             "original": [
               "6 个月前人们还主要跟 LLM 聊天。现在 LLM 产出的代码已经超过人类历史总和。"
             ]
-          }
+          },
+          "authorName": "Aditya Agarwal",
+          "authorHandle": "@adityaag",
+          "authorTag": "Dropbox Engineering VP / 前 Facebook 平台工程负责人"
         },
         {
           "authorKey": "x:trq212",
@@ -324,7 +354,10 @@
             "original": [
               "TRQ 说，隔一阵就会想起来可以跑一句「please save me money」的 prompt，真的有用。463 个赞说明很多人有共鸣。"
             ]
-          }
+          },
+          "authorName": "Tao Li",
+          "authorHandle": "@trq212",
+          "authorTag": "AI 研究员 / Follow Builders 维护者"
         }
       ]
     }

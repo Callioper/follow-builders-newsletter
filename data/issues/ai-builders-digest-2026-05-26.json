@@ -47,7 +47,10 @@
               "Carson 说：以前 MVP 就是做最少量，现在反过来了，要花大量时间建文档和 skill file。",
               "搭好之后一个人能干十个人的活。"
             ]
-          }
+          },
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者"
         },
         {
           "authorKey": "x:petergyang",
@@ -70,7 +73,10 @@
             "original": [
               "Codex 很好，尤其擅长用浏览器自测。但设计和前端任务 Claude 仍然更强。"
             ]
-          }
+          },
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者"
         }
       ]
     },
@@ -102,7 +108,10 @@
               "Steipete 说：写 skill 时要让 agent 注意 token 效率，别在描述里写书，那些废话每次都加载进 context。",
               "他写了一个 skill 来找最严重的 token 浪费者。3921 赞。"
             ]
-          }
+          },
+          "authorName": "Peter Steinberger",
+          "authorHandle": "@steipete",
+          "authorTag": "OpenClaw 创始人"
         },
         {
           "authorKey": "x:steipete",
@@ -124,7 +133,10 @@
             "original": [
               "OpenClaw 继续清理依赖，用 photon（WebAssembly + Rust）替代 Sharp 和 Jimp。2MB vs 140MB。"
             ]
-          }
+          },
+          "authorName": "Peter Steinberger",
+          "authorHandle": "@steipete",
+          "authorTag": "OpenClaw 创始人"
         }
       ]
     },
@@ -158,7 +170,10 @@
               "核心机制：自动化后不是便宜地交付同样价值，而是有人做得更多，拉高所有人的期望。",
               "别把世界当静止的，才能看清 AI 如何改变岗位。"
             ]
-          }
+          },
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO"
         }
       ]
     },
@@ -192,7 +207,10 @@
               "手里有外星超级智能，还想用老方法做事？",
               "自动化或被自动化，这是 bitter lesson。享受过程。"
             ]
-          }
+          },
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人"
         },
         {
           "authorKey": "x:AmandaAskell",
@@ -214,7 +232,10 @@
             "original": [
               "Amanda Askell 说 5 年没写博客了，任何声称是她写的都不是。也许应该开始写了。"
             ]
-          }
+          },
+          "authorName": "Amanda Askell",
+          "authorHandle": "@AmandaAskell",
+          "authorTag": "Anthropic 研究员"
         }
       ]
     }

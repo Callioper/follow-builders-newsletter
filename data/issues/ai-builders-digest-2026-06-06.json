@@ -43,7 +43,10 @@
               "Codex papercuts 在下降,Codex 渗透率在上升。",
               "更好的 memory = 更短的 prompt = 每个 token 干更多的活。"
             ]
-          }
+          },
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT"
         },
         {
           "authorKey": "x:swyx",
@@ -65,7 +68,10 @@
             "original": [
               "比起「永远先 plan mode」,更聪明的做法是把任务框成问题,让模型去 push back、给你评分或给替代方案,而不是盲目照你说的做(你说的往往不是你想的)。"
             ]
-          }
+          },
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师"
         },
         {
           "authorKey": "x:petergyang",
@@ -86,7 +92,10 @@
             "original": [
               "三步搭一个能自查、越用越好的 AI skill:给 context、好触发、加 evals——其中 evals 至少要有 10 条 pass/fail 检查。"
             ]
-          }
+          },
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者"
         },
         {
           "authorKey": "x:petergyang",
@@ -107,7 +116,10 @@
             "original": [
               "Matt Van Horn 没有 CS 学位、也没有正规工程背景,但他给 Python、Go 都贡献过代码,他自己说 Every 的 Compound Engineering 是他持续输出的关键。"
             ]
-          }
+          },
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者"
         },
         {
           "authorKey": "x:rauchg",
@@ -128,7 +140,10 @@
             "original": [
               "Skills API 的目标:让所有 agent 和平台都能用上更聪明的能力。可以理解为「agent 界的 npm」,免费且开源。"
             ]
-          }
+          },
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO"
         }
       ]
     },
@@ -156,7 +171,10 @@
             "original": [
               "Agent filesystem 状态可以脱离 sandbox 生命周期,被独立读写和挂载——这是 Vercel 在算力产品下新建的一套虚拟存储基础设施。"
             ]
-          }
+          },
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO"
         },
         {
           "authorKey": "x:amasad",
@@ -177,7 +195,10 @@
             "original": [
               "Replit × Shopify 合作官宣。"
             ]
-          }
+          },
+          "authorName": "Amjad Masad",
+          "authorHandle": "@amasad",
+          "authorTag": "Replit CEO"
         },
         {
           "authorKey": "x:bcherny",
@@ -198,7 +219,10 @@
             "original": [
               "Claude Cowork 用量上限未来一个月翻倍,适用于 5 小时 rate limit——存了大项目,这个月就是时候了。"
             ]
-          }
+          },
+          "authorName": "Boris Cherny",
+          "authorHandle": "@bcherny",
+          "authorTag": "Salesforce AI 工程负责人"
         },
         {
           "authorKey": "x:claudeai",
@@ -219,7 +243,10 @@
             "original": [
               "Claude Cowork 用量上限未来一个月翻倍——把更复杂、更大的任务交给 Claude。有效期到 7-5。"
             ]
-          }
+          },
+          "authorName": "Claude",
+          "authorHandle": "@claudeai",
+          "authorTag": "Anthropic Claude 官方账号"
         },
         {
           "authorKey": "x:bcherny",
@@ -240,7 +267,10 @@
             "original": [
               "Cowork 最适合的工作是聊天框装不下的那种:跨多个账号的研究、周期性的报表、邮件分流和回信草稿。这个月额度翻倍,正好试试它能帮你卸掉什么。"
             ]
-          }
+          },
+          "authorName": "Boris Cherny",
+          "authorHandle": "@bcherny",
+          "authorTag": "Salesforce AI 工程负责人"
         }
       ]
     },
@@ -272,7 +302,9 @@
               "Matt 反对「SaaS 末日」叙事——开发者人数会从两三千万涨到一个亿甚至更多,世界上的软件会多到难以置信。对已经在局内的公司来说,这是金矿,不是末日。",
               "Figma 同时在做产品内 agent 和对外开放 MCP,但他认为「开 API 给 agent」和「自己做 agent」是两个完全不同的问题,这是当下最常被搞混的地方。"
             ]
-          }
+          },
+          "authorName": "AI & I by Every",
+          "authorTag": "AI 商业与产品深访"
         },
         {
           "authorKey": "x:ryolu_",
@@ -293,7 +325,10 @@
             "original": [
               "设计即代码现在能做到:点、聊、按住 Shift 多选——用 Composer 2.5 最顺手。"
             ]
-          }
+          },
+          "authorName": "Ryan Lu",
+          "authorHandle": "@ryolu_",
+          "authorTag": "AI 工程师"
         },
         {
           "authorKey": "x:garrytan",
@@ -314,7 +349,10 @@
             "original": [
               "Garry Tan 那个暗示了好几个月的大项目终于开闸了——目标是长期帮你学会「更快写好软件」的最佳技术。"
             ]
-          }
+          },
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁"
         }
       ]
     },
@@ -342,7 +380,10 @@
             "original": [
               "企业 AI 团队最常见的错误是按今天的模型和价格去设计。思路:看 6 个月后——用脚手架补今天的弱点,赌下一代模型会接管脚手架。Build for the slope,不是 build for the snapshot。"
             ]
-          }
+          },
+          "authorName": "Madhusudhan",
+          "authorHandle": "@realmadhuguru",
+          "authorTag": "AI 工程师 / 开源贡献者"
         },
         {
           "authorKey": "x:levie",
@@ -364,7 +405,10 @@
             "original": [
               "写代码几乎是用 AI 自动化最自然的任务——但工程师依然要在 loop 里盯着。训练数据多、用户硬核、结果可验证,条件全到位,人还是不能下桌。"
             ]
-          }
+          },
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO"
         },
         {
           "authorKey": "x:mattturck",
@@ -385,7 +429,10 @@
             "original": [
               "X 上现在到处是 VC 的负面故事,但 VC 也有自己的 founder 翻车集——比如拿了更高估值的 term sheet,却忽视了原本给得明显的增值和资源。"
             ]
-          }
+          },
+          "authorName": "Matt Turck",
+          "authorHandle": "@mattturck",
+          "authorTag": "First Mark Capital 合伙人 / MAD Podcast 主理人"
         },
         {
           "authorKey": "x:adityaag",
@@ -406,7 +453,10 @@
             "original": [
               "有时候「快」只是穿上了雄心外套的急躁。"
             ]
-          }
+          },
+          "authorName": "Aditya Agarwal",
+          "authorHandle": "@adityaag",
+          "authorTag": "Dropbox Engineering VP / 前 Facebook 平台工程负责人"
         }
       ]
     },
@@ -433,7 +483,10 @@
             "original": [
               "完整的工作流和 prompt 很快会随文章一起开放给 @every 订阅用户。"
             ]
-          }
+          },
+          "authorName": "Dan Shipper",
+          "authorHandle": "@danshipper",
+          "authorTag": "Every 联合创始人 / AI 写作工具链"
         },
         {
           "authorKey": "x:nikunj",
@@ -454,7 +507,10 @@
             "original": [
               "这条 thread 的 quote tweet 已经说明一切——VC 必须做得更好。常青提醒:没有 founder,就没有 VC。完整视频明天上午出。"
             ]
-          }
+          },
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人"
         },
         {
           "authorKey": "x:garrytan",
@@ -475,7 +531,10 @@
             "original": [
               "GBrain 给 OpenClaw 和 Hermes Agent 插上翅膀。"
             ]
-          }
+          },
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁"
         }
       ]
     }

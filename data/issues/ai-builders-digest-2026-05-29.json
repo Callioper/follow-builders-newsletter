@@ -43,7 +43,10 @@
             "original": [
               "Steipete 在 MS Build 上讲:Build the thing that builds the thing。造那个造东西的东西。"
             ]
-          }
+          },
+          "authorName": "Peter Steinberger",
+          "authorHandle": "@steipete",
+          "authorTag": "OpenClaw 创始人"
         },
         {
           "authorKey": "x:_catwu",
@@ -67,7 +70,10 @@
             "original": [
               "Cat Wu 介绍 Anthropic 数据团队怎么用 Claude 把 95% 业务分析查询自动化,博客文章讲了他们怎么做 eval、ablation 和在线验证。"
             ]
-          }
+          },
+          "authorName": "Cat Wu",
+          "authorHandle": "@_catwu",
+          "authorTag": "Anthropic 产品工程"
         },
         {
           "authorKey": "blog:anthropic",
@@ -91,7 +97,9 @@
             "original": [
               "十二个月前,给 Claude 那种能搞垮 Anthropic 内部服务的访问权限,我们的标准答案是直接驳回。现在这种访问已经是日常,Anthropic 开发者因此效率更高。"
             ]
-          }
+          },
+          "authorName": "Anthropic",
+          "authorTag": "Anthropic 官方博客"
         }
       ]
     },
@@ -121,7 +129,10 @@
             "original": [
               "Cursor 招 design engineer:要有 taste、systems thinking,深耕打磨快速精致的体验,尤其是想给 designer、engineer 和 agent 一起造工具的人。认识谁就 tag 一下,或 DM 我。"
             ]
-          }
+          },
+          "authorName": "Ryan Lu",
+          "authorHandle": "@ryolu_",
+          "authorTag": "AI 工程师"
         },
         {
           "authorKey": "x:adityaag",
@@ -143,7 +154,10 @@
             "original": [
               "非常激动地欢迎 Harshit Madan 和 Rohan Choudhary 加入团队!"
             ]
-          }
+          },
+          "authorName": "Aditya Agarwal",
+          "authorHandle": "@adityaag",
+          "authorTag": "Dropbox Engineering VP / 前 Facebook 平台工程负责人"
         },
         {
           "authorKey": "x:garrytan",
@@ -165,7 +179,10 @@
             "original": [
               "Pelley 被解雇不是新闻自由的悲剧,是一次尸检。"
             ]
-          }
+          },
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁"
         }
       ]
     },
@@ -195,7 +212,10 @@
             "original": [
               "过去 24 小时,Codex 出了三起小事故影响可靠性。三次太多了,我们正在主动排查防止再发。已经把所有付费 plan 的 Codex usage limit 复位,愿 token 重新流淌。"
             ]
-          }
+          },
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT"
         },
         {
           "authorKey": "x:petergyang",
@@ -219,7 +239,10 @@
             "original": [
               "Codex 今天下午在编辑电子表格这件事上,简直杀疯了。"
             ]
-          }
+          },
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者"
         },
         {
           "authorKey": "x:thsottiaux",
@@ -241,7 +264,10 @@
             "original": [
               "OpenAI 这边有很多小向量都指向同一方向,很期待接下来几周它们能一起收敛成形。"
             ]
-          }
+          },
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT"
         }
       ]
     },
@@ -271,7 +297,10 @@
             "original": [
               "我们 @openclaw 在 npm 上的下载量这一周是历史新高——再加上 Docker、GitHub、企业内部部署和一堆 fork,真实数字大概在每周 1000–2000 万次下载。"
             ]
-          }
+          },
+          "authorName": "Peter Steinberger",
+          "authorHandle": "@steipete",
+          "authorTag": "OpenClaw 创始人"
         },
         {
           "authorKey": "x:steipete",
@@ -293,7 +322,10 @@
             "original": [
               "今天的 OpenClaw 活动候补名单已经超过 1300 人,活动会在 Twitch 和 Discord 上直播。"
             ]
-          }
+          },
+          "authorName": "Peter Steinberger",
+          "authorHandle": "@steipete",
+          "authorTag": "OpenClaw 创始人"
         },
         {
           "authorKey": "x:claudeai",
@@ -317,7 +349,10 @@
             "original": [
               "Ben 在跑长 Claude Code session 时总走神,于是造了一个迷你 Clawd 来提醒他。Claude Code 需要输入时,铝合金身体里的螺线管会把 Clawd 顶起来——也就是,它会跳。"
             ]
-          }
+          },
+          "authorName": "Claude",
+          "authorHandle": "@claudeai",
+          "authorTag": "Anthropic Claude 官方账号"
         }
       ]
     },
@@ -347,7 +382,10 @@
             "original": [
               "🚨 新实验 🚨 Dreambeans 是一个新的实验性移动 app,用 Personal Intelligence 连接你的 Google 应用,每天推送一组精选故事,把你可能错过的内容挖出来,再配上你关心的主题让你深读。即日起对美国地区符合条件的 Google AI Ultra 订阅者开放。"
             ]
-          }
+          },
+          "authorName": "Google Labs",
+          "authorHandle": "@GoogleLabs",
+          "authorTag": "Google AI"
         },
         {
           "authorKey": "x:joshwoodward",
@@ -369,7 +407,10 @@
             "original": [
               "这个项目的小背景:Google Labs 一个小团队想做一款 app,把你和真正重要的东西连起来,不要无尽滚屏。[希望型滚动,不是末日型滚动]是走廊 pitch 的原话。[去吧]是回答。今天,这个小小的实验上线了。认识一下 Dreambeans,每天一份新鲜出炉的灵感。"
             ]
-          }
+          },
+          "authorName": "Josh Woodward",
+          "authorHandle": "@joshwoodward",
+          "authorTag": "Google Labs 产品负责人"
         },
         {
           "authorKey": "x:nikunj",
@@ -391,7 +432,10 @@
             "original": [
               "我跳上 Fitbit Air 这趟 hype 列车了。上面是专业模式,下面是健康监测……现在只要 Google Health API、能写数据到 Apple Health,再搭一条好看的表带,就齐活了!"
             ]
-          }
+          },
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人"
         }
       ]
     },
@@ -421,7 +465,10 @@
             "original": [
               "即使算上公司的用量上限,花在 AI token 上的钱也远远超过软件史上任何一笔支出。过去企业每员工每月大概花 10–50 美元买一份软件 license,现在要花几百到几千美元买 token 来提人效。这说明企业端 intelligence 的 TAM 有多大。AI 的市场会比多数人想的大得多。"
             ]
-          }
+          },
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO"
         },
         {
           "authorKey": "x:levie",
@@ -445,7 +492,10 @@
             "original": [
               "出来的就业数据持续在反驳多数人原本预期的结果。就拿工程举例,这是 AI 影响(以及感知风险)最大的领域。现在多数公司因为 AI 在做比以往多出很多的软件项目,而这些活几乎只能由工程师来做。"
             ]
-          }
+          },
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO"
         },
         {
           "authorKey": "x:rauchg",
@@ -469,7 +519,10 @@
             "original": [
               "▲ + ❄️  在你的业务数据之上直接生成前端,是 coding AI 的杀手级应用之一。精灵已经出瓶,不可能再回到那种笨重死板的可视化看板。@vercel 早就跑在 Snowflake 上了。但有了 @v0 和 @nextjs,我们现在拿到的价值是 1000 倍的。"
             ]
-          }
+          },
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO"
         }
       ]
     },
@@ -499,7 +552,9 @@
             "original": [
               "No Priors:Microsoft CEO Satya Nadella 谈全栈 builder 与杠杆最大的通用型人才的崛起。"
             ]
-          }
+          },
+          "authorName": "No Priors",
+          "authorTag": "AI 与创业对话播客"
         }
       ]
     }

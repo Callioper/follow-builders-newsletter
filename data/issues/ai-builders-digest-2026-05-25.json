@@ -47,7 +47,10 @@
               "玩 AI 时只看到 happy path，不考虑后面还有 10-20 件事要做才能得到可持续的结果。",
               "CEO 最好的做法是自己大量使用 AI，真正理解 agent 在企业里的意义和实际工作量。"
             ]
-          }
+          },
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO"
         },
         {
           "authorKey": "x:realmadhuguru",
@@ -72,7 +75,10 @@
               "CEO 有 AI FOMO，但习惯了遥控式管理，没有亲自动手的能力。于是下达模糊的 AI 指令，员工用表演性质的 demo 应付。",
               "两年后没任何实际进展，而 hands-on 的创业公司已经把你颠覆了。"
             ]
-          }
+          },
+          "authorName": "Madhusudhan",
+          "authorHandle": "@realmadhuguru",
+          "authorTag": "AI 工程师 / 开源贡献者"
         }
       ]
     },
@@ -103,7 +109,10 @@
               "一位创始人说：拿了种子轮但不急着招人。创始人应该先理解每个岗位、感受痛点。",
               "Agent 上手更快，保留所有训练，可以持续优化。"
             ]
-          }
+          },
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者"
         },
         {
           "authorKey": "x:zarazhangrui",
@@ -125,7 +134,10 @@
             "original": [
               "Zara 碰到一位工程经理朋友，对方主动转回 IC，说从未这么开心，因为终于可以重新动手 building 了。"
             ]
-          }
+          },
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人"
         }
       ]
     },
@@ -157,7 +169,10 @@
               "TRQ 从 Bun 重写中得出的结论：遗留代码库会成为「蒸馏」代码到新形式的宝贵资源。",
               "每个游戏都应跨平台，所有遗留软件都应 web 化，不再需要 COBOL。模型会到达那个水平的。"
             ]
-          }
+          },
+          "authorName": "Tao Li",
+          "authorHandle": "@trq212",
+          "authorTag": "AI 研究员 / Follow Builders 维护者"
         },
         {
           "authorKey": "x:nikunj",
@@ -183,7 +198,10 @@
               "很多网站无法通过 DOM 或截图确定性导航，让 Claude Code 嗅探网络请求更有效。",
               "每个网站很快都需要 headless 化，需要 tools.txt 让 agent 知道可用的工具。"
             ]
-          }
+          },
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人"
         }
       ]
     },
@@ -209,7 +227,10 @@
             "original": [
               "Garry Tan 说：高主观能动性 + 高品味，就是现在这个时代的 unlock。"
             ]
-          }
+          },
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁"
         },
         {
           "authorKey": "x:rauchg",
@@ -229,7 +250,10 @@
             "original": [
               "Rauchg：怎么建好品牌？做好产品。"
             ]
-          }
+          },
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO"
         },
         {
           "authorKey": "x:zarazhangrui",
@@ -249,7 +273,10 @@
             "original": [
               "Zara 说 OpenAI 变得更开放了，而且最近才意识到 Codex 是开源的。"
             ]
-          }
+          },
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人"
         }
       ]
     }

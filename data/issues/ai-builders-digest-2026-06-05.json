@@ -41,7 +41,9 @@
               "An update on recent Claude Code quality reports",
               "Over the past month, we've been looking into reports that Claude's responses have worsened for some users. We've traced these reports to three separate changes that affected Claude Code, the Claude Agent SDK, and Claude Cowork. The API was not impacted. All three issues have now been resolved as of April 20 (v2.1.116)."
             ]
-          }
+          },
+          "authorName": "Anthropic",
+          "authorTag": "Anthropic 官方博客"
         },
         {
           "authorKey": "blog:anthropic",
@@ -63,7 +65,9 @@
               "Scaling Managed Agents: Decoupling the brain from the hands",
               "A common thread across this work is that harnesses encode assumptions about what Claude can't do on its own. However, those assumptions need to be frequently questioned because they can go stale as models improve. As just one example, in prior work we found that Claude Sonnet 4.5 would wrap up tasks prematurely as it sensed its context limit approaching—a behavior sometimes called 'context anxiety.' We addressed this by adding context resets to the harness. But when we used the same harness on Claude Opus 4.5, we found that the behavior was gone. The resets had become dead weight."
             ]
-          }
+          },
+          "authorName": "Anthropic",
+          "authorTag": "Anthropic 官方博客"
         },
         {
           "authorKey": "blog:claudeai",
@@ -85,7 +89,9 @@
               "New in Claude Managed Agents: self-hosted sandboxes and MCP tunnels",
               "Starting today, Claude Managed Agents can operate in a sandbox you control and connect to your private Model Context Protocol (MCP) servers. Both the sandbox where an agent executes tools and the services it reaches run within the established boundaries of your enterprise, under your security and runtime controls."
             ]
-          }
+          },
+          "authorName": "Claude",
+          "authorTag": "Claude 官方博客"
         },
         {
           "authorKey": "x:alexalbert__",
@@ -105,7 +111,10 @@
             "original": [
               "We just published internal data on how much of Claude's development is already being done by Claude: - Over 80% of all code merged into our codebase is now written by Claude - It's been months since many researchers at Anthropic hand-wrote code - The typical Anthropic engineer ships 8x as much code as they did in 2024 - On the most open-ended engineering tasks, Claude's success rate jumped from ~26% to 76% in 6 months - When research sessions went off-track, Claude proposed a better next step than the human took 64% of the time. We're not at recursive self-improvement yet, but it could come sooner than people think."
             ]
-          }
+          },
+          "authorName": "Alex Albert",
+          "authorHandle": "@alexalbert__",
+          "authorTag": "Anthropic Claude 关系负责人"
         },
         {
           "authorKey": "x:levie",
@@ -125,7 +134,10 @@
             "original": [
               "Good thought provoking post from Anthropic. I think this paragraph points to the key element of the optimistic scenario of AI: 'There has been an explosion of new ideas, initiatives, tools, and simulations, as a result of Anthropic employees working with highly capable models—far more than we have the capacity to pursue. The rate at which organizations can spot and fix these bottlenecks may be a skill that improves over time, and it may become the most important skill for any organization.'"
             ]
-          }
+          },
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO"
         },
         {
           "authorKey": "blog:claudeai",
@@ -147,7 +159,9 @@
               "New connectors in Claude for everyday life",
               "Today we're expanding what you can connect to Claude. Alongside the work tools you already use, you can now connect the apps you use throughout your week, including AllTrails, Instacart, Audible, Tripadvisor, Intuit TurboTax, and more."
             ]
-          }
+          },
+          "authorName": "Claude",
+          "authorTag": "Claude 官方博客"
         }
       ]
     },
@@ -173,7 +187,10 @@
             "original": [
               "You can use codex within your own programs using the Python SDK. It's awesome. Built by @ah20im and friends.\n\npip install openai-codex"
             ]
-          }
+          },
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT"
         },
         {
           "authorKey": "x:thsottiaux",
@@ -193,7 +210,10 @@
             "original": [
               "We're fixing a codex bug today that was causing us to undercount tokens being served to some Pro and Plus accounts by a small amount. This impacted < 15% of accounts.\n\nNot the kind of bug you want us to fix, but didn't want to do this silently and thought you should know."
             ]
-          }
+          },
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT"
         },
         {
           "authorKey": "x:petergyang",
@@ -213,7 +233,10 @@
             "original": [
               "I spent the whole day today setting up integrations and skills in Codex for my top creator workflows. Now I'm convinced that you can save at least 50% of your time on any type of knowledge work if you just set up the system upfront. Note that all my workflows have human checkpoints along the way so I can apply my 'taste.'"
             ]
-          }
+          },
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者"
         },
         {
           "authorKey": "x:petergyang",
@@ -233,7 +256,10 @@
             "original": [
               "Also as great as Codex is (and I'm really starting to love it) the frontend design still leaves a lot to be desired. I have a /slides skill and you can guess which one Codex made vs. Claude. Yes I know I can make an image with ChatGPT first and then tell Codex to build it but Claude can one shot great looking HTML slides. Codex needs to fix this imo it's often a novice's first impression of a coding or knowledge work tool."
             ]
-          }
+          },
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者"
         },
         {
           "authorKey": "x:trq212",
@@ -253,7 +279,10 @@
             "original": [
               "How dynamic workflows allow Claude Code to handle whole new types of tasks"
             ]
-          }
+          },
+          "authorName": "Tao Li",
+          "authorHandle": "@trq212",
+          "authorTag": "AI 研究员 / Follow Builders 维护者"
         }
       ]
     },
@@ -279,7 +308,9 @@
             "original": [
               "OpenAI's Dan Roberts: Why AI Can Now Make Discoveries"
             ]
-          }
+          },
+          "authorName": "The MAD Podcast",
+          "authorTag": "Matt Turck 主理的 AI 与数据播客"
         },
         {
           "authorKey": "x:mattturck",
@@ -299,7 +330,10 @@
             "original": [
               "Why AI Can Now Make Discoveries - my conversation with @danintheory, Lead of the Foundations of RL team at @OpenAI. 00:00 Intro: AI's wild week in mathematics. 01:21 What OpenAI's Foundations of RL team does. 03:08 Dan's journey: from black holes and quantum gravity to frontier AI. 07:04 Are AI systems becoming useful for real science. 08:21 The AI math moment: Erdős, OpenAI, DeepMind, and Anthropic. 08:52 Why the OpenAI result was an act of exploration. 10:25 OpenAI vs. DeepMind: informal reasoning vs. formal proof. 12:13 RL 101: learning by doing, not just watching."
             ]
-          }
+          },
+          "authorName": "Matt Turck",
+          "authorHandle": "@mattturck",
+          "authorTag": "First Mark Capital 合伙人 / MAD Podcast 主理人"
         },
         {
           "authorKey": "x:garrytan",
@@ -319,7 +353,10 @@
             "original": [
               "Two YC decacorns in one day and one of them is building commercial fusion. Polaris hit 150 million degrees C, first privately funded machine to do it. This is the abundance future, built by people who actually ship."
             ]
-          }
+          },
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁"
         }
       ]
     },
@@ -345,7 +382,10 @@
             "original": [
               "Introducing the Nock skill (powered by @meetgranola) 👀 Someone recently asked me if I can be replaced by AI, and my ego initially said NO WAY.. Then, I thought about what's the best way to have the most accurate 'AI' representation of me for these conversations. So, I used @claudeai Code to pull >200 1:1 founder pitch meeting notes that were captured by Granola in the last couple of years. Focused all the notes to only things I asked. Distilled it further down to ~53 meetings where there was a lot of good discussion and debate."
             ]
-          }
+          },
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人"
         },
         {
           "authorKey": "x:trq212",
@@ -365,7 +405,10 @@
             "original": [
               "An app can be a home-cooked meal (2020) — personal software was a bit early in 2020 but in 2026, it really can be as personal as a home cooked meal, or a handwritten letter."
             ]
-          }
+          },
+          "authorName": "Tao Li",
+          "authorHandle": "@trq212",
+          "authorTag": "AI 研究员 / Follow Builders 维护者"
         },
         {
           "authorKey": "x:danshipper",
@@ -385,7 +428,10 @@
             "original": [
               "NEW: Spiral 4.0—a writing partner for you and your agent by @every. -> Stylometry: we built a new Style Engine based on the principles of stylometry to extract you and your brand's voice and produce great writing every time, based on examples of your past work. -> MCP and CLI: Spiral is now built to be used by your agent like Codex, Claude Code, OpenClaw and more so you can get great writing automatically. We use it every day internally to write landing pages, tweets, podcasts, marketing emails and more and to make sure it's ALL on-brand across our entire 30 person team @every."
             ]
-          }
+          },
+          "authorName": "Dan Shipper",
+          "authorHandle": "@danshipper",
+          "authorTag": "Every 联合创始人 / AI 写作工具链"
         },
         {
           "authorKey": "x:claudeai",
@@ -405,7 +451,10 @@
             "original": [
               "Anton Osika (@antonosika) is the co-founder and CEO of @lovable, where anyone can build software through conversation. His working thesis: the most underrated moat in AI is trust, and earning it takes craft, care, and obsession."
             ]
-          }
+          },
+          "authorName": "Claude",
+          "authorHandle": "@claudeai",
+          "authorTag": "Anthropic Claude 官方账号"
         }
       ]
     },
@@ -431,7 +480,10 @@
             "original": [
               "build and publish web apps with chatgpt! i really wish i had this when i was a kid, but i do miss hypercard."
             ]
-          }
+          },
+          "authorName": "Sam Altman",
+          "authorHandle": "@sama",
+          "authorTag": "OpenAI CEO"
         },
         {
           "authorKey": "x:sama",
@@ -451,7 +503,10 @@
             "original": [
               "big upgrade to chatgpt memory rolling out today!"
             ]
-          }
+          },
+          "authorName": "Sam Altman",
+          "authorHandle": "@sama",
+          "authorTag": "OpenAI CEO"
         },
         {
           "authorKey": "x:rauchg",
@@ -471,7 +526,10 @@
             "original": [
               "Congrats Void team! We @vercel reaffirm our collaboration on an open platform for the web, with our investment in @nitrojsdev, open runtimes, and native support for Vite-based frameworks like Nuxt, Svelte, and TanStack Start 🫡"
             ]
-          }
+          },
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO"
         },
         {
           "authorKey": "x:amasad",
@@ -491,7 +549,10 @@
             "original": [
               "Prompt to shop"
             ]
-          }
+          },
+          "authorName": "Amjad Masad",
+          "authorHandle": "@amasad",
+          "authorTag": "Replit CEO"
         },
         {
           "authorKey": "x:swyx",
@@ -511,7 +572,10 @@
             "original": [
               "Finally! the first eval ship from cog!!!!!!!!!! 👼🏼 To contextualize: @METR_Evals cap out at ~16 hours. Cog has private enterprise evals up to 100hrs, and is confident enough to put a financial guarantee on it 🤯 METR dataset: ML eng, GPU kernels, cybersecurity. Cog dataset: real life java/typescript/python/c# feature dev, bugfixes, migrat"
             ]
-          }
+          },
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师"
         },
         {
           "authorKey": "x:adityaag",
@@ -531,7 +595,10 @@
             "original": [
               "A lot of roles will now have engineering infused into them. Marketing Engineer is a great example of this."
             ]
-          }
+          },
+          "authorName": "Aditya Agarwal",
+          "authorHandle": "@adityaag",
+          "authorTag": "Dropbox Engineering VP / 前 Facebook 平台工程负责人"
         }
       ]
     }

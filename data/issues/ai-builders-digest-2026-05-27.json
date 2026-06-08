@@ -47,7 +47,10 @@
               "各种场景都可以用这个模式：视频编辑、报税、医疗建议、填表、做报告。",
               "人们低估了文件里的上下文量。加上连接器，就有了操作真实生活数据的个人 AI。"
             ]
-          }
+          },
+          "authorName": "Tao Li",
+          "authorHandle": "@trq212",
+          "authorTag": "AI 研究员 / Follow Builders 维护者"
         }
       ]
     },
@@ -79,7 +82,10 @@
               "Steipete 说 autoreview 是最有影响力的 skill，自动在 PR 合入前 review 代码。",
               "找到很多边界情况，有时候跑几小时。998 赞。"
             ]
-          }
+          },
+          "authorName": "Peter Steinberger",
+          "authorHandle": "@steipete",
+          "authorTag": "OpenClaw 创始人"
         },
         {
           "authorKey": "x:zarazhangrui",
@@ -107,7 +113,10 @@
               "Codex 是靠谱工程师，Claude Code 是更好的 PM 和设计师。",
               "任务明确找 Codex，需要 brainstorm 找 Claude Code。"
             ]
-          }
+          },
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人"
         },
         {
           "authorKey": "x:steipete",
@@ -132,7 +141,10 @@
               "Steipete 用自建方案替代了 opus 的老旧依赖，Wasm 性能已接近原生。",
               "OpenClaw 现在自动做会议笔记，开会时可以跟它对话。"
             ]
-          }
+          },
+          "authorName": "Peter Steinberger",
+          "authorHandle": "@steipete",
+          "authorTag": "OpenClaw 创始人"
         }
       ]
     },
@@ -165,7 +177,10 @@
               "Garry Tan：别用 2026 技术做 2010 生意。别重建 Foursquare/Yelp。别复制低价 SaaS。别低估价。",
               "AI 改变了规则，玩新游戏。"
             ]
-          }
+          },
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁"
         },
         {
           "authorKey": "x:nikunj",
@@ -188,7 +203,10 @@
             "original": [
               "Nikunj：每家拿风投的应用公司本质上必须是数据公司或 fintech 公司。最好都是。"
             ]
-          }
+          },
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人"
         }
       ]
     },
@@ -221,7 +239,10 @@
               "Levie 说硅谷外的企业一边用 agent 一边招人。Agent 自动化的是任务不是岗位。",
               "公司不会静止，省下来的钱会投入新领域。"
             ]
-          }
+          },
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO"
         },
         {
           "authorKey": "x:swyx",
@@ -243,7 +264,10 @@
             "original": [
               "Swyx：AI infra 正在走向垂直化。"
             ]
-          }
+          },
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师"
         },
         {
           "authorKey": "podcast:training-data",

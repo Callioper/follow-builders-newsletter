@@ -47,7 +47,10 @@
               "那期对谈本质上是在讲：为什么 API、SDK、MCP server 这层东西，会在 AI 时代变得这么值钱。",
               "他的核心提炼是：MCP 的未来更像 code execution + doc search，而不是海量工具列表。"
             ]
-          }
+          },
+          "authorName": "Dan Shipper",
+          "authorHandle": "@danshipper",
+          "authorTag": "Every 联合创始人 / AI 写作工具链"
         },
         {
           "authorKey": "podcast:ai-and-i-by-every",
@@ -111,7 +114,10 @@
               "重点在于他强调的不只是快，而是 fast、reliable、complete 这三个属性同时成立。",
               "这意味着 agent 时代的 web search，已经开始出现非常清晰的基础设施赢家。"
             ]
-          }
+          },
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁"
         },
         {
           "authorKey": "x:swyx",
@@ -139,7 +145,10 @@
               "他说自己已经看到模型性能和 agent lab revenue 之间的非常直接的相关性。",
               "这意味着某些 AI-native 公司，会随着模型进步自动变得更强。"
             ]
-          }
+          },
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师"
         }
       ]
     },
@@ -173,7 +182,10 @@
               "Agent 的实施既高度技术化，又会直接影响人们参与其中的底层工作流，因此天然带着 change management 属性。",
               "每一次模型升级都可能让某些旧脚手架失效，也可能让原本做不到的事情突然变得可行。"
             ]
-          }
+          },
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO"
         },
         {
           "authorKey": "x:zarazhangrui",
@@ -201,7 +213,10 @@
               "同时 managers 也要像 IC 一样思考，重新变得更 hands-on，而不是只做人事管理。",
               "这种 T-shape 不只适用于开发者，而会适用于每一种工作职能。"
             ]
-          }
+          },
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人"
         }
       ]
     },
@@ -235,7 +250,10 @@
               "同时他又说，一个 general-purpose model 解决了一个数学开放问题，这会成为未来反复出现的句子。",
               "但他也补了一句：自己今天的心情是复杂的。"
             ]
-          }
+          },
+          "authorName": "Sam Altman",
+          "authorHandle": "@sama",
+          "authorTag": "OpenAI CEO"
         },
         {
           "authorKey": "x:GoogleLabs",
@@ -263,7 +281,10 @@
               "它的口号很直接：从 playing the games 走向 designing the games in minutes。",
               "用户只需要挑角色、设场景，剩下的就交给模型。"
             ]
-          }
+          },
+          "authorName": "Google Labs",
+          "authorHandle": "@GoogleLabs",
+          "authorTag": "Google AI"
         }
       ]
     }

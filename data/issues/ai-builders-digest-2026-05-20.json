@@ -47,7 +47,10 @@
               "他认为未来几年会是 LLM frontier 非常关键的阶段，因此实验室归属会比平时更重要。",
               "不过他也明确说，自己对教育依然非常有热情，未来会回到那条线。"
             ]
-          }
+          },
+          "authorName": "Andrej Karpathy",
+          "authorHandle": "@karpathy",
+          "authorTag": "OpenAI 创始成员 / Eureka Labs 创始人"
         }
       ]
     },
@@ -81,7 +84,10 @@
               "它不是等用户每次打开来问，而是要主动管理任务、帮助处理数字生活，同时保留用户控制权。",
               "先给 trusted testers，再给 Google AI Ultra 订阅用户 beta，这已经很像产品化 rollout。"
             ]
-          }
+          },
+          "authorName": "Josh Woodward",
+          "authorHandle": "@joshwoodward",
+          "authorTag": "Google Labs 产品负责人"
         },
         {
           "authorKey": "x:GoogleLabs",
@@ -109,7 +115,10 @@
               "同时新增作品库和外部分享能力，意味着这些生成结果不再只是一次性试玩。",
               "它正在从一个 demo 感很强的能力，变成更完整的创作产品。"
             ]
-          }
+          },
+          "authorName": "Google Labs",
+          "authorHandle": "@GoogleLabs",
+          "authorTag": "Google AI"
         }
       ]
     },
@@ -143,7 +152,10 @@
               "大家都在尝试不同策略：不同模型路由、不同用户权限、不同团队 spend cap，但还没有谁觉得自己找到了真正正确的解法。",
               "而模型又还在继续变强，这让企业侧的预算、权限和 ROI 框架更难稳定下来。"
             ]
-          }
+          },
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO"
         },
         {
           "authorKey": "x:sama",
@@ -171,7 +183,10 @@
               "同时他也说，客户越来越在意 capacity certainty，因此 OpenAI 会提供 1 到 3 年 commitment 的折扣 token。",
               "这让 token 更像一种算力金融工具，而不只是单纯的 API 计费单位。"
             ]
-          }
+          },
+          "authorName": "Sam Altman",
+          "authorHandle": "@sama",
+          "authorTag": "OpenAI CEO"
         },
         {
           "authorKey": "x:nikunj",
@@ -199,7 +214,10 @@
               "虽然 autonomy 现在还不真正成立，但模型 harness 和能力演进已经在把大批工作岗位往那个方向推。",
               "他给出的依据也很具体：labs 正在收集 long-horizon task data，模型也越来越能长链路执行并递归修错。"
             ]
-          }
+          },
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人"
         }
       ]
     },
@@ -233,7 +251,10 @@
               "这套流程强调的不是‘快出结果’，而是让 AI 真正进入一个可交付、可验证、可持续迭代的闭环。",
               "它很像把 AI 写代码从技巧，升级成团队级工作流。"
             ]
-          }
+          },
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师"
         },
         {
           "authorKey": "x:ryolu_",
@@ -261,7 +282,10 @@
               "他特别强调 UI 工作里的 flow 感，以及 Design Mode 带来的连续体验。",
               "再加一句“只要在 Jira 里 @cursor_ai 就能把 backlog 变成现实”，说明这条链路已经从代码编辑器外溢到任务系统。"
             ]
-          }
+          },
+          "authorName": "Ryan Lu",
+          "authorHandle": "@ryolu_",
+          "authorTag": "AI 工程师"
         }
       ]
     },
@@ -295,7 +319,9 @@
               "如果自动化真的比手工处理更容易，人们就会自然选择自动化，而不是继续人工操作。",
               "在他们看来，真正的产品不是模型本身，而是 controls、boundaries 和 permission layer。"
             ]
-          }
+          },
+          "authorName": "Training Data Podcast",
+          "authorTag": "AI 播客"
         }
       ]
     }
