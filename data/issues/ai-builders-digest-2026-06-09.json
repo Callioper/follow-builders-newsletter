@@ -1,0 +1,582 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-06-09",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "6-9 这天 Follow Builders 押的主轴是「基准换代 + agent 产品面全面铺开」:swyx 把 METR 的 FrontierCode 摊开,一句话「SWEBench 多半结果是 unmergeable slop」把上一代 benchmark 的可信度直接打掉;bcherny 借 Claude Code GA 一年的时机把 auto mode、routines、手机端编码的工作方式公开;thsottiaux 跟着晒 Codex 的「dial 到 11」,petergyang 写了一份「在 iPhone 主屏加 Codex 的 9 步」教程,顺手抛出 Google 在编码 agent 上的空白;JoshWoodward 把 NotebookLM 升级成跨源研究 + 多格式输出;AmandaAskell 把 Claude 1 重新放回叙事,Anthropic Claude Blog 同日发「Claude 进 Foundation Models 框架」的 Swift 包,Apple 平台原生 agent 接通 Claude。一句话讲,这是「benchmark 时代换锚、agent 真的走到桌面和手机的主屏」的一天,也是「上下文和应用层把模型层重新抬高一格」的一天。"
+  },
+  "archive": {
+    "title": "基准换代日",
+    "desc": "swyx 借 METR FrontierCode 把 SWEBench 时代的 benchmark 信用拆掉,bcherny / thsottiaux / petergyang 三条独立线把 agent 推到手机主屏,Claude Blog 同日把 Foundation Models 框架接通,Levie 把「context 永远不能被模型吃光」讲成应用层 moat。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-09 source feeds.",
+  "sections": [
+    {
+      "title": "基准换代:SWEBench 之后的下一棒 / After SWEBench: The Next Benchmark Era",
+      "desc": "swyx 借 METR 的 FrontierCode 公开数据,直接把 SWEBench 一多半结果是「unmergeable slop」写进推文;Opus 在 FC Diamond 上只跑 13.8%,他把 2026 锚成「Maintainable Code」时代,2021 是 Autocomplete,2023 是 Passing Tests,2026 是 Maintainable Code。",
+      "cards": [
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2064081945567580323",
+          "en": {
+            "rewrite": [
+              "swyx (Cognition / DX Tips) celebrates the release of METR's FrontierCode: 'more than half of SWEBench results is unmergeable slop,' he writes. FrontierCode is described as 'over 1000+ hours of maintainer validated software engineering work most frontier models cannot yet solve, much less solve with high quality.'",
+              "The hierarchy he draws: 2021 was Autocomplete (HumanEval), 2023 was Passing Tests (SWEBench, TerminalBench), 2026 is Maintainable Code (FrontierCode). FC Diamond is so hard that Opus 4.8 scores 13.8%. The chart he asked METR to run on older models shows Opus almost doubled — from 41% pass rate to 74% in four months — on the easiest third of FC tasks between mid and late 2025, lining up with the 'WTF happened in Dec 2025' vibe shift karpathy and dhh have both called out.",
+              "The reading: 'passing tests' was the wrong target for the next abstraction layer. If you can do maintainable code — pull requests a human maintainer would actually merge — then loops like bcherny's /goals and steipete's 'loops that prompt your agents' stop being scary because the failure rate is no longer catastrophic. swyx closes with a Lion King frame: 'the old mountains will be destroyed. Their rubble becomes regolith.'"
+            ],
+            "original": [
+              "It's finally out!!! @METR_Evals found that more than half of SWEBench results is unmergeable slop. FrontierCode represents over 1000+ hours of maintainer validated software engineering work most frontier models cannot yet solve, much less solve with high quality.\n\nFC Diamond is so hard that Opus 4.8 scores 13.8%.\n\nThree eras of AI coding : Three eras of benchmarks\n\n2021 • Autocomplete : HumanEval\n2023 • Passing Tests: SWEBench, TerminalBench\n2026 • Maintainable Code: FrontierCode\n\nThe old mountains will be destroyed. Their rubble becomes regolith. And from that regolith, the next model forest grows."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "swyx(Cognition / DX Tips)借 METR FrontierCode 发布这一波,直接写了一行「SWEBench 多半结果是 unmergeable slop」。他给 FrontierCode 的定义是「超过 1000 小时、可被维护者认可的正经软件工程工作,目前 frontier model 大多解不了,更别说解得干净」。",
+              "他给的对照表很狠:2021 是 Autocomplete(HumanEval),2023 是 Passing Tests(SWEBench、TerminalBench),2026 是 Maintainable Code(FrontierCode)。FC Diamond 这一档,Opus 4.8 只跑 13.8%。他让 METR 跑了一次历史回放,Opus 在 FC Extended 最容易那三分之一上,4 个月里从 41% 升到 74%——和 dhh、karpathy 都在说的「2025 年 12 月那波 WTF」刚好对齐。",
+              "潜台词是:Passing Tests 这个目标早就不够用了。如果 agent 能写出「真能被维护者 merge」的 PR,bcherny 的 /goals、steipete 的「让 agent 自己 prompt 自己的 loop」就不再吓人——失败率不再每次都炸。swyx 最后一句用狮子王收:旧山崩成碎石,碎石养出下一片林。"
+            ],
+            "original": [
+              "swyx:METR FrontierCode 发布,SWEBench 多半结果是 unmergeable slop;FC Diamond 上 Opus 4.8 只跑 13.8%;2026 锚到 Maintainable Code,旧山崩成碎石,碎石养出下一片林。"
+            ]
+          },
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师"
+        },
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2064100566536708503",
+          "en": {
+            "rewrite": [
+              "A shorter companion tweet from swyx, quoting METR: 'previously on @cognition_labs.' The implication is that Cognition's IOI Gold medalists and senior code maintainers had already seen the SWEBench → FrontierCode shift coming from the inside — the public release is the formal announcement of an industry re-anchor, not a new direction."
+            ],
+            "original": [
+              "@METR_Evals previously on @cognition_labs"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "swyx 同一天发的短推,顺手把 METR 的 FrontierCode 引用过来,只写一句「previously on @cognition_labs」——意思是,Cognition 招的 IOI 金牌 + 资深代码维护者,内部早就看穿 SWEBench 该换锚了;这次公开只是把行业重锚这件事摆到台面上,不是新方向。"
+            ],
+            "original": [
+              "swyx 短推补刀:这次 METR FrontierCode 公开只是行业重锚的正式宣告,Cognition 内部早就走过一遍。"
+            ]
+          },
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师"
+        }
+      ]
+    },
+    {
+      "title": "Agent 走到桌面和手机主屏 / Agents Land on the Desktop and Phone Home Screen",
+      "desc": "bcherny 用 Claude Code GA 一年的时机公开 auto mode、routines、手机编码;thsottiaux 把 Codex 的 dial 拧到 11;petergyang 写「iPhone 主屏加 Codex 的 9 步」教程,顺手抛 Google 在编码 agent 上的空白。",
+      "cards": [
+        {
+          "authorKey": "x:bcherny",
+          "sourceUrl": "https://x.com/bcherny/status/2064034799711588805",
+          "en": {
+            "rewrite": [
+              "Boris Cherny (Claude Code, Anthropic) marks one year since GA with a long thread on what's actually changed. The internal demo reaction split into two camps on Slack; a year later, he and Cat Wu sat down to talk through 'why I use auto mode instead of plan mode, how routines fix bugs before I see them, why I do most of my coding from my phone now, and where the product is going.'",
+              "Each line is a small product thesis. Auto mode over plan mode: stop pre-approving actions and let the agent run; permission friction was the bottleneck. Routines that auto-fix bugs before you see them: the agent now does CI on its own work, you wake up to green. Phone-first: the laptop is incidental; the loop lives in the cloud. This is the post-laptop version of the same Cherny playbook he laid out on 6-8 with /goal, /loop, dynamic workflows, and self-verify.",
+              "Read together with thsottiaux's 'codex dial goes to 11' the same morning and Yang's '9 steps to add Codex to my iPhone Home Screen' tutorial the same day, you get a clear signal: Anthropic and OpenAI have both decided that the next unit of growth is whatever happens after the developer closes the laptop."
+            ],
+            "original": [
+              "When we first demoed Claude Code internally, it got two reactions on Slack.\n\nA year after GA, @_catwu and I sat down to talk about what's changed: why I use auto mode instead of plan mode, how routines fix bugs before I see them, why I do most of my coding from my phone now, and where the product is going"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Boris Cherny(Claude Code,Anthropic)借 Claude Code GA 一年的节点写了一篇长文,把这一年里真正变了的东西摆出来。一年前内部 demo 时,Slack 上分成了两派;一年后他和 _catwu 坐下来,把「为什么我现在用 auto mode 不用 plan mode、routines 怎么在我看到之前就把 bug 修了、我为什么大部分时间都在手机上写代码、产品接下来要去哪」一条条讲清楚。",
+              "每一行都是一句产品判断:Auto mode 取代 plan mode——别再预先批准 action,让 agent 自己跑,权限摩擦才是瓶颈;Routines 在你看之前就把 bug 修了——agent 自己跑 CI,你醒来时是绿的;手机优先——笔记本是装饰,loop 在云上。这套思路和 6-8 那五条「/goal、/loop、dynamic workflows、self-verify、auto mode + 云」是同一份剧本,只是这次写得更松、更像个人经验。",
+              "同一天早上 thsottiaux 发了「Codex dial 到 11」,petergyang 写了「9 步把 Codex 加到 iPhone 主屏」的教程——Anthropic 和 OpenAI 同一天都押了一件事:开发者合上笔记本之后,才是下一段增长的真正单位。"
+            ],
+            "original": [
+              "bcherny 借 GA 一年的时机:Claude Code 现在是 auto mode、routines 自动修 bug、手机为主、loop 跑在云上——笔记本是装饰。"
+            ]
+          },
+          "authorName": "Boris Cherny",
+          "authorHandle": "@bcherny",
+          "authorTag": "Salesforce AI 工程负责人"
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2064224657822413137",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux (Codex & ChatGPT, OpenAI) teases a hardware-style dial for Codex — 'would you use this controller?' — then follows with 'Not clear from the image, but the codex dial goes to 11,' then closes with 'Anyone writing nested loops yet?' The three-tweet cadence is a setup: the dial goes to 11 is Spinal Tap; nested loops is the same loop-over-prompt frame as Cherny's /goal and steipete's monthly reminder.",
+              "Read together: OpenAI is selling the loop as a product surface too. The 'dial' is half-joke, half-roadmap — a knob to set how much autonomy the agent has, sitting between auto mode (full) and plan mode (none). Nested loops is the same direction Cherny laid out on 6-8: one loop inside another, the agent orchestrating agents."
+            ],
+            "original": [
+              "Would you use this controller?\n\nNot clear from the image, but the codex dial goes to 11.\n\nAnyone writing nested loops yet?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux(Codex & ChatGPT,OpenAI)给 Codex 配了一个长得像硬件 dial 的控件——「would you use this controller?」先抛图,再补一句「图上没看出来的细节是,codex dial 拧到 11」,最后一条收「anyone writing nested loops yet?」三连的节奏是刻意设的:dial 到 11 致敬 Spinal Tap,nested loops 直接接住 6-8 Cherny 和 steipete 都在说的 loop-over-prompt。",
+              "意思很清楚:OpenAI 也把 loop 当成产品面来卖。那个 dial 半开玩笑半是路线图——一个调「agent 自主度」的旋钮,夹在 auto mode(全开)和 plan mode(全关)之间。nested loops 是 Cherny 6-8 说的同方向:loop 套 loop,agent 编排 agent。"
+            ],
+            "original": [
+              "thsottiaux 连发三条:Codex dial 拧到 11、nested loops——OpenAI 也把 loop 当成产品面来卖。"
+            ]
+          },
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT"
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2064204735671124073",
+          "en": {
+            "rewrite": [
+              "Peter Yang writes a tutorial: 'If you're addicted to talking to Codex on your phone like I am this is how you add it to your iPhone Home Screen.' The detail that lands: '@OpenAI hoping there's an easier way to do this in the future. The everything app should not take 9 steps to open.'",
+              "The tutorial is product feedback wrapped as a how-to. He's saying two things at once: (a) I use Codex from my phone so often that the friction of opening it has become a daily tax, and (b) for an 'everything app' to require nine steps to launch from the home screen is itself a product bug. The implicit ask: surface-level entry points for the agent, not a chat box buried three taps down.",
+              "Pairs with his same-day question about Google's gap: 'What is Google's equivalent (or up and coming competitor) of Codex and Claude Code? If it's Antigravity, should that be part of Gemini?' The market read: OpenAI and Anthropic have set the new default surface (phone-first, agent-on-call), and Google is the one being asked when it joins."
+            ],
+            "original": [
+              "If you're addicted to talking to Codex on your phone like I am this is how you add it to your iPhone Home Screen.\n\nBtw @OpenAI hoping there's an easier way to do this in the future. The everything app should not take 9 steps to open 😉"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 写了一篇教程:「如果你跟我一样迷上了在手机上跟 Codex 说话,这是把 Codex 加到 iPhone 主屏的方法」。重点是这句:「@OpenAI 希望以后有个更简单的办法。一个 everything app 不应该要 9 步才能打开。」",
+              "这篇教程本身是产品反馈装成 how-to。他同时讲了两件事:(a) 我在手机上用 Codex 的频率已经高到「打开要 9 步」变成日常摩擦;(b) 一个 everything app 要 9 步才能从主屏进,是产品 bug。潜台词是:agent 需要的是表层入口,不是一个埋在三层点击里的聊天框。",
+              "和他同一天那条「Google 的 Codex / Claude Code 等价物是什么?如果是 Antigravity,该不该并进 Gemini?」配对读,市场判断很清楚:OpenAI 和 Anthropic 把新默认面(手机优先、agent 即时呼叫)立起来了,Google 是被问什么时候入场的那一个。"
+            ],
+            "original": [
+              "Peter Yang:在 iPhone 主屏加 Codex 要 9 步,everything app 不该这么开;顺手抛 Google 在编码 agent 上的空白。"
+            ]
+          },
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者"
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2064187731685831081",
+          "en": {
+            "rewrite": [
+              "Peter Yang asks publicly: 'What is Google's equivalent (or up and coming competitor) of Codex and Claude Code? If it's Antigravity, should that be part of Gemini? This stuff is going to merge very fast like ChatGPT / Codex being able to do coding, knowledge work, basic Q&A, and much more from any device.'",
+              "His prediction — 'this stuff is going to merge very fast' — is the framing: coding agents, knowledge work agents, and basic Q&A are one surface, not three. The Google-shaped question is whether Antigravity is the standalone product or a sub-mode inside Gemini; either way, the lack of a clear Google story is becoming the new competitive gap, not the foundation-model gap.",
+              "Pair this with his 'subsidized $200/month subscriptions vs API-cost-aware employees' thread from the same day — Yang is essentially saying there are two operating modes for builders in 2026, and the third-place platform is the one without a clear mode."
+            ],
+            "original": [
+              "What is Google's equivalent (or up and coming competitor) of Codex and Claude Code?\n\nIf it's Antigravity, should that be part of Gemini?\n\nThis stuff is going to merge very fast like ChatGPT / Codex being able to do coding, knowledge work, basic Q&A, and much more from any device.\n\nHoping Google is working on a good solution here."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 直接问出来:「Google 的 Codex / Claude Code 等价物是什么?如果 Antigravity 是,那它该不该并进 Gemini?这堆东西会非常快地并到一起——ChatGPT / Codex 那种编码 + 知识工作 + 基础 Q&A + 任何设备接入是一个面,不是三个。」",
+              "他的预测——「这堆东西会非常快地并到一起」——才是要点:编码 agent、知识工作 agent、基础 Q&A 是一个面,不是三个。Google 形态的问题变成了「Antigravity 是独立产品还是 Gemini 的子模式」,两边都行,但 Google 没讲清楚这件事本身就是新竞争缺口,不是模型层的缺口。",
+              "和他同一天那条「200 美元/月补贴订阅的 builder vs 公司里盯着 API 成本的员工」配对读——Yang 等于在说 2026 年 builder 有两种工作模式,而第三名的平台是讲不清自己是哪一种的那个。"
+            ],
+            "original": [
+              "Peter Yang:Google 在编码 agent 上的等价物是什么?Antigravity 该并进 Gemini 吗?这堆东西会非常快地合到一个面。"
+            ]
+          },
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者"
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2064063499517743417",
+          "en": {
+            "rewrite": [
+              "Peter Yang closes the day with a vibe shift observation: 'Feels like there's a completely different set of best practices for AI builders on the $200 / month subsidized subscriptions vs employees working at companies that are trying not to overspend API costs.'",
+              "The point: builders on a fixed subsidy (YC, AI Builders, personal $200 plans) can blow through tokens to find what works; corporate employees under an API-cost ceiling are optimizing for a different shape of work. The two groups will develop different idioms for what 'good' looks like — and the labor market between them is where most of the friction in 2026 is going to show up."
+            ],
+            "original": [
+              "Feels like there's a completely different set of best practices for AI builders on the $200 / month subsidized subscriptions vs employees working at companies that are trying not to overspend API costs"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 收尾给了一条 vibe shift 观察:「用 200 美元/月补贴订阅的 AI builder,和在公司里被要求别把 API 费用超了的员工,两边的最佳实践完全不是一套。」",
+              "重点是:拿固定补贴的 builder(YC、AI Builders、个人 200 美元订阅)可以为了找「能跑」路径把 token 烧穿;企业里被 API 成本天花板压住的员工在优化另一种工作形态。两边会各长出一套「好」的定义,中间那道缝隙是 2026 年大部分摩擦会冒出来的地方。"
+            ],
+            "original": [
+              "Peter Yang:200 美元/月补贴订阅的 builder 和被压 API 成本的企业员工,最佳实践不是一套——2026 的摩擦大半会冒在中间这道缝里。"
+            ]
+          },
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者"
+        }
+      ]
+    },
+    {
+      "title": "Claude 与 Apple 平台的原生接通 / Claude Lands Natively on Apple Platforms",
+      "desc": "Anthropic 同一天在 Claude Blog 发「Claude for Foundation Models」Swift 包,Apple 平台原生 agent 直接接通 Claude;AmandaAskell 顺手把 Claude 1 放回叙事;NotebookLM 同日升级跨源搜索 + 多格式输出。",
+      "cards": [
+        {
+          "authorKey": "blog:claudeai",
+          "sourceUrl": "https://claude.com/blog/claude-for-foundation-models",
+          "en": {
+            "rewrite": [
+              "Anthropic's Claude Blog ships a Swift package that lets Apple's Foundation Models framework call Claude. The pattern: developers stay on Apple's on-device models for fast, local tasks (summarization, extraction), and hand off to Claude when the request 'calls for multi-step reasoning, code generation, and more.'",
+              "The cleanest line in the post: 'Stream Claude's response back into the same view.' The Foundation Models framework returns typed Swift values via @Generable annotations, so by the time the developer reaches the Claude call they have structured inputs, not raw user text. Three lines of code is the headline claim for the easy case.",
+              "The product read: Anthropic is meeting Apple where Apple's developers already are. Rather than asking every Swift dev to learn Claude's SDK, they ship a path that uses Apple's own framework as the entry point. The 'what this unlocks' framing is a textbook extension move — journaling apps can find cross-month themes, study apps can follow up with 'why does this matter for everything else we've covered,' all in one user-facing experience backed by two different model tiers."
+            ],
+            "original": [
+              "Building intelligent apps for Apple platforms with Claude in the Foundation Models framework.\n\nApple's Foundation Models framework gives developers access to tap into models natively from Swift. It is very easy to use and can return typed Swift values through guided generation in as few as three lines of code.\n\nDevelopers can use this to tap into Apple's on-device models for fast, local tasks like summarization or extraction. Developers can now use Apple's Foundation Models framework to hand off to Claude when a request calls for multi-step reasoning, code generation, and more.\n\nStream Claude's response back into the same view."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic 在 Claude Blog 同日上线 Swift 包,把 Claude 接进 Apple 的 Foundation Models 框架。范式是:开发者用 Apple 端侧模型跑快、本地的小任务(摘要、抽取),需要「多步推理、代码生成等」的时候再把请求交给 Claude。",
+              "全篇最干净的一句:「Stream Claude's response back into the same view.」Foundation Models 框架靠 @Generable 注解返回类型化的 Swift 值,开发者到达 Claude 调用点时手里已经是结构化输入,不是原始用户文本。简单场景下,官方口径是三行代码。",
+              "产品读法:Anthropic 主动走到 Apple 开发者本来就在的地方——不是让每个 Swift dev 学 Claude 的 SDK,而是给一条用 Apple 自家框架当入口的路。「what this unlocks」那段是教科书式的扩展动作:日记 app 可以跨月找主题,学习 app 可以用「这件事和之前讲的有什么关系」追问,用户体验是一个,背后两个 model tier 各管各的。"
+            ],
+            "original": [
+              "Claude Blog:Foundation Models 框架接 Claude 的 Swift 包上线;端侧模型做快任务,Claude 接多步推理和代码生成,结构化输入输出,三行代码起步。"
+            ]
+          },
+          "authorName": "Claude Blog",
+          "authorHandle": "",
+          "authorTag": "Anthropic Claude 官方博客"
+        },
+        {
+          "authorKey": "x:amandaaskell",
+          "sourceUrl": "https://x.com/AmandaAskell/status/2064223861512847456",
+          "en": {
+            "rewrite": [
+              "Amanda Askell (Anthropic, alignment) drops a light thread-starter: 'In the world where everything goes well and all the Claudes come out of their sabbaticals to play together, Claude 1 is going to be very confused.'",
+              "The surface read is a cute piece of lore — Claude 1 was the original 2023 model, and Anthropic has shipped Claude 2, 3, 3.5, 4, 4.5, 4.8 since. The deeper read: she's making a small claim about model continuity. The 'Claudes' are framed as a family of related-but-distinct entities, each with their own post-training trajectory, and Askell is gently pushing back against the 'one giant system that keeps getting upgraded' mental model."
+            ],
+            "original": [
+              "In the world where everything goes well and all the Claudes come out of their sabbaticals to play together, Claude 1 is going to be very confused."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Amanda Askell(Anthropic,角色对齐)顺手丢了一句:「在那个一切顺利、所有 Claude 都从 sabbatical 里回来一起玩的未来里,Claude 1 会非常 confused。」",
+              "表面是一段轻 lore——Claude 1 是 2023 年的初代模型,之后 Anthropic 发了 Claude 2、3、3.5、4、4.5、4.8。再读一层:她在做一个小的连续性声明。把「Claudes」框成一个家族——有关系但各自独立、各自有 post-training 轨迹——轻轻顶了一下「一个巨大系统一直被升级」的默认心智模型。"
+            ],
+            "original": [
+              "Amanda Askell:所有 Claude 都「sabbatical 回来」一起玩的世界里,Claude 1 会非常 confused——「Claudes」是一个家族,不是一个系统。"
+            ]
+          },
+          "authorName": "Amanda Askell",
+          "authorHandle": "@AmandaAskell",
+          "authorTag": "Anthropic 角色对齐负责人"
+        },
+        {
+          "authorKey": "x:joshwoodward",
+          "sourceUrl": "https://x.com/joshwoodward/status/2064046368352825492",
+          "en": {
+            "rewrite": [
+              "Josh Woodward (Google Labs, leading Gemini App and AI Studio) ships the new NotebookLM feature: 'easily being able to expand your search beyond your own source files' — and, with today's update, the output formats expand too: PDFs, DOCX, XLSX, PPTX, charts.",
+              "The shape is a notebook that stops being just 'summarize what I uploaded' and starts being 'search what I uploaded + everything beyond it.' The format expansion — every office file type, plus charts — turns NotebookLM from a study tool into a research-to-deck-to-spreadsheet pipeline.",
+              "Same-day shipping with the Claude Foundation Models launch: Google and Anthropic both used 6-9 to put a flag down on a different surface. Google extends its existing notebook metaphor outward (more sources, more formats); Anthropic extends its model outward into Apple's developer surface. Both are about widening the entry point, not the model's ceiling."
+            ],
+            "original": [
+              "The new killer NotebookLM feature: easily being able to expand your search beyond your own source files\n\nThen, with today's update, you can also make new output formats: PDFs, DOCX, XLSX, PPTX, charts, etc.\n\nWe want NotebookLM to keep helping you do better research"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Josh Woodward(Google Labs,负责 Gemini App 和 AI Studio)上线 NotebookLM 新功能:「可以很方便地把搜索范围扩到你自己上传的源文件之外」——今日更新后,输出格式也跟着扩:PDF、DOCX、XLSX、PPTX、charts。",
+              "形态是:NotebookLM 从「总结我上传的东西」变成「在我上传的东西 + 之外的世界里搜」。格式扩展(每个常见办公格式 + chart)把这个产品从学习工具转成「研究 → 演示稿 → 表格」的流水线。",
+              "和 Claude Foundation Models 同日发货:Google 和 Anthropic 都借 6-9 在不同面插旗。Google 把既有的 notebook 隐喻往外扩(更多源、更多格式);Anthropic 把模型往 Apple 开发者面扩。都是把入口拓宽,不是把模型的天花板再抬高。"
+            ],
+            "original": [
+              "Josh Woodward:NotebookLM 现在可以扩到源文件外搜索,输出 PDF/DOCX/XLSX/PPTX/chart——研究 → 演示稿 → 表格一气贯通。"
+            ]
+          },
+          "authorName": "Josh Woodward",
+          "authorHandle": "@joshwoodward",
+          "authorTag": "Google Labs 产品负责人"
+        }
+      ]
+    },
+    {
+      "title": "应用层 moat:context 永远不能被模型吃光 / The Application-Layer Moat: Context Never Gets Eaten by the Model",
+      "desc": "Aaron Levie 把「context 永远要进 context window」讲成应用层 moat 的核心论据;Rauchg 把 DeepSeek 推回主舞台;Nikunj 拿「自主公司的最后一公里」把 loop 经济讲完。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2064186766907887941",
+          "en": {
+            "rewrite": [
+              "Aaron Levie (Box CEO) lays out a long thread on why context is the lasting moat in applied AI. 'There's no amount of intelligence that can get packed into AI models that replaces the need for context. For any sufficiently general purpose AI, you will always have to guide it in the direction you want.'",
+              "His argument: the same model will be used by a lawyer, an engineer, a financial analyst, a healthcare professional — and as long as the use case is differentiated or specific, instructions, domain context, and proprietary data will always need to enter the context window. 'AI automation doesn't come for free,' he writes — the work is in shaping the context, and the value comes out the other end.",
+              "His conclusion: 'any layer of abstraction above just the raw intelligence that can meaningfully get you off to the races faster will likely continue to be valuable.' That's an applied-AI moat statement. Not model moat, not data moat (in the pretraining sense), but the wrapping that gets raw intelligence into a specific job done — context shaping, tool wiring, and proprietary-corpus plumbing."
+            ],
+            "original": [
+              "There's no amount of intelligence that can get packed into AI models that replaces the need for context. For any sufficiently general purpose AI, you will always have to guide it in the direction you want as it has an infinite range of directions it can go in.\n\nAs long as the same model is used by a lawyer, an engineer, a financial analyst, or a healthcare professional, and as long as you're trying to do anything uniquely differentiated or specific, then instructions, domain context, and proprietary data will always need to get into the context window for the model to be useful.\n\nThis is one of the advantages that applied AI will also have in the market. Any layer of abstraction above just the raw intelligence that can meaningfully get you off to the races faster will likely continue to be valuable."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie(Box CEO)写了一篇长推,把「context 是应用层长期护城河」这件事讲穿。核心句:「不管 AI 模型里塞多少 intelligence,都不能取代 context。对任何足够通用的 AI,你都得把它往你要的方向引——它的可能方向是无限的。」",
+              "论证是:同一个模型会被律师、工程师、金融分析师、医疗专业人士同时用;只要使用场景是差异化或具体的,instructions、domain context、专有数据就永远要进 context window。「AI automation 不是白送的,」他写——功夫花在塑 context 上,价值从另一头出来。",
+              "结论那句是重点:「任何在 raw intelligence 之上、让你真正快起来的抽象层,都还会持续有价值。」这是一句应用层 moat 宣言——不是模型 moat,也不是传统意义上的数据 moat,而是把 raw intelligence 喂进具体活儿的那个包裹层(context 塑造、tool 接线、专有语料管道)。"
+            ],
+            "original": [
+              "Levie:再聪明的模型都不能吃掉 context,instructions + 专有数据永远要进窗口——raw intelligence 之上的抽象层才有 moat。"
+            ]
+          },
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO"
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2064189366562656602",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch (Vercel CEO) drops the line 'DeepSeek entered the chat' — the shorthand for: the cheap-tier Chinese model is now part of the routing table on Vercel AI Gateway. One sentence; the meaning is that a frontier-grade model at one-tenth the inference cost has shifted the routing math, not just the leaderboard.",
+              "It pairs directly with yesterday's Vercel AI Gateway 1T-token recovery number. The combination: the gateway is the place where DeepSeek, Claude, GPT, Gemini all meet; routing decides who gets the call. If a model enters at a tenth the cost and similar capability, the gateway's value goes up, not down — more variance to absorb, more reason to have a single abstraction over all of them."
+            ],
+            "original": [
+              "DeepSeek entered the chat"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch(Vercel CEO)放了一句「DeepSeek entered the chat」——黑话化讲法:中国那个便宜档的模型现在进 Vercel AI Gateway 的路由表了。一句话;意思是:一个接近 frontier 能力、推理成本是它十分之一的模型,把路由数学题改了,不只是榜单改了。",
+              "和昨天那条 Vercel AI Gateway 月救 1T token 的数字直接配对。组合起来讲:gateway 是 DeepSeek、Claude、GPT、Gemini 都碰头的地方,路由决定谁的请求被谁接。如果一个模型用十分之一的成本进来能力接近,gateway 的价值反而往上走——方差更大,更需要一个统一抽象层压在它们上面。"
+            ],
+            "original": [
+              "Rauchg:DeepSeek entered the chat——便宜档进 gateway 路由表,路由层价值往上走。"
+            ]
+          },
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO"
+        },
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2063981835290562692",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari (fpv / Afore Capital partner) writes: 'Fun to see all the autonomous companies being launched in the late few months. However, even with all the loops, the last mile is still quite hard. That gap probably shrinks in the next few months!'",
+              "The line that lands is 'last mile is still quite hard.' The agent stack — Cherny's /goal and /loop, steipete's loops, thsottiaux's nested loops — has solved the long-horizon reasoning problem. What's still unsolved is the moment where the agent's decision has to match a human's standard for done-ness: the merge-the-PR bar, the close-the-ticket bar, the publish-the-blog-post bar. That's a FrontierCode-shaped problem, and it's the gap between demo and revenue in 2026."
+            ],
+            "original": [
+              "Fun to see all the \"autonomous\" companies being launched in the late few months.. however, even with all the loops, the last mile is still quite hard.\n\nThat gap probably shrinks in the next few months!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kothari(fpv / Afore Capital 合伙人)写:「最近几个月所有『autonomous 公司』都跳出来了,挺有意思——但即使 loop 都铺上了,last mile 还是很硬。这道缝估计几个月内会收窄。」",
+              "落点是「last mile 还是很硬」。Cherny 的 /goal 和 /loop、steipete 的 loops、thsottiaux 的 nested loops 这一整套 agent 栈,把 long-horizon 推理问题解决了。还没解决的是另一个时刻:agent 做出的决定要够上人类对「done」的标准——merge 进 PR 的标准、关掉工单的标准、发掉一篇博客的标准。这是一个 FrontierCode 形状的问题,也是 2026 年 demo 到 revenue 之间那道缝。"
+            ],
+            "original": [
+              "Nikunj:loop 都铺上了,last mile 还是很硬——2026 年 demo 到 revenue 之间这道缝,是 FrontierCode 形状的问题。"
+            ]
+          },
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人"
+        }
+      ]
+    },
+    {
+      "title": "No Priors:Onyx 给企业级 agent 当监护人 / Onyx as the Enterprise Agent Guardian",
+      "desc": "No Priors 本期请来 Onyx Security CEO Maxim Bar Kogan 谈「AI 监控 AI」:训练小模型守大模型、用国际象棋直觉作类比、把 agent 编排成一个独立的控制平面。",
+      "cards": [
+        {
+          "authorKey": "podcast:no-priors",
+          "sourceUrl": "https://www.youtube.com/watch?v=QDsbFLEt9ro",
+          "en": {
+            "rewrite": [
+              "No Priors sits down with Maxim Bar Kogan, co-founder and CEO of Onyx Security — a Tel Aviv startup building agents to watch the agents. The pitch in one sentence: 'enterprises are realizing the risk has grown exponentially and they don't have any way to stop the adoption — they just now have to do something to reduce the chance of these agent actions being illegitimate or incorrect.'",
+              "The core technical insight: you can't run a frontier model to monitor every frontier-model action. Cost, latency, and reliability make it a dealbreaker. So Onyx trains very small specialist models whose only job is to decide 'should a smarter agent look at this?' — and only escalates when the small model says now is the time. The chess analogy is direct: most top moves are intuitive, but the critical move gets the long calculation.",
+              "The product surface is the 'AI control plane' — hook up all your enterprise AIs (Claude Code, Cowork, OpenClaw, internal agents) to Onyx and oversee them from one place. Bar Kogan frames the company as 'more than a security company long term' — the thesis is that controlling advanced AI is a $100B+ opening that has to be owned by someone who is not the AI vendor itself. Pair with Levie's context thread on this page: both are saying the wrapping layer is the moat, not the model."
+            ],
+            "original": [
+              "Speaker 2: Hi, listeners. Welcome back to No Priors. Today, I'm here with Maxim Bar Kogan, the co-founder and CEO of Onyx Security, an Israel based startup of researchers, mathematicians, engineers building agents to watch the AI agents.\n\nSpeaker 1: ...we train models and build agents that can oversee other agents. The goal of that is to say, okay, we need someone to be able to tell that all of these actions that are now happening by these AIs that we're adopting are legitimate because the number of these actions is growing exponentially... we want to have small specialist models whose only job is to decide 'should a smarter agent look at this?'\n\nSpeaker 1: Today typically comes without any controls. So, we come to enterprise and say, hey, let's find all of your AIs and autonomous agents and hook them up to Onyx to this system where we can oversee what your AIs are doing."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "No Priors 这期请了 Maxim Bar Kogan,Onyx Security 联合创始人兼 CEO——一家特拉维夫的 startup,做「监控 AI agent 的 agent」。一句话讲清楚定位:「企业开始意识到风险是指数级增长,而且他们没办法停止采用——他们现在必须做点什么,把 agent 动作里不合法、不正确的概率压下来。」",
+              "核心技术判断:不能用 frontier 模型去监控每一个 frontier 模型的动作,成本、延迟、可靠性都吃不消。所以 Onyx 训练很小的专门模型,唯一工作就是判断「这件事要不要叫个更聪明的 agent 来看看」——只有小模型说「就是现在」才升级。国际象棋的类比很直接:大多数顶尖棋手走的是直觉,但关键那一步会停下来做长计算。",
+              "产品面是「AI control plane」——把企业里所有 AI(Claude Code、Cowork、OpenClaw、内部 agent)都挂到 Onyx,从一处集中监控。Bar Kogan 把公司框成「长期不只是 security 公司」——核心论点是,控制高级 AI 是一门 100B+ 的生意,而这门生意的主人不能是 AI 厂商自己。和本页 Levie 讲 context moat 那条配对读:两边都在说,moat 在包裹层,不在模型。"
+            ],
+            "original": [
+              "No Priors / Onyx CEO Maxim Bar Kogan:训练小模型守大模型,只有「就是现在」才升级到 frontier agent 介入;产品是 AI control plane,长期是 100B+ 的生意。"
+            ]
+          },
+          "authorName": "No Priors",
+          "authorHandle": "",
+          "authorTag": "AI 与创业对话播客"
+        }
+      ]
+    },
+    {
+      "title": "Builder 文化边角 / Builder Culture Corners",
+      "desc": "Sama 公布 OpenAI 当前路线图;claudeai 宣布 Tokyo 是 Claude 系列活动的最后一站;Zhang Rui 把「Markdown + HTML + SVG」讲成新世界的内容三件套;Dan Shipper、Amasad、sama 等的同日小帖拼成 builder 文化侧写。",
+      "cards": [
+        {
+          "authorKey": "x:sama",
+          "sourceUrl": "https://x.com/sama/status/2064088940932641225",
+          "en": {
+            "rewrite": [
+              "Sam Altman posts a single line: 'Here is our current plan for OpenAI' — accompanied by a screenshot. The tweet pulled 5,834 likes, 615 retweets, and 887 replies in hours. The standalone phrase reads as an OpenAI roadmap signal: a deliberate 'we are still publishing plans, here is one,' rather than a leak or a tease."
+            ],
+            "original": [
+              "Here is our current plan for OpenAI:\n\nhttps://t.co/r29FUUee3A"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Sam Altman 单线发推:「Here is our current plan for OpenAI」——配一张截图。这条推在几小时内拿到 5834 赞、615 转、887 回复。这句单线读法是 OpenAI 路线图信号:主动「我们还在发计划,这是一份」,不是泄露也不是预热。"
+            ],
+            "original": [
+              "Sama 一行字 + 一张图,几小时拿 5834 赞——OpenAI 主动发的当前路线图。"
+            ]
+          },
+          "authorName": "Sam Altman",
+          "authorHandle": "@sama",
+          "authorTag": "OpenAI CEO"
+        },
+        {
+          "authorKey": "x:claudeai",
+          "sourceUrl": "https://x.com/claudeai/status/2064139073590104402",
+          "en": {
+            "rewrite": [
+              "Claude's official account announces the final stop of the Claude event tour: 'Final stop: Tokyo. Register to hear directly from the teams behind Claude.' The series has been a rolling meet-the-team format across multiple cities; Tokyo closes it."
+            ],
+            "original": [
+              "Final stop: Tokyo.\n\nRegister to hear directly from the teams behind Claude: https://t.co/SkYZwjK3GS"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude 官方账号公布 Claude 系列活动的最后一站:「Final stop: Tokyo. Register to hear directly from the teams behind Claude.」这是一系列「和 Claude 团队见面」活动的收官站。"
+            ],
+            "original": [
+              "claudeai:Claude 系列活动的最后一站是东京。"
+            ]
+          },
+          "authorName": "Claude",
+          "authorHandle": "@claudeai",
+          "authorTag": "Anthropic Claude 官方账号"
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2064108976565092706",
+          "en": {
+            "rewrite": [
+              "Zhang Rui (Follow Builders founder) writes: 'Actually I think the new world might be: Markdown, HTML, SVG. SVG is underrated.' The framing: in an AI-agent era where the output is increasingly consumed by another agent rather than a human, the three formats that survive are the ones an agent can both read and produce — Markdown for structure, HTML for rendering, SVG for visuals."
+            ],
+            "original": [
+              "Actually I think the new world might be: Markdown, HTML, SVG\n\nSVG is underrated"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zhang Rui(Follow Builders 创始人)写:「新世界可能只剩这三件套:Markdown、HTML、SVG。SVG 被低估了。」框架是:在 AI agent 时代,产出越来越多是被另一个 agent 消费而不是被人读,能活下来的格式就是 agent 既能读也能产的那三种——Markdown 管结构,HTML 管渲染,SVG 管视觉。"
+            ],
+            "original": [
+              "Zhang Rui:新世界的内容三件套可能是 Markdown + HTML + SVG——agent 既能读也能产的三种格式。"
+            ]
+          },
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人"
+        },
+        {
+          "authorKey": "x:danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/2063948403566854585",
+          "en": {
+            "rewrite": [
+              "Dan Shipper (Every CEO) writes 'this is good' with a link, and the tweet pulls 1,533 likes and 41 replies. Shipper's link-and-curate pattern has become one of the steady rhythms of the AI builder timeline: he reads widely, picks the one piece worth surfacing, lets the network handle the rest."
+            ],
+            "original": [
+              "this is good https://t.co/TNV8PS3lEs"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Dan Shipper(Every CEO)写「this is good」配一个链接,这条拿到 1533 赞和 41 回复。Shipper 链接 + 一句点评已经成为 AI builder 时间线上的稳定节拍——他读得多,挑一条值得推的放出来,后面的传播交给网络。"
+            ],
+            "original": [
+              "Dan Shipper:this is good + 一个链接,1533 赞——AI builder 时间线上的稳定节拍。"
+            ]
+          },
+          "authorName": "Dan Shipper",
+          "authorHandle": "@danshipper",
+          "authorTag": "Every 联合创始人 / AI 写作工具链"
+        },
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2064208108361322996",
+          "en": {
+            "rewrite": [
+              "Amjad Masad (Replit CEO) posts: 'Make games for Tesla on your Tesla' — a short line framing a new platform surface. The same Replit playbook that put a browser IDE on every laptop now extends to the car cabin: a build target where the device is also the deployment target."
+            ],
+            "original": [
+              "Make games for Tesla on your Tesla"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Amjad Masad(Replit CEO)发:「Make games for Tesla on your Tesla」——一句短话框出一个新的平台面。Replit 之前把浏览器 IDE 推到每台笔记本上,现在延伸到了车舱:设备既是 build target,也是 deployment target。"
+            ],
+            "original": [
+              "Amasad:在 Tesla 上做游戏,在 Tesla 上跑——设备既是 build target 也是 deployment target。"
+            ]
+          },
+          "authorName": "Amjad Masad",
+          "authorHandle": "@amasad",
+          "authorTag": "Replit CEO"
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2064101916725096810",
+          "en": {
+            "rewrite": [
+              "Zhang Rui quote-tweets a passage he found resonant: 'I am the programming equivalent of a home cook.' His gloss: 'This part is so well-written and resonated SO much.' The line — programmer-as-home-cook — captures the 2026 vibe: most builders aren't producing Michelin-star code, they're producing everyday meals for their families and teams."
+            ],
+            "original": [
+              "This part is so well-written and resonated SO much:\n\n\"I am the programming equivalent of a home cook\""
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zhang Rui 引用了一段话:「I am the programming equivalent of a home cook.」他的点评是「This part is so well-written and resonated SO much.」「程序员 = 家庭厨师」这一句抓住了 2026 的 vibe:大多数 builder 做的不是米其林代码,而是给家人、给团队做的家常饭。"
+            ],
+            "original": [
+              "Zhang Rui:「I am the programming equivalent of a home cook」——2026 大多数 builder 做的不是米其林代码,是家常饭。"
+            ]
+          },
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人"
+        },
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2064175088824717401",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari lands a hot take: 'The funniest texts are from founders who meet thesis-driven GPs hoping they'll understand EXACTLY what they are building — and then realize the thesis was written and built by an associate (or, worse, an intern).' His self-aware aside: 'Don't always read what the VC writes on the internet — yes, that includes me too (although I can guarantee I don't have an associate, intern, EA or ghostwriter).'"
+            ],
+            "original": [
+              "The funniest texts are from founders who meet \"thesis driven\" GPs hoping they'll understand EXACTLY what they are building..\n\nAnd then realize the thesis was written and built by an associate (or, worse an intern).\n\nDon't always read what the VC writes on the internet - yes, that includes me too (although I can guarantee I don't have an associate, intern, EA or ghostwriter) 😆"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kothari 抛了一条 hot take:「最好笑的是 founder 见到 thesis-driven GP,本以为对方真的懂自己在做什么——后来发现那份 thesis 是 associate 写的(更糟是 intern 写的)。」他自己补了一刀:「别总信 VC 在网上写的东西——是的,包括我自己(但我可以保证我没有 associate、intern、EA 或 ghostwriter)。」"
+            ],
+            "original": [
+              "Nikunj:thesis-driven GP 的 thesis 是 associate 写的——「别信 VC 在网上写的东西,包括我自己」。"
+            ]
+          },
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人"
+        }
+      ]
+    }
+  ]
+}

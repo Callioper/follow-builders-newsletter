@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 08 Jun 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 09 Jun 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-06-09 · 基准换代日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-09-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-09-rerun.html</guid>
+      <pubDate>Tue, 09 Jun 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[6-9 这天 Follow Builders 押的主轴是「基准换代 + agent 产品面全面铺开」:swyx 把 METR 的 FrontierCode 摊开,一句话「SWEBench 多半结果是 unmergeable slop」把上一代 benchmark 的可信度直接打掉;bcherny 借 Claude Code GA 一年的时机把 auto mode、routines、手机端编码的工作方式公开;thsottiaux 跟着晒 Codex 的「dial 到 11」,petergyang 写了一份「在 iPhone 主屏加 Codex 的 9 步」教程,顺手抛出 Google 在编码 agent 上的空白;JoshWoodward 把 NotebookLM 升级成跨源研究 + 多格式输出;AmandaAskell 把 Claude 1 重新放回叙事,Anthropic Claude Blog 同日发「Claude 进 Foundation Models 框架」的 Swift 包,Apple 平台原生 agent 接通 Claude。一句话讲,这是「benchmark 时代换锚、agent 真的走到桌面和手机的主屏」的一天,也是「上下文和应用层把模型层重新抬高一格」的一天。]]></description>
+      <category>基准换代:SWEBench 之后的下一棒 / After SWEBench: The Next Benchmark Era, Agent 走到桌面和手机主屏 / Agents Land on the Desktop and Phone Home Screen, Claude 与 Apple 平台的原生接通 / Claude Lands Natively on Apple Platforms, 应用层 moat:context 永远不能被模型吃光 / The Application-Layer Moat: Context Never Gets Eaten by the Model, No Priors:Onyx 给企业级 agent 当监护人 / Onyx as the Enterprise Agent Guardian, Builder 文化边角 / Builder Culture Corners</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-06-08 · 单位工作日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-08-rerun.html</link>
