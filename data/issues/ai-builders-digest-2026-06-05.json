@@ -43,7 +43,8 @@
             ]
           },
           "authorName": "Anthropic",
-          "authorTag": "Anthropic 官方博客"
+          "authorTag": "Anthropic 官方博客",
+          "authorHandle": "@AnthropicAI"
         },
         {
           "authorKey": "blog:anthropic",
@@ -67,7 +68,8 @@
             ]
           },
           "authorName": "Anthropic",
-          "authorTag": "Anthropic 官方博客"
+          "authorTag": "Anthropic 官方博客",
+          "authorHandle": "@AnthropicAI"
         },
         {
           "authorKey": "blog:claudeai",
@@ -91,7 +93,8 @@
             ]
           },
           "authorName": "Claude",
-          "authorTag": "Claude 官方博客"
+          "authorTag": "Claude 官方博客",
+          "authorHandle": "@claudeai"
         },
         {
           "authorKey": "x:alexalbert__",
@@ -161,7 +164,8 @@
             ]
           },
           "authorName": "Claude",
-          "authorTag": "Claude 官方博客"
+          "authorTag": "Claude 官方博客",
+          "authorHandle": "@claudeai"
         }
       ]
     },
@@ -310,7 +314,8 @@
             ]
           },
           "authorName": "The MAD Podcast",
-          "authorTag": "Matt Turck 主理的 AI 与数据播客"
+          "authorTag": "Matt Turck 主理的 AI 与数据播客",
+          "authorHandle": "@mattturck"
         },
         {
           "authorKey": "x:mattturck",

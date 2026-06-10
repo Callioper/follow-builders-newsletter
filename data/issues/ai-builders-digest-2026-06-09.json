@@ -237,8 +237,8 @@
               "Claude Blog:Foundation Models 框架接 Claude 的 Swift 包上线;端侧模型做快任务,Claude 接多步推理和代码生成,结构化输入输出,三行代码起步。"
             ]
           },
-          "authorName": "Claude Blog",
-          "authorHandle": "",
+          "authorName": "Claude",
+          "authorHandle": "@claudeai",
           "authorTag": "Anthropic Claude 官方博客"
         },
         {

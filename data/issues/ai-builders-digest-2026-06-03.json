@@ -45,7 +45,8 @@
             ]
           },
           "authorName": "Anthropic",
-          "authorTag": "Anthropic 官方博客"
+          "authorTag": "Anthropic 官方博客",
+          "authorHandle": "@AnthropicAI"
         },
         {
           "authorKey": "x:steipete",

@@ -247,7 +247,8 @@
             ]
           },
           "authorName": "Anthropic",
-          "authorTag": "Anthropic 官方博客"
+          "authorTag": "Anthropic 官方博客",
+          "authorHandle": "@AnthropicAI"
         }
       ]
     },
@@ -279,7 +280,8 @@
             ]
           },
           "authorName": "The MAD Podcast",
-          "authorTag": "Matt Turck 主理的 AI 与数据播客"
+          "authorTag": "Matt Turck 主理的 AI 与数据播客",
+          "authorHandle": "@mattturck"
         }
       ]
     },
