@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Builders Digest · 2026-06-10</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ed;
+    --accent: #c0392b;
+    --accent-light: #e8d5c4;
+    --border: #d4cdc0;
+    --muted: #7a7265;
+    --tag-bg: #e8e2d6;
+    --en-bg: #ffffff;
+    --cn-bg: #faf7f2;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  .masthead, .intro, .section-header, .feed, footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .masthead { padding-top: 48px; }
+  .masthead-rule { border: none; border-top: 3px solid var(--ink); margin: 0 0 12px; }
+  .masthead-inner { display: flex; justify-content: center; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; letter-spacing: -0.4px; }
+  .masthead-subtitle { margin-top: 8px; padding-bottom: 10px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  .edition-strip {
+    position: relative;
+    margin-top: 8px;
+    min-height: 46px;
+    padding: 10px 132px 12px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.34);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+
+  .edition-strip .edition-sep { margin: 0 8px; color: #b8ae9f; }
+  .edition-strip-text { display: block; }
+  .edition-return-link { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; padding: 6px 10px; border: 1px dashed rgba(192, 57, 43, 0.55); border-radius: 999px; color: var(--accent); text-decoration: none; font-size: 12px; line-height: 1; letter-spacing: 0.06em; background: rgba(255, 255, 255, 0.45); transition: background 160ms ease, border-color 160ms ease, transform 160ms ease; }
+  .edition-return-link:hover, .edition-return-link:focus-visible { background: rgba(255, 255, 255, 0.82); border-color: var(--accent); transform: translateY(-50%) translateX(-1px); }
+  .edition-return-link:focus-visible { outline: none; }
+  .intro { padding-top: 22px; }
+  .intro-inner { max-width: 920px; margin: 0 auto; padding: 0 0 0 18px; border-left: 3px solid #d9cdbc; }
+  .intro-kicker { margin: 0 0 8px; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .intro p { margin: 0; max-width: none; color: var(--muted); font-size: clamp(15px, 1.6vw, 16px); line-height: 1.9; text-wrap: pretty; font-family: 'Noto Serif SC', serif; overflow-wrap: anywhere; }
+
+  .section-header { margin-top: 40px; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; margin: 0 0 6px; }
+  .section-desc { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+
+  .feed { display: flex; flex-direction: column; gap: 20px; }
+  .card { background: var(--en-bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .card-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid #eee7dd; flex-wrap: wrap; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .avatar-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .avatar.is-fallback img { display: none; }
+  .avatar.is-fallback .avatar-fallback { display: flex; }
+
+  .author-info { flex: 1; min-width: 160px; }
+  .author-name { font-weight: 600; font-size: 15px; }
+  .author-name-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .author-handle { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+  .author-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; background: var(--tag-bg); color: var(--muted); padding: 4px 8px; border-radius: 999px; }
+  .author-tag.is-inline { padding: 3px 8px; }
+
+  .card-controls { margin-left: auto; display: inline-flex; gap: 8px; }
+  .view-toggle { border: 1px solid var(--border); background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 999px; font-size: 12px; line-height: 1; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; }
+  .view-toggle.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .card-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .lang-col { padding: 18px 20px 22px; }
+  .lang-col.cn { background: var(--cn-bg); border-right: 1px solid #f0ece4; font-family: 'Noto Serif SC', serif; }
+  .lang-col.en { background: var(--en-bg); }
+  .lang-label { margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+  .content-shell { position: relative; transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .content-variant { position: absolute; inset: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(4px); transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; will-change: opacity, transform; }
+  .content-variant.is-active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+  .content-variant p, .content-variant li { margin: 0 0 12px; font-size: 14px; }
+  .content-variant ol { margin: 0 0 12px 20px; padding: 0; }
+  .inline-code { display: inline-block; font-family: 'IBM Plex Mono', monospace; background: #f4efe7; padding: 3px 6px; border-radius: 6px; margin-bottom: 8px; }
+
+  .card-footer { padding: 12px 20px 16px; border-top: 1px solid #eee7dd; background: #fcfaf6; }
+  .card-footer a { color: var(--accent); text-decoration: none; font-size: 14px; }
+  footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 680px) {
+    .masthead-inner { align-items: center; }
+    .edition-strip { padding-right: 12px; padding-left: 12px; }
+    .edition-strip-text { padding-right: 0; }
+    .edition-return-link { position: static; transform: none; margin-top: 8px; font-size: 11px; }
+    .card-controls { margin-left: 0; }
+    .card-body { grid-template-columns: 1fr; }
+    .lang-col.cn { border-right: none; border-bottom: 1px solid #f0ece4; }
+    .edition-strip .edition-sep { margin: 0 5px; }
+    .intro-inner { padding-left: 14px; }
+    .intro p { line-height: 1.84; }
+  }
+</style>
+</head>
+<body data-publish-date="2026-06-10" data-issue-number="18" data-edition-name="双语精选版" data-view-label-rewrite="速读" data-view-label-original="原文" data-author-identities-path="/home/eclaw/.follow-builders/assets/author-identities.json" data-avatar-manifest-path="/home/eclaw/.follow-builders/assets/avatar-manifest.json">
+  <header class="masthead">
+    <hr class="masthead-rule">
+    <div class="masthead-inner">
+      <div class="masthead-title">AI Builders Digest</div>
+    </div>
+    <div class="masthead-subtitle">Bilingual edition · 双语对照版</div>
+    <div class="edition-strip">
+      <span class="edition-strip-text" id="edition-strip-text">第 18 期｜2026-06-10｜双语精选版｜27 条精选｜18 位作者｜6 个主题</span>
+      <a class="edition-return-link" href="../index.html">返回目录</a>
+    </div>
+  </header>
+
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="6-10 这天 Follow Builders 的主轴就是 Claude Fable 5 / Mythos 5 同一日上线:Anthropic 把同一套底模切成「带围栏」的 Fable 5 给全球、把「松围栏」的 Mythos 5 留给 Glasswing 合作伙伴,Karpathy、Alex Albert、Boris Cherny、Garry Tan、Levie 在同一天把这一跳定性成「主版本号级」,而整个上午所有人都在重新校准「我们和 Claude 工作的方式」——任务升级、effort 拉满、扔掉旧指令、从派任务切到给目标。Jevons 悖论在当天下午被坐实:有投资人听完播客就把 S 曲线站一发命中发出来,有产品教练用一段 prompt 出了 F-Zero 街机。infra 侧 Rauchg 在 Vercel CLI 上放出 AI token 虚拟信用卡、Swyx 把 34 天从签约到 GA 的速度挂上 Anthropic × NVIDIA 的时间表、Levie 借机把 compute-normalized benchmark 摆上桌。Podcast 这一边 Every 把《After Automation》那一刀对准上线日的亢奋——agent 离人越远越不值钱,人贴着 loop 反而更值。">
+    <div class="intro-inner">
+      <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
+      <p class="intro-copy">6-10 这天 Follow Builders 的主轴就是 Claude Fable 5 / Mythos 5 同一日上线:Anthropic 把同一套底模切成「带围栏」的 Fable 5 给全球、把「松围栏」的 Mythos 5 留给 Glasswing 合作伙伴,Karpathy、Alex Albert、Boris Cherny、Garry Tan、Levie 在同一天把这一跳定性成「主版本号级」,而整个上午所有人都在重新校准「我们和 Claude 工作的方式」——任务升级、effort 拉满、扔掉旧指令、从派任务切到给目标。Jevons 悖论在当天下午被坐实:有投资人听完播客就把 S 曲线站一发命中发出来,有产品教练用一段 prompt 出了 F-Zero 街机。infra 侧 Rauchg 在 Vercel CLI 上放出 AI token 虚拟信用卡、Swyx 把 34 天从签约到 GA 的速度挂上 Anthropic × NVIDIA 的时间表、Levie 借机把 compute-normalized benchmark 摆上桌。Podcast 这一边 Every 把《After Automation》那一刀对准上线日的亢奋——agent 离人越远越不值钱,人贴着 loop 反而更值。</p>
+    </div>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 01</div>
+    <h2 class="section-title">Fable 5 上线:同一底模两个名字 / Claude Fable 5 Launches: One Model, Two Names</h2>
+    <p class="section-desc">Anthropic 6-9 把 Fable 5 全球上线、Mythos 5 控范围给 Glasswing 合作伙伴;Karpathy、Alex Albert、Boris Cherny、Garry Tan、Levie 在同一天把这一跳定性成「主版本号级」,核心判断从「工具」挪到「搭档」,Jevons 悖论开闸。Replit 第一时间把 Mythos 以 25% 折扣放出来,Every 提前一周测完放出 vibe check。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:claudeai" data-author-name="Claude" data-author-tag="Anthropic Claude 官方账号" data-author-handle="@claudeai" data-author-avatar="../assets/avatars/x-claudeai.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-claudeai.jpg" alt="Claude avatar"><span class="avatar-fallback">C</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Claude</div>
+            <div class="author-tag is-inline">Anthropic Claude 官方账号</div>
+          </div>
+          <div class="author-handle">@claudeai</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic 官方账号开场:Claude Fable 5 今天在全球范围上线。Claude Mythos 5 是同一套底模,只在部分安全限制上「松」开,目前只对一小批网络防御团队和关键基础设施供应商开放(Glasswing 合作伙伴计划)。更广的 Trusted Access 计划之后会推,先做防御型网络安全和生物医学研究。</p>
+              <p>重点是这个切法:Fable 是给所有人的版本,Mythos 是「放宽围栏」的版本,目前是控量、控范围。底模一样,门槛和适用人群被分得很清楚。用 Fable 的人和用 Mythos 的人,跑的是同一套底模,只是围栏档位不同。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Claude Fable 5 今天全球上线。Claude Mythos 5 同底模但部分安全限制放开,目前只对 Glasswing 合作伙伴开放,之后会扩大 Trusted Access。</p>
+              <p>Mythos 5 与 Fable 5 同底模,只在部分安全限制上「松绑」。</p>
+              <p>之后会通过更广的 Trusted Access 计划扩展 Mythos 5 的访问,先做防御型网络安全和生物医学研究。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic&#39;s official account opens the day: Claude Fable 5 is available everywhere today. Claude Mythos 5 — the same underlying model with safeguards lifted in some areas — is restricted to a small group of cyber defenders and critical-infrastructure providers under the Glasswing partner program. A broader Trusted Access program is on the roadmap, starting with defensive cybersecurity and biomedical research.</p>
+              <p>The framing is the key part: Fable is the consumer-facing release, Mythos is the controlled-blast-radius version. Same weights, different safety dial, different audience. Anyone using Fable benefits from the same underlying model as the defenders, but the &#39;lifted safeguards&#39; version stays gated for now.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Claude Fable 5 is available everywhere today. Claude Mythos 5 is restricted to Glasswing partners until we expand our trusted access program.
+
+              https://t.co/iQymY0jiGq</p>
+              <p>For a small group of cyber defenders and critical infrastructure providers, we are also launching Claude Mythos 5.
+
+              Mythos 5 shares the same underlying model as Fable 5, but with the safeguards lifted in some areas.</p>
+              <p>Soon, we intend to expand access to Mythos 5 through a broader trusted access program, both for defensive cybersecurity work and biomedical research.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/claudeai/status/2064394160522559632" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:karpathy" data-author-name="Andrej Karpathy" data-author-tag="OpenAI 创始成员 / Eureka Labs 创始人" data-author-handle="@karpathy" data-author-avatar="../assets/avatars/x-karpathy.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-karpathy.jpg" alt="Andrej Karpathy avatar"><span class="avatar-fallback">AK</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Andrej Karpathy</div>
+            <div class="author-tag is-inline">OpenAI 创始成员 / Eureka Labs 创始人</div>
+          </div>
+          <div class="author-handle">@karpathy</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Karpathy(Eureka Labs):Fable 5 和 Mythos 是同一套底模,只是 Mythos 把部分安全限制「松」了。Benchmark 几乎全榜 SOTA,且拉开差距;但更值得说的是定性感觉——它和去年 11 月那波 Claude 4.5 是一个量级的「主版本号级」进步,尤其在长时间、复杂问题的求解上。模型「懂你」,会一路自己推下去。他承认自己第一次有「干脆别看代码了」的冲动(生产环境别真这么干)。</p>
+              <p>他接下来的判断是 Jevons 悖论会开始起效:软件的生产被「水龙头化」,他对软件的总需求会变大——解释器、可视化、面板、为单个项目定制的 wandb、十倍大小的测试套件、自动优化代码、为研究项目写专属 HTML 页。「打开你的脑子」(他给了一个黑客帝国梗)。模型还有怪癖、上线时的安全限制有点过于敏感,这些后面都能调。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Karpathy:Fable 5 与 Mythos 同底模、加一层安全护栏;benchmark 全榜 SOTA 且拉开差距;定性感觉是 2025-11 那波 Claude 4.5 同量级的主版本号升级;Jevons 悖论来了,他对软件的总需求在变大。</p>
+              <p>软件越来越「水龙头化」,解释器/可视化/dashboard/单项目 wandb/十倍测试套件/自动优化/专属研究页面,模型都能直接出——「Free your mind」。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Karpathy (Eureka Labs): Fable 5 is the same underlying model as Mythos but with added safeguards. The benchmarks are great, SOTA on everything by a margin, but the qualitative step is in the same order as Claude 4.5 was in November — peak for long problem-solving sessions on very hard problems. The model &#39;gets it&#39; and just goes, and it&#39;s never been this tempting to stop looking at the code at all (but don&#39;t do this in prod).</p>
+              <p>His wider frame is Jevons&#39; paradox: working software is increasingly coming out on tap, and his own demand for software is growing substantially — explainers, visualizers, dashboards, bespoke single-use apps, 10x-ing test suites, auto-optimizing code, custom research projects. &#39;Free your mind&#39; (Matrix ref). The model still has quirks and the safeguards are a bit too trigger-happy at launch — both tunable over time.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>This is a super exciting release - Claude Fable 5 is the same underlying model as Mythos but with added safeguards. The benchmarks are great and it&#39;s SOTA on everything by a margin but I&#39;ll add that *qualitatively* also, this is a major-version-bump-deserving step change forward (imo of the same order as Claude 4.5 was in November), peaking especially for long problem-solving sessions on very difficult problems. You can give it a lot more ambitious tasks than what you&#39;re used to, the model &quot;gets it&quot; and it will just go, and it&#39;s never felt this tempting to stop looking at the code at all (but don&#39;t do this in prod!). The model still has quirks that people will run into and the safeguards are configured to be a little too trigger happy for launch, which can hopefully be tuned over time.
+
+              I feel a lot of things changing as working software increasingly comes out on a tap. The Jevon&#39;s paradox kicks in and I feel my own demand for software growing substantially. You can ask for anything - explainers, visualizers, dashboards, bespoke single-use apps (e.g. a full wandb that is hyper-specific just for your project), you can 10X your test suite, auto-optimize code, run giant research projects with custom HTML for the results, anything! &quot;Free your mind&quot; (Matrix ref). Really looking forward to all the things people build!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/karpathy/status/2064409694761054332" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:alexalbert__" data-author-name="Alex Albert" data-author-tag="Anthropic Claude 关系负责人" data-author-handle="@alexalbert__" data-author-avatar="../assets/avatars/x-alexalbert__.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-alexalbert__.jpg" alt="Alex Albert avatar"><span class="avatar-fallback">AA</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Alex Albert</div>
+            <div class="author-tag is-inline">Anthropic Claude 关系负责人</div>
+          </div>
+          <div class="author-handle">@alexalbert__</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Alex Albert(Anthropic Claude 关系):「我在 Anthropic 经历了每一次模型发布。能让我记成『改变了我们怎么用模型』的不多——Claude Opus 3、Sonnet 3.5、Opus 4.5,现在是 Fable 5。Fable 的感觉不是『我用工具』,是『我和搭档一起做事』。」</p>
+              <p>他这段话之所以是今天最重要的一句之一,是因为它把后面所有的「使用建议」重新校准了:模型不再是被指挥的工具,而是被协作的搭档。这是今天所有「怎么用 Fable」建议的隐含前提。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Alex Albert(Anthropic):在 Anthropic 经历每一次发布;真正算「step-change」的只有 Opus 3 / Sonnet 3.5 / Opus 4.5 / Fable 5;Fable 不再是被指挥的工具,而是被协作的搭档。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Alex Albert (Anthropic Claude relations): &#39;I&#39;ve been at Anthropic through every model launch. There are a few I remember as a step-change in how we use models — Claude Opus 3, Sonnet 3.5, Opus 4.5 — and now Fable 5. With Fable, the model stopped feeling like a tool I direct and started feeling more like something I collaborate with.&#39;</p>
+              <p>He&#39;s naming Fable 5 in the same breath as the three most precedent-shifting launches in Anthropic&#39;s history, and the shift he&#39;s pointing at is relational — from directing a tool to collaborating with a partner. That&#39;s the most consequential of the day&#39;s quotes because it changes the implicit mental model the rest of the launch-day advice is riding on.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I&#39;ve been at Anthropic through every model launch. There&#39;s been a few cases I can remember of a launch that stands out and marks a step-change in how we use models:
+              - Claude Opus 3
+              - Claude Sonnet 3.5
+              - Claude Opus 4.5
+
+              And now Claude Fable 5.
+
+              With Fable, the model stopped feeling like a tool I direct and started feeling more like something I collaborate with.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/alexalbert__/status/2064394410004304003" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:bcherny" data-author-name="Boris Cherny" data-author-tag="Salesforce AI 工程负责人" data-author-handle="@bcherny" data-author-avatar="../assets/avatars/x-bcherny.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-bcherny.jpg" alt="Boris Cherny avatar"><span class="avatar-fallback">BC</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Boris Cherny</div>
+            <div class="author-tag is-inline">Salesforce AI 工程负责人</div>
+          </div>
+          <div class="author-handle">@bcherny</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Boris Cherny(Anthropic Claude Code):「Fable 5 是我自 Opus 4.5 以来感觉最大的一次跨越。4.5 那次我意识到自己一连几周 100% 在终端里写代码,于是把 IDE 卸了。Fable 让 Claude 从『编码 agent』上到了『产品构思和设计的搭档』。它在判断力、品味、维度感上比前代强,这是我愿意把最复杂的事交给它的原因。」</p>
+              <p>他举了一个具体例子:真正让他改观的,是让 Fable 自己做第一线 debug。Fable 是第一个他敢让它在没人盯的状态下做第一线 debug 的模型——它会追根因,不会糊上去。和 Alex Albert 的「从工具到搭档」是同一条线,只是从产品负责人的视角再说一次。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Boris Cherny:Fable 5 是自 Opus 4.5 以来最大跨越;4.5 让他卸了 IDE,Fable 让 Claude 从「编码 agent」上到「产品设计的搭档」;判断力、品味、维度感都更强;第一次敢让它在没人盯的状态下做 debug。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Boris Cherny (Anthropic Claude Code): &#39;Fable 5 is the biggest step up I&#39;ve felt in our models since Opus 4.5 back in November. After 4.5 came out I uninstalled my IDE when I realized I&#39;d been doing 100% of my coding in a terminal for a few weeks. With Fable, it&#39;s felt like Claude has stepped up from being a coding agent to a thought and design partner in building the product. Fable has judgement, taste, and dimensionality in a way that previous models didn&#39;t, leading me to trust it more with the most complex work.&#39;</p>
+              <p>His concrete example: the first time it really clicked was when he asked Fable to debug something. It&#39;s the first model he lets do unsupervised first-line debugging, because it shows enough judgement to chase the actual root cause rather than papering over symptoms. He&#39;s tracking a &#39;from terminal to partner&#39; arc that mirrors Alex Albert&#39;s &#39;from tool to collaborator&#39; line — same relational shift, in their own words.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Fable 5 is the biggest step up I&#39;ve felt in our models since Opus 4.5 back in November. After 4.5 came out I uninstalled my IDE when I realized that I&#39;d been doing 100% of my coding in a terminal for a few weeks. With Fable, it&#39;s felt like Claude has stepped up from being a coding agent to a thought and design partner in building the product. Fable has judgement, taste, and dimensionality in a way that previous models didn&#39;t, leading me to trust it more with the most complex work.
+
+              I think the first time I had this realization was when I asked Fable to debug something. It is the first model I have used that was so methodical and precise, taking measurements and adding logs then verifying that it truly fixed the issue before declaring victory.
+
+              There&#39;s nothing in claude code&#39;s prompting telling the model to do that, it&#39;s just part of its personality. It really has this &quot;big model smell&quot; that I haven&#39;t felt before.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/bcherny/status/2064431111154053187" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:trq212" data-author-name="Tao Li" data-author-tag="AI 研究员 / Follow Builders 维护者" data-author-handle="@trq212" data-author-avatar="../assets/avatars/x-trq212.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-trq212.jpg" alt="Tao Li avatar"><span class="avatar-fallback">TL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Tao Li</div>
+            <div class="author-tag is-inline">AI 研究员 / Follow Builders 维护者</div>
+          </div>
+          <div class="author-handle">@trq212</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thariq(Anthropic 内部,Follow Builders 维护者):「Fable 是一次模型级别的跨越,我也希望它改变你们和 Claude 的工作方式。后面会开一个系列写它怎么重塑了我们的工作,先把 TLDR 放出来:是时候野心大一点了。」</p>
+              <p>他的重点是给 builder 们的姿态变化,不是 benchmark 的差距。隐含的命题:别再按给 4.5 的任务尺度喂 Fable,该喂的是那些你以前会直接说「算了不做」的活。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Thariq:Fable 是 step-change;TLDR——是时候野心大一点了;后续会有系列写它怎么重塑了我们的工作。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thariq (Anthropic, Follow Builders maintainer): &#39;Fable is a step-change in models, and I hope it changes how you work with Claude. More to come in a series of posts on how it&#39;s reshaped our work, but the TLDR: it&#39;s time to be more ambitious.&#39;</p>
+              <p>He frames the takeaway as a posture change for builders, not a benchmark delta. The follow-up thread is implied (and arrives later in the week) — for now, the one-liner is: stop feeding Fable the tasks you&#39;d have given 4.5, start feeding it the work you would have said &#39;no&#39; to.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Fable is a step-change in models, and I hope it changes how you work with Claude. 
+
+              More to come in a series of posts on how it&#39;s reshaped our work, but the TLDR: it&#39;s time to be more ambitious. https://t.co/bWoxbTBShh</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/trq212/status/2064437561930682672" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:garrytan" data-author-name="Garry Tan" data-author-tag="Y Combinator 总裁" data-author-handle="@garrytan" data-author-avatar="../assets/avatars/x-garrytan.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-garrytan.jpg" alt="Garry Tan avatar"><span class="avatar-fallback">GT</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Garry Tan</div>
+            <div class="author-tag is-inline">Y Combinator 总裁</div>
+          </div>
+          <div class="author-handle">@garrytan</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Garry Tan(YC 总裁):「Fable 5 是我见过的最大模型能量。」</p>
+              <p>一句话,但分量不轻:YC 总裁从 GPT-3.5 之后看过每一波模型发布,他对这一波的判断和 Alex Albert 的名单、Boris Cherny 的「从 agent 到设计搭档」是同一个方向——只是更短、更狠。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Garry Tan(YC 总裁):Fable 5 是我见过的最大模型能量。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Garry Tan (Y Combinator president): &#39;Fable 5 is the biggest model energy I&#39;ve ever seen.&#39;</p>
+              <p>Short, blunt, and from a YC president who&#39;s seen every model launch since GPT-3.5. Worth pairing with Alex Albert&#39;s list and Boris Cherny&#39;s &#39;step up from agent to design partner&#39; — three different vantage points, same conclusion.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Fable 5 is the biggest model energy I&#39;ve ever seen</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/garrytan/status/2064573857911152710" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:levie" data-author-name="Aaron Levie" data-author-tag="Box CEO" data-author-handle="@levie" data-author-avatar="../assets/avatars/x-levie.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-levie.jpg" alt="Aaron Levie avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie</div>
+            <div class="author-tag is-inline">Box CEO</div>
+          </div>
+          <div class="author-handle">@levie</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie(Box CEO):「如果你觉得 AI 进步在放缓,这就是当天的现成答案。整体能力有一大跳,会直接让几乎所有知识工作类别的 agent 都有大幅改善。」</p>
+              <p>Levie 是大方向问题的「温度计」——每隔几个月他都会出来摸一次「这事还在涨吗?」。Fable 5 这次的答案是「在,而且是全线在涨,不只是编码」。agent 层会是这一波最大受益方,能力的提升会叠到更长时间尺度的自我验证上(同一日 bcherny 就在讲这个)。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Aaron Levie:AI 进步没有放缓——Fable 5 是当天的现成答案;整体能力一大跳,会让几乎所有知识工作类别的 agent 都有大幅改善。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie (Box CEO): &#39;If you thought AI progress was slowing down, well here&#39;s the immediate answer to that. Huge jump in capability across the board. This is going to deliver major improvement in agents across almost all knowledge work categories.&#39;</p>
+              <p>Levie is the canary on the macro question — every few months he takes the temperature of &#39;is this still moving?&#39; and the answer for Fable 5 is unambiguously yes, across the board, not just on coding. The agent layer is the immediate beneficiary because the capability jump compounds with longer-horizon self-verification (which bcherny is publishing the same day).</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>If you thought AI progress was slowing down, well here&#39;s the immediate answer to that. Huge jump in capability across the board. This is going to deliver major improvement in agents across almost all knowledge work categories. https://t.co/3CKQuX5HsG https://t.co/yPR4SfMrxM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/levie/status/2064396746953023647" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:danshipper" data-author-name="Dan Shipper" data-author-tag="Every 联合创始人 / AI 写作工具链" data-author-handle="@danshipper" data-author-avatar="../assets/avatars/x-danshipper.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-danshipper.jpg" alt="Dan Shipper avatar"><span class="avatar-fallback">DS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Dan Shipper</div>
+            <div class="author-tag is-inline">Every 联合创始人 / AI 写作工具链</div>
+          </div>
+          <div class="author-handle">@danshipper</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Dan Shipper(Every 联合创始人):「FABLE(MYTHOS)出了!@Every 提前测了一周。这是我们的 vibe check。」</p>
+              <p>Every 的编辑动作值得注意:他们先内部测了一周,公开发布的那一刻把 vibe check 放出来。他们的定位是「Fable 等于 Mythos」——同底模、不同安全档、不同人群。vibe check 这一品类在 AI 短评里流量很高,Every 是少数能配上自家使用数据的发布者之一。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Dan Shipper(Every):FABLE(MYTHOS)出了;@Every 提前测一周,公开上线当口放出 vibe check。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Dan Shipper (Every co-founder): &#39;FABLE (MYTHOS) IS OUT! We&#39;ve been testing for a week @every. Here&#39;s our vibe check.&#39;</p>
+              <p>Every&#39;s editorial position is interesting: they pre-tested for a week, then released the &#39;vibe check&#39; the moment the public launch dropped. Their framing is Fable-as-Mythos — same model, different safety dial, different audience. The vibe-check genre is one of the most-read short-form AI criticisms right now, and Every is one of the few publishers doing it with their own usage data.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>FABLE (MYTHOS) is OUT!
+
+              we&#39;ve been testing for a week @every. here&#39;s our vibe check: https://t.co/ZdceXz3apU https://t.co/jZ2690Th1G</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/danshipper/status/2064395167658860859" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:amasad" data-author-name="Amjad Masad" data-author-tag="Replit CEO" data-author-handle="@amasad" data-author-avatar="../assets/avatars/x-amasad.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-amasad.jpg" alt="Amjad Masad avatar"><span class="avatar-fallback">AM</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Amjad Masad</div>
+            <div class="author-tag is-inline">Replit CEO</div>
+          </div>
+          <div class="author-handle">@amasad</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Amjad Masad(Replit CEO):「来 Replit 体验 Claude Mythos,25% 折扣。」</p>
+              <p>分发渠道本身在透露 Mythos 的访问模型。Replit 已经在用折扣价给用户跑 Mythos 了——意味着在更广的 Trusted Access 计划之前,Mythos 至少在 Replit 这一个面向消费者的产品面上是可达的。如果其他 agent 平台跟进,Mythos 会变成事实上的「agent 级 Claude」。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Amasad(Replit):来 Replit 体验 Claude Mythos,25% 折扣。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Amjad Masad (Replit CEO): &#39;Try Claude Mythos at 25% off on Replit.&#39;</p>
+              <p>The distribution tells you about the access model. Replit is offering Mythos (not just Fable) to its users at a discount, which means Mythos is reachable through at least one consumer product surface even before the broader Trusted Access program opens. Replit is the test case for &#39;Mythos as a price-discounted second-tier product&#39; — if other agent platforms follow, Mythos becomes the de facto agent-grade Claude.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Try Claude Mythos at 25% off on Replit. https://t.co/Lq68eRydYI</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/amasad/status/2064411791015432466" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 02</div>
+    <h2 class="section-title">怎么用 Fable:四条建议、一次免费 Fable Check、一发命中的街机 / How to Use Fable: Tips, Free Code Review, One-Shot Racer</h2>
+    <p class="section-desc">Alex Albert 把上线第一天的四条操作建议写齐——任务升级、effort 拉满、扔掉旧指令、从派任务换到给目标;Swyx 借「不计费窗口」喊出 Fable Check™;Peter Yang 一发命中做出 F-Zero 街机,又把 browser-use 拖慢 Fable 的实坑摆出来。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:alexalbert__" data-author-name="Alex Albert" data-author-tag="Anthropic Claude 关系负责人" data-author-handle="@alexalbert__" data-author-avatar="../assets/avatars/x-alexalbert__.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-alexalbert__.jpg" alt="Alex Albert avatar"><span class="avatar-fallback">AA</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Alex Albert</div>
+            <div class="author-tag is-inline">Anthropic Claude 关系负责人</div>
+          </div>
+          <div class="author-handle">@alexalbert__</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Alex Albert 的「上线第一天」操作建议:(1) 给 Fable 更大、更野心的任务,前代能接的尺度不够用。(2) 默认 effort 调到 xhigh / high,要快就 med。(3) 重新写你的 skills 和 CLAUDE.mds——为前代写的指令会把 Fable 锚死在旧模式里,先让它自己判断。(4) 从「派任务」换成「给目标」——讲清楚「完成是什么样」和「怎么验证完成」,让 Fable 自己找路径(/loop)。</p>
+              <p>他还确认了全产品线的 usage limits 都已经 reset。这四条组合起来是一整套姿态变化:任务升级、effort 拉满、推掉旧指令骨架、从「任务」切到「目标」。没有一条是模型功能,都是用户必须改的事。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Alex Albert 给出 Fable 上线第一天的 4 条使用建议:任务更野、effort 默认 xhigh/high、重写 skills/CLAUDE.mds(别让旧指令锚死 Fable)、从「派任务」改到「给目标」;usage limits 已重置。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Alex Albert&#39;s operational launch advice: (1) Give Fable bigger, more ambitious tasks than what previous models could handle. (2) Use xhigh/high effort as your default for best performance, med for faster interactive sessions. (3) Rework your skills and CLAUDE.mds — instructions written for prior models anchor Fable to stale patterns, let it use its own judgment first. (4) Move from providing tasks to providing objectives — describe what done looks like and how to verify it, then let Fable find the path (/loop).</p>
+              <p>He also confirms usage limits have been reset across products. The four points form a complete posture change: scale up the tasks, dial up the effort, throw out the old instruction scaffolding, switch from task-to-objective framing. None of the four is a model feature — they&#39;re all things the user has to do differently.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>We&#39;ve reset usage limits across our products! 
+
+              For those just starting to test Fable, here&#39;s four tips for using it more effectively:
+              1. Give it bigger, more ambitious tasks than what previous models could handle.
+              2. Use xhigh/high effort as your default for best performance, med for faster interactive sessions.
+              3. Rework your skills and CLAUDE.mds. Instructions written for prior models anchor Fable to stale patterns, let it use its own judgment first.
+              4. Move from providing tasks to providing objectives. Describe what done looks like and how to verify it, then let Fable find the path (/loop and /goal are built for this)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/alexalbert__/status/2064467657483829441" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:swyx" data-author-name="Swyx" data-author-tag="AI 工程师" data-author-handle="@swyx" data-author-avatar="../assets/avatars/x-swyx.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-swyx.jpg" alt="Swyx avatar"><span class="avatar-fallback">S</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Swyx</div>
+            <div class="author-tag is-inline">AI 工程师</div>
+          </div>
+          <div class="author-handle">@swyx</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx(Cognition / DX Tips):「现在让 Claude Code 跑 Fable 做『code review for issues』,不是按 token 收费,这种 alpha 是真香。你会惊恐地意识到:任何没经过 Fable Check™ 的代码都不该上线。」</p>
+              <p>他点出的实操:趁 Fable 跑 Fable 这段时间不计费,把现有代码库让 Fable 审一遍。「Fable Check™」的笑点在于——新模型是你用过最狠的第一关 reviewer,而这段时间是免费的。实操含义:今天还在上生产代码的团队,应该把最近两周的 merge 在定价窗口关掉前重审一遍。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Swyx:Fable 不是按 token 收的窗口期里,让 Claude Code 用 Fable 跑 code review 是真的 alpha;任何没经过 Fable Check™ 的代码都不该上线。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx (Cognition, DX Tips): &#39;Insane amounts of alpha in telling Claude Code to &quot;review my code for issues&quot; on Fable right now while it&#39;s not pay-per-use. Be prepared to be in abject horror that you shipped anything to prod without a Fable Check™ first.&#39;</p>
+              <p>The working-software quote: run Fable as a code reviewer on your existing codebase while the Fable-on-Fable compute is still not metered per token. The joke in &#39;Fable Check™&#39; is that the new model is the most thorough first-pass reviewer you&#39;ve had access to, and the brief window to use it for free is right now. Implication: anyone shipping production code today should re-review the last two weeks of merges before the pricing window closes.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>btw insane amounts of alpha in telling claude code to &quot;review my code for issues&quot; on Fable rn while it is not pay per use
+
+              be prepared to be in abject horror that you shipped anything to prod without a Fable Check™ first https://t.co/wPCWRO84xV</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/swyx/status/2064492823781789969" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:petergyang" data-author-name="Peter Yang" data-author-tag="产品教练 / 创作者经济研究者" data-author-handle="@petergyang" data-author-avatar="../assets/avatars/x-petergyang.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-petergyang.jpg" alt="Peter Yang avatar"><span class="avatar-fallback">PY</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Yang</div>
+            <div class="author-tag is-inline">产品教练 / 创作者经济研究者</div>
+          </div>
+          <div class="author-handle">@petergyang</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang(产品教练、创作者经济研究者)公开了 Fable 一发命中的「伪 3D F-Zero 街机」prompt:反重力赛车、伪 3D 赛道(raycasting 或 mode-7 缩放)、3 个 AI 对手、boost 表吃血、400-800 km/h 的速度带、轨道扭曲+地面贴图滚动做速度感、方向键控车、shift boost、3 圈闭环赛道带 checkpoint;视觉赛博朋克霓虹(深色天空、亮边赛道、boost 加色散);HUD 显示名次/圈数/速度/血量;过弯车体倾斜。最后一句是原则性的:「先保证感觉,其次是真实——速度感才是这个游戏的一切。」</p>
+              <p>值得收藏的不是 F-Zero 本身,是 prompt 的结构:把「感觉」摆第一位(prioritize feel over realism)、明确点出技术路径(raycasting/mode-7)、给一个数字感的速度带、再加一个「长什么样」的 HUD——这正是 Alex Albert 第 4 条(描述完成是什么样)的实操版本,而且不是软件域的。同一套结构放到任何「给我一个感觉像 X 的东西」的活上都成立。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Peter Yang 公开一发命中的 F-Zero 街机 prompt:伪 3D / mode-7 / 3 个 AI 对手 / boost 吃血 / 400-800km/h 速度带 / 赛博朋克霓虹 / HUD / 过弯倾斜 / 「感觉」先于真实。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang (product coach, creator economy researcher) shares the prompt that produced a working F-Zero-style anti-gravity racer in one shot: &#39;Build F-Zero: futuristic anti-gravity racer with pseudo-3D track (raycasting or mode-7 style scaling), 3 AI opponents, boost meter that drains health, speed 400-800 km/h with visible sense of speed via track warping and scrolling ground pattern, arrow keys to steer, shift to boost, 3 laps on a looping track with checkpoints. Style neon cyberpunk (dark sky, glowing track edges, chromatic aberration on boost), show HUD with position/lap/speed/health, and make the ship bank into turns. Prioritize feel over realism — the speed sensation is the whole game.&#39;</p>
+              <p>Worth studying not for the F-Zero but for the structure: heavy on feel (&#39;prioritize feel over realism&#39;), explicit pseudo-3D technique (raycasting / mode-7), a numeric feel-band for speed, plus a &#39;what done looks like&#39; HUD. That last one is the Alex-Albert-tip-4 (&#39;describe what done looks like&#39;) in action, in a non-software domain. The same prompt structure works in any &#39;give me a thing that feels like X&#39; build.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Btw this is the prompt I used:
+
+              Build F-Zero: futuristic anti-gravity racer with pseudo-3D track (raycasting or mode-7 style scaling), 3 AI opponents, boost meter that drains health, speed 400-800 km/h with visible sense of speed via track warping and scrolling ground pattern, arrow keys to steer, shift to boost, 3 laps on a looping track with checkpoints. 
+
+              Style it neon cyberpunk (dark sky, glowing track edges, chromatic aberration on boost), show HUD with position/lap/speed/health, and make the ship bank into turns. Prioritize feel over realism - the speed sensation is the whole game.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/petergyang/status/2064550073594446059" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:petergyang" data-author-name="Peter Yang" data-author-tag="产品教练 / 创作者经济研究者" data-author-handle="@petergyang" data-author-avatar="../assets/avatars/x-petergyang.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-petergyang.jpg" alt="Peter Yang avatar"><span class="avatar-fallback">PY</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Yang</div>
+            <div class="author-tag is-inline">产品教练 / 创作者经济研究者</div>
+          </div>
+          <div class="author-handle">@petergyang</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang 另一条:「browser use 真的把 Fable 拖慢了。」</p>
+              <p>上线第一天的真实摩擦报告:上一代被吹爆的 browser-use,到了 Fable 这一代反而成了瓶颈。模型本身在静态环节快了很多,browser 这层桥成了可视化的卡点——未来 90 天 agent 平台该往哪使劲,这个信号很直接。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Peter Yang:browser use 真的把 Fable 拖慢了。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang again: &#39;The browser use is really slowing Fable down for me.&#39;</p>
+              <p>A real-world friction report from launch day. Browser-use tools, which were the headline agent capability of the previous generation, are the bottleneck for Fable in interactive sessions. Implication: the new model is so much faster at the static parts of the loop that the browser-bridge is now the visible chokepoint — agent-platform work for the next 90 days is obvious.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The browser use is really slowing Fable down for me https://t.co/xa1ijT3KMG</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/petergyang/status/2064577126385459265" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 03</div>
+    <h2 class="section-title">自我验证 + 长跑 loop:Fable 与 Codex 的同一道题 / Self-Verification: Fable and Codex Converge</h2>
+    <p class="section-desc">Boris Cherny 把上线日所有建议的元前提点出来——没有 self-verification,Fable 的长跑就是累加漂移;Thibault Sottiaux 用「codex 当乐团」接住 Claude 这边,再用 /goal 在做一次主路 / 偶尔用的用户模式调查;两边的「用户当指挥、模型当声部」已经收敛到同一条范式。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:bcherny" data-author-name="Boris Cherny" data-author-tag="Salesforce AI 工程负责人" data-author-handle="@bcherny" data-author-avatar="../assets/avatars/x-bcherny.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-bcherny.jpg" alt="Boris Cherny avatar"><span class="avatar-fallback">BC</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Boris Cherny</div>
+            <div class="author-tag is-inline">Salesforce AI 工程负责人</div>
+          </div>
+          <div class="author-handle">@bcherny</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Boris Cherny:「我们一直在讲『自我验证闭环』有多重要。模型可以长时间跑的年代,自我验证是它能跑更久、交付更接近你原意的结果的关键——你不用每一步都盯 Claude。」他指向 @delba_oliveira 的实战拆解。</p>
+              <p>这是上线日所有操作建议的元前提。Alex Albert 那 4 条(任务升级、effort 拉满、扔掉旧指令、任务→目标)都默认 agent 能对自己写的「目标完成度」做验证。没有闭环,长跑就是累加漂移。Cherny 把这一天的内容背后那条没明说的假设挑出来了。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Boris Cherny:自我验证闭环是关键——它让模型能跑更久、结果更接近你原意;Fable 这种长跑能力的前提,是你给它设好了自我验证(@delba_oliveira 有实战拆解)。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Boris Cherny: &#39;We talk a lot about how important it is to set up self-verification loops. Especially in the age of powerful models that can run for long periods of time, self-verification is a key ingredient that enables the model to run for much longer, delivering a result that is closer to what you intended, so you can do more without having to constantly check in on Claude as it works.&#39; He points at @delba_oliveira&#39;s breakdown of what that looks like in practice.</p>
+              <p>This is the meta-principle behind the launch-day advice. The four Alex Albert tips (bigger tasks, higher effort, throw out old instructions, task-to-objective) all assume the agent can self-verify against the objective you described. Without a self-verification loop, longer-horizon runs become compounding drift. Cherny is naming the unstated assumption the rest of the launch-day content is riding on.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>We talk a lot about how important it is to set up self-verification loops. Especially in the age of powerful models that can run for long periods of time, self-verification is a key ingredient that enables the model to run for much longer, delivering a result that is closer to what you intended, so you can do more without having to constantly check in on Claude as it works.
+
+              @delba_oliveira gives a great breakdown of what that looks like and why it matters</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/bcherny/status/2064426115255730578" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:thsottiaux" data-author-name="Thibault Sottiaux" data-author-tag="OpenAI Codex &amp; ChatGPT" data-author-handle="@thsottiaux" data-author-avatar="../assets/avatars/x-thsottiaux.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-thsottiaux.jpg" alt="Thibault Sottiaux avatar"><span class="avatar-fallback">TS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Thibault Sottiaux</div>
+            <div class="author-tag is-inline">OpenAI Codex &amp; ChatGPT</div>
+          </div>
+          <div class="author-handle">@thsottiaux</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thibault Sottiaux(OpenAI Codex &amp; ChatGPT):「把 Codex 当乐团来指挥。一次一个 /goal。」</p>
+              <p>Codex 这边和 Claude Code 自我验证帖的对照。/goal 是 Codex 的高层 directive,模型会对着它跑较长一段时间,用户偶尔回来听一下。乐团的比喻很贴——用户是指挥,模型是声部。Thibault 另一条在问「你用 codex /goal 是偶尔用还是当主路?」——Codex 对「自我验证」的回应就是 /goal,OpenAI 在押哪个用法最后会胜出。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Thibault Sottiaux(OpenAI):把 Codex 当乐团指挥,一次一个 /goal;另一条在问用户把 /goal 当偶尔用还是主路。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thibault Sottiaux (OpenAI Codex &amp; ChatGPT): &#39;Playing codex like an orchestra. One /goal at a time.&#39;</p>
+              <p>The Codex counterpart to the Claude Code self-verification thread. /goal is Codex&#39;s high-level directive that the model runs against for an extended period, with the user occasionally checking in. The orchestra metaphor is precise — the user is conducting, the model is the section. Thibault&#39;s other tweet asks &#39;Do you use codex /goal occasionally or as your main way to get things done?&#39; — Codex&#39;s answer to bcherny&#39;s self-verification is /goal, and OpenAI is polling for which pattern wins.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Playing codex like an orchestra. One /goal at a time. https://t.co/vlpypZu20A</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/thsottiaux/status/2064307859903447396" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:thsottiaux" data-author-name="Thibault Sottiaux" data-author-tag="OpenAI Codex &amp; ChatGPT" data-author-handle="@thsottiaux" data-author-avatar="../assets/avatars/x-thsottiaux.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-thsottiaux.jpg" alt="Thibault Sottiaux avatar"><span class="avatar-fallback">TS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Thibault Sottiaux</div>
+            <div class="author-tag is-inline">OpenAI Codex &amp; ChatGPT</div>
+          </div>
+          <div class="author-handle">@thsottiaux</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thibault Sottiaux:「我要求分 1% 的版税。」(附 Codex 乐团视频)</p>
+              <p>上线日的玩笑:Claude Code、Fable、Codex 在同一天都在用「agent 是一组声部、用户是指挥」这个比喻,Sottiaux 半开玩笑地来分 1% 的版税。这个比喻这周在行业里被用得很频繁。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Thibault Sottiaux(开玩笑):对这一波「agent 当乐团」的比喻,要分 1% 版税。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thibault Sottiaux: &#39;I would like to claim my 1% of royalty fees.&#39; (attached: a Codex-on-orchestra video)</p>
+              <p>The launch-day joke: Sottiaux is half-joking about claiming 1% royalties for the &#39;agent orchestra&#39; metaphor because Claude Code, Fable, and Codex are all riffing on the same &#39;agent-as-section, user-as-conductor&#39; framing on the same day. The metaphor is doing a lot of work across the industry this week.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I would like to claim my 1% of royalty fees. https://t.co/TkizkUmfZ8</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/thsottiaux/status/2064572276180484475" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 04</div>
+    <h2 class="section-title">算力栈 + 预算原语:基建侧 34 天从签约到 GA / Compute Stack, Budget Primitives, 34 Days to GA</h2>
+    <p class="section-desc">Rauchg 用 Vercel CLI 把「AI token 虚拟信用卡」做成第一公民原语、又把「Opus 写 VM、Mythos 验」的两模型验证模式放进产品工作流;Swyx 把 34 天从签约到 GA 的速度钉在 Anthropic × NVIDIA 联盟的时间表上——上线日的所有应用层决策都跑在这层基建上。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:rauchg" data-author-name="Guillermo Rauch" data-author-tag="Vercel CEO" data-author-handle="@rauchg" data-author-avatar="../assets/avatars/x-rauchg.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-rauchg.jpg" alt="Guillermo Rauch avatar"><span class="avatar-fallback">GR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Guillermo Rauch</div>
+            <div class="author-tag is-inline">Vercel CEO</div>
+          </div>
+          <div class="author-handle">@rauchg</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch(Vercel CEO):Vercel CLI 现在能创建 AI Gateway API key、带 --budget 限制开销、设 --refresh-period 配额。「可以把它当作 AI token 的虚拟信用卡。」</p>
+              <p>上线日的基建侧响应:刚把 Fable/Mythos 接进来的每个团队,接下来第一件事就是给 token 花销做预算管理。Vercel 这次补的「key + 预算 + 自动续期」是接下来一周所有开发工具都会抄的原语,API 表面已经被 Vercel 钉了。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Rauchg(Vercel):CLI 现在能创建 AI Gateway key、带 --budget 限制开销、--refresh-period 配额——AI token 的虚拟信用卡。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch (Vercel CEO): Vercel CLI now lets you create AI Gateway API keys, pass a --budget to cap their spend, and set a --refresh-period for the quota. &#39;Think of it as virtual credit cards for AI tokens.&#39;</p>
+              <p>The infra-layer answer to launch day: every team that just adopted Fable (or Mythos) is going to be metering token spend, and the gap between &#39;we have a key&#39; and &#39;we have a budgeted, refreshable, per-team key&#39; is what Vercel is closing. Expect every dev-tools vendor to ship a comparable budget primitive this week — Vercel just set the API surface.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Vercel CLI now allows you to:
+              ◾ create AI Gateway API keys
+              ◾ pass a --𝚋𝚞𝚍𝚐𝚎𝚝 to cap their spend
+              ◾ set a --𝚛𝚎𝚏𝚛𝚎𝚜𝚑-𝚙𝚎𝚛𝚒𝚘𝚍 for the quota
+
+              Think of it as virtual credit cards for AI tokens 🤖💳 https://t.co/ZOuhwIp7h5 https://t.co/mvIsJkaBfR</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/rauchg/status/2064551967461114111" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:rauchg" data-author-name="Guillermo Rauch" data-author-tag="Vercel CEO" data-author-handle="@rauchg" data-author-avatar="../assets/avatars/x-rauchg.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-rauchg.jpg" alt="Guillermo Rauch avatar"><span class="avatar-fallback">GR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Guillermo Rauch</div>
+            <div class="author-tag is-inline">Vercel CEO</div>
+          </div>
+          <div class="author-handle">@rauchg</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch:「Opus 给我们写了一个 VM,然后 Mythos 验了它。」</p>
+              <p>两模型验证模式一句话说清:一个写,一个验。Rauch 在传递一个工程现实——生产环境的合理搭配不再是「一个模型搞定一切」,而是「Opus 级别写、Mythos 级别验」。这其实是 RLHF / eval 流水线里「judge model」那一套思路,但首次以面向用户的工作流形态出现在 Vercel 这种产品上。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Rauchg(Vercel):Opus 写了个 VM,Mythos 验了——两模型验证模式,正式进入产品工作流。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch: &#39;Opus wrote us a VM and then Mythos verified it.&#39;</p>
+              <p>The two-model verification pattern in one sentence: one model writes, another verifies. Rauch is signaling that the realistic production setup is no longer &#39;one model does everything&#39; but &#39;Opus-class generation, Mythos-class verification&#39; — the same &#39;judge model&#39; architecture that RLHF/eval pipelines have been using, now showing up as a user-facing Vercel workflow.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Opus wrote us a VM and then Mythos verified it https://t.co/oOJlo6aSLI</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/rauchg/status/2064419055726215438" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:swyx" data-author-name="Swyx" data-author-tag="AI 工程师" data-author-handle="@swyx" data-author-avatar="../assets/avatars/x-swyx.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-swyx.jpg" alt="Swyx avatar"><span class="avatar-fallback">S</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Swyx</div>
+            <div class="author-tag is-inline">AI 工程师</div>
+          </div>
+          <div class="author-handle">@swyx</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx:「给家里记一笔:签合作到 Mythos 级模型全球 GA,中间隔了 34 天。站在 NVIDIA 栈上就是能 do things™。」</p>
+              <p>基建侧的上市速度:从签约到 frontier 级模型 GA,34 天。Swyx 在把「Anthropic × NVIDIA」联盟钉到时间表上——给竞争者的潜台词是,严肃发布的窗口期现在是 34 天。「you can just do things™」是这一段的点睛句:算力栈的选择本身就是新的产品策略。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Swyx:从签约到 Mythos 级模型 GA,中间 34 天;站在 NVIDIA 栈上就是能 do things™——算力栈本身就是新战略。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx: &#39;For those keeping track at home it was 34 days between signing this deal and launching Mythos-class model GA to the world. Building on the NVIDIA stack means you can just do things™.&#39;</p>
+              <p>The infra time-to-market number: 34 days from deal to general availability for a frontier-class model. Swyx is putting the &#39;Anthropic-on-NVIDIA&#39; alliance on the timeline — and the implicit message to competitors is that 34 days is now the bar for serious launch windows. The &#39;you can just do things™&#39; line is the punchline: compute-stack choice is the new product strategy.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>for those keeping track at home it was 34 days between signing this deal and launching Mythos-class model GA to the world.
+
+              https://t.co/J1dZDZcxMu
+
+              building on @nvidia stack means you can just do things™.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/swyx/status/2064421542503797186" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 05</div>
+    <h2 class="section-title">应用层还活着:untrainable corner、上手机会、meta-prompting / The App Layer Lives: Untrainable Corners, Onboarding, Meta-Prompting</h2>
+    <p class="section-desc">模型做了一大跳,但应用层没死:Levie 力挺「untrainable corner」是最干净的 moat 论;Zhang Rui 指出非技术人的瓶颈是「不知道要问什么」、Town 的「主动给菜单」是新答案;Nikunj 用「播客 → transcript → meta-prompt → 一发命中」把 Alex Albert 的「给目标」在生产环境实跑了一遍。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:levie" data-author-name="Aaron Levie" data-author-tag="Box CEO" data-author-handle="@levie" data-author-avatar="../assets/avatars/x-levie.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-levie.jpg" alt="Aaron Levie avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie</div>
+            <div class="author-tag is-inline">Box CEO</div>
+          </div>
+          <div class="author-handle">@levie</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie 转引并力挺一段话:「一个应用能在『untrainable corner』里站住,是因为它做的是不性感的活——把公司的私域现实摆好让模型能动、把工具递给模型、和客户一起把员工的现实改一改。能做『翻译』的公司很难抄——而翻译这件事没完。集成和运维会一直跑到合作关系结束,赢的总是把领域工程师和工具贴在客户身边的那批人。」</p>
+              <p>Levie 自己的评语:「应用层依然有一个疯狂重要的角色。」「untrainable corner」是这一轮 frontier 模型之后,关于 moat 最干净的论述:那些不会泛化、不进 benchmark、不享受 scaling 红利的活,仍然得有人干。在模型本身做了一大跳的发布日,「什么能活过这一跳」是值得问的问题。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Levie 引并力挺:「untrainable corner」是这一轮 frontier 模型之后,关于 moat 最干净的论述——翻译公司的私域现实、递工具、贴客户身边;应用层依然有一个疯狂重要的角色。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie quoting someone else&#39;s post (and endorsing it): &#39;An application earns its place in the untrainable corner by doing unglamorous work: arranging a company&#39;s private reality so a model can act on it, handing the model the tools to act, working with the customer to change the reality of its workforce. A company that brings the translation is tough to copy — and the translation never ends. Integration and maintenance run as long as the relationship does, won by teams that put domain-specialized engineers and tools next to the customer.&#39;</p>
+              <p>Levie&#39;s own gloss: &#39;There&#39;s still an insanely important role for the application layer.&#39; The untrainable-corner argument is the cleanest articulation yet of the post-frontier-model moat: the work that doesn&#39;t generalize, doesn&#39;t show up in benchmarks, and doesn&#39;t reward scaling, but still has to be done by someone. On a launch day where the model itself is doing a step-change jump, the &#39;what survives the jump&#39; question is the right one to be asking.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>This is a critical post to read if you&#39;re building an applied AI company right now.
+
+              &quot;An application earns its place in the untrainable corner by doing unglamorous work: arranging a company&#39;s private reality so a model can act on it, handing the model the tools to act, working with the customer to change the reality of its workforce. A company that brings the translation is tough to copy – and the translation never ends. Integration and maintenance run as long as the relationship does, won by teams that put domain-specialized engineers and tools next to the customer.&quot;
+
+              There&#39;s still an insanely large gulf between model capabilities and what it takes to apply them to specific corporate workflows. Some of that is technology that needs to be built, a lot is access to (and formatting of) the right data to work with, and a ton more is on the change management and specific implementation work (FDEs, etc.) it takes to make AI work in any specific corporate setting. 
+
+              2 things can be very true at once: frontier models and labs will continue to grow an incredible amount, and there will be a vast ecosystem of software and services companies that emerge to bring the power of these models to real enterprises. This makes room for new infrastructure provides, applied AI companies in every vertical, new versions of system integrators, and more players.
+
+              Incredibly exciting time on all fronts.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/levie/status/2064569513023328268" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:zarazhangrui" data-author-name="Zhang Rui" data-author-tag="Follow Builders 创始人 / 策展人" data-author-handle="@zarazhangrui" data-author-avatar="../assets/avatars/x-zarazhangrui.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-zarazhangrui.jpg" alt="Zhang Rui avatar"><span class="avatar-fallback">ZR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Zhang Rui</div>
+            <div class="author-tag is-inline">Follow Builders 创始人 / 策展人</div>
+          </div>
+          <div class="author-handle">@zarazhangrui</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zhang Rui(Follow Builders 创始人、策展人):「非技术人用 coding agent 的瓶颈从来不是界面。聊天是有史以来最简单的 UI。瓶颈是他们不知道要问什么。空着的输入框默认你已经知道能做什么——而多数人不知道。我试 Town 的时候印象很深:它的 onboarding 是 agent 主动给我建议它能接走的活,而不是等我给指令。」</p>
+              <p>和 Josh Woodward 的「对软件的需求会爆表」配对看:如果模型能给你一切,瓶颈就挪到「该问什么」。Town 的「主动给菜单」是 onboarding 答案——agent 把「能接走什么」先列出来,而不是空框瞪人。这是文化产品的问题,不是模型的问题,Zhang Rui 把它讲得很干净。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Zhang Rui:非技术人用 coding agent 的瓶颈从来不是 UI,而是「不知道要问什么」;Town 的 onboarding 是 agent 主动给菜单——这是文化产品问题,不是模型问题。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zhang Rui (Follow Builders founder, curator): &#39;The barrier for non-technical people using coding agents was never the interface. Chatting is the easiest UI ever invented. The barrier is that they don&#39;t know what to ask for. The blank chat box assumes you already know what&#39;s possible. Most people don&#39;t. When I tried Town, I was impressed by its onboarding process where the agent proactively suggested workflows and things it can take off my plate, rather than waiting for me to give instructions.&#39;</p>
+              <p>Pairing with Josh Woodward&#39;s &#39;demand for software is off the charts&#39;: if the model can produce anything, the bottleneck moves to &#39;what to even ask for&#39;. Town&#39;s proactive-suggestion pattern is the onboarding answer — the agent offers a menu of things it can take off your plate, instead of staring at you from an empty box. That&#39;s the cultural product question, not the model question, and Zhang Rui is naming it cleanly.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The barrier for non-technical people using coding agents was never the interface. Chatting is the easiest UI ever invented
+
+              The barrier is that they don&#39;t know what to ask for.
+
+              The blank chat box assumes you already know what&#39;s possible. Most people don&#39;t.
+
+              When I tried Town, I was impressed by its onboarding process where the agent proactively suggested workflows &amp; things it can take off my plate, rather than waiting for me to give instructions</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/zarazhangrui/status/2064587398529606082" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:nikunj" data-author-name="Nikunj Kothari" data-author-tag="Afore Capital 合伙人" data-author-handle="@nikunj" data-author-avatar="../assets/avatars/x-nikunj.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-nikunj.jpg" alt="Nikunj Kothari avatar"><span class="avatar-fallback">NK</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Nikunj Kothari</div>
+            <div class="author-tag is-inline">Afore Capital 合伙人</div>
+          </div>
+          <div class="author-handle">@nikunj</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj Kothari(Afore Capital 合伙人):「在听最新一期 @InvestLikeBest,里面讲了很多 S 曲线。于是让 Fable 一发命中做了一个网站,把过去 200 年的 S 曲线、拐点、以及每一段是不是泡沫都写一遍。已经在 escurves dot com 上线。」</p>
+              <p>「Fable 到底能干嘛」的实例,投资人侧口吻。一个 200 年 S 曲线回顾站(带泡沫评注),听到播客 tangent 的同一天就做出来发布。Jevons 悖论被坐实:一个 Afore 的合伙人把播客里一句闲话,同一个下午变成一个公开发布的网站。「one shot」这三个字在干活——三个月前同一个 prompt 要十几轮迭代才能落地。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Nikunj(Afore):听完 @InvestLikeBest 一期讲 S 曲线,让 Fable 一发命中做出 200 年 S 曲线站(含泡沫评注),当天下午就上线——Jevons 悖论被坐实。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj Kothari (Afore Capital): &#39;I was listening to the latest episode of @InvestLikeBest and it talked a lot about S-curves. So I had Fable one-shot a website that talked about all the S-curves, their inflection point &amp; commentary on each being a bubble in the last 200 years. Live now on escurves dot com.&#39;</p>
+              <p>The &#39;what does Fable let you actually do?&#39; demo, investor-flavored. A 200-year S-curve survey site, including bubble commentary, one-shot, in response to a podcast he just listened to. This is the Jevons-paradox claim made concrete: a partner at Afore turns a podcast tangent into a published site in the same afternoon. The &#39;one shot&#39; qualifier is doing the work — three months ago the same prompt would have needed a dozen iterations to land.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I was listening to the latest episode of @InvestLikeBest and it talked a lot about S-curves..
+
+              So I had Fable one shot a website that talked about all the S-curves, their inflection point &amp;amp; commentary on each being a bubble in the last 200 years.
+
+              Live now on escurves dot com 🌊 https://t.co/jYMCkJde9x</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/nikunj/status/2064506504888373758" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:nikunj" data-author-name="Nikunj Kothari" data-author-tag="Afore Capital 合伙人" data-author-handle="@nikunj" data-author-avatar="../assets/avatars/x-nikunj.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-nikunj.jpg" alt="Nikunj Kothari avatar"><span class="avatar-fallback">NK</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Nikunj Kothari</div>
+            <div class="author-tag is-inline">Afore Capital 合伙人</div>
+          </div>
+          <div class="author-handle">@nikunj</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj 接着贴了 prompt:「打开 Claude app,开 research mode,把播客的 transcript 丢进去,让它查所有历史上的 S 曲线,理出所有 section,再给我一个 Claude code 的 prompt,让我能一发命中。」</p>
+              <p>链路值得拎出来:播客 → 丢 transcript → research mode 做检索 → 模型写一个 Claude Code prompt → 一发命中生成站。这就是 Alex Albert 推的「给目标、不派任务」,是 production 版本。值得挑出来讲的是「meta-prompting」这一步——让模型写你将要执行的 prompt,正好绕过了 Zhang Rui 提的「空框不知道问什么」的问题。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Nikunj 补 prompt:Claude app 开 research mode → 丢 transcript → 查所有 S 曲线 → 理 section → 给一个 Claude code prompt → 一发命中。meta-prompting 绕过了空框问题。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj follows up with the prompt: &#39;For the prompt, in Claude app with research mode on — I dumped the transcript for the episode, have it research all the scurves in history, figure out all the sections and give me a Claude code prompt that I could one shot.&#39;</p>
+              <p>The chain is worth tracing: podcast → dump transcript → research mode does the lookups → model composes a Claude Code prompt → one-shot generates the site. This is the &#39;objective, not task&#39; framing Alex Albert was pushing, in production. The next-level observation is the meta-prompting step — letting the model write the prompt that you then execute, as a way of skipping the user&#39;s blank-chat-box problem Zhang Rui named.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>For the prompt, in Claude app with research mode on - I dumped the transcript for the episode, have it research all the scurves in history, figure out all the sections and give me a Claude code prompt that I could one shot.
+
+              Here&#39;s the website: https://t.co/zPGOiwmiXG</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/nikunj/status/2064508462034501997" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 06</div>
+    <h2 class="section-title">Podcast 与 Builder 边角 / Podcast and Builder Culture</h2>
+    <p class="section-desc">AI &amp; I by Every 在 Fable 5 上线日放出 Dan Shipper 谈《After Automation》:agent 离人越远越不值钱——这一刀和发布日的亢奋形成矫正;Josh Woodward 跟着 Karpathy 把需求面吹成爆表;Aditya Agarwal 用投资人的一句话给这一跳签名;Thariq 在 Tokyo「Code w/ Claude」巡演现场和开发者碰面。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="podcast:ai-and-i-by-every" data-author-name="AI &amp; I by Every" data-author-tag="AI 商业与产品深访" data-author-handle="" data-author-avatar="../assets/avatars/podcast-ai-and-i-by-every.png">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/podcast-ai-and-i-by-every.png" alt="AI &amp; I by Every avatar"><span class="avatar-fallback">A&amp;</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">AI &amp; I by Every</div>
+            <div class="author-tag is-inline">AI 商业与产品深访</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>AI &amp; I by Every:「我们用 AI 把一切自动化,结果人头翻了三倍。」Brandon(Every COO)采访 Dan Shipper,聊他在 5-21 发的文章《After Automation》。</p>
+              <p>开场那一刀很重:「你让 AI 做件事,它惊艳到你。你觉得自己不行——天哪,这东西要抢我饭碗。然后它就停了,回头看着你说,接下来怎么办?」文章的观点是:agent 离人越远,价值越低——你只要跟着模型走就没事;如果你想活得野心一点,这件事反而让更多人能做到了。Fable 5 上线日当天,这篇像一剂矫正药:模型接走越多,人贴着 loop 越值。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>AI &amp; I by Every:「我们用 AI 自动化了一切,人头却翻了三倍」;Brandon 采访 Dan Shipper 聊《After Automation》。</p>
+              <p>「你 prompt AI 做件事,惊艳到你,你觉得自己要丢饭碗了。然后它停了,回头看你——『接下来呢?』agent 离人越远越不值钱;跟着模型走就没事,野心大一点反而更可能了。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>AI &amp; I by Every: &#39;We Automated Everything With AI and Tripled Our Headcount.&#39; Brandon (Every COO) interviews Dan Shipper about his piece &#39;After Automation&#39; published May 21.</p>
+              <p>The hook: &#39;You prompt AI to do something. It blows your mind. You feel inadequate. You feel like, oh my god. This thing&#39;s gonna take my job. And then it stops working, it looks back at you and says, what should I do next?&#39; The piece argues the further an agent gets from a human, the less valuable it is — and on the Fable-5 launch day of all days, &#39;After Automation&#39; lands like a corrective: ride the models, lead an ambitious life, the value is in staying close to the loop.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>You prompt AI to do something. It blows your mind. You feel inadequate. You feel like, oh my god. This thing&#39;s gonna take my job.
+
+              And then it stops working, it looks back at you and says, what should I do next?
+
+              The further away an agent gets from a human, the less valuable it is. If you just ride the models, you&#39;re going to be fine. If you care about leading an ambitious life, I truly think that this is going to make that more possible for more people.</p>
+              <p>AI &amp; I by Every: &#39;We Automated Everything With AI and Tripled Our Headcount&#39; — Brandon interviews Dan Shipper on &#39;After Automation&#39; (May 21).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.youtube.com/playlist?list=PLuMcoKK9mKgHtW_o9h5sGO2vXrffKHwJL" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:trq212" data-author-name="Tao Li" data-author-tag="AI 研究员 / Follow Builders 维护者" data-author-handle="@trq212" data-author-avatar="../assets/avatars/x-trq212.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-trq212.jpg" alt="Tao Li avatar"><span class="avatar-fallback">TL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Tao Li</div>
+            <div class="author-tag is-inline">AI 研究员 / Follow Builders 维护者</div>
+          </div>
+          <div class="author-handle">@trq212</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thariq:「在 Code w/ Claude Tokyo! 见到我打个招呼。」</p>
+              <p>来自 Anthropic 东京开发者活动的一线更新。围绕 Fable 上线,「Code w/ Claude」巡演是区域的落地动作,东京是下一站,团队会借此面对面收一波首日用例。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Thariq(Anthropic):在 Code w/ Claude Tokyo——围绕 Fable 的区域巡演,东京是下一站。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thariq: &#39;At Code w/ Claude Tokyo! Say hi if you see me around.&#39;</p>
+              <p>The on-the-ground update from Anthropic&#39;s Tokyo developer event. The &#39;Code w/ Claude&#39; tour is the regional rollout pattern around the Fable launch — Tokyo is the next stop, and the team is using it to surface first-day usage stories in person.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>at Code w/ Claude Tokyo! say hi if you see me around https://t.co/BXfvEJVvrf</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/trq212/status/2064521202622960058" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:joshwoodward" data-author-name="Josh Woodward" data-author-tag="Google Labs 产品负责人" data-author-handle="@joshwoodward" data-author-avatar="../assets/avatars/x-joshwoodward.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-joshwoodward.jpg" alt="Josh Woodward avatar"><span class="avatar-fallback">JW</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Josh Woodward</div>
+            <div class="author-tag is-inline">Google Labs 产品负责人</div>
+          </div>
+          <div class="author-handle">@joshwoodward</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Josh Woodward(Google Labs 产品负责人):「对软件的需求会爆表。」</p>
+              <p>Google Labs 这边对 Karpathy 那个 Jevons 悖论的呼应:软件生产被「水龙头化」之后,瓶颈从「能不能做」挪到「该不该做」。什么样的东西该做、什么不该做、什么该作为公共物品,这变成新问题。Woodward 的框架和今天 Zara Zhang 讲的「上手机会」那条是同一条线。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Josh Woodward(Google Labs):对软件的需求会爆表。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Josh Woodward (Google Labs product lead): &#39;The demand for software is going to be off the charts.&#39;</p>
+              <p>The Google Labs lens on the same Jevons-paradox point Karpathy made: when building software becomes effectively free, the constraint shifts from &#39;can we build it?&#39; to &#39;should we build it?&#39;. The cultural question — what to build, what not to, what becomes a public good — is now the open question. Woodward&#39;s framing pairs with Zara Zhang&#39;s onboarding insight in the same feed.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The demand for software is going to be off the charts https://t.co/cw1ojEhxq1</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/joshwoodward/status/2064509357216428171" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:adityaag" data-author-name="Aditya Agarwal" data-author-tag="Dropbox Engineering VP / 前 Facebook 平台工程负责人" data-author-handle="@adityaag" data-author-avatar="../assets/avatars/x-adityaag.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-adityaag.jpg" alt="Aditya Agarwal avatar"><span class="avatar-fallback">AA</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aditya Agarwal</div>
+            <div class="author-tag is-inline">Dropbox Engineering VP / 前 Facebook 平台工程负责人</div>
+          </div>
+          <div class="author-handle">@adityaag</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aditya Agarwal(Dropbox 工程 VP,前 Facebook 平台工程负责人):「作为投资人,这种时刻会让你想起当初为什么要投那些去做重要事的创业公司。」</p>
+              <p>投资人侧的一句话。Agarwal 把这次发布当作「这就是为什么要继续投好公司」的提示发给他自己投过的所有 founder——这种推特转发不多,但每个他投过的创始人都会收藏。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Aditya Agarwal(投资人):这种时刻让你想起为什么当初要投那些去做重要事的创业公司。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aditya Agarwal (Dropbox engineering VP, former Facebook platform engineering lead): &#39;As an investor, these are the moments that remind you why you fund startups to do important things.&#39;</p>
+              <p>The investor-side one-liner. Agarwal is using the launch as a &#39;this is why you stay in the seat&#39; prompt to his own fund&#39;s founders — the kind of tweet that doesn&#39;t get retweeted much but gets bookmarked by every founder he&#39;s ever backed.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>As an investor, these are the moments that remind you why you fund startups to do important things. https://t.co/AK1rHnp2nG</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/adityaag/status/2064391655453802773" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <footer data-source-note="Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-10 source feeds.">Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-10 source feeds.</footer>
+
+  <script>
+    function getTemplateAuthorSources() {
+      const sources = window.AI_BUILDERS_TEMPLATE_SOURCES || {};
+      return { identities: sources.identities || {}, avatars: sources.avatars || {} };
+    }
+
+    function getAuthorInitials(name) {
+      return (name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(function(part) { return part[0]; }).join('').toUpperCase();
+    }
+
+    function hydrateTemplateCopy() {
+      const intro = document.querySelector('.intro');
+      if (intro) {
+        const kicker = intro.querySelector('.intro-kicker');
+        const copy = intro.querySelector('.intro-copy');
+        if (kicker) kicker.textContent = intro.dataset.kicker || '';
+        if (copy) copy.textContent = intro.dataset.text || '';
+      }
+
+      const footer = document.querySelector('footer');
+      if (footer) footer.textContent = footer.dataset.sourceNote || '';
+
+      const rewriteLabel = document.body.dataset.viewLabelRewrite || '速读';
+      const originalLabel = document.body.dataset.viewLabelOriginal || '原文';
+      document.querySelectorAll('.view-toggle').forEach(function(button) {
+        if (button.dataset.viewTarget === 'rewrite') button.textContent = rewriteLabel;
+        if (button.dataset.viewTarget === 'original') button.textContent = originalLabel;
+      });
+    }
+
+    function hydrateAuthorMeta() {
+      const sources = getTemplateAuthorSources();
+      document.querySelectorAll('.card').forEach(function(card) {
+        const authorKey = card.dataset.authorKey || '';
+        const identity = sources.identities[authorKey] || {};
+        const avatarEntry = sources.avatars[authorKey] || {};
+
+        const name = identity.name || card.dataset.authorName || '';
+        const rawHandle = identity.handle || card.dataset.authorHandle || '';
+        const handle = rawHandle && rawHandle.startsWith('@') ? rawHandle : (rawHandle ? '@' + rawHandle : '');
+        const tag = identity.label || card.dataset.authorTag || '';
+        const avatar = avatarEntry.fileUrl || avatarEntry.localPath || card.dataset.authorAvatar || '';
+
+        const nameNode = card.querySelector('.author-name');
+        const tagNode = card.querySelector('.author-tag');
+        const handleNode = card.querySelector('.author-handle');
+        const avatarNode = card.querySelector('.avatar');
+        const avatarImg = card.querySelector('.avatar img');
+        const avatarFallback = card.querySelector('.avatar-fallback');
+
+        if (nameNode) nameNode.textContent = name;
+        if (tagNode) tagNode.textContent = tag;
+        if (handleNode) handleNode.textContent = handle;
+        if (avatarImg) {
+          avatarImg.src = avatar;
+          avatarImg.alt = name ? name + ' avatar' : 'Author avatar';
+        }
+        if (avatarNode) avatarNode.classList.toggle('is-fallback', !avatar);
+        if (avatarFallback) avatarFallback.textContent = getAuthorInitials(name);
+      });
+    }
+
+    function updateEditionStrip() {
+      const publishDate = document.body.dataset.publishDate;
+      const editionName = document.body.dataset.editionName || '双语精选版';
+      const editionStrip = document.getElementById('edition-strip-text');
+      if (!publishDate || !editionStrip) return;
+
+      const issueNumber = document.body.dataset.issueNumber || '';
+      if (!issueNumber) return;
+
+      const selectedCount = document.querySelectorAll('.card').length;
+      const authorCount = new Set([].slice.call(document.querySelectorAll('.author-handle')).map(function(node) { return node.textContent.trim(); }).filter(Boolean)).size;
+      const themeCount = document.querySelectorAll('.section-header').length;
+      const parts = ['第 ' + issueNumber + ' 期', publishDate, editionName, selectedCount + ' 条精选', authorCount + ' 位作者', themeCount + ' 个主题'];
+      editionStrip.innerHTML = parts.map(function(part) { return '<span class="edition-item">' + part + '</span>'; }).join('<span class="edition-sep">|</span>');
+    }
+
+    function measureVariantHeight(variant) {
+      const prevPosition = variant.style.position;
+      const prevInset = variant.style.inset;
+      const prevVisibility = variant.style.visibility;
+      const prevPointerEvents = variant.style.pointerEvents;
+      const prevOpacity = variant.style.opacity;
+      const prevTransform = variant.style.transform;
+      const prevTransition = variant.style.transition;
+      const prevOverflowY = variant.style.overflowY;
+      const prevDisplay = variant.style.display;
+
+      variant.style.position = 'relative';
+      variant.style.inset = 'auto';
+      variant.style.visibility = 'hidden';
+      variant.style.pointerEvents = 'none';
+      variant.style.opacity = '1';
+      variant.style.transform = 'none';
+      variant.style.transition = 'none';
+      variant.style.overflowY = 'visible';
+      variant.style.display = 'block';
+
+      const height = variant.scrollHeight;
+
+      variant.style.position = prevPosition;
+      variant.style.inset = prevInset;
+      variant.style.visibility = prevVisibility;
+      variant.style.pointerEvents = prevPointerEvents;
+      variant.style.opacity = prevOpacity;
+      variant.style.transform = prevTransform;
+      variant.style.transition = prevTransition;
+      variant.style.overflowY = prevOverflowY;
+      variant.style.display = prevDisplay;
+
+      return Math.ceil(height);
+    }
+
+    function getTargetHeight(shell, target) {
+      const variant = shell.querySelector('.content-variant[data-view="' + target + '"]');
+      return measureVariantHeight(variant);
+    }
+
+    function syncShellHeights() {
+      document.querySelectorAll('.content-shell').forEach(function(shell) {
+        const active = shell.querySelector('.content-variant.is-active');
+        const target = active ? active.dataset.view : 'rewrite';
+        shell.style.height = getTargetHeight(shell, target) + 'px';
+      });
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', function() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(syncShellHeights, 120);
+    });
+
+    document.querySelectorAll('.card').forEach(function(card) {
+      const buttons = card.querySelectorAll('.view-toggle');
+      const shells = card.querySelectorAll('.content-shell');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const target = button.dataset.viewTarget;
+          if (button.classList.contains('is-active')) return;
+
+          buttons.forEach(function(btn) {
+            btn.classList.toggle('is-active', btn === button);
+          });
+
+          shells.forEach(function(shell) {
+            const current = shell.querySelector('.content-variant.is-active');
+            const next = shell.querySelector('.content-variant[data-view="' + target + '"]');
+            if (!current || !next || current === next) return;
+
+            shell.style.height = shell.offsetHeight + 'px';
+            requestAnimationFrame(function() {
+              current.classList.remove('is-active');
+              next.classList.add('is-active');
+              shell.style.height = getTargetHeight(shell, target) + 'px';
+            });
+          });
+        });
+      });
+    });
+
+    hydrateTemplateCopy();
+    hydrateAuthorMeta();
+    updateEditionStrip();
+    syncShellHeights();
+  </script>
+</body>
+</html>

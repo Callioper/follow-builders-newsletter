@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 09 Jun 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 10 Jun 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-06-10 · Fable 5 换代日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-10-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-10-rerun.html</guid>
+      <pubDate>Wed, 10 Jun 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[6-10 这天 Follow Builders 的主轴就是 Claude Fable 5 / Mythos 5 同一日上线:Anthropic 把同一套底模切成「带围栏」的 Fable 5 给全球、把「松围栏」的 Mythos 5 留给 Glasswing 合作伙伴,Karpathy、Alex Albert、Boris Cherny、Garry Tan、Levie 在同一天把这一跳定性成「主版本号级」,而整个上午所有人都在重新校准「我们和 Claude 工作的方式」——任务升级、effort 拉满、扔掉旧指令、从派任务切到给目标。Jevons 悖论在当天下午被坐实:有投资人听完播客就把 S 曲线站一发命中发出来,有产品教练用一段 prompt 出了 F-Zero 街机。infra 侧 Rauchg 在 Vercel CLI 上放出 AI token 虚拟信用卡、Swyx 把 34 天从签约到 GA 的速度挂上 Anthropic × NVIDIA 的时间表、Levie 借机把 compute-normalized benchmark 摆上桌。Podcast 这一边 Every 把《After Automation》那一刀对准上线日的亢奋——agent 离人越远越不值钱,人贴着 loop 反而更值。]]></description>
+      <category>Fable 5 上线:同一底模两个名字 / Claude Fable 5 Launches: One Model, Two Names, 怎么用 Fable:四条建议、一次免费 Fable Check、一发命中的街机 / How to Use Fable: Tips, Free Code Review, One-Shot Racer, 自我验证 + 长跑 loop:Fable 与 Codex 的同一道题 / Self-Verification: Fable and Codex Converge, 算力栈 + 预算原语:基建侧 34 天从签约到 GA / Compute Stack, Budget Primitives, 34 Days to GA, 应用层还活着:untrainable corner、上手机会、meta-prompting / The App Layer Lives: Untrainable Corners, Onboarding, Meta-Prompting, Podcast 与 Builder 边角 / Podcast and Builder Culture</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-06-09 · 基准换代日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-09-rerun.html</link>
