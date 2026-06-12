@@ -1,0 +1,504 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-06-12",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "6-12 这天的 Follow Builders 主线只有一句话:Codex 收编 Ona,Google 摆 Antigravity,Replit Fable 把 vibecoding 推到 zero-frustration 桌面。Ona 进 OpenAI 是当天最大的事件——swyx、Thibault Sottiaux、Sam Altman、Peter Steinberger 在 24 小时内从四面同时盖戳,共识是 Codex 的竞争面从「好模型 + 好 prompt」挪到「好模型 + 完整的 error / ping / run 闭环」,harness 那一层被认真补齐。同一天,Amjad Masad 用三条连发把 Replit Fable 的 zero-frustration 摆出来,Dan Shipper 用一次真实 build 把对位观察也摆出来——大活儿上 model tier 仍是承重墙,fallback 到 4.8 之后他回了 Codex。swyx 的 loopcraft 帖给整场游戏一个框架:把 loop 堆高,模型变强时把 loop 往上提一档吃杠杆;Logan Kilpatrick 在 Training Data 上把 Google 的 Antigravity 讲成 agent harness through-line,同一套驱动 Search / Gemini app / AI Studio / Cloud。Anthropic Engineering 同日把「How we contain Claude across products」摆上台面,安全故事从模型洁净度挪到 harness 工程。Nikunj 把 moat 讲回到「你选了什么题目」,Aditya Agarwal 补一句 builder 格言,Rauchg 把 commerce loop 的 ship → sell 箭头补完整。"
+  },
+  "archive": {
+    "title": "harness 收编日",
+    "desc": "Ona 进 OpenAI 收编 Codex 的 harness,Replit Fable 把 zero-frustration 摆上 vibecoding 桌面,Logan Kilpatrick 把 Antigravity 摆成 Google 的 agent harness through-line,Anthropic 把 contain 讲成 harness 工程。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-12 source feeds.",
+  "sections": [
+    {
+      "title": "Ona 进 OpenAI,Codex 的 harness 战升级 / Ona Joins OpenAI, Codex's Harness War Levels Up",
+      "desc": "swyx 第一时间转出 Ona 加入 OpenAI 的消息,Thibault Sottiaux(Codex 核心成员)公开站台,Sam Altman 亲自盖戳,steipete 同日说 Codex 已经在排 PR 节奏。共识是:Codex 的竞争面从「好模型 + 好 prompt」挪到「好模型 + 完整的 error / ping / run 闭环」,harness 那一层被认真补齐。",
+      "cards": [
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2065176231453282777",
+          "en": {
+            "rewrite": [
+              "swyx flags the news: Ona has joined OpenAI. The build-out is the point: 'see their talk here for alpha on what's next for Codex' — the through-line he wants you to read is that Codex's near-term roadmap is now staffed with a team that has shipped a vibecoding platform to production.",
+              "Context for the move: Ona was a fast-moving macOS-native agent platform with a CLI + desktop + web surface. OpenAI acquiring it is a signal that Codex is going to compete on the full harness, not just the model. Codex's edge stops being 'good model + good prompt' and starts being 'good model + closed loop on errors, pings, and runs'."
+            ],
+            "original": [
+              "congrats to our friends @ona_hq on joining @openai! see their talk here for alpha on what's next for Codex 👀"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "swyx 把这条新闻直接转出来:Ona 团队加入 OpenAI。他说得明白——「去听他们的 talk,Codex 接下来怎么走里面有 alpha」。关键读法是,Codex 的近线路线图从今天开始,站着一个把 vibecoding 平台真正跑进生产环境的团队。",
+              "把 Ona 是什么放回语境:Ona 是一个 macOS 原生 + CLI + 桌面 + Web 的 agent 平台,节奏很快。OpenAI 把它收进来,说明 Codex 的竞争面从「好模型 + 好 prompt」挪到「好模型 + 完整的 error/ping/run 闭环」。harness 那一层要被认真补齐了。"
+            ],
+            "original": [
+              "swyx:Ona 团队加入 OpenAI,Codex 接下来怎么走去看他们的 talk,有 alpha。"
+            ]
+          },
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师"
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2065193272952422852",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux (Terminal-Bench, Codex) confirms the Ona move from the inside: 'Beyond excited to work with Johannes and team to build the future.' The fact that he's posting this is itself the story — Codex's core people are publicly aligned with the new team on day one."
+            ],
+            "original": [
+              "Codex 🤟Ona Beyond excited to work with Johannes and team to build the future."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux(Terminal-Bench、Codex 那边)从内部确认了 Ona 这步:「Beyond excited to work with Johannes and team to build the future.」他亲自发这条本身就是新闻——Codex 核心成员在 day one 就公开跟新团队站在一起。"
+            ],
+            "original": [
+              "Thibault Sottiaux(Codex):Codex 牵手 Ona,和 Johannes 团队一起做未来。"
+            ]
+          },
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT"
+        },
+        {
+          "authorKey": "x:sama",
+          "sourceUrl": "https://x.com/sama/status/2065160791205310565",
+          "en": {
+            "rewrite": [
+              "Sam Altman, one line: 'really looking forward to working together!' — the public CEO stamp on the Ona / OpenAI move. Light on content, heavy on signal: this is the kind of post a CEO only writes when they want a deal on the front page."
+            ],
+            "original": [
+              "really looking forward to working together!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Sam Altman 一句话盖戳:「really looking forward to working together!」内容很轻,信号很重——CEO 愿意发这种帖,基本就是要让这桩交易上头条。"
+            ],
+            "original": [
+              "Sam Altman:很期待一起干!"
+            ]
+          },
+          "authorName": "Sam Altman",
+          "authorHandle": "@sama",
+          "authorTag": "OpenAI CEO"
+        },
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2065176989359808636",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger, the day after Ona joins OpenAI: 'Getting Chris to do a PR with Codex!' — Codex is now getting the kind of public, screenshot-friendly launch activity that ships a new product narrative. The Ona team is in the room, and the press cycle is starting."
+            ],
+            "original": [
+              "Getting Chris to do a PR with Codex!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger,Ona 进 OpenAI 的第二天就发:「Getting Chris to do a PR with Codex!」——Codex 开始拿到那种「能上 PR 截图」级别的发布节奏。Ona 团队已经坐进屋里,舆论周期正式开打。"
+            ],
+            "original": [
+              "Peter Steinberger:拉着 Chris 给 Codex 拍 PR!"
+            ]
+          },
+          "authorName": "Peter Steinberger",
+          "authorHandle": "@steipete",
+          "authorTag": "OpenClaw 创始人"
+        }
+      ]
+    },
+    {
+      "title": "Vibecoding 真正到桌面 / Vibecoding Lands on the Desktop",
+      "desc": "Amjad Masad 三条连发,Replit Fable 把「zero frustration」摆上桌面:一个 canvas 装下 web app / mobile app / 营销 / App Store 截图。Dan Shipper 用真实 build 给出对位观察——大活儿上 model tier 仍是承重墙,fallback 到 4.8 后他回了 Codex。swyx 同步从基础设施侧点出,vercel / cloudflare / netlify 没一家真把 error 闭环,vibecoding 平台该把 webmaster 基建收成 One Thing。",
+      "cards": [
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2065236013627351551",
+          "en": {
+            "rewrite": [
+              "Amjad Masad (Replit CEO) on Fable: 'For the first time, I'm vibecoding with ZERO frustration and in a complete state of flow, so much so that I'm running out of ideas. Typically, I have so much backlog of things I want to add, but after Fable landed on Replit, I'm almost certain I don't need more IQ for vibecoding, just cheaper and faster models, and we're done here.'",
+              "The line that matters: 'I don't need more IQ for vibecoding, just cheaper and faster models.' That is a public CEO admitting the IQ question is solved inside their product. The bottleneck shifted to cost and latency — and the company that can ship a smaller / distilled / cached model on the same loop wins the next quarter."
+            ],
+            "original": [
+              "For the first time, I'm vibecoding with ZERO frustration and in a complete state of flow, so much so that I'm running out of ideas. Typically, I have so much backlog of things I want to add, but after Fable landed on Replit, I'm almost certain I don't need more IQ for vibecoding, just cheaper and faster models, and we're done here."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Amjad Masad(Replit CEO)聊 Fable:「这是头一次,我 vibe coding 完全没有挫败感,完全在 flow 里,甚至想不出还能加什么。平常我总有一堆 backlog 想塞进去,Fable 上 Replit 之后我几乎可以确定,vibe coding 不需要更高的 IQ,只要更便宜更快的模型,这条路就到这了。」",
+              "那句最关键:「I don't need more IQ for vibecoding, just cheaper and faster models.」一家上市公司的 CEO 公开说自家产品的 IQ 已经不是瓶颈,瓶颈是成本和延迟——下一季度赢的是能在同一条 loop 上跑更小、蒸馏、缓存模型的玩家。"
+            ],
+            "original": [
+              "Amjad Masad:Fable 上 Replit,vibecoding 第一次零挫败;瓶颈不再是 IQ,是更便宜更快的模型。"
+            ]
+          },
+          "authorName": "Amjad Masad",
+          "authorHandle": "@amasad",
+          "authorTag": "Replit CEO"
+        },
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2065241626436583860",
+          "en": {
+            "rewrite": [
+              "Masad follows with the product surface: 'This is what building a company looks like on Replit. One canvas with your web app, mobile app, marketing & App Store material. Click into any one of those and start building, changing, and generating new things.'",
+              "The Replit thesis: the agent is the company surface, not a tool inside it. Web app, mobile app, marketing site, App Store screenshots — all on the same canvas, all editable. Fable's job is to make every one of those surfaces cost the same amount of cognitive load to change, and that's what 'zero frustration' actually means in product terms."
+            ],
+            "original": [
+              "This is what building a company looks like on Replit. One canvas with your web app, mobile app, marketing & App Store material. Click into any one of those and start building, changing, and generating new things."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "接着 Masad 把产品面摆出来:「这就是在 Replit 上开公司长这样。一个 canvas,装着你的 web app、mobile app、营销物料和 App Store 截图。点哪个都能开始改、开始生成。」",
+              "Replit 的论点是:agent 不是公司里的一个工具,而是公司本身的表面。Web app、mobile app、营销站、App Store 截图全在同一张画布上,全可改。Fable 的工作就是让改这四个面的认知成本一样——「zero frustration」翻译成产品语言就是这件事。"
+            ],
+            "original": [
+              "Replit 画布:一个 canvas 装 web app / mobile app / 营销 / App Store,全可改全可生成。"
+            ]
+          },
+          "authorName": "Amjad Masad",
+          "authorHandle": "@amasad",
+          "authorTag": "Replit CEO"
+        },
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2065259509082411233",
+          "en": {
+            "rewrite": [
+              "Masad, third post in the Fable thread: 'Replit Agent team did a great job making Fable cost stomachable. The lack of mistakes net net makes it more affordable.' The cost story he's selling: Fable's accuracy means fewer retries, fewer tool calls, fewer hours. The headline number is total $ per shipped artifact, not $ per token."
+            ],
+            "original": [
+              "Replit Agent team did a great job making Fable cost stomachable. The lack of mistakes net net makes it more affordable."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Masad 第三条:「Replit Agent 团队把 Fable 的成本做得能咽下去。少出错这件事,净算下来更便宜。」他想卖的成本故事是:Fable 准,少重试、少工具调用、少小时数。真正要看的数字是「每个交付物的总成本」,不是「每个 token 的价格」。"
+            ],
+            "original": [
+              "Replit Agent:Fable 成本能咽下去,「少出错」净算下来更便宜。"
+            ]
+          },
+          "authorName": "Amjad Masad",
+          "authorHandle": "@amasad",
+          "authorTag": "Replit CEO"
+        },
+        {
+          "authorKey": "x:danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/2065269582961737957",
+          "en": {
+            "rewrite": [
+              "Dan Shipper (Every) with the matching counterpoint from a real build: 'had an idea for a big fable project, set it up, and let it cook — came back an hour later and it had triggered the safeguards and fell back to 4.8 10 minutes in — back to codex 😬'",
+              "The honest builder read: Fable's 'zero frustration' is real for some shapes of project and falls over for others. The fallback path to a smaller model mid-run is a real product feature, not a bug — but it tells you the model tier is still load-bearing on hard builds. Shipper is voting with his keyboard back to Codex."
+            ],
+            "original": [
+              "had an idea for a big fable project, set it up, and let it cook came back an hour later and it had triggered the safeguards and fell back to 4.8 10 minutes in back to codex 😬"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Dan Shipper(Every)从真实 build 里给出了对位观察:「脑袋里蹦了个大 fable 项目,搭好让它跑,一小时回来——已经触发 safeguards,十分钟就掉到 4.8。回到 codex 了😬」",
+              "诚实的 builder 读法:Fable 的「zero frustration」对某些项目成立,对另一些会塌。运行途中自动掉档到小模型是产品特性,不是 bug——但这本身说明,大活儿上 model tier 仍是承重墙。Shipper 直接用键盘投票回了 Codex。"
+            ],
+            "original": [
+              "Dan Shipper:fable 大活儿触发 safeguards 掉到 4.8,一小时回到 codex。"
+            ]
+          },
+          "authorName": "Dan Shipper",
+          "authorHandle": "@danshipper",
+          "authorTag": "Every 联合创始人 / AI 写作工具链"
+        },
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2065264832056889711",
+          "en": {
+            "rewrite": [
+              "swyx, vibecoding infrastructure view: 'the #1 thing that is driving me to build my own vibecoding platform rn is that none of them — and i love vercel, cloudflare, netlify etc — none of them really close the loop for you in terms of setting you on the right path with errors and pinging you when shit fails (shit always fails).'",
+              "His demand: 'there's way too much webmaster infra to setup for every single project and i just want to do it once and for all, instead i'm being asked to npx posthog wizard here and npx arize skills there and it all just needs to be swallowed up into One Thing.' That's the gap Replit Fable is trying to fill, and it's also the gap Ona was chasing before the OpenAI move."
+            ],
+            "original": [
+              "the #1 thing that is driving me to build my own vibecoding platform rn is that none of them - and i lov vercel, cloudflare, netlify etc - none of them really close the loop for you in terms of setting you on the right path with errors and pinging you when shit fails (shit always fails) there's way too much \"webmaster\" infra to setup for every single project and i just want to do it once and for all, instead i'm being asked to npx posthog wizard here and npx arize skills there and it all just needs to be swallowed up into One Thing."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "swyx 从 vibecoding 基础设施侧补一刀:「让我自己想搭一个 vibecoding 平台的最大原因,就是现在没有一家——我喜欢 vercel、cloudflare、netlify——真正把 error 帮你纠到对、运行时挂了 ping 你。事就是会挂。每开一个项目都要重搭一遍 webmaster 基建,我只想搭一次。要么 npx posthog wizard、要么 npx arize skills,得全收进 One Thing。」",
+              "他点出的就是 Replit Fable 想填的坑,也是 Ona 被 OpenAI 收走前一直在追的那个坑。"
+            ],
+            "original": [
+              "swyx:vercel / cloudflare / netlify 没一家真把 error 和 ping 闭环,vibecoding 平台该把 webmaster 基建全收成 One Thing。"
+            ]
+          },
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师"
+        }
+      ]
+    },
+    {
+      "title": "Loopcraft 与 harness / Loopcraft and the Agent Harness",
+      "desc": "swyx 的 loopcraft 帖给出一句框架:整场游戏是把 loop 堆高,模型变强时把 loop 往上提一档吃杠杆。Logan Kilpatrick 在 Training Data 上把 Google 的 Antigravity 摆成 harness through-line,同一套驱动 Search / Gemini app / AI Studio / Cloud。Aaron Levie 拿 1,640 人 IT 调研补一枪,AI 采纳最深的公司招人计划最大,agentic AI 抬的是 onboard 门槛。",
+      "cards": [
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2065307558198567206",
+          "en": {
+            "rewrite": [
+              "swyx's loopcraft thread, condensed: 'One might argue the entire game of the next century is to be able to stack loops as effectively as possible. In the early days of each phase, it will be valuable to know when to go DOWN a loop when things go wrong (for reliability)… but it will probably be more valuable to know how to go UP a loop as models improve (for leverage).'",
+              "The two skills the next decade will pay for: knowing when to retreat one loop down (reliability) and when to promote one loop up (leverage). 'If you don't figure out how to do this, don't be salty when you lose to those that do.' The framing is universal — applies to coding agents, content loops, infra automation, RL training, even a personal feedback loop."
+            ],
+            "original": [
+              "## On Loopcraft\n\nOne might argue the entire game of the next century is to be able to stack loops as effectively as possible. \n\nIn the early days of each phase, it will be valuable to know when to go **DOWN** a loop when things go wrong (for reliability)…\n\nbut it will probably be more valuable to know how to go **UP** a loop as models improve (for leverage).\n\nIf you don't figure out how to do this, don't be salty when you lose to those that do."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "swyx 的 loopcraft 帖压缩成一句:「下个一百年整场游戏的玩法,就是把 loop 堆得尽可能高效。每个阶段的早期,知道什么时候该往下一档 loop 走(为可靠性)是值钱的;但更值钱的,是知道模型变强之后怎么把 loop 往上抬(为杠杆)。」",
+              "未来十年要付钱的两个技能:知道什么时候主动退一档(保稳)、知道什么时候主动提一档(吃杠杆)。「如果这两件事你想不明白,输了别酸。」这个框架是普适的——编码 agent、内容 loop、infra 自动化、RL 训练,甚至个人反馈 loop 都吃得下。"
+            ],
+            "original": [
+              "swyx loopcraft:整场游戏是把 loop 堆高;早期会往下退一档保稳,更值钱的是模型变强时把 loop 往上提一档吃杠杆。"
+            ]
+          },
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师"
+        },
+        {
+          "authorKey": "podcast:training-data",
+          "sourceUrl": "https://www.youtube.com/watch?v=cMAs8z2dehs",
+          "en": {
+            "rewrite": [
+              "Training Data, this week: Logan Kilpatrick (head of Google AI Studio + Gemini API) sits down with host. The thesis they land on: the agent harness is the through-line, not the model. 'Antigravity' — Google's IDE / web / CLI / SDK agent stack — is the same harness powering Search, the Gemini app, AI Studio, and Cloud. The historical framing: pre-Gemini, Google's ~50 products had no shared through-line; Gemini 1 became the through-line; the Antigravity era means the agent harness is now the through-line.",
+              "On cannibalization of search: Kilpatrick's read is that AI answering questions turned out to be net positive for search (people search more, agents search too). On the crawl-walk-run for agentic products, he puts Gemini app closest to walk, Antigravity next, and most of the rest of Google still at crawl. 'It's definitely crawl right now… stewardship responsibility of building a product used by lots of people.' On model size for the harness itself: 'coding has proved to be the general purpose agent harness in addition to also working really well for coding.'"
+            ],
+            "original": [
+              "Speaker 2: We sort of did mention some of these things back with like Gemini two point O, which I think was like a little bit early. And so I think this era, this like Gemini 3.5 era, feels like it's actually becoming true now, we're in the era of agentic coating, or agentic products and everything agents as far as Gemini goes. Think for us, this agentic layer, and I think we announced this actually at IO, sort of being powered by the antigravity agent harness, is this additional through line for Google… antigravity is a lot of things… You have sort of a core IDE. You have sort of the agent first experience if you want it on the web. You have a CLI. You have an SDK… The same harness is actually powering all the other Google products. So anti gravity will be powering a bunch of agent stuff in search, in the Gemini app, across like cloud and and AI Studio.\n\nSpeaker 2: It's definitely crawl right now… the stewardship responsibility we have building a product that's being used by lots of people… Gemini app is definitely closest to Walk… antigravity is another one where it's like you could have autonomous coding agents rebuilding operating systems and doing billions of tokens and spending thousands of dollars on your behalf."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Training Data 这期请来 Logan Kilpatrick(Google AI Studio + Gemini API 负责人)。他和 host 一起落到一个判断:agent harness 才是 through-line,模型不是。「Antigravity」——Google 的 IDE / Web / CLI / SDK agent 栈——是同一套 harness,同时驱动 Search、Gemini app、AI Studio 和 Cloud。历史对照:在 Gemini 出现之前,Google 大约 50 个产品没有共享的 through-line;Gemini 1 成了那条线;到 Antigravity 这一代,变成 agent harness 才是 through-line。",
+              "关于是否会蚕食搜索:Kilpatrick 的判断是,AI 替人答题这件事对搜索净正(人搜得更多,agent 也在搜)。crawl-walk-run 那一段他把 Gemini app 放得最接近 walk,Antigravity 紧跟其后,Google 大部分其他产品还在 crawl。「现在肯定是 crawl……做一个被海量人在用的产品,stewardship 责任摆在那。」harness 本身的尺寸他的原话是:「coding 已经被证明是通用 agent harness,而不只是给 coding 用得好。」"
+            ],
+            "original": [
+              "Training Data / Logan Kilpatrick:Antigravity 是 Google 的 agent harness through-line,同一套驱动 Search / Gemini app / AI Studio / Cloud;Gemini app 最接近 walk,大部分产品还在 crawl;「coding 本身就是通用 agent harness」。"
+            ]
+          },
+          "authorName": "Training Data Podcast",
+          "authorHandle": "",
+          "authorTag": "AI 播客"
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2065287110744297809",
+          "en": {
+            "rewrite": [
+              "Aaron Levie (Box) on the same thread from a different angle: 'At Box, we just surveyed 1,640 IT leaders across the US, Japan, and Europe about agentic AI adoption. Many standout findings, but a big one was that the companies that adopted AI the most are planning to grow headcount the most.'",
+              "His read: 'it's actually quite intuitive that the companies that become most productive want to (and are able to) hire more people.' Box's bet: agentic AI lifts the floor of who can be productively onboarded, so companies that go deep on it actually grow faster, not smaller. The whole 'AI replaces headcount' narrative is wrong at the level of the firm that adopts first."
+            ],
+            "original": [
+              "At Box, we just surveyed 1,640 IT leaders across the US, Japan, and Europe about agentic AI adoption. Many standout findings, but a big one was that the companies that adopted AI the most are planning to grow headcount the most.\n\nObviously lots of ways you can read that data and variables mixed in, but it's actually quite intuitive that the companies that become most productive want to (and are able to) hire more people."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie(Box)从另一个角度落到同一条线:「Box 刚做完 1,640 个 IT 负责人的调研,横跨美国、日本、欧洲,问 agentic AI 采纳。亮点很多,最大一条是——AI 用得最深的那些公司,招人计划也最大。」",
+              "他的解读:「直觉上说得通,生产力上来的公司,本来就会(也才能)招更多人。」Box 的判断:agentic AI 把一个新人能 productive 上岗的门槛打下来了,先动手的公司反而长得更大,不是更小。「AI 替人」这个叙事在「先动手的那家公司」这一层不成立。"
+            ],
+            "original": [
+              "Aaron Levie / Box 1,640 人调研:AI 采纳最深的公司招人计划也最大,先动手反而长得更大。"
+            ]
+          },
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO"
+        }
+      ]
+    },
+    {
+      "title": "Anthropic 把 contain 摆上台面 + builder 边角 / Anthropic Lays Containment Out, and the Builder Margins",
+      "desc": "Anthropic Engineering 发「How we contain Claude across products」,把安全故事讲成 harness 工程。Nikunj 把 moat 讲回到「你选了什么题目」,Aditya Agarwal 跟着补一句 builder 格言。Zara Zhang 给日更 deck 做了 sneak peek;Steinberger、Rauchg、Peter Yang 从不同方向补今天的 builder 边角。",
+      "cards": [
+        {
+          "authorKey": "blog:anthropic",
+          "sourceUrl": "https://www.anthropic.com/engineering/how-we-contain-claude",
+          "en": {
+            "rewrite": [
+              "Anthropic Engineering publishes 'How we contain Claude across products' — the long-form explainer on the system-level guardrails Anthropic wraps around Claude in production. The 'contain' framing is deliberate: it positions the safety story as a product / harness concern, not a model-purity concern.",
+              "Why this matters today: with Fable, Codex, Antigravity, Claude Code all shipping agentic surfaces, the 'containment' question is what every enterprise buyer is going to ask first. Anthropic writing this out publicly is a sales motion for the safety moat — the message to CIOs is that the safety story is engineered, not promised."
+            ],
+            "original": [
+              "Anthropic Engineering: How we contain Claude across products."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic Engineering 发「How we contain Claude across products」——把 Claude 在生产环境里被包的那套系统级 guardrails 摆到台面上。「contain」这个用词是有意的:安全故事是产品 / harness 层面的事,不是模型洁净度的事。",
+              "为什么今天重要:Fable、Codex、Antigravity、Claude Code 都在铺 agentic 表面,「containment」会成为企业买手第一个问题。Anthropic 公开写这个,是把安全 moat 当销售动作在做——给 CIO 的信号是:安全是工程出来的,不是许诺出来的。"
+            ],
+            "original": [
+              "Anthropic Engineering:「How we contain Claude across products」,安全故事被讲成 harness 工程,不是模型承诺。"
+            ]
+          },
+          "authorName": "Anthropic",
+          "authorHandle": "",
+          "authorTag": "Anthropic 官方博客"
+        },
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2065075361969500162",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari (Twenty) on the cultural layer of the same game: 'What you work on has never been more important. Make sure it's fun. Make sure it's insanely ambitious. That's the greatest moat.'",
+              "The point beneath the line: in a world where any small team can ship what used to take a Fortune 500, the lasting moat is the choice of problem. Pick something fun so you stay in it for ten years; pick something insanely ambitious so the compounding matters when you do."
+            ],
+            "original": [
+              "What you work on has never been more important. Make sure it's fun. Make sure it's insanely ambitious. That's the greatest moat."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kothari(Twenty)把同一场游戏在文化那一层讲完:「你做的东西从没像今天这么重要。要好玩。要癫狂地有野心。这才是最大的 moat。」",
+              "他没说出来的下半句:任何小团队都能 ship 当年 Fortune 500 才能 ship 的东西,长存的 moat 是「选了什么题目」。挑个能玩十年的,挑个野心大到复利真的有意义的。"
+            ],
+            "original": [
+              "Nikunj Kothari:你做的东西从没这么重要;要好玩、要野心大,这是最大的 moat。"
+            ]
+          },
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人"
+        },
+        {
+          "authorKey": "x:adityaag",
+          "sourceUrl": "https://x.com/adityaag/status/2065155311770440097",
+          "en": {
+            "rewrite": [
+              "Aditya Agarwal (Stainless / General Catalyst): 'Things are only impossible to build until someone builds them.' The builder-coded aphorism of the week, dropped the same day as Ona→OpenAI and Fable on Replit."
+            ],
+            "original": [
+              "Things are only impossible to build until someone builds them."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aditya Agarwal(Stainless / General Catalyst):「事情只有在被人做出来之前是不可实现的。」本周的 builder 格言,落在 Ona→OpenAI 和 Replit Fable 同一天。"
+            ],
+            "original": [
+              "Aditya Agarwal:事情只有在被人做出来之前是不可实现的。"
+            ]
+          },
+          "authorName": "Aditya Agarwal",
+          "authorHandle": "@adityaag",
+          "authorTag": "Dropbox Engineering VP / 前 Facebook 平台工程负责人"
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2065140462709506108",
+          "en": {
+            "rewrite": [
+              "Zara Zhang (Follow Builders / this newsletter) — 'This is tomorrow! Sneak peek of the deck I'll be sharing.' A small self-signal that the daily digest format is getting pitched out in public this week. The deck preview is a behind-the-scenes look at how the bilingual structure is being framed for outside readers."
+            ],
+            "original": [
+              "This is tomorrow! Sneak peek of the deck I'll be sharing:"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zara Zhang(Follow Builders / 本刊):「Tomorrow!sneak peek of the deck I'll be sharing.」一个低调的 self-signal——日更简报的结构,这周在外面的场子被讲出去。deck 的预览其实就是双语结构在外面的另一种讲法。"
+            ],
+            "original": [
+              "Zara Zhang:明天分享 deck,sneak peek 放出来了。"
+            ]
+          },
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人"
+        },
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2065132980398444945",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger on the still-open frontier: 'writing mac apps is still hard.' One line, but the placement matters — a Mac-native builder, the day before Ona lands at OpenAI, reminding everyone that 'vibecode me a Mac app' is still not a solved loop."
+            ],
+            "original": [
+              "writing mac apps is still hard."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger 把还差的边界讲了一句:「写 mac app 还是很难。」一句话,但位置重要——一个 Mac-native builder,在 Ona 进 OpenAI 前一天,提醒所有人「vibecode 我一个 Mac app」这条 loop 还没真打通。"
+            ],
+            "original": [
+              "Peter Steinberger:写 mac app 仍然很难。"
+            ]
+          },
+          "authorName": "Peter Steinberger",
+          "authorHandle": "@steipete",
+          "authorTag": "OpenClaw 创始人"
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2065116986678624419",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch (Vercel) — the commerce / agent-stack angle: 'Vercel + Shopify is too good… 500+ orders processed in 2 minutes. Built with v0 + Cursor. Fully custom Next.js storefront on headless. So long on the web. Anyone can now dream → build → ship → sell.'",
+              "The point he is selling: with the v0 / Cursor / Next.js / headless Shopify stack, a single founder can now stand up a working commerce loop in hours. The 'ship → sell' arrow is the new one — the rest has been solved for a while, but the sales surface is now visibly tight enough to skip an ops team entirely."
+            ],
+            "original": [
+              "Vercel + Shopify is too good…\n◾ 500+ orders processed in *2 minutes*\n◾ Built with @v0 + @cursor_ai \n◾ Fully custom @nextjs storefront on headless\n\nSo long on the web.\nAnyone can now dream → build → ship → sell"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch(Vercel)给的是 commerce / agent-stack 那一侧:「Vercel + Shopify 太爽……2 分钟处理 500+ 单。v0 + Cursor 搭的,headless 上面挂完全自定的 Next.js storefront。Web 的老规矩就这样了。任何人现在都能 dream → build → ship → sell。」",
+              "他想卖的点:v0 / Cursor / Next.js / headless Shopify 这套栈,一个 founder 几小时就能把一个能跑的 commerce loop 立起来。「ship → sell」那支箭头是新的——前几支早被解决了,销售面终于紧到能完全跳过 ops 团队。"
+            ],
+            "original": [
+              "Rauchg / Vercel:v0 + Cursor + Next.js + headless Shopify,2 分钟 500+ 单,founder 也能 ship → sell。"
+            ]
+          },
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO"
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2065283568918794658",
+          "en": {
+            "rewrite": [
+              "Peter Yang with the meta-frame for the day: 'These AI models remind me of RPGs tbh.' The shorthand: each model is a class with different stats, each new release is a respec, the meta shifts faster than the patch notes."
+            ],
+            "original": [
+              "These AI models remind me of RPGs tbh"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 给今天一个 meta-frame:「这些 AI 模型说实话像 RPG。」翻译:每个模型是不同 build 的职业,每次发版是一次 respec,meta 比 patch notes 跑得还快。"
+            ],
+            "original": [
+              "Peter Yang:这些 AI 模型说实话像 RPG——每个版本一次 respec。"
+            ]
+          },
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者"
+        }
+      ]
+    }
+  ]
+}

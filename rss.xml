@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 10 Jun 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jun 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-06-12 · harness 收编日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-12-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-12-rerun.html</guid>
+      <pubDate>Fri, 12 Jun 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[6-12 这天的 Follow Builders 主线只有一句话:Codex 收编 Ona,Google 摆 Antigravity,Replit Fable 把 vibecoding 推到 zero-frustration 桌面。Ona 进 OpenAI 是当天最大的事件——swyx、Thibault Sottiaux、Sam Altman、Peter Steinberger 在 24 小时内从四面同时盖戳,共识是 Codex 的竞争面从「好模型 + 好 prompt」挪到「好模型 + 完整的 error / ping / run 闭环」,harness 那一层被认真补齐。同一天,Amjad Masad 用三条连发把 Replit Fable 的 zero-frustration 摆出来,Dan Shipper 用一次真实 build 把对位观察也摆出来——大活儿上 model tier 仍是承重墙,fallback 到 4.8 之后他回了 Codex。swyx 的 loopcraft 帖给整场游戏一个框架:把 loop 堆高,模型变强时把 loop 往上提一档吃杠杆;Logan Kilpatrick 在 Training Data 上把 Google 的 Antigravity 讲成 agent harness through-line,同一套驱动 Search / Gemini app / AI Studio / Cloud。Anthropic Engineering 同日把「How we contain Claude across products」摆上台面,安全故事从模型洁净度挪到 harness 工程。Nikunj 把 moat 讲回到「你选了什么题目」,Aditya Agarwal 补一句 builder 格言,Rauchg 把 commerce loop 的 ship → sell 箭头补完整。]]></description>
+      <category>Ona 进 OpenAI,Codex 的 harness 战升级 / Ona Joins OpenAI, Codex&apos;s Harness War Levels Up, Vibecoding 真正到桌面 / Vibecoding Lands on the Desktop, Loopcraft 与 harness / Loopcraft and the Agent Harness, Anthropic 把 contain 摆上台面 + builder 边角 / Anthropic Lays Containment Out, and the Builder Margins</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-06-10 · Fable 5 换代日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-10-rerun.html</link>
