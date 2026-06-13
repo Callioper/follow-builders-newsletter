@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 12 Jun 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 13 Jun 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-06-13 · harness 上桌日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-13-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-13-rerun.html</guid>
+      <pubDate>Sat, 13 Jun 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[6-13 这天的 Follow Builders 主线是 Anthropic 同日连发三篇把 harness 从 narrative 升级成产品表层:Engineering 把 Managed Agents 拆成 session/harness/sandbox 三个稳定接口、Claude Blog 把 self-hosted sandboxes + MCP tunnels 当 product 摆出来、Engineering 又发 Claude Code 三月到 4-23 的 quality postmortem 自承三个独立改动叠加造成 broad inconsistent degradation——harness 累加改动的混乱是 harness 工程问题不是模型问题。同一天 Rauchg 在 Vercel 上把 HarnessAgent 发到 @aisdk——harness 这一层各家都在抢抽象。往下是 Codex 在生产:Steinberger 把 Codex 描述成 essential infra,「在 crabbox 里跑一边把 crabbox 自己建出来」,Sottiaux 给 Codex 补 usage reset 的 UX。再翻一步:Swyx 提 Git 也得死——未来 codebase 更像 Notion/Linear 而不是 .git 对象,因为 loop 进了 agent,git 是错的那层存储。分发边界同步在画:Amjad 公开说 Replit 要关掉 Fable 对某类用户/地区的访问,Peter Yang 直接预测「访问最强模型很快就要 ID verification」,Levie 把这件事拉到 CEO 级别——监管从自愿承诺挪到 gating。护城河这边 Nikunj 给应用层画框架——moat 不是模型也不是 harness,是你选了什么题目、对那个题目的反馈回路有多深。Builder 经济学几条边:Amjad 在 Tokenmaxxing 这波公开拒绝做 leaderboard、Garrytan 给市场修正——AI coding 工具的默认产物是更快的官僚体系、Replit 同一天给 power user 发「赚到钱送 credits」。Madhusudhan 留一句小提醒:有些文档就是键盘加意图。Unsupervised Learning「AI Vibe Check」把六条线收成一张图:coding agent 越过 horizon、open-weight frontier 在退潮、harness 才是价值单元模型只是组件。]]></description>
+      <category>Managed Agents 把 harness 做成产品层 / Managed Agents Turns the Harness Into a Product, Codex 上生产 + Git 可能也得死 / Codex Hits Production, Git Might Be Next, Fable 触发分发边界 / Fable Hits the Distribution Boundary, 应用层 moat 不是模型也不是 harness / The Moat Isn&apos;t the Model or the Harness, Builder 经济学的几条边 / Edges of Builder Economics, 播客与收尾:Unsupervised Learning 把六条线收成一张图 / Podcast and Closer: Unsupervised Learning Frames the Day</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-06-12 · harness 收编日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-12-rerun.html</link>

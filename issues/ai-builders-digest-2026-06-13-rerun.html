@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Builders Digest · 2026-06-13</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ed;
+    --accent: #c0392b;
+    --accent-light: #e8d5c4;
+    --border: #d4cdc0;
+    --muted: #7a7265;
+    --tag-bg: #e8e2d6;
+    --en-bg: #ffffff;
+    --cn-bg: #faf7f2;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  .masthead, .intro, .section-header, .feed, footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .masthead { padding-top: 48px; }
+  .masthead-rule { border: none; border-top: 3px solid var(--ink); margin: 0 0 12px; }
+  .masthead-inner { display: flex; justify-content: center; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; letter-spacing: -0.4px; }
+  .masthead-subtitle { margin-top: 8px; padding-bottom: 10px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  .edition-strip {
+    position: relative;
+    margin-top: 8px;
+    min-height: 46px;
+    padding: 10px 132px 12px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.34);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+
+  .edition-strip .edition-sep { margin: 0 8px; color: #b8ae9f; }
+  .edition-strip-text { display: block; }
+  .edition-return-link { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; padding: 6px 10px; border: 1px dashed rgba(192, 57, 43, 0.55); border-radius: 999px; color: var(--accent); text-decoration: none; font-size: 12px; line-height: 1; letter-spacing: 0.06em; background: rgba(255, 255, 255, 0.45); transition: background 160ms ease, border-color 160ms ease, transform 160ms ease; }
+  .edition-return-link:hover, .edition-return-link:focus-visible { background: rgba(255, 255, 255, 0.82); border-color: var(--accent); transform: translateY(-50%) translateX(-1px); }
+  .edition-return-link:focus-visible { outline: none; }
+  .intro { padding-top: 22px; }
+  .intro-inner { max-width: 920px; margin: 0 auto; padding: 0 0 0 18px; border-left: 3px solid #d9cdbc; }
+  .intro-kicker { margin: 0 0 8px; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .intro p { margin: 0; max-width: none; color: var(--muted); font-size: clamp(15px, 1.6vw, 16px); line-height: 1.9; text-wrap: pretty; font-family: 'Noto Serif SC', serif; overflow-wrap: anywhere; }
+
+  .section-header { margin-top: 40px; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; margin: 0 0 6px; }
+  .section-desc { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+
+  .feed { display: flex; flex-direction: column; gap: 20px; }
+  .card { background: var(--en-bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .card-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid #eee7dd; flex-wrap: wrap; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .avatar-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .avatar.is-fallback img { display: none; }
+  .avatar.is-fallback .avatar-fallback { display: flex; }
+
+  .author-info { flex: 1; min-width: 160px; }
+  .author-name { font-weight: 600; font-size: 15px; }
+  .author-name-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .author-handle { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+  .author-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; background: var(--tag-bg); color: var(--muted); padding: 4px 8px; border-radius: 999px; }
+  .author-tag.is-inline { padding: 3px 8px; }
+
+  .card-controls { margin-left: auto; display: inline-flex; gap: 8px; }
+  .view-toggle { border: 1px solid var(--border); background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 999px; font-size: 12px; line-height: 1; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; }
+  .view-toggle.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .card-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .lang-col { padding: 18px 20px 22px; }
+  .lang-col.cn { background: var(--cn-bg); border-right: 1px solid #f0ece4; font-family: 'Noto Serif SC', serif; }
+  .lang-col.en { background: var(--en-bg); }
+  .lang-label { margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+  .content-shell { position: relative; transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .content-variant { position: absolute; inset: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(4px); transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; will-change: opacity, transform; }
+  .content-variant.is-active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+  .content-variant p, .content-variant li { margin: 0 0 12px; font-size: 14px; }
+  .content-variant ol { margin: 0 0 12px 20px; padding: 0; }
+  .inline-code { display: inline-block; font-family: 'IBM Plex Mono', monospace; background: #f4efe7; padding: 3px 6px; border-radius: 6px; margin-bottom: 8px; }
+
+  .card-footer { padding: 12px 20px 16px; border-top: 1px solid #eee7dd; background: #fcfaf6; }
+  .card-footer a { color: var(--accent); text-decoration: none; font-size: 14px; }
+  footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 680px) {
+    .masthead-inner { align-items: center; }
+    .edition-strip { padding-right: 12px; padding-left: 12px; }
+    .edition-strip-text { padding-right: 0; }
+    .edition-return-link { position: static; transform: none; margin-top: 8px; font-size: 11px; }
+    .card-controls { margin-left: 0; }
+    .card-body { grid-template-columns: 1fr; }
+    .lang-col.cn { border-right: none; border-bottom: 1px solid #f0ece4; }
+    .edition-strip .edition-sep { margin: 0 5px; }
+    .intro-inner { padding-left: 14px; }
+    .intro p { line-height: 1.84; }
+  }
+</style>
+</head>
+<body data-publish-date="2026-06-13" data-issue-number="20" data-edition-name="双语精选版" data-view-label-rewrite="速读" data-view-label-original="原文" data-author-identities-path="/home/eclaw/.follow-builders/assets/author-identities.json" data-avatar-manifest-path="/home/eclaw/.follow-builders/assets/avatar-manifest.json">
+  <header class="masthead">
+    <hr class="masthead-rule">
+    <div class="masthead-inner">
+      <div class="masthead-title">AI Builders Digest</div>
+    </div>
+    <div class="masthead-subtitle">Bilingual edition · 双语对照版</div>
+    <div class="edition-strip">
+      <span class="edition-strip-text" id="edition-strip-text">第 20 期｜2026-06-13｜双语精选版｜19 条精选｜15 位作者｜6 个主题</span>
+      <a class="edition-return-link" href="../index.html">返回目录</a>
+    </div>
+  </header>
+
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="6-13 这天的 Follow Builders 主线是 Anthropic 同日连发三篇把 harness 从 narrative 升级成产品表层:Engineering 把 Managed Agents 拆成 session/harness/sandbox 三个稳定接口、Claude Blog 把 self-hosted sandboxes + MCP tunnels 当 product 摆出来、Engineering 又发 Claude Code 三月到 4-23 的 quality postmortem 自承三个独立改动叠加造成 broad inconsistent degradation——harness 累加改动的混乱是 harness 工程问题不是模型问题。同一天 Rauchg 在 Vercel 上把 HarnessAgent 发到 @aisdk——harness 这一层各家都在抢抽象。往下是 Codex 在生产:Steinberger 把 Codex 描述成 essential infra,「在 crabbox 里跑一边把 crabbox 自己建出来」,Sottiaux 给 Codex 补 usage reset 的 UX。再翻一步:Swyx 提 Git 也得死——未来 codebase 更像 Notion/Linear 而不是 .git 对象,因为 loop 进了 agent,git 是错的那层存储。分发边界同步在画:Amjad 公开说 Replit 要关掉 Fable 对某类用户/地区的访问,Peter Yang 直接预测「访问最强模型很快就要 ID verification」,Levie 把这件事拉到 CEO 级别——监管从自愿承诺挪到 gating。护城河这边 Nikunj 给应用层画框架——moat 不是模型也不是 harness,是你选了什么题目、对那个题目的反馈回路有多深。Builder 经济学几条边:Amjad 在 Tokenmaxxing 这波公开拒绝做 leaderboard、Garrytan 给市场修正——AI coding 工具的默认产物是更快的官僚体系、Replit 同一天给 power user 发「赚到钱送 credits」。Madhusudhan 留一句小提醒:有些文档就是键盘加意图。Unsupervised Learning「AI Vibe Check」把六条线收成一张图:coding agent 越过 horizon、open-weight frontier 在退潮、harness 才是价值单元模型只是组件。">
+    <div class="intro-inner">
+      <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
+      <p class="intro-copy">6-13 这天的 Follow Builders 主线是 Anthropic 同日连发三篇把 harness 从 narrative 升级成产品表层:Engineering 把 Managed Agents 拆成 session/harness/sandbox 三个稳定接口、Claude Blog 把 self-hosted sandboxes + MCP tunnels 当 product 摆出来、Engineering 又发 Claude Code 三月到 4-23 的 quality postmortem 自承三个独立改动叠加造成 broad inconsistent degradation——harness 累加改动的混乱是 harness 工程问题不是模型问题。同一天 Rauchg 在 Vercel 上把 HarnessAgent 发到 @aisdk——harness 这一层各家都在抢抽象。往下是 Codex 在生产:Steinberger 把 Codex 描述成 essential infra,「在 crabbox 里跑一边把 crabbox 自己建出来」,Sottiaux 给 Codex 补 usage reset 的 UX。再翻一步:Swyx 提 Git 也得死——未来 codebase 更像 Notion/Linear 而不是 .git 对象,因为 loop 进了 agent,git 是错的那层存储。分发边界同步在画:Amjad 公开说 Replit 要关掉 Fable 对某类用户/地区的访问,Peter Yang 直接预测「访问最强模型很快就要 ID verification」,Levie 把这件事拉到 CEO 级别——监管从自愿承诺挪到 gating。护城河这边 Nikunj 给应用层画框架——moat 不是模型也不是 harness,是你选了什么题目、对那个题目的反馈回路有多深。Builder 经济学几条边:Amjad 在 Tokenmaxxing 这波公开拒绝做 leaderboard、Garrytan 给市场修正——AI coding 工具的默认产物是更快的官僚体系、Replit 同一天给 power user 发「赚到钱送 credits」。Madhusudhan 留一句小提醒:有些文档就是键盘加意图。Unsupervised Learning「AI Vibe Check」把六条线收成一张图:coding agent 越过 horizon、open-weight frontier 在退潮、harness 才是价值单元模型只是组件。</p>
+    </div>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 01</div>
+    <h2 class="section-title">Managed Agents 把 harness 做成产品层 / Managed Agents Turns the Harness Into a Product</h2>
+    <p class="section-desc">Anthropic 同日连发三篇:Managed Agents 把 agent 拆成 session/harness/sandbox 三个稳定接口、Claude Code 三月到 4-23 的 quality postmortem 自承 harness 累加改动的混乱、Claude Blog 把 self-hosted sandboxes + MCP tunnels 当 product 摆出来。同一天 Rauchg 把 HarnessAgent 发到 @aisdk 上——harness 这一层从 narrative 升级成产品表层,各家都在抢抽象。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="blog:anthropic" data-author-name="Anthropic" data-author-tag="Anthropic 官方博客" data-author-handle="" data-author-avatar="../assets/avatars/blog-anthropic.png">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/blog-anthropic.png" alt="Anthropic avatar"><span class="avatar-fallback">A</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Anthropic</div>
+            <div class="author-tag is-inline">Anthropic 官方博客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic Engineering 把 Managed Agents 的架构帖摆出来。核心动作:把 agent 虚拟化成三个稳定的接口——session(append-only 日志)、harness(调用 Claude 并路由工具的 loop)、sandbox(代码执行环境)。底下实现可以换,接口不动。read() 系统调用不在乎盘是 1970 年的 disk pack 还是现代 SSD——同一个 trick,套到长程 agent 上。</p>
+              <p>帖子里最具体的自我承认:一段针对 Sonnet 4.5 写的 harness(加 context reset 来对抗「context anxiety」)到 Opus 4.5 变成死重——模型自己不再提前收摊了。Anthropic 的论点是结构性的,不光是产品级的:接口保持稳定,底下实现不断换。Managed Agents 是这个论点的 hosted 版本。</p>
+              <p>第二个动作:不再把容器当宠物养。第一版 Managed Agents 把 session/harness/sandbox 塞进同一个容器,容器挂掉 session 就没了,调试还得在装着用户数据的容器里开 shell。Anthropic 把它们拆开,harness 跑在 Anthropic 自己的基础设施上,sandbox 跑在客户网络里——工程师能真正调试,而不必碰用户数据。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Anthropic Engineering:Managed Agents 把 agent 拆成 session/harness/sandbox 三个虚拟层,接口稳定、底下可换;Sonnet 4.5 的 context reset 在 Opus 4.5 上变成死重,证明 harness 必须持续演化。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic Engineering drops the Managed Agents architecture post. The core move: virtualize an agent into three stable interfaces — session (append-only log), harness (the loop that calls Claude and routes tools), sandbox (where code runs). Implementations underneath can be swapped without disturbing the other two. Read() didn&#39;t care whether the disk was a 1970s pack or an SSD — the same trick, applied to long-horizon agents.</p>
+              <p>The most concrete admission in the post: a harness that worked for Sonnet 4.5 (context resets to fight &#39;context anxiety&#39;) became dead weight on Opus 4.5 because the model stopped wrapping up prematurely. Anthropic&#39;s argument is structural, not just product: keep the interfaces stable, keep swapping the implementations underneath. Managed Agents is the hosted service form of that argument.</p>
+              <p>A second move: stop treating the container as a pet. The first version of Managed Agents bundled session/harness/sandbox into one container, which meant failures lost the session and debugging required opening a shell inside user-data-bearing infra. Anthropic split them apart so the harness can run on Anthropic infra while the sandbox runs on the customer&#39;s network — and an engineer can actually debug without touching user data.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Get started with Claude Managed Agents by following our docs. A running topic on the Engineering Blog is how to build effective agents and design harnesses for long-running work. A common thread across this work is that harnesses encode assumptions about what Claude can&#39;t do on its own. However, those assumptions need to be frequently questioned because they can go stale as models improve.</p>
+              <p>As just one example, in prior work we found that Claude Sonnet 4.5 would wrap up tasks prematurely as it sensed its context limit approaching—a behavior sometimes called &#39;context anxiety.&#39; We addressed this by adding context resets to the harness. But when we used the same harness on Claude Opus 4.5, we found that the behavior was gone. The resets had become dead weight.</p>
+              <p>We expect harnesses to continue evolving. So we built Managed Agents: a hosted service in the Claude Platform that runs long-horizon agents on your behalf through a small set of interfaces meant to outlast any particular implementation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.anthropic.com/engineering/managed-agents" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="blog:claudeai" data-author-name="Claude" data-author-tag="Claude 官方博客" data-author-handle="" data-author-avatar="../assets/avatars/blog-claudeai.png">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/blog-claudeai.png" alt="Claude avatar"><span class="avatar-fallback">C</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Claude</div>
+            <div class="author-tag is-inline">Claude 官方博客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>同日 Claude Blog 把架构帖上的产品 update 发出来:self-hosted sandboxes(public beta)+ MCP tunnels(research preview)。用人话说——agent loop、context 管理、error recovery 留在 Anthropic 侧,tool 执行搬进你自己的基础设施,或者交给 Cloudflare/Daytona/Modal/Vercel 这几家托管商之一。文件和 repo 不出你的边界,凭证在网络边界注入,不会进 sandbox。</p>
+              <p>为什么重要:之前企业拒绝长程 agent 的所有理由,本质都是网络边界问题。现在你能选 Cloudflare 的 microVM + zero-trust secrets 注入、Daytona 的长时间有状态电脑、Modal 的 GPU-on-demand 底座,或者 Vercel 毫秒级启动 + VPC peering 的 sandbox。Agent loop 跑在 Anthropic,substrate 跑在你数据已经在的地方。帖子里直接点名的客户——Amplitude(Cloudflare 上的 Design Agent)、Clay(Daytona 上的 Sculptor)、Rogo(Vercel Sandbox 上的 analyst agent)——说明这条路径已经在不小体量的客户那里真在跑。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Claude 官方博客:Managed Agents 加 self-hosted sandboxes + MCP tunnels,agent loop 留在 Anthropic,tool 执行搬进客户自己的边界;Amplitude/Clay/Rogo 三个客户已上线。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Same day, Claude Blog ships the product update on top of the architecture post: self-hosted sandboxes (public beta) and MCP tunnels (research preview). The pitch in plain terms — the agent loop, context management, and error recovery stay on Anthropic; tool execution moves into your infrastructure, or to one of the managed providers (Cloudflare, Daytona, Modal, Vercel). Files and repos don&#39;t leave your perimeter; credentials are injected at the network boundary so they never enter the sandbox.</p>
+              <p>Why this matters: every prior enterprise objection to long-running agents was a network boundary problem. Now you get Cloudflare microVMs with zero-trust secrets injection, Daytona long-running stateful computers, Modal&#39;s GPU-on-demand foundation, or Vercel&#39;s millisecond-startup sandbox with VPC peering. The agent loop runs on Anthropic, the substrate runs where your data already lives. Customer callouts in the post — Amplitude (Design Agent on Cloudflare), Clay (Sculptor on Daytona), Rogo (analyst agent on Vercel) — show the pattern is already in production at non-trivial customers.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Starting today, Claude Managed Agents can operate in a sandbox you control and connect to your private Model Context Protocol (MCP) servers. Both the sandbox where an agent executes tools and the services it reaches run within the established boundaries of your enterprise, under your security and runtime controls.</p>
+              <p>On the Claude Platform, self-hosted sandboxes is available in public beta and MCP tunnels in research preview (request access).</p>
+              <p>Amplitude is building Design Agent, an internal tool for on-brand production UI and marketing design, on Managed Agents and Cloudflare for tighter observability and control.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://claude.com/blog/claude-managed-agents-updates" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="blog:anthropic" data-author-name="Anthropic" data-author-tag="Anthropic 官方博客" data-author-handle="" data-author-avatar="../assets/avatars/blog-anthropic.png">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/blog-anthropic.png" alt="Anthropic avatar"><span class="avatar-fallback">A</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Anthropic</div>
+            <div class="author-tag is-inline">Anthropic 官方博客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>同一天 Anthropic 发了第三条——Claude Code 三月到 4-23 之间质量波动的公开 postmortem。三个独立的改动,排着不同的时间表,打到了不同的流量切片:(1)3-4 把 default reasoning effort 从 high 降到 medium 想压住 UI 假死延迟,4-7 撤回,因为用户说宁可选 high 简单任务自己降 effort;(2)3-26 idle session 清理 thinking 逻辑有 bug,每个 turn 都重跑,4-10 修;(3)4-16 system prompt 加 verbosity reduction,叠加其他 prompt 改动伤了 coding 质量,4-20 撤回。</p>
+              <p>帖子里最诚实的部分:「aggregate effect looked like broad, inconsistent degradation」,内部 usage 和 evals 起初都没复现用户报告的现象。Anthropic 决定 4-23 给所有订阅者重置 usage limits。这就是 harness 稳定性论点在自己产品上长出来的样子——三个小默认项在不同日子各动一点,落到用户感知上是混乱的,这是 harness 工程失败,不是模型失败。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Anthropic:Claude Code 三月到 4-23 质量波动的公开 postmortem,三个独立改动叠加造成 broad inconsistent degradation,4-23 重置所有订阅者的 usage limits。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Same day&#39;s third Anthropic post — a public postmortem on Claude Code quality degradation from late March through April 23. Three independent changes, each on a different schedule, hit different traffic slices: (1) March 4 default reasoning effort dropped from high to medium to fight UI-feel-frozen latency; reverted April 7 after users said they&#39;d rather opt into lower effort for simple tasks. (2) March 26 idle-session thinking-clear logic had a bug that re-ran every turn; fixed April 10. (3) April 16 system-prompt verbosity reduction, combined with other prompt changes, hurt coding quality; reverted April 20.</p>
+              <p>The honest read in the post: &#39;the aggregate effect looked like broad, inconsistent degradation&#39; and the internal usage/evals didn&#39;t initially reproduce what users reported. Anthropic is resetting usage limits for all subscribers as of April 23. This is the harness-stability argument playing out inside the company&#39;s own product — when three small defaults shift on different days, the user-visible behavior is incoherent, and that&#39;s a harness-engineering failure, not a model failure.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Over the past month, we&#39;ve been looking into reports that Claude&#39;s responses have worsened for some users. We&#39;ve traced these reports to three separate changes that affected Claude Code, the Claude Agent SDK, and Claude Cowork. The API was not impacted. All three issues have now been resolved as of April 20 (v2.1.116).</p>
+              <p>Because each change affected a different slice of traffic on a different schedule, the aggregate effect looked like broad, inconsistent degradation. While we began investigating reports in early March, they were challenging to distinguish from normal variation in user feedback at first, and neither our internal usage nor evals initially reproduced the issues identified.</p>
+              <p>This isn&#39;t the experience users should expect from Claude Code. As of April 23, we&#39;re resetting usage limits for all subscribers.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.anthropic.com/engineering/april-23-postmortem" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:rauchg" data-author-name="Guillermo Rauch" data-author-tag="Vercel CEO" data-author-handle="@rauchg" data-author-avatar="../assets/avatars/x-rauchg.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-rauchg.jpg" alt="Guillermo Rauch avatar"><span class="avatar-fallback">GR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Guillermo Rauch</div>
+            <div class="author-tag is-inline">Vercel CEO</div>
+          </div>
+          <div class="author-handle">@rauchg</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch(Vercel)发 HarnessAgent:在 @aisdk 上做一层统一抽象,把任何 agent 的「brain」编排进你的 app。他说得很明白——「不止可移植,关键是还很好用」。</p>
+              <p>把这条跟上面 Anthropic 两篇放一起读,主题一下清晰:下一个平台表层是 agent harness,每个 infra vendor 都要抢。Vercel 想拿 SDK 层「零 lock-in 集成」的故事;Anthropic 想拿 hosted 长程 loop 的故事。仗不在哪个模型赢,在 harness 跑在谁的抽象上。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Rauchg:Vercel 上线 HarnessAgent,在 @aisdk 上做统一抽象,把任意 agent 的 brain 接入 app,号称同时解决 model 和 agent lock-in。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch (Vercel) ships HarnessAgent: a unified abstraction on top of @aisdk to orchestrate and integrate any agent&#39;s &#39;brain&#39; into your app. The pitch is the same shape as Anthropic&#39;s Managed Agents, one layer down: &#39;frees you from both model and agent lock-in.&#39; Rauch frames it as &#39;not just portability, it&#39;s also delightful to use.&#39;</p>
+              <p>Read this together with the Anthropic posts above and the theme snaps into focus: the next platform surface is the agent harness, and every infra vendor wants to own it. Vercel wants the SDK-level lock-in-free integration story; Anthropic wants the hosted long-horizon loop. The fight is not over which model wins — it&#39;s over whose abstraction the harness runs on.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>We just shipped HarnessAgent, a unified abstraction to orchestrate and integrate any agent&#39;s &#39;brain&#39; into your app. @aisdk now frees you from both model and agent lock-in. (And it doesn&#39;t just get you portability, it&#39;s also delightful to use ofc!)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/rauchg/status/2065520041894756480" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 02</div>
+    <h2 class="section-title">Codex 上生产 + Git 可能也得死 / Codex Hits Production, Git Might Be Next</h2>
+    <p class="section-desc">Steinberger 把 Codex 描述成 essential infra——「在 crabbox 里跑一边把 crabbox 自己建出来」,Sottiaux 给 Codex 补 usage reset 的 UX,Swyx 把整个 harness 主题再翻一步:loop 进了 agent,git 可能也是错的存储层——未来 codebase 更像 Notion/Linear。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:steipete" data-author-name="Peter Steinberger" data-author-tag="OpenClaw 创始人" data-author-handle="@steipete" data-author-avatar="../assets/avatars/x-steipete.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-steipete.jpg" alt="Peter Steinberger avatar"><span class="avatar-fallback">PS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Steinberger</div>
+            <div class="author-tag is-inline">OpenClaw 创始人</div>
+          </div>
+          <div class="author-handle">@steipete</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Steinberger(OpenClaw)把 Codex 当 essential infra 来谈:「Codex 在 crabbox 里边跑,一边把 crabbox 本身给建出来。」过去四天 Codex 在多个 git tree 里连轴转,因为全链路 end-to-end 可验证,项目「基本上是自己 build 自己」。Codex 甚至通过 browser/computer use 自动注册外部服务。Steinberger 自己留下的主要工作:填信用卡号、关掉他不认同的 branch。</p>
+              <p>那句关键:「basically builds itself」。这不是 demo,这是跑着的生产描述。CI loop 是 harness,模型只是 harness 里的一个组件,人退到 meta-loop 去接/拒 branch——跟昨天 Ona 进 OpenAI 是同一个形状:真正分胜负的不是 prompt,是 harness。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Steinberger:Codex 在 crabbox 里边跑一边把 crabbox 自己建出来,连轴 4 天,e2e 可验证下「basically builds itself」;人的工作剩下填信用卡号和关 branch。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Steinberger (OpenClaw) on Codex-as-essential-infra: &#39;Codex runs INSIDE crabbox while it is building crabbox. This is becoming essential infra for my work.&#39; Codex has been looping nonstop for four days across multiple trees; since the work is end-to-end verifiable, the project &#39;basically builds itself.&#39; Codex even signs up for services automatically via browser/computer use. Steinberger&#39;s main remaining job: adding credit card details and closing things he doesn&#39;t see as a fit.</p>
+              <p>The line that matters: &#39;basically builds itself.&#39; This is not a demo, it&#39;s a running production description. The CI loop is the harness; the model is one component inside it; the human is on the meta-loop of accepting/rejecting branches. The same shape Codex had with Ona joining OpenAI yesterday — a serious harness, not a serious prompt, is the differentiator.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I can barely keep up with implementing/testing/landing all the Issues/PRs folks submit. Codex runs INSIDE crabbox while it is building crabbox. This is becoming essential infra for my work.</p>
+              <p>Codex been looping nonstop for the last 4 days in multiple trees. Since all of it is e2e verifiable it basically builds itself. Codex even signs up for the services automatically via browser/computer use. My main job is adding credit card details and closing things that I don&#39;t see as a fit.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/steipete/status/2065650561484267540" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:thsottiaux" data-author-name="Thibault Sottiaux" data-author-tag="OpenAI Codex &amp; ChatGPT" data-author-handle="@thsottiaux" data-author-avatar="../assets/avatars/x-thsottiaux.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-thsottiaux.jpg" alt="Thibault Sottiaux avatar"><span class="avatar-fallback">TS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Thibault Sottiaux</div>
+            <div class="author-tag is-inline">OpenAI Codex &amp; ChatGPT</div>
+          </div>
+          <div class="author-handle">@thsottiaux</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thibault Sottiaux(Codex, OpenAI)回应了一条具体的 Codex 用户反馈:重置 usage limit 不提前通知很烦。修法是:「下次按按钮之前会让你选什么时候真正生效。」产品层面的小修补,但看得出 Codex 产品工作当前落在哪——已经从「把 loop 跑起来」挪到「把 loop 打磨好」。</p>
+              <p>跟上面 Steinberger 那条放一起读:24/7 在生产 build 里跑 Codex 的人不在乎重置通知的 UX,偶尔一下午用 Codex 的人在乎。Codex 在同一周里同时给两类用户发补丁。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Thsottiaux:Codex 下次重置 usage limit 会让你选什么时候生效——harness 已经从「跑起来」挪到「打磨」阶段。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thibault Sottiaux (Codex, OpenAI) responds to a specific piece of Codex user feedback: getting a usage-limit reset without warning is annoying. The fix: &#39;Next time we press the button you will get to choose when it actually applies.&#39; A small product fix, but it tells you where Codex product work is going — Codex is now in the polish-the-loop stage, not the ship-the-loop stage.</p>
+              <p>Read this against Steinberger&#39;s post above: the people running Codex 24/7 on production builds don&#39;t care about the UX of getting reset warnings; the people running Codex for the occasional afternoon session do. Codex is shipping both surfaces in the same release week.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Heard your (amusing) feedback that it was at times annoying to receive a reset of your Codex usage without warning. Next time we press the button you will get to choose when it actually applies. Happy codexing.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/thsottiaux/status/2065468501750649006" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:swyx" data-author-name="Swyx" data-author-tag="AI 工程师" data-author-handle="@swyx" data-author-avatar="../assets/avatars/x-swyx.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-swyx.jpg" alt="Swyx avatar"><span class="avatar-fallback">S</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Swyx</div>
+            <div class="author-tag is-inline">AI 工程师</div>
+          </div>
+          <div class="author-handle">@swyx</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx 当天最锐的一条:「PR 死了,Code Review 死了,我现在开始认真想 Git 是不是也得死。」他把账算得很具体——「大概 20-40% 的 code spend 都花在管理和更新 merge conflicts 上。必要的恶?还是 legacy 的 horseless carriage,在 cargo cult 过去?」</p>
+              <p>他的对比论证:人合作的时候不做逐行 merge conflict——我们聊天、提 edit、加 side comment、owner 拍板 ship。我们对带法律/财务含义的文档也不跑 CI/CD。所以未来 codebase 可能更像 Notion 或 Linear 数据库,而不是 .git 对象。效率更低,可扩展性更高。他把这叫「Salty Lesson」。</p>
+              <p>这条把 6-12 的 harness 主题收到 6-13,再翻一步:loop 已经搬进 agent(Codex 在 crabbox 里连轴转、Anthropic Managed Agents 托管 loop、Rauchg HarnessAgent 在 SDK 上),git 只是 loop 下面一层可能的存储——loop 一旦 end-to-end 可验证,git 大概率是错的那层。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Swyx:PR 和 Code Review 之后,Git 也得死——20-40% 的 code spend 浪费在 merge conflicts;未来 codebase 应该更像 Notion/Linear,而不是 .git 对象。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx&#39;s provocation of the day: &#39;After the PR dies, after the Code Review dies, I am seriously wondering if Git needs to die next.&#39; He frames it concretely — &#39;roughly 20-40% of code spend is just managing and updating merge conflicts. necessary evil? or legacy horseless carriage? cargo culting the past?&#39;</p>
+              <p>His comparative argument: when humans collaborate, we don&#39;t do line-by-line merge conflicts; we chat, suggest edits, do side comments, and an owner ships it. We also don&#39;t run CI/CD on documents with serious legal/financial implications. So maybe the future codebase looks more like a Notion or Linear database than .git objects. Less efficient, more scalable. He names this the &#39;Salty Lesson.&#39;</p>
+              <p>This is the post that completes the day-12 harness thread and pivots into day-13. If the loop has moved into the agent (Codex looping on crabbox, Anthropic&#39;s Managed Agents hosting the loop, Rauchg&#39;s HarnessAgent on the SDK), then git is just one possible storage layer underneath the loop — and probably the wrong one once the loop is end-to-end verifiable.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>## The Future Codebase
+
+              After the PR dies, after the Code Review dies, i am seriously wondering if Git needs to die next.
+
+              roughly 20-40% of code spend is just managing and updating merge conflicts. necessary evil? or legacy &#39;horseless carriage&#39;? cargo culting the past?
+
+              we don&#39;t do line by line merge conflicts when we collaborate with human colleagues - instead we chat, suggest edits, do side comments, and an owner ships it.
+
+              btw we also don&#39;t do CI/CD even collaborating on documents with serious legal/financial implications.
+
+              maybe the future codebase looks more like a Notion or Linear database than .git objects. It will be less efficient, but more scalable. exactly the Salty Lesson.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/swyx/status/2065559864559145420" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 03</div>
+    <h2 class="section-title">Fable 触发分发边界 / Fable Hits the Distribution Boundary</h2>
+    <p class="section-desc">Alex Albert 从内部承认 Fable 长程会话体感 superhuman,prompt 从「放大」翻到「压慢」;同一天 Amjad 说要关掉 Fable 对某类用户/地区的访问,Peter Yang 把预测直接讲出来——「访问最强模型很快就要 ID verification」;Levie 把这件事拉到 CEO 级别——监管从自愿承诺挪到 gating。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:alexalbert__" data-author-name="Alex Albert" data-author-tag="Anthropic Claude 关系负责人" data-author-handle="@alexalbert__" data-author-avatar="../assets/avatars/x-alexalbert__.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-alexalbert__.jpg" alt="Alex Albert avatar"><span class="avatar-fallback">AA</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Alex Albert</div>
+            <div class="author-tag is-inline">Anthropic Claude 关系负责人</div>
+          </div>
+          <div class="author-handle">@alexalbert__</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Alex Albert(Anthropic Claude 关系)聊 Fable 的体感:「Fable 在长程 agent 会话上的体感像 superhuman,有时候我都跟不上它在跟我说什么😅」紧接着他放了一条 prompt snippet,出处是 Anthropic 自家的 prompting guide,他说这是让 Fable 写得清楚、少 jargon 的最好修法。下一条就是 guide 的链接。</p>
+              <p>值得注意的位移:对 C 端 Claude 用户的建议不再只是「写更好的 prompt」,而是「模型已经强到你得反过来用 prompt 把它压慢、去掉 jargon」。Fable 越过了 prompt engineering 从「放大」翻成「压缩」的临界点。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Alex Albert:Fable 长程 agent 会话体感 superhuman,prompt engineering 翻转——从「放大」变成「压慢 + 去 jargon」。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Alex Albert (Anthropic Claude relations) on Fable&#39;s behavior: &#39;Fable feels superhuman at working over long agentic conversations, sometimes to the point where I can&#39;t keep up with what it&#39;s telling me.&#39; He follows with a prompt snippet from Anthropic&#39;s prompting guide that has been his best fix for getting Fable to write clearly and drop jargon. The follow-up tweet is the guide link itself.</p>
+              <p>The interesting shift here: the consumer-facing Claude tip is no longer &#39;write a better prompt,&#39; it&#39;s &#39;the model handles long conversations at a level where you need a prompt to slow it down and cut the jargon.&#39; Fable has crossed the threshold where prompt engineering flips from amplification to compression.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Fable feels superhuman at working over long agentic conversations, sometimes to the point where I can&#39;t keep up with what it&#39;s telling me 😅 This prompt snippet has been the best fix I&#39;ve found for getting it to write clearly and drop any jargon:</p>
+              <p>Pulled this from our prompting guide which has many more tips for working with Fable:</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/alexalbert__/status/2065493229760565758" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:amasad" data-author-name="Amjad Masad" data-author-tag="Replit CEO" data-author-handle="@amasad" data-author-avatar="../assets/avatars/x-amasad.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-amasad.jpg" alt="Amjad Masad avatar"><span class="avatar-fallback">AM</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Amjad Masad</div>
+            <div class="author-tag is-inline">Replit CEO</div>
+          </div>
+          <div class="author-handle">@amasad</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Amjad Masad(Replit CEO)摊出一条尖锐的政策边界:「看起来我们要把 Fable 的访问关掉。」言下之意:Fable 在某些司法管辖区或用户类别上,已经是一个平台没办法合法交付的产品。Masad 选在公开场合点名这个问题,而不是悄悄处理。</p>
+              <p>把这条跟下面 Peter Yang 的反应放一起读——「Suspending Fable for all foreign person inside the US is wild. How can you even enforce this properly?」——画面就清晰了:让模型做长程 agentic 工作的那个门槛,也是让模型变成被监管商品的门槛。Fable 的分发界面现在跟身份、地理、出口管制绑在了一起,这是 Replit Agent 时代没有的处境。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Amjad:Replit 准备关掉 Fable 对某类用户/地区的访问——Fable 的分发面被身份、地理、出口管制卡住。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Amjad Masad (Replit CEO) on a sharp policy edge: &#39;Sounds like we&#39;re going to have turn off access to Fable.&#39; The implication is that Fable, in some jurisdiction or category of user, has become a product the platform can&#39;t legally serve. Masad is naming the issue in public rather than burying it.</p>
+              <p>Pair this with Peter Yang&#39;s reaction two posts down — &#39;Suspending Fable for all foreign person inside the US is wild. How can you even enforce this properly?&#39; — and the picture sharpens. The same threshold that lets models do agentic long-horizon work is also the threshold that makes them regulated goods. Fable&#39;s distribution surface is now bound to identity, geography, and export controls in ways Replit didn&#39;t face with Replit Agent.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Sounds like we&#39;re going to have turn off access to Fable.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/amasad/status/2065600809224814835" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:petergyang" data-author-name="Peter Yang" data-author-tag="产品教练 / 创作者经济研究者" data-author-handle="@petergyang" data-author-avatar="../assets/avatars/x-petergyang.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-petergyang.jpg" alt="Peter Yang avatar"><span class="avatar-fallback">PY</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Yang</div>
+            <div class="author-tag is-inline">产品教练 / 创作者经济研究者</div>
+          </div>
+          <div class="author-handle">@petergyang</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang 把 Replit Fable 这条线收成结论:「对,我认为很快访问最强模型就需要身份验证了。」这是直接的预测——前沿能力门槛触发了绑身份的分发。</p>
+              <p>他前一条贴点出执行问题:「Suspending Fable for all foreign person inside the US is wild. How can you even enforce this properly?」第三条贴是引发讨论的原始截图。Yang 三条贴的合在一起的意思:边界已经不是理论上的,已经在画,配套的基础设施(KYC、居住地验证、账单地理)不管模型公司愿不愿意都在建。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Peter Yang:访问最强模型很快就要身份验证——边界已经在画,KYC/居住地/账单地理的基建不管愿不愿意都在建。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang takes the Replit Fable story and pulls it to a conclusion: &#39;Yeah I think ID verification will soon be required to access the best models.&#39; This is the blunt forecast — the frontier capability threshold triggers identity-bound distribution.</p>
+              <p>His earlier tweet in the chain nails the enforcement problem: &#39;Suspending Fable for all foreign person inside the US is wild. How can you even enforce this properly?&#39; The third tweet in the thread is the source screenshot that kicked the conversation. Yang&#39;s point across the three posts: the boundary is no longer theoretical, it&#39;s already being drawn, and the infrastructure for it (KYC, residency verification, billing geography) is being built whether the model companies like it or not.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Yeah I think ID verification will soon be required to access the best models</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/petergyang/status/2065622592309039449" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:levie" data-author-name="Aaron Levie" data-author-tag="Box CEO" data-author-handle="@levie" data-author-avatar="../assets/avatars/x-levie.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-levie.jpg" alt="Aaron Levie avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie</div>
+            <div class="author-tag is-inline">Box CEO</div>
+          </div>
+          <div class="author-handle">@levie</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie(Box CEO)把镜头拉宽:「AI 监管到了一个大的转折点。政府开始认定某些模型对某些用途太强,这给未来一系列可能的监管开了先例。」他立场清楚:「我属于觉得没必要的阵营——主要应该监管 AI 的 use,不是底下的模型。」但他承认另一边的阵营存在,收尾说:「无论如何,我们已经回不到一个政府对 AI 进展的参与度不显著更高的世界了。」</p>
+              <p>Levie 的 framing 是 CEO 级别版本的 Yang、Masad、Peter Yang 在产品里观察到的同一件事:监管面已经从自愿承诺挪到直接 gating,gating 画在模型类别周围,不是 use case 周围。不管 AI 监管的政治经济学最后怎么收,接下来 12 个月的产品工作都得假设这个 gating 已经存在。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Levie:政府开始按模型类别画 gating,use case 维度不是主线——监管转折点已到,产品得假设它存在。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie (Box CEO) widens the lens: &#39;This is a big turning point for AI regulation. The government is starting to deem some models too powerful for certain uses, which creates a precedent for a range of possible controls in the future.&#39; He stakes out a clear position: &#39;I&#39;m in the camp that this is unnecessary and we should be primarily regulating the use of AI, as opposed to the underlying models.&#39; But he accepts the other camp exists and concludes, &#39;it&#39;s unlikely that we&#39;re going back to a world where the government doesn&#39;t have far more meaningful involvement in the rate of AI progress.&#39;</p>
+              <p>Levie&#39;s framing is the CEO-grade version of what Yang, Masad, and Peter Yang are flagging in product: the regulatory surface has moved from voluntary commitments to outright gating, and the gating is being drawn around model categories, not use cases. Whatever the political economy of AI regulation turns out to be, the next 12 months of product work has to assume the gating exists.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>This is a big turning point for AI regulation. The government is starting to deem some models too powerful for certain uses, which creates a precedent for a range of possible controls in the future.</p>
+              <p>I&#39;m in the camp that this is unnecessary and we should be primarily regulating the use of AI, as opposed to the underlying models. But, equally, there are plenty of people that actually prefer this outcome.</p>
+              <p>Either way, it&#39;s unlikely that we&#39;re going back to a world where the government doesn&#39;t have far more meaningful involvement in the rate of AI progress.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/levie/status/2065616509666472329" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 04</div>
+    <h2 class="section-title">应用层 moat 不是模型也不是 harness / The Moat Isn&#39;t the Model or the Harness</h2>
+    <p class="section-desc">Nikunj 给应用层公司画护城河框架——moat 是你选了什么题目、对那个题目的反馈回路有多深。同一天 Aditya Agarwal 把 SPC 临时改名 Space Park Commons 蹭 SpaceX,同时欢迎 Ryan Atkins 以 Partner 身份加入。SpaceX 这一天成了所有人叙事里那个 25 年复利范本。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:nikunj" data-author-name="Nikunj Kothari" data-author-tag="Afore Capital 合伙人" data-author-handle="@nikunj" data-author-avatar="../assets/avatars/x-nikunj.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-nikunj.jpg" alt="Nikunj Kothari avatar"><span class="avatar-fallback">NK</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Nikunj Kothari</div>
+            <div class="author-tag is-inline">Afore Capital 合伙人</div>
+          </div>
+          <div class="author-handle">@nikunj</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj Kothari(Afore Capital)发了他对应用层公司怎么扛「如果大厂自己也做了这个问题」的回答。截图本身就是正文——Nikunj 的论点是,moat 不是模型,harness 也不是 moat,moat 是你选了什么题目,以及你对这个题目的反馈回路有多深。</p>
+              <p>把这条跟上面的所有放一起读。Anthropic 发 Managed Agents 不是 moat;Vercel 发 HarnessAgent 不是 moat;Replit 发 Fable 也不是 moat。一个季度之内这些都会变成 table stakes。留下来的是这个题目产生的专有数据、这个题目建立的用户关系、这个题目跑出来的具体领域 loop。Nikunj 的读法,是让一个应用层创始人在读完 Managed Agents 帖之后还能睡着的那个读法。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Nikunj:应用层 moat 不是模型也不是 harness,是你选了什么题目,以及对这个题目的反馈回路有多深。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj Kothari (Afore Capital) posts his framework for how application companies survive the &#39;what if large lab builds this&#39; question. The shared screenshot is the post itself — Nikunj&#39;s argument is that the moat isn&#39;t the model, the harness isn&#39;t the moat either, the moat is what topic you picked and how deep your feedback loop into that topic is.</p>
+              <p>Pair this with everything above. Anthropic shipping Managed Agents is not the moat; Vercel shipping HarnessAgent is not the moat; Replit shipping Fable is not the moat. They all become table stakes inside a quarter. What stays: the proprietary data the topic generates, the user relationships the topic creates, and the specific domain loop the topic runs on. Nikunj&#39;s read is the read that lets an application-layer founder sleep at night after reading the Managed Agents post.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>My shot at how application companies survive the &#39;what if large lab builds this&#39; question 😅</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/nikunj/status/2065581110822593000" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:adityaag" data-author-name="Aditya Agarwal" data-author-tag="Dropbox Engineering VP / 前 Facebook 平台工程负责人" data-author-handle="@adityaag" data-author-avatar="../assets/avatars/x-adityaag.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-adityaag.jpg" alt="Aditya Agarwal avatar"><span class="avatar-fallback">AA</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aditya Agarwal</div>
+            <div class="author-tag is-inline">Dropbox Engineering VP / 前 Facebook 平台工程负责人</div>
+          </div>
+          <div class="author-handle">@adityaag</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aditya Agarwal(South Park Commons)蹭 SpaceX 这一波的热度——把 SPC 暂时改名为「Space Park Commons」。一句话的玩笑,带出一个不小的判断:给下一波 AI 公司出钱的人,公开把自己的品牌叙事跟复利型基础设施 thesis 绑在一起。SpaceX 不是 side bet,是「25 年复利型基础设施公司」的范本,venture brand 想跟这个范本贴上。</p>
+              <p>同一天 Agarwal 也欢迎 Ryan Atkins 以 Partner 身份加入团队——同一件事的团队搭建那一面。Space Park Commons 改名这条同时在喊:我们还在,而且还在这个方向上招人。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Aditya:SPC 暂时改名为 Space Park Commons 蹭 SpaceX——同时欢迎 Ryan Atkins 以 Partner 身份加入。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aditya Agarwal (South Park Commons) leans into the SpaceX moment — temporarily renaming SPC to &#39;Space Park Commons.&#39; It&#39;s a one-line joke that carries a non-trivial point: the people who fund the next wave of AI companies are publicly tying their brand narrative to the compounding infrastructure thesis. SpaceX isn&#39;t a side bet; it&#39;s the canonical example of a 25-year compounding infrastructure company, and the venture brand wants to be associated with that template.</p>
+              <p>The same day Agarwal also welcomes Ryan Atkins to the team as a Partner — the team-buildout half of the same story. The Space Park Commons rebrand is signaling both: we are still here, and we are still hiring into this category.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>It&#39;s a good day to be called SPC. We are temporarily renaming ourselves to Space Park Commons.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/adityaag/status/2065467866930135491" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 05</div>
+    <h2 class="section-title">Builder 经济学的几条边 / Edges of Builder Economics</h2>
+    <p class="section-desc">Amjad 当天谈 Replit 在 Tokenmaxxing 这波故意拒绝做 leaderboard;Garrytan 给市场修正——AI coding 工具的默认产物是更快的官僚体系;同一天 Replit 又发「赚到钱送 credits」——平台对 power user 做正和经济;Madhusudhan 提醒一下,有些文档就是键盘加意图。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:amasad" data-author-name="Amjad Masad" data-author-tag="Replit CEO" data-author-handle="@amasad" data-author-avatar="../assets/avatars/x-amasad.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-amasad.jpg" alt="Amjad Masad avatar"><span class="avatar-fallback">AM</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Amjad Masad</div>
+            <div class="author-tag is-inline">Replit CEO</div>
+          </div>
+          <div class="author-handle">@amasad</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Amjad Masad 谈 Replit 在 Tokenmaxxing 这波里做的一个故意选择:企业客户想要一个公开的 token-spend leaderboard,Replit 拒绝了。Masad 的 framing:「本来对企业是好事,但我们不是干这个的」——话说到一半停,意思清楚:他们不干把客户花费游戏化这件事。</p>
+              <p>这是 Anthropic Managed Agents 那种诚实的 C 端版本:在流行趋势对 vendor 有利的时候,正确动作有时是拒绝。Tokenmaxxing 把 token 花费变成了一个身份信号,Replit 公开选择不去优化这件事。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Amjad:Tokenmaxxing 这波企业客户想要 leaderboard,Replit 公开说 No——不当把客户花费游戏化这件事的 vendor。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Amjad Masad on Replit&#39;s deliberate product choice during the Tokenmaxxing wave: enterprise customers asked for a public token-spend leaderboard; Replit said no. Masad&#39;s framing: &#39;Would&#39;ve been great for business but we&#39;re not in the business of&#39; — he stops mid-sentence, the implication is clear: they&#39;re not in the business of gamifying customer spend.</p>
+              <p>This is the consumer-facing version of Anthropic&#39;s Managed Agents honesty: the right move when a popular trend would benefit the vendor is sometimes to refuse. The Tokenmaxxing craze turned token spend into a status signal, and Replit publicly opted out of optimizing for it.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>When the whole Tokenmaxxing craze started some our enterprise customers asked us for a leaderboard. We said no. Would&#39;ve been &#39;great&#39; for business but we&#39;re not in the business of</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/amasad/status/2065597793998422308" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:garrytan" data-author-name="Garry Tan" data-author-tag="Y Combinator 总裁" data-author-handle="@garrytan" data-author-avatar="../assets/avatars/x-garrytan.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-garrytan.jpg" alt="Garry Tan avatar"><span class="avatar-fallback">GT</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Garry Tan</div>
+            <div class="author-tag is-inline">Y Combinator 总裁</div>
+          </div>
+          <div class="author-handle">@garrytan</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Garry Tan(YC 总裁)给了一个 builder 经济学读法,读起来像市场修正:「所有人都觉得 AI coding 工具解放了 founder。看大家实际在拿它建什么:规则、审批、流程、层级。同一个笼子,搭得更快。」收尾那句:「能在一下午搭好任何东西的工具,也会在一下午搭好你的官僚体系。建造速度就是固化速度。去建那个让你能造新东西的工具——之前不存在的体验。」</p>
+              <p>Tan 在说,快速脚手架工具的默认产出是快速官僚体系,不是快速交付。能赢的 founder 是那些明确把工具往 net-new experience 方向带的——大部分人不会,因为官僚体系是感觉上安全的那条路。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Garrytan:AI coding 工具不会解放 founder,大家用它们搭的是规则/审批/流程/层级——同一个笼子搭得更快;建造速度=固化速度。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Garry Tan (Y Combinator president) with a builder-economics observation that reads like a market correction: &#39;Everyone thinks AI coding tools set founders free. Watch what people actually build with them: rules, approvals, process, layers. The same cage, assembled faster.&#39; The closer: &#39;The tool that can scaffold anything in an afternoon will scaffold your bureaucracy in an afternoon too. Speed of construction is speed of calcification. Build the thing that lets you create new things: experiences that didn&#39;t happen before.&#39;</p>
+              <p>Tan is saying the default outcome of fast scaffolding tools is fast bureaucracy, not fast shipping. The founders who win are the ones who explicitly orient the tool toward net-new experiences rather than process — and most of them won&#39;t, because bureaucracy is what feels safe to build.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Everyone thinks AI coding tools set founders free. Watch what people actually build with them: rules, approvals, process, layers. The same cage, assembled faster.</p>
+              <p>The tool that can scaffold anything in an afternoon will scaffold your bureaucracy in an afternoon too. Speed of construction is speed of calcification. Build the thing that lets you create new things: experiences that didn&#39;t happen before.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/garrytan/status/2065416181943865611" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:amasad" data-author-name="Amjad Masad" data-author-tag="Replit CEO" data-author-handle="@amasad" data-author-avatar="../assets/avatars/x-amasad.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-amasad.jpg" alt="Amjad Masad avatar"><span class="avatar-fallback">AM</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Amjad Masad</div>
+            <div class="author-tag is-inline">Replit CEO</div>
+          </div>
+          <div class="author-handle">@amasad</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Masad 当天比较轻的那条——Replit 发了一个反向税:「在 Replit 上赚到钱的人,送免费 credits!」Replit 作为一个平台,现在跟它的 power user 之间有了一个正和反馈环:power user 从平台赚到钱,平台用更多 capacity 奖励这种赚钱行为。</p>
+              <p>值得记一笔的是,这是同一周 Replit 公开在关掉部分用户的 Fable(上面 §3)。Replit 愿意在身份/地理上卡访问,但愿意在 power user 的盈利方向上做正和经济。这一组对比就是这家公司的样子。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Amjad:Replit 上线「赚到钱送 credits」——平台跟 power user 之间有了正和反馈环;同一周对部分用户关 Fable,两件事都是公司。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>The lighter half of Masad&#39;s day — Replit shipping the reverse of a tax: &#39;If you make money on Replit, you get free credits!&#39; Replit as a platform now has a positive-sum feedback loop with its power users. The power users earn from the platform, the platform rewards that earning with more capacity.</p>
+              <p>It&#39;s worth noting that this is the same week Replit is publicly turning off Fable for some users (s3 above). Replit is willing to gate access on identity/geography, but willing to do positive-sum economics on the power users who build businesses on top. The contrast is the company.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>If you make money on Replit, you get free credits!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/amasad/status/2065503810592833560" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:realmadhuguru" data-author-name="Madhusudhan" data-author-tag="AI 工程师 / 开源贡献者" data-author-handle="@realmadhuguru" data-author-avatar="../assets/avatars/x-realmadhuguru.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-realmadhuguru.jpg" alt="Madhusudhan avatar"><span class="avatar-fallback">M</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Madhusudhan</div>
+            <div class="author-tag is-inline">AI 工程师 / 开源贡献者</div>
+          </div>
+          <div class="author-handle">@realmadhuguru</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Madhusudhan,轻一句:「刚用双手写完一份文档——手动,用键盘。不口述,不 AI。因为我喜欢危险地活着。」在 agent 时代的一条小小的人类提醒——这一周不是所有字节都需要 agent 来驱动。</p>
+              <p>在一个几乎被 Managed Agents、HarnessAgent、Codex-自建、agent harness through-line 占满的 feed 里,这条是这一期编者退一步说:有些文档,像这份,就是键盘加意图。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Madhusudhu:整篇文档用手写,不口述不 AI——这一周不是所有字节都需要 agent。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Madhusudhan, lightly: &#39;Just wrote out a whole doc with my bare hands — manually, with a keyboard. No dictation, no AI. Because I like to live dangerously.&#39; A small, human-scale reminder that not every byte of work this week needs to be agent-driven.</p>
+              <p>In a feed otherwise full of Managed Agents, HarnessAgent, Codex-self-build, agent harness through-lines, this is the moment where the editor of the issue sits back and says: some docs, like this one, are just keyboards and intent.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Just wrote out a whole doc with my bare hands — manually, with a keyboard. No dictation, no AI. Because I like to live dangerously.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/realmadhuguru/status/2065541200971759669" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 06</div>
+    <h2 class="section-title">播客与收尾:Unsupervised Learning 把六条线收成一张图 / Podcast and Closer: Unsupervised Learning Frames the Day</h2>
+    <p class="section-desc">Unsupervised Learning 这一集把当天六条线收成一张图:coding agent 越过 horizon、open-weight frontier 退潮、harness 才是价值单元模型只是组件。Swyx 用一条小帖做注脚——happy path 各自 happy,unhappy path ~都一样,harness 的活就是把 unhappy path 统一。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="podcast:unsupervised-learning" data-author-name="Unsupervised Learning" data-author-tag="Redpoint 出品的 AI 投资与技术播客" data-author-handle="" data-author-avatar="../assets/avatars/podcast-unsupervised-learning.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/podcast-unsupervised-learning.jpg" alt="Unsupervised Learning avatar"><span class="avatar-fallback">UL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Unsupervised Learning</div>
+            <div class="author-tag is-inline">Redpoint 出品的 AI 投资与技术播客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Unsupervised Learning(Jacob Efron)请到 Ari Morcos(Datalogy,前 DeepMind/Meta)和 Rob Toews(Radical Ventures)做一集「AI Vibe Check」,三条线值得拎出来。第一条:coding agent 越过了某个 horizon——从 IC 工程师到多个 agent 的 manager 的位移,现在在一个团队里就能看到,这个位移既驱动了那些生产力论断,也驱动了同一批团队现在报告的 review 瓶颈。</p>
+              <p>第二条:open-weight frontier 在退潮。Rob 的读法:Meta 在收回 open-weight 的承诺,有强信号显示中国大厂可能会在积累够信誉之后走同一套剧本——开开门拿一波 PR,然后关上卖 hosted inference。Ari 同意;两人都认同 open-weight 在 frontier 上没有能跑通的商业模式。经济决策变了,即便模型质量趋势没变。</p>
+              <p>第三条:成本故事已经不是理论上的。Ari 给的最具体数字——从 Opus 4.6 到 4.7,几家企业账单隔夜翻倍,原因仅仅是 output token 效率的变化。「A model is not just a model anymore. It&#39;s the model combined with the harness.」这期播客的 through-line:agent harness 才是价值单元,模型是 harness 里的一个组件,下一轮 moat 在 harness 层不在模型层。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Unsupervised Learning「AI Vibe Check」:coding agent 越过 horizon,从 IC 到 manager-of-agents 的位移已经在团队里发生;open-weight frontier 在退潮;harness 才是价值单元,模型只是组件。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Unsupervised Learning (Jacob Efron) sits down with Ari Morcos (Datalogy, ex-DeepMind/Meta) and Rob Toews (Radical Ventures) for an &#39;AI Vibe Check&#39; that lands on three threads worth pulling. Thread one: coding agents have crossed a horizon — the shift from IC engineer to manager of multiple agents is now visible inside a single team, and that shift is what&#39;s driving both the productivity claims and the review bottlenecks that the same teams are now reporting.</p>
+              <p>Thread two: the open-weight frontier is retreating. Rob&#39;s take: Meta is pulling back on open-weight releases, and there are strong signals that the Chinese labs may follow the same playbook once they&#39;ve accumulated enough credibility — open the door to get the press, then close it to sell hosted inference. Ari agrees; both agree there is no working business model for open-weight at the frontier. The economic decision-making has changed even where the model-quality trend line hasn&#39;t.</p>
+              <p>Thread three: the cost story is now real, not theoretical. Ari&#39;s most concrete number — going from Opus 4.6 to 4.7, several enterprises saw bills double overnight because of output-token efficiency changes alone. &#39;A model is not just a model anymore. It&#39;s the model combined with the harness.&#39; The podcast&#39;s through-line: the agent harness is the unit of value, the model is a component inside it, and the next round of moats sits in the harness layer not the model layer.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Speaker 3 | 01:40 - 01:53 — I think the most obvious thing that has changed over the last six months is starting to see the coding agents really start to work at longer time horizons.</p>
+              <p>Speaker 3 | 01:58 - 02:33 — And I think it starts to show how there are these thresholds where if you go beyond the threshold, it can become a lot more valuable. And obviously that&#39;s driven the massive rise in token spending and the whole token maxing idea and all this stuff.</p>
+              <p>Speaker 3 | 02:33 - 02:39 — That is enabled by having these agents be able to run long enough and actually be useful in various ways.</p>
+              <p>Speaker 2 | 03:29 - 03:43 — There are early signs that seem to suggest over the past six months that make me question whether open weight AI is going to continue to be a really meaningful force in the ecosystem going for at least like a near frontier.</p>
+              <p>Speaker 3 | 06:01 - 06:27 — I am a lot more bearish on how many open models there will be going forward... because the financial incentives just don&#39;t make sense.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.youtube.com/watch?v=W_iO8XxgD_I" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:swyx" data-author-name="Swyx" data-author-tag="AI 工程师" data-author-handle="@swyx" data-author-avatar="../assets/avatars/x-swyx.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-swyx.jpg" alt="Swyx avatar"><span class="avatar-fallback">S</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Swyx</div>
+            <div class="author-tag is-inline">AI 工程师</div>
+          </div>
+          <div class="author-handle">@swyx</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx 当天还有一条小帖,正好是当天主题的注脚:「关于 developer exception engineering 有个好事:happy path 各自 happy,unhappy path ~全人类都一样。」跟 Managed Agents 帖放一起读——Anthropic 那篇帖子字面上就是在说 unhappy path 已经统一到可以被虚拟化成接口,harness 能变成产品层就是因为 unhappy-path 处理是方差来源。</p>
+              <p>这也是 swyx 用来讲更广 Codex / agent harness 主题的那个框架:模型的活是把 happy path 跑通,harness 的活是把 unhappy path 统一。一天结束的时候,这张图已经在六条主帖和一集播客里结晶。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Swyx:happy path 各自 happy,unhappy path ~全人类都一样——harness 的活就是把 unhappy path 统一,这正是 Managed Agents 那天做的事。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>A small swyx post on the day&#39;s theme: &#39;neat thing about developer exception engineering is: the happy paths are all happy in their own way. the unhappy paths are ~universally the same.&#39; Pair this with the Managed Agents post — the Anthropic post is literally about the unhappy paths becoming uniform enough to virtualize into interfaces, and the harness becoming a product layer because unhappy-path handling is where the variance is.</p>
+              <p>This is also the framing swyx used for the broader Codex / agent harness theme: the model&#39;s job is to make the happy path possible; the harness&#39;s job is to make the unhappy path uniform. The day ended with that picture crystallized across six threads and a podcast.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>neat thing about developer exception engineering is: the happy paths are all happy in their own way. the unhappy paths are ~universally the same.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/swyx/status/2065516685113827533" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <footer data-source-note="Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-13 source feeds.">Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-13 source feeds.</footer>
+
+  <script>
+    function getTemplateAuthorSources() {
+      const sources = window.AI_BUILDERS_TEMPLATE_SOURCES || {};
+      return { identities: sources.identities || {}, avatars: sources.avatars || {} };
+    }
+
+    function getAuthorInitials(name) {
+      return (name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(function(part) { return part[0]; }).join('').toUpperCase();
+    }
+
+    function hydrateTemplateCopy() {
+      const intro = document.querySelector('.intro');
+      if (intro) {
+        const kicker = intro.querySelector('.intro-kicker');
+        const copy = intro.querySelector('.intro-copy');
+        if (kicker) kicker.textContent = intro.dataset.kicker || '';
+        if (copy) copy.textContent = intro.dataset.text || '';
+      }
+
+      const footer = document.querySelector('footer');
+      if (footer) footer.textContent = footer.dataset.sourceNote || '';
+
+      const rewriteLabel = document.body.dataset.viewLabelRewrite || '速读';
+      const originalLabel = document.body.dataset.viewLabelOriginal || '原文';
+      document.querySelectorAll('.view-toggle').forEach(function(button) {
+        if (button.dataset.viewTarget === 'rewrite') button.textContent = rewriteLabel;
+        if (button.dataset.viewTarget === 'original') button.textContent = originalLabel;
+      });
+    }
+
+    function hydrateAuthorMeta() {
+      const sources = getTemplateAuthorSources();
+      document.querySelectorAll('.card').forEach(function(card) {
+        const authorKey = card.dataset.authorKey || '';
+        const identity = sources.identities[authorKey] || {};
+        const avatarEntry = sources.avatars[authorKey] || {};
+
+        const name = identity.name || card.dataset.authorName || '';
+        const rawHandle = identity.handle || card.dataset.authorHandle || '';
+        const handle = rawHandle && rawHandle.startsWith('@') ? rawHandle : (rawHandle ? '@' + rawHandle : '');
+        const tag = identity.label || card.dataset.authorTag || '';
+        const avatar = avatarEntry.fileUrl || avatarEntry.localPath || card.dataset.authorAvatar || '';
+
+        const nameNode = card.querySelector('.author-name');
+        const tagNode = card.querySelector('.author-tag');
+        const handleNode = card.querySelector('.author-handle');
+        const avatarNode = card.querySelector('.avatar');
+        const avatarImg = card.querySelector('.avatar img');
+        const avatarFallback = card.querySelector('.avatar-fallback');
+
+        if (nameNode) nameNode.textContent = name;
+        if (tagNode) tagNode.textContent = tag;
+        if (handleNode) handleNode.textContent = handle;
+        if (avatarImg) {
+          avatarImg.src = avatar;
+          avatarImg.alt = name ? name + ' avatar' : 'Author avatar';
+        }
+        if (avatarNode) avatarNode.classList.toggle('is-fallback', !avatar);
+        if (avatarFallback) avatarFallback.textContent = getAuthorInitials(name);
+      });
+    }
+
+    function updateEditionStrip() {
+      const publishDate = document.body.dataset.publishDate;
+      const editionName = document.body.dataset.editionName || '双语精选版';
+      const editionStrip = document.getElementById('edition-strip-text');
+      if (!publishDate || !editionStrip) return;
+
+      const issueNumber = document.body.dataset.issueNumber || '';
+      if (!issueNumber) return;
+
+      const selectedCount = document.querySelectorAll('.card').length;
+      const authorCount = new Set([].slice.call(document.querySelectorAll('.author-handle')).map(function(node) { return node.textContent.trim(); }).filter(Boolean)).size;
+      const themeCount = document.querySelectorAll('.section-header').length;
+      const parts = ['第 ' + issueNumber + ' 期', publishDate, editionName, selectedCount + ' 条精选', authorCount + ' 位作者', themeCount + ' 个主题'];
+      editionStrip.innerHTML = parts.map(function(part) { return '<span class="edition-item">' + part + '</span>'; }).join('<span class="edition-sep">|</span>');
+    }
+
+    function measureVariantHeight(variant) {
+      const prevPosition = variant.style.position;
+      const prevInset = variant.style.inset;
+      const prevVisibility = variant.style.visibility;
+      const prevPointerEvents = variant.style.pointerEvents;
+      const prevOpacity = variant.style.opacity;
+      const prevTransform = variant.style.transform;
+      const prevTransition = variant.style.transition;
+      const prevOverflowY = variant.style.overflowY;
+      const prevDisplay = variant.style.display;
+
+      variant.style.position = 'relative';
+      variant.style.inset = 'auto';
+      variant.style.visibility = 'hidden';
+      variant.style.pointerEvents = 'none';
+      variant.style.opacity = '1';
+      variant.style.transform = 'none';
+      variant.style.transition = 'none';
+      variant.style.overflowY = 'visible';
+      variant.style.display = 'block';
+
+      const height = variant.scrollHeight;
+
+      variant.style.position = prevPosition;
+      variant.style.inset = prevInset;
+      variant.style.visibility = prevVisibility;
+      variant.style.pointerEvents = prevPointerEvents;
+      variant.style.opacity = prevOpacity;
+      variant.style.transform = prevTransform;
+      variant.style.transition = prevTransition;
+      variant.style.overflowY = prevOverflowY;
+      variant.style.display = prevDisplay;
+
+      return Math.ceil(height);
+    }
+
+    function getTargetHeight(shell, target) {
+      const variant = shell.querySelector('.content-variant[data-view="' + target + '"]');
+      return measureVariantHeight(variant);
+    }
+
+    function syncShellHeights() {
+      document.querySelectorAll('.content-shell').forEach(function(shell) {
+        const active = shell.querySelector('.content-variant.is-active');
+        const target = active ? active.dataset.view : 'rewrite';
+        shell.style.height = getTargetHeight(shell, target) + 'px';
+      });
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', function() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(syncShellHeights, 120);
+    });
+
+    document.querySelectorAll('.card').forEach(function(card) {
+      const buttons = card.querySelectorAll('.view-toggle');
+      const shells = card.querySelectorAll('.content-shell');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const target = button.dataset.viewTarget;
+          if (button.classList.contains('is-active')) return;
+
+          buttons.forEach(function(btn) {
+            btn.classList.toggle('is-active', btn === button);
+          });
+
+          shells.forEach(function(shell) {
+            const current = shell.querySelector('.content-variant.is-active');
+            const next = shell.querySelector('.content-variant[data-view="' + target + '"]');
+            if (!current || !next || current === next) return;
+
+            shell.style.height = shell.offsetHeight + 'px';
+            requestAnimationFrame(function() {
+              current.classList.remove('is-active');
+              next.classList.add('is-active');
+              shell.style.height = getTargetHeight(shell, target) + 'px';
+            });
+          });
+        });
+      });
+    });
+
+    hydrateTemplateCopy();
+    hydrateAuthorMeta();
+    updateEditionStrip();
+    syncShellHeights();
+  </script>
+</body>
+</html>
