@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 13 Jun 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 14 Jun 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-06-14 · 分发边界画线日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-14-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-14-rerun.html</guid>
+      <pubDate>Sun, 14 Jun 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[6-14 这天的 Follow Builders 主线收得很整齐——Fable 出口管制一周之后,分发边界已经从「自愿承诺」挪到「gating」明线:Nan Yu 用 Jira 嘲讽把出口管制那套修辞模板翻空、Amjad 把整件事框成「被心理战、终局是更大的东西」、Levie 把事件拉到监管讨论层面——model-layer regulation 的一次早期样本,政府独家拿「谁能用 frontier model」的裁量权,监管面从应用层挪到 model 层;Dan Shipper 直接发一张 personal before/after 图——Claude app vs Codex app 用量切换——证明出口管制已经在塑真实工作流,不只是公关口径。harness 这边今天走向另一面:Sottiaux 用「我刚发现 Codex,AMA」的故意 framing 把 Codex 产品工作从「把 loop 跑起来」挪到「听用户说话」阶段;Steinberger 把 Codex 自动注册 PayPal 当成跑生产里随手发生的小事——harness 已经超出 repo,在操作开放网络作为服务消费者。Levie 同期单独立了一条线:模型路由层开始值钱——成本、失败模式、模型多样性三因叠加,router 是业务逻辑居住的层,不只是 wrapper。Builder 经济学几条边:Nikunj 直接摊开 VC 群里的判断——paid partnerships 和 X 刷量已经从 positive 变成 negative signal,ARR inflation 是下一个周期才会轮到被怀疑的对象;Madhusudhan 给 frontier launch 的真实复杂一张共情脸——LLM 上线不是版本号 bump,是关于「什么行为可接受」的公共决定,每个增量选择都有 fanout,evals 覆盖不全;Swyx 把 AI Engineering Survey 收尾,顺便用 Devin 分析去年数据做出 live chart 的事实,讲了一个 survey 自己喂自己的干净社区运营样本。气质这一面:Zhang Rui 转 Paul Graham 的「taste 不是个人偏好,是 mastery + experience 训练出来的判断力」;Garry Tan 两帖把现状框成「拿着旧地图走新地形」——大多数人对模型的了解停在 signifier,新地图只能从「亲自走」来。收尾是 No Priors 这集 Biohub:Zuckerberg / Chan / Alex Rives 讲生物学开源——把工具给整个科学社区,把「理解具体个人的遗传学 + 风险 + 机制 + 干预」当目标;和 frontier AI 闭源权重当 moat 的同一周形成对照——同一个时代、相邻领域、相反的分发策略。Peter Yang 最后给了一个提醒:同一周 Codex 自动注册 PayPal 的另一头,Cal.com 被 bot「Nora」自动订会议他定性为 security exploit——「agent 操作开放网络」是双向的,「我自己设的 automation」和「打我这里的 automation」之间的边界在变薄。]]></description>
+      <category>Fable 把分发边界画成明线 / Fable Draws the Distribution Boundary, Codex 写进日常 + 算力紧 / Codex Enters Daily Workflow, Chips Get Tight, 模型路由层开始值钱 / The Model-Router Layer Becomes Valuable, 应用层 moat 与 builder 经济学的几条边 / App-Layer Moats and Edges of Builder Economics, 品味与新地图 / Taste and New Maps, 一集播客:Biohub 的开放生物学 / A Podcast: Open Biology at Biohub</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-06-13 · harness 上桌日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-13-rerun.html</link>

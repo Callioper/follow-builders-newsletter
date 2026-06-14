@@ -3,3 +3,7 @@ follow-builders-history/
 zarazhangrui-avatar.jpg
 新闻.md
 新闻日报 *.md
+
+# Hermes agent scratch dirs (ephemeral backups, never commit)
+.hermes-backup-*/
+*.hermes-backup

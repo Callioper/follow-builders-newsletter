@@ -1,0 +1,407 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-06-14",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "6-14 这天的 Follow Builders 主线收得很整齐——Fable 出口管制一周之后,分发边界已经从「自愿承诺」挪到「gating」明线:Nan Yu 用 Jira 嘲讽把出口管制那套修辞模板翻空、Amjad 把整件事框成「被心理战、终局是更大的东西」、Levie 把事件拉到监管讨论层面——model-layer regulation 的一次早期样本,政府独家拿「谁能用 frontier model」的裁量权,监管面从应用层挪到 model 层;Dan Shipper 直接发一张 personal before/after 图——Claude app vs Codex app 用量切换——证明出口管制已经在塑真实工作流,不只是公关口径。harness 这边今天走向另一面:Sottiaux 用「我刚发现 Codex,AMA」的故意 framing 把 Codex 产品工作从「把 loop 跑起来」挪到「听用户说话」阶段;Steinberger 把 Codex 自动注册 PayPal 当成跑生产里随手发生的小事——harness 已经超出 repo,在操作开放网络作为服务消费者。Levie 同期单独立了一条线:模型路由层开始值钱——成本、失败模式、模型多样性三因叠加,router 是业务逻辑居住的层,不只是 wrapper。Builder 经济学几条边:Nikunj 直接摊开 VC 群里的判断——paid partnerships 和 X 刷量已经从 positive 变成 negative signal,ARR inflation 是下一个周期才会轮到被怀疑的对象;Madhusudhan 给 frontier launch 的真实复杂一张共情脸——LLM 上线不是版本号 bump,是关于「什么行为可接受」的公共决定,每个增量选择都有 fanout,evals 覆盖不全;Swyx 把 AI Engineering Survey 收尾,顺便用 Devin 分析去年数据做出 live chart 的事实,讲了一个 survey 自己喂自己的干净社区运营样本。气质这一面:Zhang Rui 转 Paul Graham 的「taste 不是个人偏好,是 mastery + experience 训练出来的判断力」;Garry Tan 两帖把现状框成「拿着旧地图走新地形」——大多数人对模型的了解停在 signifier,新地图只能从「亲自走」来。收尾是 No Priors 这集 Biohub:Zuckerberg / Chan / Alex Rives 讲生物学开源——把工具给整个科学社区,把「理解具体个人的遗传学 + 风险 + 机制 + 干预」当目标;和 frontier AI 闭源权重当 moat 的同一周形成对照——同一个时代、相邻领域、相反的分发策略。Peter Yang 最后给了一个提醒:同一周 Codex 自动注册 PayPal 的另一头,Cal.com 被 bot「Nora」自动订会议他定性为 security exploit——「agent 操作开放网络」是双向的,「我自己设的 automation」和「打我这里的 automation」之间的边界在变薄。"
+  },
+  "archive": {
+    "title": "分发边界画线日",
+    "desc": "Fable 出口管制一周后分发边界从自愿承诺挪到 gating:Amjad / Nan Yu / Levie / Dan Shipper 把这条线拉成多张面孔;Codex 在 Sottiaux / Steinberger 手里继续滑向日常,Levie 把 model router 立成值钱的一层;Nikunj / Madhusudhan / Swyx 收 builder 经济学几条边,Zhang Rui / Garry Tan 谈 taste 和新地图,No Priors 一集 Biohub 生物学开源在 AI 闭源权重一周里形成对照。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-14 source feeds.",
+  "sections": [
+    {
+      "title": "Fable 把分发边界画成明线 / Fable Draws the Distribution Boundary",
+      "desc": "Anthropic 拿到 export control 之后,Amjad 公开说「我们在关掉一些访问」、Nan Yu 用 Jira 嘲讽、Levie 把事件拉到 CEO 级别并把整条线拉成关于 model-layer regulation 的样本、Dan Shipper 把 before/after Fable ban 直接做成 Claude app vs Codex app 用量对比——同一周里 model 出口从自愿承诺挪到 gating。",
+      "cards": [
+        {
+          "authorKey": "x:thenanyu",
+          "authorName": "Nan Yu",
+          "authorHandle": "@thenanyu",
+          "authorTag": "AI 创业者 / 投资人",
+          "sourceUrl": "https://x.com/thenanyu/status/2065953400395555255",
+          "en": {
+            "rewrite": [
+              "Nan Yu's satirical thread of the day: 'Imagine a piece of software so powerful it completely disables the operations of tech companies, freezing progress and rendering them worthless. Such damaging capabilities must be controlled and stopped. Import restrictions on Jira. Now.' The target is the rhetorical template that gets used to justify export controls on frontier models — Yu inverts it onto Jira, which is roughly the dumbest enterprise software in wide use, to make the rhetorical move look absurd.",
+              "The post is also a meta-joke about how export-control discourse is being shaped: the same template that justified restricting Fable can, with two substitutions, be applied to almost anything. Once the template is in circulation, the next round of controls is whatever the next vendor claims is 'too powerful to leave uncontrolled.'"
+            ],
+            "original": [
+              "Imagine a piece of software so powerful it completely disables the operations of tech companies, freezing progress and rendering them worthless. Such damaging capabilities must be controlled and stopped. \n\nImport restrictions on Jira. Now."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nan Yu 当天的讽刺帖:「想象一种软件,强到能直接让科技公司全线停摆、进展冻结、变成废铁。这种破坏性能力必须被控制。立即禁止进口 Jira。」目标是把 frontier model 出口管制那一套修辞模板拿出来,套到 Jira 头上——Jira 大概是现存最蠢的企业软件之一——把那个修辞动作拉到荒谬的位置。",
+              "这条也是关于出口管制话语本身是怎么被塑出来的:同一套模板,只要换两个名词,就能给几乎任何东西上管制。模板一旦流通,下一轮被管的对象就是下一个厂商声称「太强不能不管」的那个东西。"
+            ],
+            "original": [
+              "Nan Yu:把 frontier model 出口管制那套修辞套到 Jira 上,讽刺出口管制模板可被无限复用。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:amasad",
+          "authorName": "Amjad Masad",
+          "authorHandle": "@amasad",
+          "authorTag": "Replit CEO",
+          "sourceUrl": "https://x.com/amasad/status/2065838585358745653",
+          "en": {
+            "rewrite": [
+              "Amjad Masad (Replit CEO) frames the current export-control moment as misdirection: 'Feels like we're getting psyoped. The end-game here is something bigger.' Masad's read is that the public conversation is being steered, and that the real fight is somewhere else — the next move, not the one we're all reacting to.",
+              "The 'something bigger' is left unnamed, which is the point: he's saying the visible event (export control on Fable, locked access for some users / regions) is not the policy outcome to evaluate — the policy outcome is whatever comes after. The full thread link in the tweet leads to a longer-form version of this argument."
+            ],
+            "original": [
+              "Feels like we're getting psyoped. The end-game here is something bigger. https://t.co/4ye6B0RyBH"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Amjad Masad(Replit CEO)把当前的出口管制时刻框成误导:「感觉我们在被心理战。终局是更大的东西。」Masad 的判断是公共讨论在被引导,真正的仗在别处——是下一步,不是大家当下在反应的这一步。",
+              "「更大的东西」他没点出来,这正是重点:他的意思是可见事件(Fable 上的出口管制、对一些用户/地区的访问锁)不是要去评估的那个政策结果——政策结果是之后才会出现的那一步。帖子里那条链接指向这个论点的 longer-form 版本。"
+            ],
+            "original": [
+              "Amjad:感觉我们在被心理战,出口管制只是表层动作,「终局是更大的东西」——具体是啥没说,但意思是别被表层骗了。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie/status/2065842361834651996",
+          "en": {
+            "rewrite": [
+              "Aaron Levie (Box CEO) on what the Fable export-control situation actually does for regulation discourse: 'This whole Fable export control situation is actually net positive to regulation discourse. It's an early peek into what AI regulation would end up looking like at scale when enacted at the model layer instead of the specific application of the AI.'",
+              "The structural claim: the government gets sole discretion over whose use cases get frontier models and whose don't, and the decision happens at the model-API level — not at the application layer, where regulation has been debated. That moves the regulatory surface from the consumer-visible product to the wholesale model layer, which is a much smaller, much more concentrated place to apply or resist pressure."
+            ],
+            "original": [
+              "This whole Fable export control situation is actually net positive to regulation discourse. It's an early peek into what AI regulation would end up looking like at scale when enacted at the model layer instead of the specific application of the AI.\n\nThe government would have sole discretion over whe"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie(Box CEO)谈 Fable 出口管制对监管讨论本身意味着什么:「整件事对监管讨论其实是净正向。这是 AI 监管如果落到 model layer 而不是具体应用上、大规模跑起来时会是什么样子的早期一窥。」",
+              "他的结构性论点:政府独家拥有「谁用得上 frontier model、谁用不上」的裁量权,而且决定发生在 model API 这一层——不是应用层。监管面就从消费端看得见的产品挪到了 wholesale model 层——这是一个更小、更集中、更容易被施加或抵抗压力的地方。"
+            ],
+            "original": [
+              "Levie:Fable 出口管制是 model-layer regulation 的一次早期样本,政府独家拿「谁能用 frontier model」的裁量权——监管面从应用层挪到 model 层。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "authorName": "Dan Shipper",
+          "authorHandle": "@danshipper",
+          "authorTag": "Every 联合创始人 / AI 写作工具链",
+          "sourceUrl": "https://x.com/danshipper/status/2065856703397278060",
+          "en": {
+            "rewrite": [
+              "Dan Shipper (Every) publishes a personal before-and-after: 'before and after fable ban: my claude app vs. codex app usage.' The image is a usage chart comparing his own Claude app vs. Codex app activity before and after the export-control moment — a single person's working dataset showing what happens when access to a frontier model gets gated.",
+              "Shipper's point: this is not a survey, it's a single honest data point from someone whose job is to use these tools all day. If a power user shifts that visibly overnight, the export control is shaping real workflows, not just PR talking points. The same week Shipper also posted a related meme ('the last thing you see before andy jassy gets your model banned by the usg') that captures the humor of the moment."
+            ],
+            "original": [
+              "before and after fable ban:\n\nmy claude app vs. codex app usage https://t.co/ddBRm7bp21"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Dan Shipper(Every)发了一张 personal before-and-after:「fable ban 前后:我的 claude app vs. codex app 用量。」图是他自己 Claude app 和 Codex app 在出口管制节点前后的使用对比——一个整天都在用这些工具干活的人的真实数据集,展示 frontier model 访问被 gating 之后会发生什么。",
+              "Shipper 的要点:这不是调研,这是单一、诚实的、来自一个重度用户的数据点。如果重度用户一夜之间用量切换这么明显,那出口管制已经在塑真实工作流,不只是公关口径。同周他还发了一条相关 meme(「andy jassy 让你的模型被美国政府 ban 之前你最后看到的东西」)刚好是当下气氛的浓缩。"
+            ],
+            "original": [
+              "Dan Shipper:一张 personal before/after 图——Fable ban 之后他自己 Claude app vs Codex app 用量明显切换;Power user 数据点证明出口管制在塑真实工作流。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Codex 写进日常 + 算力紧 / Codex Enters Daily Workflow, Chips Get Tight",
+      "desc": "Codex 在生产里跑的不只是 Steinberger 一家:Sottiaux 直接发 AMA「我刚发现 Codex,问吧」、Steinberger 把「Codex 自动签 PayPal」当成跑生产里随手发生的小事——harness 已经悄悄长成日常基础设施,同一周 chips 又开始紧。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT",
+          "sourceUrl": "https://x.com/thsottiaux/status/2066022651760721931",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux (Codex, OpenAI) opens an AMA with a deliberate framing: 'Hi, I'm Tibo and I just discovered Codex. AMA.' The joke is that Sottiaux has been one of the people building Codex — he's not discovering it, he's modeling what 'discovering Codex' feels like from the outside. The AMA is a signal that Codex product is moving from ship-the-loop to listen-to-users stage.",
+              "Read against last week's Steinberger-on-Codex-as-essential-infra thread: Sottiaux's role this week is the user-facing surface — AMA, 'what do you want to see', reset-warning UX fixes. The same Codex that runs 24/7 in production builds for some users is also being asked to be approachable for the occasional afternoon session. Both surfaces ship in the same release week."
+            ],
+            "original": [
+              "Hi, I'm Tibo and I just discovered Codex. AMA"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux(Codex, OpenAI)用一个故意的 framing 开了 AMA:「我是 Tibo,我刚发现 Codex,AMA。」笑点在于 Sottiaux 是 Codex 的 builder 之一——他不是在「发现」,他在模拟从外部「发现 Codex」的感觉。AMA 的信号是 Codex 产品工作已经从「把 loop 跑起来」挪到「听用户说什么」的阶段。",
+              "跟上周 Steinberger 把 Codex 描述成 essential infra 的帖子放一起读:Sottiaux 这周的角色是 user-facing 表层——AMA、「你想看到什么」、重置提醒 UX 修补。同一周里,24/7 在生产 build 里跑 Codex 的人的和偶尔一下午用 Codex 的人的 Codex 是同一个 Codex,两个表面同时在发。"
+            ],
+            "original": [
+              "Sottiaux:AMA「我刚发现 Codex」——假装用户视角是信号:Codex 产品工作已从「把 loop 跑起来」挪到「听用户说话」阶段。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:steipete",
+          "authorName": "Peter Steinberger",
+          "authorHandle": "@steipete",
+          "authorTag": "OpenClaw 创始人",
+          "sourceUrl": "https://x.com/steipete/status/2065997212015067508",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger (OpenClaw) on Codex in real workflows: 'Got a PayPal verification text and thought I been hacked, but it was just codex signing up for a web service it needed.' The picture Steinberger paints: Codex is running unattended, browser/computer-use is operating external services on its own, and the human side of the loop gets random verification SMSes that turn out to be the agent.",
+              "This is the production description moving past the 'agent does dev work' frame into the 'agent operates the open web as a service consumer' frame. A PayPal SMS is not a dev environment — it's a third-party SaaS sign-up flow with identity verification. Codex signed up by itself because its harness needed that service. The verification text is the first signal to the human that an action outside the repo just happened."
+            ],
+            "original": [
+              "Got a PayPal verification text and thought I been hacked, but it was just codex signing up for a web service it needed."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger(OpenClaw)聊 Codex 在真实工作流里的样子:「收到 PayPal 验证短信以为被黑了,结果是 codex 在自己注册一个它需要的 web 服务。」Steinberger 描绘的画面:Codex 在无人值守地跑,browser/computer-use 在自己操作外部服务,人这边随机收到验证短信,结果发现是 agent 在干。",
+              "这条把 Codex 的 production 描述从「agent 做开发活」挪到「agent 作为服务消费者操作开放网络」。PayPal 短信不是 dev 环境——是有身份验证的第三方 SaaS 注册流程。Codex 自己注册是因为 harness 需要这个服务。验证短信是人这一侧收到的第一个「repo 外面的动作刚刚发生了」的信号。"
+            ],
+            "original": [
+              "Steinberger:Codex 自己注册 PayPal,人被一条验证短信吓到——harness 已经超出 repo,在操作开放网络作为服务消费者。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "模型路由层开始值钱 / The Model-Router Layer Becomes Valuable",
+      "desc": "Levie 把「AI 模型路由到最好的那个」单独立成一层价值主张——成本优化、可避免的失败模式、和未来模型变多时单一模型不可能同时赢所有任务。三条原因加起来,routing 这层比单一模型订阅更值得付钱。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie/status/2065989559905812973",
+          "en": {
+            "rewrite": [
+              "Aaron Levie (Box CEO) on the routing layer becoming a valuable product surface: 'The layer that can route to the best AI model for the particular job is going to increase in value substantially. There are at least 3 big reasons: cost optimization (frontier for some tasks, cheaper for others), failure-mode avoidance (different models fail in different ways, so picking the right one for the task matters), and the fact that as model capability spreads, no single model wins every task.'",
+              "Levie's framing is structural: a routing layer is not a wrapper, it's a place where business logic lives. The pick-the-model-for-the-task decision encodes what the application actually cares about — which kind of failure is acceptable, what latency budget is, what cost ceiling is per request. The application writes that policy once; the router enforces it across an ever-changing model catalog."
+            ],
+            "original": [
+              "The layer that can route to the best AI model for the particular job is going to increase in value substantially. There are at least 3 big reasons: \n\n* Cost optimization: there are plenty of use cases where you need frontier intelligence for some tasks and something far cheaper for others. Even in t"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie(Box CEO)谈 routing 层开始变贵:「能把请求路由到「做这个任务最好的那个模型」的层,价值会大幅上升。至少三个原因:成本优化(部分任务要 frontier,其它要便宜的)、失败模式规避(不同模型失败方式不同,挑对的就行)、以及模型能力摊开之后,没有单一模型能赢所有任务。」",
+              "Levie 的框是结构性的:routing 层不是 wrapper,是业务逻辑居住的地方。「为任务挑模型」这个决定编码了应用真正在乎的东西——能接受哪种失败、latency 预算多少、单次请求的成本上限。应用把这套策略写一次,router 在不断变长的 model catalog 上强制执行它。"
+            ],
+            "original": [
+              "Levie:为任务挑模型的 routing 层变得值钱——成本、失败模式、模型多样性三个原因叠加,这是一个业务逻辑居住的层,不只是 wrapper。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "应用层 moat 与 builder 经济学的几条边 / App-Layer Moats and Edges of Builder Economics",
+      "desc": "Nikunj 把 paid partnerships 当 negative signal、把 startup 圈对「ARR inflation」的反应直接摊开;Madhusudhan 给 frontier launch 的真实复杂一张共情脸;Swyx 把 AI Engineering Survey 收尾。同一周里 builder 经济学在重画——信号是 negative 的就别养。",
+      "cards": [
+        {
+          "authorKey": "x:nikunj",
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人",
+          "sourceUrl": "https://x.com/nikunj/status/2065889759906644146",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari (Afore Capital) on what VC group chats are now treating as a negative signal: 'paid partnerships and boosting views on X are now negative signal in all VC group chats.' The pivot from 'paid growth is a moat' to 'paid growth is a red flag' is happening in real time across the early-stage investor set.",
+              "Kothari's next clause is more interesting: 'I'm hoping this comes to the inflating ARR trend soon, but that might still take another cycle.' The point is the same calibration cycle that took X-boost from positive to negative is going to take ARR inflation from tolerated to suspect — but with a lag, because revenue numbers are harder to read than engagement numbers."
+            ],
+            "original": [
+              "Not sure which founder needs to hear this..\n\nbut paid partnerships and boosting \"views\" on X are now negative signal in all VC group chats.\n\nI'm hoping this comes to the inflating ARR trend soon, but that might still take another cycle."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kothari(Afore Capital)说 VC group chats 现在把什么当 negative signal:「paid partnerships 和在 X 上刷 views,在所有 VC 群里已经是减分项。」从「付费增长是 moat」到「付费增长是红旗」的转向正在早期投资圈里实时发生。",
+              "Kothari 下一句更值得读:「我希望这个判断很快能挪到 ARR inflation,但可能还得再走一个周期。」意思是同一个 calibration 周期让 X 刷量从加分变减分,接下来也会让 ARR inflation 从被容忍变成被怀疑——但会有个滞后,因为收入数字比 engagement 数字难读。"
+            ],
+            "original": [
+              "Nikunj:在 VC 群里 paid partnerships 和 X 刷量已经从 positive 变成 negative signal;ARR inflation 是下一个周期才会轮到被怀疑的对象。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:realmadhuguru",
+          "authorName": "Madhusudhan",
+          "authorHandle": "@realmadhuguru",
+          "authorTag": "AI 工程师 / 开源贡献者",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2065911676000752122",
+          "en": {
+            "rewrite": [
+              "Madhusudhan (AI engineer, open-source contributor) puts the launch-day complexity of frontier models into human terms: 'Having been through many frontier model launch reviews, I have empathy for everyone involved. Launching an LLM isn't like shipping traditional software — you're making a decision about a black box with effectively infinite use cases and infinite failure modes. The tradeoffs are hard — every incremental choice has a fanout.'",
+              "The picture Madhusudhan draws is a useful counterweight to the 'just ship' commentary: a frontier model launch is not a version bump, it's a public decision about what kind of behavior is acceptable in an opaque system. The people in the room have to weigh deployment against a frontier of failure modes that no eval set fully covers."
+            ],
+            "original": [
+              "Having been through many frontier model launch reviews, I have empathy for everyone involved.\n\nLaunching an LLM isn't like shipping traditional software - you're making a decision about a black box with effectively infinite use cases and infinite failure modes.\n\nThe tradeoffs are hard - every increa"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Madhusudhan(AI 工程师 / 开源贡献者)把 frontier model 上线的复杂性说成一句人话:「参加过很多 frontier model 上线 review,对每个人我都共情。发布一个 LLM 不像发传统软件——你在对一个黑盒做决定,黑盒的有效用例和失败模式都接近无穷。tradeoff 很难——每个增量选择都有 fanout。」",
+              "Madhusudhan 画的画面是对「just ship」评论的一个有用的反平衡:frontier model 上线不是版本号 bump,是一个关于「什么行为可接受」的公共决定,而这个决定是在一个不透明系统里做出的。房间里的人要在部署和一个 eval 集覆盖不全的失败模式前沿之间权衡。"
+            ],
+            "original": [
+              "Madhusudhan:frontier model 上线不是版本号 bump,是关于「什么行为可接受」的公共决定;每个增量选择都有 fanout,evals 覆盖不全。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:swyx",
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师",
+          "sourceUrl": "https://x.com/swyx/status/2065909887025168887",
+          "en": {
+            "rewrite": [
+              "Swyx (AI engineer) on the closing window for the annual AI Engineering Survey: 'Last chance to fill out the annual AI Engineering Survey this weekend and win great Vercel + Notion + AIE tix.' The pitch beyond the tickets is the data product — Devin analyzed last year's registered attendee list and produced a 'live chart of the people coming to the conference,' which Swyx calls 'the single best data driven storytelling I've seen.'",
+              "The self-referential point: the survey itself is now part of the marketing — the prior survey's output, analyzed by an agent, became a content artifact that made the next survey worth filling out. The loop (survey → data → story → audience → next survey) is one of the cleanest examples of an AI-augmented community operation shipping in the open."
+            ],
+            "original": [
+              "Last chance to fill out the annual AI Engineering Survey this weekend and win great Vercel + Notion + AIE tix!\n\nlink below \n\nwe had @devinai analyze registered attendee list and output a live chart of the people coming to the conference. it ended up being the single best data driven storytelling i'v"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx(AI 工程师)提醒 AI Engineering Survey 的最后窗口:「周末是今年填表拿 Vercel + Notion + AIE 票的最后机会。」票之外的核心是数据产品——Devin 分析了去年注册参会者名单,产出一张「来参会的人」的实时图,Swyx 称之为「我看过的最棒的 data driven storytelling」。",
+              "自指的点:survey 本身现在已经是营销的一部分——上一届 survey 的产出被 agent 分析,变成内容 artifact,让下一届 survey 更值得填。整个循环(survey → 数据 → 故事 → 受众 → 下一届 survey)是 AI-augmented 社区运营公开跑的最干净的样本之一。"
+            ],
+            "original": [
+              "Swyx:AI Engineering Survey 周末截止——去年数据被 Devin 分析做出 live chart,成了「最好的 data driven storytelling」,survey 自己开始喂自己。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "品味与新地图 / Taste and New Maps",
+      "desc": "Zhang Rui 转 Paul Graham 的「taste」长文并把「mastery + experience」拉成 tldr;Garry Tan 两帖把现状框成「拿着旧地图走新地形」——AI 时代需要重新画地图,方法是走一遍。两条线最后都回到同一句话:对所做的事的判断力比答案稀缺。",
+      "cards": [
+        {
+          "authorKey": "x:zarazhangrui",
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2066036778713362747",
+          "en": {
+            "rewrite": [
+              "Zhang Rui (Follow Builders) surfaces a Paul Graham essay on taste: 'Great essay on taste and how to cultivate it. Taste is not just personal preference; good taste requires mastery and experience.' The full essay is the argument behind the tldr — taste is not what you like, it's the trained judgment that lets you tell good from bad in a domain you've actually worked in.",
+              "The relevance to AI builders is direct: in a world where models produce plausible answers fast, the scarce resource is the ability to recognize which plausible answer is actually right. Taste — built from mastery and experience — is the human input that keeps model output from being accepted at face value."
+            ],
+            "original": [
+              "Great essay on taste and how how to cultivate it\n\nTaste is not just personal preference; good taste requires mastery and experience https://t.co/uuxFF7sU58"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zhang Rui(Follow Builders)挑出 Paul Graham 那篇谈 taste 的长文:「关于 taste 以及怎么培养 taste 的好文。Taste 不是个人偏好;好的 taste 需要 mastery 和 experience。」长文论的就是 tldr 后面那套:taste 不是你喜欢什么,是训练出来的判断力,让你在一个你真正干过的领域里分辨好坏。",
+              "对 AI builders 的相关性很直接:模型快速产出 plausible 答案的世界里,稀缺资源是「认得哪个 plausible 答案真的对」的能力。Taste——由 mastery 和 experience 堆起来——是让人不会把模型输出照单全收的人类输入。"
+            ],
+            "original": [
+              "Zhang Rui 转 Paul Graham:taste 不是个人偏好,是 mastery + experience 训练出来的判断力——AI 时代最稀缺的是「认得哪个 plausible 答案真的对」。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁",
+          "sourceUrl": "https://x.com/garrytan/status/2065877443874038203",
+          "en": {
+            "rewrite": [
+              "Garry Tan (Y Combinator president) frames the AI era as a cartography problem: 'In AI most people are still trying to use old maps on a new territory. Throw the maps away. It's time to draw new ones. The only way you can do it is walking the land.' The thesis: the existing mental models for software, companies, and product strategy are increasingly wrong; new ones have to be drawn from direct experience.",
+              "Tan extends this in a companion post: 'I wish the significance of the model came from more people actually using it and coming to their own conclusions — but yes, most people in the world learn about it through signifiers and not through interacting with that which is signified.' The two together: most people are reading about AI through narratives and headcount, not through shipped code — and the only reliable way to build a new map is to walk the territory yourself."
+            ],
+            "original": [
+              "In AI most people are still trying to use old maps on a new territory. \n\nThrow the maps away. It's time to draw new ones. The only way you can do it is walking the land."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan(Y Combinator 总裁)把 AI 时代框成绘图问题:「AI 领域大多数还在拿着旧地图走新地形。把地图扔掉,该画新的了。唯一办法是亲自走一遍。」论点:现有的软件/公司/产品策略心智模型越来越错;新模型只能从直接经验里画出来。",
+              "Tan 在一条 companion post 里延伸:「我希望一个模型的意义来自更多人真的用它、得出自己的结论——但事实上大多数人通过 signifier 了解它,而不是和 signified 本身交互。」合在一起:大多数人在通过叙事和数字读 AI,而不是通过 ship 出来的代码——画新地图唯一可靠的办法是亲自走。"
+            ],
+            "original": [
+              "Garrytan:大多数人拿着旧地图走 AI 新地形,该扔掉重画;新地图只能从「亲自走」来,大多数人对模型的了解停在 signifier,不来自直接使用。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "一集播客:Biohub 的开放生物学 / A Podcast: Open Biology at Biohub",
+      "desc": "No Priors 播客这一集把镜头从 AI 转去 biology:Mark Zuckerberg、Priscilla Chan 和 Biohub 首席科学家 Alex Rives 在讲「理解一个具体人的遗传学、风险、机制、干预能力」这件事上,选择把工具给整个科学社区做开源——和 frontier model 把闭源权重当护城河的路线完全相反。",
+      "cards": [
+        {
+          "authorKey": "podcast:no-priors",
+          "authorName": "No Priors",
+          "authorHandle": null,
+          "authorTag": "AI 与创业对话播客",
+          "sourceUrl": "https://www.youtube.com/@NoPriorsPodcast",
+          "en": {
+            "rewrite": [
+              "No Priors episode this week: Mark Zuckerberg, Priscilla Chan, and Alex Rives (Head of Science, Biohub) on the future of biology being open-source. The opening framing from Chan is unusually direct: 'We just wanna give tools to the whole scientific community.' Rives follows: 'We wanna understand how biology works. I wanna understand the genetics of this person. I wanna understand the risks they have to different illnesses. My goal is to be able to treat the individual as an individual, understand the mechanisms, and be able to intervene.'",
+              "The contrast that makes the episode worth listening to in an AI week: Biohub is choosing open distribution as the moat — faster iteration across more scientists is the play. Frontier AI labs by and large treat closed weights as the moat. Same era, adjacent domain, opposite distribution strategy."
+            ],
+            "original": [
+              "Speaker 1 | 00:00 - 00:02\nWe just wanna give tools to the whole scientific community.\n\nSpeaker 2 | 00:02 - 00:17\nWe wanna understand how biology works. I wanna understand the genetics of this person. I wanna understand the risks they have to different illnesses. My goal is to be able to treat the individual as an individual, understand the mechanisms, and be able to intervene."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "本周 No Priors 集:Mark Zuckerberg、Priscilla Chan 和 Alex Rives(Biohub 首席科学家)谈生物学的未来是开源。Chan 开场非常直接:「我们想把工具给整个科学社区。」Rives 接:「我们想搞懂生物学是怎么运转的。我想理解这个具体个人的遗传学,理解他对不同疾病的风险。我的目标是能像对待一个具体的个人那样对待他——理解机制,然后能介入。」",
+              "让这集值得在 AI 周里听的对立是:Biohub 选择把开放分发当 moat——更快迭代、覆盖更多科学家才是牌。Frontier AI 实验室大体上把闭源权重当 moat。同一个时代、相邻领域,相反的分发策略。"
+            ],
+            "original": [
+              "No Priors:Biohub 三人组(Zuckerberg / Chan / Rives)讲生物学开源——把工具给整个科学社区,把「理解具体个人的遗传学 + 风险 + 机制 + 干预」当目标;在 AI 闭源权重当 moat 的同一周里,生物学选开放分发当 moat。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者",
+          "sourceUrl": "https://x.com/petergyang/status/2065841885936316797",
+          "en": {
+            "rewrite": [
+              "Peter Yang (product coach / creator-economy researcher) flags a Cal.com scheduling exploit: 'Hey @peer_rich this is happening to me too and feels like a big security exploit. I have no idea how Nora booked a meeting with me. Can you fix this? cc @calcom, @dfordp11.' The frame Yang uses is direct — a third-party bot ('Nora') booked a meeting on his calendar without a clear path he can see, and he's calling it a security exploit, not a UX glitch.",
+              "The relevance to the day's AI theme: the same week that Codex is signing up for PayPal on its own, scheduling tools are being probed by automated agents on the other side. The 'agent operates the open web' story cuts both ways — sometimes the agent is yours, sometimes it's someone else's agent trying to book your calendar. The boundary between 'automation I set up' and 'automation hitting me' is getting thinner."
+            ],
+            "original": [
+              "Hey @peer_rich this is happening to me too and feels like a big security exploit. \n\nI have no idea how \"Nora\" booked a meeting with me.\n\nCan you fix this?\n\ncc @calcom, @dfordp11 https://t.co/SyooohQvA0"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang(产品教练 / 创作者经济研究者)指出 Cal.com 调度的一个安全漏洞:「Hey @peer_rich 我这也发生了,感觉是挺大的 security exploit。我完全搞不懂「Nora」是怎么跟我订上会议的。能修一下吗?cc @calcom, @dfordp11。」Yang 的 framing 很直接——一个第三方 bot(「Nora」)在他日历上订了一场会议,而且他看不到一条他能理解的路径,他把这叫 security exploit,不是 UX glitch。",
+              "和当天的 AI 主线的相关:同一周 Codex 在自己注册 PayPal,调度工具的另一头在被动接受来自自动化 agent 的探测。「agent 操作开放网络」的故事是双向的——有时候 agent 是你的,有时候是别人的 agent 在订你的日历。「我自己设的 automation」和「打我这里的 automation」之间的边界在变薄。"
+            ],
+            "original": [
+              "Peter Yang:Cal.com 上被 bot「Nora」自动订会议,他定性为 security exploit——「agent 操作开放网络」是双向的,边界在变薄。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
