@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Builders Digest · 2026-06-15</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ed;
+    --accent: #c0392b;
+    --accent-light: #e8d5c4;
+    --border: #d4cdc0;
+    --muted: #7a7265;
+    --tag-bg: #e8e2d6;
+    --en-bg: #ffffff;
+    --cn-bg: #faf7f2;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  .masthead, .intro, .section-header, .feed, footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .masthead { padding-top: 48px; }
+  .masthead-rule { border: none; border-top: 3px solid var(--ink); margin: 0 0 12px; }
+  .masthead-inner { display: flex; justify-content: center; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; letter-spacing: -0.4px; }
+  .masthead-subtitle { margin-top: 8px; padding-bottom: 10px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  .edition-strip {
+    position: relative;
+    margin-top: 8px;
+    min-height: 46px;
+    padding: 10px 132px 12px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.34);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+
+  .edition-strip .edition-sep { margin: 0 8px; color: #b8ae9f; }
+  .edition-strip-text { display: block; }
+  .edition-return-link { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; padding: 6px 10px; border: 1px dashed rgba(192, 57, 43, 0.55); border-radius: 999px; color: var(--accent); text-decoration: none; font-size: 12px; line-height: 1; letter-spacing: 0.06em; background: rgba(255, 255, 255, 0.45); transition: background 160ms ease, border-color 160ms ease, transform 160ms ease; }
+  .edition-return-link:hover, .edition-return-link:focus-visible { background: rgba(255, 255, 255, 0.82); border-color: var(--accent); transform: translateY(-50%) translateX(-1px); }
+  .edition-return-link:focus-visible { outline: none; }
+  .intro { padding-top: 22px; }
+  .intro-inner { max-width: 920px; margin: 0 auto; padding: 0 0 0 18px; border-left: 3px solid #d9cdbc; }
+  .intro-kicker { margin: 0 0 8px; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .intro p { margin: 0; max-width: none; color: var(--muted); font-size: clamp(15px, 1.6vw, 16px); line-height: 1.9; text-wrap: pretty; font-family: 'Noto Serif SC', serif; overflow-wrap: anywhere; }
+
+  .section-header { margin-top: 40px; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; margin: 0 0 6px; }
+  .section-desc { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+
+  .feed { display: flex; flex-direction: column; gap: 20px; }
+  .card { background: var(--en-bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .card-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid #eee7dd; flex-wrap: wrap; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .avatar-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .avatar.is-fallback img { display: none; }
+  .avatar.is-fallback .avatar-fallback { display: flex; }
+
+  .author-info { flex: 1; min-width: 160px; }
+  .author-name { font-weight: 600; font-size: 15px; }
+  .author-name-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .author-handle { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+  .author-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; background: var(--tag-bg); color: var(--muted); padding: 4px 8px; border-radius: 999px; }
+  .author-tag.is-inline { padding: 3px 8px; }
+
+  .card-controls { margin-left: auto; display: inline-flex; gap: 8px; }
+  .view-toggle { border: 1px solid var(--border); background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 999px; font-size: 12px; line-height: 1; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; }
+  .view-toggle.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .card-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .lang-col { padding: 18px 20px 22px; }
+  .lang-col.cn { background: var(--cn-bg); border-right: 1px solid #f0ece4; font-family: 'Noto Serif SC', serif; }
+  .lang-col.en { background: var(--en-bg); }
+  .lang-label { margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+  .content-shell { position: relative; transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .content-variant { position: absolute; inset: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(4px); transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; will-change: opacity, transform; }
+  .content-variant.is-active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+  .content-variant p, .content-variant li { margin: 0 0 12px; font-size: 14px; }
+  .content-variant ol { margin: 0 0 12px 20px; padding: 0; }
+  .inline-code { display: inline-block; font-family: 'IBM Plex Mono', monospace; background: #f4efe7; padding: 3px 6px; border-radius: 6px; margin-bottom: 8px; }
+
+  .card-footer { padding: 12px 20px 16px; border-top: 1px solid #eee7dd; background: #fcfaf6; }
+  .card-footer a { color: var(--accent); text-decoration: none; font-size: 14px; }
+  footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 680px) {
+    .masthead-inner { align-items: center; }
+    .edition-strip { padding-right: 12px; padding-left: 12px; }
+    .edition-strip-text { padding-right: 0; }
+    .edition-return-link { position: static; transform: none; margin-top: 8px; font-size: 11px; }
+    .card-controls { margin-left: 0; }
+    .card-body { grid-template-columns: 1fr; }
+    .lang-col.cn { border-right: none; border-bottom: 1px solid #f0ece4; }
+    .edition-strip .edition-sep { margin: 0 5px; }
+    .intro-inner { padding-left: 14px; }
+    .intro p { line-height: 1.84; }
+  }
+</style>
+</head>
+<body data-publish-date="2026-06-15" data-issue-number="22" data-edition-name="双语精选版" data-view-label-rewrite="速读" data-view-label-original="原文" data-author-identities-path="/home/eclaw/.follow-builders/assets/author-identities.json" data-avatar-manifest-path="/home/eclaw/.follow-builders/assets/avatar-manifest.json">
+  <header class="masthead">
+    <hr class="masthead-rule">
+    <div class="masthead-inner">
+      <div class="masthead-title">AI Builders Digest</div>
+    </div>
+    <div class="masthead-subtitle">Bilingual edition · 双语对照版</div>
+    <div class="edition-strip">
+      <span class="edition-strip-text" id="edition-strip-text">第 22 期｜2026-06-15｜双语精选版｜11 条精选｜9 位作者｜6 个主题</span>
+      <a class="edition-return-link" href="../index.html">返回目录</a>
+    </div>
+  </header>
+
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="6-15 这天的 Follow Builders 主线收得偏企业侧——Satya 那段「learning loop 才是 IP,不是 frontier model」被 Amjad 拎出来点赞,Levie 在同一天把这条线讲完两层:模型层监管的反作用力是各国去抢 open weights,所以「open source 是企业的 escape hatch」(Garry Tan),而 Rauchg 用 v0 突破 70 万 skills 给「open⎵ai 生态」一个具体纹理。Codex 这边继续滑向日常:Sottiaux 把 /goal 推成 meta-prompting 的一次推广——agent 自己 prompt 自己;Swyx 用 ultracode 体验给 subagent fanout 一种说法,「intelligent subroutine」把 subagent 从 IDE 拽到所有需要判断的 yakshave。下一代 world-changers 被 Garry Tan 画成「multi-stage agent 任务跑得极稳」的那批人,Dan Shipper 用「FREE FABLE」两个字把这条线落到 Every 自己的 offer 层。Skill 这一面 Zhang Rui 收一句连发把 skill 反过来——好的 skill 是「做 20 次、改 20 次、让 AI 把刚做的那一切打包」的产物,不是开始时先写的配方;对照 v0 的 70 万条,长尾 skill 是已经跑过足够多次的工作流的下游。收尾是 Jensen Huang 上 Training Data 把「AI 工厂」立成这一轮基础设施的本体——从 retrieval-based 电脑到 generative 电脑是范式位移,「每个像素、每段声音、每条新闻都会按 context + query 现场生成」,generator 从一种组件变成整张基础设施的本体。整天的味道:监管在 model layer 画线,open 那一面在变厚;harness 在远离 repo,往 open web 和长期任务走;skill 不是配方,是工作流跑稳之后的录音。">
+    <div class="intro-inner">
+      <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
+      <p class="intro-copy">6-15 这天的 Follow Builders 主线收得偏企业侧——Satya 那段「learning loop 才是 IP,不是 frontier model」被 Amjad 拎出来点赞,Levie 在同一天把这条线讲完两层:模型层监管的反作用力是各国去抢 open weights,所以「open source 是企业的 escape hatch」(Garry Tan),而 Rauchg 用 v0 突破 70 万 skills 给「open⎵ai 生态」一个具体纹理。Codex 这边继续滑向日常:Sottiaux 把 /goal 推成 meta-prompting 的一次推广——agent 自己 prompt 自己;Swyx 用 ultracode 体验给 subagent fanout 一种说法,「intelligent subroutine」把 subagent 从 IDE 拽到所有需要判断的 yakshave。下一代 world-changers 被 Garry Tan 画成「multi-stage agent 任务跑得极稳」的那批人,Dan Shipper 用「FREE FABLE」两个字把这条线落到 Every 自己的 offer 层。Skill 这一面 Zhang Rui 收一句连发把 skill 反过来——好的 skill 是「做 20 次、改 20 次、让 AI 把刚做的那一切打包」的产物,不是开始时先写的配方;对照 v0 的 70 万条,长尾 skill 是已经跑过足够多次的工作流的下游。收尾是 Jensen Huang 上 Training Data 把「AI 工厂」立成这一轮基础设施的本体——从 retrieval-based 电脑到 generative 电脑是范式位移,「每个像素、每段声音、每条新闻都会按 context + query 现场生成」,generator 从一种组件变成整张基础设施的本体。整天的味道:监管在 model layer 画线,open 那一面在变厚;harness 在远离 repo,往 open web 和长期任务走;skill 不是配方,是工作流跑稳之后的录音。</p>
+    </div>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 01</div>
+    <h2 class="section-title">Codex 越用越顺手 / Codex Gets More Useful by the Day</h2>
+    <p class="section-desc">Sottiaux 把「/goal 自设」立成 meta-prompting 的一次推广——Codex 不只是听话执行,它自己也能 set task;Swyx 用 ultracode 体验给「subagent fanout」一种说法——子智能体不是更小的 worker,是 subroutines 的智能化版本,knowledge work 那些「剃完还有剃」的判断环节正是它最该去的地方。两条线合起来:harness 离 repo 越来越远,离 open web、离长期任务越来越近。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:thsottiaux" data-author-name="Thibault Sottiaux" data-author-tag="OpenAI Codex &amp; ChatGPT" data-author-handle="@thsottiaux" data-author-avatar="../assets/avatars/x-thsottiaux.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-thsottiaux.jpg" alt="Thibault Sottiaux avatar"><span class="avatar-fallback">TS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Thibault Sottiaux</div>
+            <div class="author-tag is-inline">OpenAI Codex &amp; ChatGPT</div>
+          </div>
+          <div class="author-handle">@thsottiaux</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Sottiaux(OpenAI Codex &amp; ChatGPT)今天送上一个不大但很硬的推广:「Codex 能看、能设自己的 /goal。我们做的每样东西,都同时做成 agent 自己能用的工具。这是 meta-prompting 的一次推广——你让 agent 根据你的意图自己设任务。」位移很清晰:从「人 prompt agent」挪到「给 agent 一条路让它自己 prompt 自己」。</p>
+              <p>「我们做的每样东西都同时做成 agent 自己能用的工具」是更深的承诺。产品的 surface 不再只是用户;agent 自己是系统 primitive 的另一个用户。/goal 是这条线的具体落点,但架构层面的承诺是:任何 Codex 端的能力都得让 Codex 自己也读得懂。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Sottiaux:Codex 能看、能设自己的 /goal;产品同时是 agent 自己的工具,meta-prompting 的一次推广——让 agent 按你的意图自己设任务。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Sottiaux (Codex &amp; ChatGPT at OpenAI) ships a small but real generalization: &#39;Codex can see and set its own /goal. Everything we build, we build also as a tool for the agent. This is a generalization of meta prompting, where you let the agent set its own task based on your intent.&#39; The shift is from prompting the agent to giving the agent a way to prompt itself.</p>
+              <p>The framing matters: &#39;we build also as a tool for the agent&#39; is the deeper claim. The product surface is no longer the user; the agent itself is a user of the system&#39;s primitives. /goal is a concrete instance, but the architectural commitment is that any Codex-side affordance has to be readable to Codex itself.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Codex can see and set its own /goal. Everything we build, we build also as a tool for the agent. This is a generalization of meta prompting, where you let the agent set its own task based on your intent.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/thsottiaux/status/2066270561081454989" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:swyx" data-author-name="Swyx" data-author-tag="AI 工程师" data-author-handle="@swyx" data-author-avatar="../assets/avatars/x-swyx.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-swyx.jpg" alt="Swyx avatar"><span class="avatar-fallback">S</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Swyx</div>
+            <div class="author-tag is-inline">AI 工程师</div>
+          </div>
+          <div class="author-handle">@swyx</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx 把 Anthropic 的 ultracode 拿到外面跑,给出的 takeaway 是:「外面还没几个人在用 anthropic ultracode。它烧 token 烧得吓人,但你得把 repo 改造得能并行起来——subagent 真正强的是 fanout。」重点不是 subagent 是更大号的 worker;重点是 fanout,而 fanout 是结构性的——你的 repo 得先被切分,这件事才能跑起来。</p>
+              <p>第二句把概念模型交出来:「基本想法就是 subroutines 的智能化版。当你理解到 knowledge work 也就是一连串需要判断的剃完之后还有剃,你就会明白 dynamic workflows 不只是给 coding 任务用的。」「智能化 subroutine」这套说法把 subagent 从 IDE 里拽出来:很多 knowledge work 都是带判断的琐碎事,这恰恰是智能化 subroutine 该接走的活。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Swyx:ultracode 烧 token 吓人但 subagent 的真本事是 fanout——repo 得先切分;「intelligent subroutine」是一连串需要判断的 yakshave 的天然解法,不只是给 coding 用。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx&#39;s takeaway from running Anthropic&#39;s ultracode in the wild: &#39;havent seen many people outside anthropic ultracode yet. this thing is scarily good at burning tokens but you need to set up your repo to parallelize properly to make use of the fanout that i think subagents are best at.&#39; The point is not that subagents are bigger workers; the point is fanout, and fanout is structural — your repo has to be partitioned to let it run.</p>
+              <p>His second line carries the conceptual model: &#39;basically the idea is subroutines but intelligent. when you understand just how much knowledge work is just yakshaves after yakshaves that require some judgment and intelligence, you start to appreciate that dynamic workflows are not just for coding tasks.&#39; The &#39;intelligent subroutine&#39; framing generalizes subagents out of the IDE: a lot of knowledge work is judgment-laden yak-shaving, which is exactly what an intelligent subroutine can absorb.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>havent seen many people outside anthropic ultracode yet. this thing is scarily good at burning tokens but you need to set up your repo to parallelize properly to make use of the fanout that i think subagents are best at.
+
+              basically the idea is &quot;subroutines but intelligent&quot;. when you undersatnd just how much knowledge work is just yakshaves after yakshaves that require some judgment and intelligence, you start to appreciate that dynamic workflows are not just for coding tasks...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/swyx/status/2066415484149633329" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 02</div>
+    <h2 class="section-title">learning loop 立成企业 AI 的正题 / The Learning Loop Becomes the Enterprise-AI Story</h2>
+    <p class="section-desc">Amjad 转 Satya 那段「learning loop 是 IP,不是 frontier model」的长引文,在这周的分发边界画线里被两位 CEO 同时认领。Levie 把这条线讲完两层:模型层监管是 risk 的话,open weights 才是各国抢的赢家——监管挪到 model layer,反而把 sovereign AI 的 incentive 推到了别人手里;企业侧的正解是「把 unique IP / institutional knowledge 装进一个 learning architecture」,让 model 可以换、但「company veteran」跑不掉。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:amasad" data-author-name="Amjad Masad" data-author-tag="Replit CEO" data-author-handle="@amasad" data-author-avatar="../assets/avatars/x-amasad.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-amasad.jpg" alt="Amjad Masad avatar"><span class="avatar-fallback">AM</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Amjad Masad</div>
+            <div class="author-tag is-inline">Replit CEO</div>
+          </div>
+          <div class="author-handle">@amasad</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Amjad(Replit CEO)今天拎出 Satya 的引文,评价是「这周最让我受到鼓舞的 enterprise AI 的 positive-sum 视角」。他背书的那句话是:「真正的机会不是挑最好的 model,而是在 model 之上建一个 learning loop——让 human capital 和 token capital 都能复利。你可以外包一个 task,甚至一个 job,但你永远没法外包你的 learning。」</p>
+              <p>框架的位移比选 model 更重要。选最好的 model 被当成一次性决定;建一个 loop 才是耐用的投资。这条也是在做政治工作:Fable 分发事件占领时间线的这周,「positive-sum」是刻意选的词——潜台词是 enterprise AI 不是「谁拿到最强 model 谁就赢」的零和游戏,是「谁复利 learning 最快」谁就赢。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Amjad:背书 Satya「learning loop 才是 IP,不是 frontier model」——enterprise AI 是 positive-sum 比赛,比的是复利 learning 的速度,不是挑 model。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Amjad (Replit CEO) calls out a Satya quote that is doing real work this week: &#39;This is the most inspiring positive-sum vision for AI in the enterprise.&#39; The line being endorsed: &#39;the real opportunity is not in picking the best model but instead in building a learning loop on top of models where human capital and token capital compound. You can offload a task, or even a job, but you can never offload your learning.&#39;</p>
+              <p>The shift in the framing matters more than the model choice. Picking the best model is treated as a one-time decision; building a loop is treated as the durable investment. The post is also doing political work: when the Fable distribution story is dominating the timeline, &#39;positive-sum&#39; is a deliberate choice — the implication is that enterprise AI is not a zero-sum race for whoever owns the strongest model, it&#39;s a race for whoever compounds the learning fastest.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>This is the most inspiring positive-sum vision for AI in the enterprise.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/amasad/status/2066195933969412098" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:levie" data-author-name="Aaron Levie" data-author-tag="Box CEO" data-author-handle="@levie" data-author-avatar="../assets/avatars/x-levie.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-levie.jpg" alt="Aaron Levie avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie</div>
+            <div class="author-tag is-inline">Box CEO</div>
+          </div>
+          <div class="author-handle">@levie</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Levie(Box CEO)把 Fable 出口管制这件事放到博弈论的框里:「这件事里最大的赢家会是 open weights 模型。这对整个领域是大利好——两天前还是个没被测过的理论风险(model 会不会被下架),现在有了新的判例。」他的论点是:从前沿 model 里拿掉某些用户的访问权,反而给 sovereign AI 和 open weights 在其他地方都加了分。</p>
+              <p>战略那一面:如果美国选择在 model layer 而不是 applied layer 监管 AI,其他国家就被推上自立路线,最可能走的是 open weights——而 open weights「目前基本不是从美国出来的」。他给的推论是:这一连串下来,「美国在这条技术栈里的领导地位」会被时间慢慢稀释。「在哪一层监管」本身就是一个关于「价值被谁拿走」的战略选择。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Levie:Fable 出口管制最大赢家是 open weights——model 可被下架有了新判例,各国被推去搞 sovereign AI,open weights 不是从美国出来的;在 model layer 监管 AI 是个战略选择,会稀释美国在技术栈里的领导地位。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie (Box CEO) puts the Fable export-control story in a game-theory frame: &#39;The big winner in all of this is going to be open weights models. This is a huge win for the field, as a risk that was entirely theoretical and untested 2 days ago (that a model could be pulled back), now has a new precedent that&#39;s been set.&#39; Pulling a frontier model back from one set of users, he argues, hardens the case for sovereign AI and open weights everywhere else.</p>
+              <p>The strategic point: if the US regulates at the model layer instead of the applied layer, other countries are pushed to chart their own path, and the most likely path is open weights — which &#39;currently is generally not coming from the US.&#39; The downstream implication, in his words, is that &#39;America&#39;s leadership role in this tech stack&#39; erodes over time. The argument is that the choice of layer to regulate is itself a strategy choice about who captures the value.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The big winner in all of this is going to be open weights models. This is a huge win for the field, as a risk that was entirely theoretical and untested 2 days ago (that a model could be pulled back), now has a new precedent that&#39;s been set.
+
+              The game theory the US should highly consider, and the risk with regulating AI at the model layer vs. applied layer, is that other countries now have even more incentive to develop sovereign AI.
+
+              If at any moment a model can be become unavailable to your country&#39;s users or businesses, this poses very real risk on relying on technology from a particular country.
+
+              As a result, it forces major countries to charter their own path on AI development, which reduces America&#39;s leadership role in this tech stack over time. The most likely solution that other countries will rely on is open weights models, which currently is generally not coming from the US.
+
+              America should be considering all of these downstream implications as it decides how and where in the stack to be regulating AI. At the same time, we should be doing a ton more OSS innovation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/levie/status/2066167615618466060" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:levie" data-author-name="Aaron Levie" data-author-tag="Box CEO" data-author-handle="@levie" data-author-avatar="../assets/avatars/x-levie.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-levie.jpg" alt="Aaron Levie avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie</div>
+            <div class="author-tag is-inline">Box CEO</div>
+          </div>
+          <div class="author-handle">@levie</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Levie 同一天的 companion post——同样在引 Satya——把架构要求讲得更死:「能把自家 IP、institutional knowledge、数据摆进一种格式和架构、让自己吃下 AI 全部进步和收益的公司,会在未来占最好的位置。」公司得把自己「老员工」式的 expertise 编码进去,不只是部署一个 model。</p>
+              <p>他直接点出 switching test:「一家公司应该可以换掉一个 generalist model,但不丢掉 learning system 里攒下的 company veteran expertise。」如果这个 switching test 站得住,model 是 component 不是 moat;如果站不住,moat 是「歪打正着」长在 model 上的。架构上的承诺是:让 model 可替换、但公司的复利 learning 不能跟着丢。补一句:「大量 power 和 value 会聚到那个最能拿 AI 跑自家信息的地方。这也是为什么 applied AI layer 这几年会拿到那么多价值。」</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Levie:公司得把 unique IP / institutional knowledge 装进「learning architecture」,可以换 model 但不能丢 veteran expertise;applied AI layer 是「最能用 AI 跑自家信息」的地方,会拿到最大块价值。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Levie&#39;s companion post — also quoting Satya, same day — names the architectural requirement: &#39;The companies that are able to get their unique IP, institutional knowledge, and data into a format and architecture that lets them capture all of the gains and progress in AI are going to be in the best position in the future.&#39; The firm has to encode its own veteran expertise, not just deploy a model.</p>
+              <p>He names the switching test directly: &#39;A company should be able to switch out a generalist model without losing the company veteran expertise built into their learning system.&#39; If the switching test holds, the model is a component, not the moat; if it fails, the model is the moat by accident. The architectural commitment is to make the model swappable without losing the firm&#39;s own accumulated learning. And: &#39;so much of the power and value will accrue to wherever can best leverage any AI system against their information. This is also why the applied AI layer will also gain so much value over the coming years.&#39;</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Great post. The companies that are able to get their unique IP, institutional knowledge, and data into a format and architecture that lets them capture all of the gains and progress in AI are going to be in the best position in the future.
+
+              &quot;the real opportunity is not in picking the best model but instead in building a learning loop on top of models where human capital and token capital compound. You can offload a task, or even a job, but you can never offload your learning. The future of the firm is the ability to compound that learning across people and AI.
+
+              This requires a new architectural approach where every business is able to build agentic systems that improve over time, while still retaining control over their IP. A company should be able to switch out a &quot;generalist&quot; model without losing the &quot;company veteran&quot; expertise built into their learning system.&quot;
+
+              We&#39;re all collectively figuring out the right architecture for the future of AI. But it&#39;s clear that so much of the power and value will accrue to wherever can best leverage any AI system against their information. This is also why the applied AI layer will also gain so much value over the coming years.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/levie/status/2066237607244427761" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 03</div>
+    <h2 class="section-title">open source / open weights 在分发画线日里收编 / OSS and Open Weights Take the Win on the Distribution-Boundary Day</h2>
+    <p class="section-desc">Garry Tan 把「open source 是企业的 escape hatch」放成一句金句;Rauchg 给 v0 的 70 万 skills 站台——organic、community-driven、open ⎵ ai 生态。这两条合起来:模型层可能因为监管被反复收口,但 open 这一面在变厚——escape hatch + 长尾 skill 库 同时在长。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:garrytan" data-author-name="Garry Tan" data-author-tag="Y Combinator 总裁" data-author-handle="@garrytan" data-author-avatar="../assets/avatars/x-garrytan.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-garrytan.jpg" alt="Garry Tan avatar"><span class="avatar-fallback">GT</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Garry Tan</div>
+            <div class="author-tag is-inline">Y Combinator 总裁</div>
+          </div>
+          <div class="author-handle">@garrytan</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Garry Tan(YC 总裁)在 Levie 那条 open-weights 帖发出来的同个小时,直接送一句:「Open source 是企业能长期控制自己命运的 escape hatch。」框架很直白:当 frontier model 的分发可以按政策开关,企业唯一能站得稳的位置是 open-weights 那一边。</p>
+              <p>对着 Fable 分发这件事读:能在下一波监管震荡里继续 ship 的人,是没把路线图赌在「某一家厂能不能让我用」上面的人。OSS 在这里不是价值观表态,是风险管理的表态。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Garrytan:open source 是企业在 frontier 分发政策下「能长期控制自己命运」的 escape hatch;OSS 不是价值观表态,是风险管理。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Garry Tan (Y Combinator president), posting in the same hour as Levie&#39;s open-weights post: &#39;Open source is the escape hatch for businesses to be able to continue to control their own destiny long term.&#39; The framing is direct: when frontier model distribution can be turned on or off by policy, the only durable position for a business is to be on the open-weights side of the line.</p>
+              <p>Read against the Fable distribution event: the people who can ship product through the next regulatory shock are the people who are not betting their roadmap on any single vendor&#39;s access policy. OSS is not framed here as a values statement; it&#39;s framed as a risk-management statement.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Open source is the escape hatch for businesses to be able to continue to control their own destiny long term</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/garrytan/status/2066307697574862905" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:rauchg" data-author-name="Guillermo Rauch" data-author-tag="Vercel CEO" data-author-handle="@rauchg" data-author-avatar="../assets/avatars/x-rauchg.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-rauchg.jpg" alt="Guillermo Rauch avatar"><span class="avatar-fallback">GR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Guillermo Rauch</div>
+            <div class="author-tag is-inline">Vercel CEO</div>
+          </div>
+          <div class="author-handle">@rauchg</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Rauchg(Vercel CEO)给 open 那一面贴了一个里程碑:「已经过了 70 万 skills。疯了。全部 organic、社区驱动。open⎵ai 生态!」重点不是那个圆整数;重点是 skill 库是社区驱动、而且是 Vercel 没动手就长出来的——长尾、有机、放在表格 open 那一边的资产。</p>
+              <p>对着 Garry Tan 的「escape hatch」框架看,v0 skills 的这个数字是它的具体质感:escape hatch 不是抽象概念,是 70 万条在「任何一家厂的发布策略」都碰不到之前、由开放生态自己先 ship 出来的条目。「organic + community + open」这个组合本身就是标记点。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Rauchg:v0 突破 70 万 skills——全部 organic、社区驱动;open⎵ai 生态的纹理:escape hatch 不是抽象,是 70 万条社区自己长出来的资产。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch (Vercel CEO) reports a milestone on the open side of the same line: &#39;has passed 700,000 skills. wild! all organic and community-driven. the open⎵ai ecosystem!&#39; The point is not the round number; the point is that the skill library is community-driven and grew without Vercel shipping it — a long-tail, organic asset on the open side of the table.</p>
+              <p>Against Garry Tan&#39;s &#39;escape hatch&#39; framing, the v0 skills milestone is the concrete texture: escape hatch is not abstract, it&#39;s 700,000 entries that the open ecosystem shipped before any vendor&#39;s distribution policy could touch them. The composition — organic + community + open — is the part worth marking.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>https://t.co/pYz1Gn9F9b has passed 700,000 skills. wild!
+
+              all organic and community-driven.
+
+              the open⎵ai ecosystem!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/rauchg/status/2066299732277031042" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 04</div>
+    <h2 class="section-title">下一代 world-changers = 多阶段 agent 玩家 / The Next World-Changers Will Be Multi-Stage Agent Players</h2>
+    <p class="section-desc">Garry Tan 给「下一波改变世界的人」一个具体画像——擅长把长期、多阶段、多团队的 agent 任务跑稳、跑高产、跑遍生活和工作每一面的人。Dan Shipper 用「FREE FABLE」两个词直接落实这件事:Fable 入口开放,Every 把这个动作看成 AI builder 该上手试的那条路。两条线都在说同一件事:多阶段 agent 任务不再是 demo,是入口正在变的常态。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:garrytan" data-author-name="Garry Tan" data-author-tag="Y Combinator 总裁" data-author-handle="@garrytan" data-author-avatar="../assets/avatars/x-garrytan.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-garrytan.jpg" alt="Garry Tan avatar"><span class="avatar-fallback">GT</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Garry Tan</div>
+            <div class="author-tag is-inline">Y Combinator 总裁</div>
+          </div>
+          <div class="author-handle">@garrytan</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Garry Tan 当天另一帖给「下一波改变世界的人」画了一张具体脸:「下一代能改变世界的年轻人,基本就是那种特别擅长把长期、多阶段、多团队的 agent 任务跑得极稳、跑出高产、而且能跑遍他们生活和工作每一面的人。」论点是:稀缺技能已经从「跑 model」挪到「跑一串 agent 组成的工作流」。</p>
+              <p>三道约束叠起来:long-running(不是一个 prompt)、multi-stage(不是一个 agent)、multi-team(不是一个人)。「高产、跑遍每一面」那一句让这事跟「程序员技能」不一样——同一形状的胜任力得能贯穿到所有领域。结论是:把 agentic system 当习惯跑的人,会跑赢只会跑 model 的人。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Garrytan:下一波改变世界的人是「擅长把 long-running / multi-stage / multi-team agent 任务跑稳、跑高产、跑遍生活每一面」的人;稀缺技能从跑 model 挪到跑一串 agent 的工作流。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Garry Tan&#39;s other post of the day names a person-type: &#39;The next generation of young people who change the world will almost certainly be the people who are most adept at making long-running multi-stage multi-team agent tasks work extremely well, and at high volume and across every part of their personal and work lives.&#39; The claim is that the scarce skill has shifted from running a model to running a workflow of agents.</p>
+              <p>Three constraints stack: long-running (not a single prompt), multi-stage (not a single agent), multi-team (not a single human). &#39;High volume and across every part of their personal and work lives&#39; is the part that makes this different from a coder skill — the same shape of competence has to compose through every domain. The thesis is that the people who can run agentic systems as a habit will outrun the people who can run models.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The next generation of young people who change the world will almost certainly be the people who are most adept at making long-running multi-stage multi-team agent tasks work extremely well, and at high volume and across every part of their personal and work lives.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/garrytan/status/2066269412391637050" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:danshipper" data-author-name="Dan Shipper" data-author-tag="Every 联合创始人 / AI 写作工具链" data-author-handle="@danshipper" data-author-avatar="../assets/avatars/x-danshipper.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-danshipper.jpg" alt="Dan Shipper avatar"><span class="avatar-fallback">DS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Dan Shipper</div>
+            <div class="author-tag is-inline">Every 联合创始人 / AI 写作工具链</div>
+          </div>
+          <div class="author-handle">@danshipper</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Dan Shipper(Every CEO)把标题砍到两个字:「FREE FABLE」。没有理论,没有 caveat,就是一个动作。这条帖子和上面那些 CEO 的推论帖是不同音色——CEO 们还在算战略推论,Shipper 的动作是直接把摩擦拿掉,让你去跑 model。</p>
+              <p>作为 builder 的动作读,「FREE FABLE」是 Fable 出口管制故事的一条直接回答:如果分发正在被政策层重画,生产方的反手就是「在 offer 层把入口扩到最宽」。这条同时是 Garry Tan 那句「multi-stage agent 任务高产化」的具体落点——问题是读者会把「去试试」当成习惯,还是当成新闻。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Danshipper:「FREE FABLE」——Fable 出口管制下生产方最直接的 counter-move:把入口扩到最宽;问「去试」是习惯还是新闻。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Dan Shipper (Every CEO) cuts the headline to two words: &#39;FREE FABLE.&#39; No theory, no caveats — just the action. The post is operating on a different register from the discussion threads above: while CEOs and ex-CEOs are reasoning about the strategic implications, Shipper&#39;s move is to just remove the friction and let people run the model.</p>
+              <p>Read as a builder move, &#39;FREE FABLE&#39; is a direct answer to the Fable export-control story: if distribution is being reshaped at the policy layer, the producer-side counter-move is to widen the access surface at the offer layer. The post is the implementation of Garry Tan&#39;s &#39;multi-stage agent tasks, at high volume&#39; — the question is whether readers will treat &#39;go try it&#39; as a habit, or treat it as news.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>FREE FABLE https://t.co/nFihacLkaq</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/danshipper/status/2066217865943093514" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 05</div>
+    <h2 class="section-title">Skill 是「做完之后」才长出来的东西 / Skills Are What You End Up With, Not What You Start With</h2>
+    <p class="section-desc">Zhang Rui 收两句连发把 skill 这件事反过来:好的 skill 不是「写」出来的,是「做 20 次,改 20 次,然后让 AI 把刚做的那一切打包」——skill 的本体是工作流自己的成熟,不是先有 skill 再有工作。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:zarazhangrui" data-author-name="Zhang Rui" data-author-tag="Follow Builders 创始人 / 策展人" data-author-handle="@zarazhangrui" data-author-avatar="../assets/avatars/x-zarazhangrui.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-zarazhangrui.jpg" alt="Zhang Rui avatar"><span class="avatar-fallback">ZR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Zhang Rui</div>
+            <div class="author-tag is-inline">Follow Builders 创始人 / 策展人</div>
+          </div>
+          <div class="author-handle">@zarazhangrui</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zhang Rui(Follow Builders)把「skill」这件事反过来讲:「好的 skill 不是写出来的。是把这件事做 20 遍、改 20 遍,然后让 AI 把刚做的那一切打包。」skill 是已经成熟的工作流的录音,不是「先有 skill 再有工作」的配方。</p>
+              <p>一小时后再来一句单行说同一件事:「skill 是你做完之后才有的,不是开始时先有的。」对着 v0 那 70 万 skills 的里程碑读,潜台词是:长尾的 skill 是已经被「跑过足够多次」的人写出来的——70 万条目是已经被改到值得打包的工作流的下游产物。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Zhangrui:好的 skill 不是「写」出来的——是「做 20 次、改 20 次、然后让 AI 把刚做的那一切打包」;skill 是结束时的产物,不是开始时的配方;70 万 skills 是这条逻辑的下游。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zhang Rui (Follow Builders) reframes what a &#39;skill&#39; is: &#39;You don&#39;t make a good skill by writing a skill. You make it by doing the thing, fixing it 20 times, then telling the AI to bottle up everything you just did.&#39; The skill is a recording of a workflow that has already matured, not a recipe to be drafted before the work begins.</p>
+              <p>Followed an hour later by a one-liner that says the same thing in a single line: &#39;You make a skill by ending with one, not starting with one.&#39; Read against the v0 700K skills milestone above, the implication is that the long tail of skills is being written by people who already ran the work — the 700K entries are downstream artifacts of workflows that have been fixed enough times to deserve bottling.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>You don&#39;t make a good skill by writing a skill. 
+
+              You make it by doing the thing, fixing it 20 times, then telling the AI to bottle up everything you just did.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/zarazhangrui/status/2066388749244854771" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 06</div>
+    <h2 class="section-title">一集播客:Jensen Huang 把「AI 工厂」立成这十年的投资语言 / A Podcast: Jensen Huang Names the AI Factory the Decade&#39;s Investment Language</h2>
+    <p class="section-desc">NVIDIA CEO Jensen Huang 上 Training Data 用「AI factory」把这一轮 AI 基础设施重讲一遍:从「retrieval-based 电脑」到「generative 电脑」是范式位移——每个像素、每段声音、每条视频都从「存好取回」变成「按 context + query 现场生成」,于是「generator」从一种组件变成整张基础设施的本体。AI 工厂不是 data center 的别称,是「每天生成 intelligence 卖给世界」的工厂。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="podcast:training-data" data-author-name="Training Data Podcast" data-author-tag="AI 播客" data-author-handle="" data-author-avatar="../assets/avatars/podcast-training-data.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/podcast-training-data.jpg" alt="Training Data Podcast avatar"><span class="avatar-fallback">TD</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Training Data Podcast</div>
+            <div class="author-tag is-inline">AI 播客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Jensen Huang 上 Training Data,把这一轮 AI 基础设施重建讲成「一种新工厂」:「整个建设最中心的是 AI 工厂,让这一切发生的是 NVIDIA。」「工厂」这个 label 是刻意挑的——产出物单位是 intelligence,原料是 context + query,资产是「生成型计算机」,不再是「取回型计算机」。</p>
+              <p>框架本身是历史判断:「今天的计算机被完全重做了。它现在是 generative 的——你以后看到的每个像素、每段声音、每段视频、每条广告、每条新闻,都会是不同的。」「取回」是旧范式;「生成」是新范式。对未来十年的投资:「今天我们给世界大约 10 亿人做 intelligence 生成」,前提是买家基础和生成量都会继续涨。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Jensen Huang 上 Training Data:这一轮 AI 基础设施最中心的是「AI 工厂」——从 retrieval-based 电脑到 generative 电脑是范式位移;生成型资产是 NVIDIA 的产品,产出物单位是 intelligence。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Jensen Huang on Training Data reframes the AI infrastructure build-out as a new kind of factory: &#39;At the center of that build out is the AI factory, and the company enabling all of that is NVIDIA.&#39; The factory label is deliberate — the unit of output is intelligence, the input is context and query, and the asset is a generating computer, not a retrieving one.</p>
+              <p>The framing is the historical claim: &#39;The computer of today has been completely reinvented. It&#39;s now generative and every single toe, every single letter you see, every single word you see in your in the future, every video, every image, every ad, every TV commercial, every single time you read a story, a news story, every one of them will be different.&#39; Retrieval was the prior paradigm; generation is the new one. The implication for the next decade of investment: &#39;The amount of information, the amount of generation of intelligence, we do it for about a billion people in the world today&#39; — and the assumption is that the buyer base and the volume both grow.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Thank you so much, Jensen. So we are in the middle of a massive AI revolution. It is probably bigger and faster than even the industrial revolution. And you have called out what&#39;s happening right now as the largest infrastructure build out in human history. At the center of that build out is the AI factory, and the company enabling all of that is NVIDIA.
+
+              Can you tell us what is an AI factory, and why it is the best investment for any enterprise in the next decade?
+
+              And so therefore, every single pixel that you see, every single sound that you hear in the future, every video you see in the future will be originally generated, not retrieved. Which means in the future we need a lot more generators. And these generators is what we build. That&#39;s what we build for a living. These are large computers and they&#39;re generating intelligence.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.youtube.com/watch?v=2UpQbeAZuqA" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <footer data-source-note="Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-15 source feeds.">Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-15 source feeds.</footer>
+
+  <script>
+    function getTemplateAuthorSources() {
+      const sources = window.AI_BUILDERS_TEMPLATE_SOURCES || {};
+      return { identities: sources.identities || {}, avatars: sources.avatars || {} };
+    }
+
+    function getAuthorInitials(name) {
+      return (name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(function(part) { return part[0]; }).join('').toUpperCase();
+    }
+
+    function hydrateTemplateCopy() {
+      const intro = document.querySelector('.intro');
+      if (intro) {
+        const kicker = intro.querySelector('.intro-kicker');
+        const copy = intro.querySelector('.intro-copy');
+        if (kicker) kicker.textContent = intro.dataset.kicker || '';
+        if (copy) copy.textContent = intro.dataset.text || '';
+      }
+
+      const footer = document.querySelector('footer');
+      if (footer) footer.textContent = footer.dataset.sourceNote || '';
+
+      const rewriteLabel = document.body.dataset.viewLabelRewrite || '速读';
+      const originalLabel = document.body.dataset.viewLabelOriginal || '原文';
+      document.querySelectorAll('.view-toggle').forEach(function(button) {
+        if (button.dataset.viewTarget === 'rewrite') button.textContent = rewriteLabel;
+        if (button.dataset.viewTarget === 'original') button.textContent = originalLabel;
+      });
+    }
+
+    function hydrateAuthorMeta() {
+      const sources = getTemplateAuthorSources();
+      document.querySelectorAll('.card').forEach(function(card) {
+        const authorKey = card.dataset.authorKey || '';
+        const identity = sources.identities[authorKey] || {};
+        const avatarEntry = sources.avatars[authorKey] || {};
+
+        const name = identity.name || card.dataset.authorName || '';
+        const rawHandle = identity.handle || card.dataset.authorHandle || '';
+        const handle = rawHandle && rawHandle.startsWith('@') ? rawHandle : (rawHandle ? '@' + rawHandle : '');
+        const tag = identity.label || card.dataset.authorTag || '';
+        const avatar = avatarEntry.fileUrl || avatarEntry.localPath || card.dataset.authorAvatar || '';
+
+        const nameNode = card.querySelector('.author-name');
+        const tagNode = card.querySelector('.author-tag');
+        const handleNode = card.querySelector('.author-handle');
+        const avatarNode = card.querySelector('.avatar');
+        const avatarImg = card.querySelector('.avatar img');
+        const avatarFallback = card.querySelector('.avatar-fallback');
+
+        if (nameNode) nameNode.textContent = name;
+        if (tagNode) tagNode.textContent = tag;
+        if (handleNode) handleNode.textContent = handle;
+        if (avatarImg) {
+          avatarImg.src = avatar;
+          avatarImg.alt = name ? name + ' avatar' : 'Author avatar';
+        }
+        if (avatarNode) avatarNode.classList.toggle('is-fallback', !avatar);
+        if (avatarFallback) avatarFallback.textContent = getAuthorInitials(name);
+      });
+    }
+
+    function updateEditionStrip() {
+      const publishDate = document.body.dataset.publishDate;
+      const editionName = document.body.dataset.editionName || '双语精选版';
+      const editionStrip = document.getElementById('edition-strip-text');
+      if (!publishDate || !editionStrip) return;
+
+      const issueNumber = document.body.dataset.issueNumber || '';
+      if (!issueNumber) return;
+
+      const selectedCount = document.querySelectorAll('.card').length;
+      const authorCount = new Set([].slice.call(document.querySelectorAll('.author-handle')).map(function(node) { return node.textContent.trim(); }).filter(Boolean)).size;
+      const themeCount = document.querySelectorAll('.section-header').length;
+      const parts = ['第 ' + issueNumber + ' 期', publishDate, editionName, selectedCount + ' 条精选', authorCount + ' 位作者', themeCount + ' 个主题'];
+      editionStrip.innerHTML = parts.map(function(part) { return '<span class="edition-item">' + part + '</span>'; }).join('<span class="edition-sep">|</span>');
+    }
+
+    function measureVariantHeight(variant) {
+      const prevPosition = variant.style.position;
+      const prevInset = variant.style.inset;
+      const prevVisibility = variant.style.visibility;
+      const prevPointerEvents = variant.style.pointerEvents;
+      const prevOpacity = variant.style.opacity;
+      const prevTransform = variant.style.transform;
+      const prevTransition = variant.style.transition;
+      const prevOverflowY = variant.style.overflowY;
+      const prevDisplay = variant.style.display;
+
+      variant.style.position = 'relative';
+      variant.style.inset = 'auto';
+      variant.style.visibility = 'hidden';
+      variant.style.pointerEvents = 'none';
+      variant.style.opacity = '1';
+      variant.style.transform = 'none';
+      variant.style.transition = 'none';
+      variant.style.overflowY = 'visible';
+      variant.style.display = 'block';
+
+      const height = variant.scrollHeight;
+
+      variant.style.position = prevPosition;
+      variant.style.inset = prevInset;
+      variant.style.visibility = prevVisibility;
+      variant.style.pointerEvents = prevPointerEvents;
+      variant.style.opacity = prevOpacity;
+      variant.style.transform = prevTransform;
+      variant.style.transition = prevTransition;
+      variant.style.overflowY = prevOverflowY;
+      variant.style.display = prevDisplay;
+
+      return Math.ceil(height);
+    }
+
+    function getTargetHeight(shell, target) {
+      const variant = shell.querySelector('.content-variant[data-view="' + target + '"]');
+      return measureVariantHeight(variant);
+    }
+
+    function syncShellHeights() {
+      document.querySelectorAll('.content-shell').forEach(function(shell) {
+        const active = shell.querySelector('.content-variant.is-active');
+        const target = active ? active.dataset.view : 'rewrite';
+        shell.style.height = getTargetHeight(shell, target) + 'px';
+      });
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', function() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(syncShellHeights, 120);
+    });
+
+    document.querySelectorAll('.card').forEach(function(card) {
+      const buttons = card.querySelectorAll('.view-toggle');
+      const shells = card.querySelectorAll('.content-shell');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const target = button.dataset.viewTarget;
+          if (button.classList.contains('is-active')) return;
+
+          buttons.forEach(function(btn) {
+            btn.classList.toggle('is-active', btn === button);
+          });
+
+          shells.forEach(function(shell) {
+            const current = shell.querySelector('.content-variant.is-active');
+            const next = shell.querySelector('.content-variant[data-view="' + target + '"]');
+            if (!current || !next || current === next) return;
+
+            shell.style.height = shell.offsetHeight + 'px';
+            requestAnimationFrame(function() {
+              current.classList.remove('is-active');
+              next.classList.add('is-active');
+              shell.style.height = getTargetHeight(shell, target) + 'px';
+            });
+          });
+        });
+      });
+    });
+
+    hydrateTemplateCopy();
+    hydrateAuthorMeta();
+    updateEditionStrip();
+    syncShellHeights();
+  </script>
+</body>
+</html>

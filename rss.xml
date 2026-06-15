@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 14 Jun 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jun 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-06-15 · open-weights 收编日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-15-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-15-rerun.html</guid>
+      <pubDate>Mon, 15 Jun 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[6-15 这天的 Follow Builders 主线收得偏企业侧——Satya 那段「learning loop 才是 IP,不是 frontier model」被 Amjad 拎出来点赞,Levie 在同一天把这条线讲完两层:模型层监管的反作用力是各国去抢 open weights,所以「open source 是企业的 escape hatch」(Garry Tan),而 Rauchg 用 v0 突破 70 万 skills 给「open⎵ai 生态」一个具体纹理。Codex 这边继续滑向日常:Sottiaux 把 /goal 推成 meta-prompting 的一次推广——agent 自己 prompt 自己;Swyx 用 ultracode 体验给 subagent fanout 一种说法,「intelligent subroutine」把 subagent 从 IDE 拽到所有需要判断的 yakshave。下一代 world-changers 被 Garry Tan 画成「multi-stage agent 任务跑得极稳」的那批人,Dan Shipper 用「FREE FABLE」两个字把这条线落到 Every 自己的 offer 层。Skill 这一面 Zhang Rui 收一句连发把 skill 反过来——好的 skill 是「做 20 次、改 20 次、让 AI 把刚做的那一切打包」的产物,不是开始时先写的配方;对照 v0 的 70 万条,长尾 skill 是已经跑过足够多次的工作流的下游。收尾是 Jensen Huang 上 Training Data 把「AI 工厂」立成这一轮基础设施的本体——从 retrieval-based 电脑到 generative 电脑是范式位移,「每个像素、每段声音、每条新闻都会按 context + query 现场生成」,generator 从一种组件变成整张基础设施的本体。整天的味道:监管在 model layer 画线,open 那一面在变厚;harness 在远离 repo,往 open web 和长期任务走;skill 不是配方,是工作流跑稳之后的录音。]]></description>
+      <category>Codex 越用越顺手 / Codex Gets More Useful by the Day, learning loop 立成企业 AI 的正题 / The Learning Loop Becomes the Enterprise-AI Story, open source / open weights 在分发画线日里收编 / OSS and Open Weights Take the Win on the Distribution-Boundary Day, 下一代 world-changers = 多阶段 agent 玩家 / The Next World-Changers Will Be Multi-Stage Agent Players, Skill 是「做完之后」才长出来的东西 / Skills Are What You End Up With, Not What You Start With, 一集播客:Jensen Huang 把「AI 工厂」立成这十年的投资语言 / A Podcast: Jensen Huang Names the AI Factory the Decade&apos;s Investment Language</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-06-14 · 分发边界画线日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-14-rerun.html</link>

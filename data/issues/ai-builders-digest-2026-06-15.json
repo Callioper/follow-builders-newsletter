@@ -1,0 +1,332 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-06-15",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "6-15 这天的 Follow Builders 主线收得偏企业侧——Satya 那段「learning loop 才是 IP,不是 frontier model」被 Amjad 拎出来点赞,Levie 在同一天把这条线讲完两层:模型层监管的反作用力是各国去抢 open weights,所以「open source 是企业的 escape hatch」(Garry Tan),而 Rauchg 用 v0 突破 70 万 skills 给「open⎵ai 生态」一个具体纹理。Codex 这边继续滑向日常:Sottiaux 把 /goal 推成 meta-prompting 的一次推广——agent 自己 prompt 自己;Swyx 用 ultracode 体验给 subagent fanout 一种说法,「intelligent subroutine」把 subagent 从 IDE 拽到所有需要判断的 yakshave。下一代 world-changers 被 Garry Tan 画成「multi-stage agent 任务跑得极稳」的那批人,Dan Shipper 用「FREE FABLE」两个字把这条线落到 Every 自己的 offer 层。Skill 这一面 Zhang Rui 收一句连发把 skill 反过来——好的 skill 是「做 20 次、改 20 次、让 AI 把刚做的那一切打包」的产物,不是开始时先写的配方;对照 v0 的 70 万条,长尾 skill 是已经跑过足够多次的工作流的下游。收尾是 Jensen Huang 上 Training Data 把「AI 工厂」立成这一轮基础设施的本体——从 retrieval-based 电脑到 generative 电脑是范式位移,「每个像素、每段声音、每条新闻都会按 context + query 现场生成」,generator 从一种组件变成整张基础设施的本体。整天的味道:监管在 model layer 画线,open 那一面在变厚;harness 在远离 repo,往 open web 和长期任务走;skill 不是配方,是工作流跑稳之后的录音。"
+  },
+  "archive": {
+    "title": "open-weights 收编日",
+    "desc": "Satya 的「learning loop 才是 IP」被 Amjad / Levie 同时认领,Levie 把 open weights 立成分发画线日的赢家;Garry Tan / Rauchg 把 open 那一面加厚;Sottiaux / Swyx 把 Codex 推远一步;Dan Shipper 用 FREE FABLE 落点;Zhang Rui 把 skill 反过来;Jensen Huang 把 AI 工厂立成这十年的投资语言。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-15 source feeds.",
+  "sections": [
+    {
+      "title": "Codex 越用越顺手 / Codex Gets More Useful by the Day",
+      "desc": "Sottiaux 把「/goal 自设」立成 meta-prompting 的一次推广——Codex 不只是听话执行,它自己也能 set task;Swyx 用 ultracode 体验给「subagent fanout」一种说法——子智能体不是更小的 worker,是 subroutines 的智能化版本,knowledge work 那些「剃完还有剃」的判断环节正是它最该去的地方。两条线合起来:harness 离 repo 越来越远,离 open web、离长期任务越来越近。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT",
+          "sourceUrl": "https://x.com/thsottiaux/status/2066270561081454989",
+          "en": {
+            "rewrite": [
+              "Sottiaux (Codex & ChatGPT at OpenAI) ships a small but real generalization: 'Codex can see and set its own /goal. Everything we build, we build also as a tool for the agent. This is a generalization of meta prompting, where you let the agent set its own task based on your intent.' The shift is from prompting the agent to giving the agent a way to prompt itself.",
+              "The framing matters: 'we build also as a tool for the agent' is the deeper claim. The product surface is no longer the user; the agent itself is a user of the system's primitives. /goal is a concrete instance, but the architectural commitment is that any Codex-side affordance has to be readable to Codex itself."
+            ],
+            "original": [
+              "Codex can see and set its own /goal. Everything we build, we build also as a tool for the agent. This is a generalization of meta prompting, where you let the agent set its own task based on your intent."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Sottiaux(OpenAI Codex & ChatGPT)今天送上一个不大但很硬的推广:「Codex 能看、能设自己的 /goal。我们做的每样东西,都同时做成 agent 自己能用的工具。这是 meta-prompting 的一次推广——你让 agent 根据你的意图自己设任务。」位移很清晰:从「人 prompt agent」挪到「给 agent 一条路让它自己 prompt 自己」。",
+              "「我们做的每样东西都同时做成 agent 自己能用的工具」是更深的承诺。产品的 surface 不再只是用户;agent 自己是系统 primitive 的另一个用户。/goal 是这条线的具体落点,但架构层面的承诺是:任何 Codex 端的能力都得让 Codex 自己也读得懂。"
+            ],
+            "original": [
+              "Sottiaux:Codex 能看、能设自己的 /goal;产品同时是 agent 自己的工具,meta-prompting 的一次推广——让 agent 按你的意图自己设任务。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:swyx",
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师",
+          "sourceUrl": "https://x.com/swyx/status/2066415484149633329",
+          "en": {
+            "rewrite": [
+              "Swyx's takeaway from running Anthropic's ultracode in the wild: 'havent seen many people outside anthropic ultracode yet. this thing is scarily good at burning tokens but you need to set up your repo to parallelize properly to make use of the fanout that i think subagents are best at.' The point is not that subagents are bigger workers; the point is fanout, and fanout is structural — your repo has to be partitioned to let it run.",
+              "His second line carries the conceptual model: 'basically the idea is subroutines but intelligent. when you understand just how much knowledge work is just yakshaves after yakshaves that require some judgment and intelligence, you start to appreciate that dynamic workflows are not just for coding tasks.' The 'intelligent subroutine' framing generalizes subagents out of the IDE: a lot of knowledge work is judgment-laden yak-shaving, which is exactly what an intelligent subroutine can absorb."
+            ],
+            "original": [
+              "havent seen many people outside anthropic ultracode yet. this thing is scarily good at burning tokens but you need to set up your repo to parallelize properly to make use of the fanout that i think subagents are best at.\n\nbasically the idea is \"subroutines but intelligent\". when you undersatnd just how much knowledge work is just yakshaves after yakshaves that require some judgment and intelligence, you start to appreciate that dynamic workflows are not just for coding tasks..."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx 把 Anthropic 的 ultracode 拿到外面跑,给出的 takeaway 是:「外面还没几个人在用 anthropic ultracode。它烧 token 烧得吓人,但你得把 repo 改造得能并行起来——subagent 真正强的是 fanout。」重点不是 subagent 是更大号的 worker;重点是 fanout,而 fanout 是结构性的——你的 repo 得先被切分,这件事才能跑起来。",
+              "第二句把概念模型交出来:「基本想法就是 subroutines 的智能化版。当你理解到 knowledge work 也就是一连串需要判断的剃完之后还有剃,你就会明白 dynamic workflows 不只是给 coding 任务用的。」「智能化 subroutine」这套说法把 subagent 从 IDE 里拽出来:很多 knowledge work 都是带判断的琐碎事,这恰恰是智能化 subroutine 该接走的活。"
+            ],
+            "original": [
+              "Swyx:ultracode 烧 token 吓人但 subagent 的真本事是 fanout——repo 得先切分;「intelligent subroutine」是一连串需要判断的 yakshave 的天然解法,不只是给 coding 用。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "learning loop 立成企业 AI 的正题 / The Learning Loop Becomes the Enterprise-AI Story",
+      "desc": "Amjad 转 Satya 那段「learning loop 是 IP,不是 frontier model」的长引文,在这周的分发边界画线里被两位 CEO 同时认领。Levie 把这条线讲完两层:模型层监管是 risk 的话,open weights 才是各国抢的赢家——监管挪到 model layer,反而把 sovereign AI 的 incentive 推到了别人手里;企业侧的正解是「把 unique IP / institutional knowledge 装进一个 learning architecture」,让 model 可以换、但「company veteran」跑不掉。",
+      "cards": [
+        {
+          "authorKey": "x:amasad",
+          "authorName": "Amjad Masad",
+          "authorHandle": "@amasad",
+          "authorTag": "Replit CEO",
+          "sourceUrl": "https://x.com/amasad/status/2066195933969412098",
+          "en": {
+            "rewrite": [
+              "Amjad (Replit CEO) calls out a Satya quote that is doing real work this week: 'This is the most inspiring positive-sum vision for AI in the enterprise.' The line being endorsed: 'the real opportunity is not in picking the best model but instead in building a learning loop on top of models where human capital and token capital compound. You can offload a task, or even a job, but you can never offload your learning.'",
+              "The shift in the framing matters more than the model choice. Picking the best model is treated as a one-time decision; building a loop is treated as the durable investment. The post is also doing political work: when the Fable distribution story is dominating the timeline, 'positive-sum' is a deliberate choice — the implication is that enterprise AI is not a zero-sum race for whoever owns the strongest model, it's a race for whoever compounds the learning fastest."
+            ],
+            "original": [
+              "This is the most inspiring positive-sum vision for AI in the enterprise."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Amjad(Replit CEO)今天拎出 Satya 的引文,评价是「这周最让我受到鼓舞的 enterprise AI 的 positive-sum 视角」。他背书的那句话是:「真正的机会不是挑最好的 model,而是在 model 之上建一个 learning loop——让 human capital 和 token capital 都能复利。你可以外包一个 task,甚至一个 job,但你永远没法外包你的 learning。」",
+              "框架的位移比选 model 更重要。选最好的 model 被当成一次性决定;建一个 loop 才是耐用的投资。这条也是在做政治工作:Fable 分发事件占领时间线的这周,「positive-sum」是刻意选的词——潜台词是 enterprise AI 不是「谁拿到最强 model 谁就赢」的零和游戏,是「谁复利 learning 最快」谁就赢。"
+            ],
+            "original": [
+              "Amjad:背书 Satya「learning loop 才是 IP,不是 frontier model」——enterprise AI 是 positive-sum 比赛,比的是复利 learning 的速度,不是挑 model。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie/status/2066167615618466060",
+          "en": {
+            "rewrite": [
+              "Aaron Levie (Box CEO) puts the Fable export-control story in a game-theory frame: 'The big winner in all of this is going to be open weights models. This is a huge win for the field, as a risk that was entirely theoretical and untested 2 days ago (that a model could be pulled back), now has a new precedent that's been set.' Pulling a frontier model back from one set of users, he argues, hardens the case for sovereign AI and open weights everywhere else.",
+              "The strategic point: if the US regulates at the model layer instead of the applied layer, other countries are pushed to chart their own path, and the most likely path is open weights — which 'currently is generally not coming from the US.' The downstream implication, in his words, is that 'America's leadership role in this tech stack' erodes over time. The argument is that the choice of layer to regulate is itself a strategy choice about who captures the value."
+            ],
+            "original": [
+              "The big winner in all of this is going to be open weights models. This is a huge win for the field, as a risk that was entirely theoretical and untested 2 days ago (that a model could be pulled back), now has a new precedent that's been set.\n\nThe game theory the US should highly consider, and the risk with regulating AI at the model layer vs. applied layer, is that other countries now have even more incentive to develop sovereign AI.\n\nIf at any moment a model can be become unavailable to your country's users or businesses, this poses very real risk on relying on technology from a particular country.\n\nAs a result, it forces major countries to charter their own path on AI development, which reduces America's leadership role in this tech stack over time. The most likely solution that other countries will rely on is open weights models, which currently is generally not coming from the US.\n\nAmerica should be considering all of these downstream implications as it decides how and where in the stack to be regulating AI. At the same time, we should be doing a ton more OSS innovation."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Levie(Box CEO)把 Fable 出口管制这件事放到博弈论的框里:「这件事里最大的赢家会是 open weights 模型。这对整个领域是大利好——两天前还是个没被测过的理论风险(model 会不会被下架),现在有了新的判例。」他的论点是:从前沿 model 里拿掉某些用户的访问权,反而给 sovereign AI 和 open weights 在其他地方都加了分。",
+              "战略那一面:如果美国选择在 model layer 而不是 applied layer 监管 AI,其他国家就被推上自立路线,最可能走的是 open weights——而 open weights「目前基本不是从美国出来的」。他给的推论是:这一连串下来,「美国在这条技术栈里的领导地位」会被时间慢慢稀释。「在哪一层监管」本身就是一个关于「价值被谁拿走」的战略选择。"
+            ],
+            "original": [
+              "Levie:Fable 出口管制最大赢家是 open weights——model 可被下架有了新判例,各国被推去搞 sovereign AI,open weights 不是从美国出来的;在 model layer 监管 AI 是个战略选择,会稀释美国在技术栈里的领导地位。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie/status/2066237607244427761",
+          "en": {
+            "rewrite": [
+              "Levie's companion post — also quoting Satya, same day — names the architectural requirement: 'The companies that are able to get their unique IP, institutional knowledge, and data into a format and architecture that lets them capture all of the gains and progress in AI are going to be in the best position in the future.' The firm has to encode its own veteran expertise, not just deploy a model.",
+              "He names the switching test directly: 'A company should be able to switch out a generalist model without losing the company veteran expertise built into their learning system.' If the switching test holds, the model is a component, not the moat; if it fails, the model is the moat by accident. The architectural commitment is to make the model swappable without losing the firm's own accumulated learning. And: 'so much of the power and value will accrue to wherever can best leverage any AI system against their information. This is also why the applied AI layer will also gain so much value over the coming years.'"
+            ],
+            "original": [
+              "Great post. The companies that are able to get their unique IP, institutional knowledge, and data into a format and architecture that lets them capture all of the gains and progress in AI are going to be in the best position in the future.\n\n\"the real opportunity is not in picking the best model but instead in building a learning loop on top of models where human capital and token capital compound. You can offload a task, or even a job, but you can never offload your learning. The future of the firm is the ability to compound that learning across people and AI.\n\nThis requires a new architectural approach where every business is able to build agentic systems that improve over time, while still retaining control over their IP. A company should be able to switch out a \"generalist\" model without losing the \"company veteran\" expertise built into their learning system.\"\n\nWe're all collectively figuring out the right architecture for the future of AI. But it's clear that so much of the power and value will accrue to wherever can best leverage any AI system against their information. This is also why the applied AI layer will also gain so much value over the coming years."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Levie 同一天的 companion post——同样在引 Satya——把架构要求讲得更死:「能把自家 IP、institutional knowledge、数据摆进一种格式和架构、让自己吃下 AI 全部进步和收益的公司,会在未来占最好的位置。」公司得把自己「老员工」式的 expertise 编码进去,不只是部署一个 model。",
+              "他直接点出 switching test:「一家公司应该可以换掉一个 generalist model,但不丢掉 learning system 里攒下的 company veteran expertise。」如果这个 switching test 站得住,model 是 component 不是 moat;如果站不住,moat 是「歪打正着」长在 model 上的。架构上的承诺是:让 model 可替换、但公司的复利 learning 不能跟着丢。补一句:「大量 power 和 value 会聚到那个最能拿 AI 跑自家信息的地方。这也是为什么 applied AI layer 这几年会拿到那么多价值。」"
+            ],
+            "original": [
+              "Levie:公司得把 unique IP / institutional knowledge 装进「learning architecture」,可以换 model 但不能丢 veteran expertise;applied AI layer 是「最能用 AI 跑自家信息」的地方,会拿到最大块价值。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "open source / open weights 在分发画线日里收编 / OSS and Open Weights Take the Win on the Distribution-Boundary Day",
+      "desc": "Garry Tan 把「open source 是企业的 escape hatch」放成一句金句;Rauchg 给 v0 的 70 万 skills 站台——organic、community-driven、open ⎵ ai 生态。这两条合起来:模型层可能因为监管被反复收口,但 open 这一面在变厚——escape hatch + 长尾 skill 库 同时在长。",
+      "cards": [
+        {
+          "authorKey": "x:garrytan",
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁",
+          "sourceUrl": "https://x.com/garrytan/status/2066307697574862905",
+          "en": {
+            "rewrite": [
+              "Garry Tan (Y Combinator president), posting in the same hour as Levie's open-weights post: 'Open source is the escape hatch for businesses to be able to continue to control their own destiny long term.' The framing is direct: when frontier model distribution can be turned on or off by policy, the only durable position for a business is to be on the open-weights side of the line.",
+              "Read against the Fable distribution event: the people who can ship product through the next regulatory shock are the people who are not betting their roadmap on any single vendor's access policy. OSS is not framed here as a values statement; it's framed as a risk-management statement."
+            ],
+            "original": [
+              "Open source is the escape hatch for businesses to be able to continue to control their own destiny long term"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan(YC 总裁)在 Levie 那条 open-weights 帖发出来的同个小时,直接送一句:「Open source 是企业能长期控制自己命运的 escape hatch。」框架很直白:当 frontier model 的分发可以按政策开关,企业唯一能站得稳的位置是 open-weights 那一边。",
+              "对着 Fable 分发这件事读:能在下一波监管震荡里继续 ship 的人,是没把路线图赌在「某一家厂能不能让我用」上面的人。OSS 在这里不是价值观表态,是风险管理的表态。"
+            ],
+            "original": [
+              "Garrytan:open source 是企业在 frontier 分发政策下「能长期控制自己命运」的 escape hatch;OSS 不是价值观表态,是风险管理。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO",
+          "sourceUrl": "https://x.com/rauchg/status/2066299732277031042",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch (Vercel CEO) reports a milestone on the open side of the same line: 'has passed 700,000 skills. wild! all organic and community-driven. the open⎵ai ecosystem!' The point is not the round number; the point is that the skill library is community-driven and grew without Vercel shipping it — a long-tail, organic asset on the open side of the table.",
+              "Against Garry Tan's 'escape hatch' framing, the v0 skills milestone is the concrete texture: escape hatch is not abstract, it's 700,000 entries that the open ecosystem shipped before any vendor's distribution policy could touch them. The composition — organic + community + open — is the part worth marking."
+            ],
+            "original": [
+              "https://t.co/pYz1Gn9F9b has passed 700,000 skills. wild!\n\nall organic and community-driven.\n\nthe open⎵ai ecosystem!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Rauchg(Vercel CEO)给 open 那一面贴了一个里程碑:「已经过了 70 万 skills。疯了。全部 organic、社区驱动。open⎵ai 生态!」重点不是那个圆整数;重点是 skill 库是社区驱动、而且是 Vercel 没动手就长出来的——长尾、有机、放在表格 open 那一边的资产。",
+              "对着 Garry Tan 的「escape hatch」框架看,v0 skills 的这个数字是它的具体质感:escape hatch 不是抽象概念,是 70 万条在「任何一家厂的发布策略」都碰不到之前、由开放生态自己先 ship 出来的条目。「organic + community + open」这个组合本身就是标记点。"
+            ],
+            "original": [
+              "Rauchg:v0 突破 70 万 skills——全部 organic、社区驱动;open⎵ai 生态的纹理:escape hatch 不是抽象,是 70 万条社区自己长出来的资产。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "下一代 world-changers = 多阶段 agent 玩家 / The Next World-Changers Will Be Multi-Stage Agent Players",
+      "desc": "Garry Tan 给「下一波改变世界的人」一个具体画像——擅长把长期、多阶段、多团队的 agent 任务跑稳、跑高产、跑遍生活和工作每一面的人。Dan Shipper 用「FREE FABLE」两个词直接落实这件事:Fable 入口开放,Every 把这个动作看成 AI builder 该上手试的那条路。两条线都在说同一件事:多阶段 agent 任务不再是 demo,是入口正在变的常态。",
+      "cards": [
+        {
+          "authorKey": "x:garrytan",
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁",
+          "sourceUrl": "https://x.com/garrytan/status/2066269412391637050",
+          "en": {
+            "rewrite": [
+              "Garry Tan's other post of the day names a person-type: 'The next generation of young people who change the world will almost certainly be the people who are most adept at making long-running multi-stage multi-team agent tasks work extremely well, and at high volume and across every part of their personal and work lives.' The claim is that the scarce skill has shifted from running a model to running a workflow of agents.",
+              "Three constraints stack: long-running (not a single prompt), multi-stage (not a single agent), multi-team (not a single human). 'High volume and across every part of their personal and work lives' is the part that makes this different from a coder skill — the same shape of competence has to compose through every domain. The thesis is that the people who can run agentic systems as a habit will outrun the people who can run models."
+            ],
+            "original": [
+              "The next generation of young people who change the world will almost certainly be the people who are most adept at making long-running multi-stage multi-team agent tasks work extremely well, and at high volume and across every part of their personal and work lives."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan 当天另一帖给「下一波改变世界的人」画了一张具体脸:「下一代能改变世界的年轻人,基本就是那种特别擅长把长期、多阶段、多团队的 agent 任务跑得极稳、跑出高产、而且能跑遍他们生活和工作每一面的人。」论点是:稀缺技能已经从「跑 model」挪到「跑一串 agent 组成的工作流」。",
+              "三道约束叠起来:long-running(不是一个 prompt)、multi-stage(不是一个 agent)、multi-team(不是一个人)。「高产、跑遍每一面」那一句让这事跟「程序员技能」不一样——同一形状的胜任力得能贯穿到所有领域。结论是:把 agentic system 当习惯跑的人,会跑赢只会跑 model 的人。"
+            ],
+            "original": [
+              "Garrytan:下一波改变世界的人是「擅长把 long-running / multi-stage / multi-team agent 任务跑稳、跑高产、跑遍生活每一面」的人;稀缺技能从跑 model 挪到跑一串 agent 的工作流。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "authorName": "Dan Shipper",
+          "authorHandle": "@danshipper",
+          "authorTag": "Every 联合创始人 / AI 写作工具链",
+          "sourceUrl": "https://x.com/danshipper/status/2066217865943093514",
+          "en": {
+            "rewrite": [
+              "Dan Shipper (Every CEO) cuts the headline to two words: 'FREE FABLE.' No theory, no caveats — just the action. The post is operating on a different register from the discussion threads above: while CEOs and ex-CEOs are reasoning about the strategic implications, Shipper's move is to just remove the friction and let people run the model.",
+              "Read as a builder move, 'FREE FABLE' is a direct answer to the Fable export-control story: if distribution is being reshaped at the policy layer, the producer-side counter-move is to widen the access surface at the offer layer. The post is the implementation of Garry Tan's 'multi-stage agent tasks, at high volume' — the question is whether readers will treat 'go try it' as a habit, or treat it as news."
+            ],
+            "original": [
+              "FREE FABLE https://t.co/nFihacLkaq"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Dan Shipper(Every CEO)把标题砍到两个字:「FREE FABLE」。没有理论,没有 caveat,就是一个动作。这条帖子和上面那些 CEO 的推论帖是不同音色——CEO 们还在算战略推论,Shipper 的动作是直接把摩擦拿掉,让你去跑 model。",
+              "作为 builder 的动作读,「FREE FABLE」是 Fable 出口管制故事的一条直接回答:如果分发正在被政策层重画,生产方的反手就是「在 offer 层把入口扩到最宽」。这条同时是 Garry Tan 那句「multi-stage agent 任务高产化」的具体落点——问题是读者会把「去试试」当成习惯,还是当成新闻。"
+            ],
+            "original": [
+              "Danshipper:「FREE FABLE」——Fable 出口管制下生产方最直接的 counter-move:把入口扩到最宽;问「去试」是习惯还是新闻。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Skill 是「做完之后」才长出来的东西 / Skills Are What You End Up With, Not What You Start With",
+      "desc": "Zhang Rui 收两句连发把 skill 这件事反过来:好的 skill 不是「写」出来的,是「做 20 次,改 20 次,然后让 AI 把刚做的那一切打包」——skill 的本体是工作流自己的成熟,不是先有 skill 再有工作。",
+      "cards": [
+        {
+          "authorKey": "x:zarazhangrui",
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2066388749244854771",
+          "en": {
+            "rewrite": [
+              "Zhang Rui (Follow Builders) reframes what a 'skill' is: 'You don't make a good skill by writing a skill. You make it by doing the thing, fixing it 20 times, then telling the AI to bottle up everything you just did.' The skill is a recording of a workflow that has already matured, not a recipe to be drafted before the work begins.",
+              "Followed an hour later by a one-liner that says the same thing in a single line: 'You make a skill by ending with one, not starting with one.' Read against the v0 700K skills milestone above, the implication is that the long tail of skills is being written by people who already ran the work — the 700K entries are downstream artifacts of workflows that have been fixed enough times to deserve bottling."
+            ],
+            "original": [
+              "You don't make a good skill by writing a skill. \n\nYou make it by doing the thing, fixing it 20 times, then telling the AI to bottle up everything you just did."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zhang Rui(Follow Builders)把「skill」这件事反过来讲:「好的 skill 不是写出来的。是把这件事做 20 遍、改 20 遍,然后让 AI 把刚做的那一切打包。」skill 是已经成熟的工作流的录音,不是「先有 skill 再有工作」的配方。",
+              "一小时后再来一句单行说同一件事:「skill 是你做完之后才有的,不是开始时先有的。」对着 v0 那 70 万 skills 的里程碑读,潜台词是:长尾的 skill 是已经被「跑过足够多次」的人写出来的——70 万条目是已经被改到值得打包的工作流的下游产物。"
+            ],
+            "original": [
+              "Zhangrui:好的 skill 不是「写」出来的——是「做 20 次、改 20 次、然后让 AI 把刚做的那一切打包」;skill 是结束时的产物,不是开始时的配方;70 万 skills 是这条逻辑的下游。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "一集播客:Jensen Huang 把「AI 工厂」立成这十年的投资语言 / A Podcast: Jensen Huang Names the AI Factory the Decade's Investment Language",
+      "desc": "NVIDIA CEO Jensen Huang 上 Training Data 用「AI factory」把这一轮 AI 基础设施重讲一遍:从「retrieval-based 电脑」到「generative 电脑」是范式位移——每个像素、每段声音、每条视频都从「存好取回」变成「按 context + query 现场生成」,于是「generator」从一种组件变成整张基础设施的本体。AI 工厂不是 data center 的别称,是「每天生成 intelligence 卖给世界」的工厂。",
+      "cards": [
+        {
+          "authorKey": "podcast:training-data",
+          "authorName": "Training Data Podcast",
+          "authorHandle": null,
+          "authorTag": "AI 播客",
+          "sourceUrl": "https://www.youtube.com/watch?v=2UpQbeAZuqA",
+          "en": {
+            "rewrite": [
+              "Jensen Huang on Training Data reframes the AI infrastructure build-out as a new kind of factory: 'At the center of that build out is the AI factory, and the company enabling all of that is NVIDIA.' The factory label is deliberate — the unit of output is intelligence, the input is context and query, and the asset is a generating computer, not a retrieving one.",
+              "The framing is the historical claim: 'The computer of today has been completely reinvented. It's now generative and every single toe, every single letter you see, every single word you see in your in the future, every video, every image, every ad, every TV commercial, every single time you read a story, a news story, every one of them will be different.' Retrieval was the prior paradigm; generation is the new one. The implication for the next decade of investment: 'The amount of information, the amount of generation of intelligence, we do it for about a billion people in the world today' — and the assumption is that the buyer base and the volume both grow."
+            ],
+            "original": [
+              "Thank you so much, Jensen. So we are in the middle of a massive AI revolution. It is probably bigger and faster than even the industrial revolution. And you have called out what's happening right now as the largest infrastructure build out in human history. At the center of that build out is the AI factory, and the company enabling all of that is NVIDIA.\n\nCan you tell us what is an AI factory, and why it is the best investment for any enterprise in the next decade?\n\nAnd so therefore, every single pixel that you see, every single sound that you hear in the future, every video you see in the future will be originally generated, not retrieved. Which means in the future we need a lot more generators. And these generators is what we build. That's what we build for a living. These are large computers and they're generating intelligence."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Jensen Huang 上 Training Data,把这一轮 AI 基础设施重建讲成「一种新工厂」:「整个建设最中心的是 AI 工厂,让这一切发生的是 NVIDIA。」「工厂」这个 label 是刻意挑的——产出物单位是 intelligence,原料是 context + query,资产是「生成型计算机」,不再是「取回型计算机」。",
+              "框架本身是历史判断:「今天的计算机被完全重做了。它现在是 generative 的——你以后看到的每个像素、每段声音、每段视频、每条广告、每条新闻,都会是不同的。」「取回」是旧范式;「生成」是新范式。对未来十年的投资:「今天我们给世界大约 10 亿人做 intelligence 生成」,前提是买家基础和生成量都会继续涨。"
+            ],
+            "original": [
+              "Jensen Huang 上 Training Data:这一轮 AI 基础设施最中心的是「AI 工厂」——从 retrieval-based 电脑到 generative 电脑是范式位移;生成型资产是 NVIDIA 的产品,产出物单位是 intelligence。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
