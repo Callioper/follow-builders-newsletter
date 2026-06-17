@@ -1,0 +1,444 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-06-17",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "6-17 这天的 Follow Builders 主线几乎被一则交易盖住:SpaceX 收 Cursor。Levie 当天把这一单立成「applied layer 第一张 mega success 模板」——深 domain focus、model router、frontier vs 自训取舍、applied GTM 四件套叠起来才是 playbook;Madhu 直接插进引擎室,「真正值钱的是生产级 agentic harness——planning、context、tool use、iteration、verification、memory、error recovery」,三件能全做好的公司都很少;Nikunj 用一句话重新画线:「站在 judgement(data) 路径或 token 路径上」,Cursor 这单是 data 路径立成了可走模板;Ryo Lu 拿 Cursor mobile 切片——designer 用 Cursor 写出了真东西,「title 都是废话」,harness 足够好时组织图上的 title 不再是约束。Levie 同日另起一条把同周重新画成一道市场结构题:open weights 落后 frontier 3 个月还是 3 年,直接决定 chip stack、inference、sovereign AI、applied AI 走向;他的当下判断是「目前 open weights 还在 near-frontier」。Codex 这边继续往日常走:Sottiaux 在法国铺欧洲 rollout,同帖把 capacity 事故的 24 小时 rate-limit 重置也一并交代;Peter Yang 把 Fable 临限前的 advice 存档,并用 4 个 file 拼一个 personal-advisor skill。Rauchg 把 Vercel 的 function 调到 30 分钟、sandbox 调到 24 小时——managed platform 上 long-running agent 终于能跑下整夜。App-layer 经济学:zara zhang 把「什么都做」留给 Claude/Codex,站得住的位是 opinion + soul 的小而尖锐;Dan Shipper 公开从 Atlas 切回 Dia,「AI browser」category 还不够稳。人这一面:Madhu 在 agentic harness 按 scale 卖出去的那一周,公开说 intellect 被自动化得越快,self-awareness/intuition/compassion/kindness 越值钱;Josh Woodward 把 Google AI Futures Fund 扩到巴西、跟 Monashees 一起发 Gama Fund——frontier 资本第一次在非默认市场认真做 deep-tech 押注。博客:Anthropic 出 Swift package 把 Claude 接进 Apple Foundation Models framework,on-device 跑快本地 task、Claude 跑多步推理 + 联网 + 执行代码,@Generable annotation 给的 typed Swift value 是集成 surface,明天 iOS 27 全平台上线。收尾是 Joon Sung Park 上 Training Data:科幻里的两根柱子——AGI + simulation——后者的「第一刀」今天可开,Simile 在卖 simulation substrate,跟 Cursor 卖 coding substrate 是同一形状。"
+  },
+  "archive": {
+    "title": "Cursor 收编日",
+    "desc": "SpaceX-Cursor 把「applied AI 模板」立成可见,Levie/Madhu/Nikunj/Ryo Lu 从四个角度切;Sottiaux 把 Codex 推 Europe;Rauchg 把 long-running 接到 AI Cloud;Zara/Dan Shipper 给 app-layer 经济学;Madhu/Joshwoodward 拉人这一面;Claude 进了 Apple Foundation Models;Simile 把 simulation 立成下一根柱子。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-17 source feeds.",
+  "sections": [
+    {
+      "title": "SpaceX-Cursor: 应用层第一张 mega success 模板立标 / SpaceX-Cursor Names the First Applied-AI Mega-Success Template",
+      "desc": "Levie 把这单立成 applied AI 模板、Madhu 把「harness 才是真资产」拆出来、Nikunj 把它画成「judgement 路径 vs token 路径」、Ryo Lu 用 Cursor mobile 证明 title 在 harness 面前是废话。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie/status/2066908002809221496",
+          "en": {
+            "rewrite": [
+              "Levie (Box CEO) names what the SpaceX-Cursor deal actually is: 'The Cursor deal is symbolically quite significant. It was effectively the first mega success in the applied layer of AI.' The point is not the price; the point is the template. 'They firmly proved out the value proposition of having a deep domain focus, the role you play as a model router, when to lean into frontier models vs. when to train your own, and the role of applied AI GTM and distribution to make sure you're actually taking advantage of the market opportunity.'",
+              "Four pieces stack: deep domain focus, model router, frontier-vs-own training choice, applied GTM. The claim is that all four are required to carve ground in a competitive space. Read as a thesis, this is 'every applied-AI founder has to be intentional on all four dimensions' — not a checklist, but a stance. 'This is really the first at scale template for how to execute this playbook' is the load-bearing sentence: the deal is significant because it's a reproducible pattern, not a one-off."
+            ],
+            "original": [
+              "The Cursor deal is symbolically quite significant. It was effectively the first mega success in the applied layer of AI. \n\nThey firmly proved out the value proposition of having a deep domain focus, the role you play as a model router, when to lean into frontier models vs. when to train your own, and the role of applied AI GTM and distribution to make sure you're actually taking advantage of the market opportunity. \n\nEvery aspect of their business was tuned to carve out ground and keep doubling down in a highly competitive space. This is really the first at scale template for how to execute this playbook."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Levie(Box CEO)把 SpaceX-Cursor 这笔交易定性为「applied layer 第一张 mega success 模板」:「Cursor 这单在符号意义上非常关键。它基本就是 AI 应用层的第一笔 mega success。」关键不是价格,是模板。整套被立住的有四件事——深度 domain focus、model router 角色、frontier vs 自训的取舍、applied GTM 和分发。",
+              "四件事叠在一起:domain focus 决定在哪里立,router 决定怎么调模型,training 决定自己下场做哪一段,GTM 决定能不能把窗口吃掉。Levie 的真正判断是「这是一份可以复用的 playbook」,不是一次性的成功——后面所有想做 applied AI 的人都会被拿来跟这个四件套对齐。"
+            ],
+            "original": [
+              "Levie:Cursor 这单是 applied AI 的「第一张 mega success 模板」——深 domain focus + model router + frontier vs 自训取舍 + applied GTM 四件套叠起来才能 carve 出 ground;这周之后所有 applied AI 创始人都会按这个对齐。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:realmadhuguru",
+          "authorName": "Madhusudhan",
+          "authorHandle": "@realmadhuguru",
+          "authorTag": "AI 工程师 / 开源贡献者",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2066935654500671499",
+          "en": {
+            "rewrite": [
+              "Madhu Guru's read of the same deal, but pointed at the engine room: 'The real prize in the SpaceX-Cursor deal is the agentic harness that will become the core for automating all knowledge work at scale.' The product experience is downstream; the harness is the asset. 'Production-grade agentic harness - planning, context management, tool use, iteration, verification, memory, error recovery. Any product experience can be completely redesigned in an AI-native way with this harness.'",
+              "Three pieces are named: the harness itself, full-stack AI expertise (model, evals, harness, application layer), and end-to-end product lifecycle focus from strategy to GTM. The closing line is the cut: 'Very few companies do even one of these well. Cursor brings all three.' Read against the Cursor-as-IDE framing everyone defaulted to last week, the deal looks different: SpaceX is buying the next-decade automation substrate, not an editor."
+            ],
+            "original": [
+              "The real prize in the SpaceX-Cursor deal is the agentic harness that will become the core for automating all knowledge work at scale.\n\nHere's what SpaceX is getting:\n\n1. Production-grade agentic harness  -planning, context management, tool use, iteration, verification, memory, error recovery. \nAny product experience can be completely redesigned in an AI-native way with this harness.\n\n2. Expertise on the full AI stack - model, evals, harness, application layer.\n\n3. End to end product lifecycle focus: product strategy -> user journeys -> GTM. Everything optimized for one job: helping software engineers build.\n\nVery few companies do even one of these well. Cursor brings all three."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Madhu Guru 对同一笔交易的拆解,刀子直接插到引擎室:「SpaceX-Cursor 这单里真正值钱的是 agentic harness——它会变成大规模自动化所有知识工作的核心。」产品体验是表层,harness 才是底层资产:「生产级 agentic harness:planning、context、tool use、iteration、verification、memory、error recovery。任何 product 体验都可以用这个 harness 用 AI-native 的方式重做。」",
+              "三件事被点出来:harness 本身、全栈 AI 能力(model + evals + harness + application)、端到端产品生命周期(strategy → journey → GTM)。他最后一句把镜头收掉:「能把其中一件做好的公司都很少,Cursor 三件都有。」对着上周大家把 Cursor 框成「AI IDE」的视角读,这单的意义就变了——SpaceX 买的是未来十年的 automation substrate,不是编辑器。"
+            ],
+            "original": [
+              "Madhu:SpaceX-Cursor 真正值钱的是「生产级 agentic harness」——planning / context / tool use / iteration / verification / memory / error recovery 全套;三件事(全栈 AI 能力 + 端到端 product lifecycle)Cursor 都做到的公司都很少;这是未来十年的 automation substrate,不是 IDE。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人",
+          "sourceUrl": "https://x.com/nikunj/status/2066905445974102384",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari (Afore Capital) writes the deal in one line: 'Be in the judgement (data) path or the token path.' Two ways to be a winner, two different businesses. The Cursor deal, in his framing, is the data path crystallizing — 'Today's @cursor_ai acquisition sets the path for more application companies. Congrats to all my friends.'",
+              "The split is the load-bearing part. Token path is whoever owns the model layer; judgement path is whoever owns the context, the workflow, the data flywheel, the GTM. Cursor's whole strategy is the judgement path — they have data on every keystroke, every command, every accepted/rejected suggestion, every multi-file refactor, and they have distribution to convert that data back into product. SpaceX is buying a position on the judgement path, not on the token path. The implication for the next cohort of application founders: pick a side and go all in."
+            ],
+            "original": [
+              "Be in the judgement (data) path or the token path. Today's @cursor_ai acquisition sets the path for more application companies. Congrats to all my friends 🥳"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kothari(Afore Capital)用一句话把整笔交易重新画线:「站在 judgement(data)路径上,或者站在 token 路径上。」两条路都是赢家路径,但是两种生意。Cursor 这单在他的框架里就是 data 路径的成型样本——「今天 @cursor_ai 被收,为更多 application 公司指了一条路。」",
+              "「两条路」这个划分是承重墙。token 路径是拿住 model layer 的人;judgement 路径是拿住 context、workflow、data flywheel、GTM 的人。Cursor 全套打法都是 judgement 路径——他们有每一次按键、每一条 command、每一次 accept/reject、每一次多文件重构的数据,也有把这些数据反哺成产品的分发。SpaceX 买的是一个 judgement 路径上的位,不是 token 路径。对下一批 application 创始人的潜台词是:选一条,all in。"
+            ],
+            "original": [
+              "Nikunj:站在 judgement(data) 路径或 token 路径上——Cursor 这单把 data 路径立成了 application 公司的可走模板;SpaceX 买的是 judgement 路径的位,不是 model 路径。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:ryolu_",
+          "authorName": "Ryan Lu",
+          "authorHandle": "@ryolu_",
+          "authorTag": "AI 工程师",
+          "sourceUrl": "https://x.com/ryolu_/status/2067124871226929526",
+          "en": {
+            "rewrite": [
+              "Ryo Lu's lens on Cursor mobile: 'the crazy thing about Cursor mobile is @rikcreation coded most of the real thing with Cursor, as a \"designer\". titles don't mean shit. you can just build.' The signal is structural — a designer shipping production code is a role-boundary event, not a personal-capability event.",
+              "Pair this with the Cursor-deal thread and the read sharpens: when the harness is good enough, the title on the org chart stops being a constraint. The same person can move from designing to coding because the tool absorbs the layer that used to require a specialist. The line 'titles don't mean shit' is not career advice; it's a description of what production-grade harnesses do to role boundaries in product teams."
+            ],
+            "original": [
+              "the crazy thing about Cursor mobile\nis @rikcreation coded most of the real thing with Cursor, as a \"designer\"\n\ntitles don't mean shit.\nyou can just build."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Ryo Lu 拿 Cursor mobile 这件事当切片:「Cursor mobile 最疯狂的地方——@rikcreation 是用 Cursor 把那东西的真东西写出来的,职位是 designer。title 都是废话,你能 build 就能 build。」信号是结构性的,不是个人能力:一个 designer 写出 production code 是一次 role-boundary 事件。",
+              "对着 Cursor 这单的 thread 一起读,画面更清楚:当 harness 足够好,组织架构图上的 title 就不再是约束。同一个人可以从 design 走到 code,因为工具吸收了原本需要专家的那一层。「title 都是废话」不是职业建议——它是「生产级 harness 在产品团队里会做什么」的描述。"
+            ],
+            "original": [
+              "Ryolu:Cursor mobile 的「designer 用 Cursor 写出了真东西」是 role-boundary 事件,不是个人能力事件;harness 足够好的时候,组织图上的 title 就不再是约束——title 都是废话,你能 build 就能 build。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Open weights 还在 near-frontier 区间 / Open Weights Are Still Holding Near the Frontier",
+      "desc": "Levie 当天另一帖把市场结构压到「open weights 落后 3 个月还是 3 年」这一条线上,答案是现在还在 near-frontier。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie/status/2067070918300664161",
+          "en": {
+            "rewrite": [
+              "Levie's other post of the day reframes the same week as a market-structure question: 'One of the biggest questions in AI is how far behind open weights models remain from closed models at any given time. There are huge differences in market structures depending on whether open weights models remain 3 or 6 months behind, or if they fall behind by years.'",
+              "The follow-through is the longer list of things that depend on the answer: 'how the chip stack plays out, where inference can be run, what sovereign AI looks like, what happens at the applied AI layer, what the margin structure looks like in AI, how much companies can afford to spend on AI, and more.' Today's verdict, given by the same post: 'At the moment the open weights players appear to be holding up at keeping close to frontier levels of capability. Will be fun to see how this plays out.' Read against the Fable-distribution thread from earlier in the week, the implication is: if open weights stay near the frontier, the model-layer regulation that's currently being debated is much weaker than it looks."
+            ],
+            "original": [
+              "One of the biggest questions in AI is how far behind open weights models remain from closed models at any given time. There are huge differences in market structures depending on whether open weights models remain 3 or 6 months behind, or if they fall behind by years. \n\nThe answer to this will determine how the chip stack plays out, where inference can be run, what sovereign AI looks like, what happens at the applied AI layer, what the margin structure looks like in AI, how much companies can afford to spend on AI, and more.\n\nAt the moment the open weights players appear to be holding up at keeping close to frontier levels of capability. Will be fun to see how this plays out."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Levie 当天另一条,把同一周重新画成一道市场结构题:「AI 最大的问题之一是 open weights 模型在任意时刻比 closed 模型落后多少。open weights 落后 3 个月、6 个月、还是落后几年,对应的市场结构是完全不同的。」",
+              "他顺势列了一长串「答案决定什么」:芯片栈怎么走、推理在哪里跑、sovereign AI 长什么样、applied AI 层会发生什么、AI 的 margin structure 长什么样、企业能花多少钱在 AI 上。同一条帖子的当下判断是:「目前看,open weights 这一边还撑得住,跟 frontier 的能力差距没拉开。」对着这周 Fable 分发的 thread 读,潜台词是——只要 open weights 还在 near-frontier 区间,正在被讨论的 model-layer regulation 力度就比看起来要弱。"
+            ],
+            "original": [
+              "Levie:open weights 离 frontier 还差 3 个月还是 6 个月还是几年,直接决定 chip stack / inference 部署 / sovereign AI / applied AI 走向;目前 open weights 还在 near-frontier 区间——这条线如果守住,model-layer regulation 力度就比看起来要弱。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Codex 推 Europe + 一线摩擦 / Codex Rolls Out in Europe, Plus Frontline Friction",
+      "desc": "Sottiaux 在法国现场铺开 Codex 欧洲 rollout,同帖把 capacity 事故的修复也一并交代;Peter Yang 把 Fable 临限前的 advice 存档,并用 4 个 file 拼 personal-advisor skill。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT",
+          "sourceUrl": "https://x.com/thsottiaux/status/2067064381855187231",
+          "en": {
+            "rewrite": [
+              "Sottiaux (Codex & ChatGPT at OpenAI) lands in France for the week: 'Bim bada boum. I am in France for the week and we are rolling out all the most exciting Codex features across Europe. Coincidence or did the team think I wasn't able to be productive otherwise?' The meta-joke aside, the operational fact is the load-bearing sentence: Codex is being rolled out across Europe this week, with Sottiaux on the ground.",
+              "The pairing with his same-day capacity-issue post is what gives the rollout its real shape. Ship in Europe; absorb the friction; reset rate limits; keep moving. The pattern is a 'ship-then-stabilize' cadence — features go wide first, capacity is tuned second, the comms is the rolling report."
+            ],
+            "original": [
+              "Bim bada boum. I am in France for the week and we are rolling out all the most exciting Codex features across Europe. Coincidence or did the team think I wasn't able to be productive otherwise?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Sottiaux(OpenAI Codex & ChatGPT)本周落地法国:「Bim bada boum,本周在法国,我们正把 Codex 最让人兴奋的功能铺到全欧洲。巧合,还是团队觉得我不在才能 productive?」自嘲的元层之外,真正承重的那句是「正在铺到全欧洲」——Sottiaux 本人在现场。",
+              "和他同一天的 capacity 事故帖一起读,rollout 的真实形状就出来了:欧洲先 ship,摩擦先 absorb,rate limit 再 reset,继续推。这套节奏是「先 ship、再 stabilize」的版本——功能先铺开,容量随后调,沟通就是滚动播报。"
+            ],
+            "original": [
+              "Sottiaux:本周在法国把 Codex 最让人兴奋的功能铺到全欧洲;搭配同一天的 capacity 事故帖读,这是「先 ship、再 stabilize」的节奏——功能先铺,容量再调,沟通是滚动播报。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT",
+          "sourceUrl": "https://x.com/thsottiaux/status/2066956441173323943",
+          "en": {
+            "rewrite": [
+              "Sottiaux's other post of the day is the comms half of the rollout: 'This was fixed. You know what's coming 👀. Give us 24 hours to reset the Codex rate limits across all plans.' Same author, same day — a feature launch in Europe and a capacity reset on the existing user base, sequenced back to back.",
+              "Read the two posts together and you see the actual product surface for a frontier-class coding tool in 2026: launches are no longer gated on the launch — they're gated on absorbing the post-launch capacity shock. The 'give us 24 hours' line is not an apology; it's a real-time status update to a paying user base that already has multiple competing harnesses to switch to. Codex ships the rollout; Codex ships the post-rollout; Codex ships the post-post-rollout."
+            ],
+            "original": [
+              "This was fixed. You know what's coming 👀\n\nGive us 24 hours to reset the Codex rate limits across all plans."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Sottiaux 当天另一条是 rollout 的「通讯那一半」:「已修。你知道接下来是什么 👀。给我们 24 小时重置全 plan 的 Codex rate limit。」同一个人、同一天——欧洲功能上线 + 老用户 rate limit 重置,前后脚排着。",
+              "两条一起读,2026 年一个 frontier 级 coding 工具的真实产品 surface 浮出来了:launch 早就不被 launch 自己 gate 住,launch 被「launch 之后的容量冲击能不能 absorb 住」gate 住。「给我们 24 小时」不是道歉——它是给一个「随时能切到别的 harness」的付费用户群的实时状态更新。Codex ship rollout,Codex ship post-rollout,Codex ship post-post-rollout。"
+            ],
+            "original": [
+              "Sottiaux:同一天「欧洲 rollout」+「rate limit 全 plan 重置」前后脚排着——2026 frontier coding 工具的 launch 不再被 launch 自己 gate 住,被「launch 之后的容量冲击能不能 absorb」gate 住;「24 小时」是给付费用户群的实时状态更新,不是道歉。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者",
+          "sourceUrl": "https://x.com/petergyang/status/2067056979974160749",
+          "en": {
+            "rewrite": [
+              "Peter Yang (product coach) threads two stories into one post: 'Publishing a new tutorial to make Codex or Claude Code your personal advisor using a skill with 4 files. Plus, I managed to save Fable's advice too before it got restricted 🥲.' The first half is a workflow how-to; the second half is a quiet archive moment — Fable's advice was accessible last week, and won't be next week.",
+              "The skill-as-4-files pattern is the part that matters here. Four files is small enough that a non-engineer can maintain it; opinionated enough that the AI's behavior is anchored. Pair this with the Fable archive line and the editorial point lands: the next year of useful AI work is going to be 'personal advisor' patterns built out of small composable skills, and a small set of those skills is going to be archive material that isn't reproducible once the upstream model disappears."
+            ],
+            "original": [
+              "Publishing a new tutorial to make Codex or Claude Code your personal advisor using a skill with 4 files. Plus, I managed to save Fable's advice too before it got restricted 🥲\n\n📌 Subscribe to get the tutorial tmr:"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang(产品教练)把两件事拧到一条帖里:「明天发一篇新教程——用 4 个 file 组成一个 skill,让 Codex 或 Claude Code 变成你的个人 advisor。另外,我在 Fable 被限制访问之前把它给的 advice 存档了 🥲。」前半段是 workflow how-to,后半段是一段安静的 archive 时刻——Fable 的 advice 上周还拿得到,下周就拿不到了。",
+              "「skill 用 4 个 file 组成」这个模式是这一帖真正承重的地方。4 个 file 小到非工程师也能维护;又 opinionated 到 AI 的行为能被锚定。对着 Fable archive 那句话读,editorial point 就落下来了:未来一年有用的 AI 工作会是「用一组小而可组合的 skill 拼出 personal advisor 模式」,而其中某些 skill 会成为「上游模型消失之后就不可再现」的 archive 资料。"
+            ],
+            "original": [
+              "Peteryang:4 个 file 组成一个 skill 把 Codex/Claude Code 拼成 personal advisor——这是「小而可组合」workflow 的具体形状;同帖还存档了 Fable 被限前的 advice——某些 skill 会是「上游模型消失后就不可再现」的 archive。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Rauchg 把 AI Cloud 接到 long-running / Rauchg Plumbs AI Cloud for Long-Running Work",
+      "desc": "Vercel 把 function 调用提到 30 分钟、sandbox 寿命提到 24 小时——managed platform 上 long-running agent 终于能跑下整夜,不用 checkpoint。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO",
+          "sourceUrl": "https://x.com/rauchg/status/2067137678772937000",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch (Vercel CEO) sets the stage for a longer thread: 'Quick one to set the stage: ☑️ 30 minute function invocations 🆕 24 hour sandbox lifetimes.' Two numbers, both moved up by an order of magnitude from where serverless functions lived a year ago.",
+              "Read the move as a re-plumbing of what 'long-running agent' is allowed to be on a managed platform. Thirty minutes per function is enough to do a serious multi-stage agent task without checkpointing; 24-hour sandboxes are enough to leave an agent working overnight and pick it up the next morning. The 'It's time to ship' follow-up is the editorial frame — Vercel is positioning AI Cloud as the substrate for autonomous work, not just request-response."
+            ],
+            "original": [
+              "Quick one to set the stage:\n\n☑️ 30 minute function invocations\n🆕 24 hour sandbox lifetimes"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch(Vercel CEO)给一个更长 thread 铺台阶:「简短一句,先把舞台布好:☑️ 30 分钟 function 调用 🆕 24 小时 sandbox 生命周期。」两个数字,都比一年前 serverless function 所在的那个量级高了一个数量级。",
+              "把这次动作读成「managed platform 上 long-running agent 允许长成什么样」的重接。30 分钟单 function 够跑一个完整的多阶段 agent 任务而不必 checkpoint;24 小时 sandbox 够把一个 agent 留到夜里自己跑、明天早上再接。后面那条「It's time to ship」是 editorial frame——Vercel 把 AI Cloud 摆到「autonomous work 的 substrate」的位置,不只是 request-response。"
+            ],
+            "original": [
+              "Rauchg:Vercel 把 function 调用提到 30 分钟、sandbox 寿命提到 24 小时——这是「managed platform 上 long-running agent 允许长成什么样」的重接;AI Cloud 把自己从 request-response 摆到 autonomous work 的 substrate。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "App-layer 经济学:小而尖锐 / persona 真的切换 / App-Layer Economics: Small & Sharp, Real Persona Switch",
+      "desc": "Zara Zhang 把「什么都做」留给 Claude/Codex,留出来的位是 opinion + soul;Dan Shipper 公开从 Atlas 切回 Dia,「AI browser」category 还不够稳。",
+      "cards": [
+        {
+          "authorKey": "x:zarazhangrui",
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2066936706281206165",
+          "en": {
+            "rewrite": [
+              "Zara Zhang (Follow Builders) draws a line in the AI-app market: 'Every other product right now is \"an AI agent that does everything in your work & life & integrates with everything.\" Cool, that's just Claude/Codex. If you want me to use your thing instead, it needs an opinion & a soul. Build small & sharp, not big & generic. Doing everything means doing nothing. Speaking to everybody means speaking to nobody.'",
+              "The argument is a market-structure argument, not a marketing argument. Claude and Codex already own the 'does everything, integrates with everything' position. Anyone else trying to compete in that slot is competing with the frontier — and losing. The defensible position is the opposite: pick a sharp opinion, build a sharp product, take a specific segment. 'Opinion and soul' is doing real work here — it means the product is willing to say no to 90% of users, and that willingness is what makes the 10% it keeps really stick."
+            ],
+            "original": [
+              "Every other product right now is \"an AI agent that does everything in your work & life & integrates with everything.\" \n\nCool, that's just Claude/Codex. \n\nIf you want me to use your thing instead, it needs an opinion & a soul. Build small & sharp, not big & generic.\n\nDoing everything means doing nothing. Speaking to everybody means speaking to nobody."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zara Zhang(Follow Builders)在 AI app 市场里划了一条线:「现在所有其他产品都是『一个 AI agent,做你工作+生活里的所有事,跟所有东西整合』。Cool,那不就是 Claude/Codex?你想让我用你那一款,它得有 opinion、有 soul。Build small & sharp,别 build big & generic。什么都做等于什么都不做,对所有人说等于对谁都没说。」",
+              "这个论点是市场结构论点,不是营销论点。Claude 和 Codex 已经把「什么都做、跟什么都整合」这个位占了。其他人去抢这个位就是在跟 frontier 抢——抢不过。能站住的位是反过来的:挑一个尖锐的 opinion、做一个尖锐的产品、吃一段具体的人群。「opinion 和 soul」在这句话里是干活的——它意味着产品愿意对 90% 的用户说不,正是这个愿意说不,让留下来的 10% 真能粘住。"
+            ],
+            "original": [
+              "Zarazhangrui:「什么都做」= Claude/Codex 的位,挤不进去;能站住的是反过来的位——挑尖锐 opinion、做尖锐产品、对 90% 用户说不;「opinion 和 soul」是愿意说不的勇气,不是营销口号。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "authorName": "Dan Shipper",
+          "authorHandle": "@danshipper",
+          "authorTag": "Every 联合创始人 / AI 写作工具链",
+          "sourceUrl": "https://x.com/danshipper/status/2066914130863473048",
+          "en": {
+            "rewrite": [
+              "Dan Shipper (Every co-founder) on a real product switch: 'just switched off of Atlas Browser and back onto Dia. i've been having so many weird bugs with atlas, and doesn't feel like it's improving.' The tweet is short, but the choice is large — Atlas is one of the highest-profile AI browser launches of the year, and Dia is Every's own product.",
+              "Read as a building signal, not a complaint: when the founder of an AI-adjacent company switches off a frontier AI browser because the bug surface isn't shrinking, the implied read is that 'AI browser' as a category is not yet stable enough to be the default. The fact that he switched to his own product is the second layer — even with the obvious conflict of interest, the choice still gets made publicly, and the public is expected to find it credible. Every's distribution play just got an unscheduled boost."
+            ],
+            "original": [
+              "just switched off of Atlas Browser and back onto Dia\n\ni've been having so many weird bugs with atlas, and doesn't feel like it's improving"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Dan Shipper(Every 联合创始人)做了一次真实的产品切换:「刚从 Atlas Browser 切回 Dia。Atlas 那边的奇怪 bug 实在太多,而且感觉没在变好。」推文很短,选择很重——Atlas 是今年最被关注的 AI browser 之一,Dia 是 Every 自己的产品。",
+              "当作 building signal 读,不当抱怨读:当一个 AI 周边公司的创始人因为 bug 面没在收窄而切走一个 frontier AI browser,潜台词是「AI browser」这个 category 还不够稳定到能当默认。他切回自己产品是第二层——明显有利益相关,但这个选择还是公开做了,大家也默认它可信。Every 的分发拿到一次不请自来的 boost。"
+            ],
+            "original": [
+              "Danshipper:从 Atlas 切回 Dia——bug 面没在收窄就把 frontier AI browser 切掉,潜台词是「AI browser」category 还没稳定到能当默认;切回自家产品 + 公开说是给 Every 分发的一次不请自来的 boost。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "人这一面 / The Human Side",
+      "desc": "Madhu 用一句给「AI 取代人性」做平静反驳——intellect 被自动化得越快,self-awareness/intuition/compassion/kindness 越值钱;Josh Woodward 把 Google AI Futures Fund 扩到巴西,跟 Monashees 一起发 Gama Fund。",
+      "cards": [
+        {
+          "authorKey": "x:realmadhuguru",
+          "authorName": "Madhusudhan",
+          "authorHandle": "@realmadhuguru",
+          "authorTag": "AI 工程师 / 开源贡献者",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2067090477434966396",
+          "en": {
+            "rewrite": [
+              "Madhu Guru, stepping back from the Cursor-deal thread: 'over the last century, we've treated the intellect as a defining human trait and under-invested in other aspects that make us uniquely human, such as self-awareness, intuition, compassion and kindness. the next few years will force us to rethink this.' The post lands the day after a deal where the central asset was the agentic harness — the thing that automates the intellect.",
+              "The pairing is what gives the post its weight. The day a knowledge-work-automation substrate is sold at scale, an engineer publicly says: the substrate is real, but the part of being human that it doesn't touch is the part we've been under-investing in for a century. Self-awareness, intuition, compassion, kindness — these are the things that get *more* valuable as the intellect gets automated. The post is a calm, one-sentence rebuttal to the implicit 'AI replaces what makes humans valuable' narrative."
+            ],
+            "original": [
+              "over the last century, we've treated the intellect as a defining human trait and under-invested   in other aspects that make us uniquely human, such as self-awareness, intuition, compassion and kindness. \n\nthe next few years will force us to rethink this."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Madhu Guru 在 Cursor 这单的 thread 之外另起一段:「过去一个世纪,我们把 intellect 当成人性的定义性特征,在那些让我们之所以为人的其他维度——self-awareness、intuition、compassion、kindness——投资严重不足。接下来几年会逼我们重想这件事。」这条帖贴在一个「agentic harness 是真资产」的交易卖出去的那一周。",
+              "前后一对,这条帖的重量就出来了。knowledge work automation substrate 按 scale 卖掉的那天,一个工程师公开说:这个 substrate 是真的,但它不碰的那一面,正是我们这一百年欠投最多的一面。self-awareness、intuition、compassion、kindness——intellect 被自动化得越快,这些就越值钱。这是一条平静的、单段的、对「AI 取代人性」潜台词的反驳。"
+            ],
+            "original": [
+              "Madhu:agentic harness 按 scale 卖出去的那一周,工程师公开说——intellect 被自动化得越快,self-awareness / intuition / compassion / kindness 就越值钱;这条对「AI 取代人性」潜台词做了一次平静的反驳。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:joshwoodward",
+          "authorName": "Josh Woodward",
+          "authorHandle": "@joshwoodward",
+          "authorTag": "Google Labs 产品负责人",
+          "sourceUrl": "https://x.com/joshwoodward/status/2067025851829330076",
+          "en": {
+            "rewrite": [
+              "Josh Woodward (Google Labs) announces the Brazil expansion of the Google AI Futures Fund: 'World-changing AI companies are coming from Brazil. That's why we've officially expanded our Google AI Futures Fund to Brazil, partnering with venture capital leader Monashees to launch the Gama Fund.' The offer stack is concrete: 'Early access to Google DeepMind models, Up to $2M in co-investment, $350k in Google Cloud & Gemini credits, Direct co-development with Google engineers at our new IPT Open campus hub.'",
+              "Two layers to the move. Layer one is capital: a fund-plus-credit-plus-co-invest structure targeted at deep-tech founders in a market that hasn't been a default destination for frontier-AI capital. Layer two is the partnership model — Monashees is the local lead, Google is the platform lead, and the engineering co-development is the actual moat. The 'IPT Open campus hub' line is the binding asset: it's not just money, it's a physical place where Brazilian founders can sit with Google engineers."
+            ],
+            "original": [
+              "🇧🇷World-changing AI companies are coming from Brazil.\n\nThat's why we've officially expanded our Google AI Futures Fund to Brazil, partnering with venture capital leader Monashees to launch the Gama Fund.\n\nWe're looking for an elite cohort of deep tech founders and will offer:\n\n- Early access to Google DeepMind models\n- Up to $2M in co-investment\n- $350k in Google Cloud & Gemini credits\n- Direct co-development with Google engineers at our new IPT Open campus hub\n\nApply today:"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Josh Woodward(Google Labs)宣布 Google AI Futures Fund 扩到巴西:「改变世界的 AI 公司正在从巴西走出来。所以我们把 Google AI Futures Fund 正式扩到巴西,跟本土 VC 领头羊 Monashees 一起发 Gama Fund。」offer 写得很具体:「DeepMind 模型早期访问、最高 200 万美元跟投、35 万美元 Google Cloud + Gemini 抵扣、在新开的 IPT Open campus hub 里跟 Google 工程师直接 co-develop。」",
+              "这动作有两层。第一层是资本:fund + credit + 跟投的结构,目标是一个一直不是 frontier-AI 资本默认落点的市场里的 deep-tech founders。第二层是合作模式——Monashees 拿本地 lead,Google 拿 platform lead,工程师 co-development 才是真正的护城河。「IPT Open campus hub」那句是 binding asset:这不是纯给钱,是一个巴西 founder 能跟 Google 工程师坐在一起的物理场所。"
+            ],
+            "original": [
+              "Joshwoodward:Google 把 AI Futures Fund 扩到巴西 + Monashees 联合发 Gama Fund——capital 是一层(200 万跟投 + 35 万 Cloud 抵扣),engineer co-development + 物理 campus hub 才是真正的护城河;这是 frontier 资本第一次认真在非默认市场里做 deep-tech 押注。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "一篇博客:Claude 进了 Apple Foundation Models framework / One Blog: Claude Lands in Apple's Foundation Models Framework",
+      "desc": "Anthropic 出 Swift package 把 Claude 接进 Foundation Models framework:on-device model 处理快本地 task、Claude 处理多步推理 + 联网 + 执行代码,@Generable annotation 给的 typed Swift value 是集成 surface;明天 iOS 27 全平台上线。",
+      "cards": [
+        {
+          "authorKey": "blog:claudeai",
+          "authorName": "Claude",
+          "authorHandle": null,
+          "authorTag": "Claude 官方博客",
+          "sourceUrl": "https://claude.com/blog/claude-for-foundation-models",
+          "en": {
+            "rewrite": [
+              "Anthropic ships Claude support for Apple's Foundation Models framework: a new Swift package that lets Apple developers call Claude through Apple's framework, which already returns typed Swift values via @Generable annotations. 'Apple's Foundation Models framework gives developers access to tap into models natively from Swift. It is very easy to use and can return typed Swift values through guided generation in as few as three lines of code.'",
+              "The architecture is the load-bearing part. Apple's on-device model handles 'fast, local tasks like summarization or extraction'; Claude handles 'multi-step reasoning, code generation' and 'search the web for current information and execute code for data analysis.' The user gets one experience, with the right model behind each step. 'A journaling app can generate daily prompts on-device, then ask Claude to find threads across months of entries. A study app can define a term on-device, then hand off to Claude when the student follows up with \"why does this matter for everything else we've covered?\".' The on-device-to-cloud handoff is the product; the typed Swift values are the integration surface. Ships tomorrow on iOS 27 / iPadOS 27 / macOS 27 / visionOS 27 / watchOS 27."
+            ],
+            "original": [
+              "Building intelligent apps for Apple platforms with Claude in the Foundation Models framework\n\nToday we're releasing Foundation Models framework support for Claude through a new Swift package that lets Apple developers use Apple's Foundation Models framework to call Claude for more complex workflows. Apple's Foundation Models framework gives developers access to tap into models natively from Swift. It is very easy to use and can return typed Swift values through guided generation in as few as three lines of code. Developers can use this to tap into Apple's on-device models for fast, local tasks like summarization or extraction. Developers can now use Apple's Foundation Models framework to hand off to Claude when a request calls for multi-step reasoning, code generation, and more. Claude can also search the web for current information and execute code for data analysis. Stream Claude's response back into the same view. Because Apple's framework returns typed Swift values from @Generable annotations, developers arrive at the Claude API call with clean inputs instead of raw user text.\n\nWhat this unlocks\nThe Foundation Models framework already powers a range of intelligent on-device features — journaling apps that surface personalized prompts, document apps that summarize contracts, learning apps that explain a concept at a student's level. Adding Claude extends each of those patterns. A journaling app can generate daily prompts on-device, then ask Claude to find threads across months of entries. A study app can define a term on-device, then hand off to Claude when the student follows up with \"why does this matter for everything else we've covered?\" It's one experience for the user, backed by the right model for each step."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic 出了 Claude 对 Apple Foundation Models 框架的支持——一个 Swift package,让 Apple 开发者能用 Apple 的 framework 调 Claude。Foundation Models 框架本身就能通过 @Generable annotation 返回 typed Swift value:「Apple 的 Foundation Models 框架让开发者能直接从 Swift 里调模型,几行代码就能通过 guided generation 拿到 typed Swift value。」",
+              "承重的是架构。Apple 的端侧 model 处理「摘要、抽取这种快、本地的 task」;Claude 处理「多步推理、代码生成」,还能「上网搜当前信息、执行代码做数据分析」。用户体验是同一段,每一步背后是合适的那个 model。「日记 app 在端侧生成每日 prompt,然后让 Claude 跨几个月日记找脉络;学习 app 在端侧给一个术语定义,学生追问『这跟之前讲的有什么关系』时再 handoff 到 Claude。」on-device → cloud 的 handoff 才是产品,typed Swift value 是集成 surface。明天 iOS 27 / iPadOS 27 / macOS 27 / visionOS 27 / watchOS 27 上线。"
+            ],
+            "original": [
+              "Claude Blog:Anthropic 出了 Apple Foundation Models framework 的 Claude 支持——一个 Swift package;架构是 on-device model 处理「快、本地」(摘要/抽取),Claude 处理「多步推理 / 代码生成 / 联网 / 执行代码」;@Generable annotation 给的 typed Swift value 是集成 surface;明天 iOS 27 / iPadOS 27 / macOS 27 / visionOS 27 / watchOS 27 上线。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "一集播客:Simile 把「simulation」立成下一根柱子 / A Podcast: Simile Names Simulation the Next Pillar",
+      "desc": "Joon Sung Park 上 Training Data 讲「科幻里两根柱子——AGI + simulation——后者的第一刀今天能开」;Smallville 是经验锚,Simile 在卖 simulation substrate,跟 Cursor 卖 coding substrate 同一形状。",
+      "cards": [
+        {
+          "authorKey": "podcast:training-data",
+          "authorName": "Training Data Podcast",
+          "authorHandle": null,
+          "authorTag": "AI 播客",
+          "sourceUrl": "https://www.youtube.com/watch?v=lfhFmwcESRw",
+          "en": {
+            "rewrite": [
+              "Training Data brings on Joon Sung Park (Simile founder/CEO) to talk about simulating humans at scale. Park's frame: 'I am somebody who is quite inspired by science fiction. And when you read science fiction that covers societies that have progressed far enough in its technological maturity, you always see two pillars. You have some version of AGI, and you have some version of simulations that really help guide the society. I do see an opportunity today to really take the first crack at building the simulation.' The thesis: the second pillar is now buildable.",
+              "The Smallville backstory is the empirical anchor: 'we made this observation that large language models can now encode a lot of human behavior that is embedded in its training data from the web and social media and so forth, that if you sort of prove at the right angle, you can actually get a lot of microbehaviors out of these models.' Read against the rest of the week's applied-AI thread, the implication lands: when frontier models encode enough microbehavior, the next product category is not just 'AI that helps you do tasks' — it's 'AI that simulates enough human behavior to be a credible counterpart for planning, design, and policy work.' Simile is selling the simulation substrate, the way Cursor sells the coding substrate."
+            ],
+            "original": [
+              "Speaker 1 | 00:00 - 00:35\nI am somebody who is quite inspired by science fiction. And when you read science fiction that covers societies that have progressed far enough in its technological maturity, you always see two pillars. You have some version of AGI, and you have some version of simulations that really help guide the society. I do see an opportunity today to really take the first crack at building the simulation. I would not have said that even five years ago, but that is a conviction that we have built up over the years as we're going deep into this research.\n\nSpeaker 2 | 00:52 - 01:04\nToday, we're delighted to have June, founder and CEO of Simile. Simile is building an applied AI lab simulating human behavior and societies. And I'm very excited to have you here to discuss what you're building.\n\nSpeaker 1 | 01:04 - 01:05\nSame here. Thanks for having me.\n\nSpeaker 2 | 01:05 - 01:13\nOkay. Take me back to April 2023, Stanford, California, specifically Smallville, Stanford, California. What was that?\n\nSpeaker 1 | 01:13 - 02:10\nSo Smallville was a project that we were running at Stanford, where the idea was that we made this observation that large language models can now encode a lot of human behavior that is embedded in its training data from the web and social media and so forth, that if you sort of prove at the right angle, you can actually get a lot of microbehaviors out of these models."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Training Data 这集请到 Joon Sung Park(Simile 创始人/CEO)讲「按规模模拟人」。Park 的框架:「我是那种被科幻小说深深影响的人。读那种讲技术成熟度已经走得很远的社会的科幻,你总会看到两根柱子:一根是 AGI,一根是真的能引导社会的 simulation。我觉得今天有机会做 simulation 的第一刀。五年前我不会这么说,这是我们做了几年研究攒出来的 conviction。」",
+              "Smallville 那段是经验锚:「当时我们在 Stanford 跑 Smallville,核心观察是大语言模型能编码大量嵌在训练数据(网络+社交)里的人的行为;只要从对的角度提示,你能从模型里逼出大量 microbehavior。」对着这周 applied AI 那条 thread 读,潜台词就落了:当 frontier model 编码的 microbehavior 足够多,下一个产品 category 不只是「AI 帮你做 task」,而是「AI 模拟出够真实的人类行为,能做规划/设计/政策的可信对手方」。Simile 在卖 simulation substrate,就像 Cursor 卖 coding substrate 一样。"
+            ],
+            "original": [
+              "Training Data × Joon Sung Park(Simile):科幻里的两根柱子——AGI + simulation——后者的「第一刀」今天可建;Smallville 给出经验锚:frontier model 能从训练数据里逼出大量 human microbehavior;Simile 在卖 simulation substrate,跟 Cursor 卖 coding substrate 是同一形状——下一个产品 category 是「AI 作为规划/设计/政策的可信对手方」。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

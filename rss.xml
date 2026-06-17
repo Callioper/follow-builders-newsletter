@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 15 Jun 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 17 Jun 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-06-17 · Cursor 收编日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-17-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-17-rerun.html</guid>
+      <pubDate>Wed, 17 Jun 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[6-17 这天的 Follow Builders 主线几乎被一则交易盖住:SpaceX 收 Cursor。Levie 当天把这一单立成「applied layer 第一张 mega success 模板」——深 domain focus、model router、frontier vs 自训取舍、applied GTM 四件套叠起来才是 playbook;Madhu 直接插进引擎室,「真正值钱的是生产级 agentic harness——planning、context、tool use、iteration、verification、memory、error recovery」,三件能全做好的公司都很少;Nikunj 用一句话重新画线:「站在 judgement(data) 路径或 token 路径上」,Cursor 这单是 data 路径立成了可走模板;Ryo Lu 拿 Cursor mobile 切片——designer 用 Cursor 写出了真东西,「title 都是废话」,harness 足够好时组织图上的 title 不再是约束。Levie 同日另起一条把同周重新画成一道市场结构题:open weights 落后 frontier 3 个月还是 3 年,直接决定 chip stack、inference、sovereign AI、applied AI 走向;他的当下判断是「目前 open weights 还在 near-frontier」。Codex 这边继续往日常走:Sottiaux 在法国铺欧洲 rollout,同帖把 capacity 事故的 24 小时 rate-limit 重置也一并交代;Peter Yang 把 Fable 临限前的 advice 存档,并用 4 个 file 拼一个 personal-advisor skill。Rauchg 把 Vercel 的 function 调到 30 分钟、sandbox 调到 24 小时——managed platform 上 long-running agent 终于能跑下整夜。App-layer 经济学:zara zhang 把「什么都做」留给 Claude/Codex,站得住的位是 opinion + soul 的小而尖锐;Dan Shipper 公开从 Atlas 切回 Dia,「AI browser」category 还不够稳。人这一面:Madhu 在 agentic harness 按 scale 卖出去的那一周,公开说 intellect 被自动化得越快,self-awareness/intuition/compassion/kindness 越值钱;Josh Woodward 把 Google AI Futures Fund 扩到巴西、跟 Monashees 一起发 Gama Fund——frontier 资本第一次在非默认市场认真做 deep-tech 押注。博客:Anthropic 出 Swift package 把 Claude 接进 Apple Foundation Models framework,on-device 跑快本地 task、Claude 跑多步推理 + 联网 + 执行代码,@Generable annotation 给的 typed Swift value 是集成 surface,明天 iOS 27 全平台上线。收尾是 Joon Sung Park 上 Training Data:科幻里的两根柱子——AGI + simulation——后者的「第一刀」今天可开,Simile 在卖 simulation substrate,跟 Cursor 卖 coding substrate 是同一形状。]]></description>
+      <category>SpaceX-Cursor: 应用层第一张 mega success 模板立标 / SpaceX-Cursor Names the First Applied-AI Mega-Success Template, Open weights 还在 near-frontier 区间 / Open Weights Are Still Holding Near the Frontier, Codex 推 Europe + 一线摩擦 / Codex Rolls Out in Europe, Plus Frontline Friction, Rauchg 把 AI Cloud 接到 long-running / Rauchg Plumbs AI Cloud for Long-Running Work, App-layer 经济学:小而尖锐 / persona 真的切换 / App-Layer Economics: Small &amp; Sharp, Real Persona Switch, 人这一面 / The Human Side, 一篇博客:Claude 进了 Apple Foundation Models framework / One Blog: Claude Lands in Apple&apos;s Foundation Models Framework, 一集播客:Simile 把「simulation」立成下一根柱子 / A Podcast: Simile Names Simulation the Next Pillar</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-06-15 · open-weights 收编日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-15-rerun.html</link>
