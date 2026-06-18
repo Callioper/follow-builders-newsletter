@@ -1,0 +1,438 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-06-18",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "6-18 这天的 Follow Builders 主线不是单一事件,而是 Levie 一条长 thread 把 applied AI 层在企业里真正跑起来的样子摆出来:workflow bridge、model router、FDE 驱动的实施、domain-specific GTM 四件套叠在一起才是 playbook;「bitter lesson 在极限处可能抹平这一切,但企业今天就需要帮助转型」是这一天的潜台词。Harness 这一层在同一天从三边被压:Codex(Sottiaux 同帖把 Codex SDK/CLI 钉在「可接任何开源模型」)、Vercel(Rauch 给数据——开源 GLM 5.2 在 Next.js evals 上压过闭源 Opus 4.8,eve 是 React-Next.js 类比下的 agent-deploy 答案)、Claude(Design ↔ Code 在所有付费 plan 推 beta,canvas 直接拖/resize/对齐)。应用层 economy 这边:Garry Tan 给 Fable-5 ban 算了一笔账——按 frontier AI-coding 500 万日活、90 美元/小时 fully-loaded、Fable 48 小时 17.8% routing 份额推,生产力损失约 1200 万美元/小时,frontier AI-coding 的人头成本第一次被推到公开台面;taste 与 vibe 这一面 Nan Yu 给辨义线(「taste」≠ 审美 taste,builder 语境下是「做什么/不做什么/怎么落」的选择)、Zara Zhang 立 vibe-coded 应用的失败模式(build 一天/验证用一周,瓶颈从 production 移到 curation)、Masad 把 Replit 钉在「跨供应商出货表面」。人与资本:Sama 终于签下 reasoning 背景的 Noam Brown(等了 10 年);Nikunj 连发三条——反对 tranched round、给识别规则、再转向 emerging managers——一条 thread 三件事;Dan Shipper 公开 Every 投资 Tacit,把线拉回 2023 年他写的「Against Explanations」;Aditya Agarwal 开放 SPC 申请,关键句「SPC 探讨的问题本身就是 frontier signal」;Josh Woodward 把 Voltage 团队工作样本抬出来立 Google Labs 「Co-create」——culture post 当 retention/recruiting signal。收尾是 AI & I by Every 请到 GitHub COO Kyle Daigle:每月 1700 万 PR 指数增长,客户人口结构在变(legal/finance 也用 Copilot),开源维护者被 PR 海啸淹——productive 回应是 agentic code review + agentic merge,不是再加维护者。整集抛出的「AI 克隆」开了一个新 category:用 AI 复刻对方练高难度对话(面试、客户对话、给硬反馈)。"
+  },
+  "archive": {
+    "title": "立型日",
+    "desc": "Levie 把 applied AI 层立成四件套(workflow bridge + model router + FDE 实施 + domain-specific GTM):「bitter lesson 在极限处可能抹平这一切,但企业今天就需要帮助转型」。Harness 层在同一天从三边被压:Codex SDK/CLI 可接任何开源模型(Sottiaux),Vercel Next.js evals 上开源 GLM 5.2 压过闭源 Opus 4.8(Rauch,eve 是 React-Next.js 类比下的 agent-deploy 答案),Claude Design ↔ Code 双向集成在所有付费 plan 推 beta(claudeai)。应用层 economy:Garry Tan 算 Fable-5 ban 约 1200 万美元/小时(500 万 frontier AI-coding 日活 × 90 美元/小时 fully-loaded × Fable 48 小时 17.8% routing 份额)。Taste 与 vibe:Nan Yu 给辨义线(taste ≠ 审美 taste,builder 语境下是「做什么/不做什么/怎么落」的选择);Zara Zhang 立 vibe-coded 应用的失败模式(瓶颈从 production 移到 curation);Masad 把 Replit 钉在「跨供应商出货表面」。人与资本:Sama 签下 Noam Brown(等了 10 年);Nikunj 反 tranched round + emerging managers(一条 thread 三件事);Dan Shipper 公开 Every 投资 Tacit(把线拉回 2023 年的「Against Explanations」);Aditya Agarwal 开放 SPC 申请(「问题本身就是 frontier signal」);Josh Woodward 抬 Voltage 团队工作样本立 Google Labs 「Co-create」(culture post 当 retention/recruiting signal)。收尾:AI & I by Every × Kyle Daigle(GitHub COO)——每月 1700 万 PR 指数增长、legal/finance 也用 Copilot、开源维护者被 PR 海啸淹,productive 回应是 agentic code review + agentic merge;采访里抛「AI 克隆」开新 category:用 AI 复刻对方练高难度对话。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-18 source feeds.",
+  "sections": [
+    {
+      "title": "Harness 层在同一天被三边压 / The Harness Layer Gets Compressed from Three Sides",
+      "desc": "Codex(Sottiaux 同帖把 SDK/CLI 钉在「可接任何开源模型」) + Vercel(Rauch 用 GLM 5.2-vs-Opus 4.8 的 eval 给数据,eve 是 React-Next.js 类比下的 agent-deploy 答案) + Replit(Masad 把自身定位成「跨供应商出货表面」)。应用层正在脱钩任何单一模型供应商——这是 Levie 同日长帖的实证底。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT",
+          "sourceUrl": "https://x.com/thsottiaux/status/2067399435009622521",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux (head of Codex) announces a 'sneaky double reset' for Codex users: not only does the rate-limit window reset on its own, every user also gets an extra reset banked for self-service use. Posted during a real capacity incident, framed in a register closer to a fan letter than a status page: 'Dearest gentle codexer' / 'Enjoy'.",
+              "The shape of the tweet is the point: when the platform runs out of capacity during a launch week (Fable-5 was rolling out, and Garry Tan's productivity-loss estimate put Fable traffic at 17.8% of frontier AI-coding dev hours), the recovery move is to over-grant resets and to address users in the second person. It tells you what kind of community OpenAI thinks Codex users are."
+            ],
+            "original": [
+              "Dearest gentle codexer. We did a sneaky double reset. Not only do you get a full reset on us. But you are also getting one into the reset bank to use at your own leisure. Enjoy"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux(Codex 负责人)发了一帖「sneaky double reset」:Codex 用户的 rate-limit 窗口会自动重置,每个人额外再发一个 reset 存到自己的 reset bank 备用。帖子写在一场真实的 capacity 事故期间,语气不是 status page、像是给用户写的情书:「Dearest gentle codexer」/「Enjoy」。",
+              "这帖本身就是信号:launch week(Fable-5 在铺,Garry Tan 估 Fable 流量占 frontier AI-coding 开发者 17.8%)跑出容量事故时,恢复动作不是限制、而是多给 reset、用第二人称称呼用户。从这里你能读出 OpenAI 把 Codex 用户当成什么形状的社群。"
+            ],
+            "original": [
+              "Codex 出了「sneaky double reset」——capacity 事故之后不仅给用户自动重置 rate-limit 窗口,再额外给一份「reset bank」让用户自己用;帖子以「Dearest gentle codexer / Enjoy」写成,语气接近情书,反映 OpenAI 把 Codex 用户当什么形状的社群。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT",
+          "sourceUrl": "https://x.com/thsottiaux/status/2067181377028538431",
+          "en": {
+            "rewrite": [
+              "Same day, Sottiaux also reminds the field that Codex App, CLI, and SDK work with any open-source model — not just OpenAI's. The point is to position Codex as the harness, not the model: a coding agent that is model-neutral by default.",
+              "Read against Rauchg's parallel AI-SDK note (GLM 5.2 passing Opus 4.8 on Vercel's Next.js evals), the picture is that the application layer in mid-2026 is decoupling from any single model provider. Whoever owns the harness, the workflow, the change-management — that's where moat builds, per Levie's same-day thesis."
+            ],
+            "original": [
+              "Reminder that you can use the Codex App, CLI and SDK with any open source model, not just with OpenAI models."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "同一天 Sottiaux 还发了一条提醒:Codex App / CLI / SDK 可以接任何开源模型,不限于 OpenAI 自己的。意思是要把 Codex 定位成 harness、不是 model——一个默认 model-neutral 的 coding agent。",
+              "对照 Rauchg 同周的 AI SDK 笔记(GLM 5.2 在 Vercel 的 Next.js evals 上压过 Opus 4.8),2026 年中应用层的全貌是「正在脱钩任何单一模型供应商」。harness / workflow / 实施这一层落到谁手里,谁就有护城河——Levie 同一天的长帖立的就是这条判断。"
+            ],
+            "original": [
+              "Sottiaux 同帖提醒:Codex App / CLI / SDK 可以接任何开源模型——Codex 把自己定位成 harness、不是 model;对照 Rauchg 同周 AI-SDK 笔记,2026 年中的应用层整体在脱钩单一模型供应商。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO",
+          "sourceUrl": "https://x.com/rauchg/status/2067242482190979186",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch (Vercel CEO) ties three threads in one tweet: (1) The Next.js / React-to-framework relationship is the metaphor — 'Just like React needed Next.js to solve the task of building an actual web application.' (2) The AI SDK is 'more relevant than ever, given the intense model competition landscape. Just today, GLM 5.2, an open model, surpassed Opus 4.8 in our Next.js Evals.' (3) The conclusion: 'the world needs a practical solution for how to build and deploy agents' — which is what eve (the agent-deploy product teased) is for.",
+              "The single most informative data point is the eval: GLM 5.2 (open model) beating Opus 4.8 (closed frontier) on Vercel's Next.js evals, on the same day. Combined with Sottiaux's note that Codex SDK/CLI works with any open model, the day reads as the model-neutral harness layer actually becoming the default — not as a hedge, but as a competitive necessity."
+            ],
+            "original": [
+              "React    →  https://t.co/a4QDSs9wxd\nNext.js  →  https://t.co/nDDXqUmgw5\n\n@aisdk is more relevant than ever, given the intense model competition landscape. Just today, GLM 5.2, an open model, surpassed Opus 4.8 in our Next.js Evals (https://t.co/aporqgIfIh) 🤯\n\nBut the world needs a practical solution for how to build and deploy agents. Just like React needed Next.js to solve the task of building an actual web application. And that's eve."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch(Vercel CEO)把三条线索压成一条:(1)Next.js / React-to-framework 是比喻——「就像 React 需要 Next.js 才能真正造出一个 web app」。(2)AI SDK「在当前激烈的模型竞争格局下比以往更相关,就在今天,开源模型 GLM 5.2 在我们的 Next.js Evals 上超过了 Opus 4.8」。(3)结论:「世界需要一个 practical solution 来 build 和 deploy agent」——这就是 eve(被剧透的 agent-deploy 产品)要做的事。",
+              "当天最有信息量的一点是这次 eval:开源 GLM 5.2 在 Vercel 的 Next.js evals 上压过闭源 frontier 的 Opus 4.8。再叠上 Sottiaux 同帖说的 Codex SDK/CLI 可以接任何开源模型,这一天的故事是「model-neutral 的 harness 层真的变成了默认选项」——不是 hedge,是竞争必需。"
+            ],
+            "original": [
+              "Rauch 把三条压成一条:Next.js / React-to-framework 是比喻;AI SDK 在模型竞争下「比以前更相关」——同一天 GLM 5.2(开源)在 Next.js evals 上压过 Opus 4.8;结论「世界需要一个 practical solution 来 build/deploy agent」,这就是 eve。开源模型在 harness 层评测上压过闭源 frontier 当天成为事实。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:amasad",
+          "authorName": "Amjad Masad",
+          "authorHandle": "@amasad",
+          "authorTag": "Replit CEO",
+          "sourceUrl": "https://x.com/amasad/status/2067363904183783833",
+          "en": {
+            "rewrite": [
+              "Amjad Masad (Replit CEO) puts out a short promo reel: 'Design with Claude, Ship with Replit'. The thesis is cross-product: Claude is for design intent, Replit is for shipping. It pairs naturally with the same-day Claude announcement that Design and Code are now bidirectionally integrated inside the Anthropic surface — Replit's pitch is that you don't have to stay inside one vendor.",
+              "Same tweet thread also drops a Spike Jones interview link and a 'Vibecon' promo — the entire day reads as Replit packaging itself for the 'anyone who can ship' audience. The gap Masad is selling into is real: non-developers want to ship, and they don't all trust one vendor."
+            ],
+            "original": [
+              "Design with Claude, Ship with Replit"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Amjad Masad(Replit CEO)丢了一条短 promo:「Design with Claude, Ship with Replit」。这是跨产品的押注:Claude 负责设计意图,Replit 负责出货。和同一天 Claude 官方宣布 Design ↔ Code 在自家 surface 里双向集成正好互补——Replit 的卖点是「你不必被绑在一家供应商里」。",
+              "同一 thread 还放了一条对 Spike Jones 的采访和一个「Vibecon」promo;一整天 Replit 都在把自己打包给「想出货的非开发者」受众。Masad 卖进去的 gap 真实存在:不会开发的人想出货,而且他们并不只信一家供应商。"
+            ],
+            "original": [
+              "Masad 推「Design with Claude, Ship with Replit」——Replit 把自身定位成 Claude Design + Claude Code 自家集成之外的「跨供应商出货表面」;同 thread 还附 Spike Jones 采访和 Vibecon promo,整套在打包「想出货的非开发者」受众。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Applied AI 层的四件套 / The Four Components of the Applied-AI Playbook",
+      "desc": "Levie 一条长 thread 立住 applied AI 层不是 LLM 之上的薄 wrapper:workflow bridge + model router + FDE 实施 + domain-specific GTM 四件套叠起来才是 playbook;bitter lesson 在极限处可能抹平这一切,但「企业今天就需要帮助转型」——这是今天最值得抄下来的判断。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie/status/2067455756795039957",
+          "en": {
+            "rewrite": [
+              "Aaron Levie (Box CEO) writes the longest open thread of the day: the applied-AI layer is not a thin wrapper over the LLM. 'Despite some of the initial critique that this would just be a thin layer on the LLM, it's turning out that actually driving agentic workflows in an enterprise is far more complex. And anywhere there's complexity you generally gain a moat and value over time.'",
+              "He lays out four load-bearing components, each of which alone is insufficient: (1) Build the workflow bridge — features that capture the data, tools, and human-in-the-loop UX specific to the task; going 'far deeper than just presenting the output tokens' is the moat condition. (2) Act as model router — leverage frontier when needed (GPT-5.5 / Fable), efficient closed/open when not; only platforms with deep evals across all models can do this in a business-model-aligned way. (3) Drive implementation via FDE — change-management, data cleanup, process re-engineering, SLA work; this is per-domain expertise that doesn't commoditize. (4) Build domain-specific GTM — language, security/compliance posture, industry events, SI/consulting partners; generic GTM can't speak the customer's language. Closing note: 'the bitter lesson solves all of this in the limit' is possible, but 'enterprises need help changing today' — what you're shipping now is what wins, regardless of where models land."
+            ],
+            "original": [
+              "The past couple months we may be witnessing what the Applied AI layer will look like at scale. Despite some of the initial critique that this would just be a thin layer on the LLM, it's turning out that actually driving agentic workflows in an enterprise is far more complex. And anywhere there's complexity you generally gain a moat and value over time.\n\nHere are a few of the components that appear to make up the playbook based on the examples we're collectively seeing in coding, legal, healthcare, customer support, financial services and other fields:\n\n* Build the features that bridge the gap between the intelligence and the workflow...\n* Act as the model router balancing frontier intelligence with cheaper models...\n* Drive the actual implementation and change management via FDE or equivalent...\n* Implement domain specific GTM that creates expertise in that field...\n\nA final note. There remains a view that a lot of this is all mitigated by model intelligence alone, and the bitter lesson solves all of this in the limit. That's possibly true, but enterprises need help changing *today*."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Levie(Box CEO)这天写了最长的一条 open thread:applied-AI 层不是 LLM 之上的薄 wrapper。「一开始有人批评说这就是一层薄膜,现在看下来在企业里真正把 agentic workflow 跑起来,远比想象的复杂。复杂度在哪,护城河和价值就在哪积累。」",
+              "他拆出四件撑起 playbook 的事,单件都不够:(1)Build the workflow bridge——为任务捕捉数据、配套专属工具、设计 human-in-the-loop UX;「远远不止把 output tokens 摆出来」才是护城河成立的条件。(2)Act as model router——必要时用 frontier(GPT-5.5 / Fable),能用更便宜的闭源/开源就用便宜的;只有对所有模型都有深度 evals 的平台,才能在商业上对齐地做这件事。(3)Drive implementation via FDE——改 change management、清理数据、重写流程、对齐 SLA;这是按 domain 沉淀的能力,不会被商品化。(4)Domain-specific GTM——语言、安全合规姿态、行业活动、SI/咨询伙伴;通用 GTM 说不出口客户的语言,applied layer 的位就在这。最后一句:bitter lesson 在极限处确实可能把所有这些抹平,但「企业今天就需要帮助转型」——你现在交付的东西就是赢的东西,不管模型以后走到哪。"
+            ],
+            "original": [
+              "Levie 把 applied-AI 层立成四件套:workflow bridge(深于 output tokens 的数据/工具/UX) + model router(frontier vs 自训/开源的混合路由,需深度 evals) + FDE 驱动的实施与 change management + domain-specific GTM;bitter lesson 在极限处可能抹平这一切,但「企业今天就需要帮助转型」——现在交付的就是赢的。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Claude Design ↔ Claude Code 双向集成 / Claude Design and Code Are Bidirectional",
+      "desc": "Claude Design 在所有付费 plan 推 beta,Design ↔ Code 在 Anthropic surface 里双向交接;canvas 支持直接拖/resize/对齐——目标是把「设计师只画图、工程师只敲代码」这条分工边界在产品表面里抹掉。",
+      "cards": [
+        {
+          "authorKey": "x:claudeai",
+          "authorName": "Claude",
+          "authorHandle": "@claudeai",
+          "authorTag": "Anthropic Claude 官方账号",
+          "sourceUrl": "https://x.com/claudeai/status/2067325893001826552",
+          "en": {
+            "rewrite": [
+              "Claude announces Claude Design is rolling out in beta on all paid plans, on web and desktop. The interesting move is the bidirectional handoff with Claude Code: 'Hand a design off to build, or start in Claude Code and sync design projects from your terminal. Export to PDF and PowerPoint, or send your work to more of the tools you already use.'",
+              "The design-and-build loop is now a single surface area: the same product surface (Claude Design canvas / Claude Code terminal) can hand work to the other side without re-grounding. Third tweet in the same thread notes the redesigned editor is 'steadier for daily work' with drag/resize/align controls directly on the canvas — the goal is to remove the 'designer is just sketching, engineer is just typing' boundary that splits most product work today."
+            ],
+            "original": [
+              "Claude Design and Claude Code work together in both directions (rolling out today). Hand a design off to build, or start in Claude Code and sync design projects from your terminal. Export to PDF and PowerPoint, or send your work to more of the tools you already use.\n\nThe redesigned editor is steadier for daily work. New layout controls let you drag, resize, and align elements directly on the canvas."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude 官方账号宣布 Claude Design 在所有付费 plan 上推 beta,web 和桌面端都有。重点动作是和 Claude Code 的双向交接:「把设计交接给 build,或者在 Claude Code 里起手、同步 design project 到你的 terminal。导出到 PDF 和 PowerPoint,或接进你已经在用的其他工具。」",
+              "design-build 循环现在是一个连续的表面:同一个产品表面(Claude Design canvas / Claude Code terminal)能把活交到另一边,不需要重新 ground。同一 thread 的第三条说重做过的编辑器「对日常工作更稳」,canvas 上可以直接拖、resize、对齐——目标是把「设计师只画图、工程师只敲代码」那条分工边界在产品里抹掉。"
+            ],
+            "original": [
+              "Claude Design 在所有付费 plan 推 beta,与 Claude Code 双向交接(设计 → build / build → 设计同步);导出 PDF 和 PowerPoint;重做后的编辑器 canvas 支持拖/resize/对齐——目标是把「设计师只画图、工程师只敲代码」这条分工边界在产品表面里抹掉。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "应用层 economy:Fable-5 ban 的吞吐量换算 / Fable-5 Ban in Throughput Economics",
+      "desc": "Garry Tan 把 Fable-5 ban 按 frontier AI-coding 500 万日活、90 美元/小时 fully-loaded、Fable 48 小时 17.8% routing 份额推算,生产力损失约 1200 万美元/小时——把 frontier AI-coding 的人头成本推到公开台面,关键假设是 routing 份额。",
+      "cards": [
+        {
+          "authorKey": "x:garrytan",
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁",
+          "sourceUrl": "https://x.com/garrytan/status/2067366749411176831",
+          "en": {
+            "rewrite": [
+              "Garry Tan (Y Combinator president) runs the numbers on the Fable-5 ban in productivity terms: 'Rough estimate on $ productivity lost by Fable 5 ban: $12M per hour'. Inputs: frontier AI-coding daily actives mid-2026 = 5M devs; fully-loaded cost = $90/hr; work routed to Fable in 48 hours = 17.8%; Fable is on average ~15% more productive; effective throughput loss per dev = 17.8% × 15% ≈ 2.7% of output; 2.7% × $90/hr = ~$2.40/dev/hr × 5M devs = $12M per working hour.",
+              "Read the assumptions, not just the headline: the 17.8% routing share in 48 hours is the empirical claim that has to be true for the $12M/hr to hold. If Fable's 48-hour share is closer to 10%, the number halves. The thread is less a precise estimate than a public stunt to make the units legible — every frontier-AI-coding dev now has a per-hour productivity unit cost that policy makers can quote."
+            ],
+            "original": [
+              "Rough estimate on $ productivity lost by Fable 5 ban: $12M per hour\n\nFrontier AI-coding daily actives, mid-2026: 5M devs\nFully-loaded cost: $90/hr\n\nWork routed to Fable in 48 hours: 17.8%\nFable is on average ~15% more productive\n\nEffective throughput loss per dev = 17.8% × 15% ≈ 2.7% of output\n\n2.7% × $90/hr = ~$2.40/dev/hr × 5M devs = $12M per working hour"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan(YC 总裁)把 Fable-5 禁令按吞吐量算成钱:「Fable 5 ban 损失的美元生产力粗估:每小时 1200 万美元」。输入参数:2026 年中的 frontier AI-coding 开发者日活 500 万,fully-loaded 成本 90 美元/小时;48 小时内 routing 到 Fable 的工作量 17.8%;Fable 平均高出 ~15% 产出;每个开发者有效吞吐损失 17.8% × 15% ≈ 2.7%;2.7% × 90 美元/小时 ≈ 2.40 美元/dev/小时 × 500 万开发者 = 每小时 1200 万美元。",
+              "看假设而不是只盯结果:48 小时内 routing 份额 17.8% 是这条经验声明能不能成立的关键。如果 Fable 在 48 小时里的份额接近 10%,数字就腰斩。这一帖更像把单位推上线的一种公开 stunt——每个 frontier AI-coding 开发者从此有了一个可以被政策制定者引用的「每小时单位成本」。"
+            ],
+            "original": [
+              "Garry Tan 估 Fable-5 ban 导致的美元生产力损失 ≈ 1200 万美元/小时——按 frontier AI-coding 日活 500 万、fully-loaded 90 美元/小时、48 小时 routing 份额 17.8%、Fable 比替代品高 15% 推算;关键假设是 routing 份额,这一帖把 frontier AI-coding 的人头成本推到公开台面。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Taste & vibe:瓶颈从 production 移到 curation / From Production to Curation",
+      "desc": "Nan Yu 给当天几乎所有 taste 讨论画辨义线(taste = 「做什么/不做什么/怎么落」的选择);Zara Zhang 立 vibe-coded 个人应用的失败模式(build 一天/验证用一周,「为懒的、忘性大的真实人做」),同 thread 把论点扩到写作——瓶颈从 production 移到 curation。",
+      "cards": [
+        {
+          "authorKey": "x:thenanyu",
+          "authorName": "Nan Yu",
+          "authorHandle": "@thenanyu",
+          "authorTag": "AI 创业者 / 投资人",
+          "sourceUrl": "https://x.com/thenanyu/status/2067327619897446721",
+          "en": {
+            "rewrite": [
+              "Nan Yu (founder, Lex) draws a line that the rest of the day's taste-discussion threads keep tripping over: ''taste' is not just taste in aesthetics, the same way 'design' is not just visual design. Feels like half the conversations on the subject are people talking past each other because of this distinction.'",
+              "Follow-up tweet the same hour adds the diagnostic test: 'pg talks about taste and wears cargo shorts, he's clearly not talking about taste in pants.' The point is that 'taste' in a builder context means the set of choices about what to ship / what not to ship / how it lands — not whether the color palette is good. Once you hold that distinction, Zara Zhang's separate thread ('Don't use AI for writing until you develop your own taste and voice') reads as the same idea in application form, not as a competing one."
+            ],
+            "original": [
+              "\"taste\" is not just taste in aesthetics, the same way \"design\" is not just visual design. feels like half the conversations on the subject are people talking past each other because of this distinction\n\nlike, pg talks about taste and wears cargo shorts, he's clearly not talking about taste in pants"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nan Yu(Lex 创始人)画了一条当天几乎所有「taste 讨论」都在踩的线:「『taste』不是审美上的 taste,就像『design』不只是视觉设计。这件事被搞混之后,相关的对话一半都各说各话。」",
+              "同小时下一条给了诊断测试:「pg 谈 taste 但穿 cargo shorts,他显然不是在谈裤子的 taste。」意思是 builder 语境下的「taste」指选择——做什么/不做什么/怎么落——不是配色好不好。一旦拿稳这个区分,Zara Zhang 另一条 thread(「用 AI 写之前先建立自己的 taste 和 voice」)就是同一思想的应用版,不是与之竞争的定义。"
+            ],
+            "original": [
+              "Nan Yu 画线:「taste」不是审美 taste、「design」不只是视觉 design——builder 语境下的 taste 是「做什么/不做什么/怎么落」的选择;同一 hour 给的诊断是「pg 谈 taste 但穿 cargo shorts,显然不是在谈裤子的 taste」——划清之后,当天几条 taste 讨论才互相听得见。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2067313780724551853",
+          "en": {
+            "rewrite": [
+              "Zara Zhang (researcher) names the failure mode of vibe-coded personal apps: 'Building the thing takes a day. Finding out if you'll actually use it takes a week. Most of my dead projects worked fine. I just never opened them. Most products are built for a person who doesn't exist. Someone who remembers to open the app, clicks the right button, does step 1, 2, 3 every day. Real humans are lazy & forgetful. Build for that person instead.'",
+              "The follow-up post in the same thread extends the argument to writing: don't use AI to write before you've developed your own taste for what good content is — 'If the AI produces slop, you won't even recognize it as slop.' The two posts together are a unified thesis: vibe-coding lowers the build cost, but the harder part is picking what to build and whether the target user is a real person. The bottleneck has moved from production to curation."
+            ],
+            "original": [
+              "The thing about vibe coded personal apps:\n\nBuilding the thing takes a day. Finding out if you'll actually use it takes a week. Most of my dead projects worked fine. I just never opened them.\n\nMost products are built for a person who doesn't exist. Someone who remembers to open the app, clicks the right button, does step 1, 2, 3 every day. Real humans are lazy & forgetful. Build for that person instead.\n\nDon't use AI for writing until you develop your own taste and voice"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zara Zhang(researcher)给 vibe-coded 个人应用起了个失败模式:「做出来只要一天,搞清楚自己会不会真用要一周。我大部分死掉的项目功能都没问题,只是我从来没点开过。大部分产品是给一个不存在的人做的——那种记得打开 app、点对按钮、每天做 step 1/2/3 的人。真实的人是懒的、忘性大的。为那种人做。」",
+              "同一 thread 的下一篇把这个论点扩到写作:用 AI 写之前先建立自己对「什么是好内容」的 taste——「如果 AI 产出了 slop,你甚至认不出这是 slop。」两篇合起来是一条完整论: vibe coding 把 build 成本压低,但更难的部分是选做什么、目标用户是不是真人。瓶颈已经从 production 移到 curation。"
+            ],
+            "original": [
+              "Zara Zhang 立 vibe-coded 个人应用的失败模式:build 一天 / 验证用一周;「大部分产品是给一个不存在的人做的,真实的人是懒的、忘性大的——为那种人做」;同 thread 另一帖把论点扩到写作——用 AI 写之前先建立自己的 taste。Vibe coding 的瓶颈从 production 移到 curation。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "人与资本:Noam / tranches / Every / SPC / Google Labs / People & Capital",
+      "desc": "Sama 签下 Noam Brown(等了 10 年,reasoning 研究进入 frontier labs 核心能力线);Nikunj 反 tranched round + emerging managers(一条 thread 三件事);Dan Shipper 公开 Every 投资 Tacit(把线拉回 2023 年的「Against Explanations」);Aditya Agarwal 开放 SPC 申请(「问题本身就是 frontier signal」);Josh Woodward 抬 Voltage 团队样本立 Google Labs 「Co-create」(culture post 当 retention/recruiting signal)。",
+      "cards": [
+        {
+          "authorKey": "x:sama",
+          "authorName": "Sam Altman",
+          "authorHandle": "@sama",
+          "authorTag": "OpenAI CEO",
+          "sourceUrl": "https://x.com/sama/status/2067427421083652131",
+          "en": {
+            "rewrite": [
+              "Sam Altman announces Noam Brown has joined OpenAI: 'noam is one of the people I have most wanted to work with since the very beginning of openai. only took 10 years. i think it will be worth the wait!' The follow-up tweet lands the joke: 'We offer no explanation as to why Noams are so good at AI; we attribute their success, as all else, to divine benevolence.'",
+              "Brown's background is reasoning research — poker (Libratus / Pluribus), then Meta's CICERO diplomacy agent, then the model-self-play-with-search work. The signal for the rest of the field is that reasoning-game research is now firmly inside the frontier labs, not as a side project but as a core capability line. Read with Garry Tan's Fable productivity math: frontier AI-coding has 5M daily actives and a per-hour dollar cost — the labs are still pushing on the capability ceiling that determines whether the $90/hr ratio improves or stays flat."
+            ],
+            "original": [
+              "noam is one of the people I have most wanted to work with since the very beginning of openai.\n\nonly took 10 years.\n\ni think it will be worth the wait!\n\nWe offer no explanation as to why Noams are so good at AI; we attribute their success, as all else, to divine benevolence."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Sam Altman 宣布 Noam Brown 加入 OpenAI:「noam 是我从 OpenAI 一开始就想一起工作的人之一,花了 10 年。我觉得值得等!」下一条把玩笑做实:「我们不解释为什么 Noams 那么擅长 AI;和其他所有事一样,我们把他们的成功归因于神的恩典。」",
+              "Brown 的背景是 reasoning 研究——poker(Libratus / Pluribus),后来 Meta 的 CICERO diplomacy agent,再之后是 model-self-play-with-search 的工作。对外部的信号是:reasoning-game 研究已经稳进 frontier labs,不是 side project、是一条核心能力线。配合 Garry Tan 同帖的 Fable 生产力算式——frontier AI-coding 有 500 万日活 + 每小时单位成本 90 美元——实验室还在往上推那条「决定 90 美元/小时是涨是平的能力天花板」。"
+            ],
+            "original": [
+              "Sama 宣布 Noam Brown 加入 OpenAI——「等了 10 年,值得」;Noam 背景是 reasoning 研究(poker / CICERO / self-play with search),signal:reasoning-game 研究已经成为 frontier labs 的核心能力线,不再是 side project。配合 Garry Tan 那条生产力算式,实验室还在往上推能力天花板。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人",
+          "sourceUrl": "https://x.com/nikunj/status/2067399657639285150",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari (early-stage investor) posts a sustained rant against tranched rounds: 'Why am I so against tranches? Because it f*cks the next employee that joins. I was an early employee at four startups. My 409A would be so high. And why am I being subject to the ridiculous valuation that the lead preferred investor didn't pay. Yes market is going to market and this will keep happening. My only agenda is to let that next employee that joins to not be duped into the FMV of their options.'",
+              "Same day, a second tweet gives the spotter heuristic: 'If someone raises xxM $ at under 10% dilution of the published valuation, you can safely bet it was a tranched round.' The third tweet in the thread shifts to emerging managers: 'The next 12 months we are going to see some incredible emerging managers come out with their debut funds… Each one has intense founder love, unique lens on the world and hustle like no one else.' Three threads in one thread — tranches, detection rule, and the people who are still willing to back founders hard."
+            ],
+            "original": [
+              "Why am I so against tranches?\n\nBecause it f*cks the next employee that joins. I was an early employee at four startups. My 409A would be so high.\n\nAnd why am I being subject to the ridiculous valuation that the lead preferred investor didn't pay.\n\nYes market is going to market and this will keep happening. My only agenda is to let that next employee that joins to not be duped into the FMV of their options.\n\nSpotting a tranched round is so simple in today's market..\n\nIf someone raises xxM $ at under 10% dilution of the published valuation, you can safely bet it was a tranched round.\n\nThis is obviously true for seed/A but sadly seeing weird tranches at the B too!\n\nThe next 12 months we are going to see some incredible emerging manager's come out with their debut funds..\n\nThese are NOT household names today, but will be in the next decade."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kothari(早期投资人)连发三条反对 tranched round:「我为什么这么反对 tranches?因为这坑的是下一个加入的员工。我在四家创业公司都是早期员工,我的 409A 会高得离谱。我凭什么按 lead 投资人根本没付的那个荒谬估值来定价。是的市场就是市场,这种情况会一直发生。我唯一的 agenda 是让下一个加入的员工不要被自己期权的 FMV 骗进去。」",
+              "同帖第二条给出识别方法:「今天的市场里 spot 一个 tranched round 很简单——如果有人在 published valuation 下拿了 xxM 美元而稀释不到 10%,你基本可以押这是 tranched round。」第三条转向 emerging managers:「未来 12 个月会冒出非常多 debut fund 的新兴 manager……每个人都对创始人有极强的爱、有独特的世界视角、拼劲远超同行。」一条 thread 三件事——tranches、识别规则、还愿意用力投人的那一拨人。"
+            ],
+            "original": [
+              "Nikunj 连发三条:反对 tranched round——「坑的是下一个加入 FMV 期权的员工」;给识别规则「公布估值下稀释 < 10% 基本就是 tranched」;再转向 emerging managers「未来 12 个月会出现一大批 debut fund,不是熟名字但十年后会成」——一条 thread 三件事。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "authorName": "Dan Shipper",
+          "authorHandle": "@danshipper",
+          "authorTag": "Every 联合创始人 / AI 写作工具链",
+          "sourceUrl": "https://x.com/danshipper/status/2067386342661624055",
+          "en": {
+            "rewrite": [
+              "Dan Shipper (Every CEO) announces an Every investment: 'we @every make investments every so often in founders building things in AI who we think are excellent. @ninklefitz is one of those founders—and i am also a huge fan of tacit's mission and approach'. The company: Tacit, focused on supporting scientists in interpreting AI-driven science.",
+              "Companion tweet the same day links back to Shipper's 2023 'Against Explanations' essay about how AI might change the sciences, signaling that this is the through-line — Tacit is the realization of a thesis he's been holding for three years. Against the day's Nikunj thread (emerging managers betting on founders), this is a non-traditional capital actor (a research/operator-led media company) doing the same thing: backing the people they'd want to read about."
+            ],
+            "original": [
+              "we @every make investments every so often in founders building things in AI who we think are excellent\n\n@ninklefitz is one of those founders—and i am also a huge fan of tacit's mission and approach\n\n@every @ninklefitz i wrote \"against explanations\" in 2023 about how AI might change the sciences...extremely pumped to see the prospect of so much progress so fast"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Dan Shipper(Every CEO)公开 Every 的一项投资:「我们 @every 偶尔会投资我们认为优秀的、用 AI 造东西的创始人。@ninklefitz 就是其中之一——我同时是 Tacit 使命和路径的超级粉丝」。Tacit 做的是支持科学家解读 AI-driven 的科学研究。",
+              "同天附帖把线拉回 Shipper 2023 年写的「Against Explanations」——讲 AI 可能怎么改变科学——意味着这是他攥了三年的 thesis 的兑现版。对照同天 Nikunj 那条 thread(emerging managers 押创始人),这是一类非常规资本主体(研究/operator 主导的媒体公司)做同一件事:投他们自己想读的那拨人。"
+            ],
+            "original": [
+              "Dan Shipper 公开 Every 投资 Tacit——支持科学家解读 AI-driven 的科学研究;同帖把线拉回 2023 年的「Against Explanations」——这是攥了三年的 thesis 的兑现版;对照 Nikunj 同帖,这是一类「operator 主导的非常规资本」在押他们自己想读的那拨人。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:adityaag",
+          "authorName": "Aditya Agarwal",
+          "authorHandle": "@adityaag",
+          "authorTag": "Dropbox Engineering VP / 前 Facebook 平台工程负责人",
+          "sourceUrl": "https://x.com/adityaag/status/2067306242825949398",
+          "en": {
+            "rewrite": [
+              "Aditya Agarwal (founder, SPC) opens SPC applications and signals what the questions signal: 'The questions SPC members explore signal where the frontier is heading next.' The follow-up tweets ask members and outside readers to read through all the questions and apply — implying the questions themselves are the public artifact, not just the application flow.",
+              "Read against the rest of the day's thesis-stacking — Levie's four-component applied-AI playbook, Sottiaux's model-neutral Codex, Rauch's GLM 5.2-vs-Opus eval — SPC is a smaller-stage move, but the move that fits: a research/operator community whose working surface is 'what should we be working on next.' When the frontier moves weekly, the cheapest signal is to gather people who can read it and let them surface the questions."
+            ],
+            "original": [
+              "The questions SPC members explore signal where the frontier is heading next.\n\nRead through all the questions https://t.co/iT8yVX5SMg\n\nApply to SPC https://t.co/xWaXyqC7Rj"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aditya Agarwal(SPC 创始人)开放 SPC 申请,并指出问题本身就是信号:「SPC 成员探讨的问题本身就指明 frontier 下一步要往哪走。」后续帖邀请申请者先读完全部问题再填——意味着「问题」本身就是公开的工件,不只是 application 流程的一部分。",
+              "对照当天的 thesis-stacking——Levie 的四件套 applied-AI playbook、Sottiaux 的 model-neutral Codex、Rauch 的 GLM 5.2-vs-Opus eval——SPC 是一个小动作,但合得上节拍:一个研究/operator 社群,工作面就是「下一步该做什么」。frontier 每周都在动,最便宜的信号是把能读懂 frontier 的人聚到一起,让他们把问题摆出来。"
+            ],
+            "original": [
+              "Aditya Agarwal 开放 SPC 申请,要点是「SPC 成员探讨的问题本身就是 frontier 下一步走向的 signal」;问题列表是公开工件。当 frontier 每周都在动,最低成本是聚一批能读懂 frontier 的人、让他们把问题摆出来——这是合得上当天 thesis-stacking 节拍的小动作。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:joshwoodward",
+          "authorName": "Josh Woodward",
+          "authorHandle": "@joshwoodward",
+          "authorTag": "Google Labs 产品负责人",
+          "sourceUrl": "https://x.com/joshwoodward/status/2067337173699850487",
+          "en": {
+            "rewrite": [
+              "Josh Woodward (Google Labs lead) lifts a Voltage-team example to illustrate 'Co-create' as a Google Labs value: 'Co-create: one of the key @GoogleLabs values.' The attached visual is internal team work, presented publicly as evidence of the value rather than as a product launch.",
+              "Read against the day: Garry Tan's $12M/hr productivity calc, Sama's Noam announcement, Levie's four-component playbook — this is the value-as-PR thread that runs underneath. Labs with strong culture signals don't win directly, but they retain the people who can execute against the harsher econ. Google Labs' explicit value surfacing is a retention/recruiting signal disguised as a culture post."
+            ],
+            "original": [
+              "Co-create: one of the key @GoogleLabs values.\n\nIt looks like this, thanks Voltage team!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Josh Woodward(Google Labs 负责人)抬出 Voltage 团队的工作样本来立 Google Labs 的「Co-create」价值观:「Co-create:@GoogleLabs 的核心价值观之一。」附图是内部团队的工作,被公开摆出来作为价值证据、不是作为产品发布。",
+              "对照当天:Garry Tan 那个 1200 万美元/小时的生产力算式、Sama 宣布 Noam、Levie 的四件套 playbook——「把价值观当 PR 来发」这条线在底下铺着。强文化信号的 labs 不直接赢,但能留住那种能在更硬经济条件下把事情推进的人。Google Labs 这种把价值观明确摆出来,是披着 culture post 外衣的 retention / recruiting 信号。"
+            ],
+            "original": [
+              "Josh Woodward 把 Voltage 团队工作样本抬出来,立 Google Labs 「Co-create」 价值观;对照当天 Garry Tan 的 $12M/hr 算式 / Sama 签 Noam / Levie 四件套——「强文化信号」是底层的 retention/recruiting 信号,披着 culture post 的外衣。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "一集播客:GitHub COO 谈 AI 没替换开发者 / A Podcast: GitHub's COO on Why AI Hasn't Replaced Developers",
+      "desc": "AI & I by Every × Kyle Daigle(GitHub COO):每月 1700 万 PR 指数增长、客户人口结构在变(legal/finance 也用 Copilot)、开源维护者被 PR 海啸淹——productive 回应是 agentic code review + agentic merge;采访里 Mike Taylor 抛「AI 克隆」开出一个新 category:用 AI 复刻对方练高难度对话(面试、客户对话、给硬反馈)。",
+      "cards": [
+        {
+          "authorKey": "podcast:ai-and-i-by-every",
+          "authorName": "AI & I by Every",
+          "authorHandle": null,
+          "authorTag": "AI 商业与产品深访",
+          "sourceUrl": "https://www.youtube.com/playlist?list=PLuMcoKK9mKgHtW_o9h5sGO2vXrffKHwJL",
+          "en": {
+            "rewrite": [
+              "AI & I by Every brings on Kyle Daigle (GitHub COO) to talk about why AI hasn't replaced developers. The framing datum is the scale: 'We have 17,000,000 pull requests coming in every month to GitHub now, it's growing exponentially.' The conversational hook: Mike Taylor reveals he made an AI clone of Kyle to practice the interview, and Kyle answers in kind with something unexpected.",
+              "Daigle's most informative observations: (1) Customer demographics are shifting — legal/finance teams at GitHub and at customers are using Copilot to build internal apps, so 'developer' is no longer a job title, it's an activity. (2) Open source maintainers are drowning in PRs, and the productive response is agentic code review + agentic merge — not more maintainers. (3) The 'AI clone' reveal surfaces a real new product category: practicing hard conversations (interviews, customer calls, hard feedback) with an AI double of the person on the other side. Read against the day's $200 → $2,000 coding-subscription anxiety: the unit economics question is real, and the answer is more integration (agentic merge, agentic review) not less autonomy."
+            ],
+            "original": [
+              "Speaker 1 | 00:00 - 00:36\nHi, I'm Mike Taylor. I'm the head of tech consulting at Every, and I sat down with Kyle Daigle, the COO of GitHub, and talked to him about what is happening on the front lines of coding agents. We have 17,000,000 poll requests coming in every month to GitHub now, it's growing exponentially and that puts them at the forefront of what's happening in this new economy. We talked about how that affects their users as well as how this affects open source maintainers and we covered a topic which is dear to everyone's hearts. How do I stop my $200 a month coding agent subscription from ballooning into a $2,000 a month usage limit?\n\nSpeaker 1 | 00:36 - 00:45\nIn this interview, did something a little bit different, which is I told Kyle I had made an AI clone of him to practice the interview, and he revealed something surprising in return. Here's the conversation.\n\nSpeaker 1 | 01:27 - 01:46\nSo first thing I think is we were talking about is really interesting is that the demographics of the customer are changing, right? Like a lot of people who previously would maybe never use GitHub or never used developer products before are now using them. So how has that changed the way you decide the product road map?\n\nSpeaker 3 | 02:51 - 03:26\nAnd I see, you know, our legal team at GitHub using the GitHub Copilot app or the finance team... A lot of the folks that, you know, the industry would call knowledge workers or just, you know, non by trade developers are using these tools to build little apps or assets for them.\n\nSpeaker 1 | 03:26 - 03:38\nYeah. And then how do you deal with the or how do you help developers deal with the burden of all of that extra you know, there's a flood of PRs now, open source maintainers I talked to are, like, drowning. Yeah. How do you how do you like, what what needs to happen to help them?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "AI & I by Every 这一集请到 Kyle Daigle(GitHub COO),聊「为什么 AI 还没替换掉开发者」。开场的数据基线是规模:「GitHub 现在每个月有 1700 万个 pull request 在进来,而且是指数增长。」整集的对话钩子是:Mike Taylor 透露他做了一个 Kyle 的 AI 克隆来练习这次采访,Kyle 用一个意料之外的回应接了回去。",
+              "Daigle 给出的最有信息量的几点:(1)客户人口结构在变——GitHub 自己的 legal/finance 团队和客户的 legal/finance 团队都在用 Copilot 搭内部应用,所以「开发者」不再是岗位、是动作。(2)开源维护者被 PR 海啸淹了,productive 的回应是 agentic code review + agentic merge——不是再加维护者。(3)「AI 克隆」这一手抛出了一个真正的新产品 category:用 AI 复刻对方,练习高难度对话(面试、客户对话、给硬反馈)。对照当天「200 美元月费 coding agent 怎么不爆到 2000 美元」的焦虑:单位经济的问题是真实的,答案是更多集成(agentic merge / agentic review),而不是更少自主。"
+            ],
+            "original": [
+              "AI & I by Every × Kyle Daigle(GitHub COO):每月 1700 万 PR 指数增长、客户人口结构在变(legal/finance 也用 Copilot 搭内部应用)、开源维护者被 PR 海啸淹——productive 回应是 agentic code review + agentic merge;采访里 Mike Taylor 抛「AI 克隆」开出新 category:用 AI 复刻对方练高难度对话。对照当天 unit-econ 焦虑,答案是更多集成,不是更少自主。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

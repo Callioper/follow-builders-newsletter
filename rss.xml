@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 17 Jun 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jun 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-06-18 · 立型日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-18-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-18-rerun.html</guid>
+      <pubDate>Thu, 18 Jun 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[6-18 这天的 Follow Builders 主线不是单一事件,而是 Levie 一条长 thread 把 applied AI 层在企业里真正跑起来的样子摆出来:workflow bridge、model router、FDE 驱动的实施、domain-specific GTM 四件套叠在一起才是 playbook;「bitter lesson 在极限处可能抹平这一切,但企业今天就需要帮助转型」是这一天的潜台词。Harness 这一层在同一天从三边被压:Codex(Sottiaux 同帖把 Codex SDK/CLI 钉在「可接任何开源模型」)、Vercel(Rauch 给数据——开源 GLM 5.2 在 Next.js evals 上压过闭源 Opus 4.8,eve 是 React-Next.js 类比下的 agent-deploy 答案)、Claude(Design ↔ Code 在所有付费 plan 推 beta,canvas 直接拖/resize/对齐)。应用层 economy 这边:Garry Tan 给 Fable-5 ban 算了一笔账——按 frontier AI-coding 500 万日活、90 美元/小时 fully-loaded、Fable 48 小时 17.8% routing 份额推,生产力损失约 1200 万美元/小时,frontier AI-coding 的人头成本第一次被推到公开台面;taste 与 vibe 这一面 Nan Yu 给辨义线(「taste」≠ 审美 taste,builder 语境下是「做什么/不做什么/怎么落」的选择)、Zara Zhang 立 vibe-coded 应用的失败模式(build 一天/验证用一周,瓶颈从 production 移到 curation)、Masad 把 Replit 钉在「跨供应商出货表面」。人与资本:Sama 终于签下 reasoning 背景的 Noam Brown(等了 10 年);Nikunj 连发三条——反对 tranched round、给识别规则、再转向 emerging managers——一条 thread 三件事;Dan Shipper 公开 Every 投资 Tacit,把线拉回 2023 年他写的「Against Explanations」;Aditya Agarwal 开放 SPC 申请,关键句「SPC 探讨的问题本身就是 frontier signal」;Josh Woodward 把 Voltage 团队工作样本抬出来立 Google Labs 「Co-create」——culture post 当 retention/recruiting signal。收尾是 AI & I by Every 请到 GitHub COO Kyle Daigle:每月 1700 万 PR 指数增长,客户人口结构在变(legal/finance 也用 Copilot),开源维护者被 PR 海啸淹——productive 回应是 agentic code review + agentic merge,不是再加维护者。整集抛出的「AI 克隆」开了一个新 category:用 AI 复刻对方练高难度对话(面试、客户对话、给硬反馈)。]]></description>
+      <category>Harness 层在同一天被三边压 / The Harness Layer Gets Compressed from Three Sides, Applied AI 层的四件套 / The Four Components of the Applied-AI Playbook, Claude Design ↔ Claude Code 双向集成 / Claude Design and Code Are Bidirectional, 应用层 economy:Fable-5 ban 的吞吐量换算 / Fable-5 Ban in Throughput Economics, Taste &amp; vibe:瓶颈从 production 移到 curation / From Production to Curation, 人与资本:Noam / tranches / Every / SPC / Google Labs / People &amp; Capital, 一集播客:GitHub COO 谈 AI 没替换开发者 / A Podcast: GitHub&apos;s COO on Why AI Hasn&apos;t Replaced Developers</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-06-17 · Cursor 收编日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-17-rerun.html</link>
