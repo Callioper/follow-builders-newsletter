@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 18 Jun 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 19 Jun 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-06-19 · 出件日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-19-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-19-rerun.html</guid>
+      <pubDate>Fri, 19 Jun 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[6-19 这天的 Follow Builders 主线是把 Claude Code 从 coding 工具变成 publishing 工具:Claude 官方(claudeai)发 Artifacts,Boris Cherny 第一人称报用法清单——可视化代码解释、系统图、动画选项预览、数据分析、团队 dashboard,Artifact 这种格式把五件事压成一件;Cat Wu 把线接到了 deploy——Claude Team / Enterprise 上能直接把 HTML 站点发出来;Thariq 把 share + edit 拆出来,链接原地迭代,「other Claudes」那句藏着的是另一个 Claude session 把 artifact 当 context 接走;Peter Yang 把底下那个日常 UX 问题问出来——desktop 在跑的时候怎么 steering。Harness 这一层在同一天继续被改写:Sottiaux 把 Codex 锚到「What do you use」这个品类问题上,Steinberger 一句话把软件世界压成两类——快 API 和慢 API,中间地带被 streaming + durable execution 挤掉。Open-weights 这一周继续收成:Swyx 单日 +55% 的笑话背后是真实的篮子波动,Levie 把这件事的意义叠成四件——sovereign AI、post-train 自由、按 workload 控成本、用得起更多 AI。Vibe coding 作为一门手艺也在成型:Nan Yu 用「multi-turn 让 agent 反过来问你强调什么」把用户脑子留在线上;Zara Zhang 的 Frontend Slides skill 让 skill 开始变成 taste 的最小复用单元。People & capital 这边:Garry Tan 把对$200M 法案的批评升成「仍然在建造的美国值得捍卫」这句口号;Nikunj 给 Artie self-serve launch 庆祝;Dan Shipper 给 Every 招 managing editor——Oxford comma / em dash 全都要,AI-pilled 也要,岗位本身是工艺宣言。博客补一句官方版:artifact 用同一 session 的完整 context 构建,每次 publish 是同链接下的新版本。收尾:MAD × Stephen Balaban「State of AI Compute 2026」——GPU 从来不是 commodity,neocloud 还在 underbuild,H100 现在的租赁比买价贵,gw 级 AI 工厂是新物理。]]></description>
+      <category>Claude Code 出 Artifacts / Claude Code Becomes a Publishing Surface, Open-weights 这一周收成 / Open-Weights Week Settles, Vibe coding 当成工艺 / Vibe Coding as a Craft, People &amp; capital 这周议程 / This Week&apos;s People &amp; Capital Agenda, Harness 层被改写 / The Harness Layer Is Being Rewritten, 一篇博客:Claude Blog 把同一件事讲透 / One Blog: Claude Blog Lays It Out, 一集播客:State of AI Compute 2026 / A Podcast: State of AI Compute 2026</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-06-18 · 立型日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-18-rerun.html</link>

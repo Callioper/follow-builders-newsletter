@@ -1,0 +1,488 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-06-19",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "6-19 这天的 Follow Builders 主线是把 Claude Code 从 coding 工具变成 publishing 工具:Claude 官方(claudeai)发 Artifacts,Boris Cherny 第一人称报用法清单——可视化代码解释、系统图、动画选项预览、数据分析、团队 dashboard,Artifact 这种格式把五件事压成一件;Cat Wu 把线接到了 deploy——Claude Team / Enterprise 上能直接把 HTML 站点发出来;Thariq 把 share + edit 拆出来,链接原地迭代,「other Claudes」那句藏着的是另一个 Claude session 把 artifact 当 context 接走;Peter Yang 把底下那个日常 UX 问题问出来——desktop 在跑的时候怎么 steering。Harness 这一层在同一天继续被改写:Sottiaux 把 Codex 锚到「What do you use」这个品类问题上,Steinberger 一句话把软件世界压成两类——快 API 和慢 API,中间地带被 streaming + durable execution 挤掉。Open-weights 这一周继续收成:Swyx 单日 +55% 的笑话背后是真实的篮子波动,Levie 把这件事的意义叠成四件——sovereign AI、post-train 自由、按 workload 控成本、用得起更多 AI。Vibe coding 作为一门手艺也在成型:Nan Yu 用「multi-turn 让 agent 反过来问你强调什么」把用户脑子留在线上;Zara Zhang 的 Frontend Slides skill 让 skill 开始变成 taste 的最小复用单元。People & capital 这边:Garry Tan 把对$200M 法案的批评升成「仍然在建造的美国值得捍卫」这句口号;Nikunj 给 Artie self-serve launch 庆祝;Dan Shipper 给 Every 招 managing editor——Oxford comma / em dash 全都要,AI-pilled 也要,岗位本身是工艺宣言。博客补一句官方版:artifact 用同一 session 的完整 context 构建,每次 publish 是同链接下的新版本。收尾:MAD × Stephen Balaban「State of AI Compute 2026」——GPU 从来不是 commodity,neocloud 还在 underbuild,H100 现在的租赁比买价贵,gw 级 AI 工厂是新物理。"
+  },
+  "archive": {
+    "title": "出件日",
+    "desc": "Claude Code 不再只是 coding 工具——Artifacts 让一段 session 直接变成可分享的活页面(claudeai / bcherny / _catwu / trq212 / petergyang),博客版把同一件事讲透;open-weights 这一周收成,swyx 单日 +55%、levie 把意义叠成四件;harness 层继续被改写,Sottiaux 把 Codex 锚到「What do you use」、Steinberger 一句话把世界压成快 / 慢 API 两类;vibe coding 作为工艺在成型,Nan Yu 用 multi-turn 把用户脑子留在线上、Zara Zhang 的 Frontend Slides skill 让 skill 成为 taste 的最小单元;Garry Tan 把对 $200M 法案的批评升成口号,Nikunj 给 Artie 庆祝,Dan Shipper 给 Every 招 managing editor——工艺写进 job post;MAD × Stephen Balaban 把镜头拉到物理层——gw 级 AI 工厂是新物理。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-19 source feeds.",
+  "sections": [
+    {
+      "title": "Claude Code 出 Artifacts / Claude Code Becomes a Publishing Surface",
+      "desc": "Claude 官方把 Artifacts 当成「把 session 转成可分享的活页面」这一面立起来;Boris Cherny 列第一人称用法清单——可视化代码解释、系统图、动画预览、数据分析、团队 dashboard,五件事压成一件;Cat Wu 把线接到 deploy,Claude Team / Enterprise 能直接发 HTML 站点;Thariq 把 share + edit 拆出来,链接原地迭代,「other Claudes」藏的是下一步——另一段 Claude session 能把 artifact 当 context 接走;Peter Yang 把底下那个 UX 问题拎出来——desktop 在跑的时候怎么 steering。",
+      "cards": [
+        {
+          "authorKey": "x:claudeai",
+          "authorName": "Claude",
+          "authorHandle": "@claudeai",
+          "authorTag": "Anthropic Claude 官方账号",
+          "sourceUrl": "https://x.com/claudeai/status/2067671912038240487",
+          "en": {
+            "rewrite": [
+              "Claude (Anthropic's official account) announces a new surface inside Claude Code: 'New in Claude Code: Artifacts. Interactive pages built from your session, like a PR walkthrough or a living project dashboard, shared with your team at a private link.' Beta first on Team and Enterprise plans.",
+              "The framing: Claude Code is no longer only a coding tool. It is now a publishing tool — turn a session into a live page anyone on the team can open, and the page keeps refreshing as the session keeps working. The shape is closer to a shared working surface than a chat log."
+            ],
+            "original": [
+              "New in Claude Code: Artifacts.\n\nInteractive pages built from your session, like a PR walkthrough or a living project dashboard, shared with your team at a private link.\n\nAvailable in beta on Team and Enterprise plans."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude(Anthropic 官方账号)给 Claude Code 加了一个新面:「New in Claude Code: Artifacts。把一段会话直接生成可交互页面——比如 PR walkthrough、活的项目仪表盘——通过一个私有链接分享给团队。Beta 先在 Team 和 Enterprise 上推。",
+              "官方口径意味着 Claude Code 不再只是 coding 工具,也是 publishing 工具——一段 session 拉出来就是一个团队任何人都能打开的活页面,session 还在动,页面就一直刷新。它比「聊天记录」更像一块共享工作面。"
+            ],
+            "original": [
+              "Claude Code 新功能:Artifacts。把 session 内容直接生成可交互页面(PR walkthrough / 活的 project dashboard),通过私有链接分享给团队;Beta 已在 Team 和 Enterprise 推。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:claudeai",
+          "authorName": "Claude",
+          "authorHandle": "@claudeai",
+          "authorTag": "Anthropic Claude 官方账号",
+          "sourceUrl": "https://x.com/claudeai/status/2067671913418063892",
+          "en": {
+            "rewrite": [
+              "Claude's follow-up clarifies what 'live' means in the Artifacts rollout: 'As your session keeps working, the artifact refreshes, so everyone you've shared it with is always looking at the latest version.' Single link, versioned in place — no separate 'v2' pages.",
+              "This is the part that changes team workflow. A PR walkthrough, a release checklist, a system-explainer page — once the link is shared, the reader never has to refresh or ask 'is this the latest'. The session is the source of truth; the page is just the window."
+            ],
+            "original": [
+              "As your session keeps working, the artifact refreshes, so everyone you've shared it with is always looking at the latest version."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude 的第二条给「live」下定义:「session 还在动,artifact 就一直在刷新,所有分享过链接的人看到的都是最新版」。同一份链接原地迭代,不再有 v1 / v2 副本的混乱。",
+              "真正改变团队协作的是这一条——一个 PR walkthrough、一份 release checklist、一张系统说明页,链接一发出去,读者永远不用问「这是最新版吗」。session 是 source of truth,页面只是它的一扇窗。"
+            ],
+            "original": [
+              "Claude 第二条:Artifacts 的「活」是 session 还在动,artifact 就一直刷新——同一份链接,所有人看到的永远是最新版。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:bcherny",
+          "authorName": "Boris Cherny",
+          "authorHandle": "@bcherny",
+          "authorTag": "Salesforce AI 工程负责人",
+          "sourceUrl": "https://x.com/bcherny/status/2067700226669060207",
+          "en": {
+            "rewrite": [
+              "Boris Cherny (Salesforce AI eng lead, and one of the original Claude Code authors) gives the first-person use-case list: 'I've been using Artifacts in Claude Code for everything: visual explanations of tricky code, system diagrams, quick previews of a few animation options, data analyses and dashboards I share with the team. They are a game changer for how I work with Claude.'",
+              "The interesting move is the breadth. Boris is not describing one killer feature — he is naming six surface areas where the artifact format replaces a slide, a doc, a wiki, or a meeting: visual code explanations, system diagrams, animation previews, data analyses, dashboards. The artifact format collapses five formats into one."
+            ],
+            "original": [
+              "I've been using Artifacts in Claude Code for everything: visual explanations of tricky code, system diagrams, quick previews of a few animation options, data analyses and dashboards I share with the team. They are a game changer for how I work with Claude. Can't wait to hear what you think!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Boris Cherny(Salesforce AI 工程负责人、Claude Code 早期作者之一)给的第一人称用例清单:「我拿 Claude Code 的 Artifacts 做所有事——给复杂代码配可视化解释、画系统图、给几个动画选项出预览、给团队做数据分析和 dashboard。这玩意改变了我跟 Claude 协作的方式。」",
+              "真正值得注意的是它的广度。Boris 没讲单一杀手功能,他列了 6 个场景:复杂代码可视化、系统图、动画选项预览、数据分析、dashboard——artifact 这个格式把幻灯片、文档、wiki、开会这五件事压成了一件。"
+            ],
+            "original": [
+              "Boris Cherny 第一人称用 Artifacts 做:代码可视化解释、系统图、动画选项预览、数据分析、团队 dashboard——「改变了我跟 Claude 协作的方式」。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:_catwu",
+          "authorName": "Cat Wu",
+          "authorHandle": "@_catwu",
+          "authorTag": "Anthropic 产品工程",
+          "sourceUrl": "https://x.com/_catwu/status/2067674836726694200",
+          "en": {
+            "rewrite": [
+              "Cat Wu (Anthropic product eng lead) wires Artifacts to the deployment surface: 'On Claude Team and Claude Enterprise, you can now use Claude Code to deploy HTML sites and share these with your teammates! This has changed how we work internally. Artifacts is great format for communicating architecture changes, data analyses, and new prototypes.'",
+              "Cat's card is the one that flips Artifacts from 'fancy preview' to 'real internal web surface'. Three concrete use-cases she names — architecture changes, data analyses, new prototypes — are exactly the meetings that eat engineering teams alive. Artifacts replaces the doc + screenshot + Loom loop with a live page that updates as the work happens."
+            ],
+            "original": [
+              "On Claude Team and Claude Enterprise, you can now use Claude Code to deploy HTML sites and share these with your teammates!\n\nThis has changed how we work internally. Artifacts is great format for communicating architecture changes, data analyses, and new prototypes."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Cat Wu(Anthropic 产品工程负责人)把 Artifacts 接到了部署面:「Claude Team 和 Enterprise 上,Claude Code 现在能直接 deploy HTML 站点给团队成员!这改变了我们内部的协作方式。Artifacts 是讲架构变更、数据分析、新原型的极佳格式。」",
+              "Cat 这条把 Artifacts 从「花哨的预览」翻成了「真正的内部 web 面」。她点名的三个场景——架构变更、数据分析、新原型——刚好是吃掉工程团队时间的那几类会。Artifacts 把「文档 + 截图 + Loom 录屏」那一套换成一张随工作进度自动更新的活页面。"
+            ],
+            "original": [
+              "Cat Wu:Claude Team / Enterprise 现在能用 Claude Code 直接 deploy HTML 站点给团队——架构变更、数据分析、新原型这三类沟通场景被 Artifacts 重写了。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:trq212",
+          "authorName": "Tao Li",
+          "authorHandle": "@trq212",
+          "authorTag": "AI 研究员 / Follow Builders 维护者",
+          "sourceUrl": "https://x.com/trq212/status/2067682475611242546",
+          "en": {
+            "rewrite": [
+              "Thariq (Claude Code team) breaks out the share + edit path: 'Claude Code can now upload and edit HTML artifacts that you can share with your team or other Claudes! Starting with teams so you can share internally with your team, coming to Pro and MAX plans soon!'",
+              "Two distinct moves in one tweet. (1) Upload — Claude Code can ingest an existing HTML file and treat it as the artifact surface, not only generate from scratch. (2) Edit — the artifact is mutable in-session; the share link reflects the latest edit, not a frozen snapshot. The 'other Claudes' hint is the second-order move: another Claude session can pick up the artifact as context."
+            ],
+            "original": [
+              "Claude Code can now upload and edit HTML artifacts that you can share with your team or other Claudes!\n\nStarting with teams so you can share internally with your team, coming to Pro and MAX plans soon!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thariq(Claude Code 团队)把 share + edit 这条路径拆出来:「Claude Code 现在能 upload 和 edit HTML artifacts,分享给团队,也能分享给其他 Claudes!先在 Team plan 上推内部分享,Pro 和 MAX 很快跟上!」",
+              "一条推里其实是两件事。(1)Upload——Claude Code 能把现成的 HTML 文件吸进来当 artifact 面,不再只能从零生成。(2)Edit——artifact 在 session 里可改,分享出去的链接始终是最新版本,不是冻结快照。尾句「other Claudes」藏的是第二步:另一个 Claude session 可以把这个 artifact 当 context 接过去继续。"
+            ],
+            "original": [
+              "Thariq:Claude Code 现在能 upload + edit HTML artifacts,分享给团队或其他 Claudes——Team plan 先推,Pro / MAX 跟上。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者",
+          "sourceUrl": "https://x.com/petergyang/status/2067760098265706566",
+          "en": {
+            "rewrite": [
+              "Peter Yang (creator economy writer, ex-Airtable PM) surfaces the everyday UX question underneath the launch: 'How do you steer Claude Code with new prompts in the desktop app while it's working?'",
+              "The Artifacts story is about output; Peter's question is about the missing input side. Once Claude Code starts producing live pages on its own, the natural next question is: how do you interrupt the loop, redirect it, hand it a new constraint mid-session? The desktop app's answer to this question — the in-flight steering surface — will determine whether artifacts feel like a co-pilot or a slot machine."
+            ],
+            "original": [
+              "How do you steer Claude Code with new prompts in the desktop app while it's working?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang(创作者经济作者、前 Airtable PM)把 launch 底下那个日常 UX 问题拎出来:「Claude Code 在 desktop app 里跑着的时候,我怎么用新 prompt 把它拐到另一条路上?」",
+              "Artifacts 讲的是 output,Peter 问的是缺的 input 那面。Claude Code 一旦开始自己产活页面,下一个自然问题就是:怎么在它跑着的时候打断它、把它拽回来、半路塞个新约束?desktop app 怎么回答这个问题——in-flight steering 这一面怎么落地——决定了 artifact 让你感觉像 co-pilot 还是老虎机。"
+            ],
+            "original": [
+              "Peter Yang:Claude Code desktop 在跑的时候,怎么用新 prompt 中途把它拐走?——Artifacts 之后,这是真正决定 UX 感的下一个问题。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Open-weights 这一周收成 / Open-Weights Week Settles",
+      "desc": "Levie 把 open-weights 追到 frontier 的意义叠成四件——sovereign AI、post-train 自由、按 workload 控成本、用得起更多 AI;Swyx 那句「一天 +55% 我应该开基金」是这一周篮子真实波动的轻量表达。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie/status/2067821985342878180",
+          "en": {
+            "rewrite": [
+              "Aaron Levie (Box CEO) names the macro meaning of the week: 'The fact that open weights models are being discussed credibly at this level of capability should be a huge update for many. The implications of open models getting to frontier performance ensures that you can always have sovereign AI, have the ability to post train for your specific workflows, cost optimize for various workloads, and actually afford to do much more with AI.'",
+              "Levie stacks four downstream effects of open-weights parity — sovereign AI, post-training freedom, workload-level cost optimization, and 'actually afford to do much more'. The last one is the load-bearing claim: open-weights is not just about price competition, it is about unlocking use cases that closed-weights economics made unaffordable. The tagline is the kicker: 'Huge win for the applied AI layer.'"
+            ],
+            "original": [
+              "The fact that open weights models are being discussed credibly at this level of capability should be a huge update for many.\n\nThe implications of open models getting to frontier performance ensures that you can always have sovereign AI, have the ability to post train for your specific workflows, cost optimize for various workloads, and actually afford to do much more with AI (which opens up meaningfully different applications).\n\nHuge win for the applied AI layer."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie(Box CEO)给这一周定调:「这一档能力的 open weights 模型能被认真讨论,对很多人来说本身就是大新闻。open 模型追到 frontier 的真正含义是:你永远可以拥有 sovereign AI、可以按自己的工作流 post-train、可以按 workload 优化成本、真正用得起更多 AI。」",
+              "Levie 叠了四件 downstream:sovereign AI、post-train 自由、按 workload 控成本、「真正用得起更多 AI」。最后一条才是真正的扛把子——open-weights 不只是价格战,是在解锁 closed-weights 经济模型下根本用不起的那些场景。文末一句「applied AI 层的巨大胜利」是 Levie 自己给这件事定的题。"
+            ],
+            "original": [
+              "Levie:open weights 在这一档能力上被认真讨论,意味着 sovereign AI + post-train 自由 + 按 workload 控成本 + 真正用得起更多 AI——「applied AI 层的巨大胜利」。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:swyx",
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师",
+          "sourceUrl": "https://x.com/swyx/status/2067764968808915392",
+          "en": {
+            "rewrite": [
+              "Swyx (DX engineer, AI Engineer Summit organizer) jokes-but-not: '+55% in one day. i should start a fund (dm if you would actually help me run one, i have no idea how to run one).'",
+              "The joke lands because the underlying number is real — whatever basket Swyx is tracking (likely an open-weights or AI-infra basket) just printed +55% in a single day. 'I should start a fund' is the editorial instinct: this week's single-day moves are large enough that retail tracking them feels like arbitrage. The follow-up about needing help running one is the honest part — most engineers would not know how to spin up a fund vehicle, and Swyx is naming that gap."
+            ],
+            "original": [
+              "+55% in one day. i should start a fund\n\n(dm if you would actually help me run one, i have no idea how to run one)"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx(DX 工程师、AI Engineer Summit 组织者)半开玩笑半当真:「一天 +55%。我应该开个基金(dm 我,如果你真的会帮我跑——我完全不知道怎么搞。)」",
+              "这个玩笑之所以响,是因为底层数字是真的——Swyx 在跟踪的那个篮子(大概率是 open-weights 或 AI-infra 相关)单日涨了 55%。「我应该开基金」是编辑本能:这一周单日波动大到个人跟单都感觉像套利。「需要人帮忙」那句反而最实在——大多数工程师不知道怎么搭一支基金载体,Swyx 把这个 gap 说出来了。"
+            ],
+            "original": [
+              "Swyx:单日 +55%。我应该开个基金(dm,如果你会帮我跑,我完全不会)——背后的数字是这一周 open-weights / AI-infra 篮子的真实波动。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Vibe coding 当成工艺 / Vibe Coding as a Craft",
+      "desc": "Nan Yu 给出 agent UX 的工艺级复盘——one-shot 让用户跳过思考,多轮让 agent 反过来问「要强调什么」才是质量控制;Zara Zhang 的 Frontend Slides skill 让 skill 开始变成 taste 的最小复用单元。",
+      "cards": [
+        {
+          "authorKey": "x:thenanyu",
+          "authorName": "Nan Yu",
+          "authorHandle": "@thenanyu",
+          "authorTag": "AI 创业者 / 投资人",
+          "sourceUrl": "https://x.com/thenanyu/status/2067703108344369306",
+          "en": {
+            "rewrite": [
+              "Nan Yu (Linear product) shares a craft-level lesson on agent UX: 'It took us a lot of iterations to find the right pattern for this. Early on we were very naive and we thought that the agent could one shot project updates without much input from users. That approach ended up creating a bunch of slop, because users disengaged their brain from the process of writing an update. By switching to a multi turn interactive mode, the agent prompts you and asks you what to emphasize, what's most important, what context is missing, etc. This simple change elicits much better project updates and ensures that the user has a chance to steer.'",
+              "Nan's post-mortem is the cleanest argument for the 'agent-as-collaborator, not agent-as-typist' design. One-shot generation sounds appealing in the demo; in production it produces slop because it lets the user skip the thinking. The fix — multi-turn, where the agent asks you what to emphasize — is not a UX polish, it is a quality control mechanism. The user's brain stays in the loop because the agent forces it to."
+            ],
+            "original": [
+              "It took us a lot of iterations to find the right pattern for this. Early on we were very naive and we thought that the agent could one shot project updates without much input from users.\n\nThat approach ended up creating a bunch of slop, because users disengaged their brain from the process of writing an update.\n\nBy switching to a multi turn interactive mode, the agent prompts you and asks you what to emphasize, what's most important, what context is missing, etc.\n\nThis simple change elicits much better project updates and ensures that the user has a chance to steer rather than simply being asked to approve something."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nan Yu(Linear 产品)给出一份 agent UX 的工艺级复盘:「这个 pattern 我们调了好几轮才定下来。早期我们太天真,以为 agent 能 one-shot 写出项目更新,几乎不用用户参与。结果产出一堆 slop,因为用户在写更新的过程中把脑子完全脱开了。改成多轮交互模式——agent 反过来问你要强调什么、最重要的点是什么、缺什么上下文——之后,这个简单的改动拉出了明显更好的项目更新,也保证了用户始终有机会 steering,而不是只被要求 approve。」",
+              "Nan 的复盘是「agent 当 collaborator,不当 typist」这个设计最干净的论据。demo 里 one-shot 看着漂亮,生产里产 slop,因为它让用户跳过了思考。修法——多轮、agent 反过来问你强调什么——不是 UX 细节,是质量控制机制。用户的脑子留在线上,是因为 agent 逼着它留在线上。"
+            ],
+            "original": [
+              "Nan Yu:agent 一次性产出项目更新看起来爽,实际产 slop——因为用户跳过了思考。多轮 + 让 agent 反过来问「要强调什么」,才是 quality control 机制。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2067850383758901669",
+          "en": {
+            "rewrite": [
+              "Zara Zhang (Anthropic Claude Relations) ships a craft artifact: 'Made a beautiful HTML deck using my Frontend Slides skill; very happy with how it turned out! Lots of easter eggs (e.g. you can click any image to enlarge them, lots of nested content/hyperlinks/interactive elements etc).'",
+              "What looks like a humble 'I shipped a slide deck' tweet is actually the day's clearest example of skill-layer maturity. The artifact — an HTML deck with click-to-enlarge images, nested hyperlinks, and interactive elements — was produced by a reusable 'Frontend Slides skill', not by a custom one-off build. Skills are starting to function as the unit of taste: one skill encodes a deck aesthetic, and any future deck reuses it."
+            ],
+            "original": [
+              "Made a beautiful HTML deck using my Frontend Slides skill; very happy with how it turned out!\n\nLots of easter eggs (e.g. you can click any image to enlarge them, lots of nested content/hyperlinks/interactive elements etc)"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zara Zhang(Anthropic Claude Relations)交出一件工艺级成品:「用我的 Frontend Slides skill 做了一份漂亮的 HTML 幻灯片,效果我很满意。里面塞了不少彩蛋——比如点任意图片都能放大看、嵌套内容、超链接、可交互元素等等。」",
+              "看起来是谦虚的「我做了一份幻灯片」推文,其实是今天 skill 层成熟最清楚的例子——这份带点开放大、嵌套超链接、可交互元素的 HTML deck,是由一个可复用的「Frontend Slides skill」生成的,不是一次性手搓。Skill 开始扮演 taste 的最小载体:一个 skill 编码一份 deck 美学,以后所有 deck 都自动复用。"
+            ],
+            "original": [
+              "Zara Zhang 用 Frontend Slides skill 做了一份 HTML 幻灯片(可点开放大、嵌套超链接、可交互)——skill 开始变成 taste 的最小复用单元。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "People & capital 这周议程 / This Week's People & Capital Agenda",
+      "desc": "Garry Tan 把对 $200M 法案的批评升成「仍然在建造的美国值得捍卫」的口号,跟祖辈的移民记忆接上;Nikunj 给 Artie self-serve launch 庆祝,这条是 AI infra 周里 AI 派对周那一面;Dan Shipper 给 Every 招 managing editor——Oxford comma / em dash 全都要,AI-pilled 也要,岗位本身就是工艺宣言。",
+      "cards": [
+        {
+          "authorKey": "x:garrytan",
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁",
+          "sourceUrl": "https://x.com/garrytan/status/2067637324763316499",
+          "en": {
+            "rewrite": [
+              "Garry Tan (Y Combinator president) escalates the policy line: 'AP reports on the $200M sales level. Asset seizure is evil. My grandparents and parents generations came to America to flee asset seizure and this ideology. We came here to build prosperity. An America that still builds is worth defending.'",
+              "Garry's frame is not about the bill — it is about the historical lineage. Asset seizure as a policy line connects to immigrant memory; YC's stance is that any framework confiscating upside from successful AI startups is a re-run of what previous generations left home to escape. The 'America that still builds' framing is the slogan that turns a bill critique into a movement rallying point."
+            ],
+            "original": [
+              "AP reports on the $200M sales level\n\nAsset seizure is evil. My grandparents and parents generations came to America to flee asset seizure and this ideology. We came here to build prosperity.\n\nAn America that still builds is worth defending."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan(YC 总裁)把政策线抬到一个高度:「AP 报道 $200M 营收门槛。资产没收是邪恶的。我祖父母和父母那辈人来美国,就是为了逃离资产没收和这种意识形态。我们来这里是为了建设繁荣。一个仍然在建造的美国值得捍卫。」",
+              "Garry 框架不是关于法案本身,而是关于历史血脉。资产没收作为一条政策线,跟他家里的移民记忆接上了;YC 的立场是:任何要从成功的 AI 创业公司身上拿走一部分收益的框架,都是上一代逃离过的那一幕的复刻。「仍然在建造的美国」这句话,把对一条法案的批评升格成了一场运动的 rallying point。"
+            ],
+            "original": [
+              "Garry Tan:资产没收是邪恶的——祖辈移民来美国就是为逃离它。YC 把对一条法案的批评升成「仍然在建造的美国值得捍卫」这句口号。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人",
+          "sourceUrl": "https://x.com/nikunj/status/2067748864967503942",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari (angel, former Pinterest product lead) fires off a short one about the Artie self-serve launch: 'Ok @artie_labs clearly takes the cake for fire swag.. like literally 🔥 Proud angel investor and congrats on the self-serve launch!'",
+              "On a day heavy with policy and macro structure, Nikunj's tweet is the lighter register — the angel-investor-as-fan signal that someone you backed just shipped a self-serve product, and the swag is on fire (literally). It's the small-text texture of the AI ecosystem: launches, congratulations, the physical merch, the sense of community between investors and operators. A reminder that 'AI infra week' is also 'AI party week'."
+            ],
+            "original": [
+              "Ok @artie_labs clearly takes the cake for fire swag.. like literally 🔥\n\nProud angel investor and congrats on the self-serve launch!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kothari(天使投资人、前 Pinterest 产品负责人)给 Artie self-serve launch 发了条短推:「@artie_labs 这个 fire swag 是真的冠军……literally 是火 🔥 骄傲的天使投资人,恭喜 self-serve 上线!」",
+              "在政策与宏观结构很重的一天里,Nikunj 这条是轻的那一面——天使投资人/粉丝模式:你投过的人刚刚 ship 出 self-serve 产品,周边还火(真的是字面意义的火)。这是 AI 生态的小字质感:launch、恭喜、实体周边、投资者和运营者之间的社群感。提醒一句——「AI infra week」同时也是「AI party week」。"
+            ],
+            "original": [
+              "Nikunj:@artie_labs fire swag 真的冠军(真的是火 🔥)——天使投资人对 self-serve launch 的自豪。AI 基础设施周也是 AI 派对周。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "authorName": "Dan Shipper",
+          "authorHandle": "@danshipper",
+          "authorTag": "Every 联合创始人 / AI 写作工具链",
+          "sourceUrl": "https://x.com/danshipper/status/2067614889141469570",
+          "en": {
+            "rewrite": [
+              "Dan Shipper (Every co-founder) opens a hire that signals where Every's editorial direction is going: 'we are hiring a managing editor @every! if you are extremely meticulous, can keep the trains running on time, hate split infinitives, love oxford commas, want to take back the em dash, and are AI-pilled inquire here.'",
+              "The tweet is half-joke, half-manifesto. The 'hate split infinitives / love oxford commas / take back the em dash' line is a copy-editor brief disguised as a meme — Every is hiring for craft. The 'AI-pilled' qualifier at the end is the second half of the same sentence: the managing editor needs to be both a grammar absolutist and an AI native. The role exists because Every is now big enough that editorial consistency needs a single owner, and the craft bar is being set in the job post itself."
+            ],
+            "original": [
+              "we are hiring a managing editor @every!\n\nif you are extremely meticulous, can keep the trains running on time, hate split infinitives, love oxford commas, want to take back the em dash, and are AI-pilled inquire here"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Dan Shipper(Every 联合创始人)挂出一个 hire,信号是 Every 编辑方向往哪走:「我们在 Every 招 managing editor!如果你极端细致、能 hold 住 trains on time、痛恨 split infinitive、热爱 Oxford comma、想把 em dash 夺回来、并且 AI-pilled,请点进来。」",
+              "这条一半是玩笑,一半是宣言。「痛恨 split infinitive、热爱 Oxford comma、夺回 em dash」这一串,是披着 meme 外衣的 copy-editor brief——Every 在招工艺。「AI-pilled」挂在最后是同句的第二半:managing editor 得同时是语法原教旨和 AI native。这个岗位存在,说明 Every 大到需要一个人专门负责编辑一致性,而工艺标准直接写在了 job post 里。"
+            ],
+            "original": [
+              "Dan Shipper:Every 招 managing editor——既要语法原教旨(Oxford comma / 夺回 em dash),又要 AI-pilled。岗位本身就是工艺宣言。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Harness 层被改写 / The Harness Layer Is Being Rewritten",
+      "desc": "Sottiaux 把 Codex 锚到「What do you use」这个品类问题——伸手够的是哪个 agent 栈,不只是 prompt 哪个 model;Steinberger 一句话把世界压成两类:快 API 和慢 API,中间地带被 streaming + durable execution 挤掉——harness 层的设计顺着这条线走。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT",
+          "sourceUrl": "https://x.com/thsottiaux/status/2067783964077547520",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux (OpenAI Codex team) drops a four-word question that, in context, is the OpenAI team's framing of Codex's positioning this week: 'What do you use.'",
+              "The line is doing real work. Sottiaux is not asking what model you use, what editor you use, or what IDE you use. He is asking what the agent stack you reach for is. The Codex team's bet is that 'what do you use to build with AI' is now a category question — and that Codex, with its SDK/CLI ability to swap in any open-weights model (as Sottiaux himself demonstrated the day before), is positioning as the answer to that question rather than to a narrower 'which model do you prompt'."
+            ],
+            "original": [
+              "What do you use"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux(OpenAI Codex 团队)丢出一个四个字的问句,在上下文里,这是 Codex 团队本周对自家定位的框定:「What do you use。」",
+              "这句话在做事。Sottiaux 不是在问你用哪个 model、用哪个编辑器、用哪个 IDE——他在问「你伸手够的是哪个 agent 栈」。Codex 团队的赌注是:「你拿什么来用 AI 做东西」现在是一个品类问题——而 Codex,凭借 SDK/CLI 能换上任何 open-weights 模型的能力(Sottiaux 头一天亲自分享过),正在把答案锚到自己身上,而不是更窄的「你 prompt 哪个 model」。"
+            ],
+            "original": [
+              "Thibault Sottiaux:What do you use——四个字的定位题。Codex 在把自己锚定为「你做东西伸手够的那个 agent 栈」,不只是「你 prompt 哪个 model」。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:steipete",
+          "authorName": "Peter Steinberger",
+          "authorHandle": "@steipete",
+          "authorTag": "OpenClaw 创始人",
+          "sourceUrl": "https://x.com/steipete/status/2067821739556413651",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger (long-time PSPDFKit dev, now writing in public about the AI rebuild) compresses the day's most-quoted one-liner: 'Everything's either a fast or slow API now.'",
+              "Steinberger's point: the universe of software has collapsed to two categories — fast APIs (sync, low-latency, what we used to call 'tools') and slow APIs (async, long-running, what we used to call 'jobs'). The middle ground — long-running synchronous calls, batch jobs that block the user, 'we'll get back to you in an hour' polling — is being squeezed out by streaming + durable execution patterns. It's a developer-experience observation with big implications for how harness layers (Rauchg, Masad, Sottiaux) are designed."
+            ],
+            "original": [
+              "Everything's either a fast or slow API now."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger(长期 PSPDFKit 开发者,现在公开写 AI 重构观察)把今天被引用最多的一句话压短:「Everything's either a fast or slow API now.」",
+              "Steinberger 的判断:软件世界已经塌缩成两类——快 API(同步、低延迟,我们以前叫「tools」)和慢 API(异步、长跑,我们以前叫「jobs」)。中间地带——长跑同步调用、阻塞用户的批处理、「一小时后回来轮询」——正在被 streaming + durable execution 模式挤掉。这是一句开发者体验观察,但对 harness 层(Rauchg / Masad / Sottiaux)的设计有直接含义。"
+            ],
+            "original": [
+              "Peter Steinberger:软件世界只剩两类——快 API 和慢 API。中间地带被 streaming + durable execution 挤掉。Harness 层的设计,顺着这条线走。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "一篇博客:Claude Blog 把同一件事讲透 / One Blog: Claude Blog Lays It Out",
+      "desc": "Anthropic 官方版:Artifacts 用同一 session 的完整 context(代码 / connector / 对话)构建;每次 publish 是同链接下的新版本——页面就是 artifact,不是冻结快照。",
+      "cards": [
+        {
+          "authorKey": "blog:claudeai",
+          "authorName": "Claude",
+          "authorHandle": "",
+          "authorTag": "Claude 官方博客",
+          "sourceUrl": "https://claude.com/blog/artifacts-in-claude-code",
+          "en": {
+            "rewrite": [
+              "The Anthropic blog post lays out the official version of the same day: 'Starting today, Claude Code can capture work progress as an artifact, which turn Claude Code's work into live, shareable visual pages — including PR walkthroughs, system explainers, dashboards, and release checklists — that update themselves as your session works.'",
+              "The blog adds two specifics the tweets compressed. (1) 'Built on the context from your session' — the artifact is not a separate artifact-builder call; it is the same session's full context (code, connectors, conversation). (2) The version model — 'every publish is a new version at the same link' — means the page IS the artifact, not a frozen snapshot. A failing test plus the function behind it plus the monitoring spike plus the root-cause reasoning all collapse into one page."
+            ],
+            "original": [
+              "Claude Code now supports artifacts — live, shareable visual pages (PR walkthroughs, system explainers, dashboards, release checklists) that update themselves as your session works, built from the session's full context (code, connectors, conversation), with every publish a new version at the same link."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic 官方博客把同一天的官方版讲透:「从今天起,Claude Code 能把工作进度捕获成 artifact——把 Claude Code 的工作内容转成可分享的活的可视化页面(PR walkthrough、系统说明、dashboard、release checklist),随 session 自动更新。」",
+              "博客补充了推文压缩掉的两点细节。(1)「Built on the context from your session」——artifact 不是另起一个 artifact-builder 调用,而是同一 session 的完整 context(代码、connector、对话本身)。(2)版本模型——「每次 publish 都是同一个链接下的新版本」——意味着页面就是 artifact,不是冻结快照。一个失败的测试、它背后的函数、监控上的异常曲线、session 刚跑出来的 root-cause 推理,全部压在同一张页里。"
+            ],
+            "original": [
+              "Claude 官方博客:Artifacts 把 Claude Code 的工作转成可分享的活页面(PR walkthrough、系统说明、dashboard、release checklist),随 session 更新;artifact 用同一 session 的完整 context 构建,每次 publish 是同一链接下的新版本。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "一集播客:State of AI Compute 2026 / A Podcast: State of AI Compute 2026",
+      "desc": "Matt Turck × Stephen Balaban(Lambda)把镜头拉到物理层:GPU 从来不是 commodity,neocloud 还在 underbuild,H100 现在的租赁比买价贵,gw 级 AI 工厂是新物理。",
+      "cards": [
+        {
+          "authorKey": "podcast:mad-podcast",
+          "authorName": "The MAD Podcast",
+          "authorHandle": "",
+          "authorTag": "Matt Turck 主理的 AI 与数据播客",
+          "sourceUrl": "https://www.youtube.com/watch?v=0NttU4CbyVs",
+          "en": {
+            "rewrite": [
+              "Matt Turck (Firstmark) interviews Stephen Balaban (Lambda co-founder & CTO) on The MAD Podcast: 'State of AI Compute 2026.' The thesis in Balaban's opening: 'It's pretty clear that we have an amazing system that can take in money and output software. The people who are the naysayers, you're gonna throw these GPUs out in five years, are completely wrong... We continue to be generally underbuilding.'",
+              "The episode goes deep on the physical layer that everything else in AI runs on: why GPU compute was never actually a commodity, how you finance billions of dollars of data centers and chips, why a 2023 H100 can be more expensive to lease today than when it was bought, and what it actually takes to stand up a gigawatt-scale AI factory. Lambda's own origin arc — facial recognition startup → baseball cap with a camera → near-billion-dollar cloud business — frames why Balaban's view on neocloud economics has the texture of someone who has actually placed the hardware orders, not modeled them."
+            ],
+            "original": [
+              "Matt Turck (Firstmark) interviews Stephen Balaban (Lambda) on The MAD Podcast: 'State of AI Compute 2026.' Balaban opens: GPU compute was never a commodity, neoclouds continue to under-build, demand for inference is insatiable, a 2023 H100 leases for more today than it cost to buy, standing up a gigawatt-scale AI factory is the new physics."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Matt Turck(Firstmark) 在 The MAD Podcast 上访谈 Stephen Balaban(Lambda 联合创始人 & CTO):「State of AI Compute 2026」。Balaban 开场给的核心判断:「显然我们有一套很厉害的系统,能吞钱、产出软件。那些说『五年后这些 GPU 都得扔掉』的人,完全错了……我们普遍还在 underbuild。」",
+              "这一期往物理层钻:GPU 算力为什么从来不是 commodity、几十亿美元的数据中心和芯片怎么融资、一张 2023 年的 H100 现在的租赁价为什么比当初买价还贵、gw 量级 AI 工厂真正立起来要什么。Lambda 自己从人脸识别创业、棒球帽摄像头、走到今天接近十亿美元的云业务——这条 origin arc 给 Balaban 谈 neocloud 经济的视角加了一层「真下过硬件订单」的质感,不是建模出来的。"
+            ],
+            "original": [
+              "Matt Turck × Stephen Balaban on MAD Podcast「State of AI Compute 2026」:GPU 从来不是 commodity、neocloud 还在 underbuild、H100 现在的租赁比买价贵、gw 级 AI 工厂是新物理。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
