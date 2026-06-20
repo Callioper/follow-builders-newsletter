@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 19 Jun 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 20 Jun 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-06-20 · 封箱日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-20-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-20-rerun.html</guid>
+      <pubDate>Sat, 20 Jun 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[6-20 这天 Follow Builders 的主旋律是「封箱」——Anthropic Engineering 当天发长文讲「How we contain Claude across products」,12 个月前不敢给的权限今天是日常,风险分两段(失败概率 / blast radius),训练管前一条、环境与访问管后一条;containment 是 2026 年 Claude 每一个产品外面包的那层壳。Harness 层在同一天被 CodeX 和 Vercel 同时压:Sottiaux 把 Codex 的 remote / local handoff 做掉,让模型当 driver,harness 反而变简单;Rauchg 把这件事升级成命题——下一门火的编程语言是 markdown,`vercel deploy` 一条命令把 agent 的 skills folder 推上线;Steinberger 招人按这个 shape 招,「同时跟 developer 和 agent 说话」是 2026 年最稀缺的双语工程师。Agent 的真正瓶颈被 Levie 点名——不是 model、不是 prompt、不是 harness,而是「context 喂不喂得到」+「人看不看得懂的共享工作区」;Peter Yang 公开从 Claude Code 倒戈 Codex,理由列得清清楚楚(模型、unit 经济学、UX、browser / computer use 底线);Boris Cherny 用同一套 harness 解 3500 年前的克里特线性 A,证明 Claude Code 已经不只是 coding 工具,是一张能托住任何分析型任务的工作面。Vibe coding 作为日常工艺在成型:Vibecon 是第一场把它当工艺办的会,Replit 内部人自己发 recap,等于行业承认它已经是品类;Swyx 一句「Anthropic 要 IPO 估值 $2T」数字是假的,框架是真的——Anthropic 已经不在按 startup 估。Identity 这边:Zhang Rui 把 AI 时代个人护城河压成 Agency / Taste / Distribution 三件套,潜台词是纯 skill 是最先被自动化掉的;Garry Tan 把最不敢给 board 看的事做成 slide 1,Matt Turck 自嘲 VC 跑完 board meeting 就躺平,两条放一起看就是「好 board 是工作会话,好 VC 是为对的原因累趴」;Nikunj 一句「SF 我有个 idea」半玩笑半 meta——SF 创始人循环又回来了。Askell 用三推把医学 AI 保守派话术怼回去,真正的 binding constraint 不是扫描本身,是「扫到了我们怎么反应」的 protocol。收尾是 No Priors 把 Intel CEO Lip Bu Tan 请来谈半导体供应链重塑——crawl、听客户、修资产负债表、把产品简化,再去争 next-generation leadership:在每一场 AI 基础设施讨论都默认瓶颈是 GPU 供给的今年,Intel CEO 在提醒房间,更深的瓶颈是芯片背后那家公司的纪律。]]></description>
+      <category>Harness 层:Codex + Vercel 把「后端」压扁 / Harness Compression Day One, Agent 的「上下文 + 共享工作区」是真正瓶颈 / Context and the Shared Workspace, Vibe coding 作为日常工艺在成型 / Vibe Coding as a Category, AI 时代的 identity / agency / taste 三件套 / Identity, Agency, Taste, Distribution, AI 驱动的医学扫描:Askell 把「别扫、偶发发现害人」这条话术怼回去 / AI-Driven Scans: The Real Constraint Is the Response, 博客 / Anthropic — Claude 在多产品下的 containment 是怎么做的 / Blog: How Anthropic Contains Claude, Podcast 收尾:Intel CEO Lip Bu Tan 把半导体供应链重新立一遍 / Podcast: Lip Bu Tan on the Semiconductor Supply Chain</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-06-19 · 出件日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-19-rerun.html</link>

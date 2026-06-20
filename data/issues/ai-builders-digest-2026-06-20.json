@@ -1,0 +1,463 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-06-20",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "6-20 这天 Follow Builders 的主旋律是「封箱」——Anthropic Engineering 当天发长文讲「How we contain Claude across products」,12 个月前不敢给的权限今天是日常,风险分两段(失败概率 / blast radius),训练管前一条、环境与访问管后一条;containment 是 2026 年 Claude 每一个产品外面包的那层壳。Harness 层在同一天被 CodeX 和 Vercel 同时压:Sottiaux 把 Codex 的 remote / local handoff 做掉,让模型当 driver,harness 反而变简单;Rauchg 把这件事升级成命题——下一门火的编程语言是 markdown,`vercel deploy` 一条命令把 agent 的 skills folder 推上线;Steinberger 招人按这个 shape 招,「同时跟 developer 和 agent 说话」是 2026 年最稀缺的双语工程师。Agent 的真正瓶颈被 Levie 点名——不是 model、不是 prompt、不是 harness,而是「context 喂不喂得到」+「人看不看得懂的共享工作区」;Peter Yang 公开从 Claude Code 倒戈 Codex,理由列得清清楚楚(模型、unit 经济学、UX、browser / computer use 底线);Boris Cherny 用同一套 harness 解 3500 年前的克里特线性 A,证明 Claude Code 已经不只是 coding 工具,是一张能托住任何分析型任务的工作面。Vibe coding 作为日常工艺在成型:Vibecon 是第一场把它当工艺办的会,Replit 内部人自己发 recap,等于行业承认它已经是品类;Swyx 一句「Anthropic 要 IPO 估值 $2T」数字是假的,框架是真的——Anthropic 已经不在按 startup 估。Identity 这边:Zhang Rui 把 AI 时代个人护城河压成 Agency / Taste / Distribution 三件套,潜台词是纯 skill 是最先被自动化掉的;Garry Tan 把最不敢给 board 看的事做成 slide 1,Matt Turck 自嘲 VC 跑完 board meeting 就躺平,两条放一起看就是「好 board 是工作会话,好 VC 是为对的原因累趴」;Nikunj 一句「SF 我有个 idea」半玩笑半 meta——SF 创始人循环又回来了。Askell 用三推把医学 AI 保守派话术怼回去,真正的 binding constraint 不是扫描本身,是「扫到了我们怎么反应」的 protocol。收尾是 No Priors 把 Intel CEO Lip Bu Tan 请来谈半导体供应链重塑——crawl、听客户、修资产负债表、把产品简化,再去争 next-generation leadership:在每一场 AI 基础设施讨论都默认瓶颈是 GPU 供给的今年,Intel CEO 在提醒房间,更深的瓶颈是芯片背后那家公司的纪律。"
+  },
+  "archive": {
+    "title": "封箱日",
+    "desc": "Anthropic Engineering 当天发长文讲「How we contain Claude across products」,containment 是 2026 年 Claude 每一个产品外面包的那层壳;Harness 层被 Codex + Vercel 同时压扁——Sottiaux 的 remote / local handoff、Rauchg 的「下一门语言是 markdown」+ vercel deploy、Steinberger 招双语工程师;Levie 点名 agent 真正瓶颈是「context + 人看得懂的共享工作区」,Peter Yang 从 Claude Code 倒戈 Codex,Boris Cherny 用同一套 harness 解 3500 年前的克里特线性 A;Vibecon 让 vibe coding 当成工艺立项,Swyx 一句 $2T 笑话把 Anthropic 推出 startup 估值圈;Zhang Rui 给 AI 时代个人护城河压成 Agency / Taste / Distribution,Garry Tan / Matt Turck 把 board culture 和 VC exhaustion 配成一对;Askell 把医学 AI 保守派话术怼回 protocol 问题;收尾 No Priors × Intel CEO Lip Bu Tan 谈半导体供应链——crawl、听客户、简化产品、修资产负债表,再去争 next-gen。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-20 source feeds.",
+  "sections": [
+    {
+      "title": "Harness 层:Codex + Vercel 把「后端」压扁 / Harness Compression Day One",
+      "desc": "Sottiaux 把 Codex 的 remote / local handoff 做掉——让模型当 driver,harness 反而变简单;同一作者第二天公开说自己在 Codex app 上花的时间比 Mac 上任何 app 都多,是 Codex 几周以来最强的内部背书;Rauchg 把这件事升级成命题——下一门火的编程语言是 markdown,`vercel deploy` 一条命令把 agent 的 skills folder 推上线;Steinberger 招人也按这个 shape 招——「同时跟 developer 和 agent 说话」是 2026 年最稀缺的双语工程师。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT",
+          "sourceUrl": "https://x.com/thsottiaux/status/2068120572673077274",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux (OpenAI Codex & ChatGPT) on the latest Codex surface: 'Remote / local handoff in Codex! Removing boundaries one at a time. When you let the model be in the driver's seat, you actually need less infrastructure.'",
+              "The shape of the move: Codex now passes a task from a remote run back to your local machine (or vice versa) without you writing the plumbing. Sottiaux's deeper claim is the editorial one — give the model the driver's seat and the harness gets simpler, not more complex. Infrastructure is shrinking because the model is taking on the orchestration."
+            ],
+            "original": [
+              "Remote / local handoff in Codex! Removing boundaries one at a time. When you let the model be in the driver seat, you actually need less infrastructure."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux(OpenAI Codex & ChatGPT)讲 Codex 的最新面:「Codex 现在支持 remote / local 互相手!边界一条一条地拆。让模型坐到驾驶位,你其实需要的基础设施反而更少。」",
+              "这条推真正的形状是:Codex 让远端跑的任务能干净地交回本地(或反向),你不用自己写这层 plumbing。Sottiaux 后面那句是编辑判断——把驾驶位让给模型,harness 反而会变简单,不是变复杂。基础设施在被压缩,因为 orchestration 已经被模型吃掉了。"
+            ],
+            "original": [
+              "Thibault Sottiaux:Codex 支持 remote / local 互接手——边界一条条拆。让模型当 driver,基础设施其实变少。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT",
+          "sourceUrl": "https://x.com/thsottiaux/status/2068144722460475527",
+          "en": {
+            "rewrite": [
+              "Sottiaux (same thread) endorses Dan Shipper's Codex tips in plain terms: 'Late to this one, but follow @danshipper for S-tier codex tips. These days I spend more time in the codex app than all other apps combined on my Mac.'",
+              "Read the second sentence carefully. A person who works on Codex saying they spend more time in the Codex app than any other app on their Mac is the strongest internal review Codex has had in weeks. Sottiaux is not just shipping features — he is living in the product. That changes the credibility of every Codex claim that comes after."
+            ],
+            "original": [
+              "Late to this one, but follow @danshipper for S-tier codex tips. These days I spend more time in the codex app than all other apps combined on my Mac."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Sottiaux(同一条 thread 后续)很直白地给 Dan Shipper 的 Codex 教程背书:「这条我虽然迟了,但去 follow @danshipper,他给的是 S 级 codex 技巧。现在我一天在 Codex app 上花的时间比 Mac 上所有 app 加起来都多。」",
+              "第二句要细看。一个 Codex 团队的人公开说他在 Codex app 上花的时间比任何其他 Mac app 都多——这是 Codex 几周以来最强的内部背书。Sottiaux 不只是在上线 feature,他活在自家产品里。这条之后,Codex 任何新说法都多了几分重量。"
+            ],
+            "original": [
+              "Sottiaux:follow @danshipper 看 S 级 Codex 技巧——「我一天在 Codex app 上花的时间比 Mac 上所有 app 加起来都多」。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO",
+          "sourceUrl": "https://x.com/rauchg/status/2068165988005380478",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch (Vercel CEO) frames the moment: 'The next hot programming language is… markdown. A minimal agent: agent/instructions.md, agent/skills/your-expertise.md. Deployable in one command: vercel. It's the most accessible programming has ever been. And likely will ever be, at least for the generation.'",
+              "Rauchg is making a load-bearing claim: the agent's source-of-truth is not code, it is a markdown file the model can read. The agent directory (instructions + skills) is the new monorepo; `vercel deploy` is the new build pipeline. The 'next programming language is markdown' line is rhetorical, but the move it describes — Vercel owning the deploy side of every agent's skills folder — is concrete and shipping."
+            ],
+            "original": [
+              "The next hot programming language is… markdown.\n\nA minimal eve agent:\n\n📂 𝚊𝚐𝚎𝚗𝚝/\n  📄 𝚒𝚗𝚜𝚝𝚛𝚞𝚌𝚝𝚒𝚘𝚗𝚜.𝚖𝚍\n  📂 𝚜𝚔𝚒𝚕𝚕𝚜/\n     📄 𝚢𝚘𝚞𝚛-𝚎𝚡𝚙𝚎𝚛𝚝𝚒𝚜𝚎.𝚖𝚍\n\nDeployable in one command: 𝚟𝚎𝚛𝚌𝚎𝚕.\n\nIt's the most accessible programming has ever been. And likely will ever be, at least for the generation."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch(Vercel CEO)给这一刻定调:「下一门火的编程语言是……markdown。一个最小可跑的 agent:`agent/instructions.md`、`agent/skills/your-expertise.md`。一条命令部署:`vercel`。编程从来没有这么平权过,至少这一代人不会更平权了。」",
+              "Rauchg 这条真正的论点:agent 的 source of truth 不是代码,而是模型能读的 markdown 文件。`agent/` 目录(指令 + 技能)是新的 monorepo,`vercel deploy` 是新的 build pipeline。「下一门语言是 markdown」是修辞,但它描述的那步——Vercel 接管所有 agent 的 skills folder 的 deploy 一面——是实打实在上线的。"
+            ],
+            "original": [
+              "Rauchg(Vercel CEO):下一门火的编程语言是 markdown。最小 agent 目录:instructions.md + skills/your-expertise.md,vercel 一条命令 deploy。「编程从来没那么平权过,至少这一代不会更平权」。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:steipete",
+          "authorName": "Peter Steinberger",
+          "authorHandle": "@steipete",
+          "authorTag": "OpenClaw 创始人",
+          "sourceUrl": "https://x.com/steipete/status/2068199277277401419",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger (OpenClaw founder) celebrates a new team member with a specific framing: 'Hannes speaks both developer and agents. Blessed to have him on the team!'",
+              "Steinberger is not hiring for a role, he is hiring for a translator — someone who can talk to humans and to agents in the same breath. In a year where every product surface is half-developer, half-agent, the bilingual engineer is the rarest hire. The rest of the tweet is implicit: this is the shape of an OpenClaw hire in 2026."
+            ],
+            "original": [
+              "Hannes speaks both developer and agents. Blessed to have him on the team!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger(OpenClaw 创始人)用一种很具体的口径欢迎新同事:「Hannes 同时会跟开发者和跟 agents 说话。能把他招进团队真是一种福气!」",
+              "Steinberger 这不是在招一个岗位,他在招一个翻译——能同时跟人和跟 agent 说话的那种人。2026 年每个产品面都是半开发者、半 agent,这种双语工程师是市场上最稀缺的。这条推的潜台词是:这就是 2026 年 OpenClaw 想招的人的样子。"
+            ],
+            "original": [
+              "Steinberger:招的不是岗位,是「同时会跟 developer 和跟 agent 说话」的翻译——2026 年最稀缺的工程师画像。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Agent 的「上下文 + 共享工作区」是真正瓶颈 / Context and the Shared Workspace",
+      "desc": "Levie 把这一天真正决定成败的那一层指出来——不是 model、不是 prompt、不是 harness,而是 agent 读写时所在的工作区,以及人能不能看着同一片工作区就明白 agent 在干什么;Peter Yang 公开从 Claude Code 倒戈 Codex,理由列得清清楚楚(模型、unit 经济学、UX、browser / computer use 底线);Boris Cherny 用同一套 harness 解 3500 年前的克里特线性 A,证明 Claude Code 已经不只是 coding 工具,是一张能托住任何分析型任务的工作面。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie/status/2068068247413694532",
+          "en": {
+            "rewrite": [
+              "Aaron Levie (Box CEO) on what actually determines agent success: 'The main variable in getting success with agents is whether you can get the agent the context it needs to do its work; and a major factor in that is if you can create a shared working area for that agent that a human can understand as well. This is one of the reasons why agents using file systems work so well.'",
+              "Levie is naming the load-bearing layer. It is not the model, not the prompt, not the harness — it is the workspace the agent reads and writes inside, and whether a human can look at the same workspace and understand what the agent is doing. The file system is winning because it satisfies both halves of that constraint; a chat log satisfies neither."
+            ],
+            "original": [
+              "The main variable in getting success with agents is whether you can get the agent the context it needs to do its work; and a major factor in that is if you can create a shared working area for that agent that a human can understand as well. This is one of the reasons why agents using file systems work so well."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie(Box CEO)讲真正决定 agent 成败的那一层:「让 agent 真的能跑出来的最大变量,是能不能把完成任务需要的 context 喂到它面前;而这件事里很关键的一条,是能不能给 agent 弄出一个**人也能看懂**的共享工作区。这也是为什么用文件系统的 agent 跑得顺。」",
+              "Levie 在点的就是那层真正的扛把子——不是 model、不是 prompt、不是 harness,而是 agent 读写时所在的那个工作区,以及人能不能看着同一片工作区就明白 agent 在干什么。文件系统之所以赢,是因为它同时满足「人看得懂」和「agent 读得动」两条;聊天记录两面都不沾。"
+            ],
+            "original": [
+              "Levie:agent 成不成,真变量是「context 喂不喂得到」+「共享工作区人看不看得懂」——文件系统的胜利就在这两条。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者",
+          "sourceUrl": "https://x.com/petergyang/status/2068175172960690266",
+          "en": {
+            "rewrite": [
+              "Peter Yang (creator-economy writer, ex-Airtable PM) publicly switches: 'I used to be a die-hard Claude Code user. Codex has won me over because: → GPT-5.5 is excellent → Fast mode + generous limits = more reps → Little touches like steering, auto remote control on phone, etc. But most of all Codex's browser and computer use capabilities are simply goat.'",
+              "A concrete convert narrative, not a vibe. Peter names four reasons: model quality (GPT-5.5), unit economics (fast mode + limits = more reps), the small UX touches (steering, phone remote), and the browser/computer use floor. The last one is the real lever — Claude Code still does not match Codex's ability to drive a real browser, and the gap is what flipped Peter."
+            ],
+            "original": [
+              "I used to be a die-hard Claude Code user.\n\nCodex has won me over because:\n\n→ GPT-5.5 is excellent\n→ Fast mode + generous limits = more reps\n→ Little touches like steering, auto remote control on phone, etc\n\nBut most of all Codex's browser and computer use capabilities are simply goat"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang(创作者经济作者、前 Airtable PM)公开倒戈:「我以前是 Claude Code 的死忠。现在 Codex 把我赢走了,理由是:→ GPT-5.5 很强 → Fast mode + 大方配额 = 跑的次数多得多 → 各种小细节——steering、手机 auto remote control 等等。但最关键的还是 Codex 的 browser 和 computer use 能力,真的天花板级。」",
+              "这是一条很实在的转向帖,不是 vibe。Peter 列了 4 条理由:模型质量(GPT-5.5)、单位经济(fast mode + 大方配额 = 跑得更多)、UX 小细节(steering、手机 remote)、browser / computer use 的底线能力。最后一条是真正拍板的那条——Claude Code 在「真的能驱动一个真实浏览器」这件事上还追不上,这个差距是 Peter 倒戈的关键。"
+            ],
+            "original": [
+              "Peter Yang:从 Claude Code 死忠倒戈到 Codex——GPT-5.5、fast mode 配额、steering + 手机 remote、browser / computer use 是压死骆驼的四条。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:bcherny",
+          "authorName": "Boris Cherny",
+          "authorHandle": "@bcherny",
+          "authorTag": "Salesforce AI 工程负责人",
+          "sourceUrl": "https://x.com/bcherny/status/2068064304503660962",
+          "en": {
+            "rewrite": [
+              "Boris Cherny (Salesforce AI eng lead, Claude Code co-author) shows a non-coding use: 'Cool way to use Claude Code: deciphering Linear A, a 3500 year old written language from Crete. Hope this holds up in peer review!'",
+              "The interesting move is the surface area, not the result. Boris is showing Claude Code applied to a 3500-year undeciphered script — image-based prompt, multi-step hypothesis testing, output back into Markdown. Same harness, completely different domain. This is the same argument as yesterday's Artifacts story: Claude Code is no longer a coding tool, it is a working surface that any analyst-shaped task can sit on."
+            ],
+            "original": [
+              "Cool way to use Claude Code: deciphering Linear A, a 3500 year old written language from Crete. https://t.co/Aqd4ZG7Cum\n\nHope this holds up in peer review! 🤞"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Boris Cherny(Salesforce AI 工程负责人、Claude Code 共同作者)给出一个非编码用法:「用 Claude Code 解 3500 年前的克里特线性文字 A。挺 cool 的方式。希望同行评审能站住 🤞」",
+              "有意思的不是结果而是覆盖面。Boris 在展示 Claude Code 被用来啃一个 3500 年没解出来的文字——图像 prompt、多轮假设、回流成 Markdown。同一套 harness,完全不同的领域。这跟昨天 Artifacts 那条是同一条主线:Claude Code 已经不只是 coding 工具,它是一张能托住任何分析型任务的工作面。"
+            ],
+            "original": [
+              "Boris Cherny:Claude Code 用来解克里特线性 A——同一 harness 撑住完全不同的领域,Claude Code 已经是「工作面」,不是「编码工具」。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Vibe coding 作为日常工艺在成型 / Vibe Coding as a Category",
+      "desc": "Vibecon 是第一场明确把「vibe coding」当工艺(不是 meme)办的会,Replit 内部人自己发 recap,等于行业悄悄承认它已经是一个有社区、有大会、有词汇的品类;Swyx 一句「Anthropic 要 IPO 估值 $2T」数字是假的、框架是真的——Anthropic 已经不在按 startup 估,按 sovereign-tech 基础设施公司在聊。",
+      "cards": [
+        {
+          "authorKey": "x:amasad",
+          "authorName": "Amjad Masad",
+          "authorHandle": "@amasad",
+          "authorTag": "Replit CEO",
+          "sourceUrl": "https://x.com/amasad/status/2068177018479403065",
+          "en": {
+            "rewrite": [
+              "Amjad Masad (Replit CEO) recaps Vibecon: 'Vibecon recap' — followed by a thread of takeaways from the first vibe-coding conference.",
+              "The conference itself is the story. Vibecon is the first event explicitly built around 'vibe coding' as a craft, not a meme. Masad posting the recap from inside Replit — the company that built Agent / Agent mode and arguably coined the term — is the industry quietly admitting that vibe coding is now a category, with a community, a conference circuit, and a working vocabulary."
+            ],
+            "original": [
+              "Vibecon recap https://t.co/uvKptOPsTk"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Amjad Masad(Replit CEO)给 Vibecon 出了 recap——「Vibecon 总结」,跟的是一整条从第一场 vibe coding 大会上带回的 takeaway。",
+              "大会本身才是新闻。Vibecon 是第一场明确把「vibe coding」当成工艺(不是 meme)来办的活动。Masad 站在 Replit 内部发 recap——这家公司做了 Agent / Agent mode,可以算是这个词的娘家——这等于行业悄悄承认:vibe coding 已经是一个有社区、有大会、有可工作词汇的品类。"
+            ],
+            "original": [
+              "Masad:Vibecon recap——第一场把「vibe coding」当工艺办的会,Replit 内部人自己发,等于行业承认它已经是品类。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:swyx",
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师",
+          "sourceUrl": "https://x.com/swyx/status/2068084391260426345",
+          "en": {
+            "rewrite": [
+              "Swyx (AI engineer, the writer behind the AI Engineer summit) drops a one-liner: 'Anthropic is going to IPO at $2T' — a deliberately absurd number, half-joke / half-tell, designed to be quoted at dinner parties for the next 18 months.",
+              "Read it as a market signal, not a forecast. Swyx is the conference organizer most plugged into where the AI builder labor pool is going to sit for the next 5 years. A $2T joke from him is a way of saying: Anthropic is no longer being valued like a startup; the conversation has moved to whether it is being valued like a sovereign-tech infrastructure company. The number is fake; the framing is real."
+            ],
+            "original": [
+              "Anthropic is going to IPO at $2T"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx(AI 工程师、AI Engineer 大会主理人)丢一句:「Anthropic 接下来要 IPO,估值 $2T」——故意挑的离谱数字,半玩笑半放风,设计上就是要被未来 18 个月的饭局反复引用。",
+              "把它当市场信号读,不是预测。Swyx 是最清楚未来 5 年 AI builder 人才会落在哪里的会议主理人。他嘴里说出的 $2T 玩笑,真正在说的是:Anthropic 已经不在按 startup 估了,大家开始按 sovereign-tech 基础设施公司在聊。数字是假的,框架是真的。"
+            ],
+            "original": [
+              "Swyx:「Anthropic 要 IPO,估值 $2T」——数字是假的,框架是真的:Anthropic 已经不在按 startup 估,按 sovereign-tech 估。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "AI 时代的 identity / agency / taste 三件套 / Identity, Agency, Taste, Distribution",
+      "desc": "Zhang Rui 把 AI 时代个人护城河压成 3 个词——Agency / Taste / Distribution,潜台词是纯 skill 是最先被自动化掉的;Garry Tan 把最不敢给 board 看的事做成 slide 1,YC 运营原则装进个人习惯,潜台词是大多数 board 差是因为被当表演管;Matt Turck 自嘲 VC 跑完 board meeting 就躺平,和 Garry Tan 完美配对,潜台词是好 VC 是「为了对的原因累趴」的那种;Nikunj 一句「SF 我有个 idea」半玩笑半 meta——SF 创始人循环又回来了。",
+      "cards": [
+        {
+          "authorKey": "x:zarazhangrui",
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2068094591220531583",
+          "en": {
+            "rewrite": [
+              "Zhang Rui (Follow Builders founder / curator) compresses the AI-era personal moat into three words: 'The 3 most important things that set someone apart in the AI age: - Agency - Taste - Distribution'",
+              "A short, sharp editorial claim. 'Agency' is the willingness to start and the discipline to ship; 'Taste' is the ability to know which of ten agent outputs is actually good; 'Distribution' is the surface that lets the work get seen. In a world where the model is the commodity, the differentiator is which of these three you have more of than the next person. The list is also implicitly a critique of pure skill — skill gets automated first."
+            ],
+            "original": [
+              "The 3 most important things that set someone apart in the AI age:\n\n- Agency\n- Taste\n- Distribution"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zhang Rui(Follow Builders 创始人 / 策展人)把 AI 时代个人护城河压成 3 个词:「AI 时代让人跟人拉开差距的三件事:- Agency - Taste - Distribution」",
+              "一句很短、但有编辑判断的论断。Agency 是愿不愿意起手、能不能交付;Taste 是 10 个 agent 输出里哪个是真好;Distribution 是让工作被看见的渠道。模型变成 commodity 的世界里,你和下一个人的差距就是这三条里你哪条多。潜台词也在批评纯 skill——skill 是最先被自动化掉的那条。"
+            ],
+            "original": [
+              "Zhang Rui:AI 时代拉开差距的三件事——Agency / Taste / Distribution(潜台词:纯 skill 是最先被自动化掉的)。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁",
+          "sourceUrl": "https://x.com/garrytan/status/2068007205102842238",
+          "en": {
+            "rewrite": [
+              "Garry Tan (Y Combinator president) hands out a board-meeting tip that doubles as a leadership thesis: 'Tip: pick the worst thing you are afraid to show your board for your next board meeting and make it slide one (you can only do this with good boards btw). Make it a big deal you did that. Make it a habit.'",
+              "Tan is encoding a YC operating principle into a personal habit. The advice works because it inverts the typical board-deck incentive (bury the bad news on slide 47) — surface the scariest item first, and a good board becomes an asset, not a liability. The implicit second-order claim: most boards are bad because founders manage them like a stage show, not a working session."
+            ],
+            "original": [
+              "Tip: pick the worst thing you are afraid to show your board for your next board meeting and make it slide one (you can only do this with good boards btw)\n\nMake it a big deal you did that. Make it a habit."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan(Y Combinator 总裁)给了一条 board meeting 小贴士,本质上是把领导力当操作原则塞进去:「小贴士:挑一件你最不敢拿给 board 看的事,下次开 board meeting 把它做成 slide 1(当然前提是你有个好 board)。把它做成一件大事,做成习惯。」",
+              "Tan 在把一条 YC 的运营原则装进个人习惯里。这条建议之所以有效,是因为它把典型 board deck 的激励结构(坏消息藏在第 47 页)反过来了——最吓人的事先放第一页,好 board 才会从负债变资产。潜台词是:大多数 board 之所以差,是因为创始人把它当表演管,不当工作会话管。"
+            ],
+            "original": [
+              "Garry Tan:把最不敢给 board 看的事做成 slide 1——YC 的运营原则装进个人习惯,潜台词是「大多数 board 差,是因为被当表演管」。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:mattturck",
+          "authorName": "Matt Turck",
+          "authorHandle": "@mattturck",
+          "authorTag": "First Mark Capital 合伙人 / MAD Podcast 主理人",
+          "sourceUrl": "https://x.com/mattturck/status/2068087153091858801",
+          "en": {
+            "rewrite": [
+              "Matt Turck (First Mark Capital, MAD Podcast host) shares a one-liner that earns its place next to Garry Tan: 'When your VC is exhausted from attending the board meeting' — accompanied by a meme of a cat lying flat.",
+              "A self-deprecating joke that lands only because it is true. Turck is naming the asymmetric burden of a board meeting — the founder walks out recharged (decisions made, money allocated), the VC walks out exhausted (three portfolio companies on the same day, each with their own slide 1). The joke is also a hiring signal: a good VC is one who is tired for the right reasons."
+            ],
+            "original": [
+              "When your VC is exhausted from attending the board meeting https://t.co/PHHnZWwumQ"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Matt Turck(First Mark Capital 合伙人、MAD Podcast 主理人)发了一条和 Garry Tan 那条完美配对的一句话:「当你的 VC 跑完 board meeting 之后」,配图是一只猫躺平。",
+              "一句自我调侃,能立住完全因为它是真的。Turck 在点出 board meeting 的不对称负担——创始人走出来是充电的(决定做了、钱也分了),VC 走出来是耗空的(同一天三场 portfolio board,每场都有自己的 slide 1)。这条同时也是一条招聘信号:好 VC,是那种「为了对的原因累趴」的 VC。"
+            ],
+            "original": [
+              "Matt Turck:「当你的 VC 跑完 board meeting 之后」——和 Garry Tan 那条完美配对;潜台词是好 VC 是「为了对的原因累趴的那种」。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人",
+          "sourceUrl": "https://x.com/nikunj/status/2068204606119874728",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari (Afore Capital) drops a half-joke, half-post: 'SF I have an idea..' — followed by a meme.",
+              "On the surface it is a launch gag. Read as a meta-statement, it is Nikunj telling the AI builder crowd: the SF founder loop is back, the air is thick with 'I have an idea' again, and the cheap shot at overconfidence is also an honest acknowledgement that the next 18 months are going to be idea-dense. The 'I have an idea' phrase is the most repeated sentence in any venture cycle."
+            ],
+            "original": [
+              "SF I have an idea.. https://t.co/efoCDkXhHj"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kothari(Afore Capital)丢了一条半玩笑半发帖:「SF 我有个 idea…」,后跟一张 meme 图。",
+              "表面看是 launch 梗。读成 meta-statement 则是 Nikunj 在告诉 AI builder 圈:SF 创始人循环又回来了,空气里又开始弥漫「我有个 idea」,对过度自信的廉价吐槽背后,也是老实承认未来 18 个月会是 idea 密集的。「I have an idea」是任何 venture 周期里被重复最多的一句话。"
+            ],
+            "original": [
+              "Nikunj:「SF 我有个 idea」——半玩笑半 meta:SF 创始人循环又回来了,「I have an idea」是任何 venture 周期里被重复最多的一句。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "AI 驱动的医学扫描:Askell 把「别扫、偶发发现害人」这条话术怼回去 / AI-Driven Scans: The Real Constraint Is the Response",
+      "desc": "Amanda Askell(Anthropic 角色对齐负责人)用三推拉一条 argument:把医学 AI 领域常见的保守派话术「别扫、偶发发现害人」怼回去,真正的 binding constraint 不是扫描本身,而是「扫到了之后我们怎么反应」的 protocol。AI 把扫描成本打下来、变成日常之后,这个问题就变成了 AI 实验室自己早晚要在另一个面上回答的那一个问题。",
+      "cards": [
+        {
+          "authorKey": "x:amandaaskell",
+          "authorName": "Amanda Askell",
+          "authorHandle": "@AmandaAskell",
+          "authorTag": "Anthropic 角色对齐负责人",
+          "sourceUrl": "https://x.com/AmandaAskell/status/2068218515723866477",
+          "en": {
+            "rewrite": [
+              "Amanda Askell (Anthropic's character-alignment lead) threads an argument across three posts. (1) Anecdote: 'I had chronic pain for most of my life until a doctor did an MRI of the pain source and found a congenital condition that was then fixed with surgery. Now I'm wondering if I had 30+ years of pain because doctors worried I was too stupid to be in the presence of scan results.' (2) Counter to the 'incidental findings cause harm' view: 'yes but people don't ignore it. If we move to a scan-more-often paradigm, the norms of what we do with that information will surely adjust.' (3) The crisp reframe: 'It seems like the issue it points to isn't the scan but the response to it. If you see something on a scan but have no other symptoms, you could ignore it.'",
+              "The thread is an example of a senior AI researcher using their platform to push back on a common medical-AI conservative line — 'more scans = more incidental findings = more harm' — and to redirect the conversation from 'should we scan' to 'how should we respond when we see something on a scan.' The deeper move is: as AI makes scans cheaper and routine, the binding constraint stops being the scan and becomes the protocol. That is exactly the kind of question AI labs have to answer anyway, just on a different surface."
+            ],
+            "original": [
+              "(1) I had chronic pain for most of my life until a doctor did an MRI of the pain source and found a congenital condition that was then fixed with surgery. Now I'm wondering if I had 30+ years of pain because doctors worried I was too stupid to be in the presence of scan results.\n\n(2) A counter to this is \"yes but people don't ignore it\". But not ignoring things on scans is our norm because, until recently, we only did scans if there was a clear need. If we move to a scan-more-often paradigm, the norms of what we do with that information will surely adjust.\n\n(3) The view that we shouldn't do more medical scans because incidental findings cause a lot of harm doesn't sit well with me. It seems like the issue it points to isn't the scan but the response to it. If you see something on a scan but have no other symptoms, you could ignore it."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Amanda Askell(Anthropic 角色对齐负责人)用三推拉一条 argument。(1)个人故事:「我大半辈子都在慢性疼痛,直到一个医生给疼痛源做了 MRI,发现了一个先天问题,手术修好了。我现在在想,我是不是因为医生觉得我太笨、不该让我知道扫描结果,所以白疼了 30 多年。」(2)反驳「偶发发现 = 伤害」那一派:「是的,但人并不会无视它。我们不无视扫描上的东西,是因为过去我们只在必要时才做扫描。如果改成更常扫描的范式,人对这些信息的处理规范一定会跟着调。」(3)干脆的重新框架:「别做更多医学扫描、因为偶发发现害人不浅——这个观点让我不舒服。它真正指出的问题不是扫描本身,而是我们对它的反应。如果你在扫描上看到了什么但没别的症状,可以选择无视它。」",
+              "这条 thread 是一个资深 AI 研究员用自己的平台,怼了一条医学 AI 领域常见的保守派话术——「扫得越多、偶发发现越多、伤害越大」——把对话从「要不要扫」推回到「扫到东西了,我们要怎么反应」。潜台词是:当 AI 把扫描成本打下来、变成日常,binding constraint 就从「扫描本身」变成「反应 protocol」。这正是 AI 实验室自己早晚要回答的那种问题,只是承载面不一样。"
+            ],
+            "original": [
+              "Amanda Askell 三推 thread:把「别扫、偶发发现害人不浅」这个医学 AI 保守派话术怼回去——真正的 binding constraint 不是扫描本身,是「扫到了我们怎么反应」的 protocol。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "博客 / Anthropic — Claude 在多产品下的 containment 是怎么做的 / Blog: How Anthropic Contains Claude",
+      "desc": "Anthropic Engineering 发长文讲:12 个月前不敢给 Claude 的权限今天是日常,风险分两段——失败概率由模型训练 + safeguards 压,blast radius 由环境与访问控制管;agent 越能干、不部署的代价越大,risk-reward 就越倒向部署,前提是 blast radius 被 cap 住。Containment 是 2026 年每个 Claude 产品外面包的那层壳。",
+      "cards": [
+        {
+          "authorKey": "blog:anthropic",
+          "authorName": "Anthropic",
+          "authorHandle": null,
+          "authorTag": "Anthropic 官方博客",
+          "sourceUrl": "https://www.anthropic.com/engineering/how-we-contain-claude",
+          "en": {
+            "rewrite": [
+              "Anthropic Engineering publishes 'How we contain Claude across products' — a long-form post on the operating discipline that lets Anthropic ship a Claude that can take down an internal service without Anthropic losing control of the blast radius. The framing: 'Twelve months ago, we'd have rejected out of hand the idea of granting Claude access sufficient to take down an internal Anthropic service. Today that level of access is routine, and Anthropic developers are more productive for it. The risk of these deployments has two components: how likely a failure is, and how much damage one could do. Progress on safeguards and model training has steadily driven down the first; the second — the theoretical blast radius — only grows as capabilities and access expand.'",
+              "The blog is the underlying memo for the day's Rauchg / Sottiaux / Levie / Anthropic-blog surface. Anthropic's working theory is that the failure-likelihood curve and the blast-radius curve have to be governed by two different disciplines — model training and safeguards for the first, environment + access control for the second. As agents do work that used to take a person or a team, the cost of not deploying grows large enough that the risk-reward calculation tips toward adoption, as long as the blast radius is capped. The engineering question becomes 'how do we cap it?' Containment is the wrapper around every Anthropic product release in 2026."
+            ],
+            "original": [
+              "Twelve months ago, we'd have rejected out of hand the idea of granting Claude access sufficient to take down an internal Anthropic service. Today that level of access is routine, and Anthropic developers are more productive for it. The risk of these deployments has two components: how likely a failure is, and how much damage one could do. Progress on safeguards and model training has steadily driven down the first; the second — the theoretical blast radius — only grows as capabilities and access expand. Yet as agents become capable of doing work that once required a person or even a team, the cost of not deploying grows large enough that the risk-reward calculation tips heavily toward adoption, as long as products can be made safe. The engineering question becomes how to cap the blast radius."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic Engineering 发了《How we contain Claude across products》——一篇长文,讲的是让 Anthropic 能放心让 Claude 拿到足以搞挂一个内部服务的权限、又不丢对 blast radius 的控制,这一套运营纪律。原文框架:「12 个月前,我们多半会一口否决给 Claude 那种能搞挂一个内部服务的权限。今天这个级别是日常,Anthropic 工程师因此更有产出。这种部署的风险分两段:失败的可能性,以及失败一次能造成多少伤害。模型训练和 safeguards 的进步把第一条曲线稳步压下来;第二条——理论上的 blast radius——只会随着能力和权限一起变大。问题是:agent 越能干替代一个人甚至一个团队的工作,不部署的代价就越大,risk-reward 计算就会大幅倒向部署,前提是产品能做得安全。工程问题就变成:blast radius 怎么 cap。」",
+              "这篇博客是今天 Rauchg / Sottiaux / Levie / Anthropic 那一票 harness 层叙事的底本。Anthropic 的工作假设是:failure-likelihood 曲线和 blast-radius 曲线必须由两套不同的纪律管——模型训练 + safeguards 管前一条,环境与访问控制管后一条。Agent 越能干过去需要一个人甚至一个团队的工作,不部署的代价就越大,risk-reward 就越倒向部署——前提是 blast radius 被 cap 住。工程问题就变成「怎么 cap」。Containment 是 2026 年 Anthropic 每个产品 release 外面包的那层壳。"
+            ],
+            "original": [
+              "Anthropic Engineering《How we contain Claude across products》:12 个月前不敢给的权限,今天是日常;风险分两段(失败概率 / blast radius),训练管前一条、环境访问管后一条;containment 是 2026 年每个 Claude 产品外面的那层壳。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Podcast 收尾:Intel CEO Lip Bu Tan 把半导体供应链重新立一遍 / Podcast: Lip Bu Tan on the Semiconductor Supply Chain",
+      "desc": "收尾是 No Priors 把 Intel CEO Lip Bu Tan 请来谈半导体供应链重塑。Tan 把创办人那条工作原则摆出来:先 crawl、要 humble、听客户;第一步修资产负债表,聚焦产品,把产品简化,再听客户,最后争 next-generation leadership。在每一场 AI 基础设施讨论都默认瓶颈是 GPU 供给的今年,Intel CEO 在提醒房间:更深的瓶颈是芯片背后那家公司的纪律。",
+      "cards": [
+        {
+          "authorKey": "podcast:no-priors",
+          "authorName": "No Priors",
+          "authorHandle": null,
+          "authorTag": "AI 与创业对话播客",
+          "sourceUrl": "https://www.youtube.com/watch?v=asCgCv2XB4s",
+          "en": {
+            "rewrite": [
+              "No Priors sits down with Intel CEO Lip Bu Tan to re-engineer the semiconductor supply chain. Tan opens with the founder operating principle: 'Nine of the 10 companies I invest, halfway they change their business plan because market have changed. So I like to have entrepreneur as team, not just one person. I always believed in when I was at Cadence and also at Intel is first of all you crawl and be humble, listen to customer. And then first step for me is to strengthen my balance sheet, focus on the products, and I really simplify the product, listen to the customer, and then drive the next generation leadership.'",
+              "The episode is Tan's first long-form CEO interview since taking the Intel job, and the working theory is unusually concrete: a hardware company has to crawl, listen to the customer, simplify the product, fix the balance sheet, and *then* go for next-generation leadership. In a year when every AI infra conversation assumes the bottleneck is GPU supply, the Intel CEO is reminding the room that the deeper bottleneck is the discipline of the company behind the chip. Listen to the customer is the unsexy but binding constraint that determines whether next-gen leadership actually ships."
+            ],
+            "original": [
+              "Speaker 1: Nine of the 10 company I invest, halfway they change their business plan because market have changed. Yeah. So I like to have entrepreneur as team, not just one person. I always believed in when I was at Cadence and also at Intel is first of all you crawl and be humble, listen to customer. And then first step for me is to strengthen my balance sheet, focus on the products, and I really simplify the product, listen to the customer, and then drive the next generation leadership."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "No Priors 把 Intel CEO Lip Bu Tan 请来谈半导体供应链重塑。Tan 上场先把创办人那条工作原则摆出来:「我投的 10 家公司里,9 家走到一半都会改商业计划,因为市场变了。所以我喜欢把 entrepreneur 装在团队里,不是一个单点。我在 Cadence 和 Intel 都是同一条路:先 crawl,要 humble,听客户;然后第一步是修好资产负债表,聚焦产品,真把产品做简化,听客户,再去抢 next-generation leadership。」",
+              "这期是 Tan 接 Intel CEO 之后第一场长访谈,工作假设很不寻常地具体:一家硬件公司要 crawl、要听客户、要把产品做简化、要先修好资产负债表,再去争 next-generation leadership。在每一场 AI 基础设施讨论都默认瓶颈是 GPU 供给的今年,Intel CEO 在提醒房间:更深的瓶颈是芯片背后那家公司的纪律。「听客户」看起来不性感,却是真正决定 next-generation leadership 能不能 ship 的那条 binding constraint。"
+            ],
+            "original": [
+              "No Priors × Intel CEO Lip Bu Tan:crawl → 听客户 → 修资产负债表 → 把产品简化 → 再去争 next-gen——「听客户」是 next-gen 能不能 ship 的 binding constraint。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
