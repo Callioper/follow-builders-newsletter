@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 20 Jun 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 21 Jun 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-06-21 · 底盘日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-21-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-21-rerun.html</guid>
+      <pubDate>Sun, 21 Jun 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[6-21 这天 Follow Builders 的主旋律是「底盘」——Anthropic 同一天放出来两篇工程博客加一篇 Claude Blog,把 managed agents 的整层 runtime 拆成「brain / hands / sandbox / MCP tunnel」四件:一篇 Claude Code 质量 postmortem 公开 4-23 那次 Sonnet 升级撞墙的事,一篇「Scaling Managed Agents: Decoupling the brain from the hands」把「让 Claude 当脑子、让沙箱当手」做成正式产品架构,Claude Blog 跟一篇把 self-hosted sandboxes 和 MCP tunnels 同时接上——Anthropic 已经不是「出模型」,是在把模型外面那层 harness 变成产品。Open weights 在同一天从两位创始人嘴里被点名:Levie 说 open weights 跟 frontier 的 gap 在塌,applied layer 可以用更便宜的模型 cost-optimize workload;Rauchg 直接说「Genuinely impressed, almost shocked, at how good GLM-5.2 by @zai_org is at coding」——Z.ai 的开源 GLM-5.2 把 coding 推到能让 Vercel CEO 用「almost shocked」形容。Codex 这一边 Sottiaux 主动给自己按刹车:Codex app 当年是用「okayish」前端的模型做出来的,等模型把前端能力真正做出来,Codex 会再变一次。Identity 这边 realMadhuguru 把 PM 摆到台面上——SWE 找到了 AI-native interface,但 PM 还是老的 PRD / strategy deck,新一代 Builder PM 会跑 agent 自己做 user research + 查 log + 出 prototype 而不是写 doc。Nikunj 一句「AI 的 priors 要每几周复位」配 Zarazhangrui 的「proactiveness 听起来好但落地很难」——两位 founder 在同一天把「不停 tinker + 接受不确定」立成这一代 builder 的基本节奏。Petergyang 从用户视角补一刀:Codex 和 Claude $200 订阅都花不完,本地 GLM 要 $10K Max Studio 跑得动,今天 builder 的真实瓶颈不在订阅,在「工具太多、产出路径太散」。收尾是 Unsupervised Learning 这期 Lab Wars 三人谈(Ari from Datalogy / Rob from Radical / Jacob 主持),把 API business 会不会被 lab 自己关掉、SpaceX 是不是已经是一家 AI infra 公司、Fable 的反应到底什么信号,一起摆到桌上——三个 host 把这一周的「compute crunch + lab 商业重排」压成一个公开命题,不是共识,是真问题。]]></description>
+      <category>Open weights 跟 frontier 的 gap 在同一天被两位创始人点名 / Open Weights Closes the Gap, Anthropic 把 managed agents 的「底盘」开出来 / Anthropic Opens the Managed-Agent Runtime, Codex 的下一程:等模型把 front-end 做出来 / Codex Waits for Better Front-End Models, PM identity crisis + 一周 priors 复位 / The PM Identity Crisis and Weekly Reset, Claude Managed Agents 把 sandbox + MCP tunnel 收齐 / Claude Managed Agents Closes the Runtime Loop, Builder 一侧:订阅花不完、本地跑不动 / From the Builder&apos;s Side: Subscriptions Unused, Local Out of Reach, Podcast 收尾:Unsupervised Learning 把 Lab Wars 立成这一周公开题 / Closer: Unsupervised Learning Names Lab Wars</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-06-20 · 封箱日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-20-rerun.html</link>

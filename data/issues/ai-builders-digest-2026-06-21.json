@@ -1,0 +1,388 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-06-21",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "6-21 这天 Follow Builders 的主旋律是「底盘」——Anthropic 同一天放出来两篇工程博客加一篇 Claude Blog,把 managed agents 的整层 runtime 拆成「brain / hands / sandbox / MCP tunnel」四件:一篇 Claude Code 质量 postmortem 公开 4-23 那次 Sonnet 升级撞墙的事,一篇「Scaling Managed Agents: Decoupling the brain from the hands」把「让 Claude 当脑子、让沙箱当手」做成正式产品架构,Claude Blog 跟一篇把 self-hosted sandboxes 和 MCP tunnels 同时接上——Anthropic 已经不是「出模型」,是在把模型外面那层 harness 变成产品。Open weights 在同一天从两位创始人嘴里被点名:Levie 说 open weights 跟 frontier 的 gap 在塌,applied layer 可以用更便宜的模型 cost-optimize workload;Rauchg 直接说「Genuinely impressed, almost shocked, at how good GLM-5.2 by @zai_org is at coding」——Z.ai 的开源 GLM-5.2 把 coding 推到能让 Vercel CEO 用「almost shocked」形容。Codex 这一边 Sottiaux 主动给自己按刹车:Codex app 当年是用「okayish」前端的模型做出来的,等模型把前端能力真正做出来,Codex 会再变一次。Identity 这边 realMadhuguru 把 PM 摆到台面上——SWE 找到了 AI-native interface,但 PM 还是老的 PRD / strategy deck,新一代 Builder PM 会跑 agent 自己做 user research + 查 log + 出 prototype 而不是写 doc。Nikunj 一句「AI 的 priors 要每几周复位」配 Zarazhangrui 的「proactiveness 听起来好但落地很难」——两位 founder 在同一天把「不停 tinker + 接受不确定」立成这一代 builder 的基本节奏。Petergyang 从用户视角补一刀:Codex 和 Claude $200 订阅都花不完,本地 GLM 要 $10K Max Studio 跑得动,今天 builder 的真实瓶颈不在订阅,在「工具太多、产出路径太散」。收尾是 Unsupervised Learning 这期 Lab Wars 三人谈(Ari from Datalogy / Rob from Radical / Jacob 主持),把 API business 会不会被 lab 自己关掉、SpaceX 是不是已经是一家 AI infra 公司、Fable 的反应到底什么信号,一起摆到桌上——三个 host 把这一周的「compute crunch + lab 商业重排」压成一个公开命题,不是共识,是真问题。"
+  },
+  "archive": {
+    "title": "底盘日",
+    "desc": "Anthropic 同一天放两篇工程博客加一篇 Claude Blog,把 managed agents 的整层 runtime 拆成 brain / hands / sandbox / MCP tunnel 四件,Claude Code 4-23 postmortem 公开承认 Sonnet 升级撞墙;Levie 说 open weights 跟 frontier 的 gap 在塌,Rauchg 说 Z.ai 的 GLM-5.2 coding 让他「almost shocked」;Sottiaux 说 Codex app 当年是用「okayish」前端模型做的,等模型把前端能力做出来 Codex 会再变一次;realMadhuguru 把 PM 摆到台面——SWE 找到了 AI-native interface,PM 还停在 PRD,Nikunj 说 priors 要每几周复位,Zarazhangrui 说 proactiveness 听起来好但落地难,Petergyang 补一刀说 Codex / Claude $200 都花不完;收尾 Unsupervised Learning 这期 Lab Wars 三人谈,把 API business 会不会被 lab 自己关掉、SpaceX 是不是 AI infra 公司、Fable 反应到底什么信号一起摆到桌上。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-21 source feeds.",
+  "sections": [
+    {
+      "title": "Open weights 跟 frontier 的 gap 在同一天被两位创始人点名 / Open Weights Closes the Gap",
+      "desc": "Levie 把 open weights 这一轮的形状讲清楚——只要 gap 是窄的,frontier labs 反而松一口气,applied layer 这一层才是真正能 cost-optimize 的人;Rauchg 当天就给具体证据:GLM-5.2 by Z.ai 在 coding 上让他「almost shocked」。一个是 narrative,一个是 SOTA 验证,放在一起就是这一周 open-weights 在 coding 上被空间里两位最高杠杆的 CEO 同时确认。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie/status/2068434042148782515",
+          "en": {
+            "rewrite": [
+              "Aaron Levie (Box CEO) on the open-weights shift: 'Pretty remarkable what's happening with open weights AI right now. We're seeing models achieve SOTA results on specific tasks, and getting close to frontier on some areas of coding and other domains. The more that open weights is able to maintain only a marginal gap from the frontier, instead of a widening gap, the more value that can be created with AI.'",
+              "Levie's editorial move is in the second half — frontier labs are not threatened by open weights closing the gap, they are relieved. If the marginal cost of a task drops, AI usage rises in aggregate; frontier models still own planning, orchestration, review, and the high-stakes parts of work. The applied layer is the one that gets to cost-optimize: cheaper models for bulk work, fine-tuned open models for specific tasks, frontier models for everything that has to be right."
+            ],
+            "original": [
+              "Pretty remarkable what's happening with open weights AI right now. We're seeing models achieve SOTA results on specific tasks, and getting close to frontier on some areas of coding and other domains. The more that open weights is able to maintain only a marginal gap from the frontier, instead of a widening gap, the more value that can be created with AI. Incidentally, this is actually fine for the frontier labs as well; if we can lower the cost of an overall task then AI usage goes up in general. You're still likely using frontier models for planning, orchestration, reviewing, and other parts of work. But this is all very good for the applied layer of AI, which is now in a great position to cost optimize workloads with cheaper models or use tailored open models post-trained for specific tasks to improve performance."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie(Box CEO)给 open weights 这一轮定调:「现在 open weights 这边发生的事相当惊人。我们看到模型在特定任务上拿到 SOTA,在 coding 和一些领域里已经在靠近 frontier。open weights 跟 frontier 之间只要保持的是窄 gap 而不是越来越宽,AI 能创造的价值就越大。」",
+              "Levie 这条真正的编辑动作在后半段——frontier labs 不被 open weights 追近这件事威胁,反而是松了一口气。一个任务的边际成本下降,AI 总用量就会上去;frontier 模型依然占有 planning、orchestration、review、那些必须做对的部分。applied layer 这一层才是真正能 cost-optimize 的人:bulk 用更便宜的模型,特定任务用后训练过的 open 模型,该对的环节用 frontier。"
+            ],
+            "original": [
+              "Levie:open weights 这边很惊人——coding 等领域在靠近 frontier。「只要 open weights 跟 frontier 之间是窄 gap,AI 创造的价值就越大」;frontier labs 反而松了一口气,applied layer 这一层才是 cost-optimize 的位置。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO",
+          "sourceUrl": "https://x.com/rauchg/status/2068517095818809770",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch (Vercel CEO) is direct: 'Genuinely impressed, almost shocked, at how good GLM-5.2 by @zai_org is at coding. This changes things.'",
+              "Read who is saying it: the CEO of the company that owns the deploy-side of every agent's skills folder is publicly using 'almost shocked' about an open-weights Chinese model hitting coding SOTA. Rauchg has spent two weeks publicly framing markdown + vercel deploy as the new agent stack — and now he is saying the open-weights coding model is good enough to slot into that stack. Levie's claim about open weights closing the gap just got a specific confirmation from one of the highest-leverage CEOs in the space."
+            ],
+            "original": [
+              "Genuinely impressed, almost shocked, at how good GLM-5.2 by @zai_org is at coding. This changes things."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch(Vercel CEO)不绕弯:「Z.ai 出的 GLM-5.2 在 coding 上真的让我 impressed,almost shocked。事情在变。」",
+              "看谁在说——一个把每个 agent 的 skills folder 的 deploy 一面握在手里的 CEO,公开用「almost shocked」形容一个中国 open-weights 模型在 coding 上达到 SOTA。Rauchg 这两周一直把 markdown + vercel deploy 立成新的 agent stack,现在他亲口说 open-weights coding 模型好到能塞进那个 stack。Levie 那条「open weights 跟 frontier 的 gap 在塌」从一个空间里杠杆最高的 CEO 这里拿到了具体证据。"
+            ],
+            "original": [
+              "Rauchg:GLM-5.2(Z.ai)在 coding 上让我 impressed,almost shocked。「事情在变。」——open-weights 跟 frontier 的 gap 在塌,这回是 CEO 亲口确认。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Anthropic 把 managed agents 的「底盘」开出来 / Anthropic Opens the Managed-Agent Runtime",
+      "desc": "同一天两篇 Anthropic Engineering 博客:一篇公开 Claude Code 4-23 那次 Sonnet 升级撞墙的复盘,一篇把 managed agent 拆成 brain / hands 两层架构——brain 走 frontier API,hands 跑在用户自己的环境。把 Claude Code 当 install base 来复盘,把 brain/hands 解耦当架构总纲,Anthropic 已经不是在卖模型,是在把模型外面那层 runtime 立成产品。",
+      "cards": [
+        {
+          "authorKey": "blog:anthropic",
+          "authorName": "Anthropic",
+          "authorHandle": "",
+          "authorTag": "Anthropic 官方博客",
+          "sourceUrl": "https://www.anthropic.com/engineering/april-23-postmortem",
+          "en": {
+            "rewrite": [
+              "Anthropic Engineering publishes 'An update on recent Claude Code quality reports' — a public postmortem on the April 23 Sonnet upgrade that produced regressions in Claude Code outputs.",
+              "Two things make this unusual: (1) Anthropic is willing to write a public engineering blog about a regression, not a fix announcement; (2) the postmortem frames Claude Code as a product that has stable users who noticed and reported the regression in days. The implicit message is that Claude Code is not an experiment, it is an install base. Quality incidents are no longer engineering detours — they are product events that get a public writeup, because users are treating Claude Code as infrastructure they depend on."
+            ],
+            "original": [
+              "An update on recent Claude Code quality reports"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic Engineering 发了一篇「An update on recent Claude Code quality reports」——对 4-23 那次 Sonnet 升级在 Claude Code 输出里出现的回归做公开复盘。",
+              "两点不寻常:(1) Anthropic 愿意把一次 regression 写成公开工程博客,而不是发一条 fix 通告;(2) 这篇复盘把 Claude Code 当成有稳定用户群的产品来写——这些用户在几天之内发现并上报了 regression。潜台词:Claude Code 不是实验,是有装机量的产品。质量问题不再是工程部门自己消化的岔子,是公开的产品事件,因为用户已经在把 Claude Code 当基础设施依赖。"
+            ],
+            "original": [
+              "Anthropic 工程博客:对 4-23 Sonnet 升级在 Claude Code 里引发的回归做公开复盘——把 Claude Code 当 install base 来对待,质量事故是产品事件。"
+            ]
+          }
+        },
+        {
+          "authorKey": "blog:anthropic",
+          "authorName": "Anthropic",
+          "authorHandle": "",
+          "authorTag": "Anthropic 官方博客",
+          "sourceUrl": "https://www.anthropic.com/engineering/managed-agents",
+          "en": {
+            "rewrite": [
+              "Anthropic Engineering publishes 'Scaling Managed Agents: Decoupling the brain from the hands' — the architectural companion to the Claude Code postmortem.",
+              "The argument: at scale, a managed agent is two different things that have to be optimized separately. The 'brain' is the model's planning, reasoning, and review — which lives in a frontier-class model with long context. The 'hands' are the tool calls, the file edits, the browser moves, the sandbox runs — which need durable sandboxing, fast iteration, and clean teardown. Decoupling them means the brain can be a hosted API while the hands run in your VPC, your laptop, or your own data plane. The postmortem was the bug report; this is the architectural rewrite that the bug report implies."
+            ],
+            "original": [
+              "Scaling Managed Agents: Decoupling the brain from the hands"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic Engineering 同步放「Scaling Managed Agents: Decoupling the brain from the hands」——给 Claude Code 那篇复盘配的架构级 partner。",
+              "论点:managed agent 在规模化时是两种东西,必须分开优化。「Brain」是模型的 planning、reasoning、review,这一层放在 frontier 模型加长上下文里跑;「Hands」是工具调用、文件编辑、浏览器操作、sandbox 执行,这一层需要稳定的沙箱、快速迭代、干净的清理。把两者解耦,brain 可以走托管 API,hands 可以跑在你自己的 VPC、笔记本、或者自有 data plane 上。复盘是 bug report,这一篇是 bug report 背后那一层架构重写。"
+            ],
+            "original": [
+              "Anthropic 工程博客:Scaling Managed Agents —— 把 agent 拆成 brain(frontier 模型 + 长上下文)和 hands(沙箱 + 工具调用),两层解耦,brain 走 API,hands 跑在用户自己的环境里。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Codex 的下一程:等模型把 front-end 做出来 / Codex Waits for Better Front-End Models",
+      "desc": "Sottiaux 公开按住 Codex 的节奏——Codex App 是用「okayish」前端的模型做出来的,等模型把前端能力做出来 Codex 会再变一次;同一条 thread 里把 Codex app 定位成「最高价值 token 落下来的地方」,跟 Nikunj 的 priors 复位、Unsupervised Learning 的 compute crunch 在同一天呼应。Codex 主动给自己的下一程设上限:UI 是 placeholder,瓶颈在模型那一层。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT",
+          "sourceUrl": "https://x.com/thsottiaux/status/2068568650924409260",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux (OpenAI Codex & ChatGPT) on what Codex can still become: 'We built the Codex App with models that were okayish at front-end. Wait to see what we can do when we finally improve front-end capabilities significantly in our models. That day will be something.'",
+              "Sottiaux is doing two things at once. He is shipping a product on today's model capability, and he is signalling that the product surface itself is bottlenecked on the next model generation's front-end quality. The implication: Codex app's UI layer is a placeholder relative to what the team believes is coming. This is rare — a product lead saying out loud that the product is ready for a model that does not exist yet, and that the bottleneck on UX is upstream of their team."
+            ],
+            "original": [
+              "We built the Codex App with models that were okayish at front-end.\n\nWait to see what we can do when we finally improve front-end capabilities significantly in our models. That day will be something."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux(OpenAI Codex & ChatGPT)给 Codex 的下一程画线:「Codex App 是用前端能力『okayish』的模型做出来的。等我们终于把模型的前端能力显著提上来那天,等着看我们能做出来什么——那天会很不一样。」",
+              "Sottiaux 同时在做两件事:用今天的模型能力把产品上线,同时告诉外面——产品的面是被下一代模型的前端质量卡住的。潜台词:Codex app 的 UI 层相对他相信的「要来的那版」只是 placeholder。一个产品负责人公开说「产品已经准备好接一个还不存在的模型,UX 的瓶颈不在我们这」——这种话很少听到。"
+            ],
+            "original": [
+              "Sottiaux(Codex):「Codex App 是用前端能力 okayish 的模型做的。等模型把前端能力做出来那天,等着看」。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT",
+          "sourceUrl": "https://x.com/thsottiaux/status/2068443037907522002",
+          "en": {
+            "rewrite": [
+              "Sottiaux (same thread) on what the Codex app surfaces: 'Some tokens work harder than others. Some of the most valuable ones are found in the Codex app.'",
+              "This is the simpler framing underneath the post about front-end: in a world where token cost is the binding constraint (Nikunj's priors-reset framing, the Unsupervised Learning compute-crunch framing), the tokens that produce a Codex app session are not generic tokens — they are high-leverage tokens that ship a product surface. The Codex app is positioned not as 'a place to chat with a model' but as a place where the model's most valuable tokens land."
+            ],
+            "original": [
+              "Some tokens work harder than others. Some of the most valuable ones are found in the Codex app."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Sottiaux(同一条 thread 后续)给 Codex app 的位置定性:「token 跟 token 不一样,Codex app 里跑的是最有价值的那一类。」",
+              "这是上一条 front-end 那段底下的另一层叙述:在 token 成本是 binding constraint 的世界里(Nikunj 的 priors 复位、Unsupervised Learning 的 compute crunch),跑出一段 Codex app 用的不是普通 token,而是高杠杆、能交付出一个产品面的 token。Codex app 在这个叙述里不是「跟模型聊天的地方」,是「模型最高价值 token 落下来」的地方。"
+            ],
+            "original": [
+              "Sottiaux:「token 不平等,Codex app 里跑的是最有价值的那一类」。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "PM identity crisis + 一周 priors 复位 / The PM Identity Crisis and Weekly Reset",
+      "desc": "Madhu 把 PM 这个角色摆到台面——SWE 找到了 AI-native interface,PM 还停在老 PRD / strategy deck,新一代 Builder PM 用 AI 把角色扩到整个产品生命周期,产出是 prototype 不是 doc。Nikunj 给实践定节奏:每周自己 eval 一次 frontier、每周跟 enterprise buyer 聊一次,两件事加起来跑赢 99% 的人。Zhang Rui 同一天补两个角度——proactiveness 听起来好但落地难,因为是判断题没有训练信号;自己做的 bookmark 插件 work,是因为 hijacking 了已经查 50 次的注意力。三个 founder 在同一天把「不停 tinker + 用好已有的上下文」立成这一代 builder 的基本节奏。",
+      "cards": [
+        {
+          "authorKey": "x:realmadhuguru",
+          "authorName": "Madhusudhan",
+          "authorHandle": "@realmadhuguru",
+          "authorTag": "AI 工程师 / 开源贡献者",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2068350509027876876",
+          "en": {
+            "rewrite": [
+              "Madhu (realMadhuguru) on the role nobody is talking about: 'The Product role is having an identity crisis too. Engineering has found its AI-native interface — SWE agents dramatically increase individual leverage. Companies are asking PMs to use AI, but they haven't evolved the role. So there are two camps. The old-school PM. AI accelerates the old job: more PRDs, more strategy decks, more docs. Lots of output, not much judgment. The Builder PM. Builder PMs use AI to expand their role across the product lifecycle. They explore a much larger surface area of ideas to arrive at the best. They run agents for market and user research, query logs and analytics directly, generate competing ideas, then curate the best ones. Their outputs are increasingly prototypes rather than docs — engineers react far more constructively to demos than docs.'",
+              "The argument is structurally simple: SWE found its AI-native interface (the agent). PM is being told to 'use AI' but is using it to write more of the old artifacts. The Builder PM picks up the same agent leverage, but points it at user research, query logs, and competing ideas — and ships prototypes instead of decks. The role is not 'PM with AI'. The role is a different role that happens to have the same title."
+            ],
+            "original": [
+              "The Product role is having an identity crisis too.\n\nEngineering has found its AI-native interface - SWE agents dramatically increase individual leverage.\n\nCompanies are asking PMs to use AI, but they haven't evolved the role.\n\nSo there are two camps.\n\nThe old-school PM.\nAI accelerates the old job: more PRDs, more strategy decks, more docs. Lots of output, not much judgment.\n\nThe Builder PM.\nBuilder PMs use AI to expand their role across the product lifecycle.\n\nThey explore a much larger surface area of ideas to arrive at the best. They run agents for market and user research, query logs and analytics directly, generate competing ideas, then curate the best ones.\n\nThey constantly evolve their workflows to take advantage of the latest in AI.\n\nTheir outputs are increasingly prototypes rather than docs - engineers react far more constructively to demos than docs.\n\nI think the role is moving much closer to Builder PMs."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Madhu(realMadhuguru)把没人讲的另一个角色摆到台面:「PM 也在 identity crisis。Engineering 找到了 AI-native interface——SWE agent 让单人杠杆倍增。公司让 PM 用 AI,但 PM 这个角色没进化。两边在分化:一边是老派 PM,AI 加速老活——更多 PRD、更多 strategy deck、更多 doc,产量上去,判断力没上去;一边是 Builder PM,用 AI 把自己的角色扩到整个产品生命周期——能跑 agent 做市场和用户研究、直接查 log 和 analytics、生成多个候选方案、然后挑最好的那个,产出越来越是 prototype 而不是 doc——engineer 对 demo 的反应远比对 doc 好。」",
+              "结构其实简单:SWE 找到了 AI-native interface,就是 agent;PM 被告知「用 AI」,但用 AI 写更多老 artifact。Builder PM 拿到同一种 agent 杠杆,但指向 user research、query log、候选 idea,产出的是 prototype 而不是 deck。这不是「PM + AI」,是同名不同命的另一个角色。"
+            ],
+            "original": [
+              "Madhu:PM 也在 identity crisis——老派 PM 用 AI 写更多 PRD/deck,Builder PM 用 AI 扩到整个产品生命周期,产出是 prototype 不是 doc。同名不同命的两个角色。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人",
+          "sourceUrl": "https://x.com/nikunj/status/2068411460620042720",
+          "en": {
+            "rewrite": [
+              "Nikunj Kalgia (Felicis) on what is actually slowing founders down: 'The biggest problem with AI is that priors need to be reset every few weeks.. and it seems like most people are incapable of doing that. I talk to so many people who say xyz doesn't work and when I ask when was the last time they tried testing it, the answer is always \"a few months ago.\" Brother that's like eons ago in AI timelines.'",
+              "The harder half is the practice: 'This is why each person needs to have their own evals of hard tasks and weekly tinker time to truly understand where the frontier is. And then you need to talk to enterprise buyers weekly who are usually two years behind.' The combination — a personal eval set you re-run weekly + a buyer conversation you re-run weekly — is the actual practice that puts you ahead of 99% of people in the space. Nikunj is naming the cadence: weekly, both directions (frontier and buyer)."
+            ],
+            "original": [
+              "The biggest problem with AI is that priors need to be reset every few weeks.. and it seems like most people are incapable of doing that.\n\nI talk to so many people who say xyz doesn't work and when I ask when was the last time they tried testing it, the answer is always \"a few months ago.\"\n\nBrother that's like eons ago in AI timelines. This is why each person needs to have their own evals of hard tasks and weekly tinker time to truly understand where the frontier is.\n\nAnd then you need to talk to enterprise buyers weekly who are usually two years behind. But they are the buyers so you need to understand how to market.\n\nThe combination of the two will give you a pretty good sense of where to invest time and capital. If you just do these two weekly, you'll be ahead of 99% of people."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kalgia(Felicis)点出真正卡住 founder 的事:「AI 这一行最大的问题是 priors 要每几周复位一次——但大部分人做不到。我跟很多人聊,他们说某某不行,我问上次是什么时候测的,答案永远是『几个月前』。哥们,在 AI 的时间线上那是 eons ago。」",
+              "更难的那半是实践:「所以每个人要给自己的硬任务设 eval,留出每周 tinker 的时间,才能真正知道 frontier 在哪。然后每周要跟 enterprise buyer 聊一次,他们通常落后两年,但他们是 buyer,你得懂怎么卖。两个每周加起来,你就能稳稳跑赢 99% 的人。」Nikunj 把节奏定下来:一周两次,frontier 一头,buyer 一头,缺一不可。"
+            ],
+            "original": [
+              "Nikunj:AI 这行最大的问题是 priors 要每几周复位。「每周自己 eval 一次 frontier、每周跟 enterprise buyer 聊一次,跑赢 99% 的人。」"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2068509088452071594",
+          "en": {
+            "rewrite": [
+              "Zhang Rui (frontend/design founder) on the silent hard problem: 'Proactiveness sounds nice in theory but is so hard to get right.'",
+              "Proactiveness is the AI-agent trait everyone writes into their system prompts. Zhang Rui is naming why it is hard in practice: proactiveness is about judgment — what to bring up unprompted, when to escalate, when to stay quiet. There is no training signal for that, and the agent has no shared context with the user about what the user is already thinking about. The complaint is not 'agents are too passive' or 'agents are too aggressive' — it is that the calibration requires a level of context the agent does not have. This is one of the unsolved UI problems of agentic products."
+            ],
+            "original": [
+              "Proactiveness sounds nice in theory but is so hard to get right"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zhang Rui(前端 / 设计 founder)点名一个写不进 system prompt 的难题:「Proactiveness 听起来很好听,做起来真的难。」",
+              "Proactiveness 是每个 agent 的 system prompt 都会写一句的特性。Zhang Rui 在说为什么难做:proactiveness 是判断题——什么要主动提、什么时候升级、什么时候闭嘴。这件事没有训练信号,而且 agent 没有跟用户共享的「用户当下在想什么」上下文。这不是「agent 太被动」或「agent 太冒进」——是校准这件事需要的上下文,agent 没有。这是 agentic 产品这一代没解决的 UI 难题之一。"
+            ],
+            "original": [
+              "Zhang Rui:Proactiveness 听起来好,做起来真难——是判断题,没有训练信号,agent 没有跟用户共享的上下文。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2068568920613953626",
+          "en": {
+            "rewrite": [
+              "Zhang Rui (same thread) on a personal workflow hack: 'I hoard X bookmarks and never read them. So I built an extension that injects a bookmarked post into my main feed every time I open X (almost like an ad). Now I read my bookmarks. The trick was hijacking real estate I already check 50 times a day.'",
+              "Read the last sentence as the editorial: behavior change does not come from better organization, it comes from hijacking real estate you already check. The bookmark manager failed because Zhang Rui already had a feed he was opening. The extension works because it inserts the bookmark into the existing feed. This is the same shape as every agentic UX problem from Nikunj and realMadhuguru above — the leverage is in the existing context the user is already in, not in a new context you ask them to maintain."
+            ],
+            "original": [
+              "I hoard X bookmarks and never read them. So I built an extension that injects a bookmarked post into my main feed every time I open X (almost like an ad). Now I read my bookmarks.\n\nThe trick was hijacking real estate I already check 50 times a day"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zhang Rui(同一条 thread 后续)给一个个人工作流 hack:「我囤 X 书签从来不读。所以我写了一个浏览器插件,每次打开 X 都把一个书签推到我主信息流里(差不多像广告),现在我真的读书签了。诀窍是 hijacking 我一天已经查 50 次的那块注意力。」",
+              "把最后一句当编辑判断读:行为改变不是靠更好的组织,靠的是 hijacking 你已经查过的地方。书签管理器之所以失败,是因为 Zhang Rui 已经有了一个他每天打开的信息流;插件能 work,是因为把书签塞进了那个已有的信息流。这跟上面 Nikunj / realMadhuguru 提的 agentic UX 问题是同一个形状——杠杆在用户已经所在的那个上下文,不在你让他新维持的那个上下文。"
+            ],
+            "original": [
+              "Zhang Rui:把书签塞进每天查 50 次的主信息流才真的读——「行为改变来自 hijacking 你已经查过的地方,不是让你多维护一个地方」。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Claude Managed Agents 把 sandbox + MCP tunnel 收齐 / Claude Managed Agents Closes the Runtime Loop",
+      "desc": "Claude Blog 把工程博客那篇 brain/hands 解耦的「hands」侧产品化——self-hosted sandbox 让 hands 跑在客户自己环境里,MCP tunnel 让 brain 能连私网工具。Anthropic 同一天用两篇工程博客 + 一篇 Claude Blog 把 managed agents 的完整 runtime 立成产品面:brain 走 API、hands 走自托管、中间一条 tunnel。",
+      "cards": [
+        {
+          "authorKey": "blog:claudeai",
+          "authorName": "Claude",
+          "authorHandle": "",
+          "authorTag": "Claude 官方博客",
+          "sourceUrl": "https://claude.com/blog/claude-managed-agents-updates",
+          "en": {
+            "rewrite": [
+              "Claude Blog announces 'New in Claude Managed Agents: self-hosted sandboxes and MCP tunnels' — the hands-side of the brain/hands split that the engineering blog posted the same day.",
+              "Three pieces at once: (1) self-hosted sandboxes, so the 'hands' of the agent can run in the customer's own environment with the customer's own security model; (2) MCP tunnels, so the managed brain can reach tools that live behind a private network without the customer exposing those tools publicly; (3) the framing — this is productized 'hands' that ship alongside the 'brain' from the engineering blog. The combined message is that Anthropic is now selling the runtime layer, not just the model: the agent has a brain you call via API and hands you can host yourself, with a managed tunnel in between."
+            ],
+            "original": [
+              "New in Claude Managed Agents: self-hosted sandboxes and MCP tunnels"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude Blog 同日上线「New in Claude Managed Agents: self-hosted sandboxes and MCP tunnels」——给工程博客那篇 brain / hands 解耦配的「hands」侧产品。",
+              "三件事一次到位:(1) 自托管 sandbox,让 agent 的「hands」能跑在客户自己的环境里、用客户自己的安全模型;(2) MCP tunnel,让托管的 brain 能连到客户私网后面的工具,客户不用把这些工具公开暴露;(3) 整个叙述定调——这是工程博客那篇 brain/hands 的产品化版,brain 由 API 调,hands 可以自托管,中间是一条托管 tunnel。组合起来的消息:Anthropic 现在卖的不是模型,是 runtime 层——agent 有托管 brain + 自托管 hands,中间是一条托管 tunnel。"
+            ],
+            "original": [
+              "Claude Blog:Claude Managed Agents 新增 self-hosted sandboxes + MCP tunnels——Anthropic 把 runtime 层立成产品:托管 brain + 自托管 hands + 中间一条 tunnel。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Builder 一侧:订阅花不完、本地跑不动 / From the Builder's Side: Subscriptions Unused, Local Out of Reach",
+      "desc": "Peter Yang 把 user / builder 这一层补一刀——Codex 和 Claude $200 订阅大部分人花不完,local 跑 GLM-5.2 要 512GB 显存(≈$10K Max Studio)。对照 Levie 的「open weights 在 cost-optimize workload 上位置很好」,open weights 是 API 便宜、本地贵;跟 Anthropic brain/hands 解耦是同一种经济切分——不同层的成本结构不一样,builder 真正的瓶颈不在订阅价格,在「工具太多、产出路径太散」。",
+      "cards": [
+        {
+          "authorKey": "x:petergyang",
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者",
+          "sourceUrl": "https://x.com/petergyang/status/2068411894185295969",
+          "en": {
+            "rewrite": [
+              "Peter Yang (product creator / YouTube) with the user's view: 'I will go against the grain and say I can barely use up my Codex and Claude $200 subscriptions so I don't see the point of trying local models… Also to try the latest glm locally requires 512 mb which is like a $10K Max Studio?'",
+              "Peter is naming what builder-facing press skips: the $200/month frontier subscriptions are not the bottleneck — most builders cannot even spend them. The reason to consider local models is not cost, it is workflow fit (private data, offline, custom fine-tunes). And the actual price tag on running GLM-5.2 locally is not 'free' — it is roughly a $10K workstation. Read this against Levie's 'open weights is in a great position to cost optimize workloads' claim: open weights are cheap at API, expensive at local. The economic split is exactly the same shape as the Anthropic brain/hands split — different layers have different cost structures."
+            ],
+            "original": [
+              "I will go against the grain and say I can barely use up my Codex and Claude $200 subscriptions so I don't see the point of trying local models…\n\nAlso to try the latest glm locally requires 512 mb which is like a $10K Max Studio?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang(product creator / YouTube)给 builder 一侧的视角:「逆着说一句——Codex 和 Claude $200 月费我都花不完,我看不出试 local 模型的意义。再说想本地跑最新 glm 要 512GB,那差不多是一台 $10K 的 Max Studio。」",
+              "Peter 在说 builder-facing 新闻不爱说的事:$200/月的前端订阅根本不是瓶颈,大部分 builder 连这些订阅都花不完。要不要考虑 local 模型,问题不在成本,在工作流合不合(私有数据、离线、自定义微调)。而本地跑 GLM-5.2 的真实价格不是「免费」——是一台差不多 $10K 的工作站。对照看 Levie 那条「open weights 在 cost-optimize workload 上位置很好」:open weights 在 API 端便宜,在本地端贵。这个经济切分跟 Anthropic brain/hands 解耦是同一种形状——不同层的成本结构不一样。"
+            ],
+            "original": [
+              "Peter Yang:Codex 和 Claude $200 订阅花不完;本地跑 GLM-5.2 要 512GB 显存(≈$10K Max Studio)。Open weights 在 API 端便宜,本地端贵——跟 brain/hands 是同一种切分。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Podcast 收尾:Unsupervised Learning 把 Lab Wars 立成这一周公开题 / Closer: Unsupervised Learning Names Lab Wars",
+      "desc": "Jacob Efron 跟 Ari(Datalogy,前 DeepMind / Meta)、Rob(Radical Ventures)做 roundup。三条线:Fable 发布后的反应到底在说什么、coding agent 跑长 horizon 是不是 RSI 阈值事件、spicy prediction——compute crunch 持续下去 frontier labs 会不会关掉 API 业务。第三条直接接回今天主线:open weights 追近 frontier,frontier labs 又开始收紧对外 API,applied layer 要在两条汇聚的路上做选择。",
+      "cards": [
+        {
+          "authorKey": "podcast:unsupervised-learning",
+          "authorName": "Unsupervised Learning",
+          "authorHandle": "",
+          "authorTag": "Redpoint 出品的 AI 投资与技术播客",
+          "sourceUrl": "https://www.youtube.com/watch?v=W_iO8XxgD_I",
+          "en": {
+            "rewrite": [
+              "Unsupervised Learning — AI Vibe Check: Lab Wars, Why APIs Might Vanish & Future Predictions. Host Jacob Efron sits down with Ari (Datalogy, ex-DeepMind and Meta) and Rob (Radical Ventures) for a roundup episode covering the week's biggest AI moves.",
+              "Three threads carry the conversation. (1) Fable and the reaction around its release — what the regulatory noise around a single AI product actually signals about where the applied layer is headed. (2) How close we are to RSI — the three hosts disagree on the timeline but agree that the recent move to longer-horizon coding agents is the threshold event. (3) The spicy prediction: as the compute crunch continues, frontier labs may actually get rid of their API business — keep the model for their own products, stop selling it externally. The framing is not a thesis, it is a question the room is supposed to argue about. The third thread ties directly back to the day's theme — if open weights keeps closing the gap AND labs start killing external API, the applied layer has to choose between two converging paths: build on open weights, or build inside a frontier lab's product surface."
+            ],
+            "original": [
+              "AI Vibe Check: Lab Wars, Why APIs Might Vanish & Future Predictions"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Unsupervised Learning 这期「AI Vibe Check: Lab Wars, Why APIs Might Vanish & Future Predictions」。主持人 Jacob Efron 跟 Ari(Datalogy,前 DeepMind / Meta)和 Rob(Radical Ventures)做 roundup,过这一周 AI 圈的几件大事。",
+              "三条线撑起这期节目。(1) Fable 和它发布的反应——围绕一个 AI 产品的监管噪音到底在说 applied layer 在往哪走。(2) 离 RSI 还有多远——三位主持人在时间线上有分歧,但都同意最近 coding agent 能跑更长 horizon 是阈值事件。(3) 一个 spicy prediction:compute crunch 持续下去,frontier labs 可能干脆关掉 API 业务——模型留给自己产品用,不再对外卖。这条叙述不是论断,是一个让房间里人吵的问题。第三条直接接回今天的主线——如果 open weights 持续追近 frontier,frontier labs 又开始关掉对外 API,applied layer 只能在两条汇聚的路上选一条:建在 open weights 上,或者直接建在 frontier lab 的产品面里。"
+            ],
+            "original": [
+              "Unsupervised Learning:Lab Wars / APIs Might Vanish / Future Predictions——frontier labs 会不会在 compute crunch 里关掉 API 业务,跟「open weights 追近 frontier」直接相关。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

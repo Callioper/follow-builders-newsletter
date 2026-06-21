@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Builders Digest · 2026-06-21</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ed;
+    --accent: #c0392b;
+    --accent-light: #e8d5c4;
+    --border: #d4cdc0;
+    --muted: #7a7265;
+    --tag-bg: #e8e2d6;
+    --en-bg: #ffffff;
+    --cn-bg: #faf7f2;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  .masthead, .intro, .section-header, .feed, footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .masthead { padding-top: 48px; }
+  .masthead-rule { border: none; border-top: 3px solid var(--ink); margin: 0 0 12px; }
+  .masthead-inner { display: flex; justify-content: center; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; letter-spacing: -0.4px; }
+  .masthead-subtitle { margin-top: 8px; padding-bottom: 10px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  .edition-strip {
+    position: relative;
+    margin-top: 8px;
+    min-height: 46px;
+    padding: 10px 132px 12px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.34);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+
+  .edition-strip .edition-sep { margin: 0 8px; color: #b8ae9f; }
+  .edition-strip-text { display: block; }
+  .edition-return-link { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; padding: 6px 10px; border: 1px dashed rgba(192, 57, 43, 0.55); border-radius: 999px; color: var(--accent); text-decoration: none; font-size: 12px; line-height: 1; letter-spacing: 0.06em; background: rgba(255, 255, 255, 0.45); transition: background 160ms ease, border-color 160ms ease, transform 160ms ease; }
+  .edition-return-link:hover, .edition-return-link:focus-visible { background: rgba(255, 255, 255, 0.82); border-color: var(--accent); transform: translateY(-50%) translateX(-1px); }
+  .edition-return-link:focus-visible { outline: none; }
+  .intro { padding-top: 22px; }
+  .intro-inner { max-width: 920px; margin: 0 auto; padding: 0 0 0 18px; border-left: 3px solid #d9cdbc; }
+  .intro-kicker { margin: 0 0 8px; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .intro p { margin: 0; max-width: none; color: var(--muted); font-size: clamp(15px, 1.6vw, 16px); line-height: 1.9; text-wrap: pretty; font-family: 'Noto Serif SC', serif; overflow-wrap: anywhere; }
+
+  .section-header { margin-top: 40px; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; margin: 0 0 6px; }
+  .section-desc { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+
+  .feed { display: flex; flex-direction: column; gap: 20px; }
+  .card { background: var(--en-bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .card-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid #eee7dd; flex-wrap: wrap; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .avatar-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .avatar.is-fallback img { display: none; }
+  .avatar.is-fallback .avatar-fallback { display: flex; }
+
+  .author-info { flex: 1; min-width: 160px; }
+  .author-name { font-weight: 600; font-size: 15px; }
+  .author-name-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .author-handle { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+  .author-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; background: var(--tag-bg); color: var(--muted); padding: 4px 8px; border-radius: 999px; }
+  .author-tag.is-inline { padding: 3px 8px; }
+
+  .card-controls { margin-left: auto; display: inline-flex; gap: 8px; }
+  .view-toggle { border: 1px solid var(--border); background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 999px; font-size: 12px; line-height: 1; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; }
+  .view-toggle.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .card-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .lang-col { padding: 18px 20px 22px; }
+  .lang-col.cn { background: var(--cn-bg); border-right: 1px solid #f0ece4; font-family: 'Noto Serif SC', serif; }
+  .lang-col.en { background: var(--en-bg); }
+  .lang-label { margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+  .content-shell { position: relative; transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .content-variant { position: absolute; inset: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(4px); transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; will-change: opacity, transform; }
+  .content-variant.is-active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+  .content-variant p, .content-variant li { margin: 0 0 12px; font-size: 14px; }
+  .content-variant ol { margin: 0 0 12px 20px; padding: 0; }
+  .inline-code { display: inline-block; font-family: 'IBM Plex Mono', monospace; background: #f4efe7; padding: 3px 6px; border-radius: 6px; margin-bottom: 8px; }
+
+  .card-footer { padding: 12px 20px 16px; border-top: 1px solid #eee7dd; background: #fcfaf6; }
+  .card-footer a { color: var(--accent); text-decoration: none; font-size: 14px; }
+  footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 680px) {
+    .masthead-inner { align-items: center; }
+    .edition-strip { padding-right: 12px; padding-left: 12px; }
+    .edition-strip-text { padding-right: 0; }
+    .edition-return-link { position: static; transform: none; margin-top: 8px; font-size: 11px; }
+    .card-controls { margin-left: 0; }
+    .card-body { grid-template-columns: 1fr; }
+    .lang-col.cn { border-right: none; border-bottom: 1px solid #f0ece4; }
+    .edition-strip .edition-sep { margin: 0 5px; }
+    .intro-inner { padding-left: 14px; }
+    .intro p { line-height: 1.84; }
+  }
+</style>
+</head>
+<body data-publish-date="2026-06-21" data-issue-number="27" data-edition-name="双语精选版" data-view-label-rewrite="速读" data-view-label-original="原文" data-author-identities-path="/home/eclaw/.follow-builders/assets/author-identities.json" data-avatar-manifest-path="/home/eclaw/.follow-builders/assets/avatar-manifest.json">
+  <header class="masthead">
+    <hr class="masthead-rule">
+    <div class="masthead-inner">
+      <div class="masthead-title">AI Builders Digest</div>
+    </div>
+    <div class="masthead-subtitle">Bilingual edition · 双语对照版</div>
+    <div class="edition-strip">
+      <span class="edition-strip-text" id="edition-strip-text">第 27 期｜2026-06-21｜双语精选版｜13 条精选｜10 位作者｜7 个主题</span>
+      <a class="edition-return-link" href="../index.html">返回目录</a>
+    </div>
+  </header>
+
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="6-21 这天 Follow Builders 的主旋律是「底盘」——Anthropic 同一天放出来两篇工程博客加一篇 Claude Blog,把 managed agents 的整层 runtime 拆成「brain / hands / sandbox / MCP tunnel」四件:一篇 Claude Code 质量 postmortem 公开 4-23 那次 Sonnet 升级撞墙的事,一篇「Scaling Managed Agents: Decoupling the brain from the hands」把「让 Claude 当脑子、让沙箱当手」做成正式产品架构,Claude Blog 跟一篇把 self-hosted sandboxes 和 MCP tunnels 同时接上——Anthropic 已经不是「出模型」,是在把模型外面那层 harness 变成产品。Open weights 在同一天从两位创始人嘴里被点名:Levie 说 open weights 跟 frontier 的 gap 在塌,applied layer 可以用更便宜的模型 cost-optimize workload;Rauchg 直接说「Genuinely impressed, almost shocked, at how good GLM-5.2 by @zai_org is at coding」——Z.ai 的开源 GLM-5.2 把 coding 推到能让 Vercel CEO 用「almost shocked」形容。Codex 这一边 Sottiaux 主动给自己按刹车:Codex app 当年是用「okayish」前端的模型做出来的,等模型把前端能力真正做出来,Codex 会再变一次。Identity 这边 realMadhuguru 把 PM 摆到台面上——SWE 找到了 AI-native interface,但 PM 还是老的 PRD / strategy deck,新一代 Builder PM 会跑 agent 自己做 user research + 查 log + 出 prototype 而不是写 doc。Nikunj 一句「AI 的 priors 要每几周复位」配 Zarazhangrui 的「proactiveness 听起来好但落地很难」——两位 founder 在同一天把「不停 tinker + 接受不确定」立成这一代 builder 的基本节奏。Petergyang 从用户视角补一刀:Codex 和 Claude $200 订阅都花不完,本地 GLM 要 $10K Max Studio 跑得动,今天 builder 的真实瓶颈不在订阅,在「工具太多、产出路径太散」。收尾是 Unsupervised Learning 这期 Lab Wars 三人谈(Ari from Datalogy / Rob from Radical / Jacob 主持),把 API business 会不会被 lab 自己关掉、SpaceX 是不是已经是一家 AI infra 公司、Fable 的反应到底什么信号,一起摆到桌上——三个 host 把这一周的「compute crunch + lab 商业重排」压成一个公开命题,不是共识,是真问题。">
+    <div class="intro-inner">
+      <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
+      <p class="intro-copy">6-21 这天 Follow Builders 的主旋律是「底盘」——Anthropic 同一天放出来两篇工程博客加一篇 Claude Blog,把 managed agents 的整层 runtime 拆成「brain / hands / sandbox / MCP tunnel」四件:一篇 Claude Code 质量 postmortem 公开 4-23 那次 Sonnet 升级撞墙的事,一篇「Scaling Managed Agents: Decoupling the brain from the hands」把「让 Claude 当脑子、让沙箱当手」做成正式产品架构,Claude Blog 跟一篇把 self-hosted sandboxes 和 MCP tunnels 同时接上——Anthropic 已经不是「出模型」,是在把模型外面那层 harness 变成产品。Open weights 在同一天从两位创始人嘴里被点名:Levie 说 open weights 跟 frontier 的 gap 在塌,applied layer 可以用更便宜的模型 cost-optimize workload;Rauchg 直接说「Genuinely impressed, almost shocked, at how good GLM-5.2 by @zai_org is at coding」——Z.ai 的开源 GLM-5.2 把 coding 推到能让 Vercel CEO 用「almost shocked」形容。Codex 这一边 Sottiaux 主动给自己按刹车:Codex app 当年是用「okayish」前端的模型做出来的,等模型把前端能力真正做出来,Codex 会再变一次。Identity 这边 realMadhuguru 把 PM 摆到台面上——SWE 找到了 AI-native interface,但 PM 还是老的 PRD / strategy deck,新一代 Builder PM 会跑 agent 自己做 user research + 查 log + 出 prototype 而不是写 doc。Nikunj 一句「AI 的 priors 要每几周复位」配 Zarazhangrui 的「proactiveness 听起来好但落地很难」——两位 founder 在同一天把「不停 tinker + 接受不确定」立成这一代 builder 的基本节奏。Petergyang 从用户视角补一刀:Codex 和 Claude $200 订阅都花不完,本地 GLM 要 $10K Max Studio 跑得动,今天 builder 的真实瓶颈不在订阅,在「工具太多、产出路径太散」。收尾是 Unsupervised Learning 这期 Lab Wars 三人谈(Ari from Datalogy / Rob from Radical / Jacob 主持),把 API business 会不会被 lab 自己关掉、SpaceX 是不是已经是一家 AI infra 公司、Fable 的反应到底什么信号,一起摆到桌上——三个 host 把这一周的「compute crunch + lab 商业重排」压成一个公开命题,不是共识,是真问题。</p>
+    </div>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 01</div>
+    <h2 class="section-title">Open weights 跟 frontier 的 gap 在同一天被两位创始人点名 / Open Weights Closes the Gap</h2>
+    <p class="section-desc">Levie 把 open weights 这一轮的形状讲清楚——只要 gap 是窄的,frontier labs 反而松一口气,applied layer 这一层才是真正能 cost-optimize 的人;Rauchg 当天就给具体证据:GLM-5.2 by Z.ai 在 coding 上让他「almost shocked」。一个是 narrative,一个是 SOTA 验证,放在一起就是这一周 open-weights 在 coding 上被空间里两位最高杠杆的 CEO 同时确认。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:levie" data-author-name="Aaron Levie" data-author-tag="Box CEO" data-author-handle="@levie" data-author-avatar="../assets/avatars/x-levie.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-levie.jpg" alt="Aaron Levie avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie</div>
+            <div class="author-tag is-inline">Box CEO</div>
+          </div>
+          <div class="author-handle">@levie</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie(Box CEO)给 open weights 这一轮定调:「现在 open weights 这边发生的事相当惊人。我们看到模型在特定任务上拿到 SOTA,在 coding 和一些领域里已经在靠近 frontier。open weights 跟 frontier 之间只要保持的是窄 gap 而不是越来越宽,AI 能创造的价值就越大。」</p>
+              <p>Levie 这条真正的编辑动作在后半段——frontier labs 不被 open weights 追近这件事威胁,反而是松了一口气。一个任务的边际成本下降,AI 总用量就会上去;frontier 模型依然占有 planning、orchestration、review、那些必须做对的部分。applied layer 这一层才是真正能 cost-optimize 的人:bulk 用更便宜的模型,特定任务用后训练过的 open 模型,该对的环节用 frontier。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Levie:open weights 这边很惊人——coding 等领域在靠近 frontier。「只要 open weights 跟 frontier 之间是窄 gap,AI 创造的价值就越大」;frontier labs 反而松了一口气,applied layer 这一层才是 cost-optimize 的位置。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie (Box CEO) on the open-weights shift: &#39;Pretty remarkable what&#39;s happening with open weights AI right now. We&#39;re seeing models achieve SOTA results on specific tasks, and getting close to frontier on some areas of coding and other domains. The more that open weights is able to maintain only a marginal gap from the frontier, instead of a widening gap, the more value that can be created with AI.&#39;</p>
+              <p>Levie&#39;s editorial move is in the second half — frontier labs are not threatened by open weights closing the gap, they are relieved. If the marginal cost of a task drops, AI usage rises in aggregate; frontier models still own planning, orchestration, review, and the high-stakes parts of work. The applied layer is the one that gets to cost-optimize: cheaper models for bulk work, fine-tuned open models for specific tasks, frontier models for everything that has to be right.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Pretty remarkable what&#39;s happening with open weights AI right now. We&#39;re seeing models achieve SOTA results on specific tasks, and getting close to frontier on some areas of coding and other domains. The more that open weights is able to maintain only a marginal gap from the frontier, instead of a widening gap, the more value that can be created with AI. Incidentally, this is actually fine for the frontier labs as well; if we can lower the cost of an overall task then AI usage goes up in general. You&#39;re still likely using frontier models for planning, orchestration, reviewing, and other parts of work. But this is all very good for the applied layer of AI, which is now in a great position to cost optimize workloads with cheaper models or use tailored open models post-trained for specific tasks to improve performance.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/levie/status/2068434042148782515" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:rauchg" data-author-name="Guillermo Rauch" data-author-tag="Vercel CEO" data-author-handle="@rauchg" data-author-avatar="../assets/avatars/x-rauchg.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-rauchg.jpg" alt="Guillermo Rauch avatar"><span class="avatar-fallback">GR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Guillermo Rauch</div>
+            <div class="author-tag is-inline">Vercel CEO</div>
+          </div>
+          <div class="author-handle">@rauchg</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch(Vercel CEO)不绕弯:「Z.ai 出的 GLM-5.2 在 coding 上真的让我 impressed,almost shocked。事情在变。」</p>
+              <p>看谁在说——一个把每个 agent 的 skills folder 的 deploy 一面握在手里的 CEO,公开用「almost shocked」形容一个中国 open-weights 模型在 coding 上达到 SOTA。Rauchg 这两周一直把 markdown + vercel deploy 立成新的 agent stack,现在他亲口说 open-weights coding 模型好到能塞进那个 stack。Levie 那条「open weights 跟 frontier 的 gap 在塌」从一个空间里杠杆最高的 CEO 这里拿到了具体证据。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Rauchg:GLM-5.2(Z.ai)在 coding 上让我 impressed,almost shocked。「事情在变。」——open-weights 跟 frontier 的 gap 在塌,这回是 CEO 亲口确认。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch (Vercel CEO) is direct: &#39;Genuinely impressed, almost shocked, at how good GLM-5.2 by @zai_org is at coding. This changes things.&#39;</p>
+              <p>Read who is saying it: the CEO of the company that owns the deploy-side of every agent&#39;s skills folder is publicly using &#39;almost shocked&#39; about an open-weights Chinese model hitting coding SOTA. Rauchg has spent two weeks publicly framing markdown + vercel deploy as the new agent stack — and now he is saying the open-weights coding model is good enough to slot into that stack. Levie&#39;s claim about open weights closing the gap just got a specific confirmation from one of the highest-leverage CEOs in the space.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Genuinely impressed, almost shocked, at how good GLM-5.2 by @zai_org is at coding. This changes things.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/rauchg/status/2068517095818809770" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 02</div>
+    <h2 class="section-title">Anthropic 把 managed agents 的「底盘」开出来 / Anthropic Opens the Managed-Agent Runtime</h2>
+    <p class="section-desc">同一天两篇 Anthropic Engineering 博客:一篇公开 Claude Code 4-23 那次 Sonnet 升级撞墙的复盘,一篇把 managed agent 拆成 brain / hands 两层架构——brain 走 frontier API,hands 跑在用户自己的环境。把 Claude Code 当 install base 来复盘,把 brain/hands 解耦当架构总纲,Anthropic 已经不是在卖模型,是在把模型外面那层 runtime 立成产品。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="blog:anthropic" data-author-name="Anthropic" data-author-tag="Anthropic 官方博客" data-author-handle="" data-author-avatar="../assets/avatars/blog-anthropic.png">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/blog-anthropic.png" alt="Anthropic avatar"><span class="avatar-fallback">A</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Anthropic</div>
+            <div class="author-tag is-inline">Anthropic 官方博客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic Engineering 发了一篇「An update on recent Claude Code quality reports」——对 4-23 那次 Sonnet 升级在 Claude Code 输出里出现的回归做公开复盘。</p>
+              <p>两点不寻常:(1) Anthropic 愿意把一次 regression 写成公开工程博客,而不是发一条 fix 通告;(2) 这篇复盘把 Claude Code 当成有稳定用户群的产品来写——这些用户在几天之内发现并上报了 regression。潜台词:Claude Code 不是实验,是有装机量的产品。质量问题不再是工程部门自己消化的岔子,是公开的产品事件,因为用户已经在把 Claude Code 当基础设施依赖。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Anthropic 工程博客:对 4-23 Sonnet 升级在 Claude Code 里引发的回归做公开复盘——把 Claude Code 当 install base 来对待,质量事故是产品事件。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic Engineering publishes &#39;An update on recent Claude Code quality reports&#39; — a public postmortem on the April 23 Sonnet upgrade that produced regressions in Claude Code outputs.</p>
+              <p>Two things make this unusual: (1) Anthropic is willing to write a public engineering blog about a regression, not a fix announcement; (2) the postmortem frames Claude Code as a product that has stable users who noticed and reported the regression in days. The implicit message is that Claude Code is not an experiment, it is an install base. Quality incidents are no longer engineering detours — they are product events that get a public writeup, because users are treating Claude Code as infrastructure they depend on.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>An update on recent Claude Code quality reports</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.anthropic.com/engineering/april-23-postmortem" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="blog:anthropic" data-author-name="Anthropic" data-author-tag="Anthropic 官方博客" data-author-handle="" data-author-avatar="../assets/avatars/blog-anthropic.png">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/blog-anthropic.png" alt="Anthropic avatar"><span class="avatar-fallback">A</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Anthropic</div>
+            <div class="author-tag is-inline">Anthropic 官方博客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic Engineering 同步放「Scaling Managed Agents: Decoupling the brain from the hands」——给 Claude Code 那篇复盘配的架构级 partner。</p>
+              <p>论点:managed agent 在规模化时是两种东西,必须分开优化。「Brain」是模型的 planning、reasoning、review,这一层放在 frontier 模型加长上下文里跑;「Hands」是工具调用、文件编辑、浏览器操作、sandbox 执行,这一层需要稳定的沙箱、快速迭代、干净的清理。把两者解耦,brain 可以走托管 API,hands 可以跑在你自己的 VPC、笔记本、或者自有 data plane 上。复盘是 bug report,这一篇是 bug report 背后那一层架构重写。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Anthropic 工程博客:Scaling Managed Agents —— 把 agent 拆成 brain(frontier 模型 + 长上下文)和 hands(沙箱 + 工具调用),两层解耦,brain 走 API,hands 跑在用户自己的环境里。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic Engineering publishes &#39;Scaling Managed Agents: Decoupling the brain from the hands&#39; — the architectural companion to the Claude Code postmortem.</p>
+              <p>The argument: at scale, a managed agent is two different things that have to be optimized separately. The &#39;brain&#39; is the model&#39;s planning, reasoning, and review — which lives in a frontier-class model with long context. The &#39;hands&#39; are the tool calls, the file edits, the browser moves, the sandbox runs — which need durable sandboxing, fast iteration, and clean teardown. Decoupling them means the brain can be a hosted API while the hands run in your VPC, your laptop, or your own data plane. The postmortem was the bug report; this is the architectural rewrite that the bug report implies.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Scaling Managed Agents: Decoupling the brain from the hands</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.anthropic.com/engineering/managed-agents" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 03</div>
+    <h2 class="section-title">Codex 的下一程:等模型把 front-end 做出来 / Codex Waits for Better Front-End Models</h2>
+    <p class="section-desc">Sottiaux 公开按住 Codex 的节奏——Codex App 是用「okayish」前端的模型做出来的,等模型把前端能力做出来 Codex 会再变一次;同一条 thread 里把 Codex app 定位成「最高价值 token 落下来的地方」,跟 Nikunj 的 priors 复位、Unsupervised Learning 的 compute crunch 在同一天呼应。Codex 主动给自己的下一程设上限:UI 是 placeholder,瓶颈在模型那一层。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:thsottiaux" data-author-name="Thibault Sottiaux" data-author-tag="OpenAI Codex &amp; ChatGPT" data-author-handle="@thsottiaux" data-author-avatar="../assets/avatars/x-thsottiaux.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-thsottiaux.jpg" alt="Thibault Sottiaux avatar"><span class="avatar-fallback">TS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Thibault Sottiaux</div>
+            <div class="author-tag is-inline">OpenAI Codex &amp; ChatGPT</div>
+          </div>
+          <div class="author-handle">@thsottiaux</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thibault Sottiaux(OpenAI Codex &amp; ChatGPT)给 Codex 的下一程画线:「Codex App 是用前端能力『okayish』的模型做出来的。等我们终于把模型的前端能力显著提上来那天,等着看我们能做出来什么——那天会很不一样。」</p>
+              <p>Sottiaux 同时在做两件事:用今天的模型能力把产品上线,同时告诉外面——产品的面是被下一代模型的前端质量卡住的。潜台词:Codex app 的 UI 层相对他相信的「要来的那版」只是 placeholder。一个产品负责人公开说「产品已经准备好接一个还不存在的模型,UX 的瓶颈不在我们这」——这种话很少听到。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Sottiaux(Codex):「Codex App 是用前端能力 okayish 的模型做的。等模型把前端能力做出来那天,等着看」。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thibault Sottiaux (OpenAI Codex &amp; ChatGPT) on what Codex can still become: &#39;We built the Codex App with models that were okayish at front-end. Wait to see what we can do when we finally improve front-end capabilities significantly in our models. That day will be something.&#39;</p>
+              <p>Sottiaux is doing two things at once. He is shipping a product on today&#39;s model capability, and he is signalling that the product surface itself is bottlenecked on the next model generation&#39;s front-end quality. The implication: Codex app&#39;s UI layer is a placeholder relative to what the team believes is coming. This is rare — a product lead saying out loud that the product is ready for a model that does not exist yet, and that the bottleneck on UX is upstream of their team.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>We built the Codex App with models that were okayish at front-end.
+
+              Wait to see what we can do when we finally improve front-end capabilities significantly in our models. That day will be something.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/thsottiaux/status/2068568650924409260" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:thsottiaux" data-author-name="Thibault Sottiaux" data-author-tag="OpenAI Codex &amp; ChatGPT" data-author-handle="@thsottiaux" data-author-avatar="../assets/avatars/x-thsottiaux.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-thsottiaux.jpg" alt="Thibault Sottiaux avatar"><span class="avatar-fallback">TS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Thibault Sottiaux</div>
+            <div class="author-tag is-inline">OpenAI Codex &amp; ChatGPT</div>
+          </div>
+          <div class="author-handle">@thsottiaux</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Sottiaux(同一条 thread 后续)给 Codex app 的位置定性:「token 跟 token 不一样,Codex app 里跑的是最有价值的那一类。」</p>
+              <p>这是上一条 front-end 那段底下的另一层叙述:在 token 成本是 binding constraint 的世界里(Nikunj 的 priors 复位、Unsupervised Learning 的 compute crunch),跑出一段 Codex app 用的不是普通 token,而是高杠杆、能交付出一个产品面的 token。Codex app 在这个叙述里不是「跟模型聊天的地方」,是「模型最高价值 token 落下来」的地方。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Sottiaux:「token 不平等,Codex app 里跑的是最有价值的那一类」。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Sottiaux (same thread) on what the Codex app surfaces: &#39;Some tokens work harder than others. Some of the most valuable ones are found in the Codex app.&#39;</p>
+              <p>This is the simpler framing underneath the post about front-end: in a world where token cost is the binding constraint (Nikunj&#39;s priors-reset framing, the Unsupervised Learning compute-crunch framing), the tokens that produce a Codex app session are not generic tokens — they are high-leverage tokens that ship a product surface. The Codex app is positioned not as &#39;a place to chat with a model&#39; but as a place where the model&#39;s most valuable tokens land.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Some tokens work harder than others. Some of the most valuable ones are found in the Codex app.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/thsottiaux/status/2068443037907522002" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 04</div>
+    <h2 class="section-title">PM identity crisis + 一周 priors 复位 / The PM Identity Crisis and Weekly Reset</h2>
+    <p class="section-desc">Madhu 把 PM 这个角色摆到台面——SWE 找到了 AI-native interface,PM 还停在老 PRD / strategy deck,新一代 Builder PM 用 AI 把角色扩到整个产品生命周期,产出是 prototype 不是 doc。Nikunj 给实践定节奏:每周自己 eval 一次 frontier、每周跟 enterprise buyer 聊一次,两件事加起来跑赢 99% 的人。Zhang Rui 同一天补两个角度——proactiveness 听起来好但落地难,因为是判断题没有训练信号;自己做的 bookmark 插件 work,是因为 hijacking 了已经查 50 次的注意力。三个 founder 在同一天把「不停 tinker + 用好已有的上下文」立成这一代 builder 的基本节奏。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:realmadhuguru" data-author-name="Madhusudhan" data-author-tag="AI 工程师 / 开源贡献者" data-author-handle="@realmadhuguru" data-author-avatar="../assets/avatars/x-realmadhuguru.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-realmadhuguru.jpg" alt="Madhusudhan avatar"><span class="avatar-fallback">M</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Madhusudhan</div>
+            <div class="author-tag is-inline">AI 工程师 / 开源贡献者</div>
+          </div>
+          <div class="author-handle">@realmadhuguru</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Madhu(realMadhuguru)把没人讲的另一个角色摆到台面:「PM 也在 identity crisis。Engineering 找到了 AI-native interface——SWE agent 让单人杠杆倍增。公司让 PM 用 AI,但 PM 这个角色没进化。两边在分化:一边是老派 PM,AI 加速老活——更多 PRD、更多 strategy deck、更多 doc,产量上去,判断力没上去;一边是 Builder PM,用 AI 把自己的角色扩到整个产品生命周期——能跑 agent 做市场和用户研究、直接查 log 和 analytics、生成多个候选方案、然后挑最好的那个,产出越来越是 prototype 而不是 doc——engineer 对 demo 的反应远比对 doc 好。」</p>
+              <p>结构其实简单:SWE 找到了 AI-native interface,就是 agent;PM 被告知「用 AI」,但用 AI 写更多老 artifact。Builder PM 拿到同一种 agent 杠杆,但指向 user research、query log、候选 idea,产出的是 prototype 而不是 deck。这不是「PM + AI」,是同名不同命的另一个角色。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Madhu:PM 也在 identity crisis——老派 PM 用 AI 写更多 PRD/deck,Builder PM 用 AI 扩到整个产品生命周期,产出是 prototype 不是 doc。同名不同命的两个角色。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Madhu (realMadhuguru) on the role nobody is talking about: &#39;The Product role is having an identity crisis too. Engineering has found its AI-native interface — SWE agents dramatically increase individual leverage. Companies are asking PMs to use AI, but they haven&#39;t evolved the role. So there are two camps. The old-school PM. AI accelerates the old job: more PRDs, more strategy decks, more docs. Lots of output, not much judgment. The Builder PM. Builder PMs use AI to expand their role across the product lifecycle. They explore a much larger surface area of ideas to arrive at the best. They run agents for market and user research, query logs and analytics directly, generate competing ideas, then curate the best ones. Their outputs are increasingly prototypes rather than docs — engineers react far more constructively to demos than docs.&#39;</p>
+              <p>The argument is structurally simple: SWE found its AI-native interface (the agent). PM is being told to &#39;use AI&#39; but is using it to write more of the old artifacts. The Builder PM picks up the same agent leverage, but points it at user research, query logs, and competing ideas — and ships prototypes instead of decks. The role is not &#39;PM with AI&#39;. The role is a different role that happens to have the same title.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The Product role is having an identity crisis too.
+
+              Engineering has found its AI-native interface - SWE agents dramatically increase individual leverage.
+
+              Companies are asking PMs to use AI, but they haven&#39;t evolved the role.
+
+              So there are two camps.
+
+              The old-school PM.
+              AI accelerates the old job: more PRDs, more strategy decks, more docs. Lots of output, not much judgment.
+
+              The Builder PM.
+              Builder PMs use AI to expand their role across the product lifecycle.
+
+              They explore a much larger surface area of ideas to arrive at the best. They run agents for market and user research, query logs and analytics directly, generate competing ideas, then curate the best ones.
+
+              They constantly evolve their workflows to take advantage of the latest in AI.
+
+              Their outputs are increasingly prototypes rather than docs - engineers react far more constructively to demos than docs.
+
+              I think the role is moving much closer to Builder PMs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/realmadhuguru/status/2068350509027876876" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:nikunj" data-author-name="Nikunj Kothari" data-author-tag="Afore Capital 合伙人" data-author-handle="@nikunj" data-author-avatar="../assets/avatars/x-nikunj.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-nikunj.jpg" alt="Nikunj Kothari avatar"><span class="avatar-fallback">NK</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Nikunj Kothari</div>
+            <div class="author-tag is-inline">Afore Capital 合伙人</div>
+          </div>
+          <div class="author-handle">@nikunj</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj Kalgia(Felicis)点出真正卡住 founder 的事:「AI 这一行最大的问题是 priors 要每几周复位一次——但大部分人做不到。我跟很多人聊,他们说某某不行,我问上次是什么时候测的,答案永远是『几个月前』。哥们,在 AI 的时间线上那是 eons ago。」</p>
+              <p>更难的那半是实践:「所以每个人要给自己的硬任务设 eval,留出每周 tinker 的时间,才能真正知道 frontier 在哪。然后每周要跟 enterprise buyer 聊一次,他们通常落后两年,但他们是 buyer,你得懂怎么卖。两个每周加起来,你就能稳稳跑赢 99% 的人。」Nikunj 把节奏定下来:一周两次,frontier 一头,buyer 一头,缺一不可。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Nikunj:AI 这行最大的问题是 priors 要每几周复位。「每周自己 eval 一次 frontier、每周跟 enterprise buyer 聊一次,跑赢 99% 的人。」</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj Kalgia (Felicis) on what is actually slowing founders down: &#39;The biggest problem with AI is that priors need to be reset every few weeks.. and it seems like most people are incapable of doing that. I talk to so many people who say xyz doesn&#39;t work and when I ask when was the last time they tried testing it, the answer is always &quot;a few months ago.&quot; Brother that&#39;s like eons ago in AI timelines.&#39;</p>
+              <p>The harder half is the practice: &#39;This is why each person needs to have their own evals of hard tasks and weekly tinker time to truly understand where the frontier is. And then you need to talk to enterprise buyers weekly who are usually two years behind.&#39; The combination — a personal eval set you re-run weekly + a buyer conversation you re-run weekly — is the actual practice that puts you ahead of 99% of people in the space. Nikunj is naming the cadence: weekly, both directions (frontier and buyer).</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The biggest problem with AI is that priors need to be reset every few weeks.. and it seems like most people are incapable of doing that.
+
+              I talk to so many people who say xyz doesn&#39;t work and when I ask when was the last time they tried testing it, the answer is always &quot;a few months ago.&quot;
+
+              Brother that&#39;s like eons ago in AI timelines. This is why each person needs to have their own evals of hard tasks and weekly tinker time to truly understand where the frontier is.
+
+              And then you need to talk to enterprise buyers weekly who are usually two years behind. But they are the buyers so you need to understand how to market.
+
+              The combination of the two will give you a pretty good sense of where to invest time and capital. If you just do these two weekly, you&#39;ll be ahead of 99% of people.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/nikunj/status/2068411460620042720" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:zarazhangrui" data-author-name="Zhang Rui" data-author-tag="Follow Builders 创始人 / 策展人" data-author-handle="@zarazhangrui" data-author-avatar="../assets/avatars/x-zarazhangrui.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-zarazhangrui.jpg" alt="Zhang Rui avatar"><span class="avatar-fallback">ZR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Zhang Rui</div>
+            <div class="author-tag is-inline">Follow Builders 创始人 / 策展人</div>
+          </div>
+          <div class="author-handle">@zarazhangrui</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zhang Rui(前端 / 设计 founder)点名一个写不进 system prompt 的难题:「Proactiveness 听起来很好听,做起来真的难。」</p>
+              <p>Proactiveness 是每个 agent 的 system prompt 都会写一句的特性。Zhang Rui 在说为什么难做:proactiveness 是判断题——什么要主动提、什么时候升级、什么时候闭嘴。这件事没有训练信号,而且 agent 没有跟用户共享的「用户当下在想什么」上下文。这不是「agent 太被动」或「agent 太冒进」——是校准这件事需要的上下文,agent 没有。这是 agentic 产品这一代没解决的 UI 难题之一。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Zhang Rui:Proactiveness 听起来好,做起来真难——是判断题,没有训练信号,agent 没有跟用户共享的上下文。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zhang Rui (frontend/design founder) on the silent hard problem: &#39;Proactiveness sounds nice in theory but is so hard to get right.&#39;</p>
+              <p>Proactiveness is the AI-agent trait everyone writes into their system prompts. Zhang Rui is naming why it is hard in practice: proactiveness is about judgment — what to bring up unprompted, when to escalate, when to stay quiet. There is no training signal for that, and the agent has no shared context with the user about what the user is already thinking about. The complaint is not &#39;agents are too passive&#39; or &#39;agents are too aggressive&#39; — it is that the calibration requires a level of context the agent does not have. This is one of the unsolved UI problems of agentic products.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Proactiveness sounds nice in theory but is so hard to get right</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/zarazhangrui/status/2068509088452071594" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:zarazhangrui" data-author-name="Zhang Rui" data-author-tag="Follow Builders 创始人 / 策展人" data-author-handle="@zarazhangrui" data-author-avatar="../assets/avatars/x-zarazhangrui.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-zarazhangrui.jpg" alt="Zhang Rui avatar"><span class="avatar-fallback">ZR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Zhang Rui</div>
+            <div class="author-tag is-inline">Follow Builders 创始人 / 策展人</div>
+          </div>
+          <div class="author-handle">@zarazhangrui</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zhang Rui(同一条 thread 后续)给一个个人工作流 hack:「我囤 X 书签从来不读。所以我写了一个浏览器插件,每次打开 X 都把一个书签推到我主信息流里(差不多像广告),现在我真的读书签了。诀窍是 hijacking 我一天已经查 50 次的那块注意力。」</p>
+              <p>把最后一句当编辑判断读:行为改变不是靠更好的组织,靠的是 hijacking 你已经查过的地方。书签管理器之所以失败,是因为 Zhang Rui 已经有了一个他每天打开的信息流;插件能 work,是因为把书签塞进了那个已有的信息流。这跟上面 Nikunj / realMadhuguru 提的 agentic UX 问题是同一个形状——杠杆在用户已经所在的那个上下文,不在你让他新维持的那个上下文。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Zhang Rui:把书签塞进每天查 50 次的主信息流才真的读——「行为改变来自 hijacking 你已经查过的地方,不是让你多维护一个地方」。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zhang Rui (same thread) on a personal workflow hack: &#39;I hoard X bookmarks and never read them. So I built an extension that injects a bookmarked post into my main feed every time I open X (almost like an ad). Now I read my bookmarks. The trick was hijacking real estate I already check 50 times a day.&#39;</p>
+              <p>Read the last sentence as the editorial: behavior change does not come from better organization, it comes from hijacking real estate you already check. The bookmark manager failed because Zhang Rui already had a feed he was opening. The extension works because it inserts the bookmark into the existing feed. This is the same shape as every agentic UX problem from Nikunj and realMadhuguru above — the leverage is in the existing context the user is already in, not in a new context you ask them to maintain.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I hoard X bookmarks and never read them. So I built an extension that injects a bookmarked post into my main feed every time I open X (almost like an ad). Now I read my bookmarks.
+
+              The trick was hijacking real estate I already check 50 times a day</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/zarazhangrui/status/2068568920613953626" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 05</div>
+    <h2 class="section-title">Claude Managed Agents 把 sandbox + MCP tunnel 收齐 / Claude Managed Agents Closes the Runtime Loop</h2>
+    <p class="section-desc">Claude Blog 把工程博客那篇 brain/hands 解耦的「hands」侧产品化——self-hosted sandbox 让 hands 跑在客户自己环境里,MCP tunnel 让 brain 能连私网工具。Anthropic 同一天用两篇工程博客 + 一篇 Claude Blog 把 managed agents 的完整 runtime 立成产品面:brain 走 API、hands 走自托管、中间一条 tunnel。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="blog:claudeai" data-author-name="Claude" data-author-tag="Claude 官方博客" data-author-handle="" data-author-avatar="../assets/avatars/blog-claudeai.png">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/blog-claudeai.png" alt="Claude avatar"><span class="avatar-fallback">C</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Claude</div>
+            <div class="author-tag is-inline">Claude 官方博客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Claude Blog 同日上线「New in Claude Managed Agents: self-hosted sandboxes and MCP tunnels」——给工程博客那篇 brain / hands 解耦配的「hands」侧产品。</p>
+              <p>三件事一次到位:(1) 自托管 sandbox,让 agent 的「hands」能跑在客户自己的环境里、用客户自己的安全模型;(2) MCP tunnel,让托管的 brain 能连到客户私网后面的工具,客户不用把这些工具公开暴露;(3) 整个叙述定调——这是工程博客那篇 brain/hands 的产品化版,brain 由 API 调,hands 可以自托管,中间是一条托管 tunnel。组合起来的消息:Anthropic 现在卖的不是模型,是 runtime 层——agent 有托管 brain + 自托管 hands,中间是一条托管 tunnel。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Claude Blog:Claude Managed Agents 新增 self-hosted sandboxes + MCP tunnels——Anthropic 把 runtime 层立成产品:托管 brain + 自托管 hands + 中间一条 tunnel。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Claude Blog announces &#39;New in Claude Managed Agents: self-hosted sandboxes and MCP tunnels&#39; — the hands-side of the brain/hands split that the engineering blog posted the same day.</p>
+              <p>Three pieces at once: (1) self-hosted sandboxes, so the &#39;hands&#39; of the agent can run in the customer&#39;s own environment with the customer&#39;s own security model; (2) MCP tunnels, so the managed brain can reach tools that live behind a private network without the customer exposing those tools publicly; (3) the framing — this is productized &#39;hands&#39; that ship alongside the &#39;brain&#39; from the engineering blog. The combined message is that Anthropic is now selling the runtime layer, not just the model: the agent has a brain you call via API and hands you can host yourself, with a managed tunnel in between.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>New in Claude Managed Agents: self-hosted sandboxes and MCP tunnels</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://claude.com/blog/claude-managed-agents-updates" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 06</div>
+    <h2 class="section-title">Builder 一侧:订阅花不完、本地跑不动 / From the Builder&#39;s Side: Subscriptions Unused, Local Out of Reach</h2>
+    <p class="section-desc">Peter Yang 把 user / builder 这一层补一刀——Codex 和 Claude $200 订阅大部分人花不完,local 跑 GLM-5.2 要 512GB 显存(≈$10K Max Studio)。对照 Levie 的「open weights 在 cost-optimize workload 上位置很好」,open weights 是 API 便宜、本地贵;跟 Anthropic brain/hands 解耦是同一种经济切分——不同层的成本结构不一样,builder 真正的瓶颈不在订阅价格,在「工具太多、产出路径太散」。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:petergyang" data-author-name="Peter Yang" data-author-tag="产品教练 / 创作者经济研究者" data-author-handle="@petergyang" data-author-avatar="../assets/avatars/x-petergyang.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-petergyang.jpg" alt="Peter Yang avatar"><span class="avatar-fallback">PY</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Yang</div>
+            <div class="author-tag is-inline">产品教练 / 创作者经济研究者</div>
+          </div>
+          <div class="author-handle">@petergyang</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang(product creator / YouTube)给 builder 一侧的视角:「逆着说一句——Codex 和 Claude $200 月费我都花不完,我看不出试 local 模型的意义。再说想本地跑最新 glm 要 512GB,那差不多是一台 $10K 的 Max Studio。」</p>
+              <p>Peter 在说 builder-facing 新闻不爱说的事:$200/月的前端订阅根本不是瓶颈,大部分 builder 连这些订阅都花不完。要不要考虑 local 模型,问题不在成本,在工作流合不合(私有数据、离线、自定义微调)。而本地跑 GLM-5.2 的真实价格不是「免费」——是一台差不多 $10K 的工作站。对照看 Levie 那条「open weights 在 cost-optimize workload 上位置很好」:open weights 在 API 端便宜,在本地端贵。这个经济切分跟 Anthropic brain/hands 解耦是同一种形状——不同层的成本结构不一样。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Peter Yang:Codex 和 Claude $200 订阅花不完;本地跑 GLM-5.2 要 512GB 显存(≈$10K Max Studio)。Open weights 在 API 端便宜,本地端贵——跟 brain/hands 是同一种切分。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang (product creator / YouTube) with the user&#39;s view: &#39;I will go against the grain and say I can barely use up my Codex and Claude $200 subscriptions so I don&#39;t see the point of trying local models… Also to try the latest glm locally requires 512 mb which is like a $10K Max Studio?&#39;</p>
+              <p>Peter is naming what builder-facing press skips: the $200/month frontier subscriptions are not the bottleneck — most builders cannot even spend them. The reason to consider local models is not cost, it is workflow fit (private data, offline, custom fine-tunes). And the actual price tag on running GLM-5.2 locally is not &#39;free&#39; — it is roughly a $10K workstation. Read this against Levie&#39;s &#39;open weights is in a great position to cost optimize workloads&#39; claim: open weights are cheap at API, expensive at local. The economic split is exactly the same shape as the Anthropic brain/hands split — different layers have different cost structures.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I will go against the grain and say I can barely use up my Codex and Claude $200 subscriptions so I don&#39;t see the point of trying local models…
+
+              Also to try the latest glm locally requires 512 mb which is like a $10K Max Studio?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/petergyang/status/2068411894185295969" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 07</div>
+    <h2 class="section-title">Podcast 收尾:Unsupervised Learning 把 Lab Wars 立成这一周公开题 / Closer: Unsupervised Learning Names Lab Wars</h2>
+    <p class="section-desc">Jacob Efron 跟 Ari(Datalogy,前 DeepMind / Meta)、Rob(Radical Ventures)做 roundup。三条线:Fable 发布后的反应到底在说什么、coding agent 跑长 horizon 是不是 RSI 阈值事件、spicy prediction——compute crunch 持续下去 frontier labs 会不会关掉 API 业务。第三条直接接回今天主线:open weights 追近 frontier,frontier labs 又开始收紧对外 API,applied layer 要在两条汇聚的路上做选择。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="podcast:unsupervised-learning" data-author-name="Unsupervised Learning" data-author-tag="Redpoint 出品的 AI 投资与技术播客" data-author-handle="" data-author-avatar="../assets/avatars/podcast-unsupervised-learning.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/podcast-unsupervised-learning.jpg" alt="Unsupervised Learning avatar"><span class="avatar-fallback">UL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Unsupervised Learning</div>
+            <div class="author-tag is-inline">Redpoint 出品的 AI 投资与技术播客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Unsupervised Learning 这期「AI Vibe Check: Lab Wars, Why APIs Might Vanish &amp; Future Predictions」。主持人 Jacob Efron 跟 Ari(Datalogy,前 DeepMind / Meta)和 Rob(Radical Ventures)做 roundup,过这一周 AI 圈的几件大事。</p>
+              <p>三条线撑起这期节目。(1) Fable 和它发布的反应——围绕一个 AI 产品的监管噪音到底在说 applied layer 在往哪走。(2) 离 RSI 还有多远——三位主持人在时间线上有分歧,但都同意最近 coding agent 能跑更长 horizon 是阈值事件。(3) 一个 spicy prediction:compute crunch 持续下去,frontier labs 可能干脆关掉 API 业务——模型留给自己产品用,不再对外卖。这条叙述不是论断,是一个让房间里人吵的问题。第三条直接接回今天的主线——如果 open weights 持续追近 frontier,frontier labs 又开始关掉对外 API,applied layer 只能在两条汇聚的路上选一条:建在 open weights 上,或者直接建在 frontier lab 的产品面里。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Unsupervised Learning:Lab Wars / APIs Might Vanish / Future Predictions——frontier labs 会不会在 compute crunch 里关掉 API 业务,跟「open weights 追近 frontier」直接相关。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Unsupervised Learning — AI Vibe Check: Lab Wars, Why APIs Might Vanish &amp; Future Predictions. Host Jacob Efron sits down with Ari (Datalogy, ex-DeepMind and Meta) and Rob (Radical Ventures) for a roundup episode covering the week&#39;s biggest AI moves.</p>
+              <p>Three threads carry the conversation. (1) Fable and the reaction around its release — what the regulatory noise around a single AI product actually signals about where the applied layer is headed. (2) How close we are to RSI — the three hosts disagree on the timeline but agree that the recent move to longer-horizon coding agents is the threshold event. (3) The spicy prediction: as the compute crunch continues, frontier labs may actually get rid of their API business — keep the model for their own products, stop selling it externally. The framing is not a thesis, it is a question the room is supposed to argue about. The third thread ties directly back to the day&#39;s theme — if open weights keeps closing the gap AND labs start killing external API, the applied layer has to choose between two converging paths: build on open weights, or build inside a frontier lab&#39;s product surface.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>AI Vibe Check: Lab Wars, Why APIs Might Vanish &amp; Future Predictions</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.youtube.com/watch?v=W_iO8XxgD_I" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <footer data-source-note="Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-21 source feeds.">Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-21 source feeds.</footer>
+
+  <script>
+    function getTemplateAuthorSources() {
+      const sources = window.AI_BUILDERS_TEMPLATE_SOURCES || {};
+      return { identities: sources.identities || {}, avatars: sources.avatars || {} };
+    }
+
+    function getAuthorInitials(name) {
+      return (name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(function(part) { return part[0]; }).join('').toUpperCase();
+    }
+
+    function hydrateTemplateCopy() {
+      const intro = document.querySelector('.intro');
+      if (intro) {
+        const kicker = intro.querySelector('.intro-kicker');
+        const copy = intro.querySelector('.intro-copy');
+        if (kicker) kicker.textContent = intro.dataset.kicker || '';
+        if (copy) copy.textContent = intro.dataset.text || '';
+      }
+
+      const footer = document.querySelector('footer');
+      if (footer) footer.textContent = footer.dataset.sourceNote || '';
+
+      const rewriteLabel = document.body.dataset.viewLabelRewrite || '速读';
+      const originalLabel = document.body.dataset.viewLabelOriginal || '原文';
+      document.querySelectorAll('.view-toggle').forEach(function(button) {
+        if (button.dataset.viewTarget === 'rewrite') button.textContent = rewriteLabel;
+        if (button.dataset.viewTarget === 'original') button.textContent = originalLabel;
+      });
+    }
+
+    function hydrateAuthorMeta() {
+      const sources = getTemplateAuthorSources();
+      document.querySelectorAll('.card').forEach(function(card) {
+        const authorKey = card.dataset.authorKey || '';
+        const identity = sources.identities[authorKey] || {};
+        const avatarEntry = sources.avatars[authorKey] || {};
+
+        const name = identity.name || card.dataset.authorName || '';
+        const rawHandle = identity.handle || card.dataset.authorHandle || '';
+        const handle = rawHandle && rawHandle.startsWith('@') ? rawHandle : (rawHandle ? '@' + rawHandle : '');
+        const tag = identity.label || card.dataset.authorTag || '';
+        const avatar = avatarEntry.fileUrl || avatarEntry.localPath || card.dataset.authorAvatar || '';
+
+        const nameNode = card.querySelector('.author-name');
+        const tagNode = card.querySelector('.author-tag');
+        const handleNode = card.querySelector('.author-handle');
+        const avatarNode = card.querySelector('.avatar');
+        const avatarImg = card.querySelector('.avatar img');
+        const avatarFallback = card.querySelector('.avatar-fallback');
+
+        if (nameNode) nameNode.textContent = name;
+        if (tagNode) tagNode.textContent = tag;
+        if (handleNode) handleNode.textContent = handle;
+        if (avatarImg) {
+          avatarImg.src = avatar;
+          avatarImg.alt = name ? name + ' avatar' : 'Author avatar';
+        }
+        if (avatarNode) avatarNode.classList.toggle('is-fallback', !avatar);
+        if (avatarFallback) avatarFallback.textContent = getAuthorInitials(name);
+      });
+    }
+
+    function updateEditionStrip() {
+      const publishDate = document.body.dataset.publishDate;
+      const editionName = document.body.dataset.editionName || '双语精选版';
+      const editionStrip = document.getElementById('edition-strip-text');
+      if (!publishDate || !editionStrip) return;
+
+      const issueNumber = document.body.dataset.issueNumber || '';
+      if (!issueNumber) return;
+
+      const selectedCount = document.querySelectorAll('.card').length;
+      const authorCount = new Set([].slice.call(document.querySelectorAll('.author-handle')).map(function(node) { return node.textContent.trim(); }).filter(Boolean)).size;
+      const themeCount = document.querySelectorAll('.section-header').length;
+      const parts = ['第 ' + issueNumber + ' 期', publishDate, editionName, selectedCount + ' 条精选', authorCount + ' 位作者', themeCount + ' 个主题'];
+      editionStrip.innerHTML = parts.map(function(part) { return '<span class="edition-item">' + part + '</span>'; }).join('<span class="edition-sep">|</span>');
+    }
+
+    function measureVariantHeight(variant) {
+      const prevPosition = variant.style.position;
+      const prevInset = variant.style.inset;
+      const prevVisibility = variant.style.visibility;
+      const prevPointerEvents = variant.style.pointerEvents;
+      const prevOpacity = variant.style.opacity;
+      const prevTransform = variant.style.transform;
+      const prevTransition = variant.style.transition;
+      const prevOverflowY = variant.style.overflowY;
+      const prevDisplay = variant.style.display;
+
+      variant.style.position = 'relative';
+      variant.style.inset = 'auto';
+      variant.style.visibility = 'hidden';
+      variant.style.pointerEvents = 'none';
+      variant.style.opacity = '1';
+      variant.style.transform = 'none';
+      variant.style.transition = 'none';
+      variant.style.overflowY = 'visible';
+      variant.style.display = 'block';
+
+      const height = variant.scrollHeight;
+
+      variant.style.position = prevPosition;
+      variant.style.inset = prevInset;
+      variant.style.visibility = prevVisibility;
+      variant.style.pointerEvents = prevPointerEvents;
+      variant.style.opacity = prevOpacity;
+      variant.style.transform = prevTransform;
+      variant.style.transition = prevTransition;
+      variant.style.overflowY = prevOverflowY;
+      variant.style.display = prevDisplay;
+
+      return Math.ceil(height);
+    }
+
+    function getTargetHeight(shell, target) {
+      const variant = shell.querySelector('.content-variant[data-view="' + target + '"]');
+      return measureVariantHeight(variant);
+    }
+
+    function syncShellHeights() {
+      document.querySelectorAll('.content-shell').forEach(function(shell) {
+        const active = shell.querySelector('.content-variant.is-active');
+        const target = active ? active.dataset.view : 'rewrite';
+        shell.style.height = getTargetHeight(shell, target) + 'px';
+      });
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', function() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(syncShellHeights, 120);
+    });
+
+    document.querySelectorAll('.card').forEach(function(card) {
+      const buttons = card.querySelectorAll('.view-toggle');
+      const shells = card.querySelectorAll('.content-shell');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const target = button.dataset.viewTarget;
+          if (button.classList.contains('is-active')) return;
+
+          buttons.forEach(function(btn) {
+            btn.classList.toggle('is-active', btn === button);
+          });
+
+          shells.forEach(function(shell) {
+            const current = shell.querySelector('.content-variant.is-active');
+            const next = shell.querySelector('.content-variant[data-view="' + target + '"]');
+            if (!current || !next || current === next) return;
+
+            shell.style.height = shell.offsetHeight + 'px';
+            requestAnimationFrame(function() {
+              current.classList.remove('is-active');
+              next.classList.add('is-active');
+              shell.style.height = getTargetHeight(shell, target) + 'px';
+            });
+          });
+        });
+      });
+    });
+
+    hydrateTemplateCopy();
+    hydrateAuthorMeta();
+    updateEditionStrip();
+    syncShellHeights();
+  </script>
+</body>
+</html>
