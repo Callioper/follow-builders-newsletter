@@ -1,0 +1,532 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-06-22",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "6-22 这天 Follow Builders 的主旋律是「吃 harness」——Levie 收单 Sakana 当天发的 Fugu:multi-model routing 不再是 harness 的活,而是 model 自己管 selection、delegation、verification、quality control;Levie 紧接一条把 agent 时代的尺度定在 100X——data leak / silent write / authoritative truth source / logging / verify 全部要重做。Steipete(OpenClaw 创始人)用一句「hunch was right」点头——routing 归 model 自己的赌对了。rauchg 把 v0 的 performance cookbook 公开:rendering harness 是新的产品面 gate,model 质量一旦不是 gate,frame budget 就是;同一作者一句「Coding agents will squeeze every ounce of IKEA effect out of you」给 agent 时代立 cost line——agent 在实现上省的时间,IKEA effect 在迭代上还回来。ryolu_ 把 Books in ryOS 的 loop 拆成「Cursor mobile 起框架 + 键盘上手调 taste」,creator-harness 是「agent 干 generation、人干 finish」的双 harness。petergyang 转 @liu8in 的 insight:agentic video 的底不是 video model,是「不让 agent 在视觉层推理」——绕过去的办法是让它写 HTML,「HTML is the LLM's native language」。Context > prompt 这条规则在同一天被三位创始人立起来:zarazhangrui 给 AI slop 立规则——输入比输出长(常见 3-5 倍)才是 quality,输入短于输出几乎一定是 slop;同一作者紧接一句「I'm talking about context, not prompt」——prompt UX 不是战场,context pipeline 才是;garrytan 把 2026 这年的 thesis 立出来——AGI 给 intelligence,personal context 给 unlock,GBrain 开源是「personal-brain + company-brain 是接 AGI 的接口」的明确答案;thenanyu 收一句「Quality is irrational」,context > prompt 是机械杠杆,quality 是人的 irrational choice。Codex 这一边 thsottiaux 不在问「什么坏了」,在问「什么 not delightful」——harness 已经不在 capability 上竞争,要竞争 feel;petergyang 从用户侧补一刀——tokenmaxxing 是 subscription 模式造出来的心理 dissonance,下一代 harness 要么让烧 token 感觉好,要么让省 token 感觉有德,两边今天都不存在。Builder 一周噪音里 nikunj 把小 VC 的每周循环画出来——「see → fork → DM」,bottleneck 不是 deal flow 是 DM triage;swyx 一条顺手丢两个 reveal——New Media Lab 是挂 swyx inc 的 creative playground,Corgi(AI-native insurance broker)走到 word-of-mouth saturation。收尾是 Training Data 这期请到 DeepMind Gemini 产品负责人 Logan Kilpatrick,他把 Sakana 那条 + rauchg 那条 + zarazhangrui 那条压成一个 argument——model 能力已经过了 harness-bottleneck 阈值,各 lab 在向 80% 收敛,differentiator 是 harness 暴露出来的 20% feel,DeepMind 走 omni 单 model 不走 stack,因为缝合多个 model 的 cost 大于训一个全做的。"
+  },
+  "archive": {
+    "title": "吃 harness 日",
+    "desc": "6-22 Follow Builders 的主旋律是「吃 harness」:Levie 收单 Sakana Fugu 把 multi-model routing 挪进 model 自己,routing 不再是 harness 层的活;Steipete(OpenClaw 创始人)点头确认。rauchg 把 v0 的 performance cookbook 公开,rendering harness 是新的产品面 gate;同一作者立 agent 时代的 cost line——IKEA effect 在迭代上还你 agent 在实现上省的时间;ryolu_ 把 Books in ryOS 拆成「Cursor mobile + 键盘 taste」双 harness;petergyang 转 @liu8in 的 HTML-as-LLM-native-language——agentic video 的底是 HTML。zarazhangrui 立 input > output(常见 3-5 倍)是防 AI slop 的规则,紧接一句「I'm talking about context, not prompt」;garrytan 把 2026 的 thesis 钉成「AGI 给 intelligence,personal context 给 unlock」;thenanyu 给 quality 立 irrational choice 的注脚。thsottiaux 不在问 Codex「什么坏了」,在问「什么 not delightful」;petergyang 从用户视角立 tokenmaxxing 是 subscription 模式造的心理 dissonance。收尾 Training Data × Logan Kilpatrick 把 model eats the harness 立成 2026 主线——harness 不再是缝合的地方,model 才是。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-22 source feeds.",
+  "sections": [
+    {
+      "title": "The harness gets eaten — Sakana Fugu 把 routing 挪进 model / The Harness Gets Eaten",
+      "desc": "Levie 给 Sakana 这一天收单:Fugu 发布的「multi-model」模式把 model selection / delegation / verification 全部挪进 model 自己,routing 不再是 harness 层的活。Levie 紧接一条把 agent 时代的尺度定在 100X——data leak / silent write / authoritative truth source / logging / verify 全部要重做。Steipete(OpenClaw 创始人)用一句「hunch was right」点头:作为跑过 multi-model agent 平台的人,他对 routing 应该归 model 自己的判断已经从怀疑变成确认。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie/status/2068917230570795178",
+          "en": {
+            "rewrite": [
+              "Aaron Levie (Box CEO) on Sakana's Fugu release: 'Another new idea to push the state of AI architectures forward. Sakana released a model that effectively uses a mixture of models to get work done. You get a single API but then the work gets farmed out to the model that best performs the task. Fugu manages model selection, delegation, verification.'",
+              "Levie's editorial move is the inversion. Until now the 'routing' problem lived in the harness — your agent SDK, your orchestration code, your LangGraph-style graph picked the model. Fugu flips that: routing becomes the model's own job. A single API call returns the answer; the choice of which model wrote it is hidden behind the wrapper. This pushes 'multi-model routing' from a feature the harness exposes to a capability the model itself performs. If this pattern holds, the next layer to compress isn't the agent framework — it's the model-selection graph your harness maintains today."
+            ],
+            "original": [
+              "Another new idea to push the state of AI architectures forward. Sakana released a model that effectively uses a mixture of models to get work done. You get a single API but then the work gets farmed out the model that best performs the task. \"Fugu manages model selection, delegation, verification, and quality control.\""
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie(Box CEO)给 Sakana 的 Fugu 收单:「又一个把 AI 架构往前推的新点子。Sakana 放出来的模型本质上是 models-of-models——一个 API 进去,work 被派给那个任务上最强的那个 model 去写。Fugu 自己管 model selection、delegation、verification、quality control。」",
+              "Levie 这条真正的编辑动作是这个倒转——之前「routing」一直住在 harness 里:你 agent SDK 怎么选、你 orchestration 代码怎么写、你 LangGraph 那种 graph 怎么挑模型,都是 harness 层的活。Fugu 把这件事翻过来:routing 变成 model 自己的事。一个 API 拿回答案;哪个 model 写的,藏在 wrapper 后面。这个 pattern 一旦立住,接下来被压扁的那一层不是 agent framework,是今天 harness 还在维护的那个 model-selection graph。"
+            ],
+            "original": [
+              "Levie:Sakana Fugu 把 multi-model routing 从 harness 层的活挪到 model 自己——「Fugu manages model selection, delegation, verification, and quality control」,下一个被压扁的是 model-selection graph。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie/status/2068851573175021864",
+          "en": {
+            "rewrite": [
+              "Aaron Levie (Box CEO) on what happens when agents start using software at scale: 'Agents will use software 100X more than people. When that happens, there's a huge need for guardrails on what the agents are doing so they don't leak data or change the wrong information, authoritative sources of truth for them to work with, logging and auditing of what they're doing, the ability to verify...'",
+              "Levie's framing collapses a year's worth of agent-platform debate into one number. 100X usage is not a small multiplier — it changes the shape of every dependency the agent touches. Data leakage and silent writes become first-order risks at human scale; logging and audit become the actual product surface, not a compliance afterthought; authoritative sources of truth stop being optional because the agent can't reason over what it can't reliably read. The product surface that comes out of 100X isn't 'a better agent' — it's a runtime that treats the agent as an untrusted principal."
+            ],
+            "original": [
+              "Agents will use software 100X more than people. When that happens, there's a huge need for guardrails on what the agents are doing so they don't leak data or change the wrong information, authoritative sources of truth for them to work with, logging and auditing of what they're doing, the ability to verify..."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie(Box CEO)把 agent 时代的尺度定下来:「Agents will use software 100X more than people。一旦发生,agents 在做什么的 guardrails、不能 leak data 或写错信息的边界、agents 能读的权威 truth source、对它们行为的 logging 和 auditing、能 verify 的能力——全部要重新想。」",
+              "Levie 这段把一年里 agent-platform 的讨论压成一个数字。100X 不是个小乘数,它改变 agent 接触的每一个 dependency 的形状。data leak 和 silent write 在 human scale 下是次要 risk,在 100X 下变 first-order;logging 和 audit 不再是合规 afterthought,是产品面本身;authoritative sources of truth 不再是可选,因为 agent 不能基于它稳定读不到的东西推理。100X 长出来的产品面不是「一个更强的 agent」,是把 agent 当 untrusted principal 看待的 runtime。"
+            ],
+            "original": [
+              "Levie:agents 用 software 100X more than people——data leak / silent write / authoritative truth source / logging / verify 全部要重做;100X 长出来的不是更强的 agent,是把 agent 当 untrusted principal 的 runtime。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:steipete",
+          "authorName": "Peter Steinberger",
+          "authorHandle": "@steipete",
+          "authorTag": "OpenClaw 创始人",
+          "sourceUrl": "https://x.com/steipete/status/2068960117253632160",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger (OpenClaw founder) on multi-model routing: 'I was skeptical about the multi-model routing. Seems my hunch was right.'",
+              "Steipete is reacting to Levie's Fugu thread — and his one-line verdict carries more weight than it looks. As the founder of an open-source multi-model agent platform (OpenClaw), he has run the routing pattern in production at small-team scale. His 'hunch was right' is the signal that the routing logic doesn't live in the harness where he has to maintain it; it lives in the model that owns the call. For builders, the question isn't whether to route anymore — it's whose job the routing is. Sakana's bet is that the model itself is the right owner; OpenClaw is the data point that says yes."
+            ],
+            "original": [
+              "I was skeptical about the multi-model routing. Seems my hunch was right."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger(OpenClaw 创始人)对 multi-model routing 这一轮给一句话:「I was skeptical about the multi-model routing. Seems my hunch was right.」",
+              "Steipete 这句是接 Levie 的 Fugu 推来的——他这句 verdict 比看上去重。他是开源 multi-model agent 平台 OpenClaw 的 founder,routing 这个 pattern 在小团队生产里他跑过。他「hunch was right」这个信号是:routing 逻辑不放在 harness 里让他维护,routing 放在 model 里让那个 call 自己管。对 builder 来说,问题已经不是「要不要 routing」,是「routing 是谁的活」。Sakana 这一轮赌的是 model 自己是 right owner;OpenClaw 是「是的,赌对了」的那个数据点。"
+            ],
+            "original": [
+              "Steipete(OpenClaw 创始人)对 Levie 那条 Sakana Fugu 的 reaction:「I was skeptical about the multi-model routing. Seems my hunch was right.」——routing 是 model 自己的活,harness 这一层没必要再维护 model-selection graph。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Creator 这一侧的 harness 也正在被吃 / The Creator's Harness Is Also Getting Eaten",
+      "desc": "rauchg 把 v0 的 performance optimization 公开成 cookbook:painting、layout、WebGPU shaders、blocking scripts 全部 frame-level profile——rendering harness 是新的产品面 gate。同一作者一句「Coding agents will squeeze every ounce of IKEA effect out of you」给 agent 时代立 cost line:agent 在实现上省的时间,IKEA effect 在迭代上还回来。ryolu_ 把 Books in ryOS 的 loop 拆成「Cursor mobile 起框架 + 键盘上手调 taste」,creator-harness 是「agent 干 generation、人干 finish」的双 harness。petergyang 转 @liu8in 的 HTML-as-LLM-native-language insight:agentic video 的底不是 video model,是「不让 agent 在视觉层推理」——绕过去的办法是让它写 HTML。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO",
+          "sourceUrl": "https://x.com/rauchg/status/2068838709517336756",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch (Vercel CEO) on the v0 performance cookbook: 'The team cooked on v0 performance. \"Everything the light touches\" was optimized Simba. Painting, layout, WebGPU shaders, blocking scripts. Every frame scrutinized. The best part is that we'll be updating our lessons-learned doc with the team!'",
+              "Rauch's reveal is the harness angle nobody frames. v0 is itself a harness — a UI/UX layer that wraps LLM calls into a product. The fact that 'every frame' of its rendering got profiled down to the shader level tells you that the rendering harness around the model is the new product surface. The model wasn't the bottleneck; the frame budget was. For builder-harness makers (Cursor, v0, bolt, Lovable), the message is: the model's quality stops being the differentiator the moment the rendering layer is the gate."
+            ],
+            "original": [
+              "The team cooked on v0 performance. \"Everything the light touches\" was optimized Simba. Painting, layout, WebGPU shaders, blocking scripts. Every frame scrutinized. The best part is that we'll be updating our lessons-learned doc with the team!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch(Vercel CEO)给 v0 这一轮 performance 优化收单:「The team cooked on v0 performance。『Everything the light touches』was optimized Simba——painting、layout、WebGPU shaders、blocking scripts,every frame scrutinized。最好的是我们会把 lessons-learned 文档更新给团队。」",
+              "Rauch 这条没人这样框的角度其实是 harness——v0 自己就是一层 harness:把 LLM 调用包成产品的 UI/UX 层。每一帧都从 shader 层 profile 到底,这件事本身在告诉你:rendering harness 是新的产品面。model 不是瓶颈,frame budget 是。对 builder-harness maker(Cursor、v0、bolt、Lovable),这条信息是:model 的质量一旦不再是 gate,rendering 层就是 gate。"
+            ],
+            "original": [
+              "Rauch:v0 把 painting/layout/WebGPU shaders/blocking scripts 全 frame-level profile 到底——rendering harness 是新 gate,model 质量一旦不是 gate,frame budget 就是。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO",
+          "sourceUrl": "https://x.com/rauchg/status/2068778558672273422",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch (Vercel CEO) one-liner on the cost of letting coding agents run: 'Coding agents will squeeze every ounce of IKEA effect out of you, if you let them.'",
+              "The IKEA effect — you value what you assemble — is the psychological hook that makes people stay up until 4 AM tweaking an agent-generated component they would have shipped from scratch in twenty minutes otherwise. Rauch is naming it as the cost line of the agent era: the time the agent saves you on the implementation, the IKEA effect charges back on the iteration. The implication is that harness design (Cursor / v0 / Claude Code) cannot ignore time-to-good-enough as a metric. If the agent makes the first draft cheap and the IKEA effect makes the last 10% expensive, the product loses to one that lets you ship at 70%."
+            ],
+            "original": [
+              "Coding agents will squeeze every ounce of IKEA effect out of you, if you let them."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch(Vercel CEO)给 coding agent 时代一句定价:「Coding agents will squeeze every ounce of IKEA effect out of you, if you let them.」",
+              "IKEA effect——你亲手组装过的东西你会更珍惜——就是为什么有人会为 agent 写的某个组件一直调到凌晨四点,这件事本来二十分钟重写就能 ship。Rauch 把这条立成 agent 时代的 cost line:agent 在实现上省给你的时间,IKEA effect 在迭代上还给你。潜台词是 harness 设计(Cursor、v0、Claude Code)不能再忽略 time-to-good-enough 这个指标。agent 把第一稿变便宜了,IKEA effect 把最后那 10% 变贵了,这种产品输给让你 70% 就 ship 的那种。"
+            ],
+            "original": [
+              "Rauch:coding agents 会榨干你每一滴 IKEA effect——agent 在实现上省的时间,IKEA effect 在迭代上还回来;harness 设计不能让最后那 10% 比第一稿贵。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:ryolu_",
+          "authorName": "Ryan Lu",
+          "authorHandle": "@ryolu_",
+          "authorTag": "AI 工程师",
+          "sourceUrl": "https://x.com/ryolu_/status/2068923971136098633",
+          "en": {
+            "rewrite": [
+              "Ryan Lu on shipping Books in ryOS: 'Missing wooden shelves so I made Books in ryOS. Started in Cursor mobile, then hand-tuned the animations and textures until things felt right.'",
+              "Lu's loop is the actual creator-harness playbook of 2026. 'Started in Cursor mobile' = draft the feature in an agent harness on a phone, no IDE needed. 'Hand-tuned the animations and textures until things felt right' = bring it back to the local keyboard for the taste layer. The work splits cleanly across two harnesses: agent for generation, human for finish. Builder tools that only optimize one side (mobile agent OR desktop editor, never both) leave this loop broken. ryOS proves the loop works."
+            ],
+            "original": [
+              "missing wooden shelves so i made Books in ryOS. started in Cursor mobile, then hand-tuned the animations and textures until things felt right."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Ryan Lu 给 Books in ryOS 写 ship note:「missing wooden shelves so I made Books in ryOS. started in Cursor mobile, then hand-tuned the animations and textures until things felt right.」",
+              "Lu 这条工作流是 2026 creator-harness 的真剧本。「started in Cursor mobile」= 在 agent harness 里先把功能起出来,手机上,不需要 IDE。「hand-tuned the animations and textures until things felt right」= 拿回本地键盘做 taste 层。活拆得很干净:agent 干 generation,人干 finish。Builder 工具如果只优化单边(只有 mobile agent 或只有 desktop editor),这条 loop 就是断的。ryOS 证明这条 loop 立得住。"
+            ],
+            "original": [
+              "ryolu_:Books in ryOS 用 Cursor mobile 起框架 + 手工调 animations/textures——creator-harness 是「agent 干 generation、人干 finish」的双 harness loop。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:ryolu_",
+          "authorName": "Ryan Lu",
+          "authorHandle": "@ryolu_",
+          "authorTag": "AI 工程师",
+          "sourceUrl": "https://x.com/ryolu_/status/2068924375341179347",
+          "en": {
+            "rewrite": [
+              "Ryan Lu follow-up on the Books feature: 'Works with any epub, syncs progress with ryOS account.'",
+              "Two sentences, but they pin a design choice that most consumer apps fumble. 'Works with any epub' = no lock-in to a publisher's catalog; the user's library is the user's library. 'Syncs progress with ryOS account' = state lives in the user's own cloud identity, not in the app. Combined with the previous Books-in-ryOS post, this is the shape of a personal-OS app in 2026: open data, personal state, mobile-or-desktop entry, finish-the-taste loop on the creator's own keyboard. The harness story is the personal account, not the editor."
+            ],
+            "original": [
+              "works with any epub syncs progress with ryOS account"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Ryan Lu 给 Books 这条补一句:「works with any epub syncs progress with ryOS account.」",
+              "两句,但这两句把大多数消费类 app 都做不好的设计选择钉住了。「works with any epub」= 不锁出版商目录,你的书库就是你的书库。「syncs progress with ryOS account」= state 活在用户自己的云身份上,不在 app 里。跟前面 Books in ryOS 那条接起来,这是 2026 personal-OS app 的形状:open data、personal state、mobile-or-desktop 入口、taste 层回到 creator 自己键盘上。Harness 的故事是个人账号,不是编辑器。"
+            ],
+            "original": [
+              "ryolu_:Books works with any epub + syncs with ryOS account——personal-OS app 的 harness 是用户自己的账号,不是 editor。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者",
+          "sourceUrl": "https://x.com/petergyang/status/2068755908319236338",
+          "en": {
+            "rewrite": [
+              "Peter Yang quoting @liu8in on why HTML became the foundation for agentic video: 'We've been trying to build a video agent. However, we learned the hard way that agents have no visual intelligence. So that's when we turned to code. HTML is the LLM's native language. LLMs can express not only information but also spatial relationships.'",
+              "The insight is the inverse of the usual 'video generation' framing. The agent doesn't have visual intelligence, so the team stopped trying to give it one. Instead they made the agent write HTML — which the LLM does have native fluency in — and let the browser do the rendering. The 'agentic video' turns out to be a generative-HTML pipeline with a media surface bolted on. This is the broader pattern: when the model is fluent in a symbolic medium (HTML, code, markdown), agents build in that medium and let everything else be a render target. The video model wasn't the bottleneck; the LLM's lack of native visual reasoning was — and the workaround is to make the agent never reason visually at all."
+            ],
+            "original": [
+              "Why HTML turned out to be the foundation for agentic video making from @liu8in: \"We've been trying to build a video agent. However, we learned the hard way that agents have no visual intelligence. So that's when we turned to code. HTML is the LLM's native language. LLMs can express not only information but also spatial relationships.\""
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 转 @liu8in 的话讲为什么 HTML 是 agentic video 的底座:「我们一直在试着做一个 video agent。但我们 hard way 学到 agents 没有 visual intelligence。所以我们转向 code。HTML is the LLM's native language——LLMs 能表达的不仅是信息,还有空间关系。」",
+              "这个 insight 是常用「video generation」框架的反面。agent 没有 visual intelligence,所以团队不再试着给它这一项;他们让 agent 写 HTML——LLM 在这件事上有 native 表达——让浏览器来 render。「agentic video」的本质是一条 generative-HTML pipeline 上面挂一个 media surface。这是更大的 pattern:model 在哪个 symbolic medium 上 fluent(HTML、code、markdown),agent 就在那个 medium 上造东西,其他一切都是 render target。不是 video model 卡了,是 LLM 缺 native visual reasoning——绕过去的办法是让 agent 完全不在视觉层做推理。"
+            ],
+            "original": [
+              "petergyang 转 @liu8in:agentic video 的底是 HTML——「agents have no visual intelligence, so we turned to code. HTML is the LLM's native language」,video 模型不是瓶颈,绕过去的办法是不让 agent 在视觉层推理。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Context > prompt — 输入大于输出才是质量信号 / Context Beats Prompt",
+      "desc": "zarazhangrui 给 AI slop 立规则:你的输入(context)是不是比输出长?要拿到 quality,输入通常是输出的 3-5 倍长;输入明显短于输出,几乎一定是 slop。同一作者紧接一句「I'm talking about context, not prompt」——prompt UX 不是战场,context pipeline 才是。garrytan 把 2026 这年的 thesis 立出来:AGI = intelligence,personal context = unlock;GBrain 开源是「personal-brain + company-brain 是接 AGI 的接口」的明确答案。thenanyu 把这条立成反主流注脚:「Quality is irrational」——context > prompt 是机械杠杆,quality 是人的 irrational choice。",
+      "cards": [
+        {
+          "authorKey": "x:zarazhangrui",
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2068923768500793603",
+          "en": {
+            "rewrite": [
+              "Zhang Rui (Follow Builders founder / curator) on the AI-slop rule of thumb: 'A good rule of thumb for preventing AI slop (in writing, design, etc): Is your input (the context) longer than the output? I've found that for the AI to produce quality results, my input is often 3-5 times the length of the output. If your input is much shorter than your output, it's almost certainly slop.'",
+              "Zhang Rui's rule is the most actionable quality metric of the year. The instinct to write 'a quick prompt' is the AI-slop generator. When the input is 3-5x the output length, you're feeding enough context for the model to actually reason; when the input is shorter than the output, the model is improvising on vibes. For builder-harness design, this is the gating principle: any product that lets the user submit a shorter context than the output is configuring for slop. Curated templates, structured intake, multi-source context pulls — these are the product moves that flip the ratio."
+            ],
+            "original": [
+              "A good rule of thumb for preventing AI slop (in writing, design, etc): Is your input (the context) longer than the output? I've found that for the AI to produce quality results, my input is often 3-5 times the length of the output. If your input is much shorter than the output, it's almost certainly slop."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zhang Rui(Follow Builders 创始人 / 策展人)给 AI slop 立规则:「防 AI slop 的好经验(写作、设计都一样):你的输入(context)是不是比输出长?我对 AI 要拿到质量结果,我的输入通常是输出的 3-5 倍长。如果你的输入明显短于输出,几乎一定是 slop。」",
+              "Zhang Rui 这条是今年最可操作的质量指标。写「quick prompt」那种本能就是 AI slop 的来源。输入是输出 3-5 倍长,model 才有足够 context 做推理;输入比输出短,model 就是凭 vibe 现场编。对 builder-harness 设计,这是 gating 原则:任何让用户提交比输出短的 context 的产品,都是在配 slop。curated templates、结构化 intake、多源 context 拉取——这些是把 ratio 翻过来的产品动作。"
+            ],
+            "original": [
+              "zarazhangrui:防 AI slop 的经验是 input 比 output 长(常见 3-5 倍)——short input 就是 slop;harness 设计的 gating 原则是让输入大于输出。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2068964055235321954",
+          "en": {
+            "rewrite": [
+              "Zhang Rui follow-up clarifying the framing: 'I'm talking about context, not prompt.'",
+              "One sentence that re-positions the whole debate. 'Prompt' is the small text the user types; 'context' is everything the model reads — system message, retrieved docs, prior turns, tool outputs, user identity, project state. Zhang Rui's previous rule was about the second thing. Most AI products compete on the prompt UX (autocomplete, slash commands, smarter editors); the actual quality variable is the context pipeline behind the prompt. The builders winning in 2026 are the ones who treat context as a first-class engineering surface, not as a feature request to add to the prompt box."
+            ],
+            "original": [
+              "I'm talking about context, not prompt"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zhang Rui 紧接着的一句:「I'm talking about context, not prompt.」",
+              "一句话把整场讨论重新定位。「prompt」是用户打的那点字;「context」是 model 读到的全部——system message、retrieved docs、prior turns、tool outputs、用户身份、项目状态。Zhang Rui 上一条规则说的是后一件事。绝大多数 AI 产品在 prompt UX 上竞争(autocomplete、slash commands、更聪明的编辑器);真正的质量变量是 prompt 后面那条 context pipeline。2026 在赢的 builder,是把 context 当 first-class 工程面,不当 prompt 框里加一个 feature 那种事来做的。"
+            ],
+            "original": [
+              "zarazhangrui:「I'm talking about context, not prompt」——prompt UX 不是战场,context pipeline 才是;2026 赢家是把 context 当 first-class 工程面。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁",
+          "sourceUrl": "https://x.com/garrytan/status/2068701357696323769",
+          "en": {
+            "rewrite": [
+              "Garry Tan (Y Combinator president) on releasing GBrain as open source: 'This is why I made GBrain and open sourced it.'",
+              "Tan opens with the deliverable — GBrain — and trusts the why to come from his prior thread (below). The interesting product shape: a personal + company brain as a separate open-source artifact, sitting beside AGI, not inside it. This is the second-order context move of the year: if AGI is the intelligence and context is the unlock (Zhang Rui's framing above), then a personal-brain + company-brain artifact that you own is what plugs you into AGI. Open-sourcing it signals that the personal-context layer is the new OS — not something a single vendor gets to lock."
+            ],
+            "original": [
+              "This is why I made GBrain and open sourced it"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan(Y Combinator 总裁)给 GBrain 开源收单:「This is why I made GBrain and open sourced it.」",
+              "Tan 直接交付 GBrain 这个产物,why 留给前面那条 thread(下面)。值得看的产品形状:personal brain + company brain 作为一个独立的开源 artifact,放在 AGI 旁边,不放进 AGI 里。这是今年的二阶 context 动作:如果 AGI 是 intelligence、context 是 unlock(Zhang Rui 上面那条),那一个你拥有的 personal-brain + company-brain artifact 才是你接进 AGI 的接口。开源这个动作在 sign:personal-context 层是新的 OS,不是哪一家 vendor 锁得住的东西。"
+            ],
+            "original": [
+              "garrytan:GBrain 开源——personal-brain + company-brain 是接 AGI 的接口,2026 的 personal-context 层是新的 OS。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁",
+          "sourceUrl": "https://x.com/garrytan/status/2068701356358308112",
+          "en": {
+            "rewrite": [
+              "Garry Tan (Y Combinator president) on the AGI / personal-context pairing: 'I think one underestimated thing when we look back on it was how useful it is to have your own personal brain and company brain in 2026 at the dawn of usable AGI. AGI gives you the intelligence. You still have to collect your personal context to get the real unlock.'",
+              "Tan frames the year-end thesis in two lines. AGI = intelligence (commodity, comes from the labs). Personal context = unlock (yours, hard to assemble, can't be outsourced). The 'real unlock' phrase does the work: the AI capability is no longer the bottleneck; what you bring to it is. Tan's product (GBrain) is the explicit answer to 'how do I collect my personal context at the rate AGI expects to consume it.' This is Zhang Rui's rule above with a personal-bent: the longer your input is than the output, the more personal context you've pre-assembled."
+            ],
+            "original": [
+              "I think one underestimated thing when we look back on it was how useful it is to have your own personal brain and company brain in 2026 at the dawn of usable AGI. AGI gives you the intelligence. You still have to collect your personal context to get the real unlock"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan(Y Combinator 总裁)给 AGI / personal context 立对子:「我回头看会被低估的一件事是,2026 年这个 usable AGI 刚冒头的节骨眼上,有一个自己的 personal brain 和 company brain 是多有用。AGI 给你 intelligence。你还是得自己收你的 personal context 才能拿到真正的 unlock。」",
+              "Tan 两句把年底 thesis 立出来。AGI = intelligence(commodity,从 lab 来)。Personal context = unlock(你的、难攒、不能外包)。「real unlock」这个词做了事:AI 能力不再是瓶颈;你带进去的才是。Tan 的产品(GBrain)就是「我怎么样按 AGI 期待消耗 personal context 的速率把它攒起来」这个问题的明确答案。这是上面 Zhang Rui 规则的个人向版本:你的输入比输出越长,pre-assembled 的 personal context 就越多。"
+            ],
+            "original": [
+              "garrytan:「AGI gives you the intelligence. You still have to collect your personal context to get the real unlock」——AGI 是 commodity,personal context 才是 unlock。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thenanyu",
+          "authorName": "Nan Yu",
+          "authorHandle": "@thenanyu",
+          "authorTag": "AI 创业者 / 投资人",
+          "sourceUrl": "https://x.com/thenanyu/status/2068778750800531640",
+          "en": {
+            "rewrite": [
+              "Nan Yu (AI founder / investor) on what produces quality output: ''Quality is irrational' is a great way to describe it. You have to have an irrational level of commitment to constantly choose quality and an irrational level of self-belief that controlling things top to bottom will yield better results than using common frameworks.'",
+              "Yu's framing is the contrarian corollary to Zhang Rui's rule. If context > prompt is the mechanical lever, then 'quality is irrational' is the human one. The lever says: feed the model more, it gives back more. The corollary says: even with the lever pulled, someone still has to refuse the cheap output at 3am. In a year where every harness ships a 'good enough' button, the people who ship the 1% better product are the ones who chose it even when the rational move was to ship. The product implication: tools that surface 'rational' defaults (auto-accept, smart-defaults, suggested-clip) actively work against the irrational-quality builder."
+            ],
+            "original": [
+              "\"Quality is irrational\" is a great way to describe it. You have to have an irrational level of commitment to constantly choose quality and an irrational level of self-belief that controlling things top to bottom will yield better results than using common frameworks."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nan Yu(AI 创业者 / 投资人)给 quality 立反主流注脚:「『Quality is irrational』是个讲法。要不停地选 quality,需要的是 irrational level of commitment;要相信 top-to-bottom 自己控比用通用框架出更好结果,需要的是 irrational level of self-belief。」",
+              "Yu 这条是 Zhang Rui 规则的反主流对照。Context > prompt 是机械杠杆;「quality is irrational」是人的那条。杠杆说:喂 model 多,它还多。注脚说:就算杠杆拉到位,凌晨三点还是得有人拒绝那个便宜输出。今年每个 harness 都上线「good enough」按钮,最后能 ship 出 1% 更好产品的,是那些即使理性 move 是 ship 也选了不 ship 的人。产品隐含意思是:把「rational」defaults(auto-accept、smart-defaults、suggested-clip)做得很显眼的产品,实际上在跟 irrational-quality builder 唱反调。"
+            ],
+            "original": [
+              "thenanyu:「Quality is irrational」——context > prompt 是机械杠杆,quality 是人的 irrational choice;「good enough」按钮做得很显眼的 harness 跟 quality builder 唱反调。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Codex 的下一程 & 用户视角的 tokenmaxxing / Codex's Next Lap and Token-Maxxing",
+      "desc": "thsottiaux 公开问 Codex 用户两件事:一是「Are you a hoarder or do you use them without breaking a sweat?」(Codex 新加的 usage reset bank 行为在测用户群跟 capacity 的关系);二是「What's not delightful?」(Codex 已经过了「能不能用」阶段,要关的差距是用得爽不爽——harness 已经不在 capability 上竞争,要竞争 feel)。petergyang 从用户侧补一刀:从移民节俭逻辑到 tokenmaxxing 是 subscription 模式造出来的心理 dissonance;下一代 harness 要么让烧 token 感觉好,要么让省 token 感觉有德,两边今天都不存在。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT",
+          "sourceUrl": "https://x.com/thsottiaux/status/2068792010715324444",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux (OpenAI Codex & ChatGPT) on the new usage-reset behavior in Codex: 'Now that you can bank usage resets in Codex. Are you a hoarder or do you use them without breaking a sweat? How do you think about them?'",
+              "Sottiaux is asking a community question, not making a product announcement, but the question itself is the signal. Codex now lets users bank resets — i.e. unused weekly allowance rolls forward. The question 'are you a hoarder or do you use them without breaking a sweat?' is testing the user-base's relationship with capacity. Power users hoard (they always have more work than capacity). Casual users don't notice (they never hit the ceiling). The product discovery is which segment Codex is actually built for: if the hoarders are the loudest voices, the harness needs to make hoarding rewarding; if the casual users are the silent majority, the product is over-built."
+            ],
+            "original": [
+              "Now that you can bank usage resets in Codex. Are you a hoarder or do you use them without breaking a sweat? How do you think about them?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux(OpenAI Codex & ChatGPT)给 Codex 新加的 usage reset 行为丢一个问题:「Now that you can bank usage resets in Codex. Are you a hoarder or do you use them without breaking a sweat? How do you think about them?」",
+              "Sottiaux 这是社区提问,不是产品公告,但问题本身就是信号。Codex 现在允许 bank resets——没用完的周额度可以滚下去。「Are you a hoarder or do you use them without breaking a sweat?」这句话在测用户群跟 capacity 的关系。重用户会囤(他们永远 work 多于 capacity)。轻用户不会注意到(他们从来没顶到天花板)。产品发现的是 Codex 实际上为哪一段做:如果囤的人声音最大,harness 要让囤值得;如果轻用户是沉默的大多数,产品是 over-built 的。"
+            ],
+            "original": [
+              "thsottiaux:Codex 现在可以 bank usage resets——「Are you a hoarder or do you use them without breaking a sweat?」在测用户群跟 capacity 的关系。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT",
+          "sourceUrl": "https://x.com/thsottiaux/status/2068736857312198928",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux (OpenAI Codex & ChatGPT) on what Codex should improve: 'What should we improve in the Codex app. What's not delightful?'",
+              "The follow-up question is even more telling than the first. Sottiaux is not asking what's broken — he's asking what's 'not delightful,' which is the satisfaction metric, not the reliability metric. The implication: Codex is past the 'does it work' phase; the gap to close now is 'does it feel good.' That puts Codex in the same product stage as Cursor, v0, and Claude Code — the agent harnesses that are no longer competing on capability and now have to compete on feel. The product teams that mistake this as 'polish' rather than 'redesign' will fall behind."
+            ],
+            "original": [
+              "What should we improve in the Codex app. What's not delightful?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux(OpenAI Codex & ChatGPT)给 Codex 下一程丢问题:「What should we improve in the Codex app. What's not delightful?」",
+              "第二个问题比第一个更说明问题。Sottiaux 没在问「什么坏了」,问的是「什么 not delightful」——这是满意度指标,不是 reliability 指标。潜台词是:Codex 已经过了「能不能用」阶段,要关的差距是「用得爽不爽」。这把 Codex 摆到跟 Cursor、v0、Claude Code 同一个产品阶段——agent harness 已经不在 capability 上竞争,要竞争 feel。把这件事当「polish」不当「redesign」的产品团队会落后。"
+            ],
+            "original": [
+              "thsottiaux:Codex 不在问「什么坏了」,在问「什么 not delightful」——harness 已经不在 capability 上竞争,要竞争 feel。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者",
+          "sourceUrl": "https://x.com/petergyang/status/2068874249167884544",
+          "en": {
+            "rewrite": [
+              "Peter Yang on the immigrant-scarcity-to-tokenmaxxing pipeline: 'It's funny, growing up as an immigrant I developed a scarcity mindset around saving money and resources. But when it comes to unlimited token plans and tokenmaxxing, it feels like a missed opportunity if I don't burn as many tokens as possible and hit the limit each time. How do I address this dissonance?'",
+              "Yang surfaces the user-side pattern that the Codex question above hints at. The subscription model creates a 'use it or lose it' psychology that flips a builder's natural frugality into compulsive consumption. The psychological dissonance Yang names is the structural consequence of the pricing model, not a personal quirk. The product team that designs the subscription (whether Codex or Claude) is, in effect, designing the consumption psychology. The next-gen harness will need to either (a) make token-burn feel good (visibility, achievement, comparison) or (b) make token-conservation feel virtuous (efficiency metrics, output-per-token dashboards). Today, neither exists."
+            ],
+            "original": [
+              "It's funny, growing up as an immigrant I developed a scarcity mindset around saving money and resources. But when it comes to unlimited token plans and tokenmaxxing, it feels like a missed opportunity if I don't burn as many tokens as possible and hit the limit each time. How do I address this dissonance?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 把移民节俭逻辑到 tokenmaxxing 的心理过渡摆出来:「It's funny,growing up as an immigrant I developed a scarcity mindset around saving money and resources. But when it comes to unlimited token plans and tokenmaxxing, it feels like a missed opportunity if I don't burn as many tokens as possible and hit the limit each time. How do I address this dissonance?」",
+              "Yang 把 Codex 上面那个问题指向的用户侧 pattern 摆到台面。subscription 模式造了一个 use-it-or-lose-it 心理,这条把 builder 天生的节俭翻成强迫性消耗。Yang 命名的心理 dissonance 是定价模式的结构后果,不是个人怪癖。设计 subscription 的产品团队(无论 Codex 还是 Claude)实际上在设计消耗心理学。下一代 harness 要么(a)让烧 token 感觉好(可见性、成就、对比),要么(b)让省 token 感觉有德(效率指标、output-per-token 仪表盘)。今天,两边都不存在。"
+            ],
+            "original": [
+              "petergyang:从移民节俭逻辑到 tokenmaxxing 是 subscription 模式造的心理 dissonance——下一代 harness 要么让烧 token 感觉好,要么让省 token 感觉有德。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Builder 一周噪音 / Builder-Week Texture",
+      "desc": "nikunj 把小 VC 的每周循环画出来:「see → fork → DM」,bottleneck 不是 deal flow 是 DM triage;串起「forked project + 之前 message thread」的 CRM 没人做,窗口还开着。swyx 一条顺手丢两个 reveal:New Media Lab 是挂 swyx inc 的 creative playground,solo consultant 到 creative org 的过渡在动;Corgi(AI-native insurance broker)走到 word-of-mouth saturation——vertical SaaS 在不性感的赛道靠 NPS loop 跑出 escape velocity,不是靠 marketing spend。",
+      "cards": [
+        {
+          "authorKey": "x:nikunj",
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人",
+          "sourceUrl": "https://x.com/nikunj/status/2068714024934740476",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari (Afore Capital partner) on the founder-DM rhythm: 'Happens every week 🙈 > see an interesting project on X > play with it, fork it, try it, have some ideas > go to founder profile > press the message button > … > pray to God that I haven't missed a DM from them before 😢 I try to respond to all the DMs but miss sometimes!!'",
+              "Kothari surfaces the most mundane but most predictive pattern of the post-platform VC era. Discovery → fork → message has become a weekly ritual for a small-tier investor; the bottleneck isn't deal flow, it's DM triage. The product implication: an investor-DM triage tool that surfaces 'forked project + prior message thread' would compound over years of repeated cycles. None of the standard CRM tools (Affinity, Attio, Notion) do this. The window is open."
+            ],
+            "original": [
+              "Happens every week 🙈 &gt; see an interesting project on X &gt; play with it, fork it, try it, have some ideas &gt; go to founder profile &gt; press the message button … &gt; pray to God that I haven't missed a DM from them before 😢 I try to respond to all the DMs but miss sometimes!!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kothari(Afore Capital 合伙人)给 founder-DM 节奏画一条:「Happens every week 🙈:see an interesting project on X → play with it, fork it, try it, have some ideas → go to founder profile → press the message button → … → pray to God that I haven't missed a DM from them before 😢. I try to respond to all the DMs but miss sometimes!!」",
+              "Kothari 把后平台 VC 时代最日常但最具预测性的 pattern 摆出来。Discovery → fork → message 已经是小 VC 的每周仪式;bottleneck 不是 deal flow,是 DM triage。产品含义:一个把「forked project + 之前 message thread」串起来的 investor-DM triage 工具,会在多年的重复 cycle 里复利。Affinity、Attio、Notion 这些 CRM 没一个做这件事。窗口开着。"
+            ],
+            "original": [
+              "nikunj:小 VC 的每周循环是「see → fork → DM」,bottleneck 不是 deal flow,是 DM triage;串起「forked project + 之前 message thread」的 CRM 没人做。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:swyx",
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师",
+          "sourceUrl": "https://x.com/swyx/status/2068924451887129055",
+          "en": {
+            "rewrite": [
+              "Swyx on shopping for insurers for his new venture: 'Btw I've been shopping around for insurers for the New Media Lab we are setting up (basically the creative playground housing swyx inc) and yeah the NPS of Corgi is insanely high. My real estate broker: \"just go with corgi they are covering every single one of my clients rn\".'",
+              "Swyx drops two reveals in one tweet: (1) New Media Lab is the entity housing swyx inc — a creative playground for AI tooling/content experiments, not a solo consulting practice. (2) Corgi (the AI-native insurance broker) has reached the kind of word-of-mouth saturation where a real estate broker tells a stranger 'just go with corgi.' For builders, the second point is the load-bearing one: AI-native vertical SaaS in unsexy verticals (insurance, accounting, legal) is reaching escape velocity through small-team NPS loops, not through marketing spend. The creative playground framing on top is a swyx-signal that the solo-consultant-to-creative-org transition is in progress."
+            ],
+            "original": [
+              "btw i've been shopping around for insurers for the New Media Lab we are setting up (basically the creative playground housing swyx inc) and yeah the NPS of Corgi is insanely high. my real estate broker: \"just go with corgi they are covering every single one of my clients rn\""
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx 给他新做的事选保险公司,顺手丢两个 reveal:「Btw I've been shopping around for insurers for the New Media Lab we are setting up (basically the creative playground housing swyx inc) and yeah the NPS of Corgi is insanely high. My real estate broker: 『just go with corgi they are covering every single one of my clients rn』.」",
+              "Swyx 一条推里两个 reveal:(1) New Media Lab 是挂 swyx inc 的那个 entity——AI 工具 / 内容实验的 creative playground,不是 solo consulting 那种事。(2) Corgi(AI-native insurance broker)走到了 word-of-mouth saturation 那种临界——一个地产 broker 跟陌生人说「just go with corgi」。对 builder 来说,第二个是 load-bearing 的:AI-native vertical SaaS 在不性感的赛道(insurance、accounting、legal)正在靠小团队 NPS loop 跑出 escape velocity,不是靠 marketing spend 砸出来的。上面那个 creative playground 框架是 swyx 的 signal——solo consultant 到 creative org 的过渡在动。"
+            ],
+            "original": [
+              "swyx:New Media Lab 是挂 swyx inc 的 creative playground;Corgi(AI-native insurance broker)走到 word-of-mouth saturation——vertical SaaS 在不性感的赛道靠 NPS loop 跑出 escape velocity。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Podcast 收尾:Logan Kilpatrick 把「Model Eats the Harness」立成 2026 主线 / Closer: Kilpatrick on Why the Model Eats the Harness",
+      "desc": "Training Data 这期请到 Google DeepMind Gemini 产品负责人 Logan Kilpatrick。三条线:(1) Kilpatrick 讲他跟 Gemini model 团队负责人 Tulsi 一起做 talk 时那个 Omni 实时改视频、观众看到的是 model 改完的版本的例子——model 已经过了 harness-bottleneck 阈值;(2) 各 lab 模型在向 80% 收敛,differentiator 是 harness 暴露出来的 20% feel;(3) DeepMind 走 omni 单 model 不走 stack,因为缝合多个 model 的 cost 大于训一个全做的——harness 不再是缝合的地方,model 才是。",
+      "cards": [
+        {
+          "authorKey": "podcast:training-data",
+          "authorName": "Training Data Podcast",
+          "authorHandle": "",
+          "authorTag": "AI 播客",
+          "sourceUrl": "https://www.youtube.com/watch?v=cMAs8z2dehs",
+          "en": {
+            "rewrite": [
+              "Training Data — Google DeepMind's Logan Kilpatrick: Why the Model Eats the Harness. Kilpatrick (who leads product for Gemini at DeepMind) sits down with host (the Training Data crew) for a 50-minute conversation about how the harness layer is collapsing into the model.",
+              "Three threads carry the conversation. (1) The 'edit-the-video-on-stage' story from Kilpatrick's recent talk with Tulsi (the Gemini model team lead) — he showed the audience an off-the-cuff video edit done by Omni in real time, complete with a dog jumping onto his lap mid-speech, while he kept talking. The audience in the room saw it; the edit was the model's. The point Kilpatrick keeps coming back to: model capability is past the threshold where the harness is the bottleneck — 'the harness used to be where we hid the gaps in the model, and now the model is starting to hide the gaps in the harness.' (2) Why the model is eating the harness: every product surface that wraps an LLM call (a chat box, a code editor, an agent loop, a video tool) is now competing on what Kilpatrick calls 'feel' rather than capability. The model is converging across labs at the 80% level; the differentiator is the 20% of feel that the harness exposes. (3) The 'omni' trajectory — Kilpatrick explains why DeepMind is shipping Gemini across modalities (text, image, video, audio) as a single model rather than a stack: the cost of stitching separate models together is now larger than the cost of training one model that does it all. For builders, this means the harness is no longer the place to stitch — the model is."
+            ],
+            "original": [
+              "Training Data — Google DeepMind's Logan Kilpatrick on why the model eats the harness. Three threads: (1) the Omni-in-real-time edit story from Kilpatrick's talk with Tulsi, (2) why model capability is past the threshold where the harness is the bottleneck — the model is hiding the gaps in the harness now, not the other way around, (3) the 'omni' trajectory — DeepMind shipping one model across modalities rather than a stack, because the cost of stitching is larger than the cost of training one model that does it all."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Training Data 这期「Google DeepMind's Logan Kilpatrick: Why the Model Eats the Harness」。Kilpatrick(DeepMind Gemini 产品负责人)跟 Training Data 主持团队做了一期 50 分钟的对谈,主题是 harness 层正在塌进 model 里。",
+              "三条线撑起这期节目。(1) Kilpatrick 讲他最近跟 Gemini model 团队负责人 Tulsi 一起做 talk 时那个 edit-the-video-on-stage 的例子——他在台上 talk,中间让 Omni 实时把一段视频改掉,改完一只狗跳上他膝上,他继续 talk。现场观众看到的是 model 改完的版本。Kilpatrick 反复回到的那一点是:model 能力已经过了 harness 是瓶颈的门槛——「harness 以前是我们用来藏 model 弱点的地方,现在 model 开始藏 harness 的弱点。」(2) 为什么是 model 在吃 harness:每个包 LLM 调用的产品面(chat 框、code editor、agent loop、video tool)现在都在 Kilpatrick 说的「feel」上竞争,不再是 capability。Model 在各 lab 之间正在向 80% 水平收敛;differentiator 是 harness 暴露出来的那 20% feel。(3) 「omni」这条 trajectory——Kilpatrick 解释 DeepMind 为什么把 Gemini 跨 text、image、video、audio 做成单 model 而不是 stack:把多个 model 缝起来的 cost 现在大于训一个 model 把这些事都做掉的 cost。对 builder 来说,harness 不再是缝合的地方,model 才是。"
+            ],
+            "original": [
+              "Training Data × Logan Kilpatrick:why the model eats the harness——(1) Omni 实时改视频的例子,model 已经过 harness-bottleneck 阈值;(2) 模型向 80% 收敛,differentiator 是 harness 暴露的 20% feel;(3) DeepMind 走 omni 单 model 不走 stack,因为缝合多个 model 的 cost 大于训一个全做的。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

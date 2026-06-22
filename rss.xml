@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 21 Jun 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 22 Jun 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-06-22 · 吃 harness 日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-22-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-22-rerun.html</guid>
+      <pubDate>Mon, 22 Jun 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[6-22 这天 Follow Builders 的主旋律是「吃 harness」——Levie 收单 Sakana 当天发的 Fugu:multi-model routing 不再是 harness 的活,而是 model 自己管 selection、delegation、verification、quality control;Levie 紧接一条把 agent 时代的尺度定在 100X——data leak / silent write / authoritative truth source / logging / verify 全部要重做。Steipete(OpenClaw 创始人)用一句「hunch was right」点头——routing 归 model 自己的赌对了。rauchg 把 v0 的 performance cookbook 公开:rendering harness 是新的产品面 gate,model 质量一旦不是 gate,frame budget 就是;同一作者一句「Coding agents will squeeze every ounce of IKEA effect out of you」给 agent 时代立 cost line——agent 在实现上省的时间,IKEA effect 在迭代上还回来。ryolu_ 把 Books in ryOS 的 loop 拆成「Cursor mobile 起框架 + 键盘上手调 taste」,creator-harness 是「agent 干 generation、人干 finish」的双 harness。petergyang 转 @liu8in 的 insight:agentic video 的底不是 video model,是「不让 agent 在视觉层推理」——绕过去的办法是让它写 HTML,「HTML is the LLM's native language」。Context > prompt 这条规则在同一天被三位创始人立起来:zarazhangrui 给 AI slop 立规则——输入比输出长(常见 3-5 倍)才是 quality,输入短于输出几乎一定是 slop;同一作者紧接一句「I'm talking about context, not prompt」——prompt UX 不是战场,context pipeline 才是;garrytan 把 2026 这年的 thesis 立出来——AGI 给 intelligence,personal context 给 unlock,GBrain 开源是「personal-brain + company-brain 是接 AGI 的接口」的明确答案;thenanyu 收一句「Quality is irrational」,context > prompt 是机械杠杆,quality 是人的 irrational choice。Codex 这一边 thsottiaux 不在问「什么坏了」,在问「什么 not delightful」——harness 已经不在 capability 上竞争,要竞争 feel;petergyang 从用户侧补一刀——tokenmaxxing 是 subscription 模式造出来的心理 dissonance,下一代 harness 要么让烧 token 感觉好,要么让省 token 感觉有德,两边今天都不存在。Builder 一周噪音里 nikunj 把小 VC 的每周循环画出来——「see → fork → DM」,bottleneck 不是 deal flow 是 DM triage;swyx 一条顺手丢两个 reveal——New Media Lab 是挂 swyx inc 的 creative playground,Corgi(AI-native insurance broker)走到 word-of-mouth saturation。收尾是 Training Data 这期请到 DeepMind Gemini 产品负责人 Logan Kilpatrick,他把 Sakana 那条 + rauchg 那条 + zarazhangrui 那条压成一个 argument——model 能力已经过了 harness-bottleneck 阈值,各 lab 在向 80% 收敛,differentiator 是 harness 暴露出来的 20% feel,DeepMind 走 omni 单 model 不走 stack,因为缝合多个 model 的 cost 大于训一个全做的。]]></description>
+      <category>The harness gets eaten — Sakana Fugu 把 routing 挪进 model / The Harness Gets Eaten, Creator 这一侧的 harness 也正在被吃 / The Creator&apos;s Harness Is Also Getting Eaten, Context &gt; prompt — 输入大于输出才是质量信号 / Context Beats Prompt, Codex 的下一程 &amp; 用户视角的 tokenmaxxing / Codex&apos;s Next Lap and Token-Maxxing, Builder 一周噪音 / Builder-Week Texture, Podcast 收尾:Logan Kilpatrick 把「Model Eats the Harness」立成 2026 主线 / Closer: Kilpatrick on Why the Model Eats the Harness</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-06-21 · 底盘日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-21-rerun.html</link>
