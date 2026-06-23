@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Builders Digest · 2026-06-23</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ed;
+    --accent: #c0392b;
+    --accent-light: #e8d5c4;
+    --border: #d4cdc0;
+    --muted: #7a7265;
+    --tag-bg: #e8e2d6;
+    --en-bg: #ffffff;
+    --cn-bg: #faf7f2;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  .masthead, .intro, .section-header, .feed, footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .masthead { padding-top: 48px; }
+  .masthead-rule { border: none; border-top: 3px solid var(--ink); margin: 0 0 12px; }
+  .masthead-inner { display: flex; justify-content: center; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; letter-spacing: -0.4px; }
+  .masthead-subtitle { margin-top: 8px; padding-bottom: 10px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  .edition-strip {
+    position: relative;
+    margin-top: 8px;
+    min-height: 46px;
+    padding: 10px 132px 12px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.34);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+
+  .edition-strip .edition-sep { margin: 0 8px; color: #b8ae9f; }
+  .edition-strip-text { display: block; }
+  .edition-return-link { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; padding: 6px 10px; border: 1px dashed rgba(192, 57, 43, 0.55); border-radius: 999px; color: var(--accent); text-decoration: none; font-size: 12px; line-height: 1; letter-spacing: 0.06em; background: rgba(255, 255, 255, 0.45); transition: background 160ms ease, border-color 160ms ease, transform 160ms ease; }
+  .edition-return-link:hover, .edition-return-link:focus-visible { background: rgba(255, 255, 255, 0.82); border-color: var(--accent); transform: translateY(-50%) translateX(-1px); }
+  .edition-return-link:focus-visible { outline: none; }
+  .intro { padding-top: 22px; }
+  .intro-inner { max-width: 920px; margin: 0 auto; padding: 0 0 0 18px; border-left: 3px solid #d9cdbc; }
+  .intro-kicker { margin: 0 0 8px; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .intro p { margin: 0; max-width: none; color: var(--muted); font-size: clamp(15px, 1.6vw, 16px); line-height: 1.9; text-wrap: pretty; font-family: 'Noto Serif SC', serif; overflow-wrap: anywhere; }
+
+  .section-header { margin-top: 40px; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; margin: 0 0 6px; }
+  .section-desc { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+
+  .feed { display: flex; flex-direction: column; gap: 20px; }
+  .card { background: var(--en-bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .card-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid #eee7dd; flex-wrap: wrap; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .avatar-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .avatar.is-fallback img { display: none; }
+  .avatar.is-fallback .avatar-fallback { display: flex; }
+
+  .author-info { flex: 1; min-width: 160px; }
+  .author-name { font-weight: 600; font-size: 15px; }
+  .author-name-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .author-handle { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+  .author-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; background: var(--tag-bg); color: var(--muted); padding: 4px 8px; border-radius: 999px; }
+  .author-tag.is-inline { padding: 3px 8px; }
+
+  .card-controls { margin-left: auto; display: inline-flex; gap: 8px; }
+  .view-toggle { border: 1px solid var(--border); background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 999px; font-size: 12px; line-height: 1; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; }
+  .view-toggle.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .card-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .lang-col { padding: 18px 20px 22px; }
+  .lang-col.cn { background: var(--cn-bg); border-right: 1px solid #f0ece4; font-family: 'Noto Serif SC', serif; }
+  .lang-col.en { background: var(--en-bg); }
+  .lang-label { margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+  .content-shell { position: relative; transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .content-variant { position: absolute; inset: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(4px); transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; will-change: opacity, transform; }
+  .content-variant.is-active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+  .content-variant p, .content-variant li { margin: 0 0 12px; font-size: 14px; }
+  .content-variant ol { margin: 0 0 12px 20px; padding: 0; }
+  .inline-code { display: inline-block; font-family: 'IBM Plex Mono', monospace; background: #f4efe7; padding: 3px 6px; border-radius: 6px; margin-bottom: 8px; }
+
+  .card-footer { padding: 12px 20px 16px; border-top: 1px solid #eee7dd; background: #fcfaf6; }
+  .card-footer a { color: var(--accent); text-decoration: none; font-size: 14px; }
+  footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 680px) {
+    .masthead-inner { align-items: center; }
+    .edition-strip { padding-right: 12px; padding-left: 12px; }
+    .edition-strip-text { padding-right: 0; }
+    .edition-return-link { position: static; transform: none; margin-top: 8px; font-size: 11px; }
+    .card-controls { margin-left: 0; }
+    .card-body { grid-template-columns: 1fr; }
+    .lang-col.cn { border-right: none; border-bottom: 1px solid #f0ece4; }
+    .edition-strip .edition-sep { margin: 0 5px; }
+    .intro-inner { padding-left: 14px; }
+    .intro p { line-height: 1.84; }
+  }
+</style>
+</head>
+<body data-publish-date="2026-06-23" data-issue-number="29" data-edition-name="双语精选版" data-view-label-rewrite="速读" data-view-label-original="原文" data-author-identities-path="/home/eclaw/.follow-builders/assets/author-identities.json" data-avatar-manifest-path="/home/eclaw/.follow-builders/assets/avatar-manifest.json">
+  <header class="masthead">
+    <hr class="masthead-rule">
+    <div class="masthead-inner">
+      <div class="masthead-title">AI Builders Digest</div>
+    </div>
+    <div class="masthead-subtitle">Bilingual edition · 双语对照版</div>
+    <div class="edition-strip">
+      <span class="edition-strip-text" id="edition-strip-text">第 29 期｜2026-06-23｜双语精选版｜11 条精选｜9 位作者｜6 个主题</span>
+      <a class="edition-return-link" href="../index.html">返回目录</a>
+    </div>
+  </header>
+
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="6-23 这天 Follow Builders 的主旋律是「eval 升格」——Levie 一早把 applied-AI 的瓶颈从 model 移到 eval:open-weights post-training、agent improvements、agentic enterprise deployment 三件事的进度都挂在 eval 上;同一作者顺手放出 Box 的 HTML preview / edit / version / share,把 agent-produced content 的 distribution 格式立成 HTML——HTML 是 machine 能生成、能直接读回 eval 的 format,「preview / edit / version / share」这组产品表面本质上是 applied layer 的 eval-loop 表面。Sama 当天接一条 thread:放 GPT-5.5-Cyber 满血版(CyberGym SOTA)+ Codex Security +「Patch The Planet」——OpenAI 把 security 从 research benchmark 拉到 product launch,Sottiaux(Codex 一侧)紧跟一条把「codex security」这条 harness 半边补上,model 那半边和 harness 那半边设计成能组合的。Quality distribution 这条线在同一天被两位 founder 立起来:Zara Zhang 把 Frontend Slides skill(22k+ stars)拆成 walkthrough——demo + 怎么造 + 怎么扩展 + tips + lessons 五个 section 的完整 publication;Ryo Lu 在 Cursor Compile 给 talk,主题是「how we build in the age of AI / what doesn&#39;t change」——在所有 surface 都在 churn 的这一周,真正的问题是「什么保持不变」。rauchg 同一天压两个 Vercel 动作:Claude Design → Vercel 一键发布(WebSocket / socket.io 从 CDN 到 Fluid 全程支持),agent harness 需要的持久 stream 回浏览器那一段不再需要 outside service。Builder 一侧 swyx 把 SpaceX 算成 NeoCloud + NeoLab——Cursor compute deals 已收约一半投资,另一半挂在 Composer 3,「model lab + 自己 neocloud」在 GPU 供给盘对的前提下是市场里没有对手的垂直;petergyang 从用户视角补一刀——Claude Code 的「dynamic workflow」他自己读了一遍还是不知道什么时候用,harness feature surface 在快速堆叠但 mental model 没跟上,eval-grade 文档本身就是 applied-layer 的瓶颈。收尾是 AI &amp; I by Every 这期请到 Anthropic Labs 负责人 Mike Krieger,他把 Fable 5 怎么被「日用」讲透——day-one impression 跟 extended-use workflow adaptation 是两件事,nontechnical knowledge worker 用完说「我要学一套新技能」,orchestrating agents 的人说「holy shit,有太多新东西要学」,workflow 本身要被重写而不是被加速;Levie 早上立的那个 applied-layer bottleneck,就是 Krieger 在 lab 里正在解的那件事。">
+    <div class="intro-inner">
+      <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
+      <p class="intro-copy">6-23 这天 Follow Builders 的主旋律是「eval 升格」——Levie 一早把 applied-AI 的瓶颈从 model 移到 eval:open-weights post-training、agent improvements、agentic enterprise deployment 三件事的进度都挂在 eval 上;同一作者顺手放出 Box 的 HTML preview / edit / version / share,把 agent-produced content 的 distribution 格式立成 HTML——HTML 是 machine 能生成、能直接读回 eval 的 format,「preview / edit / version / share」这组产品表面本质上是 applied layer 的 eval-loop 表面。Sama 当天接一条 thread:放 GPT-5.5-Cyber 满血版(CyberGym SOTA)+ Codex Security +「Patch The Planet」——OpenAI 把 security 从 research benchmark 拉到 product launch,Sottiaux(Codex 一侧)紧跟一条把「codex security」这条 harness 半边补上,model 那半边和 harness 那半边设计成能组合的。Quality distribution 这条线在同一天被两位 founder 立起来:Zara Zhang 把 Frontend Slides skill(22k+ stars)拆成 walkthrough——demo + 怎么造 + 怎么扩展 + tips + lessons 五个 section 的完整 publication;Ryo Lu 在 Cursor Compile 给 talk,主题是「how we build in the age of AI / what doesn&#39;t change」——在所有 surface 都在 churn 的这一周,真正的问题是「什么保持不变」。rauchg 同一天压两个 Vercel 动作:Claude Design → Vercel 一键发布(WebSocket / socket.io 从 CDN 到 Fluid 全程支持),agent harness 需要的持久 stream 回浏览器那一段不再需要 outside service。Builder 一侧 swyx 把 SpaceX 算成 NeoCloud + NeoLab——Cursor compute deals 已收约一半投资,另一半挂在 Composer 3,「model lab + 自己 neocloud」在 GPU 供给盘对的前提下是市场里没有对手的垂直;petergyang 从用户视角补一刀——Claude Code 的「dynamic workflow」他自己读了一遍还是不知道什么时候用,harness feature surface 在快速堆叠但 mental model 没跟上,eval-grade 文档本身就是 applied-layer 的瓶颈。收尾是 AI &amp; I by Every 这期请到 Anthropic Labs 负责人 Mike Krieger,他把 Fable 5 怎么被「日用」讲透——day-one impression 跟 extended-use workflow adaptation 是两件事,nontechnical knowledge worker 用完说「我要学一套新技能」,orchestrating agents 的人说「holy shit,有太多新东西要学」,workflow 本身要被重写而不是被加速;Levie 早上立的那个 applied-layer bottleneck,就是 Krieger 在 lab 里正在解的那件事。</p>
+    </div>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 01</div>
+    <h2 class="section-title">Eval 是 applied layer 的真正瓶颈 / Evals Are the Real Bottleneck of the Applied Layer</h2>
+    <p class="section-desc">Levie 把 2026 这年 applied-AI 的瓶颈从 model 转到 eval——open-weights post-training、agent improvements、agentic enterprise deployment 三件事的进度都挂在 eval 上;Box 当天放出 HTML preview / edit / version / share 的产品更新,把 agent-produced content 的 distribution 顺手接上,呼应同一条思路。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:levie" data-author-name="Aaron Levie" data-author-tag="Box CEO" data-author-handle="@levie" data-author-avatar="../assets/avatars/x-levie.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-levie.jpg" alt="Aaron Levie avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie</div>
+            <div class="author-tag is-inline">Box CEO</div>
+          </div>
+          <div class="author-handle">@levie</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie(Box CEO)给 applied-AI 的进步来源做一次归因:「几乎所有 AI model 和 agent 的进步都挂在 eval 上。Open weights 在具体 domain 上 post-training 全靠 eval。Applied AI 层的 agent 改进全靠 eval。Agentic enterprise deployment 真能把工作接进去的,全靠 eval。全是 eval。」</p>
+              <p>Levie 这条真正的编辑动作是把瓶颈换个位置。在每家 lab 拼 model、每个 builder 拼 agent harness 的这一年,他把 throughput-limiting 的那一步挪到 eval suite——也就是那个告诉你「agent 在你这个具体 workflow 里到底做没做对」的系统。顺下来的推论是:能把自己(和客户的)workflow 画出来、能测 agent 在那个 workflow 里参与度的公司,「会处在真正推动 automation 的最佳位置」。Eval-as-core-competency 是 2026 的 enterprise moat thesis。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Levie:几乎所有 AI model 和 agent 的进步都挂在 eval 上——open-weights post-training、agent improvements、agentic enterprise deployment 三件事的进度全在 eval;能把 workflow 和 agent 参与度都量出来的公司,是 2026 真正能 push automation 的那批。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie (Box CEO) on where applied-AI progress actually comes from: &quot;Almost all AI model and agent progress is downstream from evals. Open weights post training for specific domains comes down to evals. Agent improvements in the applied AI layer is all about evals. Agentic enterprise deployments that actually can augment work is all about evals. It&#39;s all evals.&quot;</p>
+              <p>Levie&#39;s editorial move is to relocate the bottleneck. In a year where every lab is racing on the model and every builder is racing on the agent harness, he claims the throughput-limiting step is now the eval suite - the system that tells you whether an agent actually did the work in your specific workflow. The downstream consequence: companies that can map their own (or their customers&#39;) workflows and measure agent participation in them &quot;will be in the best position to actually drive real automation.&quot; Eval-as-core-competency is the new enterprise moat thesis for 2026.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Almost all AI model and agent progress is downstream from evals. Open weights post training for specific domains comes down to evals. Agent improvements in the applied AI layer is all about evals. Agentic enterprise deployments that actually can augment work is all about evals. It&#39;s all evals. This will become a core competency of any enterprise in the future. The companies that are able to best understand their own (and/or customers) workflows and how well agents participate in that work will be in the best position to actually drive real automation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/levie/status/2069228335255949775" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:levie" data-author-name="Aaron Levie" data-author-tag="Box CEO" data-author-handle="@levie" data-author-avatar="../assets/avatars/x-levie.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-levie.jpg" alt="Aaron Levie avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie</div>
+            <div class="author-tag is-inline">Box CEO</div>
+          </div>
+          <div class="author-handle">@levie</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Levie 当天放出 evals thesis 的运营对应物:Box 现在能 preview、edit、manage versions、安全地分享任何 HTML-based 内容。「非常适合跟任何 agent-produced content 立刻接上。」这次产品动作的关键在 agent 输出的 distribution format 是 HTML——一个机器能生成、能读回 eval、不需要翻译摩擦的格式。</p>
+              <p>把这条跟 evals 那条拼一起看,一个 pattern 就出来了:agent 输出 HTML 之后,你可以不需要 sandbox 直接 preview,可以像 code 一样 version,可以一个 link share,最重要的是——可以原样灌回 eval harness。同一个 format 既能被生成、也能被验。「preview / edit / version / share」这一组不是 content feature,是 applied layer 的 eval-loop 表面。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Levie [同日]:Box 上 HTML content 可以 preview / edit / version / share——agent 产出的 distribution format 跟 eval-loop 表面是同一个 HTML。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Levie ships the operational counterpart to the evals thesis the same day: Box now lets you preview, edit, manage versions, and securely share any HTML-based content. &quot;Great for being able to work with any agent produced content immediately.&quot; The product move is that the distribution format for agent output is HTML - a format machines can both produce and read back into evals without translation friction.</p>
+              <p>Read this together with the evals tweet and a pattern appears: when agents emit HTML, you can preview it without a sandbox, version it like code, share it as a link, and most importantly - pipe it straight back into an eval harness that understands the same format. The &quot;preview-edit-version-share&quot; surface is not a content feature, it&#39;s an eval-loop surface for the applied layer.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>We heard that HTML is a big deal again. You can now preview, edit, manage versions, and securely share any HTML based content on Box. Great for being able to work with any agent produced content immediately.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/levie/status/2069140445205348432" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 02</div>
+    <h2 class="section-title">Patch The Planet:OpenAI 把 security 立成 product surface / OpenAI Makes Security a Product Surface</h2>
+    <p class="section-desc">Sama 放 GPT-5.5-Cyber 满血版 + Codex Security + 「Patch The Planet」三个动作,把 security 从 model release 拉到 product launch——不是「model 能 find bug」,是「模型 + harness 一起 solve security problems」。thsottiaux 紧跟一条把这天定调为「cyber defense acceleration day」。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:sama" data-author-name="Sam Altman" data-author-tag="OpenAI CEO" data-author-handle="@sama" data-author-avatar="../assets/avatars/x-sama.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-sama.jpg" alt="Sam Altman avatar"><span class="avatar-fallback">SA</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Sam Altman</div>
+            <div class="author-tag is-inline">OpenAI CEO</div>
+          </div>
+          <div class="author-handle">@sama</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Sam Altman:「我们想帮所有公司变安全,跟 USG 和 security ecosystem 一起做。」同一天两个 product move。(1) GPT-5.5-Cyber 满血版——CyberGym 上 state of the art。(2)「Patch The Planet」+ Codex Security——目标是「solve security problems instead of just finding them」。</p>
+              <p>编辑动作是把 security 从 research benchmark 拉到 product surface。以前 pattern 是:model 发现一个 CVE,扔给人去修。Sama 这一步是说 model 自己要修(Patch The Planet),harness 要给工作面(Codex Security)。同一家卖 token 的 lab,现在卖 end-to-end security loop,launch day 直接定位成「cyber defense acceleration 的庆祝日」。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Sama 同日双发:GPT-5.5-Cyber 满血版(CyberGym SOTA)+ Patch The Planet + Codex Security——从「find bugs」跳到「solve problems」,security 立成 product surface。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Sam Altman: &quot;We want to help all companies be secure, working with the USG and the security ecosystem.&quot; Two product moves ship the same day. (1) The full version of GPT-5.5-Cyber - state-of-the-art performance on CyberGym. (2) &quot;Patch The Planet&quot; + Codex Security - built to help solve security problems instead of just finding them.</p>
+              <p>The editorial move is to re-frame security from a research benchmark into a product surface. Until now the pattern was: model finds a CVE, hand it to a human. Sama&#39;s move says the model should fix it (Patch The Planet) and the harness should provide the work surface (Codex Security). The same lab that sells tokens is now selling an end-to-end security loop, and the launch day is positioned as &quot;a day of celebration for cyber defense acceleration.&quot;</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>We want to help all companies be secure, working with the USG and the security ecosystem. *The full version of GPT-5.5-Cyber is here; state of the art performance on CyberGym. *Patch The Planet and Codex Security will help solve security problems instead of just finding them.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/sama/status/2069121360744550796" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:thsottiaux" data-author-name="Thibault Sottiaux" data-author-tag="OpenAI Codex &amp; ChatGPT" data-author-handle="@thsottiaux" data-author-avatar="../assets/avatars/x-thsottiaux.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-thsottiaux.jpg" alt="Thibault Sottiaux avatar"><span class="avatar-fallback">TS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Thibault Sottiaux</div>
+            <div class="author-tag is-inline">OpenAI Codex &amp; ChatGPT</div>
+          </div>
+          <div class="author-handle">@thsottiaux</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thierry Sottiaux(OpenAI Codex)接住这次发布:「Let&#39;s Patch The Planet。Codex security 更新 + 新的 GPT-5.5-Cyber。Cyber defense 加速的庆祝日。」</p>
+              <p>看成一次 handoff——Sottiaux 在 Codex 一侧不在 GPT 一侧,所以「codex security」的更新是 launch 的 harness 那半边。合起来 shape 是:GPT-5.5-Cyber = 那个能 find、现在也能 patch 的 model;Codex Security = 让开发者把 patch 走真实 repo + CI 的 harness。「accelerate」的 framing 在两条推里一致,因为两个 surface 就是设计成能组合的。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Sottiaux 紧接:「Patch The Planet」+ Codex security + GPT-5.5-Cyber——model 那一半和 harness 那一半组合,security 从 research benchmark 跳成 product launch。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thierry Sottiaux (OpenAI Codex) lines up behind the launch: &quot;Let&#39;s Patch The Planet. Updates to codex security and a new GPT-5.5-Cyber. A day of celebration for cyber defense acceleration.&quot;</p>
+              <p>Read as a handoff - Sottiaux is on the Codex side, not the GPT side, so the &quot;codex security&quot; update is the harness half of the launch. The combined shape is: GPT-5.5-Cyber = the model that finds and now patches; Codex Security = the harness that lets a developer route the patch through their actual repo and CI. The acceleration framing is shared across the two tweets because the two surfaces are designed to compose.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Let&#39;s Patch The Planet. Updates to codex security and a new GPT-5.5-Cyber. A day of celebration for cyber defense acceleration.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/thsottiaux/status/2069152290326630518" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 03</div>
+    <h2 class="section-title">Skill 是 quality 的 distribution 格式 / Skills Are How Quality Gets Distributed</h2>
+    <p class="section-desc">zarazhangrui 把 Frontend Slides skill(22k+ stars)拆成 walkthrough——skill 不是一个 prompt 包,是一个有 demo、有「怎么造一个 skill」的方法论、有 lesson learned 的完整 publication;ryolu_ 在 Cursor Compile 给 talk,主题是「how we build in the age of AI / what doesn&#39;t change」——两位 founder 在同一天把 skill 当成这一代 builder 的 quality distribution unit。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:zarazhangrui" data-author-name="Zhang Rui" data-author-tag="Follow Builders 创始人 / 策展人" data-author-handle="@zarazhangrui" data-author-avatar="../assets/avatars/x-zarazhangrui.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-zarazhangrui.jpg" alt="Zhang Rui avatar"><span class="avatar-fallback">ZR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Zhang Rui</div>
+            <div class="author-tag is-inline">Follow Builders 创始人 / 策展人</div>
+          </div>
+          <div class="author-handle">@zarazhangrui</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zara Zhang(Follow Builders,Frontend Slides 作者)放出 Frontend Slides skill(GitHub 22k+ stars)的完整 walkthrough:一个 beginner-friendly 的「用 Claude Code 造好看 HTML 幻灯片」的完整 demo、skill 是怎么写的、你自己怎么造一个 skill、实用 tip(怎么插图插视频、怎么发布)、lessons learned。11 分钟视频,YouTube 链接。</p>
+              <p>格式选择本身就是编辑观点。一个有 demo + build-process + how-to-extend + tips + lessons 这种结构的 skill walkthrough,不是 tutorial,是 publication。它隐含的 argument 是:2026 的 quality distribution 不是走 tweet 也不是走 blog post,是走 skill——因为 skill 自带 artifact(那份 slides)和 eval-friendly 的脚手架(demo + lessons),下一个 builder 能直接跑同一套 playbook 不用重新推。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Zara Zhang 把 Frontend Slides skill(22k+ stars)拆成 walkthrough——demo + 怎么造 + 怎么扩展自己的 skill + tips + lessons,skill 作为 quality distribution 格式的样本。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zara Zhang (Follow Builders, Frontend Slides author) publishes a complete walkthrough of her Frontend Slides skill - 22k+ stars on GitHub. The package covers: a complete demo of how to create beautiful HTML slides with Claude Code (beginner friendly), how the skill was built, how you can create your own skill, practical tips (inserting images/videos, publishing), and lessons learned. 11-minute video, YouTube link.</p>
+              <p>The format choice is the editorial point. A skill walkthrough with this much structure - demo + build-process + how-to-extend + tips + lessons - is not a tutorial, it&#39;s a publication. The implicit argument is that 2026 quality distribution doesn&#39;t happen through tweets or blog posts; it happens through skills, because a skill ships with both the artifact (the slides) and the eval-friendly scaffolding (the demo, the lessons) that lets the next builder run the same playbook without re-deriving it.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I created a complete walkthrough of my Frontend Slides skill (22k+ stars on GitHub): - Complete demo of how to create beautiful HTML slides with Claude Code (beginner friendly) - How I created the skill - How you can create your own skill - Tips like how to insert images/videos into deck, how to publish - Lessons I learned (11-min video, YouTube link below)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/zarazhangrui/status/2069311440692072481" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:ryolu_" data-author-name="Ryan Lu" data-author-tag="AI 工程师" data-author-handle="@ryolu_" data-author-avatar="../assets/avatars/x-ryolu_.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-ryolu_.jpg" alt="Ryan Lu avatar"><span class="avatar-fallback">RL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Ryan Lu</div>
+            <div class="author-tag is-inline">AI 工程师</div>
+          </div>
+          <div class="author-handle">@ryolu_</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Ryo Lu(Cursor)把他在 Cursor Compile 的 talk 分享出来:「一些关于在 AI 时代我们怎么 build、什么不会变 的想法。」Talk 视频在 YouTube。</p>
+              <p>「什么不会变」这个 framing 是编辑信号。在 Levie 说 eval 是新 moat、Zara 把 skill 当 publication 发、OpenAI 把 security 当 product surface 推的这一周,真正值得问的不是 model 让你多做什么,是所有这些 churn 里什么保持不变。Ryo 的 talk 自定位在那个问题真回答的地方——一个在 Cursor 里走过过去 18 个月 agent harness 变化的 builder 的回答。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Ryo Lu 在 Cursor Compile 的 talk:「how we build in the age of AI and what doesn&#39;t change」——这一周所有动作都改了,什么没改。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Ryo Lu (Cursor) shares his talk from Cursor Compile: &quot;some thoughts on how we build in the age of AI and what doesn&#39;t change.&quot; Talk video on YouTube.</p>
+              <p>The &quot;what doesn&#39;t change&quot; framing is the editorial signal. In a week where Levie says eval is the new moat, Zara publishes a skill-as-publication, and OpenAI ships security as a product surface, the interesting question is not what the model enables - it&#39;s what stays invariant across all this churn. Ryo&#39;s talk positions itself as the place where that question gets a real answer from a builder who&#39;s lived through the last 18 months of agent harness changes inside Cursor.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>here&#39;s my talk at Cursor Compile some thoughts on how we build in the age of AI and what doesn&#39;t change</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/ryolu_/status/2069218497272717661" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 04</div>
+    <h2 class="section-title">Harness surface:Vercel 把 Claude Design + WebSocket 收齐 / Harness Surface: Vercel Adds Claude Design and WebSocket</h2>
+    <p class="section-desc">rauchg 当天发两条——Claude Design 接入 Vercel 一键发布;WebSocket(和 socket.io)从 CDN 一直通到 Fluid compute,「full circle moment」——Vercel 的 harness surface 在同一天被压两个轴:设计-到-发布的链路,real-time 应用底座。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:rauchg" data-author-name="Guillermo Rauch" data-author-tag="Vercel CEO" data-author-handle="@rauchg" data-author-avatar="../assets/avatars/x-rauchg.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-rauchg.jpg" alt="Guillermo Rauch avatar"><span class="avatar-fallback">GR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Guillermo Rauch</div>
+            <div class="author-tag is-inline">Vercel CEO</div>
+          </div>
+          <div class="author-handle">@rauchg</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch(Vercel CEO):「Claude Design → Vercel,one click。」Anthropic 的设计面到 Vercel 部署面,一键发布。</p>
+              <p>产品动作是 Claude Code 的设计面跟 Vercel 的部署面做紧耦合。Builder flow 从「design → export → upload → configure → deploy」压成「design → deploy」。潜台词是:Vercel 在把自己定位成任何 Anthropic 造出来的 artifact 的默认发布目标——像十年前它成为 Next.js 的默认发布目标一样。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Rauchg:Claude Design → Vercel 一键发布——Vercel 把「Anthropic artifact 的默认发布目标」立起来,像当年 Next.js 一样。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch (Vercel CEO): &quot;Claude Design → Vercel, in one click.&quot; One-click publish path from Anthropic&#39;s design surface into a Vercel deployment.</p>
+              <p>The product move is a tight coupling between Claude Code&#39;s design surface and Vercel&#39;s deployment surface. Builder flow collapses from &quot;design → export → upload → configure → deploy&quot; into &quot;design → deploy&quot;. The implication is that Vercel is positioning as the default publish target for any Anthropic-built artifact - the same way it became the default publish target for Next.js a decade earlier.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Claude Design → Vercel, in one click</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/rauchg/status/2069219190834127276" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:rauchg" data-author-name="Guillermo Rauch" data-author-tag="Vercel CEO" data-author-handle="@rauchg" data-author-avatar="../assets/avatars/x-rauchg.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-rauchg.jpg" alt="Guillermo Rauch avatar"><span class="avatar-fallback">GR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Guillermo Rauch</div>
+            <div class="author-tag is-inline">Vercel CEO</div>
+          </div>
+          <div class="author-handle">@rauchg</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Rauchg(同日):「WebSocket(和 socket.io)现在 Vercel 上被支持了,从 CDN 到 Fluid。」提了一句「对 Vercel 来说是个特别 full circle 的时刻」。</p>
+              <p>WebSocket 从 CDN edge 到 Fluid compute 这一段打通了,补上 Vercel runtime 一个长期缺的环节——real-time 应用以前要拉一个 outside-platform 的服务。「CDN to Fluid」的 framing 是说同一个 socket 可以在 edge 被终结,然后一路持到 long-running compute,中间不换手——任何 agent harness 要把 stream 持续灌回浏览器的话,缺的这一块今天补齐。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Rauchg [同日]:WebSocket / socket.io 在 Vercel 上从 CDN 到 Fluid 全程支持——agent harness 需要的持久 stream 回浏览器那一段不再需要 outside service。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Rauchg (same day): &quot;WebSocket (and socket.io) now supported on Vercel, from CDN to Fluid.&quot; Notes the &quot;special full circle moment for Vercel&quot;.</p>
+              <p>WebSocket support from CDN edge to Fluid compute closes a long-standing gap in Vercel&#39;s runtime model - real-time apps previously needed an out-of-platform service. The &quot;CDN to Fluid&quot; framing says the same socket connection can be terminated at the edge and held into long-running compute without a handoff, which is the missing piece for any agent harness that needs persistent streaming back to the browser.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>𝚆𝚎𝚋𝚂𝚘𝚌𝚔𝚎𝚝 (and 𝚜𝚘𝚌𝚔𝚎𝚝.𝚒𝚘) now supported on Vercel, from CDN to Fluid. Special full circle moment for @vercel</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/rauchg/status/2069109057433035171" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 05</div>
+    <h2 class="section-title">Builder 一侧的市场算术 &amp; harness UX 痛点 / Builder-Side Math and Harness UX Friction</h2>
+    <p class="section-desc">swyx 把 SpaceX 算成 NeoCloud + NeoLab——已经通过 Cursor compute deals 收回约一半投资,另一半看 Composer 3;在 GPU 供给盘对的前提下,「model lab + neocloud」是只有一家能这么组合的垂直。petergyang 从用户视角补一刀——Claude Code 的「dynamic workflow」他自己读了一遍还是不知道什么时候用,harness 的 feature surface 在快速堆叠但 mental model 没跟上。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:swyx" data-author-name="Swyx" data-author-tag="AI 工程师" data-author-handle="@swyx" data-author-avatar="../assets/avatars/x-swyx.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-swyx.jpg" alt="Swyx avatar"><span class="avatar-fallback">S</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Swyx</div>
+            <div class="author-tag is-inline">AI 工程师</div>
+          </div>
+          <div class="author-handle">@swyx</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Shawn「swyx」Wang 给 SpaceX 算一笔市场账:「我觉得现在没人把 SpaceX、NeoCloud 加 NeoLab、怎么 go-to-market 这件事算对。SpaceX 已经从 Cursor 那里收回大约一半投资,通过 compute deals。另一半看 Composer 3 表现。在 GPU 这件事上,没有任何一家公司同时是 leading model lab + neocloud。这是一个 crazy effective 的组合,前提是你把 GPU supply 盘对了——不管是 inhouse training 1) 大成功 还是 2) 不大成功。」</p>
+              <p>Argument 压成一句话:SpaceX 是当下唯一同时是 frontier model lab 又自己当 neocloud 的公司,两半通过给下游 lab 的 compute deals 互相买单(Cursor 是最大那笔)。风险点是二值的——GPU supply 计划必须两边都对——但只要对上了,unit economics 是市场里没有对手的。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Swyx 给 SpaceX 算账:compute deals 已收 Cursor 约一半投资,另一半挂在 Composer 3;「model lab + 自己的 neocloud」是市场里没有对手的垂直组合,前提是 GPU supply 盘对。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Shawn &quot;swyx&quot; Wang on SpaceX&#39;s market math: &quot;i dont think anyone is correctly doing the math around how SpaceX, the NeoCloud+NeoLab, is currently going to market? SpaceX has already recouped about HALF its investment in Cursor, in compute deals. The other half is paid for if Composer 3 does well. No other company is simultaneously a leading model lab + neocloud (at least where GPUs is concerned). its a crazy effective combo iff you&#39;ve adequately planned out gpu supply if inhouse training 1) goes very well 2) doesn&#39;t go very well&quot;</p>
+              <p>The argument compresses to one line: SpaceX is the only company that is simultaneously a frontier model lab AND its own neocloud, and the two halves pay for each other through compute deals with downstream labs (Cursor being the headline example). The risk concentration is binary - GPU supply planning has to work either way - but if it does, the unit economics are unlike anything else in the market right now.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>i dont think anyone is correctly doing the math around how SpaceX, the NeoCloud+NeoLab, is currently going to market? SpaceX has already recouped about HALF its investment in Cursor, in compute deals. The other half is paid for if Composer 3 does well. No other company is simultaneously a leading model lab + neocloud (at least where GPUs is concerned). its a crazy effective combo iff you&#39;ve adequately planned out gpu supply if inhouse training 1) goes very well 2) doesn&#39;t go very well</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/swyx/status/2069301071965741388" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:petergyang" data-author-name="Peter Yang" data-author-tag="产品教练 / 创作者经济研究者" data-author-handle="@petergyang" data-author-avatar="../assets/avatars/x-petergyang.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-petergyang.jpg" alt="Peter Yang avatar"><span class="avatar-fallback">PY</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Yang</div>
+            <div class="author-tag is-inline">产品教练 / 创作者经济研究者</div>
+          </div>
+          <div class="author-handle">@petergyang</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang(creator economy、AI 工具):「我正在读这个,但还是不知道 dynamic workflow 是什么,也不知道 Claude Code 什么时候该用它。」</p>
+              <p>一个 power user 在 Claude Code feature surface 上的旗子。Dynamic workflow 的文档上线了,一个 daily-driving Claude Code 几个月的用户讲不清楚什么时候该用。跟同一天 Rauchg 在 Vercel 加的那些 surface 一起看,symptom 是一致的:harness surface 推得比 mental model 快——mental model 没跟上、告诉你「什么时候该用哪一块」的那一档。Eval-grade 的文档——Peter 这条隐含的 standing request——本身已经是 applied-layer 的瓶颈之一。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Peter Yang:daily-driving Claude Code 几个月,还是不知道「dynamic workflow 什么时候该用」——harness surface 推得比 mental model 快,文档本身就是 applied-layer 的瓶颈。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang (creator economy, AI tools): &quot;I&#39;m reading this and I still don&#39;t get what a dynamic workflow is or when to use it in Claude Code.&quot;</p>
+              <p>A practitioner flag on Claude Code&#39;s feature surface. The dynamic workflow docs landed, and a power user who&#39;s been daily-driving Claude Code for months can&#39;t parse when to use it. Read together with rauchg&#39;s Vercel additions the same day, the symptom is consistent: harness surface is shipping faster than the mental model that explains when each surface applies. Eval-grade documentation - Peter&#39;s standing request - is now itself part of the applied-layer bottleneck.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I&#39;m reading this and I still don&#39;t get what a dynamic workflow is or when to use it in Claude Code</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/petergyang/status/2069267139576693028" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 06</div>
+    <h2 class="section-title">Podcast 收尾:Mike Krieger 谈 Fable 5 怎么被日用 / Closer: Krieger on Daily-Drivering Fable 5</h2>
+    <p class="section-desc">AI &amp; I by Every 这期请到 Anthropic Labs 负责人 Mike Krieger(Instagram 联合创始人),谈 Fable 5 怎么被他「日用」。第一天的 impression 和用了几周后的 workflow adaptation 是两件事——nontechnical knowledge worker 在用 Fable 后说「我要学一套新技能」,orchestrating agents 的人说「holy shit,有太多新东西要学」。Krieger 把 day-one vs day-N 的张力讲透:model 这一档(mythos class)不是 day-one 比出来,是 day-N 比出来。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="podcast:ai-and-i-by-every" data-author-name="AI &amp; I by Every" data-author-tag="AI 商业与产品深访" data-author-handle="" data-author-avatar="../assets/avatars/podcast-ai-and-i-by-every.png">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/podcast-ai-and-i-by-every.png" alt="AI &amp; I by Every avatar"><span class="avatar-fallback">A&amp;</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">AI &amp; I by Every</div>
+            <div class="author-tag is-inline">AI 商业与产品深访</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>AI &amp; I by Every 这期——Mike Krieger 谈 Fable 5 是怎么被他「日用」的。Krieger(Anthropic Labs 负责人 / Instagram 联合创始人)跟主持人 Dan 做了大约 50 分钟,主题是当一个 mythos-class 的 model 跟了你几周而不是几小时,什么会变。</p>
+              <p>三条线。(1) Day-one vs day-N:Krieger 跟 host 都回到 OPUS 4.5 / 4.6 那段 December-into-January 的循环——extended 用户当时发现「哎我之前没把它 push 够狠,要重新想这一代 model 什么才是可能的」。Fable 5 现在就在那个窗口里。(2) 谁要学什么:Every 内部,nontechnical knowledge worker 用完回来说「我要学一套新技能」;orchestrating agents 的人回来说「holy shit,有太多新东西要学」。分界线不是 capability——是你把 model 放在哪个形状的 workflow 里用。(3) Workflow 要被重写,不是被加速:Krieger 那一刀是,Fable 5 不只是让你「把昨天的 workflow 跑得更快」——workflow 本身要重设计,因为 model 现在能 participate 它以前够不到的步骤。Levie 一早立的那个 applied-layer bottleneck,就是 Krieger 在 lab 里正在解的那件事。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>AI &amp; I by Every × Mike Krieger:Fable 5 怎么被日用——day-one vs day-N(参照 OPUS 4.5 / 4.6 12 月到 1 月那段循环)、nontechnical vs orchestrating 都要学新东西、workflow 本身要重写——跟 Levie 早上立的那个 applied-layer bottleneck 是同一件事的两面。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>AI &amp; I by Every - Mike Krieger on daily-driving Fable 5. Krieger (head of Anthropic Labs, Instagram co-founder) sits down with host Dan for ~50 minutes about what changes when you live with a mythos-class model for weeks instead of hours.</p>
+              <p>Three threads. (1) Day-one vs day-N: Krieger and host both reference the OPUS 4.5 / 4.6 December-into-January cycle, when extended users realized they hadn&#39;t pushed the previous model hard enough and had to rethink &quot;what&#39;s even possible with this generation.&quot; Fable 5 is in that same window now. (2) Who has to learn what: inside Every, nontechnical knowledge workers come back saying &quot;I need a new set of skills.&quot; People orchestrating agents come back saying &quot;holy shit, there are so many new things I need to learn.&quot; The split is not capability - it&#39;s the shape of the workflow you&#39;re using the model inside. (3) Workflows get rewritten, not accelerated: Krieger&#39;s point is that you can&#39;t just run yesterday&#39;s workflow faster with Fable 5 - you have to redesign the workflow, because the model can now participate in steps it couldn&#39;t reach before. The applied-layer bottleneck Levie named in the morning is the same one Krieger is solving in the lab.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>AI &amp; I by Every - Mike Krieger on daily-driving Fable 5: day-one vs day-N (the OPUS 4.5 / 4.6 December-into-January cycle is the reference), nontechnical workers vs orchestrators both come back saying &quot;I need to learn new things,&quot; and the workflow itself - not just its speed - has to be rewritten.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.youtube.com/playlist?list=PLuMcoKK9mKgHtW_o9h5sGO2vXrffKHwJL" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <footer data-source-note="Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-23 source feeds.">Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-23 source feeds.</footer>
+
+  <script>
+    function getTemplateAuthorSources() {
+      const sources = window.AI_BUILDERS_TEMPLATE_SOURCES || {};
+      return { identities: sources.identities || {}, avatars: sources.avatars || {} };
+    }
+
+    function getAuthorInitials(name) {
+      return (name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(function(part) { return part[0]; }).join('').toUpperCase();
+    }
+
+    function hydrateTemplateCopy() {
+      const intro = document.querySelector('.intro');
+      if (intro) {
+        const kicker = intro.querySelector('.intro-kicker');
+        const copy = intro.querySelector('.intro-copy');
+        if (kicker) kicker.textContent = intro.dataset.kicker || '';
+        if (copy) copy.textContent = intro.dataset.text || '';
+      }
+
+      const footer = document.querySelector('footer');
+      if (footer) footer.textContent = footer.dataset.sourceNote || '';
+
+      const rewriteLabel = document.body.dataset.viewLabelRewrite || '速读';
+      const originalLabel = document.body.dataset.viewLabelOriginal || '原文';
+      document.querySelectorAll('.view-toggle').forEach(function(button) {
+        if (button.dataset.viewTarget === 'rewrite') button.textContent = rewriteLabel;
+        if (button.dataset.viewTarget === 'original') button.textContent = originalLabel;
+      });
+    }
+
+    function hydrateAuthorMeta() {
+      const sources = getTemplateAuthorSources();
+      document.querySelectorAll('.card').forEach(function(card) {
+        const authorKey = card.dataset.authorKey || '';
+        const identity = sources.identities[authorKey] || {};
+        const avatarEntry = sources.avatars[authorKey] || {};
+
+        const name = identity.name || card.dataset.authorName || '';
+        const rawHandle = identity.handle || card.dataset.authorHandle || '';
+        const handle = rawHandle && rawHandle.startsWith('@') ? rawHandle : (rawHandle ? '@' + rawHandle : '');
+        const tag = identity.label || card.dataset.authorTag || '';
+        const avatar = avatarEntry.fileUrl || avatarEntry.localPath || card.dataset.authorAvatar || '';
+
+        const nameNode = card.querySelector('.author-name');
+        const tagNode = card.querySelector('.author-tag');
+        const handleNode = card.querySelector('.author-handle');
+        const avatarNode = card.querySelector('.avatar');
+        const avatarImg = card.querySelector('.avatar img');
+        const avatarFallback = card.querySelector('.avatar-fallback');
+
+        if (nameNode) nameNode.textContent = name;
+        if (tagNode) tagNode.textContent = tag;
+        if (handleNode) handleNode.textContent = handle;
+        if (avatarImg) {
+          avatarImg.src = avatar;
+          avatarImg.alt = name ? name + ' avatar' : 'Author avatar';
+        }
+        if (avatarNode) avatarNode.classList.toggle('is-fallback', !avatar);
+        if (avatarFallback) avatarFallback.textContent = getAuthorInitials(name);
+      });
+    }
+
+    function updateEditionStrip() {
+      const publishDate = document.body.dataset.publishDate;
+      const editionName = document.body.dataset.editionName || '双语精选版';
+      const editionStrip = document.getElementById('edition-strip-text');
+      if (!publishDate || !editionStrip) return;
+
+      const issueNumber = document.body.dataset.issueNumber || '';
+      if (!issueNumber) return;
+
+      const selectedCount = document.querySelectorAll('.card').length;
+      const authorCount = new Set([].slice.call(document.querySelectorAll('.author-handle')).map(function(node) { return node.textContent.trim(); }).filter(Boolean)).size;
+      const themeCount = document.querySelectorAll('.section-header').length;
+      const parts = ['第 ' + issueNumber + ' 期', publishDate, editionName, selectedCount + ' 条精选', authorCount + ' 位作者', themeCount + ' 个主题'];
+      editionStrip.innerHTML = parts.map(function(part) { return '<span class="edition-item">' + part + '</span>'; }).join('<span class="edition-sep">|</span>');
+    }
+
+    function measureVariantHeight(variant) {
+      const prevPosition = variant.style.position;
+      const prevInset = variant.style.inset;
+      const prevVisibility = variant.style.visibility;
+      const prevPointerEvents = variant.style.pointerEvents;
+      const prevOpacity = variant.style.opacity;
+      const prevTransform = variant.style.transform;
+      const prevTransition = variant.style.transition;
+      const prevOverflowY = variant.style.overflowY;
+      const prevDisplay = variant.style.display;
+
+      variant.style.position = 'relative';
+      variant.style.inset = 'auto';
+      variant.style.visibility = 'hidden';
+      variant.style.pointerEvents = 'none';
+      variant.style.opacity = '1';
+      variant.style.transform = 'none';
+      variant.style.transition = 'none';
+      variant.style.overflowY = 'visible';
+      variant.style.display = 'block';
+
+      const height = variant.scrollHeight;
+
+      variant.style.position = prevPosition;
+      variant.style.inset = prevInset;
+      variant.style.visibility = prevVisibility;
+      variant.style.pointerEvents = prevPointerEvents;
+      variant.style.opacity = prevOpacity;
+      variant.style.transform = prevTransform;
+      variant.style.transition = prevTransition;
+      variant.style.overflowY = prevOverflowY;
+      variant.style.display = prevDisplay;
+
+      return Math.ceil(height);
+    }
+
+    function getTargetHeight(shell, target) {
+      const variant = shell.querySelector('.content-variant[data-view="' + target + '"]');
+      return measureVariantHeight(variant);
+    }
+
+    function syncShellHeights() {
+      document.querySelectorAll('.content-shell').forEach(function(shell) {
+        const active = shell.querySelector('.content-variant.is-active');
+        const target = active ? active.dataset.view : 'rewrite';
+        shell.style.height = getTargetHeight(shell, target) + 'px';
+      });
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', function() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(syncShellHeights, 120);
+    });
+
+    document.querySelectorAll('.card').forEach(function(card) {
+      const buttons = card.querySelectorAll('.view-toggle');
+      const shells = card.querySelectorAll('.content-shell');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const target = button.dataset.viewTarget;
+          if (button.classList.contains('is-active')) return;
+
+          buttons.forEach(function(btn) {
+            btn.classList.toggle('is-active', btn === button);
+          });
+
+          shells.forEach(function(shell) {
+            const current = shell.querySelector('.content-variant.is-active');
+            const next = shell.querySelector('.content-variant[data-view="' + target + '"]');
+            if (!current || !next || current === next) return;
+
+            shell.style.height = shell.offsetHeight + 'px';
+            requestAnimationFrame(function() {
+              current.classList.remove('is-active');
+              next.classList.add('is-active');
+              shell.style.height = getTargetHeight(shell, target) + 'px';
+            });
+          });
+        });
+      });
+    });
+
+    hydrateTemplateCopy();
+    hydrateAuthorMeta();
+    updateEditionStrip();
+    syncShellHeights();
+  </script>
+</body>
+</html>

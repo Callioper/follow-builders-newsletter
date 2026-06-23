@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 22 Jun 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 23 Jun 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-06-23 · eval 升格日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-23-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-23-rerun.html</guid>
+      <pubDate>Tue, 23 Jun 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[6-23 这天 Follow Builders 的主旋律是「eval 升格」——Levie 一早把 applied-AI 的瓶颈从 model 移到 eval:open-weights post-training、agent improvements、agentic enterprise deployment 三件事的进度都挂在 eval 上;同一作者顺手放出 Box 的 HTML preview / edit / version / share,把 agent-produced content 的 distribution 格式立成 HTML——HTML 是 machine 能生成、能直接读回 eval 的 format,「preview / edit / version / share」这组产品表面本质上是 applied layer 的 eval-loop 表面。Sama 当天接一条 thread:放 GPT-5.5-Cyber 满血版(CyberGym SOTA)+ Codex Security +「Patch The Planet」——OpenAI 把 security 从 research benchmark 拉到 product launch,Sottiaux(Codex 一侧)紧跟一条把「codex security」这条 harness 半边补上,model 那半边和 harness 那半边设计成能组合的。Quality distribution 这条线在同一天被两位 founder 立起来:Zara Zhang 把 Frontend Slides skill(22k+ stars)拆成 walkthrough——demo + 怎么造 + 怎么扩展 + tips + lessons 五个 section 的完整 publication;Ryo Lu 在 Cursor Compile 给 talk,主题是「how we build in the age of AI / what doesn't change」——在所有 surface 都在 churn 的这一周,真正的问题是「什么保持不变」。rauchg 同一天压两个 Vercel 动作:Claude Design → Vercel 一键发布(WebSocket / socket.io 从 CDN 到 Fluid 全程支持),agent harness 需要的持久 stream 回浏览器那一段不再需要 outside service。Builder 一侧 swyx 把 SpaceX 算成 NeoCloud + NeoLab——Cursor compute deals 已收约一半投资,另一半挂在 Composer 3,「model lab + 自己 neocloud」在 GPU 供给盘对的前提下是市场里没有对手的垂直;petergyang 从用户视角补一刀——Claude Code 的「dynamic workflow」他自己读了一遍还是不知道什么时候用,harness feature surface 在快速堆叠但 mental model 没跟上,eval-grade 文档本身就是 applied-layer 的瓶颈。收尾是 AI & I by Every 这期请到 Anthropic Labs 负责人 Mike Krieger,他把 Fable 5 怎么被「日用」讲透——day-one impression 跟 extended-use workflow adaptation 是两件事,nontechnical knowledge worker 用完说「我要学一套新技能」,orchestrating agents 的人说「holy shit,有太多新东西要学」,workflow 本身要被重写而不是被加速;Levie 早上立的那个 applied-layer bottleneck,就是 Krieger 在 lab 里正在解的那件事。]]></description>
+      <category>Eval 是 applied layer 的真正瓶颈 / Evals Are the Real Bottleneck of the Applied Layer, Patch The Planet:OpenAI 把 security 立成 product surface / OpenAI Makes Security a Product Surface, Skill 是 quality 的 distribution 格式 / Skills Are How Quality Gets Distributed, Harness surface:Vercel 把 Claude Design + WebSocket 收齐 / Harness Surface: Vercel Adds Claude Design and WebSocket, Builder 一侧的市场算术 &amp; harness UX 痛点 / Builder-Side Math and Harness UX Friction, Podcast 收尾:Mike Krieger 谈 Fable 5 怎么被日用 / Closer: Krieger on Daily-Drivering Fable 5</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-06-22 · 吃 harness 日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-22-rerun.html</link>
