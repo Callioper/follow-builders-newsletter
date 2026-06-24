@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Builders Digest · 2026-06-24</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ed;
+    --accent: #c0392b;
+    --accent-light: #e8d5c4;
+    --border: #d4cdc0;
+    --muted: #7a7265;
+    --tag-bg: #e8e2d6;
+    --en-bg: #ffffff;
+    --cn-bg: #faf7f2;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  .masthead, .intro, .section-header, .feed, footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .masthead { padding-top: 48px; }
+  .masthead-rule { border: none; border-top: 3px solid var(--ink); margin: 0 0 12px; }
+  .masthead-inner { display: flex; justify-content: center; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; letter-spacing: -0.4px; }
+  .masthead-subtitle { margin-top: 8px; padding-bottom: 10px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  .edition-strip {
+    position: relative;
+    margin-top: 8px;
+    min-height: 46px;
+    padding: 10px 132px 12px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.34);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+
+  .edition-strip .edition-sep { margin: 0 8px; color: #b8ae9f; }
+  .edition-strip-text { display: block; }
+  .edition-return-link { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; padding: 6px 10px; border: 1px dashed rgba(192, 57, 43, 0.55); border-radius: 999px; color: var(--accent); text-decoration: none; font-size: 12px; line-height: 1; letter-spacing: 0.06em; background: rgba(255, 255, 255, 0.45); transition: background 160ms ease, border-color 160ms ease, transform 160ms ease; }
+  .edition-return-link:hover, .edition-return-link:focus-visible { background: rgba(255, 255, 255, 0.82); border-color: var(--accent); transform: translateY(-50%) translateX(-1px); }
+  .edition-return-link:focus-visible { outline: none; }
+  .intro { padding-top: 22px; }
+  .intro-inner { max-width: 920px; margin: 0 auto; padding: 0 0 0 18px; border-left: 3px solid #d9cdbc; }
+  .intro-kicker { margin: 0 0 8px; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .intro p { margin: 0; max-width: none; color: var(--muted); font-size: clamp(15px, 1.6vw, 16px); line-height: 1.9; text-wrap: pretty; font-family: 'Noto Serif SC', serif; overflow-wrap: anywhere; }
+
+  .section-header { margin-top: 40px; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; margin: 0 0 6px; }
+  .section-desc { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+
+  .feed { display: flex; flex-direction: column; gap: 20px; }
+  .card { background: var(--en-bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .card-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid #eee7dd; flex-wrap: wrap; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .avatar-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .avatar.is-fallback img { display: none; }
+  .avatar.is-fallback .avatar-fallback { display: flex; }
+
+  .author-info { flex: 1; min-width: 160px; }
+  .author-name { font-weight: 600; font-size: 15px; }
+  .author-name-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .author-handle { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+  .author-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; background: var(--tag-bg); color: var(--muted); padding: 4px 8px; border-radius: 999px; }
+  .author-tag.is-inline { padding: 3px 8px; }
+
+  .card-controls { margin-left: auto; display: inline-flex; gap: 8px; }
+  .view-toggle { border: 1px solid var(--border); background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 999px; font-size: 12px; line-height: 1; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; }
+  .view-toggle.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .card-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .lang-col { padding: 18px 20px 22px; }
+  .lang-col.cn { background: var(--cn-bg); border-right: 1px solid #f0ece4; font-family: 'Noto Serif SC', serif; }
+  .lang-col.en { background: var(--en-bg); }
+  .lang-label { margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+  .content-shell { position: relative; transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .content-variant { position: absolute; inset: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(4px); transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; will-change: opacity, transform; }
+  .content-variant.is-active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+  .content-variant p, .content-variant li { margin: 0 0 12px; font-size: 14px; }
+  .content-variant ol { margin: 0 0 12px 20px; padding: 0; }
+  .inline-code { display: inline-block; font-family: 'IBM Plex Mono', monospace; background: #f4efe7; padding: 3px 6px; border-radius: 6px; margin-bottom: 8px; }
+
+  .card-footer { padding: 12px 20px 16px; border-top: 1px solid #eee7dd; background: #fcfaf6; }
+  .card-footer a { color: var(--accent); text-decoration: none; font-size: 14px; }
+  footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 680px) {
+    .masthead-inner { align-items: center; }
+    .edition-strip { padding-right: 12px; padding-left: 12px; }
+    .edition-strip-text { padding-right: 0; }
+    .edition-return-link { position: static; transform: none; margin-top: 8px; font-size: 11px; }
+    .card-controls { margin-left: 0; }
+    .card-body { grid-template-columns: 1fr; }
+    .lang-col.cn { border-right: none; border-bottom: 1px solid #f0ece4; }
+    .edition-strip .edition-sep { margin: 0 5px; }
+    .intro-inner { padding-left: 14px; }
+    .intro p { line-height: 1.84; }
+  }
+</style>
+</head>
+<body data-publish-date="2026-06-24" data-issue-number="30" data-edition-name="双语精选版" data-view-label-rewrite="速读" data-view-label-original="原文" data-author-identities-path="/home/eclaw/.follow-builders/assets/author-identities.json" data-avatar-manifest-path="/home/eclaw/.follow-builders/assets/avatar-manifest.json">
+  <header class="masthead">
+    <hr class="masthead-rule">
+    <div class="masthead-inner">
+      <div class="masthead-title">AI Builders Digest</div>
+    </div>
+    <div class="masthead-subtitle">Bilingual edition · 双语对照版</div>
+    <div class="edition-strip">
+      <span class="edition-strip-text" id="edition-strip-text">第 30 期｜2026-06-24｜双语精选版｜21 条精选｜16 位作者｜6 个主题</span>
+      <a class="edition-return-link" href="../index.html">返回目录</a>
+    </div>
+  </header>
+
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="6-24 这一天 Follow Builders 的主旋律是「Claude Tag 升舱」——Anthropic 把 Claude 从 chat 框里搬进 Slack channel,变成一个原生多玩家、原生主动的 teammate。_catwu 给的数字是「内部版本合 65% product PR」,bcherny 画出运行时(one instance per thread,sandbox 用完即弃),claudeai 官方账号定调「teammate 不是 tool」,karpathy 把这立成 LLM UI/UX 的第三次 paradigm(website → app → 多玩家 persistent entity)。trq212 当天给出一条 day-1 状态 emoji 协议(⏲️✅❓🛑),把 reaction API 当 agent→人 status channel 用。Harness 一侧的 friction 被这一推压出来:Peter Yang 同一天把「manage 一个 highly capable employee」和「agent 就是用户、design 是什么」两个 angle 拆开;Rauch 同步开私密 X Chat 群收 Vercel agent 表面反馈,信号是 Vercel 把 agent 开发者意见当 product input,不走 public roadmap。CLI 当新 API 这条线在同一天被四件事写完:Shopify UCP CLI 被一个周末搭起来的「Plug That Shop」踩成 substrate(Nikunj 用 Opus 4.8 + Conductor + Railway 一键搭出 4 个 contextual embed shop),Steinberger 一句话揭 Google Workspace CLI 背后的人事风险,Peter Yang 把「应该被庆祝」一面补上,Garry Tan 站队 Linzumi——「Codex + 多玩家」是 YC 看好的 category,跟 Claude Tag 切的是同一个 slot。Codex 这一侧 Sottiaux 用同一天的 bug-fix + 「keep feedback coming」做 responsiveness 的一推——Anthropic 用多玩家 ambient 推,OpenAI 用快迭代单玩家推,两种产品姿态同日落地。Open vs closed 的 barbell:Levie 把 6-23「It&#39;s all evals」接成 barbell pricing 框架,Swyx 给出 open 那一边的当下坐标(Zai IPO、回 SF),Madhusudhan 把 token pricing 标成「症状不是病根」——agent stack 各层商业模式还在 real time 现搭。收尾是 No Priors 这期 Biohub 三位 co-founder 把「Biology 的未来是 open source」立出来,11 亿 protein fold 不为单一靶点设计模型,substrate 开放、applied 层是差异化——把 6-23/6-24 的 evals / headless-with-agents pattern 推到 biology,跟 Swyx 昨天给 SpaceX 算的「model lab + 自家 neocloud」是同一种 vertical-lab 逻辑。">
+    <div class="intro-inner">
+      <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
+      <p class="intro-copy">6-24 这一天 Follow Builders 的主旋律是「Claude Tag 升舱」——Anthropic 把 Claude 从 chat 框里搬进 Slack channel,变成一个原生多玩家、原生主动的 teammate。_catwu 给的数字是「内部版本合 65% product PR」,bcherny 画出运行时(one instance per thread,sandbox 用完即弃),claudeai 官方账号定调「teammate 不是 tool」,karpathy 把这立成 LLM UI/UX 的第三次 paradigm(website → app → 多玩家 persistent entity)。trq212 当天给出一条 day-1 状态 emoji 协议(⏲️✅❓🛑),把 reaction API 当 agent→人 status channel 用。Harness 一侧的 friction 被这一推压出来:Peter Yang 同一天把「manage 一个 highly capable employee」和「agent 就是用户、design 是什么」两个 angle 拆开;Rauch 同步开私密 X Chat 群收 Vercel agent 表面反馈,信号是 Vercel 把 agent 开发者意见当 product input,不走 public roadmap。CLI 当新 API 这条线在同一天被四件事写完:Shopify UCP CLI 被一个周末搭起来的「Plug That Shop」踩成 substrate(Nikunj 用 Opus 4.8 + Conductor + Railway 一键搭出 4 个 contextual embed shop),Steinberger 一句话揭 Google Workspace CLI 背后的人事风险,Peter Yang 把「应该被庆祝」一面补上,Garry Tan 站队 Linzumi——「Codex + 多玩家」是 YC 看好的 category,跟 Claude Tag 切的是同一个 slot。Codex 这一侧 Sottiaux 用同一天的 bug-fix + 「keep feedback coming」做 responsiveness 的一推——Anthropic 用多玩家 ambient 推,OpenAI 用快迭代单玩家推,两种产品姿态同日落地。Open vs closed 的 barbell:Levie 把 6-23「It&#39;s all evals」接成 barbell pricing 框架,Swyx 给出 open 那一边的当下坐标(Zai IPO、回 SF),Madhusudhan 把 token pricing 标成「症状不是病根」——agent stack 各层商业模式还在 real time 现搭。收尾是 No Priors 这期 Biohub 三位 co-founder 把「Biology 的未来是 open source」立出来,11 亿 protein fold 不为单一靶点设计模型,substrate 开放、applied 层是差异化——把 6-23/6-24 的 evals / headless-with-agents pattern 推到 biology,跟 Swyx 昨天给 SpaceX 算的「model lab + 自家 neocloud」是同一种 vertical-lab 逻辑。</p>
+    </div>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 01</div>
+    <h2 class="section-title">Claude Tag 上线:多玩家 agent 升舱到 Slack / Claude Tag Launches — A Multiplayer Agent Lives in Slack</h2>
+    <p class="section-desc">Anthropic 当天主推 Claude Tag——一个住在 Slack channel 里、原生多玩家、原生主动的 Claude。_catwu 给出 65% 内部 PR 合并率这个 dogfood 数字,bcherny 画运行时(one instance per thread,sandbox 一次性),claudeai 官方账号定调「teammate 不是 tool」,karpathy 把这立成 LLM UI/UX 的第三次 paradigm,trq212 直接给出 day-1 状态 emoji 协议(⏲️✅❓🛑)。这是 2026 年 6 月最重的一个产品发布。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:claudeai" data-author-name="Claude" data-author-tag="Anthropic Claude 官方账号" data-author-handle="@claudeai" data-author-avatar="../assets/avatars/x-claudeai.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-claudeai.jpg" alt="Claude avatar"><span class="avatar-fallback">C</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Claude</div>
+            <div class="author-tag is-inline">Anthropic Claude 官方账号</div>
+          </div>
+          <div class="author-handle">@claudeai</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic 当天正式把 Claude Tag 推上线——一个住在 Slack channel 里、不是住在独立 tab 里的 Claude。Beta 今天对 Claude Enterprise 和 Claude Team 开放,后续会再扩面。这是 Anthropic 第一个 primary surface 不是 chat UI、而是人类和 Claude 共同工作的共享 team surface 的产品。</p>
+              <p>官方账号把 Claude Tag 框成 teammate、不是工具:同一个 channel 里只有一个 Claude,任何人都可以从别人停下的地方接上;它会沿 channel 的历史积累 context,而不是每个 thread 从零讲起。再配上「ambient behavior」开关(Claude 主动跟进沉寂的 thread、从其他 channel 和工具里挑出相关项),这个产品结构上更接近一个多玩家 team member,而不是单用户的 chat app。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Claude Tag is available in beta today on Slack for Claude Enterprise and Team plans. We plan to expand it more widely in the future.</p>
+              <p>In a channel, there&#39;s one Claude that interacts with everyone, so a teammate can pick up exactly where you left off. It builds more context about the work as it follows the channel, so you don&#39;t need to explain things from scratch.</p>
+              <p>Turn ambient behavior on, and Claude takes initiative. It follows up on threads that have gone quiet and flags what&#39;s relevant from across its channels and tools.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic officially ships Claude Tag — a Slack-resident Claude that lives in channels, not in a separate tab. Beta is open today for Claude Enterprise and Claude Team plans, with broader rollout planned. This is the first product Anthropic has launched where the primary surface is not a chat UI but a shared team surface that humans and Claude both work in.</p>
+              <p>The official account frames Claude Tag as a teammate rather than a tool. In a channel there is one Claude that interacts with everyone, so any human teammate can pick up where another left off; the agent accumulates context across the channel&#39;s history rather than starting from scratch in each thread. Combined with the &#39;ambient behavior&#39; toggle (Claude takes initiative, follows up on quiet threads, flags relevant items from other channels and tools), the product is structurally closer to a multi-player team member than a single-user chat app.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Claude Tag is available in beta today on Slack for Claude Enterprise and Team plans. We plan to expand it more widely in the future.</p>
+              <p>In a channel, there&#39;s one Claude that interacts with everyone, so a teammate can pick up exactly where you left off. It builds more context about the work as it follows the channel, so you don&#39;t need to explain things from scratch.</p>
+              <p>Turn ambient behavior on, and Claude takes initiative. It follows up on threads that have gone quiet and flags what&#39;s relevant from across its channels and tools.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/claudeai/status/2069468701548531895" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:_catwu" data-author-name="Cat Wu" data-author-tag="Anthropic 产品工程" data-author-handle="@_catwu" data-author-avatar="../assets/avatars/x-_catwu.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-_catwu.jpg" alt="Cat Wu avatar"><span class="avatar-fallback">CW</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Cat Wu</div>
+            <div class="author-tag is-inline">Anthropic 产品工程</div>
+          </div>
+          <div class="author-handle">@_catwu</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Cat Wu(Anthropic 产品工程)给 Claude Tag 对公司的影响定调:这是 Anthropic 内部「怎么 ship 产品」的一次 paradigm shift——内部版本合了 65% 的 product PR,也是 Anthropic 第一个原生多玩家、原生主动的产品。公司自己在用跟推出去的同一个 surface。</p>
+              <p>Cat 同一天放出配置 Claude Tag agent 权限的 get-started 文档,以及 6 个内部用户和外部 design partner 都用顺了的常见流程。关键 pattern:发布时同步出权限/边界配置工具,信号是 Claude Tag 面向需要 audit trail 和 access control 的 team,不是一个 consumer chat 套壳。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Claude Tag is a paradigm shift in how we ship products at Anthropic. Our internal version merges 65% of product PRs and this is our first product that is natively multi-player and proactive. We&#39;re excited for you to try this out. Let us know your feedback!</p>
+              <p>Here&#39;s our Get Started guide for configuring agent permissions for Claude Tag!</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Cat Wu (Anthropic product engineering) on what Claude Tag changes for the company: it&#39;s a paradigm shift in how Anthropic ships products. The internal version merges 65% of product PRs, and it is Anthropic&#39;s first product that is natively multi-player and proactive — a build signal that the company is using the same surface it is shipping.</p>
+              <p>Cat also dropped a parallel get-started doc on configuring agent permissions for Claude Tag, plus six common flows that resonated with internal users and external design partners. The pattern matters: the launch comes with both a public surface and a permission/floor-config toolkit, signalling that Claude Tag is positioned for teams that need audit-trail and access-control, not just a consumer chat wrapper.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Claude Tag is a paradigm shift in how we ship products at Anthropic. Our internal version merges 65% of product PRs and this is our first product that is natively multi-player and proactive. We&#39;re excited for you to try this out. Let us know your feedback!</p>
+              <p>Here&#39;s our Get Started guide for configuring agent permissions for Claude Tag!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/_catwu/status/2069473118742331608" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:bcherny" data-author-name="Boris Cherny" data-author-tag="Salesforce AI 工程负责人" data-author-handle="@bcherny" data-author-avatar="../assets/avatars/x-bcherny.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-bcherny.jpg" alt="Boris Cherny avatar"><span class="avatar-fallback">BC</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Boris Cherny</div>
+            <div class="author-tag is-inline">Salesforce AI 工程负责人</div>
+          </div>
+          <div class="author-handle">@bcherny</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Boris Cherny(Anthropic,Claude Code 作者)给 Claude Tag 画出运行时形态:在 channel 里 @ Claude,它就拉起自己的 instance 和 sandbox——clone repo、写代码、跑 test、build,全在那块隔离环境里做,做完 sandbox 就扔。一个 thread 一个 instance,每个 channel 有自己的 memory 和权限。</p>
+              <p>「一个 thread 一个 instance」是这次的结构性决定。意思是每次 tag 都是一次 bounded scope 的新执行;跨 channel 的 context 存在另一层 memory 里,不在 sandbox 里。这也是为什么 ambient 主动模式在嘈杂的工作空间里能放心打开:每次 prompt 是隔离的,memory 是 per-channel 的,surface 是可审计的。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Tag Claude in a channel, it spins up an instance with its own sandbox. It clones repos, writes code, tests, compiles all in that isolated environment and the sandbox gets thrown away when it&#39;s done. One instance per thread, its own memory and permissions per channel.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Boris Cherny (Anthropic, the creator of Claude Code) on the runtime shape of Claude Tag: you tag Claude in a channel, it spins up its own instance with its own sandbox. It clones repos, writes code, tests, compiles — all in that isolated environment — and the sandbox is thrown away when it&#39;s done. One instance per thread, its own memory and permissions per channel.</p>
+              <p>The &#39;one instance per thread&#39; choice is the structural decision. It means every tag-claude is a fresh execution with bounded scope; the cross-channel context lives in a separate memory layer, not in the sandbox. That&#39;s what makes the proactive ambient mode safe to turn on in a busy workspace: each prompt is isolated, the memory is per-channel, and the surface is auditable.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Tag Claude in a channel, it spins up an instance with its own sandbox. It clones repos, writes code, tests, compiles all in that isolated environment and the sandbox gets thrown away when it&#39;s done. One instance per thread, its own memory and permissions per channel.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/bcherny/status/2069474689819480394" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:bcherny" data-author-name="Boris Cherny" data-author-tag="Salesforce AI 工程负责人" data-author-handle="@bcherny" data-author-avatar="../assets/avatars/x-bcherny.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-bcherny.jpg" alt="Boris Cherny avatar"><span class="avatar-fallback">BC</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Boris Cherny</div>
+            <div class="author-tag is-inline">Salesforce AI 工程负责人</div>
+          </div>
+          <div class="author-handle">@bcherny</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Boris 自己把 Claude Tag 当 proactive monitor 跑在 Slack 上:Claude 盯着 channel、回问题、起草 PR,thread 被它判定为已解决还会用状态 emoji(✅ ❌)去 react。配置是一条自然语言指令——「把 @.Claude 拉进 channel,让它做这件事」——没有配置文件、没有 admin 步骤。</p>
+              <p>搭一个自定义 agent workflow 的门槛现在是「一条 prompt」。这等于把每个 team 的 build-vs-buy 问题压扁:当标准 agent harness 本身是 ambient 的,工作从「选 vendor」变成「写第一条描述 workflow 的消息」。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I also have Claude monitoring Slack channels to proactively respond to people to answer their questions and draft PRs, and to react with specific emojis like ✅❌ when a thread is resolved. To set it up, just add @.Claude to a channel and ask it to do this^, in natural language.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Boris is also running Claude Tag as a proactive monitor on his own Slack: Claude watches channels, responds to questions, drafts PRs, and reacts with status emojis (✅ ❌) on threads it considers resolved. The setup is a natural-language command — &#39;add @.Claude to a channel and ask it to do this&#39; — no config file, no admin step.</p>
+              <p>The threshold for spinning up a custom agent workflow is now &#39;one prompt&#39;. That collapses the per-team build-vs-buy question: when the canonical agent harness is itself ambient, the job shifts from &#39;pick a vendor&#39; to &#39;write the first message that describes the workflow&#39;.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I also have Claude monitoring Slack channels to proactively respond to people to answer their questions and draft PRs, and to react with specific emojis like ✅❌ when a thread is resolved. To set it up, just add @.Claude to a channel and ask it to do this^, in natural language.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/bcherny/status/2069474688619958517" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:trq212" data-author-name="Tao Li" data-author-tag="AI 研究员 / Follow Builders 维护者" data-author-handle="@trq212" data-author-avatar="../assets/avatars/x-trq212.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-trq212.jpg" alt="Tao Li avatar"><span class="avatar-fallback">TL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Tao Li</div>
+            <div class="author-tag is-inline">AI 研究员 / Follow Builders 维护者</div>
+          </div>
+          <div class="author-handle">@trq212</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Tao Li(Follow Builders 自家 X)分享 day-1 的可用 pattern:让 Claude 在顶层 thread 上 react 状态 emoji——⏲️ 进行中、✅ 完成、❓ 阻塞等问、🛑 没法往下走。channel 忙的时候扫一眼 emoji 就知道每个 Claude instance 在干什么,不用点进 thread。</p>
+              <p>有意思的是把 reaction 当 status channel 用。Reaction API 是 Slack 暴露的状态里少有的、既人可读、又能在 per-thread agent instance 里写的——天然适合多玩家场景下 agent → 人的状态汇报。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>When it&#39;s working, I ask it to react to the top level thread with the following emojis: ⏲️✅❓🛑  That way it&#39;s easy to see its status at a glance.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Tao Li (Follow Builders&#39; own X) sharing day-1 patterns: the visible-status convention that actually works. Ask Claude to react to the top-level thread with ⏲️ ✅ ❓ 🛑 — ⏲️ while it&#39;s working, ✅ when done, ❓ when blocked on a question, 🛑 when it can&#39;t proceed. At a glance you can scan a busy channel and tell what each Claude instance is doing without opening the thread.</p>
+              <p>The interesting move is treating emoji reactions as a status channel. The reaction API is the one piece of state Slack exposes that&#39;s both human-readable and machine-writable from a per-thread agent instance — which makes it the natural surface for agent-to-human status reporting in a multi-player setting.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>When it&#39;s working, I ask it to react to the top level thread with the following emojis: ⏲️✅❓🛑  That way it&#39;s easy to see its status at a glance.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/trq212/status/2069474342220820657" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:karpathy" data-author-name="Andrej Karpathy" data-author-tag="OpenAI 创始成员 / Eureka Labs 创始人" data-author-handle="@karpathy" data-author-avatar="../assets/avatars/x-karpathy.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-karpathy.jpg" alt="Andrej Karpathy avatar"><span class="avatar-fallback">AK</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Andrej Karpathy</div>
+            <div class="author-tag is-inline">OpenAI 创始成员 / Eureka Labs 创始人</div>
+          </div>
+          <div class="author-handle">@karpathy</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Andrej Karpathy 把 Claude Tag 框成 LLM UI/UX 的第三次大重设计。第一次范式:LLM 是一个你打开的网站;第二次:它是你下载的 app;第三次——也就是 Claude Tag 在做的——是一个自带 org 范围 tools 和 context、持续在线、异步运行、跟人类团队并行工作的独立实体。</p>
+              <p>Karpathy 的「just works」一句点到这次最难的:把这种设计做到「just work」,要在 org 层面把 tools、integrations、计算环境、memory、security 一起解决,不是发一个 chat 框就完事。这些都到位之后,交互的感觉就变成「跟一个能接很多种活儿的队友说话」,不是「用一个工具」。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>This is a new paradigm for interacting with Claude that is significantly more &quot;inline&quot; with all the other human activity org-wide. Once you do all the under the hood engineering work to make this &quot;just work&quot; (e.g. across tools, integrations, compute environments, memory, security, etc.), Claude basically joins the team in a seamless way - you can talk to it as you would talk to a person and it can help with a very large variety of workloads. Imo this is the 3rd major redesign of LLM UIUX. The first paradigm was that the LLM is a website you go to, the second was that it is an app you download to your computer. This third one is that it is a self-contained, persistent, asynchronous entity with org-wide tools and context, working alongside teams of humans.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Andrej Karpathy frames Claude Tag as the third major redesign of LLM UI/UX. The first paradigm: the LLM is a website you go to. The second: it&#39;s an app you download. The third — what Claude Tag is shipping — is a self-contained, persistent, asynchronous entity with org-wide tools and context, working alongside teams of humans.</p>
+              <p>Karpathy&#39;s &#39;just works&#39; framing points at the hard part: making this design &#39;just work&#39; requires solving tools, integrations, compute environments, memory, and security at the org level — not just shipping a chat box. Once those are in place, the interaction feels less like &#39;use a tool&#39; and more like &#39;talk to a teammate who can take on a large variety of workloads&#39;.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>This is a new paradigm for interacting with Claude that is significantly more &quot;inline&quot; with all the other human activity org-wide. Once you do all the under the hood engineering work to make this &quot;just work&quot; (e.g. across tools, integrations, compute environments, memory, security, etc.), Claude basically joins the team in a seamless way - you can talk to it as you would talk to a person and it can help with a very large variety of workloads. Imo this is the 3rd major redesign of LLM UIUX. The first paradigm was that the LLM is a website you go to, the second was that it is an app you download to your computer. This third one is that it is a self-contained, persistent, asynchronous entity with org-wide tools and context, working alongside teams of humans.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/karpathy/status/2069547676849557725" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:alexalbert__" data-author-name="Alex Albert" data-author-tag="Anthropic Claude 关系负责人" data-author-handle="@alexalbert__" data-author-avatar="../assets/avatars/x-alexalbert__.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-alexalbert__.jpg" alt="Alex Albert avatar"><span class="avatar-fallback">AA</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Alex Albert</div>
+            <div class="author-tag is-inline">Anthropic Claude 关系负责人</div>
+          </div>
+          <div class="author-handle">@alexalbert__</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Alex Albert(Anthropic Claude 关系)说 day-1 的体感:「这彻底改变了我跟 Claude 协作的方式。感觉不像是在用工具,更像是在管一个团队。」值得拎出来是因为他站在关系岗——他的反应是「Anthropic 自家」用户的温度计,不是 marketing 文案。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>This has completely changed how I work with Claude. It feels less like using a tool and more like managing a team.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Alex Albert (Anthropic Claude relations) on the day-1 user experience: &#39;This has completely changed how I work with Claude. It feels less like using a tool and more like managing a team.&#39; The framing is significant because Alex is on the relationship side — his reaction is a temperature check on what &#39;Anthropic-native&#39; users are saying, not a marketing line.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>This has completely changed how I work with Claude. It feels less like using a tool and more like managing a team.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/alexalbert__/status/2069470389391241314" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 02</div>
+    <h2 class="section-title">Harness UX 这一侧的 friction / Harness UX Friction on Launch Day</h2>
+    <p class="section-desc">Claude Tag 把 agent 推到 channel 之后,harness 这一侧的几个老问题被压出来:Peter Yang 跟同一天把「管理 highly capable employee」和「agent 就是用户」两个 angle 拆开;Rauch 同步开私密反馈群——Vercel 收 agent 表面意见开始走直接通道,不走 public roadmap。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:petergyang" data-author-name="Peter Yang" data-author-tag="产品教练 / 创作者经济研究者" data-author-handle="@petergyang" data-author-avatar="../assets/avatars/x-petergyang.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-petergyang.jpg" alt="Peter Yang avatar"><span class="avatar-fallback">PY</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Yang</div>
+            <div class="author-tag is-inline">产品教练 / 创作者经济研究者</div>
+          </div>
+          <div class="author-handle">@petergyang</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang 把 Claude Tag 背后的 workflow 转折点一句话点穿:「Human-agent 的交互基本就是在 manage 一个 highly capable employee。Claude 的 1 on 1 和绩效评估是不是也快了?」半开玩笑,半预言——把 agent 比作 high-performing employee(有 calendar,不是只有 chat 框),正是 Claude Tag channel-native surface 在操作化的那件事。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Human-agent interaction is basically trending towards managing a highly capable employee. 1 on 1s and performance reviews for Claude next? 😅</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang on the workflow-shift Claude Tag implies: &#39;Human-agent interaction is basically trending towards managing a highly capable employee. 1 on 1s and performance reviews for Claude next?&#39; Half-joke, half-prophecy — the comparison to a high-performing employee (with calendar, not just chat box) is exactly what Claude Tag&#39;s channel-native surface operationalizes.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Human-agent interaction is basically trending towards managing a highly capable employee. 1 on 1s and performance reviews for Claude next? 😅</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/petergyang/status/2069530765352907180" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:petergyang" data-author-name="Peter Yang" data-author-tag="产品教练 / 创作者经济研究者" data-author-handle="@petergyang" data-author-avatar="../assets/avatars/x-petergyang.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-petergyang.jpg" alt="Peter Yang avatar"><span class="avatar-fallback">PY</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Yang</div>
+            <div class="author-tag is-inline">产品教练 / 创作者经济研究者</div>
+          </div>
+          <div class="author-handle">@petergyang</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter 同一天抛的设计问题:「如果访问你产品的就是 agent 自己、它只要 api 或 CLI,那 design 是什么?」重点是产品的「使用者」从带眼睛的人,变成带 shell history 的 agent。Visual design 是给人类的 affordance;一旦 agent 是用户,API 和 CLI 就是整个 product surface。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>What is design if what&#39;s accessing your product is just an agent looking for an api or CLI?</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter&#39;s design question on the same day: &#39;What is design if what&#39;s accessing your product is just an agent looking for an api or CLI?&#39; The framing is that the consumer-of-the-product is shifting from a human-with-eyes to an agent-with-shell-history. Visual design is a human affordance; once an agent is the user, the API and CLI become the entire product surface.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>What is design if what&#39;s accessing your product is just an agent looking for an api or CLI?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/petergyang/status/2069603490524254473" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:rauchg" data-author-name="Guillermo Rauch" data-author-tag="Vercel CEO" data-author-handle="@rauchg" data-author-avatar="../assets/avatars/x-rauchg.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-rauchg.jpg" alt="Guillermo Rauch avatar"><span class="avatar-fallback">GR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Guillermo Rauch</div>
+            <div class="author-tag is-inline">Vercel CEO</div>
+          </div>
+          <div class="author-handle">@rauchg</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch(Vercel CEO)给 Vercel 的 agent surface 开了个私密反馈通道:「给 Vercel agent 反馈开个 X Chat 群。你如果在认真做 agent、有高质量的批评或需求,DM 我。」这个动作本身就是信号——最大的前端平台在把 agent 开发者的直接反馈当 product input,不是放 public roadmap 上收集。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Starting an X Chat group for Vercel agent feedback. If you&#39;re deep into building an agent and have high quality critical feedback or requirements to share, DM me and I&#39;ll add you to a group with Vercel engineers</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch (Vercel CEO) opening a private feedback channel for Vercel&#39;s agent surface: &#39;Starting an X Chat group for Vercel agent feedback. If you&#39;re deep into building an agent and have high quality critical feedback or requirements to share, DM me.&#39; The move is itself a signal — the biggest frontend platform is collecting direct agent-developer feedback as a product input, not via a public roadmap.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Starting an X Chat group for Vercel agent feedback. If you&#39;re deep into building an agent and have high quality critical feedback or requirements to share, DM me and I&#39;ll add you to a group with Vercel engineers</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/rauchg/status/2069590431646769472" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 03</div>
+    <h2 class="section-title">CLI 当新 API,marketplace 在出 / CLIs Are the New API, Marketplaces Are Forming</h2>
+    <p class="section-desc">同一天四件事把「CLI 当 product surface」这条线写完:Shopify UCP CLI 被一个周末搭起来的「Plug That Shop」踩成 substrate(agent 读 CLI reason 出 shop embed),Steinberger 揭 Google Workspace CLI 背后的人事风险,Peter Yang 把「应该被庆祝」一面补上,Garry Tan 站队 Linzumi——「Codex + 多玩家」是 YC 看好的 category,跟 Claude Tag 切同一个 slot。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:nikunj" data-author-name="Nikunj Kothari" data-author-tag="Afore Capital 合伙人" data-author-handle="@nikunj" data-author-avatar="../assets/avatars/x-nikunj.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-nikunj.jpg" alt="Nikunj Kothari avatar"><span class="avatar-fallback">NK</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Nikunj Kothari</div>
+            <div class="author-tag is-inline">Afore Capital 合伙人</div>
+          </div>
+          <div class="author-handle">@nikunj</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj Kothari(Afore Capital 合伙人)周末把「Plug That Shop」ship 出来——底层是 Shopify 新出的 UCP CLI + Anthropic Opus 4.8 + Conductor + Railway。功能:进任何网站,出 4 个高度相关的 embedded shop,一键走 Shop 结账。一个周末搭起来,踩着一条新 CLI。</p>
+              <p>Pattern 在这:大 commerce 平台(Shopify)出的 CLI 变成一个 weekend startup 的 substrate。这个 CLI 在「contextual embed」这种场景下比 Shopify 真正的 API 还 API——agent 读 CLI 输出、reason 一下,正好是给 agent 设计的 API 该有的样子。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Introducing Plug That Shop 🔌  So @Shopify launched their UCP CLI that allows all the products on their stores available via the command line. I was thinking of interesting use cases for the CLI over the weekend and realized that I can use this to create contextual embedded shops for websites. So now, you can enter your website and get four HIGHLY relevant shops that you can embed in just one click. For the buyer using this shop, it&#39;s an insanely simple experience since they can click buy and checkout with Shop in literally one click. Available, free to use, NO affiliate revenue at plugthatshop dot com</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj Kothari (Afore Capital) shipping &#39;Plug That Shop&#39; — built on top of Shopify&#39;s new UCP CLI plus Anthropic Opus 4.8 plus Conductor plus Railway. The product: enter any website, get four highly relevant embedded shops, one click to buy via Shop. Built in a weekend off the back of a fresh CLI.</p>
+              <p>The pattern: a CLI from a major commerce platform (Shopify UCP) becomes the substrate for a one-weekend startup. The CLI is more &#39;API-like&#39; than Shopify&#39;s actual API for this kind of contextual-embed use case — the agent reads the CLI output and reasons about it, which is exactly what an API designed for agents wants.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Introducing Plug That Shop 🔌  So @Shopify launched their UCP CLI that allows all the products on their stores available via the command line. I was thinking of interesting use cases for the CLI over the weekend and realized that I can use this to create contextual embedded shops for websites. So now, you can enter your website and get four HIGHLY relevant shops that you can embed in just one click. For the buyer using this shop, it&#39;s an insanely simple experience since they can click buy and checkout with Shop in literally one click. Available, free to use, NO affiliate revenue at plugthatshop dot com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/nikunj/status/2069534712763490668" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:steipete" data-author-name="Peter Steinberger" data-author-tag="OpenClaw 创始人" data-author-handle="@steipete" data-author-avatar="../assets/avatars/x-steipete.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-steipete.jpg" alt="Peter Steinberger avatar"><span class="avatar-fallback">PS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Steinberger</div>
+            <div class="author-tag is-inline">OpenClaw 创始人</div>
+          </div>
+          <div class="author-handle">@steipete</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Steinberger(OpenClaw 创始人)对 Google Workspace CLI 的内部动态一句带过:「Google 开了做出 Google Workspace CLI 的那个人,因为他做出来了。Lucky me,Google 开不掉我。」</p>
+              <p>这句话是给 builder 的 marker:大公司对 CLI 的反应是处理人,不是处理 surface。这把 CLI 的风险算式重排——一份公司 org chart 不背书的 CLI,可能因为一次人事决定就消失。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Google fired the guy that made the google workspace cli, because he made the google workspace cli. Lucky me, Google can&#39;t fire me.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Steinberger (OpenClaw founder) on Google&#39;s response to the Google Workspace CLI: &#39;Google fired the guy that made the google workspace cli, because he made the google workspace cli. Lucky me, Google can&#39;t fire me.&#39;</p>
+              <p>The aside is a marker: a corporate-incumbent response to a CLI is to remove the person, not the surface. For builders this re-frames the CLI risk calculus — a CLI that the company&#39;s org chart doesn&#39;t sanction is a CLI that can disappear with a single personnel decision.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Google fired the guy that made the google workspace cli, because he made the google workspace cli. Lucky me, Google can&#39;t fire me.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/steipete/status/2069594195522941059" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:petergyang" data-author-name="Peter Yang" data-author-tag="产品教练 / 创作者经济研究者" data-author-handle="@petergyang" data-author-avatar="../assets/avatars/x-petergyang.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-petergyang.jpg" alt="Peter Yang avatar"><span class="avatar-fallback">PY</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Yang</div>
+            <div class="author-tag is-inline">产品教练 / 创作者经济研究者</div>
+          </div>
+          <div class="author-handle">@petergyang</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang 对同一条 CLI 的反应:「Google Workspace CLI 这么好用,居然没人庆祝一下?」跟 Steinberger 那条一对照,就是「CLI 当 new public good」当天的完整画面:一边说「值得用」,一边说「随时可能没」——一个 feed 里把 CLI 的 utility 和 fragility 一次说全。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>wtf the Google Workspace CLI is super useful it should be celebrated?</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang&#39;s reaction on the same CLI: &#39;wtf the Google Workspace CLI is super useful it should be celebrated?&#39; The contrast with Steinberger&#39;s post — one celebrating utility, the other flagging the institutional risk — is the day&#39;s full picture of &#39;CLIs as a new public good&#39; in one feed: useful enough to build on, fragile enough to be a liability.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>wtf the Google Workspace CLI is super useful it should be celebrated?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/petergyang/status/2069551302246592799" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:garrytan" data-author-name="Garry Tan" data-author-tag="Y Combinator 总裁" data-author-handle="@garrytan" data-author-avatar="../assets/avatars/x-garrytan.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-garrytan.jpg" alt="Garry Tan avatar"><span class="avatar-fallback">GT</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Garry Tan</div>
+            <div class="author-tag is-inline">Y Combinator 总裁</div>
+          </div>
+          <div class="author-handle">@garrytan</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Garry Tan(YC 总裁)给一家 YC 公司站队:「Linzumi 是 Codex,但真正多玩家。给团队用是 magical 的。另外 Sean Grove 是 OpenAI 那个把 ChatGPT sycophancy 大幅压下去的团队成员,他出来做的这个 YC 公司。」一句话讲清楚:把 Codex 的体验加上 Codex 自己没做的多玩家 surface。这是 YC 对「multiplayer Codex 是一个 category」的下注——跟 Claude Tag 切的是同一个 slot。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Linzumi is Codex but actually multiplayer. It&#39;s magical for teams. Also Sean Grove was on the team at OpenAI that greatly reduced sycophancy in ChatGPT before he left to start this YC startup!</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Garry Tan (YC president) on a YC startup: &#39;Linzumi is Codex but actually multiplayer. It&#39;s magical for teams. Also Sean Grove was on the team at OpenAI that greatly reduced sycophancy in ChatGPT before he left to start this YC startup.&#39; The pitch is precise: take the Codex experience and add the multi-player surface that Codex itself hasn&#39;t shipped. This is the same slot Claude Tag is targeting — and a YC bet that &#39;multiplayer Codex&#39; is a category.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Linzumi is Codex but actually multiplayer. It&#39;s magical for teams. Also Sean Grove was on the team at OpenAI that greatly reduced sycophancy in ChatGPT before he left to start this YC startup!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/garrytan/status/2069474420113146355" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 04</div>
+    <h2 class="section-title">Codex 一侧:bug-fix 跟 product loop 一起发 / Codex Side: Bug-Fix and Product Loop on the Same Day</h2>
+    <p class="section-desc">Sottiaux 同一天把 Codex 的 responsiveness 立成 product line——「had a bug, fixed, keep feedback coming」是快迭代文化;另一条「5 minutes of peace」是这一周 lab 节奏的难得好 quote。Anthropic 用多玩家 ambient 推,OpenAI 用快迭代单玩家推,两种产品姿态同日落地。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:thsottiaux" data-author-name="Thibault Sottiaux" data-author-tag="OpenAI Codex &amp; ChatGPT" data-author-handle="@thsottiaux" data-author-avatar="../assets/avatars/x-thsottiaux.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-thsottiaux.jpg" alt="Thibault Sottiaux avatar"><span class="avatar-fallback">TS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Thibault Sottiaux</div>
+            <div class="author-tag is-inline">OpenAI Codex &amp; ChatGPT</div>
+          </div>
+          <div class="author-handle">@thsottiaux</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thibault Sottiaux(OpenAI Codex)同一天确认一次 bug 修复:「Codex had a bug。Fixed。More feedback。Better product。Keep it coming。」最后一句是直接对 Codex 重度用户喊话:有 bug 就报,别走,loop 短。</p>
+              <p>Anthropic 当天发 Claude Tag(多玩家 surface),Codex 这一侧发 responsiveness。两个产品姿态——多玩家 ambient 对快迭代单玩家——就是 6-24 的分叉:市场两边都奖励。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Codex **had** a bug. Fixed.  More feedback. Better product. Keep it coming. https://t.co/hopJLfcDxd</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thibault Sottiaux (OpenAI Codex) confirming a same-day bug-fix: &#39;Codex had a bug. Fixed. More feedback. Better product. Keep it coming.&#39; The &#39;keep it coming&#39; line is a direct ask to the Codex power-user base: report, don&#39;t rage-quit, the loop is short.</p>
+              <p>On a day when Anthropic ships Claude Tag (a multiplayer surface), the Codex side ships responsiveness. The two product postures — multi-player ambient vs. fast single-player iteration — are the day&#39;s split: the market is rewarding both.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Codex **had** a bug. Fixed.  More feedback. Better product. Keep it coming. https://t.co/hopJLfcDxd</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/thsottiaux/status/2069579993588625574" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:thsottiaux" data-author-name="Thibault Sottiaux" data-author-tag="OpenAI Codex &amp; ChatGPT" data-author-handle="@thsottiaux" data-author-avatar="../assets/avatars/x-thsottiaux.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-thsottiaux.jpg" alt="Thibault Sottiaux avatar"><span class="avatar-fallback">TS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Thibault Sottiaux</div>
+            <div class="author-tag is-inline">OpenAI Codex &amp; ChatGPT</div>
+          </div>
+          <div class="author-handle">@thsottiaux</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Sottiaux 一句话给到 OpenAI 内部那种状态:「你在 OpenAI 就知道,这种平静从来不会有。回来享受 5 分钟 peace。」一位公开的工程 lead 罕见的平静 quote——「5 分钟 peace」反讽里读出的是这一周 lab 里 ship 节奏的强度。是 model + harness 背后人类节奏的一扇窗。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>If you are at OpenAI, you would know that this never happens. Be right back celebrating 5 minutes of peace. https://t.co/kxMOXFsg8s</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Sottiaux on the cultural moment at OpenAI: &#39;If you are at OpenAI, you would know that this never happens. Be right back celebrating 5 minutes of peace.&#39; A rare calm-quote from a public engineering lead — the tongue-in-cheek &#39;5 minutes of peace&#39; is a read on the launch-week intensity across the lab. Useful as a window into the human tempo behind model + harness shipping.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>If you are at OpenAI, you would know that this never happens. Be right back celebrating 5 minutes of peace. https://t.co/kxMOXFsg8s</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/thsottiaux/status/2069624530960838914" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 05</div>
+    <h2 class="section-title">Open vs closed 的 barbell,跟 applied 层的 6-24 位置 / The Open/Closed Barbell and Where the Applied Layer Sits</h2>
+    <p class="section-desc">Levie 同一天把 6-23 的「It&#39;s all evals」thesis 接成 barbell pricing 框架——high-cost frontier 和 cheap-good weights 两头分化,applied 层是中间的 routing + workflow-fit;Swyx 给出 open 那一边的当下坐标(Zai IPO、回 SF、跟 closed frontier 并列讨论);Madhusudhan 把这标成「症状不是病根」——底层商业模式还在 real time 现搭。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:levie" data-author-name="Aaron Levie" data-author-tag="Box CEO" data-author-handle="@levie" data-author-avatar="../assets/avatars/x-levie.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-levie.jpg" alt="Aaron Levie avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie</div>
+            <div class="author-tag is-inline">Box CEO</div>
+          </div>
+          <div class="author-handle">@levie</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie(Box CEO)给当下价格动态画线:「基本会看到 high-cost frontier model 和 cheap-but-good 的 open/closed weights model 之间出现 barbell pricing。问题是怎么把 frontier model 用得更有效、把便宜 model 拉出更高的 quality 和 performance——这就是 applied AI 层的活儿。」</p>
+              <p>在 Levie 的 frame 里,applied 层是 routing / eval / workflow-fit 这一层——按 workload 选对 model,两边 trade-off 都接得住。他直接把这条线跟昨天「It&#39;s all evals」接上:routing 和 per-workflow eval 是让 barbell 在经济上成立的那一层。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Good post on the dynamics of AI pricing right now. We&#39;re basically going to see a barbell dynamic on pricing between high cost frontier models and cheap but good open or closed weights models. Then the question is how do you maximize efficiency from the frontier models, and get better quality and performance of the cheaper models. That&#39;s where the applied AI layer comes in. The applied layer can route to the best model at any time given the workload at hand, as well as mitigate either high token costs or worse performance. The closer you are to the underlying workflow, the better you can tune the use of models for a given business process. That&#39;s all about understanding the workflows, domain specific FDEs, evals by customer or process, getting data setup well for agents, and more. Overall good for applied AI.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie (Box CEO) on the price dynamic ahead: &#39;We&#39;re basically going to see a barbell dynamic on pricing between high cost frontier models and cheap but good open or closed weights models. Then the question is how do you maximize efficiency from the frontier models, and get better quality and performance of the cheaper models. That&#39;s where the applied AI layer comes in.&#39;</p>
+              <p>The applied layer, in Levie&#39;s framing, is the routing/eval/workflow-fit layer that picks the right model for the workload and mitigates the trade-off on either side. He explicitly links this to the previous day&#39;s &#39;It&#39;s all evals&#39; thesis: routing and per-workflow evals are the operating layer that makes the barbell economically coherent.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Good post on the dynamics of AI pricing right now. We&#39;re basically going to see a barbell dynamic on pricing between high cost frontier models and cheap but good open or closed weights models. Then the question is how do you maximize efficiency from the frontier models, and get better quality and performance of the cheaper models. That&#39;s where the applied AI layer comes in. The applied layer can route to the best model at any time given the workload at hand, as well as mitigate either high token costs or worse performance. The closer you are to the underlying workflow, the better you can tune the use of models for a given business process. That&#39;s all about understanding the workflows, domain specific FDEs, evals by customer or process, getting data setup well for agents, and more. Overall good for applied AI.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/levie/status/2069639600310767616" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:swyx" data-author-name="Swyx" data-author-tag="AI 工程师" data-author-handle="@swyx" data-author-avatar="../assets/avatars/x-swyx.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-swyx.jpg" alt="Swyx avatar"><span class="avatar-fallback">S</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Swyx</div>
+            <div class="author-tag is-inline">AI 工程师</div>
+          </div>
+          <div class="author-handle">@swyx</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx 给 open-model 的图:Zai 今年 1 月 HK$120 IPO。他第一次见 Zai 创始人的时候没人用 GLM。现在他们超过 DeepSeek,成了全球公认最强的 open model——在某些维度上(@ml_angelopoulos 说)就是 top model period——而且要回 SF 参加 AI engineer 的活动,股价在飞。</p>
+              <p>「在某些维度上 top model period」是重点——open weights 第一次跟 frontier closed weights 在同一句话里被并列。「回 SF」是细节:open-model 龙头用自己的牌重新进美国 builder 市场,不再是 research curiosity。这是 Levie 在重写的 open-vs-closed 讨论的新阶段。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>btw Zai IPO&#39;ed in Jan at HK$120 a share. when I first met  @louszbd nobody really knew anyone using GLM&#39;s.  now they have beat deepseek with the world&#39;s undisputed top open model and in some respects (see @ml_angelopoulos) say top model period, and are returning to SF @aidotengineer on top of the world&#39;s undisputed top model period, also stocks are soaring</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx on the open-model chart: Zai IPO&#39;ed in Jan at HK$120 a share. When he first met the Zai founder nobody really knew anyone using GLM. Now they have beat DeepSeek and are positioned as the world&#39;s undisputed top open model — in some respects the top model period — and they are returning to SF for an AI engineer event, with stocks soaring.</p>
+              <p>The &#39;in some respects top model period&#39; is the punch — open weights are now in the same sentence as frontier closed weights. The &#39;returning to SF&#39; detail matters: the open-model leader is now re-entering the US builder market on its own terms, not as a research curiosity. That&#39;s a new phase for the open-vs-closed debate Levie is reframing.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>btw Zai IPO&#39;ed in Jan at HK$120 a share. when I first met  @louszbd nobody really knew anyone using GLM&#39;s.  now they have beat deepseek with the world&#39;s undisputed top open model and in some respects (see @ml_angelopoulos) say top model period, and are returning to SF @aidotengineer on top of the world&#39;s undisputed top model period, also stocks are soaring</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/swyx/status/2069598378191941835" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:realmadhuguru" data-author-name="Madhusudhan" data-author-tag="AI 工程师 / 开源贡献者" data-author-handle="@realmadhuguru" data-author-avatar="../assets/avatars/x-realmadhuguru.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-realmadhuguru.jpg" alt="Madhusudhan avatar"><span class="avatar-fallback">M</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Madhusudhan</div>
+            <div class="author-tag is-inline">AI 工程师 / 开源贡献者</div>
+          </div>
+          <div class="author-handle">@realmadhuguru</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Madhusudhan(开源贡献者)给当下结构的不定项说在前面:「业务模式、护城河、价值交换、执行 playbook,所有玩家都在 real time 里现找现定。现在吵的 token pricing,是症状不是病根。」读到底:agent stack 的每一层(labs、agent startup、数据方、企业)还在把商业模式现搭,barbell pricing 这场辩论是下游的,不是底层那个问题。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I&#39;ve had the chance to see this ecosystem from the different sides - enterprises, agent startups, data providers, labs.   The core tension here is that the business models, moats, value exchange, execution playbooks for all players are being figured out in real time.  This debate around token pricing...</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Madhusudhan (open-source contributor) on the unresolved piece: &#39;The business models, moats, value exchange, execution playbooks for all players are being figured out in real time. This debate around token pricing [is] the symptom not the disease.&#39; The structural read: every player in the agent stack (labs, agent startups, data providers, enterprises) is still figuring out the business model; the barbell pricing debate is downstream of that, not the underlying question.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I&#39;ve had the chance to see this ecosystem from the different sides - enterprises, agent startups, data providers, labs.   The core tension here is that the business models, moats, value exchange, execution playbooks for all players are being figured out in real time.  This debate around token pricing...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/realmadhuguru/status/2069455097193697393" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:levie" data-author-name="Aaron Levie" data-author-tag="Box CEO" data-author-handle="@levie" data-author-avatar="../assets/avatars/x-levie.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-levie.jpg" alt="Aaron Levie avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie</div>
+            <div class="author-tag is-inline">Box CEO</div>
+          </div>
+          <div class="author-handle">@levie</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Levie 同一天把 Claude Tag → Box 的集成讲成「headless software with agents」:「Claude Tag 可以给 Claude 开 Box 里任何 corporate file 的权限,从 Slack 里直接操作。你所有 enterprise content 就变成了一个 portable knowledge base。」Box 的经典打法:做 agent 底下的 substrate——content、permissions、audit、search——agent 的价值被绑到你的数据仓上。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Another example of the power of headless software with agents. With Claude Tag, you can give Claude access to any corporate files in Box that you can interact with from Slack. Now all of your enterprise content becomes a portable knowledge base.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Levie on the same-day Claude Tag → Box integration: &#39;With Claude Tag, you can give Claude access to any corporate files in Box that you can interact with from Slack. Now all of your enterprise content becomes a portable knowledge base.&#39; The move is Box&#39;s classic playbook: be the substrate underneath the agent — content, permissions, audit, search — so the agent&#39;s value is bound to your data store.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Another example of the power of headless software with agents. With Claude Tag, you can give Claude access to any corporate files in Box that you can interact with from Slack. Now all of your enterprise content becomes a portable knowledge base.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/levie/status/2069596515560267891" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 06</div>
+    <h2 class="section-title">Podcast 收尾:Biohub 把 biology 立成 open source 的 frontier / Closer: Biohub Frames Biology as Open-Source Frontier</h2>
+    <p class="section-desc">No Priors 这期 Biohub 三位 co-founder + head of science 把「Biology 的未来是 open source」立出来——11 亿 protein fold、model 不为 antibody / 单一靶点设计,substrate 开放,applied 层才是差异化点;把 6-23/6-24 的「It&#39;s all evals / headless with agents」pattern 推到 biology,跟 Swyx 昨天给 SpaceX 算的「model lab + 自家 neocloud」是同一种「vertical lab」逻辑。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="podcast:no-priors" data-author-name="No Priors" data-author-tag="AI 与创业对话播客" data-author-handle="" data-author-avatar="../assets/avatars/podcast-no-priors.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/podcast-no-priors.jpg" alt="No Priors avatar"><span class="avatar-fallback">NP</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">No Priors</div>
+            <div class="author-tag is-inline">AI 与创业对话播客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>No Priors 这期请到 Mark Zuckerberg、Priscilla Chan、Alex Rives(Biohub 联合创始人和 head of science),主题是「Biology 的未来是 open source」。论点:fold + 预测了 11 亿 protein,没为 antibody 设计模型,也没为某个特定靶点设计模型——目标是一个「理解 protein」这个 domain 的模型,让社区接手剩下的。</p>
+              <p>这期选 biology 当 open source 而不是 private lab,跟 6-23「It&#39;s all evals」、6-24「headless software with agents」是同一个 pattern:substrate 开放,applied 层才是差异化点。Biohub 在赌「让更多科学家用同一个 substrate」的复利速度,比「一个团队自己拥有」快。Swyx 昨天给 SpaceX 算的「model lab + 自家 neocloud」逻辑,放到 biology 上就是「biology lab + open substrate」。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>We just wanna give tools to the whole scientific community.</p>
+              <p>We wanna understand how biology works. I wanna understand the genetics of this person. I wanna understand the risks they have to different illnesses. My goal is to be able to treat the individual as an individual, understand the mechanisms, and be able to intervene.</p>
+              <p>We&#39;ll have a bigger impact by getting us in more scientists hands quicker by doing it as open source projects instead. It&#39;s not just like there&#39;s some factory somewhere that you can pay to produce the data. You actually need to invent new novel scientific approaches. The theory isn&#39;t that we&#39;re gonna cure the diseases. We&#39;re not. It&#39;s that we wanna help accelerate the pace of progress for the whole scientific field. We folded over 1,100,000,000 proteins and predicted their structures, and we didn&#39;t design a model for antibodies. We didn&#39;t design a model to be able to bind one particular target. We just designed a model that could understand proteins.</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>No Priors episode with Mark Zuckerberg, Priscilla Chan, and Alex Rives — the Biohub co-founders and head of science — on &#39;The Future of Biology is Open-Source&#39;. The thesis: 1.1 billion proteins folded and predicted; no model designed for antibodies or specific targets; the goal is a model that understands proteins as a domain so the community can run the rest.</p>
+              <p>The episode&#39;s choice to do biology as open source, not as a private lab, is the AI-bio version of the &#39;It&#39;s all evals&#39; / &#39;headless software with agents&#39; pattern: the substrate is open, the applied layer is what differentiates. Biohub is betting that more scientists using the substrate compounds faster than one team owning it. The same model-lab-as-vertical logic Swyx applied to SpaceX the day before shows up here as biology-lab-as-vertical.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>We just wanna give tools to the whole scientific community.</p>
+              <p>We wanna understand how biology works. I wanna understand the genetics of this person. I wanna understand the risks they have to different illnesses. My goal is to be able to treat the individual as an individual, understand the mechanisms, and be able to intervene.</p>
+              <p>We&#39;ll have a bigger impact by getting us in more scientists hands quicker by doing it as open source projects instead. It&#39;s not just like there&#39;s some factory somewhere that you can pay to produce the data. You actually need to invent new novel scientific approaches. The theory isn&#39;t that we&#39;re gonna cure the diseases. We&#39;re not. It&#39;s that we wanna help accelerate the pace of progress for the whole scientific field. We folded over 1,100,000,000 proteins and predicted their structures, and we didn&#39;t design a model for antibodies. We didn&#39;t design a model to be able to bind one particular target. We just designed a model that could understand proteins.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.youtube.com/watch?v=4kfnJ6V0n6A" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <footer data-source-note="Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-24 source feeds.">Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-24 source feeds.</footer>
+
+  <script>
+    function getTemplateAuthorSources() {
+      const sources = window.AI_BUILDERS_TEMPLATE_SOURCES || {};
+      return { identities: sources.identities || {}, avatars: sources.avatars || {} };
+    }
+
+    function getAuthorInitials(name) {
+      return (name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(function(part) { return part[0]; }).join('').toUpperCase();
+    }
+
+    function hydrateTemplateCopy() {
+      const intro = document.querySelector('.intro');
+      if (intro) {
+        const kicker = intro.querySelector('.intro-kicker');
+        const copy = intro.querySelector('.intro-copy');
+        if (kicker) kicker.textContent = intro.dataset.kicker || '';
+        if (copy) copy.textContent = intro.dataset.text || '';
+      }
+
+      const footer = document.querySelector('footer');
+      if (footer) footer.textContent = footer.dataset.sourceNote || '';
+
+      const rewriteLabel = document.body.dataset.viewLabelRewrite || '速读';
+      const originalLabel = document.body.dataset.viewLabelOriginal || '原文';
+      document.querySelectorAll('.view-toggle').forEach(function(button) {
+        if (button.dataset.viewTarget === 'rewrite') button.textContent = rewriteLabel;
+        if (button.dataset.viewTarget === 'original') button.textContent = originalLabel;
+      });
+    }
+
+    function hydrateAuthorMeta() {
+      const sources = getTemplateAuthorSources();
+      document.querySelectorAll('.card').forEach(function(card) {
+        const authorKey = card.dataset.authorKey || '';
+        const identity = sources.identities[authorKey] || {};
+        const avatarEntry = sources.avatars[authorKey] || {};
+
+        const name = identity.name || card.dataset.authorName || '';
+        const rawHandle = identity.handle || card.dataset.authorHandle || '';
+        const handle = rawHandle && rawHandle.startsWith('@') ? rawHandle : (rawHandle ? '@' + rawHandle : '');
+        const tag = identity.label || card.dataset.authorTag || '';
+        const avatar = avatarEntry.fileUrl || avatarEntry.localPath || card.dataset.authorAvatar || '';
+
+        const nameNode = card.querySelector('.author-name');
+        const tagNode = card.querySelector('.author-tag');
+        const handleNode = card.querySelector('.author-handle');
+        const avatarNode = card.querySelector('.avatar');
+        const avatarImg = card.querySelector('.avatar img');
+        const avatarFallback = card.querySelector('.avatar-fallback');
+
+        if (nameNode) nameNode.textContent = name;
+        if (tagNode) tagNode.textContent = tag;
+        if (handleNode) handleNode.textContent = handle;
+        if (avatarImg) {
+          avatarImg.src = avatar;
+          avatarImg.alt = name ? name + ' avatar' : 'Author avatar';
+        }
+        if (avatarNode) avatarNode.classList.toggle('is-fallback', !avatar);
+        if (avatarFallback) avatarFallback.textContent = getAuthorInitials(name);
+      });
+    }
+
+    function updateEditionStrip() {
+      const publishDate = document.body.dataset.publishDate;
+      const editionName = document.body.dataset.editionName || '双语精选版';
+      const editionStrip = document.getElementById('edition-strip-text');
+      if (!publishDate || !editionStrip) return;
+
+      const issueNumber = document.body.dataset.issueNumber || '';
+      if (!issueNumber) return;
+
+      const selectedCount = document.querySelectorAll('.card').length;
+      const authorCount = new Set([].slice.call(document.querySelectorAll('.author-handle')).map(function(node) { return node.textContent.trim(); }).filter(Boolean)).size;
+      const themeCount = document.querySelectorAll('.section-header').length;
+      const parts = ['第 ' + issueNumber + ' 期', publishDate, editionName, selectedCount + ' 条精选', authorCount + ' 位作者', themeCount + ' 个主题'];
+      editionStrip.innerHTML = parts.map(function(part) { return '<span class="edition-item">' + part + '</span>'; }).join('<span class="edition-sep">|</span>');
+    }
+
+    function measureVariantHeight(variant) {
+      const prevPosition = variant.style.position;
+      const prevInset = variant.style.inset;
+      const prevVisibility = variant.style.visibility;
+      const prevPointerEvents = variant.style.pointerEvents;
+      const prevOpacity = variant.style.opacity;
+      const prevTransform = variant.style.transform;
+      const prevTransition = variant.style.transition;
+      const prevOverflowY = variant.style.overflowY;
+      const prevDisplay = variant.style.display;
+
+      variant.style.position = 'relative';
+      variant.style.inset = 'auto';
+      variant.style.visibility = 'hidden';
+      variant.style.pointerEvents = 'none';
+      variant.style.opacity = '1';
+      variant.style.transform = 'none';
+      variant.style.transition = 'none';
+      variant.style.overflowY = 'visible';
+      variant.style.display = 'block';
+
+      const height = variant.scrollHeight;
+
+      variant.style.position = prevPosition;
+      variant.style.inset = prevInset;
+      variant.style.visibility = prevVisibility;
+      variant.style.pointerEvents = prevPointerEvents;
+      variant.style.opacity = prevOpacity;
+      variant.style.transform = prevTransform;
+      variant.style.transition = prevTransition;
+      variant.style.overflowY = prevOverflowY;
+      variant.style.display = prevDisplay;
+
+      return Math.ceil(height);
+    }
+
+    function getTargetHeight(shell, target) {
+      const variant = shell.querySelector('.content-variant[data-view="' + target + '"]');
+      return measureVariantHeight(variant);
+    }
+
+    function syncShellHeights() {
+      document.querySelectorAll('.content-shell').forEach(function(shell) {
+        const active = shell.querySelector('.content-variant.is-active');
+        const target = active ? active.dataset.view : 'rewrite';
+        shell.style.height = getTargetHeight(shell, target) + 'px';
+      });
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', function() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(syncShellHeights, 120);
+    });
+
+    document.querySelectorAll('.card').forEach(function(card) {
+      const buttons = card.querySelectorAll('.view-toggle');
+      const shells = card.querySelectorAll('.content-shell');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const target = button.dataset.viewTarget;
+          if (button.classList.contains('is-active')) return;
+
+          buttons.forEach(function(btn) {
+            btn.classList.toggle('is-active', btn === button);
+          });
+
+          shells.forEach(function(shell) {
+            const current = shell.querySelector('.content-variant.is-active');
+            const next = shell.querySelector('.content-variant[data-view="' + target + '"]');
+            if (!current || !next || current === next) return;
+
+            shell.style.height = shell.offsetHeight + 'px';
+            requestAnimationFrame(function() {
+              current.classList.remove('is-active');
+              next.classList.add('is-active');
+              shell.style.height = getTargetHeight(shell, target) + 'px';
+            });
+          });
+        });
+      });
+    });
+
+    hydrateTemplateCopy();
+    hydrateAuthorMeta();
+    updateEditionStrip();
+    syncShellHeights();
+  </script>
+</body>
+</html>

@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 23 Jun 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 24 Jun 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-06-24 · Claude Tag 升舱日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-24-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-24-rerun.html</guid>
+      <pubDate>Wed, 24 Jun 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[6-24 这一天 Follow Builders 的主旋律是「Claude Tag 升舱」——Anthropic 把 Claude 从 chat 框里搬进 Slack channel,变成一个原生多玩家、原生主动的 teammate。_catwu 给的数字是「内部版本合 65% product PR」,bcherny 画出运行时(one instance per thread,sandbox 用完即弃),claudeai 官方账号定调「teammate 不是 tool」,karpathy 把这立成 LLM UI/UX 的第三次 paradigm(website → app → 多玩家 persistent entity)。trq212 当天给出一条 day-1 状态 emoji 协议(⏲️✅❓🛑),把 reaction API 当 agent→人 status channel 用。Harness 一侧的 friction 被这一推压出来:Peter Yang 同一天把「manage 一个 highly capable employee」和「agent 就是用户、design 是什么」两个 angle 拆开;Rauch 同步开私密 X Chat 群收 Vercel agent 表面反馈,信号是 Vercel 把 agent 开发者意见当 product input,不走 public roadmap。CLI 当新 API 这条线在同一天被四件事写完:Shopify UCP CLI 被一个周末搭起来的「Plug That Shop」踩成 substrate(Nikunj 用 Opus 4.8 + Conductor + Railway 一键搭出 4 个 contextual embed shop),Steinberger 一句话揭 Google Workspace CLI 背后的人事风险,Peter Yang 把「应该被庆祝」一面补上,Garry Tan 站队 Linzumi——「Codex + 多玩家」是 YC 看好的 category,跟 Claude Tag 切的是同一个 slot。Codex 这一侧 Sottiaux 用同一天的 bug-fix + 「keep feedback coming」做 responsiveness 的一推——Anthropic 用多玩家 ambient 推,OpenAI 用快迭代单玩家推,两种产品姿态同日落地。Open vs closed 的 barbell:Levie 把 6-23「It's all evals」接成 barbell pricing 框架,Swyx 给出 open 那一边的当下坐标(Zai IPO、回 SF),Madhusudhan 把 token pricing 标成「症状不是病根」——agent stack 各层商业模式还在 real time 现搭。收尾是 No Priors 这期 Biohub 三位 co-founder 把「Biology 的未来是 open source」立出来,11 亿 protein fold 不为单一靶点设计模型,substrate 开放、applied 层是差异化——把 6-23/6-24 的 evals / headless-with-agents pattern 推到 biology,跟 Swyx 昨天给 SpaceX 算的「model lab + 自家 neocloud」是同一种 vertical-lab 逻辑。]]></description>
+      <category>Claude Tag 上线:多玩家 agent 升舱到 Slack / Claude Tag Launches — A Multiplayer Agent Lives in Slack, Harness UX 这一侧的 friction / Harness UX Friction on Launch Day, CLI 当新 API,marketplace 在出 / CLIs Are the New API, Marketplaces Are Forming, Codex 一侧:bug-fix 跟 product loop 一起发 / Codex Side: Bug-Fix and Product Loop on the Same Day, Open vs closed 的 barbell,跟 applied 层的 6-24 位置 / The Open/Closed Barbell and Where the Applied Layer Sits, Podcast 收尾:Biohub 把 biology 立成 open source 的 frontier / Closer: Biohub Frames Biology as Open-Source Frontier</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-06-23 · eval 升格日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-23-rerun.html</link>
