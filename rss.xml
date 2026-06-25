@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 24 Jun 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 25 Jun 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-06-25 · Surge 立日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-25-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-25-rerun.html</guid>
+      <pubDate>Thu, 25 Jun 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[6-25 这一天没有 Claude Tag 那种单点 launch 把所有 attention 拉走,Follow Builders 呈现出一种「infra 跟 UX 同步在被推」的纹理:danshipper 提前把 AI & I by Every 这期 Edwin Chen / Surge AI 的预告发出来——Surge AI 已经 silent 跑过 1B+ revenue 却不拿外部资本,Edwin 把「训练 AGI 用的 data environment」当 product 立起来,跟 6-24 Levie 立的那个 barbell pricing、6-23 Krieger 在 Fable 5 上讲的「workflow 要被重写」是同一条 applied-layer 主线。rauchg 同一天压三个 Vercel 动作——AI Gateway 的 tokens + uptime 体量、GLM 跑进 Vercel stack、「AI 拉开 entrepreneurship 新一波」,Vercel 这一侧把 agent infra 的 friction 一直在收。petergyang 给 Claude Design 一次 day-1 impression——他给一个 mobile app repo 进去,screen 出来一比一对齐,这是「harness UX 终于可读」的一刻;Levie 顺手把 Claude Tag 那个 shared-thread / one-Claude-per-channel 的运行细节挑出来,跟 petergyang 是同一条「harness surface 走向普通人可读」的主线。swyx 把演讲准备的 alpha + Software Factories 时代「rebuild much infra」两条压在一起,等于把 6-24 那场 launch 收尾时缺的「how to actually talk about this」补上。taste 那一侧 Zara Zhang 把 Figma Config 的「Community is the new moat」那句话拎出来,Ryo Lu 把 cursor / notion 互相进对方的边界画清楚,Nikunj 把「child's play = 你的 edge」立成一种 founder 自检——都是 6-25 这一天 builder 圈的纹理。adityaag 一边是 Sridhar @ Snowflake 在「奇怪时刻」做 leader 的姿态,一边是 South Park Commons 把 sharpest minds 关进 intimate setting 的物理手段;GoogleLabs Project Genie 拿 Cannes Lions Grand Prix 是创意 AI 工具被认作 craft 的里程碑。收尾是 AI & I by Every 把 Edwin Chen 整期对话放出来——「building a school where AI models learn about humanity」这句话把 6-25 的 applied-layer 主题拉到最远:data 不再是训练材料,而是 model 理解 human 的教学内容。]]></description>
+      <category>Surge AI 把 eval 立成 product,AI &amp; I by Every 放出「school for AGI」/ Surge AI Frames Evals as a Product, AI &amp; I by Every Drops the School-for-AGI Episode, Vercel 收 AI infra 的尾,GLM 跑进 stack / Vercel Closes the AI Infra Tail, GLM Lands in the Stack, Harness UX 走向可读:Claude Design 首屏对齐,Claude Tag 共享 instance 的细节 / Harness UX Becomes Readable: Claude Design&apos;s First-Render Alignment, Claude Tag&apos;s Shared-Instance Detail, 演讲规则 + Software Factories 时代「rebuild much infra」/ Talk-Prep Rules and &apos;Rebuild So. Much. Infra&apos; for the Software Factories Era, Taste、talent、community:builder 圈的纹理 / Taste, Talent, Community: The Builder-Track Texture, 领导力的纹理 + 创意 AI 工具的里程碑 / Leadership Texture and a Milestone for Creative-AI Tools</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-06-24 · Claude Tag 升舱日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-24-rerun.html</link>
