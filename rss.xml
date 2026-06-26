@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 25 Jun 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 26 Jun 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-06-26 · Bot 网倒转日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-26-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-26-rerun.html</guid>
+      <pubDate>Fri, 26 Jun 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[6-26 这一天没有 Claude Tag 那种单点 launch 把所有 attention 拉走,Follow Builders 的主旋律是「Codex 走到全 surface + Bot 网倒转」:petergyang 直接让 Codex 当 travel agent 跑日本行程规划、又在 mobile 上抱怨只能用自制的 iPhone shortcut 触达 Codex——这两条把「Codex 已能干嘛」和「Codex 离 daily-use 还差哪几步」同时画出来;thsottiaux 把 Feb 2 日的 Codex App 拉回日历、又把「Codex for everything at OpenAI」放出来,等于宣布 Codex 从 dev 工具横向铺到 workflow surface;amasad 同一天预告 Replit mobile app 大更新、trq212 把 Claude Tag 推到 Peter Yang 的 podcast 和 AIE 的 talk circuit——这张 surface 战在同一天被四个团队同时打。rauchg 同一天压三个 Vercel 动作:Grok Imagine Video 在 AI Gateway 占到约 50% 视频生成、「imbue coding agents with our design standards」和 Next.js「Copy prompt」错误页——前一个是 model routing 层,后两个是 agent taste 层,Vercel 从 hosting 推到 platform。Levie 两天连发把 AI 监管立成 de facto:capability / compute 门槛触发强制政府 review,US 不慢下来——这一段把 frontier 本身立成监管对象,builder 能 ship 进哪个 sandbox 不再由 builder 选。应用层那一边,adityaag 直接说「开纯软件公司 stupidly hard」、danshipper 把 a16z 投的 NYC AI-first medicine stealth 推出来,garrytan 把 Legora 称为「defining legal AI startup」——三条都是「custom-work-eats-horizontal」的 vertical outcomes 答案。swyx 把 AIE 大会的「怎么才能被 booked 上台」公开化、zarazhangrui 把「build audience = build company」立成 founder 自检,petergyang 同一天再喊「Identity verification 100% coming to model access」——三件事叠在一起,Talk、Audience、Identity Verification 这三张新 surface 都在 6-26 同时被命名。收尾博客是 Claude 出 Swift package 接入 Apple Foundation Models framework,Apple 那一侧的 model routing 现在是 Apple on-device + Claude 远端这一对;压轴是 The MAD Podcast 放出 Cloudflare CEO Matthew Prince 那期——「2026 上半年 bot 流量已经超过人类流量,接下来五年互联网商业模式大变」是 6-26 最远的 anchor:这根 backbone 上的每一个 product、每一张 surface、每一个 sandbox,都在为「bot 是主流」这件事重建。]]></description>
+      <category>Codex 走到全 surface:travel-agent / mobile / Podcast-Talk 路由 / Codex Hits Every Surface — Travel Agent, Mobile, Podcast-Talk Circuit, AI 监管 de facto + frontier 本身成监管对象 / AI Regulation Is Now De Facto — The Frontier Itself Becomes the Regulatory Object, Vercel 从 hosting 推到 platform:AI Gateway + 设计标准 + 错误页 prompt / Vercel Climbs to Platform — AI Gateway, Design Standards, Error-Page Prompts, Vertical outcomes 的时代:legal / health / pure software 三案 / The Vertical-Outcomes Era — Legal, Health, Pure Software, 三张新 surface 在 6-26 同时被命名:Talk / Audience / Identity Verification / Three New Surfaces Get Named on 6-26 — Talk, Audience, Identity Verification, 博客 + Podcast 收尾:Apple Foundation Models + Cloudflare 的 Bot 网倒转 / Closer — Apple Foundation Models and Cloudflare&apos;s Bot-Takeover Frame</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-06-25 · Surge 立日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-25-rerun.html</link>

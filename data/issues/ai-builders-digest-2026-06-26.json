@@ -1,0 +1,534 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-06-26",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "6-26 这一天没有 Claude Tag 那种单点 launch 把所有 attention 拉走,Follow Builders 的主旋律是「Codex 走到全 surface + Bot 网倒转」:petergyang 直接让 Codex 当 travel agent 跑日本行程规划、又在 mobile 上抱怨只能用自制的 iPhone shortcut 触达 Codex——这两条把「Codex 已能干嘛」和「Codex 离 daily-use 还差哪几步」同时画出来;thsottiaux 把 Feb 2 日的 Codex App 拉回日历、又把「Codex for everything at OpenAI」放出来,等于宣布 Codex 从 dev 工具横向铺到 workflow surface;amasad 同一天预告 Replit mobile app 大更新、trq212 把 Claude Tag 推到 Peter Yang 的 podcast 和 AIE 的 talk circuit——这张 surface 战在同一天被四个团队同时打。rauchg 同一天压三个 Vercel 动作:Grok Imagine Video 在 AI Gateway 占到约 50% 视频生成、「imbue coding agents with our design standards」和 Next.js「Copy prompt」错误页——前一个是 model routing 层,后两个是 agent taste 层,Vercel 从 hosting 推到 platform。Levie 两天连发把 AI 监管立成 de facto:capability / compute 门槛触发强制政府 review,US 不慢下来——这一段把 frontier 本身立成监管对象,builder 能 ship 进哪个 sandbox 不再由 builder 选。应用层那一边,adityaag 直接说「开纯软件公司 stupidly hard」、danshipper 把 a16z 投的 NYC AI-first medicine stealth 推出来,garrytan 把 Legora 称为「defining legal AI startup」——三条都是「custom-work-eats-horizontal」的 vertical outcomes 答案。swyx 把 AIE 大会的「怎么才能被 booked 上台」公开化、zarazhangrui 把「build audience = build company」立成 founder 自检,petergyang 同一天再喊「Identity verification 100% coming to model access」——三件事叠在一起,Talk、Audience、Identity Verification 这三张新 surface 都在 6-26 同时被命名。收尾博客是 Claude 出 Swift package 接入 Apple Foundation Models framework,Apple 那一侧的 model routing 现在是 Apple on-device + Claude 远端这一对;压轴是 The MAD Podcast 放出 Cloudflare CEO Matthew Prince 那期——「2026 上半年 bot 流量已经超过人类流量,接下来五年互联网商业模式大变」是 6-26 最远的 anchor:这根 backbone 上的每一个 product、每一张 surface、每一个 sandbox,都在为「bot 是主流」这件事重建。"
+  },
+  "archive": {
+    "title": "Bot 网倒转日",
+    "desc": "6-26 Follow Builders 的主旋律是「Bot 网倒转 + Codex 走到全 surface」——Cloudflare CEO Matthew Prince 在 The MAD Podcast 上把「2026 上半年 bot 流量已超过人类流量」立成 6-26 最远的 anchor;petergyang 把 Codex 当 travel agent 跑日本行程、又抱怨 mobile 上只能自制 iPhone shortcut、还提前喊 Identity verification coming to model access,thsottiaux 把 Feb 2 日的 Codex App 拉回日历并放「Codex for everything at OpenAI」、amasad 预告 Replit mobile 大更新、trq212 把 Claude Tag 推到 podcast 和 AIE,Codex 这一侧的 surface 战同一天被四个团队同时打;rauchg 三连:Grok Imagine Video 占 Vercel AI Gateway 50% 视频生成、imbue coding agents with design standards、Next.js 错误页 Copy prompt,Vercel 从 hosting 推到 platform;Levie 两天连发把 AI 监管立成 de facto——capability / compute 门槛触发强制政府 review,frontier 本身成监管对象;应用层 adityaag「开纯软件公司 stupidly hard」、danshipper NYC AI-first medicine stealth、garrytan 把 Legora 立成 defining legal AI,三案都是 custom-work-eats-horizontal 的 vertical outcomes 答案;swyx 公开 AIE 的「怎么 booked 上台」、zarazhangrui「build audience = build company」、petergyang「Identity verification 100% coming」,Talk / Audience / Identity Verification 三张新 surface 在 6-26 同时被命名;博客:Anthropic 出 Swift package 让 Claude 接入 Apple Foundation Models framework,Apple 那一侧的 model routing 是 Apple on-device + Claude 远端这一对。Bot 网倒转 + Codex 全表面 + AI 监管 de facto + vertical outcomes + 三张新 surface,五件事在同一天咬合。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-26 source feeds.",
+  "sections": [
+    {
+      "title": "Codex 走到全 surface:travel-agent / mobile / Podcast-Talk 路由 / Codex Hits Every Surface — Travel Agent, Mobile, Podcast-Talk Circuit",
+      "desc": "petergyang 直接让 Codex 跑日本 trip planning 抓 hotel prices 又抱怨 mobile Codex 只能走自制 iPhone shortcut;thsottiaux 把 Feb 2 日 Codex App 发布日拉回日历并放「Codex for everything at OpenAI」;amasad 预告 Replit mobile app 大更新;trq212 把 Claude Tag 推到 Peter Yang 的 podcast + AIE。Codex 这一侧的 surface 战同一天被四个团队同时打。",
+      "cards": [
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2070353698140958818",
+          "en": {
+            "rewrite": [
+              "Peter Yang uses Codex as a real travel agent. He is going back to Japan in December and instead of opening Google Flights himself, he told Codex to drive the browser: navigate Google Flights and individual hotel sites, save the prices, give him direct booking links on the dates he wants, save it all to a doc. The punchline is the half-sentence he lets trail off: 'I should just tell it to book everything.'",
+              "The trip-planning case is a pressure-test for where Codex already works in 2026 — long horizon, multi-site browsing, persistence into a doc the user can review. The bottleneck isn't model quality anymore, it's that the booking step still requires the user to push the final button. The moment that drops, the 'travel agent' job disappears."
+            ],
+            "original": [
+              "I'm planning to go to Japan (again!) in December and this time I asked Codex to use the browser to navigate Google Flights and individual hotel websites, find and save all the prices, give me the direct booking links on the dates that I want + save it all in a doc.  I should just tell it to book everything."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 真的把 Codex 当 travel agent 用。他 12 月要再去日本,这次不自己开 Google Flights,直接告诉 Codex 用 browser 跑:导航到 Google Flights 和各家酒店网站,把价格存下来,给他想要日期的直订链接,全部归档到一个 doc 里。他那句没说完的尾巴是关键:「我应该直接让它把 booking 都做了。」",
+              "trip-planning 这案例是 2026 Codex 已经能做哪一步的压力测试——长 horizon、跨站浏览、沉淀成可 review 的 doc。瓶颈不再是模型质量,而是 booking 那一步还得用户按最后的按钮。这一步一旦掉下来,「travel agent」这个工种就没了。"
+            ],
+            "original": [
+              "我 12 月打算再去日本,这次让 Codex 用 browser 跑 Google Flights 和各家酒店网站,把价格抓下来,给我想要日期的直订链接,存到 doc 里。我应该让它直接把 booking 都办了。"
+            ]
+          },
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者"
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2070318195190464538",
+          "en": {
+            "rewrite": [
+              "Peter Yang surfaces a UX gap nobody is building for: he can only reach Codex on mobile through a random iPhone shortcut he made himself. ChatGPT works, he knows, but it takes too many taps. The complaint is the kind of mundane friction that decides whether a tool becomes daily-use or stays a desktop thing.",
+              "He pre-empts the 'just use the app' response with the parenthetical '(yes I know I can use chatgpt but that takes too many taps)'. The subtext is structural: the surface area from 'I want Codex' to 'Codex is doing something for me' on a phone has not been solved. Whoever closes that tap-distance first owns mobile Codex — and that is the surface the rest of this section is about."
+            ],
+            "original": [
+              "Feels pretty weird that I can only directly access Codex on mobile through this random iPhone shortcut I made. (yes I know I can use chatgpt but that takes too many taps)"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 把一个没人去填的 UX gap 拎出来:他在 mobile 上访问 Codex,只能走自己做的那个 iPhone shortcut。ChatGPT 能用,他知道,但「太多 tap 了」。这种琐碎摩擦决定了一个工具到底是 daily-use 还是只能锁在 desktop 上。",
+              "他用括号把「那你直接用 app 啊」的回应预判掉了:「(是的我知道可以用 chatgpt,但 tap 太多了)」。潜台词是结构性的——「我想用 Codex」到「Codex 替我做事」之间那段手机 surface,还没被解决。谁先把 tap-distance 收掉,谁就拿到 mobile Codex,也是这一节要讲的那张 surface。"
+            ],
+            "original": [
+              "在 mobile 上访问 Codex 居然只能走我自己做的那个 iPhone shortcut,这挺怪的。(是的我知道可以用 chatgpt,但 tap 太多了)"
+            ]
+          },
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者"
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2070205719501254860",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux (Codex & ChatGPT lead at OpenAI) drops a quiet milestone date: February 2nd was the release of the Codex App. The metric that matters is the one he tags with a 👀 — adoption outside of engineering. He calls out @ajambrosino specifically, the Codex-on-everything angle that goes beyond the dev tooling line.",
+              "The framing is the load-bearing tell. Until now Codex has been a developer thing — IDE plug-in, CLI, harness surface. The Feb 2nd release moved it onto the desktop in a way that surfaces-adoption curve in non-eng teams is now the metric he watches. The implication: Codex is being deliberately repositioned as a horizontal surface, not a vertical dev tool."
+            ],
+            "original": [
+              "February 2nd was the release of the Codex App. You can see what it did to adoption outside of engineering. 👀 @ajambrosino"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux(OpenAI Codex & ChatGPT 负责人)悄悄放了一个 milestone 日期:2 月 2 日是 Codex App 发布日。他用 👀 标的指标才是关键——engineering 之外的 adoption。他单独点名 @ajambrosino,Codex-for-everything 这一侧。",
+              "框架本身就是关键信息。直到现在 Codex 还是 developer 那一侧——IDE 插件、CLI、harness surface。2 月 2 日那次发布把它推到 desktop,从此非 eng 团队的 adoption 曲线是他真正盯的指标。潜台词:Codex 正在被刻意重新定位成 horizontal surface,不是 vertical dev tool。"
+            ],
+            "original": [
+              "2 月 2 日是 Codex App 发布日。它把 engineering 之外的 adoption 拉起来了。👀 @ajambrosino"
+            ]
+          },
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT"
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2070205520552886305",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux lays down the slogan: 'Codex for everything at OpenAI.' The phrase is short enough to read as marketing, but combined with the previous Codex-App-adoption tweet the editorial point lands — every internal workflow at OpenAI is being routed through Codex, which is the data flywheel that turns into the next product surface.",
+              "The phrase echoes the same playbook the previous section quoted from Peter Yang. Codex is being used to plan Codex. That's the dogfood story, but the version OpenAI is shipping is the dogfood story for every OpenAI team — recruiting, sales research, code, design review. The horizontal positioning Thibault is signaling is: you will hit Codex wherever you hit a workflow inside this company."
+            ],
+            "original": [
+              "Codex for everything at OpenAI"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux 把口号放出来:「Codex for everything at OpenAI。」这句话短到像 marketing,但和前一条 Codex-App-adoption 那条串起来,editorial point 就立住了——OpenAI 内部每个 workflow 都被接到 Codex 上,这就是飞轮,飞轮转成下一个产品 surface。",
+              "这句话的底色跟前一节 Peter Yang 的旅行案例是同一套 playbook。Codex 被用来规划 Codex。这是 dogfood,但 OpenAI 推出的版本是把 dogfood 故事铺到每个团队——recruiting、sales research、code、design review。Thibault 在传递的横向定位是:你在这家公司碰到的每个 workflow 都会碰到 Codex。"
+            ],
+            "original": [
+              "OpenAI 内部全用 Codex。"
+            ]
+          },
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT"
+        },
+        {
+          "authorKey": "x:amasad",
+          "sourceUrl": "https://x.com/amasad/status/2070199548694437957",
+          "en": {
+            "rewrite": [
+              "Amjad Masad (Replit CEO) announces a mobile-app update is coming. The tweet is one line — 'Major updates to mobile app coming soon!' — but Replit's mobile app is the bridge between the web IDE and the phone-side surface where non-developers actually want to ship things. The previous section's Peter-Yang UX complaint (Codex requires an iPhone shortcut to use on mobile) is the gap this is responding to.",
+              "The pattern across all four tweets in this section is the same: the constraint on adoption isn't model quality, it's the surface you can reach the model from. Every major model lab is now competing on tap-distance to the model from a phone — Replit is making a move, OpenAI shipped Codex App in February, Anthropic ships Foundation Models framework with a Swift package (see the blog card at the end). The bottleneck is no longer what the model can do; it is how many taps it takes you to ask."
+            ],
+            "original": [
+              "Major updates to mobile app coming soon!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Amjad Masad(Replit CEO)预告 mobile app 大更新要来了。这条只有一行——「Major updates to mobile app coming soon!」——但 Replit 的 mobile app 是 web IDE 和手机端 surface 的桥,非 developer 想真正 ship 东西的那一端。前一节 Peter Yang 那个 UX 抱怨(Codex 在 mobile 上要自己做的 iPhone shortcut)是这一条在响应。",
+              "这一节四条 tweet 都指向同一个 pattern:adoption 的瓶颈不是模型质量,而是你从哪张 surface 能碰到模型。每个主要模型 lab 现在都在抢「从手机到模型的 tap-distance」——Replit 出手,OpenAI 2 月发了 Codex App,Anthropic 把 Foundation Models framework 通过 Swift package 发出来(见收尾那篇 blog)。瓶颈不再是「模型能做什么」,而是「问你一个问题要几下 tap」。"
+            ],
+            "original": [
+              "Mobile app 大更新要来了。"
+            ]
+          },
+          "authorName": "Amjad Masad",
+          "authorHandle": "@amasad",
+          "authorTag": "Replit CEO"
+        },
+        {
+          "authorKey": "x:trq212",
+          "sourceUrl": "https://x.com/trq212/status/2070238581147455842",
+          "en": {
+            "rewrite": [
+              "Tao Li (Claude Tag lead) signals the next-step surface for Claude Tag: he'll be talking more about it on a podcast with Peter Yang and at AIE with @_catwu. The CTA is open-ended — 'let us know if there's anything you'd like us to dive into more' — but the meta-signal is the conference + podcast pairing. Claude Tag is past the launch-day frame (the 6-24 issue carried that load) and into the explain-it-on-record phase.",
+              "Two days post-launch, the team is shipping the second-order work: not new features, but the verbal surface that explains the design choices. The same week the Vercel AI Gateway absorbed Grok Imagine Video traffic (see next section), Claude Tag is now being explained on talk circuits. The pattern across the issue: every new surface in the agent stack is doing the same thing right now — coding-agent UX gets a podcast, AI Gateway gets a stat reveal, mobile Codex gets a paper-cut UX complaint to address."
+            ],
+            "original": [
+              "I'll be talking more about Claude Tag with @petergyang and at AIE with @_catwu. Let me know if there's anything you'd like us to dive into more!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Tao Li(Claude Tag 负责人)给 Claude Tag 标了下一阶段的 surface:他会跟 Peter Yang 上 podcast 讲更多,AIE 跟 @_catwu 一起讲。CTA 是开放的——「有什么想让我们多挖的告诉我们」——但 meta-signal 是 podcast + 大会这对组合。Claude Tag 已经过了 launch 那天那帧(6-24 那期扛过那一帧),进入「on record 讲清楚」的阶段。",
+              "launch 后两天,团队在 ship 第二序的工作:不是新 feature,而是讲清楚设计选择的 verbal surface。同一周,Vercel AI Gateway 吞掉 Grok Imagine Video 流量(见下一节),Claude Tag 上 talk circuit 把它讲明白。这一期的 pattern 是:agent stack 里每一张新 surface 都在做同一件事——coding-agent UX 上 podcast,AI Gateway 上数据公布,mobile Codex 上 paper-cut UX 抱怨被回应。"
+            ],
+            "original": [
+              "我会跟 @petergyang 上 podcast 继续聊 Claude Tag,也会在 AIE 跟 @_catwu 一起讲。有什么想多挖的告诉我们!"
+            ]
+          },
+          "authorName": "Tao Li",
+          "authorHandle": "@trq212",
+          "authorTag": "AI 研究员 / Follow Builders 维护者"
+        }
+      ]
+    },
+    {
+      "title": "AI 监管 de facto + frontier 本身成监管对象 / AI Regulation Is Now De Facto — The Frontier Itself Becomes the Regulatory Object",
+      "desc": "Levie 两天连发把监管立成 de facto:capability / compute 门槛触发强制政府 review,US 不慢下来;frontier 本身变成监管对象,builder ship 进去的 sandbox 不再由 builder 选。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2070310706369712272",
+          "en": {
+            "rewrite": [
+              "Aaron Levie (Box CEO) declares the regulatory phase is over before anyone officially announced it: 'We now have de facto AI regulation.' The mechanism he names is the obvious one — capability thresholds and compute thresholds will trigger mandatory government review before model release. 'Realistically, as AI models became more and more powerful this was going to be the case' is the line that closes off the debate.",
+              "The framing is sharp because Levie is not pitching alarm or relief — he is describing a structural shift already locked in. The interesting move is in the second sentence: 'It's not obvious why from here on out models that have certain levels of capability or are trained on certain compute sizes won't have to be reviewed by the government before release.' The regulatory perimeter is no longer a future negotiation — it is the present-day reality any frontier lab ships into."
+            ],
+            "original": [
+              "We now have de facto AI regulation. It's not obvious why from here on out models that have certain levels of capability or are trained on certain compute sizes won't have to be reviewed by the government before release. Realistically, as AI models became more and more powerful this was going to be the case"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie(Box CEO)在没人正式宣布之前就声明监管阶段已经结束:「我们现在已经有 de facto 的 AI 监管了。」他点名的机制很明显——capability 门槛和 compute 门槛会触发 model release 前强制政府 review。「讲实话,AI 模型越来越 powerful,这件事早晚要发生」这句把辩论的口子关掉。",
+              "措辞锋利是因为 Levie 既不卖 alarm 也不卖 relief,他在描述一个已经锁定的结构性转变。第二句才是有意思的一步:「从这里往后,凡是 capability 到某个 level 或是训练 compute 到某个 size 的 model,几乎没理由不需要政府 review 才能 release。」监管边界不再是 future 谈判,是 frontier lab 当下 ship 的现实。"
+            ],
+            "original": [
+              "我们现在已经有事实上的(de facto)AI 监管了。从这里往后,凡是 capability 到某个门槛或训练 compute 到某个 size 的 model,几乎没理由不需要政府 review 才能 release。讲实话,AI 模型越来越 powerful,这事早晚要发生。"
+            ]
+          },
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO"
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2070370225271251161",
+          "en": {
+            "rewrite": [
+              "Levie follows up with the game-theory frame: 'AI regulation is far less simple than it looks. It's prisoners dilemma at insane scale.' The hypothetical cooperation scenario he lays out — every leading AI lab globally agrees to the same review-and-slow-down process, frontier intelligence arrives at similar rates, capability diffuses evenly — is the cooperative equilibrium that nobody in the actual market is incentivized to pick.",
+              "The structural punchline he implies: if the US remains at the frontier, it does not slow down. The implication for builders is not policy — it is that the model a US-based team can fine-tune and ship is going to diverge from what a Brussels-shaped team can. The frontier itself becomes the regulatory object. Levie's two tweets together are the issue's clearest statement of the platform-layer reality: the sandbox you ship into is no longer defined by you, it is defined by the lab whose weights you call."
+            ],
+            "original": [
+              "AI regulation is far less simple than it looks. It's prisoners dilemma at insane scale. In theory if all leading AI labs globally agreed to the same process of review and slow down, then we'd get frontier intelligence at similar rates and it diffuses relatively evenly. If the US remains at the frontier, it does not slow down."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Levie 紧跟着把 game-theory 那一帧放出来:「AI 监管远没看上去那么简单。这是 insane scale 的 prisoners dilemma。」他摆出来的假设合作场景——全球所有 leading AI lab 同意同一套 review 跟 slow-down 流程,frontier intelligence 以相近的速率到达,capability 均匀扩散——是 cooperative equilibrium,但市场上没人有这个 incentive 去选。",
+              "他暗示的结构性 punchline:如果 US 还在 frontier,它不会慢下来。对 builder 来说,潜台词不是政策——而是 US-based team 能 fine-tune 和 ship 的 model,会跟 Brussels-shaped team 能拿到的分叉开。frontier 本身变成了监管对象。Levie 这两条 tweet 合起来,就是这一期对 platform-layer 现实最清楚的陈述:你 ship 进去的那个 sandbox,不再由你定义,由你 call 权重的那个 lab 定义。"
+            ],
+            "original": [
+              "AI 监管远比看上去复杂。这是 insane scale 的 prisoners dilemma。理论上如果全球所有 leading AI lab 同意同一套 review 和 slow-down 流程,frontier intelligence 会以相近的速率到达,capability 也会均匀扩散。如果 US 还在 frontier,它不会慢下来。"
+            ]
+          },
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO"
+        }
+      ]
+    },
+    {
+      "title": "Vercel 从 hosting 推到 platform:AI Gateway + 设计标准 + 错误页 prompt / Vercel Climbs to Platform — AI Gateway, Design Standards, Error-Page Prompts",
+      "desc": "rauchg 三连:Grok Imagine Video 占 Vercel AI Gateway 50% 视频生成,imbue coding agents with our design standards,Next.js「Copy prompt」错误页。Model routing + agent taste + prompt surface,前-中-后三块同一天 ship。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2070215849970119090",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch (Vercel CEO) drops a stat the AI Gateway team has been building toward: Grok Imagine Video is now the clear leader in Vercel AI Gateway, amounting to ~50% of videos generated by developers on the platform. The '🤯' is the load-bearing emotion — Vercel is not optimizing for which provider wins, they are the layer that absorbs whichever provider wins, and the meta-stat is that xAI's video model is now the one absorbing.",
+              "The structural read is that Vercel has now crossed the threshold from 'front-end hosting' into 'agent-traffic router'. The implication for the rest of the issue: every section that discusses model choice, model routing, or model-provider failure modes is implicitly routing through a layer like Vercel AI Gateway. The 50% number is the evidence that this layer is no longer theoretical — it is absorbing the production video traffic of an entire class of builders."
+            ],
+            "original": [
+              "Grok Imagine Video has become the clear leader in @vercel AI Gateway, now amounting to ~50% of videos generated by developers 🤯"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch(Vercel CEO)给了一个 AI Gateway 团队一直在做的 stat:Grok Imagine Video 现在是 Vercel AI Gateway 里绝对的 leader,占开发者视频生成的约 50%。「🤯」是承重的情绪——Vercel 不再为哪家 provider 赢优化,他们就是吸收那家赢的那一层,而 meta-stat 是 xAI 的视频 model 正在被吸收。",
+              "结构性读法:Vercel 已经跨过「front-end hosting」那道坎,进入「agent-traffic router」。对这一期其余部分的含义:每一节里讨论的 model 选择、model 路由、model-provider failure mode,实际上都隐式经过像 Vercel AI Gateway 这样的一层。50% 这个数字证明这一层不再是理论上的,而是吸收了一整类 builder 的 production 视频流量。"
+            ],
+            "original": [
+              "Grok Imagine Video 成了 @vercel AI Gateway 里的绝对 leader,现在约占开发者视频生成的 50% 🤯"
+            ]
+          },
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO"
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2070241572416078161",
+          "en": {
+            "rewrite": [
+              "Rauch previews a longer post: 'How we imbue coding agents with our design standards.' The phrasing — 'imbue' — is the load-bearing verb. Vercel's design standards are not a style guide the agent reads; they are being taught into the agent itself. The agent that ships Vercel-flavoured UI is the same agent that ships Vercel-flavoured code.",
+              "The framing pairs with the previous tweet. AI Gateway is the runtime layer that absorbs which provider wins; design-standards-into-agent is the editor layer that absorbs which taste wins. Both moves push Vercel up the stack from hosting to platform. The implication for builders using Vercel AI: the model and the taste arrive pre-coupled, and the choice between frameworks becomes a choice between whose design taxonomy gets baked in."
+            ],
+            "original": [
+              "How we imbue coding agents with our design standards"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Rauch 提前放了一篇长文的预告:「我们怎么把设计标准 imbue 给 coding agent」。措辞里——「imbue」是承重的动词。Vercel 的设计标准不是 agent 读的 style guide,是被教进 agent 本身。ship Vercel 味道 UI 的那个 agent,也 ship Vercel 味道的 code。",
+              "框架跟前一条 tweet 是一对。AI Gateway 是吸收哪家 provider 赢的 runtime 层,design-standards-into-agent 是吸收哪种 taste 赢的 editor 层。两个动作一起把 Vercel 从 hosting 推到 platform。对用 Vercel AI 的 builder 来说:model 和 taste 是预先绑定到达的,framework 之间的选择变成了谁的设计 taxonomy 被烤进去的选择。"
+            ],
+            "original": [
+              "我们怎么把设计标准浸入(imbue)coding agent。"
+            ]
+          },
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO"
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2070243120546218000",
+          "en": {
+            "rewrite": [
+              "Rauch closes the Vercel trio with a screenshot pull: Next.js's 'Ways to fix this' error UI, now with 'Copy prompt' buttons, is 'a work of (agentic) art.' The parenthetical is the editorial move — the error page is no longer a developer error page, it is a surface that ships the prompt the agent will run to fix itself.",
+              "The pattern across Rauch's three tweets is the same: every UI surface Vercel touches gets converted into either an agent prompt surface (the error page) or an agent routing layer (AI Gateway) or an agent taste layer (design standards). The frame for the issue is that the front-end framework layer is being rebuilt as an agent-first surface, and Vercel is shipping all three pieces of that rebuild on the same day."
+            ],
+            "original": [
+              "Next.js \"Ways to fix this\" with \"Copy prompt\" buttons is a work of (agentic) art"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Rauch 用一张截图收尾 Vercel 这组三条:Next.js「Ways to fix this」错误 UI,现在多了「Copy prompt」按钮,是「a work of (agentic) art」。括号里的形容词是 editorial 那一笔——错误页面不再是 developer 错误页面,它 ship 出来的是 agent 会跑的 prompt 本身。",
+              "Rauch 这三条 tweet 都指向同一个 pattern:Vercel 碰到的每张 UI surface,要么被转成 agent prompt surface(错误页),要么被转成 agent routing 层(AI Gateway),要么被转成 agent taste 层(design standards)。这一期的 frame 就是 front-end framework 层正在被重建成 agent-first surface,Vercel 同一天 ship 这三块重建。"
+            ],
+            "original": [
+              "Next.js「Ways to fix this」配「Copy prompt」按钮,是 a work of (agentic) art。"
+            ]
+          },
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO"
+        }
+      ]
+    },
+    {
+      "title": "Vertical outcomes 的时代:legal / health / pure software 三案 / The Vertical-Outcomes Era — Legal, Health, Pure Software",
+      "desc": "adityaag「开纯软件公司 stupidly hard」,danshipper 推 a16z 投的 NYC AI-first medicine stealth,garrytan 把 Legora 立成 defining legal AI startup。custom-work-eats-horizontal 的三条 vertical outcomes 答案。",
+      "cards": [
+        {
+          "authorKey": "x:adityaag",
+          "sourceUrl": "https://x.com/adityaag/status/2070179913647485344",
+          "en": {
+            "rewrite": [
+              "Aditya Agarwal (Dropbox Engineering VP, ex-Facebook platform engineering lead) lays out the structural squeeze on horizontal SaaS in 2026: 'It is stupidly hard to start a pure software company right now.' His reason — customers want outcomes, not software, so you end up doing a lot of custom work; anything horizontal is on a ticking clock; every customer wants deeply customized — is the standard new-vertical SaaS dilemma, but the timing is what makes it 6-26's most-quoted frame.",
+              "The 'But you need...' half-sentence carries the load — the opportunity is real, but only in the cracks between the squeeze. The pattern this fits into: Legora (Garry Tan's defining legal AI startup — next card), NYC health-tech stealth (Danshipper's next card). Every one of these is a 'custom-work-eats-horizontal' response. The pure-software company is over; the vertically-integrated outcomes company is the new default."
+            ],
+            "original": [
+              "It is stupidly hard to start a pure software company right now. Customers don't want software, they want outcomes. So you end up having to do a lot of custom work for them. Anything horizontal is on a ticking clock. Every customer wants to deeply customize. There are opportunities. But you need..."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aditya Agarwal(Dropbox Engineering VP,前 Facebook 平台工程负责人)把 2026 horizontal SaaS 的结构性挤压摆出来:「现在开一家纯软件公司 stupidly hard。」他的理由——客户要的是 outcomes 不是 software,所以你不得不做大量 custom work;任何 horizontal 都在滴答作响;每个客户都想要深度定制——是新 vertical SaaS 的标准两难,但 timing 让这一句成为 6-26 转发最多的话。",
+              "「But you need...」那句没说完的尾巴承重——机会是真的,但只在挤压的裂缝里。这一条合进去的 pattern:Garry Tan 立的 Legora(下一条),Danshipper 立的 NYC health stealth(再下一条)。每一条都是「custom-work-eats-horizontal」的回应。纯软件公司那一套结束了;vertical-integrated outcomes 公司是新默认。"
+            ],
+            "original": [
+              "现在开纯软件公司 stupidly hard。客户要的是 outcomes 不是 software,所以你不得不做大量 custom work。任何 horizontal 都在滴答作响。每个客户都想要深度定制。机会有,但你需要……"
+            ]
+          },
+          "authorName": "Aditya Agarwal",
+          "authorHandle": "@adityaag",
+          "authorTag": "Dropbox Engineering VP / 前 Facebook 平台工程负责人"
+        },
+        {
+          "authorKey": "x:danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/2070158469173256231",
+          "en": {
+            "rewrite": [
+              "Dan Shipper flags a stealth NYC health-tech company: a16z-backed, founder ex-One Medical and ex-Bridgewater, building 'AI-first medicine with physical clinics.' The hires tell the structural story — staff+ engineers, physicians who ship product, and a Codex-native Chief of Staff / BizOps lead. Each of those three job descriptions is a 2026-specific job shape that didn't exist 18 months ago.",
+              "Shipper closes with a soft promo — 'You should apply' — but the meta-signal is the founder pedigree + the AI-first/physical-clinic pair. The category is the response to Aditya's 'pure software is dead' frame: vertical outcomes, owned delivery (the physical clinic), and the new hire shape (Codex-native BizOps) all wrapped into one job posting. This is what 'custom-work-eats-horizontal' looks like when it ships."
+            ],
+            "original": [
+              "One of the smartest people i know, ex-One Medical, ex-Bridgewater founder backed by a16z is building a stealth NYC health-tech company. He's doing AI-first medicine with physical clinics. Hiring staff+ engineers, physicians who ship product, and a Codex-native Chief of Staff/BizOps lead. You should apply."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Dan Shipper 拎出一家 stealth 的 NYC health-tech 公司:a16z 投的,founder ex-One Medical、ex-Bridgewater,做「AI-first medicine with physical clinics」。招的三类人是结构性故事——staff+ engineer、能 ship product 的 physician、以及 Codex-native 的 Chief of Staff / BizOps lead。这三个 job description 都是 18 个月前不存在的 2026 特定 job shape。",
+              "Shipper 用一句「You should apply」做软广,但 meta-signal 在 founder 出身 + AI-first/physical-clinic 这一对组合上。这个类别就是对 Aditya「pure software is dead」框架的回应:vertical outcomes、自有 delivery(physical clinic)、新 hire shape(Codex-native BizOps),全部包进一份 job posting。这是「custom-work-eats-horizontal」落到产品里长什么样。"
+            ],
+            "original": [
+              "我认识的最聪明的人之一,ex-One Medical、ex-Bridgewater 的 founder,a16z 投,在 NYC 攒一家 stealth 的 health-tech 公司。他做 AI-first medicine 加 physical clinics。在招 staff+ engineer、能 ship product 的 physician、以及 Codex-native 的 Chief of Staff/BizOps lead。值得投。"
+            ]
+          },
+          "authorName": "Dan Shipper",
+          "authorHandle": "@danshipper",
+          "authorTag": "Every 联合创始人 / AI 写作工具链"
+        },
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2070174023678648673",
+          "en": {
+            "rewrite": [
+              "Garry Tan (Y Combinator president) calls Legora 'the defining legal AI startup.' The single tweet is short — but Tan's framing is selective enough to read as the YC verdict: in a category full of Harvey / Spellbook / Ironclad competitors, the 'defining' label is the editorial call. The week Legora gets tagged by Tan is the week the YC thesis is 'legal AI is no longer a feature, it is a category.'",
+              "Pair with Aditya's 'pure software is over' frame and Danshipper's vertical-NYC-health case: Legora is the vertical-SaaS answer to legal outcomes. Every one of these three cards is doing the same thing — naming a vertical where AI-first + custom-work + domain-expert hires is the structural response to the horizontal-software collapse."
+            ],
+            "original": [
+              "Legora is the defining legal AI startup"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan(Y Combinator 总裁)把 Legora 称为「defining legal AI startup」。这条 tweet 短,但 Tan 的措辞有选择性,可以读成 YC 的 verdict:在一类挤满 Harvey / Spellbook / Ironclad 竞争者的赛道里,「defining」这个标签是 editorial call。Tan 给 Legora 贴标的这一周,YC 的 thesis 就是「legal AI 不再是 feature,是 category」。",
+              "和 Aditya「pure software is over」那一帧、Danshipper vertical-NYC-health 那一案对上看:Legora 是给 legal outcomes 的 vertical-SaaS 答案。这三张 card 做的都是同一件事——指认一个 vertical,在那里 AI-first + custom-work + domain-expert hires 是对 horizontal-software 崩塌的结构性回应。"
+            ],
+            "original": [
+              "Legora 是 defining 的 legal AI startup。"
+            ]
+          },
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁"
+        }
+      ]
+    },
+    {
+      "title": "三张新 surface 在 6-26 同时被命名:Talk / Audience / Identity Verification / Three New Surfaces Get Named on 6-26 — Talk, Audience, Identity Verification",
+      "desc": "swyx 公开 AIE 的「怎么 booked 上台」playbook;zarazhangrui「build audience = build company」;petergyang「Identity verification 100% coming to model access」。",
+      "cards": [
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2070368060918407269",
+          "en": {
+            "rewrite": [
+              "Swyx (AI engineer) posts a meta-thread from the AIE World's Fair circuit: 'this is too late for AIE worlds fair but heres the how to book talks in the first place.' The link is a longer piece on the operational mechanics of getting booked — the editorial point being that the conference circuit is itself a builder surface now, and Swyx is publishing the playbook.",
+              "The Twitter caption is doing two things at once — modest self-deprecation ('too late') plus a deliberate open-publishing gesture. The meta is: the people who can talk are publishing how-to-talk so the next cohort can talk, which is the same feedback loop the Codex App adoption curve tracks (more adoption → more case studies → more adoption). Talks are an infra surface, and the playbook is now public."
+            ],
+            "original": [
+              "this is too late for AIE worlds fair but heres the how to book talks in the first place"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx(AI 工程师)从 AIE World's Fair 现场放了一条 meta-thread:「this is too late for AIE worlds fair but heres the how to book talks in the first place」。链接是一篇更长的内容,讲怎么才能被 booked——editorial point 在于:conference circuit 本身现在也是一张 builder surface,Swyx 在把这套 playbook 公开。",
+              "那条 Twitter caption 同时在做两件事——谦虚自贬「too late」加上一个明确的 open-publishing 姿态。meta 是:能讲的人在公开「怎么讲」,所以下一拨 cohort 也能讲,这是和 Codex App adoption 曲线同构的 feedback loop(更多 adoption → 更多 case study → 更多 adoption)。Talk 是一张 infra surface,playbook 现在是公开的。"
+            ],
+            "original": [
+              "给 AIE worlds fair 已经晚了,但这里有一篇「怎么才能被 booked 上台讲」的内容。"
+            ]
+          },
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师"
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2070188279941738952",
+          "en": {
+            "rewrite": [
+              "Zhang Rui (Follow Builders founder) pushes back on a founder-economy cliché: 'Building is getting cheaper, attention is the new moat.' His counter — 'audience-building is increasingly the same thing as company-building' — is the editorial position that explains why every job posting in section 4 has a 'founder who can ship narrative' vibe. The audience is no longer a downstream marketing artefact; it is the company.",
+              "Rui's argument is structural: in 2026, storytelling to users, investors, and candidates is arguably the founder's most important job. Building is getting cheaper; attention is harder. The implication for the issue is that the conference + podcast + newsletter surface (see Swyx's how-to-book thread above) is becoming a required builder surface, not an optional one. Audience is a builder surface."
+            ],
+            "original": [
+              "This is a big misconception. Somehow people think building an audience is antithetical to building a company. In fact, they're increasing becoming the same thing. Storytelling (to users/customers, investors, candidates) is arguably the founder's most important job. Building is getting cheaper, attention is harder."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zhang Rui(Follow Builders 创始人)对 founder-economy 的一个 cliché 提出反驳:「Building is getting cheaper, attention is the new moat」。他的反面——「build audience 跟 build company 越来越是同一件事」——是一个 editorial 立场,解释了为什么前一节每条 job posting 都带「founder who can ship narrative」的氛围。Audience 不再是下游 marketing 产物;audience 就是公司。",
+              "Rui 的 argument 是结构性的:2026 年,讲故事给 user / customer、investor、candidate,可能确实是 founder 最重要的工作。building 越来越便宜,attention 越来越难。对这一期的含义是:conference + podcast + newsletter 那张 surface(见上一条 Swyx 的 how-to-book 帖子)正在变成必需的 builder surface,不再是可选。Audience 是 builder surface。"
+            ],
+            "original": [
+              "这是一个大误解。居然有人觉得 build audience 跟 build company 是反着的。事实上它们越来越是同一件事。给 user / customer、investor、candidate 讲故事,可能确实是 founder 最重要的工作。Build 越来越便宜,attention 越来越难。"
+            ]
+          },
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人"
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2070352201944625405",
+          "en": {
+            "rewrite": [
+              "Peter Yang flags the next platform-layer decision: 'Identity verification 100% coming to model access.' The reaction — 'lol this is pretty insane but I'm not surprised' — captures the editorial tone. The move being telegraphed is that model access becomes a KYC surface: anyone calling frontier models goes through identity, and that gate decides what you can ship and what you can't.",
+              "The implications layer cleanly with Levie's de-facto regulation frame (section 2) and Vercel's AI Gateway routing (section 3). Three platform decisions on the same week — government-review-of-models, identity-verification-of-calls, gateway-routing-of-traffic — and the sandbox any builder ships into is now defined by all three. The model you call decides what you can ship; the gateway decides whose model; the identity check decides who you are when you call it."
+            ],
+            "original": [
+              "lol this is pretty insane but I'm not surprised. Identity verification 100% coming to model access"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 把下一个 platform-layer 决策拎出来:「Identity verification 100% coming to model access」。他的反应——「lol this is pretty insane but I'm not surprised」——把 editorial tone 拿住。正在预告的走向是:model access 变成 KYC surface——任何 call frontier model 的人都要过 identity,这道门决定你能 ship 什么不能 ship 什么。",
+              "implications 跟 Levie 的 de-facto 监管那一帧(第二节)、Vercel AI Gateway 路由(第三节)叠得很干净。同一周三个 platform 决策——model 政府 review、call 的 identity 验证、traffic 的 gateway 路由——builder ship 进去的 sandbox 现在被这三件事共同定义。你 call 的 model 决定能 ship 什么,gateway 决定走谁的 model,identity check 决定你 call 时是「谁」。"
+            ],
+            "original": [
+              "lol 这个挺离谱的但不意外。Identity verification 100% 会出现在 model access。"
+            ]
+          },
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者"
+        }
+      ]
+    },
+    {
+      "title": "博客 + Podcast 收尾:Apple Foundation Models + Cloudflare 的 Bot 网倒转 / Closer — Apple Foundation Models and Cloudflare's Bot-Takeover Frame",
+      "desc": "Anthropic 出 Swift package 让 Claude 接入 Apple Foundation Models framework;Cloudflare CEO Matthew Prince 在 The MAD Podcast 上把「2026 上半年 bot 流量已超过人类流量」立成 6-26 最远的 anchor。",
+      "cards": [
+        {
+          "authorKey": "blog:claudeai",
+          "sourceUrl": "https://claude.com/blog/claude-for-foundation-models",
+          "en": {
+            "rewrite": [
+              "The Claude blog ships the official Apple-platform support story: a new Swift package that lets Apple developers call Claude through Apple's Foundation Models framework for multi-step reasoning, code generation, web search, and data-analysis code execution — while keeping on-device Apple models for the fast local tasks like summarization and extraction.",
+              "The framework's value proposition is the tightest version yet: developers can hand off a request to Claude when it calls for code or reasoning, and stream the response back into the same Swift view. Because Apple's framework returns typed Swift values from @Generable annotations, the developer arrives at the Claude call with clean inputs instead of raw user text. The pattern that ships is the journaling-app example the post names — generate daily prompts on-device, then ask Claude to find threads across months of entries. One experience for the user, two models for the developer."
+            ],
+            "original": [
+              "Today we're releasing Foundation Models framework support for Claude through a new Swift package that lets Apple developers use Apple's Foundation Models framework to call Claude for more complex workflows. Apple's Foundation Models framework gives developers access to tap into models natively from Swift. It is very easy to use and can return typed Swift values through guided generation in as few as three lines of code. Developers can use this to tap into Apple's on-device models for fast, local tasks like summarization or extraction. Developers can now use Apple's Foundation Models framework to hand off to Claude when a request calls for multi-step reasoning, code generation, and more. Claude can also search the web for current information and execute code for data analysis. Stream Claude's response back into the same view. Because Apple's framework returns typed Swift values from @Generable annotations, developers arrive at the Claude API call with clean inputs instead of raw user text."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude 官方博客 ship 出 Apple 平台支持的官方版本:一个新 Swift package,让 Apple 开发者通过 Apple 的 Foundation Models framework 来 call Claude,跑多步推理、code 生成、web search 和数据分析 code execution——同时把 on-device 的 Apple model 留给那些 fast local task(摘要、抽取)。",
+              "这个 framework 的价值主张是迄今最紧的一版:开发者可以在一个请求需要 code 或 reasoning 时把它交给 Claude,然后把响应 stream 回同一个 Swift view。因为 Apple 框架从 @Generable annotation 返回 typed Swift value,开发者到达 Claude call 时手里是干净的 input 而不是 raw user text。ship 出来的 pattern 就是 post 里那个 journaling-app 例子——on-device 生成每天的 prompt,然后让 Claude 跨几个月 entry 找主题。对 user 是一个体验,对 developer 是两个 model。"
+            ],
+            "original": [
+              "今天我们通过新 Swift package 发布 Claude 对 Foundation Models framework 的支持,让 Apple 开发者用 Apple 的 Foundation Models framework 来 call Claude 处理更复杂的工作流。Foundation Models framework 让开发者能从 Swift 里直接 tap 本地模型——最少三行代码就能通过 guided generation 返回 typed Swift value。开发者可以用它 tap Apple 的 on-device model 处理快速本地任务(摘要、抽取),需要多步推理、code 生成等场景时把请求交给 Claude。Claude 也能做 web search 和 data-analysis code execution。Claude 的响应可以 stream 回同一个 view。因为 Apple 框架从 @Generable annotation 返回 typed Swift value,开发者到达 Claude call 时手里是干净的 input,而不是 raw user text。"
+            ]
+          },
+          "authorName": "Claude",
+          "authorHandle": "",
+          "authorTag": "Claude 官方博客"
+        },
+        {
+          "authorKey": "podcast:mad-podcast",
+          "sourceUrl": "https://www.youtube.com/watch?v=UN47z_opfmo",
+          "en": {
+            "rewrite": [
+              "The MAD Podcast (Matt Turck) drops its Cloudflare episode — Matthew Prince, cofounder and CEO of Cloudflare. The opening stat is the issue's anchor: 'We actually had bot traffic pass human traffic online in the first half of twenty twenty six.' Bot traffic has now outnumbered humans on the Internet, and Prince's read on the next-five-years is 1000x traffic on the same backbone.",
+              "The conversation lands two frames that bookend the issue. (1) The advertising-based internet is over because 'bots don't click on ads,' and the business model of the Internet is going to change radically in the next five years. (2) Almost every company in the next six to twelve months will go through 'some exercise like this where they're gonna cut a bunch of their team.' Cloudflare itself is the proof — the recent rightsizing is the textbook case of an internet-era company having to rebuild for the agent era. The line that closes the issue is the anchor for the next one: the underlying business model of the internet is changing faster than any single company, even Cloudflare, can absorb on its own."
+            ],
+            "original": [
+              "Speaker 1 | 00:00 - 00:31: We actually had bot traffic pass human traffic online in the first half of twenty twenty six. In five years you might have a thousand times as much traffic on the internet as you do today. In the next six to twelve months, almost every company is going to go through some exercise like this where they're gonna cut a bunch of their their team. The underlying business model of the internet for the last twenty eight years has remained basically the same, which is it's largely advertising. The problem is bots don't click on ads. Over the next five years, the business model of the Internet is gonna change radically.",
+              "Speaker 2 | 00:34 - 00:50: Hi. I'm Matt Turk. Welcome to the Mad Podcast. Today, I'm excited to welcome Matthew Prince, cofounder and CEO of Cloudflare, one of the Internet's most important companies that sits in front of a very large portion of global Internet traffic. We start the conversation by unpacking a huge milestone — for the first time, the number of bots and AI agents has outnumbered humans on the Internet. We also cover how Cloudflare has become an AI infrastructure company and dig into Cloudflare workers, AI gateway, and agent security."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "The MAD Podcast(Matt Turck 主理)放出 Cloudflare 那期——嘉宾 Matthew Prince,Cloudflare 联合创始人兼 CEO。开场那个数字是这一期的 anchor:「We actually had bot traffic pass human traffic online in the first half of twenty twenty six.」Bot 流量已经在 2026 上半年超过了人类流量,Prince 对接下来五年的判断是同一根 backbone 上会有 1000x 的流量。",
+              "这期对话立了两个承上启下的 frame。(1)靠广告的互联网结束了,因为「bots don't click on ads」,互联网的商业模式接下来五年会大变。(2)接下来六到十二个月,几乎每家公司都会走「some exercise like this where they're gonna cut a bunch of their team」。Cloudflare 自己就是证据——最近的 rightsizing 是 internet-era 公司不得不为 agent era 重建的标准案例。给下一期留钩子的那句是:互联网的商业模式变化速度,比任何一家公司——哪怕是 Cloudflare——自己能吸收的都快。"
+            ],
+            "original": [
+              "Speaker 1 | 00:00 - 00:31:我们 2026 年上半年其实已经看到 bot 流量超过了 human 流量。五年后你今天看到的互联网流量可能要乘 1000 倍。接下来六到十二个月,几乎每家公司都会走「some exercise like this where they're gonna cut a bunch of their their team」。过去 28 年互联网的商业模式基本没变——基本是广告。问题是 bots 不点广告。未来五年,互联网的商业模式会大变。",
+              "Speaker 2 | 00:34 - 00:50:大家好,我是 Matt Turk,欢迎来到 MAD Podcast。今天我很激动请到 Matthew Prince,Cloudflare 联合创始人兼 CEO——Cloudflare 是互联网最重要的公司之一,卡在全球互联网流量的很大一部分前面。我们从一个巨大的 milestone 聊起——bot 和 AI agent 的数量第一次超过了 Internet 上的人类。我们还会聊到 Cloudflare 怎么变成一家 AI infrastructure 公司,Cloudflare Workers、AI Gateway 和 agent 安全。"
+            ]
+          },
+          "authorName": "The MAD Podcast",
+          "authorHandle": "",
+          "authorTag": "Matt Turck 主理的 AI 与数据播客"
+        }
+      ]
+    }
+  ]
+}
