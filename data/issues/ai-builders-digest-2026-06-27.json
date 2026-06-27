@@ -1,0 +1,482 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-06-27",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "6-27 没有「一场 launch 把所有 attention 拉走」的事,Follow Builders 这一天的主旋律是「Frontier 收口 + Builder 重排 + Frontier 本身被定价」三件事在同一天咬合。petergyang 把 frontier-distill-adopt-gate 的四步循环摊开、danshipper 借玩笑把 GPT-5.6 Sol + U.S. government directive 限到 ~20 家 pre-approved 的现况命名出来,Levie 接着说 GPT-5.6 is real、no walls in progress,thsottiaux 同一周给所有 Codex 用户一次 usage reset on the house——这一侧是 frontier 收口、能力还在 scaling、gating 是 deliberate lever。Builder 这一侧,petergyang 同样在 6-27 把「钱在移到 services(顺带 bundled software)、pure-play software 公司难」当成市场结构说出来,adityaag 用一个很 personal 的「zero tolerance for shallow interactions」把这条 consumer 侧画出来——depth 用人类预算、其余 route 给 agents,swyx 同一天办第一场 AI FDE miniconference,把 FDE 这个夹在 frontier lab 和 customer outcome 之间的工种正式命名。rauchg 在另一条线把「agent 难 debug」拆成模型层 non-determinism + infra 层 non-determinism,observability 是开放问题;同一天再压「The UI for AI is here, it's @shadcn」——runtime、UI primitive、UX detail,三张 agent 时代的 surface 都在 6-27 站位。Taste 这一边是反话语:nikunj 直接 push back「taste 必须从 arena 里出来」,thenanyu 给 operating discipline 命名「secret level 6」——不追 side quest,知道哪些问题要拒绝,zarazhangrui「你不需要神来替你写邮件」把 audience 推到 compounding 的那一侧。最后 frontier 本身正在被定价:sama 同一天压两条——5.5 instant updated + 「i like its vibes」是 CEO 给 vibe-level 评价签背书、all-you-can-eat tokens 还没到但「we are working on it」是公开方向;garrytan 在另一侧做 YC 机构层面判断,这种 release 模式是 salt the ground、kill small startup 的创新。压轴是 No Priors 这一期 Noam Brown 拿 GPT-5.5 自己那次发布当 case study,讲 published benchmark grid 没 control for test-time compute、RSPs 和 frontier policy 框架还没追上来——这一期给前面那一串 frontier 收口 / 定价的讨论补一个最底层的根据。"
+  },
+  "archive": {
+    "title": "收口定价日",
+    "desc": "6-27 Follow Builders 的主旋律是「Frontier 收口 + Builder 重排 + Frontier 本身被定价」三件事咬合——petergyang 摊 frontier-distill-adopt-gate 四步循环、danshipper 借玩笑把 GPT-5.6 Sol + U.S. government directive 限到 ~20 家 pre-approved 的现况命名、Levie 补刀 GPT-5.6 is real + no walls in progress、thsottiaux 同一周给所有 Codex 用户 usage reset on the house,frontier 收口且能力还在 scaling、gating 是 deliberate lever;Builder 侧 petergyang 把「钱在移到 services(顺带 bundled software)、pure-play software 公司难」当市场结构说出来,adityaag 把 consumer 侧的「zero tolerance for shallow,depth 用人类预算其余 route 给 agents」画出来,swyx 同一天办第一场 AI FDE miniconference,FDE 这个夹在 frontier lab 和 customer outcome 之间的工种被正式命名;rauchg 把「agent 难 debug」拆成模型层 non-determinism + infra 层 non-determinism,observability 是开放问题,同一天压「UI for AI is here, it's @shadcn」,agent 时代的 runtime / UI primitive / UX detail 三张 surface 在 6-27 站位;Taste 一边是反话语:nikunj push back「taste 必须从 arena 里出来」、thenanyu 命名「secret level 6」——不追 side quest、知道哪些问题要拒绝、zarazhangrui「你不需要神替你写邮件」把 audience 推到 compounding 那一侧;Frontier 本身被定价:OpenAI 那一侧公开承认 vibe 才是 ground truth、承诺 all-you-can-eat tokens,Y Combinator 那一侧明确说这种 gate 模式是 anti-startup。收尾 No Priors 这一期 Noam Brown 把 frontier benchmark 框架拆掉,test-time compute 是 RSPs 和 frontier policy 还没追上的那一维——这一期给前面 frontier 收口 / 定价的讨论补一个最底层的根据。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-27 source feeds.",
+  "sections": [
+    {
+      "title": "Frontier 收口:gate loop、Sol 名单、5.6 is real、Codex 退款 — Frontier 收口 The Gate Loop, The Sol List, GPT-5.6 Is Real, and a Codex Refund",
+      "desc": "petergyang 把 frontier-distill-adopt-gate 的四步循环摊在桌面上;danshipper 借玩笑把 GPT-5.6 Sol + U.S. government directive 限到 ~20 家 pre-approved 的现况命名出来;Levie 补刀 GPT-5.6 is real、no walls in progress;thsottiaux 同一周给所有 Codex 用户一次 usage reset on the house,把「capability 还在 scaling、gating 是 deliberate lever、refund 是 trust move」三件事拼成 6-27 的 frontier side。",
+      "cards": [
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2070633838146134219",
+          "en": {
+            "rewrite": [
+              "Peter Yang lays out a four-step loop that he says the industry is now in: 1) publish a frontier model; 2) it gets distilled into a cheap open-source model; 3) US companies adopt the open-source one because it is good enough and much cheaper; 4) the frontier lab starts gating access to its own frontier model. The questions in the last line are pointed: what comes after step 4? US companies innovate less? Open-source becomes more attractive again?",
+              "The loop is the part that matters, not any single step. The author is not predicting one outcome — he is naming the structure. Step 3 is the part most builder-audiences will recognize: the cheap distillation is good enough for a large swath of the demand curve. Step 4 is the part that just became real: gating, not pricing, is the lever. From here on, 'where you sit in step 4' is going to define which companies ship into which sandbox."
+            ],
+            "original": [
+              "So let me get this straight:\n\n1. We publish frontier models\n2. They get distilled into cheap open source models\n3. US companies adopt the same open source models because they're good enough and much cheaper\n4. We start gating access to frontier models\n\nWhat next? US companies innovate less? Open source models become more attractive?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 把行业正在跑的四步循环摊出来:1) 发 frontier model;2) 被蒸馏成便宜的开源 model;3) US 公司采用开源 model,因为够用且便宜得多;4) frontier lab 开始 gate 自己的 frontier model 访问。最后那一行的问题才是关键:第 4 步之后会怎样?US 公司创新变少?开源 model 又变香?",
+              "循环是重点,不是任何单步。作者没在预测某一个结果,他在命名结构。第 3 步是大多数 builder 都能识别的那一段:便宜的蒸馏在需求曲线上一大块都够用。第 4 步是刚刚变成现实的那一段:gating,而不是 pricing,成了杠杆。从这里开始,「你在第 4 步的哪个位置」会决定哪些公司能 ship 到哪些 sandbox。"
+            ],
+            "original": [
+              "我整理一下:\n\n1. 我们发 frontier model\n2. 被蒸馏成便宜的开源 model\n3. US 公司采用开源 model,够用且便宜得多\n4. 我们开始 gate 自己的 frontier model 访问\n\n下一步呢?US 公司创新变少?开源 model 又变香?"
+            ]
+          },
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者"
+        },
+        {
+          "authorKey": "x:danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/2070554118146412979",
+          "en": {
+            "rewrite": [
+              "Dan Shipper (Every) drops a satire-framed-but-anchored announcement: 'GPT-5.6 Sol' is out, and by U.S. government directive, access is limited to about twenty pre-approved companies, Every not on the list. The joke is the announcement format; the real load is the framing: this looks like a temporary situation while the government races to set a long-term policy for releasing frontier models with advanced capabilities.",
+              "Shipper explicitly says he understands and applauds some government oversight. The point of the post is not opposition to oversight — it is that the policy state is undefined, and the undefined state is itself a product surface. The companies that get onto the pre-approved list now will have a head start on whatever sandbox the eventual policy produces. The pre-policy gating IS the policy, in practice."
+            ],
+            "original": [
+              "BREAKING: OpenAI announced GPT-5.6 Sol!\n\nAs of today, by U.S. government directive, access is limited to only ~20 pre-approved companies and @every is not on the list. This appears to be a temporary situation while the government races to figure out a long-term policy for releasing frontier models with advanced capabilities.\n\nI understand and applaud the need for some government oversight in makin"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Dan Shipper(Every)用玩笑包装的格式扔出一条「官宣」:「GPT-5.6 Sol」发布,即日起按 U.S. government directive,只有约 20 家 pre-approved 公司能访问,Every 不在名单上。玩笑是格式;真正的承重是 framing——这是 government 还在赛着定 frontier model 长期 policy 的过渡状态。",
+              "Shipper 明确说他理解也支持某些 government oversight。这条 post 的重点不是反对 oversight,而是 policy 状态没定,而「没定」本身已经是一张 product surface。能进 pre-approved 名单的公司,会带着先发优势去接最终 policy 出来的那个 sandbox。在 policy 落地之前,gating 本身就是 policy。"
+            ],
+            "original": [
+              "突发:OpenAI 官宣 GPT-5.6 Sol!\n\n即日起按 U.S. government directive,只有约 20 家 pre-approved 公司能访问,@every 不在名单上。看起来是 government 还在赛着定 frontier model 长期 policy 的过渡状态。\n\n我理解也支持某些 government oversight,正在制"
+            ]
+          },
+          "authorName": "Dan Shipper",
+          "authorHandle": "@danshipper",
+          "authorTag": "Every 联合创始人 / AI 写作工具链"
+        },
+        {
+          "authorKey": "x:levie",
+          "sourceUrl": "https://x.com/levie/status/2070563281916620895",
+          "en": {
+            "rewrite": [
+              "Aaron Levie (Box) says GPT-5.6 is real, looks very strong, and is going to be very strong for knowledge-worker tasks that require heavy tool use and long-running agents. The qualifier at the end is the load-bearing one: 'We're not hitting any walls in AI progress right now.'",
+              "The point of saying this is not the capability claim — it is the wall claim. The 'no wall right now' framing is what makes the gating conversations downstream land as a deliberate lever rather than a scarcity reaction. The frontier is still scaling, and the constraint has moved from 'can we build it' to 'who gets to use it'."
+            ],
+            "original": [
+              "GPT-5.6 is real and looks very strong. Going to be very strong for knowledge worker tasks that require heavy tool use and long running agents doing work. We're not hitting any walls in AI progress right now."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie(Box)说 GPT-5.6 是真的,看起来非常强,会对需要 heavy tool use 和 long-running agents 的 knowledge worker 任务特别强。末尾那句 qualifier 才是承重的:「现在我们没碰到任何 AI progress 的天花板。」",
+              "他这句话的重点不是 capability claim,是 wall claim。「没碰天花板」这个 framing,正是让后面那些 gating 讨论像 deliberate lever 而不是 scarcity 反应的根据。frontier 还在往上 scaling,constraint 已经从「能不能造出来」挪到「谁能用」。"
+            ],
+            "original": [
+              "GPT-5.6 是真的,看起来非常强。会在需要 heavy tool use 和 long-running agents 的 knowledge worker 任务上特别强。我们现在没碰到任何 AI progress 的天花板。"
+            ]
+          },
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO"
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2070653282440405046",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux (Codex & ChatGPT lead at OpenAI) announces: all Codex users are getting a usage reset on the house. Accounts should reflect the credit within hours. The team has applied mitigations and, importantly, the investigation has not shown users being impacted at large. Monitoring continues.",
+              "The reset itself is the interesting part, not the apology. A 'reset on the house' from a frontier-product lead is a deliberate signal: when a capacity event happens, the move is to refund everyone and apply mitigations, not to silently tighten the rate limit and hope nobody notices. The transparency move is also the trust move."
+            ],
+            "original": [
+              "We are giving all Codex users a usage reset on the house. Should be showing in your accounts in the next few hours.\n\nWe have applied some mitigations, but our investigation hasn't shown users being impacted at large. We are continuing to monitor the situation."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux(OpenAI Codex & ChatGPT 负责人)宣布:给所有 Codex 用户一次 usage reset,on the house。几小时内会到账。团队已经 apply mitigations,关键的是:调查没有发现用户在 large scale 上被影响。Monitoring 继续。",
+              "reset 本身才是有意思的部分,不是道歉。前沿 product 负责人发「on the house」是一次 deliberate signal:出 capacity 事件时,动作是给所有人 refund + apply mitigations,不是悄悄收紧 rate limit 然后赌没人注意。透明动作就是信任动作。"
+            ],
+            "original": [
+              "我们给所有 Codex 用户一次 usage reset,on the house。几小时内会到账。\n\n我们 apply 了 mitigations,调查没有发现用户在 large scale 上被影响。Monitoring 继续。"
+            ]
+          },
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT"
+        }
+      ]
+    },
+    {
+      "title": "Builder 重排:outcomes > tools / 给人类 depth 其余给 agents / FDE 成了新工种 / Builder Re-Alignment: Outcomes Beat Tools, Agents Handle the Rest, FDE Is the New Role",
+      "desc": "petergyang 把「钱在移到 services(顺带 bundled software),pure-play software 公司难」当成市场结构说出来;adityaag 用很 personal 的「zero tolerance for shallow」把这条 consumer 侧画出来:depth 用人类预算,其余 route 给 agents;swyx 同一天办第一场 AI FDE miniconference,把 FDE 这个夹在 frontier lab 和 customer outcome 之间的工种正式命名。三件事叠成 6-27 的 builder 重排。",
+      "cards": [
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2070568705365577990",
+          "en": {
+            "rewrite": [
+              "Peter Yang makes a market-shape observation: a lot of the money has moved to services (with some software bundled), not to software. People want outcomes, not tools. He frames it as a hard problem for pure-play software: it is getting really hard to build a software company that is more valuable to people or companies than 'just using Codex or Claude Code with a bunch of personal skills and agents.'",
+              "The 'outcomes not tools' framing has been the latent thesis in vertical AI for a year. The new move is naming the unit: the bundle on offer is now (model + personal skills + agents), not 'software.' Whoever can sell the outcome side of that bundle — a finished report, a closed deal, a shipped product — captures the value the model itself commoditizes. The pure-play tool company has to decide which layer of the bundle to own."
+            ],
+            "original": [
+              "From what I'm seeing, alot of the money has moved to services (with some software bundled), not software.\n\nPeople want outcomes, not tools. \n\nIt's feels really hard to build a pure-play software company that's more valuable to people or companies than just using Codex/Claude Code with a bunch of personal skills and agents.\n\nThoughts?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 抛出一个市场结构观察:钱已经大量移到了 services(顺带 bundled 一些 software),不是 software。人们要 outcomes,不要 tools。他把这框成 pure-play software 的硬问题:做一个软件公司,做到比「直接用 Codex 或 Claude Code + 一堆个人 skills + agents」更有价值,真的很难。",
+              "「outcomes 不要 tools」这个 framing 在 vertical AI 这一年里一直是潜流。今天的进展是命名了单位:在卖的 bundle 是「model + personal skills + agents」,不是 software。能把这个 bundle 的 outcome 侧卖出去(一份成稿报告、一笔 closed deal、一个 shipped product)的人,才能 capture 模型本身 commoditize 掉的那部分价值。pure-play tool 公司必须决定在 bundle 的哪一层站位。"
+            ],
+            "original": [
+              "从我看到的,大量钱已经移到 services(顺带 bundled 一些 software),不是 software。\n\n人们要 outcomes,不要 tools。\n\n做一个软件公司,做到比「直接用 Codex / Claude Code + 一堆个人 skills + agents」更有价值,真的非常难。\n\n想法?"
+            ]
+          },
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者"
+        },
+        {
+          "authorKey": "x:adityaag",
+          "sourceUrl": "https://x.com/adityaag/status/2070621064271688021",
+          "en": {
+            "rewrite": [
+              "Aditya Agarwal (Dropbox Engineering VP, ex-Facebook platform lead) names a personal-side effect of AI that ends up being a builder thesis: he has zero tolerance for shallow interactions with humans anymore. He wants depth in relationships, and the rest of the surface — scheduling, research, the small admin — he wants to hand to agents. He predicts the world becomes both smaller and richer in relational depth.",
+              "This is the consumer-side of the outcomes-not-tools line. The split is not 'use AI for everything' vs. 'use AI for nothing' — it is 'I will spend my human budget on the parts where depth matters, and route the rest through agents.' The bundle the user is buying is (depth-of-relationship-as-product) + (agents-as-infrastructure-for-the-rest). That is a different value capture than 'productivity tool.'"
+            ],
+            "original": [
+              "An interesting side effect of AI is that I have zero tolerance for shallow interactions with humans.\n\nI really deep connection and depth in my relationships. More ways to do that are so valuable.\n\nAnd for everything else: give me agents.\n\nI suspect our world will become both smaller and more rich in it's relationship depth."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aditya Agarwal(Dropbox Engineering VP,前 Facebook 平台工程负责人)给 AI 副作用一个很 personal、但其实是 builder thesis 的命名:他对人类的 shallow interaction 容忍度降到 0 了。他要在关系里要 depth,其他所有 surface——日程、研究、各种小 admin——他要交给 agents。他预测世界会同时变得更小、关系深度更厚。",
+              "这是 outcomes-not-tools 这一条的 consumer 侧。分法不是「凡事用 AI」对「凡事不用 AI」,而是「人类预算只花在需要 depth 的部分,其余全部 route 给 agents」。用户在买的 bundle 是「关系深度作为 product」+「agents 作为剩下的 infra」。这是和「productivity tool」完全不同的价值 capture。"
+            ],
+            "original": [
+              "AI 一个有趣的副作用是:我对人类的 shallow interaction 容忍度降到 0 了。\n\n我要在关系里要 depth,能做到的方法都太值了。\n\n剩下的:给我 agents。\n\n我猜世界会同时变得更小、关系深度更厚。"
+            ]
+          },
+          "authorName": "Aditya Agarwal",
+          "authorHandle": "@adityaag",
+          "authorTag": "Dropbox Engineering VP / 前 Facebook 平台工程负责人"
+        },
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2070606851377672675",
+          "en": {
+            "rewrite": [
+              "Swyx makes a hiring-curve observation: AI Forward Deployed Engineer (FDE) is one of the most in-demand disciplines on earth, but he has never done the job himself. He is running his first AI FDE miniconference with a domain expert named Basil, building it around the practice of 'scaling without slop by working with aligned domain experts to add coverage.'",
+              "The post lands as a hiring thesis more than a tool post. Both OpenAI and Anthropic are launching multi-billion-dollar services arms, which is the demand side. Swyx is naming the role that sits between the frontier lab and the customer outcome: someone who can deploy a model against a real domain, and tune it with the right domain expert to not generate slop. That role did not exist a year ago at this scale."
+            ],
+            "original": [
+              "we have been scaling without slop by working with aligned domain experts to add coverage \n\nwith both oai and ant launching multi-billion dollar services arms, it's clear that FDE is one of the most in demand disciplines on earth, but I have never done the job\n\nit's been an absolute pleasure working with Basil on our first ever AI FDE miniconference!\n\nsee at https://t.co/STlx7OsWbr  next week"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx 抛了一个 hiring-curve 观察:AI Forward Deployed Engineer(FDE)是地表最 in-demand 的工种之一,但他自己没干过这个岗。他和领域专家 Basil 一起办第一场 AI FDE miniconference,核心 practice 是「和 aligned 的 domain experts 一起 add coverage,scaling without slop」。",
+              "这条 post 落地是 hiring thesis,大于工具 post。需求侧是 OpenAI 和 Anthropic 都在开 multi-billion dollar 的 services arms。Swyx 在命名那个夹在前沿 lab 和 customer outcome 之间的角色:能拿模型部署到真实 domain,找对的 domain expert 一起调,不出 slop。这个工种一年前还没有这个量级。"
+            ],
+            "original": [
+              "我们一直在 scaling without slop,方法是和 aligned 的 domain experts 一起 add coverage。\n\nOpenAI 和 Anthropic 都在开 multi-billion dollar 的 services arms,FDE 是地表最 in-demand 的工种之一,但我自己没干过这岗。\n\n和 Basil 一起办第一场 AI FDE miniconference,太开心了!\n\n下周见 https://t.co/STlx7OsWbr"
+            ]
+          },
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师"
+        }
+      ]
+    },
+    {
+      "title": "Agent infra 在 tension 下立起来:observability + declarative UI + split-screen / Agent Infra Stands Up Under Tension — Observability, Declarative UI, Split-Screen",
+      "desc": "rauchg 同一天压两条:一条 thread 把「agent 难 debug」拆成模型层 non-determinism + infra 层 non-determinism,observability 是开放问题;另一条「UI for AI is here, it's @shadcn」把 declarative component model 推到 ship AI 产品的 default surface。_catwu 补一条小而 tactile 的:split-screen 是她在 Claude Code desktop 上最爱的 feature——agents 跑得久,需要 user 不离开 work 就能 steer。三件事咬合:runtime / UI primitive / UX detail,三张 agent 时代的 surface 都在 6-27 站位。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2070676383135834334",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch (Vercel CEO) opens a thread on why agents are particularly hard to debug. Two reasons: by design, AI models behave non-deterministically — two identical prompts do not always yield the same output. And by architecture, agents are complex distributed systems — multiple steps across functions and sandboxes, touching dozens of APIs that can rate-limit or go down. Nailing down observability is the open problem.",
+              "The thread lands as a platform thesis. The 'agent' surface is two failure modes stacked: model non-determinism (which nobody can fully fix) and infra non-determinism (rate limits, partial outages, network partitions). Whoever sells the observability that lets a builder trace which of the two was responsible, at which step, on which call, owns the next platform layer. Vercel is positioning to be in that race."
+            ],
+            "original": [
+              "Agents are particularly hard-to-debug software. \n\nFor one, and by design, AI models behave in non-deterministic ways. Even two identical prompts don't always yield the same output.\n\nBut agents are also complex distributed systems. They involve multiple steps of computation across functions and sandboxes, touching dozens of API services that can go down, rate limit you, etc.\n\nNailing down observabi"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch(Vercel CEO)开 thread 讲为什么 agents 特别难 debug。两条原因:设计层面,AI 模型本身就是 non-deterministic——两个一模一样的 prompt 不一定得到一样的输出。架构层面,agents 是复杂的 distributed system——跨 functions 和 sandboxes 跑多步,会触到几十个 API,而这些 API 都可能 rate-limit 或挂掉。把 observability 做扎实是当前的开放问题。",
+              "这条 thread 落地是 platform thesis。「agent」surface 是两层失败模式叠在一起:模型层的 non-determinism(谁也修不完)+ infra 层的 non-determinism(rate limit、partial outage、network partition)。谁能卖那种 observability——让 builder 能 trace 出是两层里哪一层、在哪一步、哪一次 call 上出问题——谁就拿到下一层 platform。Vercel 在争这个位置。"
+            ],
+            "original": [
+              "Agents 是特别难 debug 的软件。\n\n一方面,设计上 AI 模型就是 non-deterministic——两个相同的 prompt 不一定得到相同的输出。\n\n但 agents 也是复杂的 distributed system——跨 functions 和 sandboxes 跑多步,触到几十个 API,这些 API 都可能 rate-limit 或挂掉。\n\n把 observability 做扎实是当前的开放问题。"
+            ]
+          },
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO"
+        },
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2070567538040422712",
+          "en": {
+            "rewrite": [
+              "Rauch's one-liner: 'The UI for AI is here. It's @shadcn.' A short call, but the framing matters. The argument is that the declarative, copy-paste component model has become the default surface for shipping AI products — the cost of building a polished chat or tool-use UI has dropped to near zero because the primitives are reusable, owned by the developer, and trivially forkable.",
+              "In Vercel's framing, shadcn is not just a UI library — it is the proof that the cost of 'good AI UX' has collapsed. Combined with the observability thread above, the bet is: agents are the runtime, the UI primitives are the surface, and the platform plays between them. Whoever controls the developer muscle memory on both sides wins the next category."
+            ],
+            "original": [
+              "The UI for AI is here. It's @shadcn https://t.co/bzgEEKO9Az"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Rauch 一句话 callout:「The UI for AI 已经在这里了。它是 @shadcn。」字很短,但 framing 重要。论点:declarative + copy-paste 的 component model 已经成了 ship AI 产品的默认 surface——搭一个 polished 的 chat 或 tool-use UI 的成本已经接近 0,因为 primitive 可复用、归开发者、可随时 fork。",
+              "在 Vercel 的 framing 里,shadcn 不仅是 UI 库——它是「好的 AI UX 成本坍缩」的证明。和上面那条 observability thread 合起来看,这个 bet 是:agents 是 runtime,UI primitive 是 surface,platform 在中间玩。谁能同时在 developer muscle memory 的两侧站位,谁就赢下一个 category。"
+            ],
+            "original": [
+              "The UI for AI 已经到了。它是 @shadcn。https://t.co/bzgEEKO9Az"
+            ]
+          },
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO"
+        },
+        {
+          "authorKey": "x:_catwu",
+          "sourceUrl": "https://x.com/_catwu/status/2070613405237432766",
+          "en": {
+            "rewrite": [
+              "Cat Wu (Anthropic product engineering, on the Claude Code team) calls out split-screen as one of her favorite Claude Code on desktop features. The post is short, but the pick is telling. Split-screen on a desktop coding surface lets you run Claude on one side and your actual code / browser / terminal on the other, with the work-in-progress continuously visible.",
+              "The point is not that split-screen is novel — IDEs have had it for years. The point is that it is the kind of small, tactile UX detail that, in the agent era, stops being optional. Agents run long, agents get confused, agents need the user to glance over and steer; the surface that lets the user do that without leaving the work wins. The agent tools that don't ship this get quietly demoted in workflow."
+            ],
+            "original": [
+              "split screen is one of my fave claude code on desktop features! https://t.co/4ZQZjBnmvL"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Cat Wu(Anthropic 产品工程,Claude Code 团队)把 split-screen 拎出来说是她在 Claude Code desktop 上最喜欢的 feature 之一。post 很短,但挑出来的 feature 很说明问题。Desktop coding surface 上的 split-screen 让 Claude 跑在一边,你自己的 code / browser / terminal 跑在另一边,work-in-progress 一直可见。",
+              "重点不是 split-screen 新——IDE 早就有。重点是:在 agent 时代,这种小而触感的 UX 细节不再是 optional。Agents 跑得久、会晕、需要用户瞟一眼再 steer;能让用户不离开 work 就能 steer 那个 surface 才赢。不 ship 这个细节的 agent 工具,会在 workflow 里被悄悄降权。"
+            ],
+            "original": [
+              "split screen 是我在 Claude Code desktop 上最喜欢的 feature 之一!https://t.co/4ZQZjBnmvL"
+            ]
+          },
+          "authorName": "Cat Wu",
+          "authorHandle": "@_catwu",
+          "authorTag": "Anthropic 产品工程"
+        }
+      ]
+    },
+    {
+      "title": "Taste / 拒绝 / Audience:taste 必须从 arena 里出来,问题是用来拒绝的,audience 才是 compounding 的那一个 / Taste Must Come From the Arena, Problems Are for Refusing, Audience Is What Compounds",
+      "desc": "nikunj 反驳「taste 是新护城河」的话语——taste 不能从观察者转给 builder,必须自己 cook 100 道菜;thenanyu 给 operating discipline 命名一个「secret level 6」:不追 side quest,知道哪些问题要拒绝;zarazhangrui 一句「你不需要神替你写邮件」把 audience 推到 compounding 那一侧。三条合起来:taste / 拒绝 / audience 是 build 时代三个不进 arena 就拿不到的东西。",
+      "cards": [
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2070649602953576825",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari (Afore Capital partner) pushes back on the 'taste' discourse: most of the taste commentary right now is coming from people who have never built anything. You cannot achieve or refine taste without being in the arena. The chef analogy is the load-bearing one — you don't expect the first dish to be good; you cook 100 dishes, and by the 101st, taste starts to imbue.",
+              "The argument is structural: taste is not transferable from observer to builder. The observer's 'taste' is a downstream, static judgment; the builder's taste is an upstream, iterative process. If you want the second kind, you have to be in the kitchen. This is a direct counter to the line of 'taste is the new moat' content that has been on every AI-builders feed lately."
+            ],
+            "original": [
+              "Now that the dust is settled, what's really funny to me about the taste commentary is it's coming from a LOT of people who never have built anything..\n\nYou can't achieve (or refine) taste without being in the arena. \n\nIt's like a chef cooking and expecting their first dish to be good on the first go. \n\nBut, when you give it a 100 iterations and maybe cook a 100 dishes, then the 101st one has imbue"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kothari(Afore Capital 合伙人)对当下「taste」话语直接 push back:大多数 taste 评头论足的人,自己从来没 build 过任何东西。不进 arena,你没法 achieve(也没法 refine)taste。chef 的类比是承重的——你不指望第一道菜就好;做了 100 道菜,到第 101 道,taste 才开始 imbue 进去。",
+              "论点是结构性的:taste 不能从观察者转给 builder。观察者的「taste」是 downstream 的、静态判断;builder 的 taste 是 upstream 的、迭代过程。想要后面那种,你得在厨房里。这是对「taste 是新护城河」那条 discourse 的直接反驳——那条最近在 AI builder feed 上已经被推到让人疲倦。"
+            ],
+            "original": [
+              "现在尘埃落定,关于 taste 的评头论足最让我觉得好笑的是:大部分来自从来没 build 过任何东西的人。\n\n不进 arena,你没法 achieve(也没法 refine)taste。\n\n像 chef 做饭,指望第一道就好。\n\n但做 100 道菜,到第 101 道,taste 才开始 imbue 进去。"
+            ]
+          },
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人"
+        },
+        {
+          "authorKey": "x:thenanyu",
+          "sourceUrl": "https://x.com/thenanyu/status/2070656348488937889",
+          "en": {
+            "rewrite": [
+              "Nan Yu names a 'secret level 6' of operating discipline: there is a problem, but it is not worth solving, so leave it alone. The org-with-a-ton-of-level-1s can win because it does not get distracted by side quests. The 'level 1s' framing — people who operate at the level of solving the actual problem in front of them — is the point: enough of them, all choosing not to chase the shiny side quest, compounds into focus.",
+              "The thesis is a counterweight to the 'taste' / 'curation' discourse. Nikunj said taste is iterative, you have to be in the arena. Thenanyu is naming a separate skill: the willingness to refuse a problem. The org that wins is the one that is full of level-1s who all know which problems to leave alone. The discipline of refusal is as much a part of the build as the discipline of attention."
+            ],
+            "original": [
+              "Secret level 6: there's a problem, but it's not worth solving, so leave it alone. \n\nThis is why org with a ton of level 1s can win. They don't get distracted by side quests https://t.co/fRGy1NC9oT"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nan Yu 给 operating discipline 命名一个「secret level 6」:有个问题,但不值得解,那就别碰。Org 里有一堆 level 1s 之所以能赢,是因为他们不被 side quest 带偏。「level 1s」这个 framing——在眼前那个 problem 那一层操作的人——才是关键:足够多的人,全都选择不追 shiny side quest,compounds 出 focus。",
+              "这条 thesis 是对「taste / curation」话语的一个对冲。Nikunj 那边说 taste 是迭代,你得在 arena 里。Thenanyu 这边命名另一个 skill:有勇气拒绝一个问题。能赢的 org 装满知道「哪些问题要拒绝」的 level-1s。拒绝的 discipline 和 attention 的 discipline 一样,是 build 的一部分。"
+            ],
+            "original": [
+              "Secret level 6:有个问题,但不值得解,那就别碰。\n\n这就是为什么装满 level 1s 的 org 能赢。他们不被 side quest 带偏。https://t.co/fRGy1NC9oT"
+            ]
+          },
+          "authorName": "Nan Yu",
+          "authorHandle": "@thenanyu",
+          "authorTag": "AI 创业者 / 投资人"
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2070589563429691698",
+          "en": {
+            "rewrite": [
+              "Zhang Rui (Follow Builders founder) drops a one-liner that lands as a founder self-check: 'You do not need God to write your emails.' The point is the inversion of the productivity narrative — the AI that was sold as 'let AI write your emails' is now a baseline everyone has, and the actual differentiator is who you are talking to, not how the email is phrased.",
+              "In the context of the outcomes-not-tools line and the agent infra thread, this lands as the audience-side mirror: if the bundle is (model + skills + agents), then the variable that does not get commoditized is the audience the bundle reaches. Build the audience, and the bundle is something you can plug into. Build the bundle without the audience, and the bundle is what every other founder is also building. The differentiator that compounds is audience."
+            ],
+            "original": [
+              "\"You do not need God to write your emails\" https://t.co/wisy8LNck0"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zhang Rui(Follow Builders 创始人)扔一句话,落地是 founder self-check:「You do not need God to write your emails.」重点是 productivity 叙事的反——「让 AI 帮你写邮件」是现在所有 baseline 都有的事,真正 differentiated 的是你在和谁说话,不是邮件怎么措辞。",
+              "放在 outcomes-not-tools 和 agent infra 的语境里,这是 audience-side 的镜像:bundle 是「model + skills + agents」,那唯一不会被 commoditize 的变量就是这个 bundle 触达的 audience。Audience 建起来,bundle 是你能 plug 的东西。Bundle 起来但没有 audience,这个 bundle 就是其他 founder 也在 build 的东西。会 compound 的是 audience。"
+            ],
+            "original": [
+              "「你不需要神来替你写邮件」https://t.co/wisy8LNck0"
+            ]
+          },
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人"
+        }
+      ]
+    },
+    {
+      "title": "Frontier 本身在被定价 — OpenAI 与 YC 在 6-27 同时表态 / Frontier Itself Is Being Priced — OpenAI and YC Speak on the Same Day",
+      "desc": "sama 同一天压两条:5.5 instant 更新 + 「i like its vibes」把 vibe-level 评价从 lab CEO 嘴里说出来;all-you-can-eat tokens 还没到但「we are working on it」是公开方向。garrytan 在另一侧做 YC 机构层判断:frontier 被 throttled 到 ~20 家 pre-approved 的 release 模式,salt the ground、kill small startup 的创新。两条合起来:lab 这一侧公开承认 vibe 才是 ground truth、承诺 all-you-can-eat;另一边 YC 明确说这种 gate 模式是 anti-startup。Frontier 正在被定价,而且定价的双方都在 6-27 同时说话。",
+      "cards": [
+        {
+          "authorKey": "x:sama",
+          "sourceUrl": "https://x.com/sama/status/2070612055225483692",
+          "en": {
+            "rewrite": [
+              "Sam Altman announces: 'in other news, we updated the 5.5 instant model used in chatgpt this week. i like its vibes.' The phrasing — 'vibes' — is the load-bearing part. The OpenAI CEO is publicly signing off on a vibe-level characterization of a model, in the same week that a Noam Brown interview (see the closer) is naming the benchmark grid as fundamentally broken for capturing exactly this kind of difference.",
+              "The 'vibes' framing is not marketing fluff. It is the OpenAI side of the same honesty Noam is bringing to the benchmark conversation: traditional evaluation does not capture what users actually feel when they use the model, and the team is comfortable saying so. The cultural change is that the lab CEO is now the first public endorser of that position."
+            ],
+            "original": [
+              "in other news, we updated the 5.5 instant model used in chatgpt this week.\n\ni like its vibes."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Sam Altman 抛一条:「另外说一下,我们这周更新了 chatgpt 用的 5.5 instant model。我喜欢它的 vibes。」措辞——「vibes」——才是承重的。OpenAI CEO 公然给一个 model 签 vibe-level 的评价,正好是 Noam Brown 那次访谈(见收尾)把 benchmark grid 拆为「根本没法 capture 这种差别」的同一周。",
+              "「vibes」这个 framing 不是 marketing 话术。它是 Noam 那个 benchmark 讨论在 OpenAI 那一侧的诚实:传统 evaluation 没法 capture 用户用 model 时真正感受到的东西,团队愿意公开这么说。文化变化是:lab 的 CEO 现在是这立场第一个公开背书的人。"
+            ],
+            "original": [
+              "另外说一下,我们这周更新了 chatgpt 用的 5.5 instant model。\n\n我喜欢它的 vibes。"
+            ]
+          },
+          "authorName": "Sam Altman",
+          "authorHandle": "@sama",
+          "authorTag": "OpenAI CEO"
+        },
+        {
+          "authorKey": "x:sama",
+          "sourceUrl": "https://x.com/sama/status/2070614769678393846",
+          "en": {
+            "rewrite": [
+              "Sam Altman confirms what every builder is hoping to hear: 'not quite all-you-can-eat tokens, but we are working on it.' The 'not quite' qualifier is doing real work — the model lab is publicly committing to a direction (unlimited token consumption at a flat price) and admitting the current state is not there yet. That is a much louder signal than 'we are exploring pricing options.'",
+              "Read in the context of the gate loop and the Sol directive, this lands as a deliberate counterweight: even as the frontier side tightens access for the very top models, the consumer / builder side of the model is being pushed toward something close to flat-rate all-you-can-eat. The two moves are compatible: gate the frontier, subsidize the surface. That is a particular product thesis about who gets to build what."
+            ],
+            "original": [
+              "not quite all-you-can-eat tokens, but we are working on it"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Sam Altman 公开确认每个 builder 都想听的话:「还不是 all-you-can-eat tokens,但我们在做。」「not quite」这个 qualifier 真的在做事——model lab 公开承诺一个方向(unlimited token consumption at a flat price),承认现在还没到。这比「we are exploring pricing options」响得多。",
+              "放在 gate loop 和 Sol directive 的语境里,这是一条 deliberate 的对冲:frontier 这一侧在收最顶级 model 的 access,consumer / builder 那一侧在被推向接近 flat-rate all-you-can-eat。两种动作是兼容的:gate frontier,subsidize surface。这是一个关于「谁能 build 什么」的特定 product thesis。"
+            ],
+            "original": [
+              "还不是 all-you-can-eat tokens,但我们在做。"
+            ]
+          },
+          "authorName": "Sam Altman",
+          "authorHandle": "@sama",
+          "authorTag": "OpenAI CEO"
+        },
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2070699046939820223",
+          "en": {
+            "rewrite": [
+              "Garry Tan (Y Combinator president) calls the current model release pattern out as 'no way to release a model' — continued development and release done this way, he says, is a solid way to salt the ground and kill all innovation by small startups. The post is a quotetweet; the value is the quotetweeted source (which is exactly the kind of frontier-gating story from §1).",
+              "Tan is making the YC institutional read of the gate story: if the frontier model is being throttled at the level of 'government directive + ~20 pre-approved companies,' small startups — which are the customers YC funds — are not going to be on that list. The Y Combinator angle is therefore: this release pattern is, in practice, anti-startup. The 'salting the ground' framing makes it economic: the field is being set up so that small founders cannot build on the best model."
+            ],
+            "original": [
+              "This is honestly no way to release a model and continued development and release this way is a solid way to salt the ground and kill all innovation by small startups"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan(Y Combinator 总裁)把现在的 model release 模式称为「honestly no way to release a model」——按这种方式继续开发和发布,会稳稳地 salt the ground,把 small startup 的创新 kill 掉。post 是一条 quote-tweet;价值在 quote 的源头(正是 §1 命名的 frontier-gating 故事)。",
+              "Tan 在做 YC 机构层面对 gate 故事的读:如果 frontier model 正在被 throttled 到「government directive + ~20 家 pre-approved companies」这一层,small startup——YC 投的那些——不会在那个名单上。Y Combinator 的角度因此是:这种 release 模式在 practice 上是 anti-startup。「salting the ground」这个 framing 让它变成经济学:这片地正在被布成小 founder 不能在最顶级 model 上 build 的格局。"
+            ],
+            "original": [
+              "老实说这不是发 model 的方式,按这种方式继续开发和发布,会稳稳地 salt the ground,把 small startup 的创新 kill 掉。"
+            ]
+          },
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁"
+        }
+      ]
+    },
+    {
+      "title": "Podcast 收尾:Noam Brown 把 frontier benchmark 框架拆掉,test-time compute 是 policy 框架还没追上的那一维 / Podcast: Noam Brown Tearing Down the Frontier Benchmark Framework, Test-Time Compute as the Missing Axis",
+      "desc": "No Priors 这一期 Noam Brown 拿 GPT-5.5 自己那次发布当 case study,讲 published benchmark grid 没 control for test-time compute,所以「5.4 在 max settings 思考更久,5.5 思考更短但更高效」这件事在 grid 上看不出来。RSPs 和 frontier policy framework 是按「model capability 是单点 number」写的,Noam 说这个 number 现在是「你投入多少 compute」的函数,policy 还没追上来。这期给前面那一串 frontier 收口 / 定价的讨论补一个最底层的根据。",
+      "cards": [
+        {
+          "authorKey": "podcast:no-priors",
+          "sourceUrl": "https://www.youtube.com/watch?v=AZrU6y3pUcU",
+          "en": {
+            "rewrite": [
+              "Noam Brown (OpenAI research scientist, co-author of Libratus / Pluribus / the Cicero Diplomacy agent) joins No Priors with Sarah Guo to argue that the way the industry evaluates frontier models is fundamentally broken. The single-number-on-a-single-benchmark grid that ships with every release does not control for test-time compute, so a model that is 'worse' on paper can be 'much better' in actual use because it gets more done with the same think budget.",
+              "Brown's case study is the GPT-5.5 release itself: the published benchmark grid was unimpressive — a few percentage points over 5.4 — so the public reaction was skepticism. Within hours of people using it, the verdict flipped. The reason is that 5.5 is just much more efficient with its thinking: at max settings, 5.4 is now thinking for longer than 5.5 to get the same answer. The Responsible Scaling Policies (RSPs) and frontier-policy frameworks in use today are written as if model capability is a single number; Brown is saying that number is now a function of how much compute you put in, and the policies are not set up to evaluate at the right budget."
+            ],
+            "original": [
+              "Speaker 1 | 00:00 - 00:13\nWith GBT three, you couldn't scale test time compute. Like, if you gave it a budget of $10,000,000 and said, okay. Well, let's see what GBT three can do. It really can't do that much. The precarious frameworks and responsible scaling policies, they don't really account for the amount of test time compute.\n\nSpeaker 1 | 00:13 - 00:32\nThey just say, okay. Well, what's the capability of the model? The problem is we're in a world now where the capability of the model is a function of how much money you put into it, basically. If you give it a budget of $10,000, it can do a lot more than what it can do with a budget of $10. Give it a budget of $10,000,000, it can do even At what budget should you evaluate these models?\n\nSpeaker 1 | 00:32 - 00:36\nThe policies that exist today don't really address that question."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Noam Brown(OpenAI 研究员,Libratus / Pluribus / Cicero Diplomacy agent 的共同作者)上 No Priors 和 Sarah Guo 一起讲:行业评测 frontier model 的方式从根本上就是 broken。每次发 model 都附带的「single number on a single benchmark」那张 grid,没有 control for test-time compute,所以一个在纸上看起来「更差」的 model,在实际使用上可能「好得多」——因为它用同样的 think budget 做到了更多。",
+              "Brown 用的 case study 就是 GPT-5.5 自己那次发布:公布的 benchmark grid 不出彩——只比 5.4 高几个百分点——所以公众反应一开始是怀疑。几个小时大家实际用下来,verdict 翻盘。原因是 5.5 思考效率高很多:max settings 下,5.4 现在要想更久才得到 5.5 的答案。当下在用的 Responsible Scaling Policies(RSPs)和 frontier-policy 框架,都按「model capability 是一个单点 number」来写;Brown 想说的是,这个 number 现在是「你投入多少 compute」的函数,而 policy 框架没准备好按对的 budget 评测。"
+            ],
+            "original": [
+              "Speaker 1 | 00:00 - 00:13\nGPT-3 时代你不能 scale test-time compute。你给它 $10,000,000 的预算说「来看看 GPT-3 能做啥」——其实没多少。当下的 framework 和 responsible scaling policies 没真的 account for test-time compute 的量。\n\n他们就说「这个 model 的 capability 是多少」。问题是现在 model 的 capability 本质上是「你投多少钱进去」的函数。给它 $10,000 预算,能做到 $10 预算做不到的多。给它 $10,000,000 预算,能做到更多。那按什么 budget 评测这些 model?\n\nSpeaker 1 | 00:32 - 00:36\n现在的 policy 根本没回答这个问题。"
+            ]
+          },
+          "authorName": "No Priors",
+          "authorHandle": null,
+          "authorTag": "AI 与创业对话播客"
+        }
+      ]
+    }
+  ]
+}

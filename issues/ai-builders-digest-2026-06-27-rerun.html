@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Builders Digest · 2026-06-27</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ed;
+    --accent: #c0392b;
+    --accent-light: #e8d5c4;
+    --border: #d4cdc0;
+    --muted: #7a7265;
+    --tag-bg: #e8e2d6;
+    --en-bg: #ffffff;
+    --cn-bg: #faf7f2;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  .masthead, .intro, .section-header, .feed, footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .masthead { padding-top: 48px; }
+  .masthead-rule { border: none; border-top: 3px solid var(--ink); margin: 0 0 12px; }
+  .masthead-inner { display: flex; justify-content: center; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; letter-spacing: -0.4px; }
+  .masthead-subtitle { margin-top: 8px; padding-bottom: 10px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  .edition-strip {
+    position: relative;
+    margin-top: 8px;
+    min-height: 46px;
+    padding: 10px 132px 12px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.34);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+
+  .edition-strip .edition-sep { margin: 0 8px; color: #b8ae9f; }
+  .edition-strip-text { display: block; }
+  .edition-return-link { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; padding: 6px 10px; border: 1px dashed rgba(192, 57, 43, 0.55); border-radius: 999px; color: var(--accent); text-decoration: none; font-size: 12px; line-height: 1; letter-spacing: 0.06em; background: rgba(255, 255, 255, 0.45); transition: background 160ms ease, border-color 160ms ease, transform 160ms ease; }
+  .edition-return-link:hover, .edition-return-link:focus-visible { background: rgba(255, 255, 255, 0.82); border-color: var(--accent); transform: translateY(-50%) translateX(-1px); }
+  .edition-return-link:focus-visible { outline: none; }
+  .intro { padding-top: 22px; }
+  .intro-inner { max-width: 920px; margin: 0 auto; padding: 0 0 0 18px; border-left: 3px solid #d9cdbc; }
+  .intro-kicker { margin: 0 0 8px; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .intro p { margin: 0; max-width: none; color: var(--muted); font-size: clamp(15px, 1.6vw, 16px); line-height: 1.9; text-wrap: pretty; font-family: 'Noto Serif SC', serif; overflow-wrap: anywhere; }
+
+  .section-header { margin-top: 40px; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; margin: 0 0 6px; }
+  .section-desc { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+
+  .feed { display: flex; flex-direction: column; gap: 20px; }
+  .card { background: var(--en-bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .card-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid #eee7dd; flex-wrap: wrap; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .avatar-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .avatar.is-fallback img { display: none; }
+  .avatar.is-fallback .avatar-fallback { display: flex; }
+
+  .author-info { flex: 1; min-width: 160px; }
+  .author-name { font-weight: 600; font-size: 15px; }
+  .author-name-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .author-handle { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+  .author-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; background: var(--tag-bg); color: var(--muted); padding: 4px 8px; border-radius: 999px; }
+  .author-tag.is-inline { padding: 3px 8px; }
+
+  .card-controls { margin-left: auto; display: inline-flex; gap: 8px; }
+  .view-toggle { border: 1px solid var(--border); background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 999px; font-size: 12px; line-height: 1; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; }
+  .view-toggle.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .card-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .lang-col { padding: 18px 20px 22px; }
+  .lang-col.cn { background: var(--cn-bg); border-right: 1px solid #f0ece4; font-family: 'Noto Serif SC', serif; }
+  .lang-col.en { background: var(--en-bg); }
+  .lang-label { margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+  .content-shell { position: relative; transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .content-variant { position: absolute; inset: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(4px); transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; will-change: opacity, transform; }
+  .content-variant.is-active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+  .content-variant p, .content-variant li { margin: 0 0 12px; font-size: 14px; }
+  .content-variant ol { margin: 0 0 12px 20px; padding: 0; }
+  .inline-code { display: inline-block; font-family: 'IBM Plex Mono', monospace; background: #f4efe7; padding: 3px 6px; border-radius: 6px; margin-bottom: 8px; }
+
+  .card-footer { padding: 12px 20px 16px; border-top: 1px solid #eee7dd; background: #fcfaf6; }
+  .card-footer a { color: var(--accent); text-decoration: none; font-size: 14px; }
+  footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 680px) {
+    .masthead-inner { align-items: center; }
+    .edition-strip { padding-right: 12px; padding-left: 12px; }
+    .edition-strip-text { padding-right: 0; }
+    .edition-return-link { position: static; transform: none; margin-top: 8px; font-size: 11px; }
+    .card-controls { margin-left: 0; }
+    .card-body { grid-template-columns: 1fr; }
+    .lang-col.cn { border-right: none; border-bottom: 1px solid #f0ece4; }
+    .edition-strip .edition-sep { margin: 0 5px; }
+    .intro-inner { padding-left: 14px; }
+    .intro p { line-height: 1.84; }
+  }
+</style>
+</head>
+<body data-publish-date="2026-06-27" data-issue-number="33" data-edition-name="双语精选版" data-view-label-rewrite="速读" data-view-label-original="原文" data-author-identities-path="/home/eclaw/.follow-builders/assets/author-identities.json" data-avatar-manifest-path="/home/eclaw/.follow-builders/assets/avatar-manifest.json">
+  <header class="masthead">
+    <hr class="masthead-rule">
+    <div class="masthead-inner">
+      <div class="masthead-title">AI Builders Digest</div>
+    </div>
+    <div class="masthead-subtitle">Bilingual edition · 双语对照版</div>
+    <div class="edition-strip">
+      <span class="edition-strip-text" id="edition-strip-text">第 33 期｜2026-06-27｜双语精选版｜17 条精选｜14 位作者｜6 个主题</span>
+      <a class="edition-return-link" href="../index.html">返回目录</a>
+    </div>
+  </header>
+
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="6-27 没有「一场 launch 把所有 attention 拉走」的事,Follow Builders 这一天的主旋律是「Frontier 收口 + Builder 重排 + Frontier 本身被定价」三件事在同一天咬合。petergyang 把 frontier-distill-adopt-gate 的四步循环摊开、danshipper 借玩笑把 GPT-5.6 Sol + U.S. government directive 限到 ~20 家 pre-approved 的现况命名出来,Levie 接着说 GPT-5.6 is real、no walls in progress,thsottiaux 同一周给所有 Codex 用户一次 usage reset on the house——这一侧是 frontier 收口、能力还在 scaling、gating 是 deliberate lever。Builder 这一侧,petergyang 同样在 6-27 把「钱在移到 services(顺带 bundled software)、pure-play software 公司难」当成市场结构说出来,adityaag 用一个很 personal 的「zero tolerance for shallow interactions」把这条 consumer 侧画出来——depth 用人类预算、其余 route 给 agents,swyx 同一天办第一场 AI FDE miniconference,把 FDE 这个夹在 frontier lab 和 customer outcome 之间的工种正式命名。rauchg 在另一条线把「agent 难 debug」拆成模型层 non-determinism + infra 层 non-determinism,observability 是开放问题;同一天再压「The UI for AI is here, it&#39;s @shadcn」——runtime、UI primitive、UX detail,三张 agent 时代的 surface 都在 6-27 站位。Taste 这一边是反话语:nikunj 直接 push back「taste 必须从 arena 里出来」,thenanyu 给 operating discipline 命名「secret level 6」——不追 side quest,知道哪些问题要拒绝,zarazhangrui「你不需要神来替你写邮件」把 audience 推到 compounding 的那一侧。最后 frontier 本身正在被定价:sama 同一天压两条——5.5 instant updated + 「i like its vibes」是 CEO 给 vibe-level 评价签背书、all-you-can-eat tokens 还没到但「we are working on it」是公开方向;garrytan 在另一侧做 YC 机构层面判断,这种 release 模式是 salt the ground、kill small startup 的创新。压轴是 No Priors 这一期 Noam Brown 拿 GPT-5.5 自己那次发布当 case study,讲 published benchmark grid 没 control for test-time compute、RSPs 和 frontier policy 框架还没追上来——这一期给前面那一串 frontier 收口 / 定价的讨论补一个最底层的根据。">
+    <div class="intro-inner">
+      <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
+      <p class="intro-copy">6-27 没有「一场 launch 把所有 attention 拉走」的事,Follow Builders 这一天的主旋律是「Frontier 收口 + Builder 重排 + Frontier 本身被定价」三件事在同一天咬合。petergyang 把 frontier-distill-adopt-gate 的四步循环摊开、danshipper 借玩笑把 GPT-5.6 Sol + U.S. government directive 限到 ~20 家 pre-approved 的现况命名出来,Levie 接着说 GPT-5.6 is real、no walls in progress,thsottiaux 同一周给所有 Codex 用户一次 usage reset on the house——这一侧是 frontier 收口、能力还在 scaling、gating 是 deliberate lever。Builder 这一侧,petergyang 同样在 6-27 把「钱在移到 services(顺带 bundled software)、pure-play software 公司难」当成市场结构说出来,adityaag 用一个很 personal 的「zero tolerance for shallow interactions」把这条 consumer 侧画出来——depth 用人类预算、其余 route 给 agents,swyx 同一天办第一场 AI FDE miniconference,把 FDE 这个夹在 frontier lab 和 customer outcome 之间的工种正式命名。rauchg 在另一条线把「agent 难 debug」拆成模型层 non-determinism + infra 层 non-determinism,observability 是开放问题;同一天再压「The UI for AI is here, it&#39;s @shadcn」——runtime、UI primitive、UX detail,三张 agent 时代的 surface 都在 6-27 站位。Taste 这一边是反话语:nikunj 直接 push back「taste 必须从 arena 里出来」,thenanyu 给 operating discipline 命名「secret level 6」——不追 side quest,知道哪些问题要拒绝,zarazhangrui「你不需要神来替你写邮件」把 audience 推到 compounding 的那一侧。最后 frontier 本身正在被定价:sama 同一天压两条——5.5 instant updated + 「i like its vibes」是 CEO 给 vibe-level 评价签背书、all-you-can-eat tokens 还没到但「we are working on it」是公开方向;garrytan 在另一侧做 YC 机构层面判断,这种 release 模式是 salt the ground、kill small startup 的创新。压轴是 No Priors 这一期 Noam Brown 拿 GPT-5.5 自己那次发布当 case study,讲 published benchmark grid 没 control for test-time compute、RSPs 和 frontier policy 框架还没追上来——这一期给前面那一串 frontier 收口 / 定价的讨论补一个最底层的根据。</p>
+    </div>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 01</div>
+    <h2 class="section-title">Frontier 收口:gate loop、Sol 名单、5.6 is real、Codex 退款 — Frontier 收口 The Gate Loop, The Sol List, GPT-5.6 Is Real, and a Codex Refund</h2>
+    <p class="section-desc">petergyang 把 frontier-distill-adopt-gate 的四步循环摊在桌面上;danshipper 借玩笑把 GPT-5.6 Sol + U.S. government directive 限到 ~20 家 pre-approved 的现况命名出来;Levie 补刀 GPT-5.6 is real、no walls in progress;thsottiaux 同一周给所有 Codex 用户一次 usage reset on the house,把「capability 还在 scaling、gating 是 deliberate lever、refund 是 trust move」三件事拼成 6-27 的 frontier side。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:petergyang" data-author-name="Peter Yang" data-author-tag="产品教练 / 创作者经济研究者" data-author-handle="@petergyang" data-author-avatar="../assets/avatars/x-petergyang.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-petergyang.jpg" alt="Peter Yang avatar"><span class="avatar-fallback">PY</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Yang</div>
+            <div class="author-tag is-inline">产品教练 / 创作者经济研究者</div>
+          </div>
+          <div class="author-handle">@petergyang</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang 把行业正在跑的四步循环摊出来:1) 发 frontier model;2) 被蒸馏成便宜的开源 model;3) US 公司采用开源 model,因为够用且便宜得多;4) frontier lab 开始 gate 自己的 frontier model 访问。最后那一行的问题才是关键:第 4 步之后会怎样?US 公司创新变少?开源 model 又变香?</p>
+              <p>循环是重点,不是任何单步。作者没在预测某一个结果,他在命名结构。第 3 步是大多数 builder 都能识别的那一段:便宜的蒸馏在需求曲线上一大块都够用。第 4 步是刚刚变成现实的那一段:gating,而不是 pricing,成了杠杆。从这里开始,「你在第 4 步的哪个位置」会决定哪些公司能 ship 到哪些 sandbox。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>我整理一下:
+
+              1. 我们发 frontier model
+              2. 被蒸馏成便宜的开源 model
+              3. US 公司采用开源 model,够用且便宜得多
+              4. 我们开始 gate 自己的 frontier model 访问
+
+              下一步呢?US 公司创新变少?开源 model 又变香?</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang lays out a four-step loop that he says the industry is now in: 1) publish a frontier model; 2) it gets distilled into a cheap open-source model; 3) US companies adopt the open-source one because it is good enough and much cheaper; 4) the frontier lab starts gating access to its own frontier model. The questions in the last line are pointed: what comes after step 4? US companies innovate less? Open-source becomes more attractive again?</p>
+              <p>The loop is the part that matters, not any single step. The author is not predicting one outcome — he is naming the structure. Step 3 is the part most builder-audiences will recognize: the cheap distillation is good enough for a large swath of the demand curve. Step 4 is the part that just became real: gating, not pricing, is the lever. From here on, &#39;where you sit in step 4&#39; is going to define which companies ship into which sandbox.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>So let me get this straight:
+
+              1. We publish frontier models
+              2. They get distilled into cheap open source models
+              3. US companies adopt the same open source models because they&#39;re good enough and much cheaper
+              4. We start gating access to frontier models
+
+              What next? US companies innovate less? Open source models become more attractive?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/petergyang/status/2070633838146134219" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:danshipper" data-author-name="Dan Shipper" data-author-tag="Every 联合创始人 / AI 写作工具链" data-author-handle="@danshipper" data-author-avatar="../assets/avatars/x-danshipper.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-danshipper.jpg" alt="Dan Shipper avatar"><span class="avatar-fallback">DS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Dan Shipper</div>
+            <div class="author-tag is-inline">Every 联合创始人 / AI 写作工具链</div>
+          </div>
+          <div class="author-handle">@danshipper</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Dan Shipper(Every)用玩笑包装的格式扔出一条「官宣」:「GPT-5.6 Sol」发布,即日起按 U.S. government directive,只有约 20 家 pre-approved 公司能访问,Every 不在名单上。玩笑是格式;真正的承重是 framing——这是 government 还在赛着定 frontier model 长期 policy 的过渡状态。</p>
+              <p>Shipper 明确说他理解也支持某些 government oversight。这条 post 的重点不是反对 oversight,而是 policy 状态没定,而「没定」本身已经是一张 product surface。能进 pre-approved 名单的公司,会带着先发优势去接最终 policy 出来的那个 sandbox。在 policy 落地之前,gating 本身就是 policy。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>突发:OpenAI 官宣 GPT-5.6 Sol!
+
+              即日起按 U.S. government directive,只有约 20 家 pre-approved 公司能访问,@every 不在名单上。看起来是 government 还在赛着定 frontier model 长期 policy 的过渡状态。
+
+              我理解也支持某些 government oversight,正在制</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Dan Shipper (Every) drops a satire-framed-but-anchored announcement: &#39;GPT-5.6 Sol&#39; is out, and by U.S. government directive, access is limited to about twenty pre-approved companies, Every not on the list. The joke is the announcement format; the real load is the framing: this looks like a temporary situation while the government races to set a long-term policy for releasing frontier models with advanced capabilities.</p>
+              <p>Shipper explicitly says he understands and applauds some government oversight. The point of the post is not opposition to oversight — it is that the policy state is undefined, and the undefined state is itself a product surface. The companies that get onto the pre-approved list now will have a head start on whatever sandbox the eventual policy produces. The pre-policy gating IS the policy, in practice.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>BREAKING: OpenAI announced GPT-5.6 Sol!
+
+              As of today, by U.S. government directive, access is limited to only ~20 pre-approved companies and @every is not on the list. This appears to be a temporary situation while the government races to figure out a long-term policy for releasing frontier models with advanced capabilities.
+
+              I understand and applaud the need for some government oversight in makin</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/danshipper/status/2070554118146412979" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:levie" data-author-name="Aaron Levie" data-author-tag="Box CEO" data-author-handle="@levie" data-author-avatar="../assets/avatars/x-levie.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-levie.jpg" alt="Aaron Levie avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie</div>
+            <div class="author-tag is-inline">Box CEO</div>
+          </div>
+          <div class="author-handle">@levie</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie(Box)说 GPT-5.6 是真的,看起来非常强,会对需要 heavy tool use 和 long-running agents 的 knowledge worker 任务特别强。末尾那句 qualifier 才是承重的:「现在我们没碰到任何 AI progress 的天花板。」</p>
+              <p>他这句话的重点不是 capability claim,是 wall claim。「没碰天花板」这个 framing,正是让后面那些 gating 讨论像 deliberate lever 而不是 scarcity 反应的根据。frontier 还在往上 scaling,constraint 已经从「能不能造出来」挪到「谁能用」。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>GPT-5.6 是真的,看起来非常强。会在需要 heavy tool use 和 long-running agents 的 knowledge worker 任务上特别强。我们现在没碰到任何 AI progress 的天花板。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie (Box) says GPT-5.6 is real, looks very strong, and is going to be very strong for knowledge-worker tasks that require heavy tool use and long-running agents. The qualifier at the end is the load-bearing one: &#39;We&#39;re not hitting any walls in AI progress right now.&#39;</p>
+              <p>The point of saying this is not the capability claim — it is the wall claim. The &#39;no wall right now&#39; framing is what makes the gating conversations downstream land as a deliberate lever rather than a scarcity reaction. The frontier is still scaling, and the constraint has moved from &#39;can we build it&#39; to &#39;who gets to use it&#39;.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>GPT-5.6 is real and looks very strong. Going to be very strong for knowledge worker tasks that require heavy tool use and long running agents doing work. We&#39;re not hitting any walls in AI progress right now.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/levie/status/2070563281916620895" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:thsottiaux" data-author-name="Thibault Sottiaux" data-author-tag="OpenAI Codex &amp; ChatGPT" data-author-handle="@thsottiaux" data-author-avatar="../assets/avatars/x-thsottiaux.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-thsottiaux.jpg" alt="Thibault Sottiaux avatar"><span class="avatar-fallback">TS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Thibault Sottiaux</div>
+            <div class="author-tag is-inline">OpenAI Codex &amp; ChatGPT</div>
+          </div>
+          <div class="author-handle">@thsottiaux</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thibault Sottiaux(OpenAI Codex &amp; ChatGPT 负责人)宣布:给所有 Codex 用户一次 usage reset,on the house。几小时内会到账。团队已经 apply mitigations,关键的是:调查没有发现用户在 large scale 上被影响。Monitoring 继续。</p>
+              <p>reset 本身才是有意思的部分,不是道歉。前沿 product 负责人发「on the house」是一次 deliberate signal:出 capacity 事件时,动作是给所有人 refund + apply mitigations,不是悄悄收紧 rate limit 然后赌没人注意。透明动作就是信任动作。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>我们给所有 Codex 用户一次 usage reset,on the house。几小时内会到账。
+
+              我们 apply 了 mitigations,调查没有发现用户在 large scale 上被影响。Monitoring 继续。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thibault Sottiaux (Codex &amp; ChatGPT lead at OpenAI) announces: all Codex users are getting a usage reset on the house. Accounts should reflect the credit within hours. The team has applied mitigations and, importantly, the investigation has not shown users being impacted at large. Monitoring continues.</p>
+              <p>The reset itself is the interesting part, not the apology. A &#39;reset on the house&#39; from a frontier-product lead is a deliberate signal: when a capacity event happens, the move is to refund everyone and apply mitigations, not to silently tighten the rate limit and hope nobody notices. The transparency move is also the trust move.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>We are giving all Codex users a usage reset on the house. Should be showing in your accounts in the next few hours.
+
+              We have applied some mitigations, but our investigation hasn&#39;t shown users being impacted at large. We are continuing to monitor the situation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/thsottiaux/status/2070653282440405046" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 02</div>
+    <h2 class="section-title">Builder 重排:outcomes &gt; tools / 给人类 depth 其余给 agents / FDE 成了新工种 / Builder Re-Alignment: Outcomes Beat Tools, Agents Handle the Rest, FDE Is the New Role</h2>
+    <p class="section-desc">petergyang 把「钱在移到 services(顺带 bundled software),pure-play software 公司难」当成市场结构说出来;adityaag 用很 personal 的「zero tolerance for shallow」把这条 consumer 侧画出来:depth 用人类预算,其余 route 给 agents;swyx 同一天办第一场 AI FDE miniconference,把 FDE 这个夹在 frontier lab 和 customer outcome 之间的工种正式命名。三件事叠成 6-27 的 builder 重排。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:petergyang" data-author-name="Peter Yang" data-author-tag="产品教练 / 创作者经济研究者" data-author-handle="@petergyang" data-author-avatar="../assets/avatars/x-petergyang.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-petergyang.jpg" alt="Peter Yang avatar"><span class="avatar-fallback">PY</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Yang</div>
+            <div class="author-tag is-inline">产品教练 / 创作者经济研究者</div>
+          </div>
+          <div class="author-handle">@petergyang</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang 抛出一个市场结构观察:钱已经大量移到了 services(顺带 bundled 一些 software),不是 software。人们要 outcomes,不要 tools。他把这框成 pure-play software 的硬问题:做一个软件公司,做到比「直接用 Codex 或 Claude Code + 一堆个人 skills + agents」更有价值,真的很难。</p>
+              <p>「outcomes 不要 tools」这个 framing 在 vertical AI 这一年里一直是潜流。今天的进展是命名了单位:在卖的 bundle 是「model + personal skills + agents」,不是 software。能把这个 bundle 的 outcome 侧卖出去(一份成稿报告、一笔 closed deal、一个 shipped product)的人,才能 capture 模型本身 commoditize 掉的那部分价值。pure-play tool 公司必须决定在 bundle 的哪一层站位。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>从我看到的,大量钱已经移到 services(顺带 bundled 一些 software),不是 software。
+
+              人们要 outcomes,不要 tools。
+
+              做一个软件公司,做到比「直接用 Codex / Claude Code + 一堆个人 skills + agents」更有价值,真的非常难。
+
+              想法?</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang makes a market-shape observation: a lot of the money has moved to services (with some software bundled), not to software. People want outcomes, not tools. He frames it as a hard problem for pure-play software: it is getting really hard to build a software company that is more valuable to people or companies than &#39;just using Codex or Claude Code with a bunch of personal skills and agents.&#39;</p>
+              <p>The &#39;outcomes not tools&#39; framing has been the latent thesis in vertical AI for a year. The new move is naming the unit: the bundle on offer is now (model + personal skills + agents), not &#39;software.&#39; Whoever can sell the outcome side of that bundle — a finished report, a closed deal, a shipped product — captures the value the model itself commoditizes. The pure-play tool company has to decide which layer of the bundle to own.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>From what I&#39;m seeing, alot of the money has moved to services (with some software bundled), not software.
+
+              People want outcomes, not tools. 
+
+              It&#39;s feels really hard to build a pure-play software company that&#39;s more valuable to people or companies than just using Codex/Claude Code with a bunch of personal skills and agents.
+
+              Thoughts?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/petergyang/status/2070568705365577990" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:adityaag" data-author-name="Aditya Agarwal" data-author-tag="Dropbox Engineering VP / 前 Facebook 平台工程负责人" data-author-handle="@adityaag" data-author-avatar="../assets/avatars/x-adityaag.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-adityaag.jpg" alt="Aditya Agarwal avatar"><span class="avatar-fallback">AA</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aditya Agarwal</div>
+            <div class="author-tag is-inline">Dropbox Engineering VP / 前 Facebook 平台工程负责人</div>
+          </div>
+          <div class="author-handle">@adityaag</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aditya Agarwal(Dropbox Engineering VP,前 Facebook 平台工程负责人)给 AI 副作用一个很 personal、但其实是 builder thesis 的命名:他对人类的 shallow interaction 容忍度降到 0 了。他要在关系里要 depth,其他所有 surface——日程、研究、各种小 admin——他要交给 agents。他预测世界会同时变得更小、关系深度更厚。</p>
+              <p>这是 outcomes-not-tools 这一条的 consumer 侧。分法不是「凡事用 AI」对「凡事不用 AI」,而是「人类预算只花在需要 depth 的部分,其余全部 route 给 agents」。用户在买的 bundle 是「关系深度作为 product」+「agents 作为剩下的 infra」。这是和「productivity tool」完全不同的价值 capture。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>AI 一个有趣的副作用是:我对人类的 shallow interaction 容忍度降到 0 了。
+
+              我要在关系里要 depth,能做到的方法都太值了。
+
+              剩下的:给我 agents。
+
+              我猜世界会同时变得更小、关系深度更厚。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aditya Agarwal (Dropbox Engineering VP, ex-Facebook platform lead) names a personal-side effect of AI that ends up being a builder thesis: he has zero tolerance for shallow interactions with humans anymore. He wants depth in relationships, and the rest of the surface — scheduling, research, the small admin — he wants to hand to agents. He predicts the world becomes both smaller and richer in relational depth.</p>
+              <p>This is the consumer-side of the outcomes-not-tools line. The split is not &#39;use AI for everything&#39; vs. &#39;use AI for nothing&#39; — it is &#39;I will spend my human budget on the parts where depth matters, and route the rest through agents.&#39; The bundle the user is buying is (depth-of-relationship-as-product) + (agents-as-infrastructure-for-the-rest). That is a different value capture than &#39;productivity tool.&#39;</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>An interesting side effect of AI is that I have zero tolerance for shallow interactions with humans.
+
+              I really deep connection and depth in my relationships. More ways to do that are so valuable.
+
+              And for everything else: give me agents.
+
+              I suspect our world will become both smaller and more rich in it&#39;s relationship depth.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/adityaag/status/2070621064271688021" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:swyx" data-author-name="Swyx" data-author-tag="AI 工程师" data-author-handle="@swyx" data-author-avatar="../assets/avatars/x-swyx.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-swyx.jpg" alt="Swyx avatar"><span class="avatar-fallback">S</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Swyx</div>
+            <div class="author-tag is-inline">AI 工程师</div>
+          </div>
+          <div class="author-handle">@swyx</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx 抛了一个 hiring-curve 观察:AI Forward Deployed Engineer(FDE)是地表最 in-demand 的工种之一,但他自己没干过这个岗。他和领域专家 Basil 一起办第一场 AI FDE miniconference,核心 practice 是「和 aligned 的 domain experts 一起 add coverage,scaling without slop」。</p>
+              <p>这条 post 落地是 hiring thesis,大于工具 post。需求侧是 OpenAI 和 Anthropic 都在开 multi-billion dollar 的 services arms。Swyx 在命名那个夹在前沿 lab 和 customer outcome 之间的角色:能拿模型部署到真实 domain,找对的 domain expert 一起调,不出 slop。这个工种一年前还没有这个量级。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>我们一直在 scaling without slop,方法是和 aligned 的 domain experts 一起 add coverage。
+
+              OpenAI 和 Anthropic 都在开 multi-billion dollar 的 services arms,FDE 是地表最 in-demand 的工种之一,但我自己没干过这岗。
+
+              和 Basil 一起办第一场 AI FDE miniconference,太开心了!
+
+              下周见 https://t.co/STlx7OsWbr</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx makes a hiring-curve observation: AI Forward Deployed Engineer (FDE) is one of the most in-demand disciplines on earth, but he has never done the job himself. He is running his first AI FDE miniconference with a domain expert named Basil, building it around the practice of &#39;scaling without slop by working with aligned domain experts to add coverage.&#39;</p>
+              <p>The post lands as a hiring thesis more than a tool post. Both OpenAI and Anthropic are launching multi-billion-dollar services arms, which is the demand side. Swyx is naming the role that sits between the frontier lab and the customer outcome: someone who can deploy a model against a real domain, and tune it with the right domain expert to not generate slop. That role did not exist a year ago at this scale.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>we have been scaling without slop by working with aligned domain experts to add coverage 
+
+              with both oai and ant launching multi-billion dollar services arms, it&#39;s clear that FDE is one of the most in demand disciplines on earth, but I have never done the job
+
+              it&#39;s been an absolute pleasure working with Basil on our first ever AI FDE miniconference!
+
+              see at https://t.co/STlx7OsWbr  next week</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/swyx/status/2070606851377672675" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 03</div>
+    <h2 class="section-title">Agent infra 在 tension 下立起来:observability + declarative UI + split-screen / Agent Infra Stands Up Under Tension — Observability, Declarative UI, Split-Screen</h2>
+    <p class="section-desc">rauchg 同一天压两条:一条 thread 把「agent 难 debug」拆成模型层 non-determinism + infra 层 non-determinism,observability 是开放问题;另一条「UI for AI is here, it&#39;s @shadcn」把 declarative component model 推到 ship AI 产品的 default surface。_catwu 补一条小而 tactile 的:split-screen 是她在 Claude Code desktop 上最爱的 feature——agents 跑得久,需要 user 不离开 work 就能 steer。三件事咬合:runtime / UI primitive / UX detail,三张 agent 时代的 surface 都在 6-27 站位。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:rauchg" data-author-name="Guillermo Rauch" data-author-tag="Vercel CEO" data-author-handle="@rauchg" data-author-avatar="../assets/avatars/x-rauchg.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-rauchg.jpg" alt="Guillermo Rauch avatar"><span class="avatar-fallback">GR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Guillermo Rauch</div>
+            <div class="author-tag is-inline">Vercel CEO</div>
+          </div>
+          <div class="author-handle">@rauchg</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch(Vercel CEO)开 thread 讲为什么 agents 特别难 debug。两条原因:设计层面,AI 模型本身就是 non-deterministic——两个一模一样的 prompt 不一定得到一样的输出。架构层面,agents 是复杂的 distributed system——跨 functions 和 sandboxes 跑多步,会触到几十个 API,而这些 API 都可能 rate-limit 或挂掉。把 observability 做扎实是当前的开放问题。</p>
+              <p>这条 thread 落地是 platform thesis。「agent」surface 是两层失败模式叠在一起:模型层的 non-determinism(谁也修不完)+ infra 层的 non-determinism(rate limit、partial outage、network partition)。谁能卖那种 observability——让 builder 能 trace 出是两层里哪一层、在哪一步、哪一次 call 上出问题——谁就拿到下一层 platform。Vercel 在争这个位置。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Agents 是特别难 debug 的软件。
+
+              一方面,设计上 AI 模型就是 non-deterministic——两个相同的 prompt 不一定得到相同的输出。
+
+              但 agents 也是复杂的 distributed system——跨 functions 和 sandboxes 跑多步,触到几十个 API,这些 API 都可能 rate-limit 或挂掉。
+
+              把 observability 做扎实是当前的开放问题。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch (Vercel CEO) opens a thread on why agents are particularly hard to debug. Two reasons: by design, AI models behave non-deterministically — two identical prompts do not always yield the same output. And by architecture, agents are complex distributed systems — multiple steps across functions and sandboxes, touching dozens of APIs that can rate-limit or go down. Nailing down observability is the open problem.</p>
+              <p>The thread lands as a platform thesis. The &#39;agent&#39; surface is two failure modes stacked: model non-determinism (which nobody can fully fix) and infra non-determinism (rate limits, partial outages, network partitions). Whoever sells the observability that lets a builder trace which of the two was responsible, at which step, on which call, owns the next platform layer. Vercel is positioning to be in that race.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Agents are particularly hard-to-debug software. 
+
+              For one, and by design, AI models behave in non-deterministic ways. Even two identical prompts don&#39;t always yield the same output.
+
+              But agents are also complex distributed systems. They involve multiple steps of computation across functions and sandboxes, touching dozens of API services that can go down, rate limit you, etc.
+
+              Nailing down observabi</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/rauchg/status/2070676383135834334" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:rauchg" data-author-name="Guillermo Rauch" data-author-tag="Vercel CEO" data-author-handle="@rauchg" data-author-avatar="../assets/avatars/x-rauchg.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-rauchg.jpg" alt="Guillermo Rauch avatar"><span class="avatar-fallback">GR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Guillermo Rauch</div>
+            <div class="author-tag is-inline">Vercel CEO</div>
+          </div>
+          <div class="author-handle">@rauchg</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Rauch 一句话 callout:「The UI for AI 已经在这里了。它是 @shadcn。」字很短,但 framing 重要。论点:declarative + copy-paste 的 component model 已经成了 ship AI 产品的默认 surface——搭一个 polished 的 chat 或 tool-use UI 的成本已经接近 0,因为 primitive 可复用、归开发者、可随时 fork。</p>
+              <p>在 Vercel 的 framing 里,shadcn 不仅是 UI 库——它是「好的 AI UX 成本坍缩」的证明。和上面那条 observability thread 合起来看,这个 bet 是:agents 是 runtime,UI primitive 是 surface,platform 在中间玩。谁能同时在 developer muscle memory 的两侧站位,谁就赢下一个 category。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The UI for AI 已经到了。它是 @shadcn。https://t.co/bzgEEKO9Az</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Rauch&#39;s one-liner: &#39;The UI for AI is here. It&#39;s @shadcn.&#39; A short call, but the framing matters. The argument is that the declarative, copy-paste component model has become the default surface for shipping AI products — the cost of building a polished chat or tool-use UI has dropped to near zero because the primitives are reusable, owned by the developer, and trivially forkable.</p>
+              <p>In Vercel&#39;s framing, shadcn is not just a UI library — it is the proof that the cost of &#39;good AI UX&#39; has collapsed. Combined with the observability thread above, the bet is: agents are the runtime, the UI primitives are the surface, and the platform plays between them. Whoever controls the developer muscle memory on both sides wins the next category.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The UI for AI is here. It&#39;s @shadcn https://t.co/bzgEEKO9Az</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/rauchg/status/2070567538040422712" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:_catwu" data-author-name="Cat Wu" data-author-tag="Anthropic 产品工程" data-author-handle="@_catwu" data-author-avatar="../assets/avatars/x-_catwu.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-_catwu.jpg" alt="Cat Wu avatar"><span class="avatar-fallback">CW</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Cat Wu</div>
+            <div class="author-tag is-inline">Anthropic 产品工程</div>
+          </div>
+          <div class="author-handle">@_catwu</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Cat Wu(Anthropic 产品工程,Claude Code 团队)把 split-screen 拎出来说是她在 Claude Code desktop 上最喜欢的 feature 之一。post 很短,但挑出来的 feature 很说明问题。Desktop coding surface 上的 split-screen 让 Claude 跑在一边,你自己的 code / browser / terminal 跑在另一边,work-in-progress 一直可见。</p>
+              <p>重点不是 split-screen 新——IDE 早就有。重点是:在 agent 时代,这种小而触感的 UX 细节不再是 optional。Agents 跑得久、会晕、需要用户瞟一眼再 steer;能让用户不离开 work 就能 steer 那个 surface 才赢。不 ship 这个细节的 agent 工具,会在 workflow 里被悄悄降权。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>split screen 是我在 Claude Code desktop 上最喜欢的 feature 之一!https://t.co/4ZQZjBnmvL</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Cat Wu (Anthropic product engineering, on the Claude Code team) calls out split-screen as one of her favorite Claude Code on desktop features. The post is short, but the pick is telling. Split-screen on a desktop coding surface lets you run Claude on one side and your actual code / browser / terminal on the other, with the work-in-progress continuously visible.</p>
+              <p>The point is not that split-screen is novel — IDEs have had it for years. The point is that it is the kind of small, tactile UX detail that, in the agent era, stops being optional. Agents run long, agents get confused, agents need the user to glance over and steer; the surface that lets the user do that without leaving the work wins. The agent tools that don&#39;t ship this get quietly demoted in workflow.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>split screen is one of my fave claude code on desktop features! https://t.co/4ZQZjBnmvL</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/_catwu/status/2070613405237432766" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 04</div>
+    <h2 class="section-title">Taste / 拒绝 / Audience:taste 必须从 arena 里出来,问题是用来拒绝的,audience 才是 compounding 的那一个 / Taste Must Come From the Arena, Problems Are for Refusing, Audience Is What Compounds</h2>
+    <p class="section-desc">nikunj 反驳「taste 是新护城河」的话语——taste 不能从观察者转给 builder,必须自己 cook 100 道菜;thenanyu 给 operating discipline 命名一个「secret level 6」:不追 side quest,知道哪些问题要拒绝;zarazhangrui 一句「你不需要神替你写邮件」把 audience 推到 compounding 那一侧。三条合起来:taste / 拒绝 / audience 是 build 时代三个不进 arena 就拿不到的东西。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:nikunj" data-author-name="Nikunj Kothari" data-author-tag="Afore Capital 合伙人" data-author-handle="@nikunj" data-author-avatar="../assets/avatars/x-nikunj.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-nikunj.jpg" alt="Nikunj Kothari avatar"><span class="avatar-fallback">NK</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Nikunj Kothari</div>
+            <div class="author-tag is-inline">Afore Capital 合伙人</div>
+          </div>
+          <div class="author-handle">@nikunj</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj Kothari(Afore Capital 合伙人)对当下「taste」话语直接 push back:大多数 taste 评头论足的人,自己从来没 build 过任何东西。不进 arena,你没法 achieve(也没法 refine)taste。chef 的类比是承重的——你不指望第一道菜就好;做了 100 道菜,到第 101 道,taste 才开始 imbue 进去。</p>
+              <p>论点是结构性的:taste 不能从观察者转给 builder。观察者的「taste」是 downstream 的、静态判断;builder 的 taste 是 upstream 的、迭代过程。想要后面那种,你得在厨房里。这是对「taste 是新护城河」那条 discourse 的直接反驳——那条最近在 AI builder feed 上已经被推到让人疲倦。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>现在尘埃落定,关于 taste 的评头论足最让我觉得好笑的是:大部分来自从来没 build 过任何东西的人。
+
+              不进 arena,你没法 achieve(也没法 refine)taste。
+
+              像 chef 做饭,指望第一道就好。
+
+              但做 100 道菜,到第 101 道,taste 才开始 imbue 进去。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj Kothari (Afore Capital partner) pushes back on the &#39;taste&#39; discourse: most of the taste commentary right now is coming from people who have never built anything. You cannot achieve or refine taste without being in the arena. The chef analogy is the load-bearing one — you don&#39;t expect the first dish to be good; you cook 100 dishes, and by the 101st, taste starts to imbue.</p>
+              <p>The argument is structural: taste is not transferable from observer to builder. The observer&#39;s &#39;taste&#39; is a downstream, static judgment; the builder&#39;s taste is an upstream, iterative process. If you want the second kind, you have to be in the kitchen. This is a direct counter to the line of &#39;taste is the new moat&#39; content that has been on every AI-builders feed lately.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Now that the dust is settled, what&#39;s really funny to me about the taste commentary is it&#39;s coming from a LOT of people who never have built anything..
+
+              You can&#39;t achieve (or refine) taste without being in the arena. 
+
+              It&#39;s like a chef cooking and expecting their first dish to be good on the first go. 
+
+              But, when you give it a 100 iterations and maybe cook a 100 dishes, then the 101st one has imbue</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/nikunj/status/2070649602953576825" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:thenanyu" data-author-name="Nan Yu" data-author-tag="AI 创业者 / 投资人" data-author-handle="@thenanyu" data-author-avatar="../assets/avatars/x-thenanyu.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-thenanyu.jpg" alt="Nan Yu avatar"><span class="avatar-fallback">NY</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Nan Yu</div>
+            <div class="author-tag is-inline">AI 创业者 / 投资人</div>
+          </div>
+          <div class="author-handle">@thenanyu</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nan Yu 给 operating discipline 命名一个「secret level 6」:有个问题,但不值得解,那就别碰。Org 里有一堆 level 1s 之所以能赢,是因为他们不被 side quest 带偏。「level 1s」这个 framing——在眼前那个 problem 那一层操作的人——才是关键:足够多的人,全都选择不追 shiny side quest,compounds 出 focus。</p>
+              <p>这条 thesis 是对「taste / curation」话语的一个对冲。Nikunj 那边说 taste 是迭代,你得在 arena 里。Thenanyu 这边命名另一个 skill:有勇气拒绝一个问题。能赢的 org 装满知道「哪些问题要拒绝」的 level-1s。拒绝的 discipline 和 attention 的 discipline 一样,是 build 的一部分。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Secret level 6:有个问题,但不值得解,那就别碰。
+
+              这就是为什么装满 level 1s 的 org 能赢。他们不被 side quest 带偏。https://t.co/fRGy1NC9oT</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nan Yu names a &#39;secret level 6&#39; of operating discipline: there is a problem, but it is not worth solving, so leave it alone. The org-with-a-ton-of-level-1s can win because it does not get distracted by side quests. The &#39;level 1s&#39; framing — people who operate at the level of solving the actual problem in front of them — is the point: enough of them, all choosing not to chase the shiny side quest, compounds into focus.</p>
+              <p>The thesis is a counterweight to the &#39;taste&#39; / &#39;curation&#39; discourse. Nikunj said taste is iterative, you have to be in the arena. Thenanyu is naming a separate skill: the willingness to refuse a problem. The org that wins is the one that is full of level-1s who all know which problems to leave alone. The discipline of refusal is as much a part of the build as the discipline of attention.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Secret level 6: there&#39;s a problem, but it&#39;s not worth solving, so leave it alone. 
+
+              This is why org with a ton of level 1s can win. They don&#39;t get distracted by side quests https://t.co/fRGy1NC9oT</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/thenanyu/status/2070656348488937889" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:zarazhangrui" data-author-name="Zhang Rui" data-author-tag="Follow Builders 创始人 / 策展人" data-author-handle="@zarazhangrui" data-author-avatar="../assets/avatars/x-zarazhangrui.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-zarazhangrui.jpg" alt="Zhang Rui avatar"><span class="avatar-fallback">ZR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Zhang Rui</div>
+            <div class="author-tag is-inline">Follow Builders 创始人 / 策展人</div>
+          </div>
+          <div class="author-handle">@zarazhangrui</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zhang Rui(Follow Builders 创始人)扔一句话,落地是 founder self-check:「You do not need God to write your emails.」重点是 productivity 叙事的反——「让 AI 帮你写邮件」是现在所有 baseline 都有的事,真正 differentiated 的是你在和谁说话,不是邮件怎么措辞。</p>
+              <p>放在 outcomes-not-tools 和 agent infra 的语境里,这是 audience-side 的镜像:bundle 是「model + skills + agents」,那唯一不会被 commoditize 的变量就是这个 bundle 触达的 audience。Audience 建起来,bundle 是你能 plug 的东西。Bundle 起来但没有 audience,这个 bundle 就是其他 founder 也在 build 的东西。会 compound 的是 audience。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>「你不需要神来替你写邮件」https://t.co/wisy8LNck0</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zhang Rui (Follow Builders founder) drops a one-liner that lands as a founder self-check: &#39;You do not need God to write your emails.&#39; The point is the inversion of the productivity narrative — the AI that was sold as &#39;let AI write your emails&#39; is now a baseline everyone has, and the actual differentiator is who you are talking to, not how the email is phrased.</p>
+              <p>In the context of the outcomes-not-tools line and the agent infra thread, this lands as the audience-side mirror: if the bundle is (model + skills + agents), then the variable that does not get commoditized is the audience the bundle reaches. Build the audience, and the bundle is something you can plug into. Build the bundle without the audience, and the bundle is what every other founder is also building. The differentiator that compounds is audience.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>&quot;You do not need God to write your emails&quot; https://t.co/wisy8LNck0</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/zarazhangrui/status/2070589563429691698" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 05</div>
+    <h2 class="section-title">Frontier 本身在被定价 — OpenAI 与 YC 在 6-27 同时表态 / Frontier Itself Is Being Priced — OpenAI and YC Speak on the Same Day</h2>
+    <p class="section-desc">sama 同一天压两条:5.5 instant 更新 + 「i like its vibes」把 vibe-level 评价从 lab CEO 嘴里说出来;all-you-can-eat tokens 还没到但「we are working on it」是公开方向。garrytan 在另一侧做 YC 机构层判断:frontier 被 throttled 到 ~20 家 pre-approved 的 release 模式,salt the ground、kill small startup 的创新。两条合起来:lab 这一侧公开承认 vibe 才是 ground truth、承诺 all-you-can-eat;另一边 YC 明确说这种 gate 模式是 anti-startup。Frontier 正在被定价,而且定价的双方都在 6-27 同时说话。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:sama" data-author-name="Sam Altman" data-author-tag="OpenAI CEO" data-author-handle="@sama" data-author-avatar="../assets/avatars/x-sama.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-sama.jpg" alt="Sam Altman avatar"><span class="avatar-fallback">SA</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Sam Altman</div>
+            <div class="author-tag is-inline">OpenAI CEO</div>
+          </div>
+          <div class="author-handle">@sama</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Sam Altman 抛一条:「另外说一下,我们这周更新了 chatgpt 用的 5.5 instant model。我喜欢它的 vibes。」措辞——「vibes」——才是承重的。OpenAI CEO 公然给一个 model 签 vibe-level 的评价,正好是 Noam Brown 那次访谈(见收尾)把 benchmark grid 拆为「根本没法 capture 这种差别」的同一周。</p>
+              <p>「vibes」这个 framing 不是 marketing 话术。它是 Noam 那个 benchmark 讨论在 OpenAI 那一侧的诚实:传统 evaluation 没法 capture 用户用 model 时真正感受到的东西,团队愿意公开这么说。文化变化是:lab 的 CEO 现在是这立场第一个公开背书的人。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>另外说一下,我们这周更新了 chatgpt 用的 5.5 instant model。
+
+              我喜欢它的 vibes。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Sam Altman announces: &#39;in other news, we updated the 5.5 instant model used in chatgpt this week. i like its vibes.&#39; The phrasing — &#39;vibes&#39; — is the load-bearing part. The OpenAI CEO is publicly signing off on a vibe-level characterization of a model, in the same week that a Noam Brown interview (see the closer) is naming the benchmark grid as fundamentally broken for capturing exactly this kind of difference.</p>
+              <p>The &#39;vibes&#39; framing is not marketing fluff. It is the OpenAI side of the same honesty Noam is bringing to the benchmark conversation: traditional evaluation does not capture what users actually feel when they use the model, and the team is comfortable saying so. The cultural change is that the lab CEO is now the first public endorser of that position.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>in other news, we updated the 5.5 instant model used in chatgpt this week.
+
+              i like its vibes.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/sama/status/2070612055225483692" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:sama" data-author-name="Sam Altman" data-author-tag="OpenAI CEO" data-author-handle="@sama" data-author-avatar="../assets/avatars/x-sama.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-sama.jpg" alt="Sam Altman avatar"><span class="avatar-fallback">SA</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Sam Altman</div>
+            <div class="author-tag is-inline">OpenAI CEO</div>
+          </div>
+          <div class="author-handle">@sama</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Sam Altman 公开确认每个 builder 都想听的话:「还不是 all-you-can-eat tokens,但我们在做。」「not quite」这个 qualifier 真的在做事——model lab 公开承诺一个方向(unlimited token consumption at a flat price),承认现在还没到。这比「we are exploring pricing options」响得多。</p>
+              <p>放在 gate loop 和 Sol directive 的语境里,这是一条 deliberate 的对冲:frontier 这一侧在收最顶级 model 的 access,consumer / builder 那一侧在被推向接近 flat-rate all-you-can-eat。两种动作是兼容的:gate frontier,subsidize surface。这是一个关于「谁能 build 什么」的特定 product thesis。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>还不是 all-you-can-eat tokens,但我们在做。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Sam Altman confirms what every builder is hoping to hear: &#39;not quite all-you-can-eat tokens, but we are working on it.&#39; The &#39;not quite&#39; qualifier is doing real work — the model lab is publicly committing to a direction (unlimited token consumption at a flat price) and admitting the current state is not there yet. That is a much louder signal than &#39;we are exploring pricing options.&#39;</p>
+              <p>Read in the context of the gate loop and the Sol directive, this lands as a deliberate counterweight: even as the frontier side tightens access for the very top models, the consumer / builder side of the model is being pushed toward something close to flat-rate all-you-can-eat. The two moves are compatible: gate the frontier, subsidize the surface. That is a particular product thesis about who gets to build what.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>not quite all-you-can-eat tokens, but we are working on it</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/sama/status/2070614769678393846" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:garrytan" data-author-name="Garry Tan" data-author-tag="Y Combinator 总裁" data-author-handle="@garrytan" data-author-avatar="../assets/avatars/x-garrytan.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-garrytan.jpg" alt="Garry Tan avatar"><span class="avatar-fallback">GT</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Garry Tan</div>
+            <div class="author-tag is-inline">Y Combinator 总裁</div>
+          </div>
+          <div class="author-handle">@garrytan</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Garry Tan(Y Combinator 总裁)把现在的 model release 模式称为「honestly no way to release a model」——按这种方式继续开发和发布,会稳稳地 salt the ground,把 small startup 的创新 kill 掉。post 是一条 quote-tweet;价值在 quote 的源头(正是 §1 命名的 frontier-gating 故事)。</p>
+              <p>Tan 在做 YC 机构层面对 gate 故事的读:如果 frontier model 正在被 throttled 到「government directive + ~20 家 pre-approved companies」这一层,small startup——YC 投的那些——不会在那个名单上。Y Combinator 的角度因此是:这种 release 模式在 practice 上是 anti-startup。「salting the ground」这个 framing 让它变成经济学:这片地正在被布成小 founder 不能在最顶级 model 上 build 的格局。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>老实说这不是发 model 的方式,按这种方式继续开发和发布,会稳稳地 salt the ground,把 small startup 的创新 kill 掉。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Garry Tan (Y Combinator president) calls the current model release pattern out as &#39;no way to release a model&#39; — continued development and release done this way, he says, is a solid way to salt the ground and kill all innovation by small startups. The post is a quotetweet; the value is the quotetweeted source (which is exactly the kind of frontier-gating story from §1).</p>
+              <p>Tan is making the YC institutional read of the gate story: if the frontier model is being throttled at the level of &#39;government directive + ~20 pre-approved companies,&#39; small startups — which are the customers YC funds — are not going to be on that list. The Y Combinator angle is therefore: this release pattern is, in practice, anti-startup. The &#39;salting the ground&#39; framing makes it economic: the field is being set up so that small founders cannot build on the best model.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>This is honestly no way to release a model and continued development and release this way is a solid way to salt the ground and kill all innovation by small startups</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/garrytan/status/2070699046939820223" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 06</div>
+    <h2 class="section-title">Podcast 收尾:Noam Brown 把 frontier benchmark 框架拆掉,test-time compute 是 policy 框架还没追上的那一维 / Podcast: Noam Brown Tearing Down the Frontier Benchmark Framework, Test-Time Compute as the Missing Axis</h2>
+    <p class="section-desc">No Priors 这一期 Noam Brown 拿 GPT-5.5 自己那次发布当 case study,讲 published benchmark grid 没 control for test-time compute,所以「5.4 在 max settings 思考更久,5.5 思考更短但更高效」这件事在 grid 上看不出来。RSPs 和 frontier policy framework 是按「model capability 是单点 number」写的,Noam 说这个 number 现在是「你投入多少 compute」的函数,policy 还没追上来。这期给前面那一串 frontier 收口 / 定价的讨论补一个最底层的根据。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="podcast:no-priors" data-author-name="No Priors" data-author-tag="AI 与创业对话播客" data-author-handle="" data-author-avatar="../assets/avatars/podcast-no-priors.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/podcast-no-priors.jpg" alt="No Priors avatar"><span class="avatar-fallback">NP</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">No Priors</div>
+            <div class="author-tag is-inline">AI 与创业对话播客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Noam Brown(OpenAI 研究员,Libratus / Pluribus / Cicero Diplomacy agent 的共同作者)上 No Priors 和 Sarah Guo 一起讲:行业评测 frontier model 的方式从根本上就是 broken。每次发 model 都附带的「single number on a single benchmark」那张 grid,没有 control for test-time compute,所以一个在纸上看起来「更差」的 model,在实际使用上可能「好得多」——因为它用同样的 think budget 做到了更多。</p>
+              <p>Brown 用的 case study 就是 GPT-5.5 自己那次发布:公布的 benchmark grid 不出彩——只比 5.4 高几个百分点——所以公众反应一开始是怀疑。几个小时大家实际用下来,verdict 翻盘。原因是 5.5 思考效率高很多:max settings 下,5.4 现在要想更久才得到 5.5 的答案。当下在用的 Responsible Scaling Policies(RSPs)和 frontier-policy 框架,都按「model capability 是一个单点 number」来写;Brown 想说的是,这个 number 现在是「你投入多少 compute」的函数,而 policy 框架没准备好按对的 budget 评测。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Speaker 1 | 00:00 - 00:13
+              GPT-3 时代你不能 scale test-time compute。你给它 $10,000,000 的预算说「来看看 GPT-3 能做啥」——其实没多少。当下的 framework 和 responsible scaling policies 没真的 account for test-time compute 的量。
+
+              他们就说「这个 model 的 capability 是多少」。问题是现在 model 的 capability 本质上是「你投多少钱进去」的函数。给它 $10,000 预算,能做到 $10 预算做不到的多。给它 $10,000,000 预算,能做到更多。那按什么 budget 评测这些 model?
+
+              Speaker 1 | 00:32 - 00:36
+              现在的 policy 根本没回答这个问题。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Noam Brown (OpenAI research scientist, co-author of Libratus / Pluribus / the Cicero Diplomacy agent) joins No Priors with Sarah Guo to argue that the way the industry evaluates frontier models is fundamentally broken. The single-number-on-a-single-benchmark grid that ships with every release does not control for test-time compute, so a model that is &#39;worse&#39; on paper can be &#39;much better&#39; in actual use because it gets more done with the same think budget.</p>
+              <p>Brown&#39;s case study is the GPT-5.5 release itself: the published benchmark grid was unimpressive — a few percentage points over 5.4 — so the public reaction was skepticism. Within hours of people using it, the verdict flipped. The reason is that 5.5 is just much more efficient with its thinking: at max settings, 5.4 is now thinking for longer than 5.5 to get the same answer. The Responsible Scaling Policies (RSPs) and frontier-policy frameworks in use today are written as if model capability is a single number; Brown is saying that number is now a function of how much compute you put in, and the policies are not set up to evaluate at the right budget.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Speaker 1 | 00:00 - 00:13
+              With GBT three, you couldn&#39;t scale test time compute. Like, if you gave it a budget of $10,000,000 and said, okay. Well, let&#39;s see what GBT three can do. It really can&#39;t do that much. The precarious frameworks and responsible scaling policies, they don&#39;t really account for the amount of test time compute.
+
+              Speaker 1 | 00:13 - 00:32
+              They just say, okay. Well, what&#39;s the capability of the model? The problem is we&#39;re in a world now where the capability of the model is a function of how much money you put into it, basically. If you give it a budget of $10,000, it can do a lot more than what it can do with a budget of $10. Give it a budget of $10,000,000, it can do even At what budget should you evaluate these models?
+
+              Speaker 1 | 00:32 - 00:36
+              The policies that exist today don&#39;t really address that question.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.youtube.com/watch?v=AZrU6y3pUcU" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <footer data-source-note="Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-27 source feeds.">Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-27 source feeds.</footer>
+
+  <script>
+    function getTemplateAuthorSources() {
+      const sources = window.AI_BUILDERS_TEMPLATE_SOURCES || {};
+      return { identities: sources.identities || {}, avatars: sources.avatars || {} };
+    }
+
+    function getAuthorInitials(name) {
+      return (name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(function(part) { return part[0]; }).join('').toUpperCase();
+    }
+
+    function hydrateTemplateCopy() {
+      const intro = document.querySelector('.intro');
+      if (intro) {
+        const kicker = intro.querySelector('.intro-kicker');
+        const copy = intro.querySelector('.intro-copy');
+        if (kicker) kicker.textContent = intro.dataset.kicker || '';
+        if (copy) copy.textContent = intro.dataset.text || '';
+      }
+
+      const footer = document.querySelector('footer');
+      if (footer) footer.textContent = footer.dataset.sourceNote || '';
+
+      const rewriteLabel = document.body.dataset.viewLabelRewrite || '速读';
+      const originalLabel = document.body.dataset.viewLabelOriginal || '原文';
+      document.querySelectorAll('.view-toggle').forEach(function(button) {
+        if (button.dataset.viewTarget === 'rewrite') button.textContent = rewriteLabel;
+        if (button.dataset.viewTarget === 'original') button.textContent = originalLabel;
+      });
+    }
+
+    function hydrateAuthorMeta() {
+      const sources = getTemplateAuthorSources();
+      document.querySelectorAll('.card').forEach(function(card) {
+        const authorKey = card.dataset.authorKey || '';
+        const identity = sources.identities[authorKey] || {};
+        const avatarEntry = sources.avatars[authorKey] || {};
+
+        const name = identity.name || card.dataset.authorName || '';
+        const rawHandle = identity.handle || card.dataset.authorHandle || '';
+        const handle = rawHandle && rawHandle.startsWith('@') ? rawHandle : (rawHandle ? '@' + rawHandle : '');
+        const tag = identity.label || card.dataset.authorTag || '';
+        const avatar = avatarEntry.fileUrl || avatarEntry.localPath || card.dataset.authorAvatar || '';
+
+        const nameNode = card.querySelector('.author-name');
+        const tagNode = card.querySelector('.author-tag');
+        const handleNode = card.querySelector('.author-handle');
+        const avatarNode = card.querySelector('.avatar');
+        const avatarImg = card.querySelector('.avatar img');
+        const avatarFallback = card.querySelector('.avatar-fallback');
+
+        if (nameNode) nameNode.textContent = name;
+        if (tagNode) tagNode.textContent = tag;
+        if (handleNode) handleNode.textContent = handle;
+        if (avatarImg) {
+          avatarImg.src = avatar;
+          avatarImg.alt = name ? name + ' avatar' : 'Author avatar';
+        }
+        if (avatarNode) avatarNode.classList.toggle('is-fallback', !avatar);
+        if (avatarFallback) avatarFallback.textContent = getAuthorInitials(name);
+      });
+    }
+
+    function updateEditionStrip() {
+      const publishDate = document.body.dataset.publishDate;
+      const editionName = document.body.dataset.editionName || '双语精选版';
+      const editionStrip = document.getElementById('edition-strip-text');
+      if (!publishDate || !editionStrip) return;
+
+      const issueNumber = document.body.dataset.issueNumber || '';
+      if (!issueNumber) return;
+
+      const selectedCount = document.querySelectorAll('.card').length;
+      const authorCount = new Set([].slice.call(document.querySelectorAll('.author-handle')).map(function(node) { return node.textContent.trim(); }).filter(Boolean)).size;
+      const themeCount = document.querySelectorAll('.section-header').length;
+      const parts = ['第 ' + issueNumber + ' 期', publishDate, editionName, selectedCount + ' 条精选', authorCount + ' 位作者', themeCount + ' 个主题'];
+      editionStrip.innerHTML = parts.map(function(part) { return '<span class="edition-item">' + part + '</span>'; }).join('<span class="edition-sep">|</span>');
+    }
+
+    function measureVariantHeight(variant) {
+      const prevPosition = variant.style.position;
+      const prevInset = variant.style.inset;
+      const prevVisibility = variant.style.visibility;
+      const prevPointerEvents = variant.style.pointerEvents;
+      const prevOpacity = variant.style.opacity;
+      const prevTransform = variant.style.transform;
+      const prevTransition = variant.style.transition;
+      const prevOverflowY = variant.style.overflowY;
+      const prevDisplay = variant.style.display;
+
+      variant.style.position = 'relative';
+      variant.style.inset = 'auto';
+      variant.style.visibility = 'hidden';
+      variant.style.pointerEvents = 'none';
+      variant.style.opacity = '1';
+      variant.style.transform = 'none';
+      variant.style.transition = 'none';
+      variant.style.overflowY = 'visible';
+      variant.style.display = 'block';
+
+      const height = variant.scrollHeight;
+
+      variant.style.position = prevPosition;
+      variant.style.inset = prevInset;
+      variant.style.visibility = prevVisibility;
+      variant.style.pointerEvents = prevPointerEvents;
+      variant.style.opacity = prevOpacity;
+      variant.style.transform = prevTransform;
+      variant.style.transition = prevTransition;
+      variant.style.overflowY = prevOverflowY;
+      variant.style.display = prevDisplay;
+
+      return Math.ceil(height);
+    }
+
+    function getTargetHeight(shell, target) {
+      const variant = shell.querySelector('.content-variant[data-view="' + target + '"]');
+      return measureVariantHeight(variant);
+    }
+
+    function syncShellHeights() {
+      document.querySelectorAll('.content-shell').forEach(function(shell) {
+        const active = shell.querySelector('.content-variant.is-active');
+        const target = active ? active.dataset.view : 'rewrite';
+        shell.style.height = getTargetHeight(shell, target) + 'px';
+      });
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', function() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(syncShellHeights, 120);
+    });
+
+    document.querySelectorAll('.card').forEach(function(card) {
+      const buttons = card.querySelectorAll('.view-toggle');
+      const shells = card.querySelectorAll('.content-shell');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const target = button.dataset.viewTarget;
+          if (button.classList.contains('is-active')) return;
+
+          buttons.forEach(function(btn) {
+            btn.classList.toggle('is-active', btn === button);
+          });
+
+          shells.forEach(function(shell) {
+            const current = shell.querySelector('.content-variant.is-active');
+            const next = shell.querySelector('.content-variant[data-view="' + target + '"]');
+            if (!current || !next || current === next) return;
+
+            shell.style.height = shell.offsetHeight + 'px';
+            requestAnimationFrame(function() {
+              current.classList.remove('is-active');
+              next.classList.add('is-active');
+              shell.style.height = getTargetHeight(shell, target) + 'px';
+            });
+          });
+        });
+      });
+    });
+
+    hydrateTemplateCopy();
+    hydrateAuthorMeta();
+    updateEditionStrip();
+    syncShellHeights();
+  </script>
+</body>
+</html>
