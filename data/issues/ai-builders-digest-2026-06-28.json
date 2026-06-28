@@ -1,0 +1,415 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-06-28",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "6-28 Follow Builders 这一天没有 Claude Tag 那种单点 launch 把所有 attention 拉走,主旋律是「Codex 进入稳态迭代 + agent infra 被三边压 + vibe coding 到 audience compounding」三件事在同一天咬合。Thibault Sottiaux 一天内把 Codex 的三个老坑(长 thread、turn 之间跳转、settings 搜索)同时填了,加上「跟你家植物说话已经不奇怪了」这种 meme,说明 Codex 已经不是 launch,变成 activity。Levie 把 token 成本压成「需要懂工作的 router」,Rauch 把 Mythos / Sol 的 dual-use security 摆到台面,Swyx 把 Noam 的 constant-inference-budget 转成「open weights 收编」的经济学——agent infra 这一层在 6-28 三个方向同时被收紧。Taste 这一侧 Peter Yang 把「level 5 才有把握开口」的披露框架拆掉、Nan Yu 同步发 level-6 图说「90% 的问题 level 1 和 level 6 一样」——两条放一起是同一个编辑判断:工具应该花在值得解的那 10% 上。Zara Zhang 一年从「不会用 GitHub」到 10k followers,Swyx 同一天办 AI engineer preshow floor tour,Yang 顺手分享 Hermes + 智能秤 + Fitbit + 自己 vibe coding 出来的 MCP server——vibe coding 这一年到 6-28 已经不是「工具」,是「系统 + audience」两件一起 compounding。博客:Claude Code 现在直接产 live、shareable、self-updating 的 artifact 网页;podcast 收尾 Training Data 那一期请 Engram 把 memory 立成接下来一年 model 基础设施的 floor——上面所有 thread 共同坐落的那一层。"
+  },
+  "archive": {
+    "title": "Codex 入魂日",
+    "desc": "6-28 Follow Builders 的主旋律是「Codex 入 activity + agent infra 三边压 + vibe coding 入 system」——Sottiaux 一天填 Codex 三个老坑,加上 plant meme 宣告 Codex 已进日常;Levie / Rauch / Swyx 三人把 router / dual-use security / inference budget 同一天收紧;Peter Yang 拆 level-5 披露框架、Nan Yu 同步把 level-1-vs-6 命名,Zara Zhang 一年到 10k followers + Hermes 把智能秤 / Fitbit / MCP server 接成系统——vibe coding 不再是工具,变成 audience + integration 两件同时 compounding;博客 Claude Code 直接产 artifact,Training Data 收尾请 Engram 把 memory 立成接下来一年 model infra 的 floor。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-28 source feeds.",
+  "sections": [
+    {
+      "title": "Codex 这周再升级:长 thread / nav rail / settings search 三件套 / Codex Levels Up Again — Long Threads, Nav Rail, Settings Search",
+      "desc": "Thibault Sottiaux 一天内把 Codex 的三个老坑同时填了:长 thread 不卡、hoverable 导航轨、settings 搜索覆盖更全。这是 Codex 进入了「按 friction 点批改」节奏的信号——大版本已经不重要,稳态迭代才是新的 release shape。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT",
+          "sourceUrl": "https://x.com/thsottiaux/status/2071071289247244481",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux lands a stacked Codex update on a single day: long threads now load smoothly (the kind of work that used to make Codex stall); a hoverable navigation rail for previewing and jumping between turns; and settings search that finally covers more controls, with clearer appearance, host-filtering, and easier-to-find custom-provider slots. Three small, painful misses from prior weeks all addressed in one drop.",
+              "The pattern is the point: Codex is no longer being shipped as a single big product moment. It is being shipped as a stream of small, named improvements keyed to specific friction points - long thread handling, navigation between turns, custom-provider discoverability. Each of those is a paper-cut a heavy user has been filing tickets about. The release shape says Codex is now in a steady-state iteration regime, not a launch regime."
+            ],
+            "original": [
+              "Tons of improvements landed in Codex. - Handles super long threads smoothly. - Hoverable navigation rail for previewing and jumping between turns that feels just right. - Settings search covers more controls, with clearer appearance and host-filtering options and easier-to-find custom-provider slots."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux 一天内把 Codex 的几个老坑同时填了:长 thread 终于不卡、hoverable 导航轨能预览和跳转到指定 turn、settings 搜索覆盖更多控件、显示更清晰、host-filtering 和 custom-provider 的入口也更容易找。前几周一直被人提的三个 paper-cut 同一次 drop 解决。",
+              "关键是节奏:Codex 不再是「一个大版本一次发」,而是「按 friction 点一批批发」——长 thread 处理、turn 之间跳转、custom-provider 可发现性,每个都对得上老用户一直在提的具体痛点。release 的形状说明 Codex 进入了稳态迭代,而不是 launch 节奏。"
+            ],
+            "original": [
+              "Tons of improvements landed in Codex. - Handles super long threads smoothly. - Hoverable navigation rail for previewing and jumping between turns that feels just right. - Settings search covers more controls, with clearer appearance and host-filtering options and easier-to-find custom-provider slots."
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT",
+          "sourceUrl": "https://x.com/thsottiaux/status/2071077932244570112",
+          "en": {
+            "rewrite": [
+              "Companion line on the same day, almost throwaway: 「Talking to your plants isn't weird anymore. You can just codex things.」 The line works because it lands the shift - the previous decade's joke about talking to plants as a sign of loneliness is being replaced by the actual better answer of telling your coding agent to do something while you stand in the garden.",
+              "It is the kind of one-liner that signals where the product is comfortable. A team that ships 「codex your plants」 as a quip is a team that is no longer worried Codex needs to be defended on the merits. The defensiveness is gone. The cultural frame is: of course you codex things; that is what you do."
+            ],
+            "original": [
+              "Talking to your plants isn't weird anymore. You can just codex things."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "同一天的配文,几乎是扔出来的一句:「跟你家植物说话已经不奇怪了。你可以让 codex 干。」 之所以成立,是因为它正好把转折点接住了——过去几十年「跟植物说话」是孤独感的段子,现在更对得上的答案是「你站在花园里让 coding agent 干活」。",
+              "这种一句话能说明产品现在有多放松。能拿「让 codex 干你这个」当嘴皮子使的团队,是不再需要为 Codex 是不是好产品辩护的团队。辩护感消失了,文化底色是:当然让 codex 干,这本来就是该干的。"
+            ],
+            "original": [
+              "跟你家植物说话已经不奇怪了。你可以让 codex 干。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT",
+          "sourceUrl": "https://x.com/thsottiaux/status/2071089307062837744",
+          "en": {
+            "rewrite": [
+              "Third signal in the same Codex day: 「Sol when operating Codex. Circa 2026.」 The image of someone at a sunlit desk, Codex humming, is the cultural anchor. It is the visual a category needs when it stops being a product and becomes an activity.",
+              "Sottiaux has been running this line for a while - the joke is that Codex is so daily that it now has a 「vibe」 attached. A team that gives you a meme for the everyday-use mode is a team that has crossed the chasm from 「this is a tool I am learning」 to 「this is the way I work」."
+            ],
+            "original": [
+              "Sol when operating Codex. Circa 2026"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "同一天 Codex 这一侧的第三个信号:「Sol when operating Codex. Circa 2026.」——阳光下的桌前,Codex 在跑。这是一个类别在「从产品变成一种活动」时才需要的那张图。",
+              "Sottiaux 这条线已经跑了一阵子:笑点在于 Codex 已经日常到有「vibe」了。一个团队能给你「日常使用场景的 meme」,说明它已经从「我在学的工具」跨过鸿沟,变成「我工作方式本身」。"
+            ],
+            "original": [
+              "Sol when operating Codex. Circa 2026"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Agent infra 在 6-28 同时被三边压:router / dual-use security / inference budget / Agent Infra Gets Pushed on Three Sides — Router, Dual-Use Security, Inference Budget",
+      "desc": "Levie 把 token 成本压成「需要懂工作的 router」,Rauch 把 Mythos / Sol 的 dual-use security 摆到台面,Swyx 把 Noam 的 constant-inference-budget 转成「open weights 收编」的经济学——agent infra 这一层在 6-28 三个方向同时被收紧。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie/status/2070937863806751154",
+          "en": {
+            "rewrite": [
+              "Aaron Levie on a set of token-cost best practices that just dropped: 「None of these happens though without a deep understanding of the underlying work being done in a non-abstract way. The ultimate implication is that a layer between the work itself and the underlying intelligence needs to deeply understand the work.」 The point is that token cost optimization is not a config dial - it requires a model router that knows the work, not just the model.",
+              "The router-as-product is now a category. Once you accept that frontier models are interchangeable on enough axes, the layer that decides which model gets which task becomes the actual product. That layer cannot be a black box - it has to know the work, in non-abstract terms, to make good cost/quality tradeoffs. Builder-economy implication: the next year is going to be defined by which team can build a router that actually understands the work, not which team can ship the cheapest model."
+            ],
+            "original": [
+              "Some good best practices here on AI token cost optimization. None of these happens though without a deep understanding of the underlying work being done in a non-abstract way. The ultimate implication is that a layer between the work itself and the underlying intelligence needs to deeply understand the work."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 跟着一组刚出来的 token 成本最佳实践走:「这些里面没有一条是不知道工作本身是什么、就能搞定的。最关键的是——在工作和底层 intelligence 之间,必须有一层真的懂这个工作。」 换句话说,token 成本优化不是 config dial,是一个「懂工作、不只是懂模型」的 router。",
+              "router-as-product 已经是一个类别了。一旦接受 frontier model 在足够多轴上可互换,「决定哪个任务走哪个模型」的那一层就变成了真正的产品。这一层不能是黑盒——它必须真的懂工作,才能做出 cost/quality 上对的选择。给 builder 经济的提示:接下来一年的定义,是哪个团队真的造出了「懂工作」的 router,不是哪个团队 shipping 了最便宜的 model。"
+            ],
+            "original": [
+              "Some good best practices here on AI token cost optimization. None of these happens though without a deep understanding of the underlying work being done in a non-abstract way. The ultimate implication is that a layer between the work itself and the underlying intelligence needs to deeply understand the work."
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO",
+          "sourceUrl": "https://x.com/rauchg/status/2071047674187714830",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch on the same day: 「Mythos / Sol cybersecurity capabilities are equally useful in an offensive as well a defensive capacity. If adversaries get ahold of an equivalent offensive capability, it poses a serious threat to US companies that remain unaware of latent vulnerabilities.」 The line is not 「cybersecurity is important」 - it is the much sharper point that frontier capability is now dual-use, and the defensive half is the one being underbuilt.",
+              "This is a Vercel CEO writing publicly about Mythos and Sol - both names that have been floating around the frontier-security axis for a few months. The post is doing two things at once: warning that the same capabilities that are useful for defenders are useful for attackers, and signaling that Vercel is paying attention to the offensive-defensive balance. Rauch is positioning Vercel as a defensive-side stakeholder. The infra-economy read: agent security is no longer a separate domain; it is a platform concern."
+            ],
+            "original": [
+              "Mythos / Sol cybersecurity capabilities are equally useful in an offensive as well a defensive capacity. If adversaries get ahold of an equivalent offensive capability, it poses a serious threat to US companies that remain unaware of latent vulnerabilities. In the meantime, I strongly recommend running a security review of any exposed surfaces."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch 同一天:「Mythos / Sol 的 cybersecurity 能力,在 offensive 和 defensive 两侧一样能用。如果对手拿到对等的 offensive 能力,这是对美国公司一个严重威胁——绝大多数公司都没意识到自己的 latent vulnerability。」 重点不是「cybersecurity 很重要」,是更尖锐的判断:frontier 能力现在都是 dual-use,而 defensive 那一侧明显欠投入。",
+              "Vercel 的 CEO 在公开讨论 Mythos 和 Sol——这两个名字已经在 frontier-security 这一轴上飘了几个月。这条帖子同时做了两件事:警告「同一能力既能帮 defender 也能帮 attacker」,以及 signal「Vercel 在意 offensive-defensive 的平衡」。Rauch 是在把 Vercel 摆到 defensive 这一侧的 stakeholder 位置。infra 经济读法:agent security 不再是一个独立域,是 platform concern。"
+            ],
+            "original": [
+              "Mythos / Sol cybersecurity capabilities are equally useful in an offensive as well a defensive capacity. If adversaries get ahold of an equivalent offensive capability, it poses a serious threat to US companies that remain unaware of latent vulnerabilities. In the meantime, I strongly recommend running a security review of any exposed surfaces."
+            ]
+          }
+        },
+        {
+          "authorKey": "x:swyx",
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师",
+          "sourceUrl": "https://x.com/swyx/status/2070949306060931312",
+          "en": {
+            "rewrite": [
+              "Swyx threads the inference-budget point: 「An interesting way to take Noam at his word in regards to always keeping a constant inference budget for any eval reporting - is that open models have a lot more dollar per token mileage than closed model APIs. So anyone launching an open model today or situationally incentivized toward open models...」 The full thread goes on to argue that the constant-inference-budget discipline, which Noam Brown has been pushing for, accidentally advantages open models because open-weight providers get more usable tokens per dollar.",
+              "The argument is structural: if you freeze the inference compute and only vary the model, open weights have a permanent cost advantage. The frontier lab that has to recoup training costs cannot. This is the cleanest articulation of 「open-weights 收编」 I have seen in a while - the question is no longer 「will open weights catch up」 but 「how much of the demand curve does the per-token economics pull」."
+            ],
+            "original": [
+              "An interesting way to take Noam at his word in regards to always keeping a constant inference budget for any eval reporting - is that open models have a lot more dollar per token mileage than closed model APIs. So anyone launching an open model today or situationally incentivized toward open models ..."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx 把 inference-budget 这条线接上:「Noam 一直坚持任何 eval 报告都保持恒定 inference budget——这条规则对 open model 反而是利好,因为 open model 在 dollar per token 上跑得比 closed model API 远得多。所以今天还在发 open model、或被 open model 牵引着做事的人……」 完整 thread 在说的是:constant-inference-budget 这条纪律,意外地给 open weights 留了永久成本优势。",
+              "这是结构性论点:如果把 inference compute 冻住、只换 model,open weights 就始终有成本优势,frontier lab 没法在同一个价格曲线里把训练成本收回来。这是最近看到对「open-weights 收编」最干净的表述——问题不再是「open weights 能不能追上」,而是「dollar per token 的经济性能把需求曲线的多长一段拉过去」。"
+            ],
+            "original": [
+              "An interesting way to take Noam at his word in regards to always keeping a constant inference budget for any eval reporting - is that open models have a lot more dollar per token mileage than closed model APIs. So anyone launching an open model today or situationally incentivized toward open models ..."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Taste / 拒绝 / level 1 vs level 6:框架的 timing 才是全部 / Taste, Refusal, and Level 1 vs Level 6 — Timing of the Framework Is the Whole Game",
+      "desc": "Peter Yang 把「level 5 才有把握开口」的披露框架拆掉,Nan Yu 同步发 level-6 图说「90% 的问题 level 1 和 level 6 一样」——两条放一起是同一个编辑判断:工具应该花在值得解的那 10% 上。",
+      "cards": [
+        {
+          "authorKey": "x:petergyang",
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者",
+          "sourceUrl": "https://x.com/petergyang/status/2071058953115767275",
+          "en": {
+            "rewrite": [
+              "Peter Yang pushes back on the 「level 5」 framework for honest disclosure: 「There's just one small problem with this framework: if you wait till level 5 or whatever to tell other people that there's a problem when there's been a burning fire for days and your 'solution' actually didn't fix the problem at all, you're 100% in a worse situation than someone who is level 1 and told people the fire was happening.」 Yang is saying the framework sounds reasonable but the timing is the whole game - by the time you reach level 5 confidence, the damage is already done.",
+              "The point generalizes past the original context: any framework that ranks communication by 「how confident I feel」 is broken, because the cost of the message is mostly on the receiver side and the cost of the delay is mostly theirs too. A level-1 disclosure that says 「fire, may be small」 is structurally better than a level-5 disclosure that arrives after the fact. Yang is doing the editorial work of pulling the level-5 frame apart on behalf of the audience that would otherwise be lulled by it."
+            ],
+            "original": [
+              "There's just one small problem with this framework: If you wait till level 5 or whatever to tell other people that there's a problem when there's been a burning fire for days and your \"solution\" actually didn't fix the problem at all, you're 100% in a worse situation than someone who is level 1 and told people the fire was happening."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 对「level 5」这套诚实披露框架的反驳:「这套框架有个小问题:如果你等到 level 5 才有把握跟别人说『这里出问题了』,而火已经烧了几天,你的『解决方案』其实根本没修好——你这时候的位置,比 level 1 就在喊『着火了』的那个人要糟糕得多。」 Yang 的意思是:框架听起来合理,但 timing 才是全部,等到你 level 5 才有把握,损害已经造成。",
+              "这一点比原来讨论的语境更通用:任何把沟通按「我有多 confident」排序的框架都是坏的,因为信息的成本主要在接收方,延迟的成本也主要在接收方。「level 1 喊一声『着火了,可能不大』」结构上就是比「level 5 出来说『我们解决了』但火已经烧完」好。Yang 在做的是替观众把这个 level-5 框架拆开,免得有人被它哄住。"
+            ],
+            "original": [
+              "There's just one small problem with this framework: If you wait till level 5 or whatever to tell other people that there's a problem when there's been a burning fire for days and your \"solution\" actually didn't fix the problem at all, you're 100% in a worse situation than someone who is level 1 and told people the fire was happening."
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thenanyu",
+          "authorName": "Nan Yu",
+          "authorHandle": "@thenanyu",
+          "authorTag": "AI 创业者 / 投资人",
+          "sourceUrl": "https://x.com/thenanyu/status/2070821322901397645",
+          "en": {
+            "rewrite": [
+              "Nan Yu's level-6 image, posted quietly on the same day as Yang's critique: 「If 90% of problems you bump into aren't worth solving, then level 1 and level 6 are 90% the same.」 The compressed claim: the things that change between a level-1 practitioner and a level-6 practitioner are 10% of the problems. The other 90% are problems neither level should be solving.",
+              "The pair - Yang's framework critique and Yu's 「secret level 6」 - together form a single editorial claim: a large fraction of the work is not worth the framework you are applying to it. The implication for builder-economy: a lot of tooling is being built to solve problems that should not be solved at all. The actual compounding axis is the judgment of which 10% to spend the framework on."
+            ],
+            "original": [
+              "If 90% of problems you bump into aren't worth solving, then level 1 and level 6 are 90% the same"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nan Yu 的 level-6 图,跟 Yang 的反驳在同一天安静地发出来:「如果你撞上的问题里 90% 都不值得解,那 level 1 和 level 6 在 90% 的事情上是一样的。」 压缩版的判断:从 level 1 到 level 6 真正拉开差距的,只是那 10% 的问题;另外 90% 根本不该被解。",
+              "把 Yang 的框架批评和 Yu 的「secret level 6」放一起,就是一个完整的编辑判断:你的工作里有一大块,根本不值得你为它用那套框架。对 builder 经济的提示:很多正在被做出来的工具,是在解决「根本不该被解决」的问题。真正能 compounding 的轴,是「我应该把框架花在哪 10% 上」这个判断力。"
+            ],
+            "original": [
+              "If 90% of problems you bump into aren't worth solving, then level 1 and level 6 are 90% the same"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Vibe coding → audience compounding:Zara / Swyx / Hermes-as-integration / Vibe Coding to Audience Compounding — Zara, Swyx, and Hermes-as-Integration",
+      "desc": "Zara Zhang 一年从「不会用 GitHub」到 10k followers,这条 arc 的 compounding 不是 coding skill,是 audience。Swyx 同一天办 AI engineer preshow floor tour,role-formation 是在办 meetup 的人那里完成的。",
+      "cards": [
+        {
+          "authorKey": "x:zarazhangrui",
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2070982013822333007",
+          "en": {
+            "rewrite": [
+              "Zara Zhang: 「Last year I barely knew how GitHub worked. Now I have 10k followers on GitHub (and still can't write code by hand). What a year.」 The line that lands is 「and still can't write code by hand」 - Zhang is not pretending; she is framing. The compounding thing is the audience that formed around her vibe-coding projects, not the code skill she never developed.",
+              "The builder-economy read: in 2026, the compounding axis for a non-engineer builder is audience formation, not technical depth. The 10k GitHub followers are a load-bearing fact - they are the audience that will be there for the next project. The fact that she shipped side projects she could not have shipped by hand is the entire point; the tool stack did the work, the audience did the compounding. Zhang is the cleanest example of the vibe-coding-to-audience arc that the past year has produced."
+            ],
+            "original": [
+              "Last year I barely knew how GitHub worked. Now I have 10k followers on GitHub (and still can't write code by hand). What a year."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zara Zhang:「去年我连 GitHub 怎么用都不知道。现在我在 GitHub 上有 10k followers(而且我还是手写不了代码)。What a year.」 关键在括号里那句「还是手写不了代码」——Zhang 不是在装,她在给这十年定框。能 compounding 的是围绕她 vibe coding 项目长出来的 audience,不是她从来没练出来的 coding skill。",
+              "builder 经济读法:2026 年,非工程师 builder 能 compounding 的轴是 audience 形成,不是技术深度。10k GitHub followers 是一个 load-bearing 的事实——它是下一个项目发布时就已经在场的那群人。她能 ship 出手写做不出来的 side project 才是重点;工具栈做了活,audience 做了 compounding。Zhang 是过去一年 vibe-coding-to-audience 这条线最干净的样本。"
+            ],
+            "original": [
+              "Last year I barely knew how GitHub worked. Now I have 10k followers on GitHub (and still can't write code by hand). What a year."
+            ]
+          }
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2071116793234813272",
+          "en": {
+            "rewrite": [
+              "Companion to that viral post, dropped a few hours later: 「Btw I'm not an engineer; these are all side projects I built for fun. I just love connecting technology with user problems/using it to solve my own pain points, and then telling stories about the products.」 Zhang is naming the three pieces of her arc in one paragraph - solve your own pain, ship it, tell the story. The technical depth is irrelevant to the arc.",
+              "Read together with the 10k post, the editorial angle is: the audience Zhang built up was not built on engineering credibility. It was built on a consistent cadence of 「I had a problem - I shipped something - I told you about it」. That cadence is the compounding asset. The coding skill was the tool, not the identity."
+            ],
+            "original": [
+              "Btw I'm not an engineer; these are all side projects I built for fun. I just love connecting technology with user problems/using it to solve my own pain points, and then telling stories about the products"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "那条 viral 之后几小时,Zhang 又补了一条:「顺便说一句,我不是工程师,这些都是我做着玩的 side project。我就是喜欢把技术跟用户问题接上、拿它解自己的痛点,然后把产品讲成一个故事。」 Zhang 在一段话里把自己那条 arc 的三块命名出来了——解自己的痛、ship 出来、把故事讲出来。技术深度跟 arc 没关系。",
+              "跟 10k 那条合起来看,编辑角度是:Zhang 攒下来的 audience,不是建在工程 credibility 上的,是建在「我有个问题 → 我 ship 出来 → 我跟你讲清楚」的稳定节奏上。节奏才是 compounding 的资产。coding skill 是工具,不是 identity。"
+            ],
+            "original": [
+              "Btw I'm not an engineer; these are all side projects I built for fun. I just love connecting technology with user problems/using it to solve my own pain points, and then telling stories about the products"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:swyx",
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师",
+          "sourceUrl": "https://x.com/swyx/status/2070971772548366788",
+          "en": {
+            "rewrite": [
+              "Swyx hosts an 「impromptu ai engineer preshow floor tour and AMA」. The cultural shape of the event matters more than the content: an AI engineer preshow is the place where the people shipping the work meet the people using the work, in person, before the main event. Floor tours are the lowest-status-but-highest-trust format in the conference stack - you walk around with someone and point at the things they actually do.",
+              "Pair this with Swyx's separate AIE programming (the AI FDE miniconference from the 6-27 issue) and the picture forms: Swyx is consistently the person who names the new front-line roles and gives them a venue. The floor-tour / AMA format is the venue for the AI FDE role - the engineer who sits between a frontier lab and a customer outcome. Builder-economy read: the role-formation work is being done outside the labs, in the people who run the meetups."
+            ],
+            "original": [
+              "impromptu ai engineer preshow floor tour and AMA"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx 办了一场「impromptu ai engineer preshow floor tour and AMA」。事件的内容不重要,文化形状才重要:AI engineer 的 preshow 是「ship 这件事的人」和「用这件事的人」在主会前面对面见面的地方。Floor tour 是 conference stack 里地位最低、信任最高的格式——你和一个人一起走,指着他每天真正在做的事。",
+              "结合 6-27 Swyx 那一期 AIE 的 AI FDE miniconference 看,图景就清晰了:Swyx 是那个持续给新工种命名、给它们场地的人。floor-tour / AMA 这个格式,正好就是给「AI FDE」这个工种的——这个卡在 frontier lab 和 customer outcome 中间的工程师。builder 经济读法:role-formation 的工作是在实验室外面、在办 meetup 的人那里完成的。"
+            ],
+            "original": [
+              "impromptu ai engineer preshow floor tour and AMA"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Hermes-as-integration:从 vibe coding 一个东西到 vibe coding 一个系统 / Hermes-as-Integration — From Vibe Coding a Thing to Vibe Coding a System",
+      "desc": "Peter Yang 每周六自动收一封 Hermes 拼出来的健康周报——把 Withings / Fitbit / Google Health / 自己 vibe coding 出来的 MCP server 一次性接好,跑 schedule。这是「vibe coding」从工具变系统的具体样本。",
+      "cards": [
+        {
+          "authorKey": "x:petergyang",
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者",
+          "sourceUrl": "https://x.com/petergyang/status/2070906940352520477",
+          "en": {
+            "rewrite": [
+              "Peter Yang on the side: 「Every Saturday, Hermes sends me a health check email with top takeaways and stats to help me work toward my health goals by pulling data from: my smart scale via the Withings API, my Fitbit and Google Health, an MCP server and mobile fitness app I vibe coded to track my workouts.」 Yang has wired his AI assistant to his health stack and is now getting a weekly briefing that no human coach would put together for him.",
+              "The interesting frame: this is not 「AI replaced his coach」. It is 「AI replaced the integration tax」. The Withings API, the Fitbit API, the Google Health API, the MCP server he vibe-coded - none of those integrate themselves. Yang spent an evening wiring them, and now the system runs itself. Builder-economy read: the next category of personal tools is the one where someone wires together four already-existing services and runs the integration on a schedule. That is the path from 「vibe coded a thing」 to 「vibe coded a system」."
+            ],
+            "original": [
+              "Every Saturday, Hermes sends me a health check email with top takeaways and stats to help me work toward my health goals by pulling data from: my smart scale via the Withings API, my Fitbit and Google Health, an MCP server and mobile fitness app I vibe coded to track my workouts."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 顺手分享:「每周六,Hermes 会给我发一封健康检查邮件,把我这一周的健康数据 top takeaways 和统计拼出来——数据来源是:我的智能体重秤(Withings API)、Fitbit、Google Health,还有一个我自己 vibe coding 出来追踪 workout 的 MCP server + 移动健身 app。」 Yang 把他的 AI 助手和健康数据栈接上了,每周自动出一份「没有人类教练会主动给他攒」的简报。",
+              "关键的框架:这不是「AI 替代了教练」,是「AI 替代了 integration tax」。Withings API、Fitbit API、Google Health API、他自己 vibe coding 出来的 MCP server——这四个谁也不会自己整合。Yang 花一个晚上接好了,系统就自己跑。builder 经济读法:下一类 personal tool,就是有人把四个现成 service 接起来、按 schedule 跑——这是从「vibe coding 一个东西」到「vibe coding 一个系统」的那条路。"
+            ],
+            "original": [
+              "Every Saturday, Hermes sends me a health check email with top takeaways and stats to help me work toward my health goals by pulling data from: my smart scale via the Withings API, my Fitbit and Google Health, an MCP server and mobile fitness app I vibe coded to track my workouts."
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "博客:Claude Code 现在直接产 artifact / Blog — Claude Code Now Produces Artifacts Directly",
+      "desc": "Claude Blog 6-28 发:Claude Code 的 session 可以直接产 live、shareable、可自更新的网页——PR walkthrough、system explainer、dashboard、release checklist 都行。artifact 不是「导出一份独立文件」,是「同一个 session 的另一面」。",
+      "cards": [
+        {
+          "authorKey": "blog:claudeai",
+          "authorName": "Claude",
+          "authorHandle": null,
+          "authorTag": "Claude 官方博客",
+          "sourceUrl": "https://claude.com/blog/artifacts-in-claude-code",
+          "en": {
+            "rewrite": [
+              "Claude Blog ships 「Claude Code now supports artifacts」 - Claude Code sessions can now produce a live, shareable web page (a PR walkthrough, a system explainer, a dashboard, a release checklist) that updates itself as the session works. The page is built from the full context of the session: codebase, connectors, the conversation itself. Every publish is a new version at the same link, so the URL becomes a stable artifact rather than a moving screenshot.",
+              "The interesting move: the artifact is not a separate export. It is a view into the same session. An incident page can pull in the failing test, the function behind it, the error spike from monitoring, and the root-cause reasoning from the session that just ran - without you wiring anything. The builder-economy angle: the workflow 「I just ran an investigation - here is a page anyone can open」 is now a one-step output of Claude Code, not a side project. That is the difference between a tool and an artifact engine."
+            ],
+            "original": [
+              "Claude Code now supports artifacts. Starting today, Claude Code can capture work progress as an artifact, which turn Claude Code's work into live, shareable visual pages - including PR walkthroughs, system explainers, dashboards, and release checklists - that update themselves as your session works. Built on the context from your session: a single incident page can bring together the failing test and the function behind it from your code, the error spike from a connected monitoring tool, and the root-cause reasoning from the session you just ran. With artifacts, you don't need to wire up data sources or stand up infrastructure."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude Blog 这一期「Claude Code now supports artifacts」——Claude Code 的 session 现在能产出一张 live、可分享的网页(PR walkthrough、system explainer、dashboard、release checklist),这张网页会随 session 工作进度自己更新。页面由 session 的完整 context 造出来:codebase、connectors、对话本身。每一次发布都是同一个链接下的新版本,URL 因此变成稳定的 artifact,而不是不断滚动的截图。",
+              "关键点:这个 artifact 不是「导出一份独立文件」,而是「同一个 session 的另一个视图」。一张 incident page 能把失败的测试、它背后的函数、监控里冒出来的 error spike、session 里刚跑出来的 root-cause reasoning 一次性带出来——你不用自己接任何东西。builder 经济角度:「我刚跑完一次排查 → 这里是一张任何人都能打开的网页」这个 workflow 现在是 Claude Code 的一步输出,不再是 side project。这就是「工具」和「artifact engine」的区别。"
+            ],
+            "original": [
+              "Claude Code 现在直接产 artifact:Claude Code 的 session 可以把工作过程变成 live、shareable、self-updating 的网页(PR walkthrough、system explainer、dashboard、release checklist)。一次 incident 调查可以直接拼出「失败测试 + 它背后的函数 + 监控 error spike + 刚跑出来的 root-cause reasoning」的页面——你不用自己接任何数据源或 infra。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Podcast 收尾:Engram 把 memory 立成接下来一年的 model infra floor / Closer — Engram Names Memory as the Model-Infra Floor of the Next Year",
+      "desc": "Training Data 6-28 那一期请到 Engram 的 Dan Biderman 和 Jessy Lin,主题是 memory 和 continual learning——model 怎么才能把一家公司的私有数据学得跟「巴黎是首都」一样熟。memory 是 6-28 所有 thread 共同坐落的那一层。",
+      "cards": [
+        {
+          "authorKey": "podcast:training-data",
+          "authorName": "Training Data Podcast",
+          "authorHandle": null,
+          "authorTag": "AI 播客",
+          "sourceUrl": "https://www.youtube.com/watch?v=aiR7F4jqjXY",
+          "en": {
+            "rewrite": [
+              "Training Data hosts Dan Biderman and Jessy Lin, cofounders of Engram, for an episode on memory and continual learning. The opening line sets the frame: 「What about pre-training or even post-training makes it possible for the models to generalize in these magical emergent ways and controlling that process so that a company has a set of private data? How do we make the models learn that just as well as the models know, like, the capital of France or how to write Python?」 The question is structural - memory is not a feature, it is the layer that lets a model know your private data the way it knows public facts.",
+              "The pod is a long-form pass at the memory axis as a research direction: not RAG, not context window tricks, but the actual mechanisms that let a model retain learned state across sessions. Engram is positioned as a NeoLab focused on this. The closer fit for 6-28: the day's other threads were about Codex as an activity, about audience as compounding, about token cost as a router problem - all of which assume the model remembers the work. The Engram episode names the underlying layer those threads all sit on. Memory is the floor of the next year of model infrastructure."
+            ],
+            "original": [
+              "What about pre training or even post training makes it possible for the models to generalize in these magical emergent ways and controlling that process so that a company has a set of private data? How do we make the models learn that just as well as the models know, like, the capital of France or, you know, like, how to write Python?",
+              "Welcome to training data. We are delighted to have Don Biederman and Jesse Lynn, cofounders of Ngram today. Ngram is a NeoLab focused on memory and continual learning and two of the hottest topics in all of AI research today."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Training Data 这一期请到 Engram 的两位联合创始人 Dan Biderman 和 Jessy Lin,主题是 memory 和 continual learning。开场第一句就把框立住:「pre-training、post-training 是怎么让 model 产生那种魔法般的 emergent generalization 的?一家公司要把自己那套私有数据,让 model 学到跟『巴黎是法国首都』『Python 怎么写』一样熟——这件事该怎么搞?」 这个问题是结构性的:memory 不是一个 feature,是让 model「像知道公共事实一样知道你的私有事实」的那一层。",
+              "这一期 pod 是对 memory 这一轴作为研究方向的长篇推:不是 RAG,不是 context window 的小技巧,而是让 model 跨 session 保留 learned state 的真正机制。Engram 把自己定位成 NeoLab,专做这一块。跟 6-28 其他几条线接上:Codex 作为一种 activity、audience 作为 compounding、token cost 作为 router 问题——这些全部假设 model 能记住工作。Engram 这一期把上面这些 thread 都坐落的那一层命名出来了。memory 是接下来一年 model 基础设施的 floor。"
+            ],
+            "original": [
+              "pre-training、post-training 是怎么让 model 产生那种魔法般的 emergent generalization 的?一家公司要把自己那套私有数据,让 model 学到跟『巴黎是法国首都』『Python 怎么写』一样熟——这件事该怎么搞?",
+              "Welcome to training data. We are delighted to have Don Biederman and Jesse Lynn, cofounders of Ngram today. Ngram is a NeoLab focused on memory and continual learning and two of the hottest topics in all of AI research today."
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
