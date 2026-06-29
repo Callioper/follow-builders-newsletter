@@ -1,0 +1,355 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-06-29",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "6-29 Follow Builders 整张 issue 的 load-bearing 帖子是 Boris Cherny 周日写的 5-archetype 框架:Prototyper / Builder / Sweeper / Grower / Maintainer——archetype 不挂在 job function 上,挂在「你做什么」上,而且健康的团队是这五类的 mix,关键看产品处在 pre-PMF / 已找到 PMF / 强 PMF 哪一阶段。同一天 Codex team 周日进 warroom 查 usage drain,Sottiaux 当天 hard-reset 全员限制——这是 ops 那一面的「分型」,把 Codex 团队拆成「在排查」和「不在排查」两个 bucket。Levie 同一周把 mythos 级别 open cyber 模型立成监管 baseline——「赌中国追不上」是 bad bet,要么 gate 自家模型(单边输),要么永远在 frontier 推下一波架构;这是 regulatory 那一面的分型。Peter Yang 翻出 Anthropic PM Jess 访谈,把「PM 能直接读 codebase」立成最大 unlock——code access 配 review 流程本身就是 containment control,这是 Cherny 框架的 operational 答案。trq212 抛「coding agent 改写了 legacy codebase 的工程算账方式」的具体信号、Rauchg 把 LinkedIn-profile 重新定义成 builder 用错的东西——legacy 和「你 link 什么」这两件事,在 6-29 被同时重新定价。Zara「1 小时 build、2 小时解释」立 builder 的标配比例,Swyx 同一周报 AI Engineer Summit 当天注册 1000 人——X 上的对话正在变成 real-world 的 launch event。博客:Anthropic Engineering 第一次系统回答「containment 在哪几层是结构的、哪几层是 case-by-case」。收尾:Balaban(Lambda CTO)上 MAD Podcast 把 cloud compute 重新定义成 vertical-integrated 一整套栈——「2023 年的 H100 今天租出去比当年买还贵」,物理层现在决定「谁有资格当 Builder」——同一天里,人 / 团队 / 模型 / 监管 / 物理层五个层面都在被重新分型。"
+  },
+  "archive": {
+    "title": "分型日",
+    "desc": "6-29 Follow Builders 的主旋律是 Boris Cherny 把未来 PM 角色拆成 5 种 archetype——prototype / builder / sweeper / grower / maintainer——同时 Codex 周日进 warroom、Levie 把 open mythos 立成监管 baseline、Peter Yang 拆 Anthropic PM 用 agent 直接看 PR——同一天里人 / 团队 / 模型 / 监管四个层面都在被重新分型。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-29 source feeds.",
+  "sections": [
+    {
+      "title": "Boris Cherny 立 5-archetype 框架 / Cherny Lays the 5-Archetype Map for Future PM Roles",
+      "desc": "§1 是 6-29 整张 issue 的 load-bearing thesis——Boris Cherny 周日把未来 PM / 团队角色拆成 Prototyper / Builder / Sweeper / Grower / Maintainer 五种 archetype,标签按「做什么」分,不是按 job function 分。",
+      "cards": [
+        {
+          "authorKey": "x:bcherny",
+          "authorName": "Boris Cherny",
+          "authorHandle": "@bcherny",
+          "authorTag": "Anthropic Claude Code 创始成员",
+          "sourceUrl": "https://x.com/bcherny/status/2071379474277613732",
+          "en": {
+            "rewrite": [
+              "Boris Cherny, on a Sunday, lays out a five-archetype map for the roles he sees crystallizing inside the Claude Code team: Prototyper (churns out ideas, most don't ship), Builder (turns prototype to production), Sweeper (cleans up, unships, optimizes), Grower (iterates a shipped product toward PMF), Maintainer (owns a mature, secure, fast, efficient system).",
+              "The interesting bit is that the archetypes are not tied to job function. A designer can be a Prototyper, an engineer can be a Sweeper, a PM can be a Grower. The labels are about what you DO, not what your title says. Cherny adds that a healthy team is a MIX — pre-PMF needs 1+2+3, growing-PMF needs 2+3+4+some 5, strong-PMF needs 3+4+5+some 2.",
+              "The frame is going to be cited for a while because it dissolves the old 'eng vs PM vs DS vs design' wall and replaces it with a five-bucket taxonomy keyed to product stage, not org chart. Most 'future of work' essays stay at the level of vibes; this one is specific enough to use on Monday."
+            ],
+            "original": [
+              "1. Prototyper: comes up with brand new ideas; churns out many ideas, most of which don't ship",
+              "2. Builder: quickly turns a prototype/idea into production-grade product/infra",
+              "3. Sweeper: cleans up the UI, simplifies the code and system, unships, optimizes performance",
+              "4. Grower: takes a product that has been built and iterates on it to improve Product-Market Fit",
+              "5. Maintainer: owns a mature system to make it secure, reliable, fast, and efficient as it scales",
+              "Maybe product roles of the future will look more like this, and less like the domain-specific roles of today?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Boris Cherny 周日把他在 Claude Code 团队里看到的未来角色拆成五种 archetype:Prototyper(出新点子,大多不 ship)、Builder(把点子推到 production)、Sweeper(清理、unship、优化)、Grower(对已 ship 的产品往 PMF 推)、Maintainer(守住一个成熟系统的安全 / 稳定 / 速度 / 效率)。",
+              "关键不是新名词,而是 archetype 不挂在 job function 上。设计师可以是 Prototyper,工程师可以是 Sweeper,PM 可以是 Grower。标签标的是你做什么,不是你的 title。Cherny 接着说:健康的团队是 1+2+3 / 2+3+4+5 / 3+4+5+2 这几种 mix,看产品处于 pre-PMF / 已找到 PMF / 强 PMF 的哪一阶段。",
+              "这个框架会被引用一阵子,因为它把「工程 vs PM vs DS vs 设计」那堵墙直接拆掉,换成一把按产品阶段分桶的 taxonomy。大部分「未来的工作」essay 都停在 vibe 层,这一篇周一就能上手用。"
+            ],
+            "original": [
+              "Cherny 把未来 PM 角色拆成五类:Prototyper / Builder / Sweeper / Grower / Maintainer——按「做什么」分,而不是按「title」分;健康的团队是这五类在不同产品阶段的 mix。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Codex 6-29 周日 warroom / Codex in Sunday Warroom — Hard-Reset Week",
+      "desc": "§2 是 ops 那一面:Thibault Sottiaux 周日进 warroom 查 usage drain,当天 hard-reset 全员 Codex 限制——「这周本来就是 OpenAI 的 RESET week,只是 reset 的方式不太一样。」",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT",
+          "sourceUrl": "https://x.com/thsottiaux/status/2071357473659707441",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux on a Sunday: the Codex team is in a warroom, combing through logs, checking whether anything could be causing increased usage drains for some users. 「Taking it very seriously and won't rest until we get to the bottom of it.」",
+              "Followup within the same hour: as a precaution while the investigation continues, Sottiaux has reset everyone's Codex usage limits — a hard reset, even though some users had banked up to three manual resets they could apply on their own schedule. He promises more manual resets to come if anyone burned their previous reset during the affected window.",
+              "Sottiaux can't resist a meta-joke: this week at OpenAI is internally called 「RESET week」, meant for employees to relax. 「However it will be a different kind of RESET week.」 The line lands because it names the shift — a Sunday warroom IS a kind of reset, just not the kind on the calendar."
+            ],
+            "original": [
+              "Codex team is in a warroom on a Sunday combing through logs and checking whether there is anything that could lead to increased usage drains for some users. Taking it very seriously and won't rest until we get to the bottom of it.",
+              "As we are still investigating, I have reset everyone's Codex usage limits. This is a hard reset given some users had stacked up to three banked resets already that they can apply on their own schedule.",
+              "Funnily enough, this week at OpenAI is called the RESET week, which is meant for folks to relax a bit. However it will be a different kind of RESET week. Enjoy."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux 周日发推:Codex 团队在 warroom 里翻 log,排查是不是有某种使用方式造成了部分用户的 usage drain。「Taking it very seriously and won't rest until we get to the bottom of it.」",
+              "同一小时跟进:在调查继续期间,Sottiaux 把所有人的 Codex usage 限制 hard-reset 了一遍——尽管有些用户已经攒了最多三次可手动触发的 reset。他说,如果你恰好在异常时段用过之前那次 reset,等调查结束后会再发一批手动 reset。",
+              "Sottiaux 顺手写了一句 meta 玩笑:这周在 OpenAI 内部叫做 RESET week,本来是给员工放松用的。「However it will be a different kind of RESET week.」这句话成立,是因为它点出了 shift:周日 warroom 也是一种 reset,只是不是日历上那种。"
+            ],
+            "original": [
+              "Codex team 周日进 warroom 查 usage drain,Sottiaux 当天 hard-reset 全员 usage 限制,承诺调查完再发一批手动 reset——「这周本来是 OpenAI 的 RESET week,只是 reset 的方式不太一样。」"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Open-source mythos = 监管 baseline 被翻转 / Open-Source Mythos Is the New Regulatory Baseline",
+      "desc": "§3 是 regulatory 那一面:Levie 把 mythos 级别 open cyber 模型立成监管 baseline——「赌中国追不上」是 bad bet,要么 gate 自家模型(单边输),要么永远在 frontier 推下一波架构。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie/status/2071253118252356001",
+          "en": {
+            "rewrite": [
+              "Aaron Levie, on what should be obvious to everyone in AI: mythos-level cybersecurity models will be open and available to anyone within a window. The byproduct is alternative tech stacks that drive economic value and control away from the US's stack.",
+              "The policy logic follows. If advanced models are going to be open regardless, then refusing to release your own doesn't make you more secure or strategically better off — it just asymmetrically disadvantages you. Most current regulatory framing is implicitly betting that China can't catch up; all current evidence suggests they can and are, and the strategic priority of doing so is about as high as it gets.",
+              "Levie closes with the only two real options: gate your best models (which means losing the race against your own future self), or work to always be at the frontier and driving the next architecture. There is no middle position that holds."
+            ],
+            "original": [
+              "It should be 100% obvious that there will soon be mythos level models on cyber security that are open and available to anyone. As a byproduct of this, alternative tech stacks will emerge that also drive more economic value and control away from the US's tech stack.",
+              "If advanced models will become open and available regardless, then by not allowing the release of models you're neither more secure nor better off strategically. So much of the regulatory approach to AI has to assume China can't catch up, when all current evidence suggests they can and are.",
+              "So your options are either to create gates around your best models, which means you're asymmetrically disadvantaging yourself, or you work to ensure you're always at the frontier and driving the future architectures of AI."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 写了一篇:cybersecurity 这一层很快就会出现 mythos 级别、开放、任何人都能用的模型。副产品是 alternative tech stacks 会从美国的栈里分走更多经济价值和 control。",
+              "政策逻辑就接上了。如果先进模型无论如何都会开放,那么限制你自己不放出来,既不会让你更安全,也不会让你战略上更划算——只会让你单边吃亏。现在大多数 AI 监管框架暗地里都在赌中国追不上;但所有现有证据都说他们能追上、也正在追,而且「追上」在他们那里的优先级高得不能再高。",
+              "Levie 收尾是两条路:要么给自家最强的模型上 gate(等于跟自己未来的自己赛跑、还会输),要么保证自己永远站在 frontier、推下一波架构。没有第三种能站住的位置。"
+            ],
+            "original": [
+              "Levie 把 mythos 级别 open cyber 模型立成监管 baseline——「赌中国追不上」是 bad bet,要么给自家模型上 gate(单边输),要么永远站在 frontier 推下一波架构,没有中间态。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "PM 用 agent 接进 codebase / PMs Use Agents to Read Codebase Directly",
+      "desc": "§4 是 Builder-与-Grower 之间的实操解:Anthropic Claude Managed Agents 产品 lead Jess 把「PM 能直接读 codebase」立成最大 unlock——code access 配 review 流程,本身就是 containment control。",
+      "cards": [
+        {
+          "authorKey": "x:petergyang",
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者",
+          "sourceUrl": "https://x.com/petergyang/status/2071292628302434361",
+          "en": {
+            "rewrite": [
+              "Peter Yang surfaces a long interview clip with Jess, the product lead for Claude Managed Agents at Anthropic. The unlock: PMs at Anthropic now have direct read access to the codebase, and the change in how they work is the headline.",
+              "The concrete shift: instead of poking engineers for status, a PM can track PRs directly, see which are merged, which are deployed. 「I deeply understand and interact with my product so much more than I've ever been able to in the past.」 Codebase access is the new seat at the table.",
+              "The clip also functions as a quiet answer to the bcherny 5-archetype thread the same day: a PM at Anthropic, given code access and an agent, can sit between Grower and Builder. The org-chart split between PM and engineer gets thinner when both can read the same diff."
+            ],
+            "original": [
+              "How Anthropic PMs use agents internally to get closer to the product from Jess, product lead for Claude Managed Agents:",
+              "Access to our codebase has been the biggest unlock for me. It helps me manage state more easily. Rather than poking a bunch of engineers on what they're doing, I can just track the PRs directly and see which ones are merged, which ones are deployed.",
+              "I deeply understand and interact with my product so much more than I've ever been able to in the past."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 翻出一段 Anthropic Claude Managed Agents 产品负责人 Jess 的访谈。关键 unlock:Anthropic 的 PM 现在能直接读 codebase,工作方式的转变是这件事的 headline。",
+              "具体的变化:不用戳工程师问进度,PM 可以直接看 PR,看哪些 merged、哪些 deployed。「I deeply understand and interact with my product so much more than I've ever been able to in the past.」读 codebase 成了新的 seat at the table。",
+              "这条其实和同一天 Boris Cherny 的 5-archetype 帖子是同一条线的答案:Anthropic 的 PM,一旦给了 code access 和 agent,就能在 Grower 和 Builder 之间走。PM 和 engineer 之间的 org-chart 边界,在双方都读同一份 diff 的时候,自然就薄了。"
+            ],
+            "original": [
+              "Jess(Anthropic Claude Managed Agents 产品 lead):PM 的最大 unlock 是「能直接读 codebase」,可以直接追 PR、看 merged / deployed——「I deeply understand and interact with my product so much more than I've ever been able to.」"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Legacy 与 ship 算账的方法变了 / Legacy Port Math and the Receipt-Over-Resume Reframe",
+      "desc": "§5 是算账那一面:trq212 抛「coding agent 改写了 legacy codebase 的工程算账方式」的具体信号;Rauchg 同一周把 LinkedIn-profile 重新定义成 builder 用错的东西——一个指向已 ship 工作的 link 才是 receipt。",
+      "cards": [
+        {
+          "authorKey": "x:trq212",
+          "authorName": "Tao Li",
+          "authorHandle": "@trq212",
+          "authorTag": "AI 研究员 / Follow Builders 维护者",
+          "sourceUrl": "https://x.com/trq212/status/2071419473433854221",
+          "en": {
+            "rewrite": [
+              "Tao Li (trq212, who maintains Follow Builders) flags a real-world data point and asks the load-bearing question: this has to be because coding agents change the engineering math on legacy codebases, right? Anyone at Riot able to confirm?",
+              "The implicit claim: teams that used to write off a 10-year-old C++ codebase as too painful to port are now running agents against it. The cost of port is no longer the engineering hours, it's the agent hours and the validation cost. That re-prices a whole class of decisions.",
+              "The reason this fits today's thread: it is the operational form of the bcherny Builder / Sweeper split. Sweepers used to be a luxury for mature products. With agents, every Builder can also be a Sweeper, because the cost of unshipping and cleaning up the old thing dropped to the cost of running the agent."
+            ],
+            "original": [
+              "this has to be because coding agents change the engineering math on how it is to work with or port a legacy codebase, right? anyone at Riot able to confirm?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Tao Li(Follow Builders 维护者)抛了一个真实世界的信号,问了那条 load-bearing 的问题:这件事肯定是因为 coding agent 改写了 legacy codebase 的工程算账方式,对吧?有没有 Riot 的人能 confirm 一下?",
+              "隐含的判断是:过去那种「十年 C++ 库太疼、别碰」的团队,现在拿 agent 上去跑就行。port 的成本不再是工程师工时,而是 agent 工时 + 验证成本。一整类「算了不动它」的决定被重新定价了。",
+              "之所以是今天这条线上的:它是 bcherny Builder / Sweeper 分型的 operational 形式。Sweeper 在过去是 mature product 的奢侈品;有了 agent,每个 Builder 也能是 Sweeper,清理旧东西的成本降到了跑 agent 的成本。"
+            ],
+            "original": [
+              "trq212 提了一个具体信号:有人开始用 coding agent 来 port 多年没人敢碰的 legacy codebase——「这件事肯定是因为 coding agent 改写了 legacy 的工程算账方式」,legacy 的清理成本从工程师工时降到了 agent 工时。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO",
+          "sourceUrl": "https://x.com/rauchg/status/2071284129275285580",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch (Vercel CEO) writes a one-line thesis the same day: you don't need a LinkedIn, you need a page on your website describing and linking to what you shipped.",
+              "The followup one-liner, an hour later, is the punchline: you need a Link, not a LinkedIn. The capital-L wordplay is doing real work — it reframes the LinkedIn profile as the wrong artifact for a builder. A profile is a credential; a link to shipped work is a receipt.",
+              "The line pairs cleanly with Peter Yang's Anthropic-PM clip. The PM got closer to the product by reading the codebase; the builder gets closer to the audience by linking to the page that shows what they shipped. Same axis: read the artifact, not the org chart."
+            ],
+            "original": [
+              "You don't need a LinkedIn, you need a page on your website describing and linking to what you shipped",
+              "You need a Link, not a LinkedIn"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 同一天写了一行 thesis:你不需要 LinkedIn,你需要你网站上有一个页面,写清楚你 ship 了什么、把链接放出来。",
+              "一小时后的跟进就是金句本身:You need a Link, not a LinkedIn。首字母的 wordplay 在做实事——它把 LinkedIn 的 profile 重新定义成 builder 用错的东西。profile 是 credential;一个指向已 ship 工作的 link 才是 receipt。",
+              "这一条和 Peter Yang 那条 Anthropic-PM 视频是同一根轴:PM 通过读 codebase 离产品更近;builder 通过放出自己 ship 的页面离 audience 更近。同一条线:读 artifact,不是读 org chart。"
+            ],
+            "original": [
+              "Rauchg 一句话:「你不需要 LinkedIn,你需要一个页面写清楚你 ship 了什么。」一个 link 是 receipt,一个 profile 是 credential——对 builder 来说 artifact 比头衔更接近 audience。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Builder 的 2:1 ratio + 1000 人 / The Builder's 2:1 Ratio and a 1000-Person Launch",
+      "desc": "§6 是 audience / build-in-public 那一面:Zara 把「1 小时 build、2 小时解释」立成 builder 的标配比例;Swyx 同一天报 AI Engineer Summit 当天注册 1000 人——X 上的对话正在变成 real-world 的 launch event。",
+      "cards": [
+        {
+          "authorKey": "x:zarazhangrui",
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2071319754128978030",
+          "en": {
+            "rewrite": [
+              "Zara Zhang (Follow Builders founder) drops a one-line ratio that is going to be re-quoted: for every hour you spend on building the product, spend two hours on explaining it, demonstrating it, selling it, teaching it.",
+              "The frame she adds: this is her favorite part of building — telling the world about it, and then refining it based on contact with reality. The 2:1 ratio is not a marketing budget; it is a learning budget. The hours spent explaining are the hours that surface what to build next.",
+              "It slots into the day's thread as the Builder-archetype complement to the Cherny frame. Builders don't ship and disappear; Builders spend 2/3 of their time on the part of the job that used to be called 「marketing」 and is now called 「refining in contact with reality.」"
+            ],
+            "original": [
+              "For every hour you spend on building the product, spend two hours on explaining it, demonstrating it, selling it, teaching it…",
+              "This is my favorite part about building: telling the world about it and then refining it based on contact with reality"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Follow Builders 创始人 Zhang Rui 抛了一个会被反复引用的比例:每花 1 小时 build 产品,花 2 小时解释、演示、卖、教。",
+              "她加了一句 frame:这正是 building 她最喜欢的部分——告诉世界你在做什么,然后根据「接触现实」来 refine。2:1 不是 marketing 预算,是 learning 预算。用来解释的那几个小时,就是用来撞出「下一步该 build 什么」的那几个小时。",
+              "这一条接回今天主线:它是 Cherny 5-archetype 里 Builder 那一型的补完。Builder 不是 ship 完就走;Builder 2/3 的时间花在以前叫「marketing」、现在叫「在现实接触中 refine」的那一部分。"
+            ],
+            "original": [
+              "Zhang Rui 的 builder ratio:每 1 小时 build,花 2 小时解释 / 演示 / 卖 / 教——这 2 小时不是 marketing 预算,是 learning 预算,refine 的输入就在里面。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:swyx",
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师",
+          "sourceUrl": "https://x.com/swyx/status/2071480924810969331",
+          "en": {
+            "rewrite": [
+              "Swyx, on AI Engineer Summit day, reports a number: 1000 people registered today. The picture at hour 3 looks like a turnstile. 「Tmr and Tuesday going to be absolutely batshit.」",
+              "Companion tweet, a few minutes earlier, on the Design Engineers track he personally curates: 「because I'm not a design engineer myself, this track is one of the harder ones I struggle to curate.」 He's honest that he had to recruit a friend (Geoff, two years of AI UX meetups) to open the Design Engineers track. The honest-disclosure-as-curation move is now a builder signature.",
+              "1000 in a day is the number; 「batshit tomorrow」 is the prophecy. The 1-blog-1-podcast issue was, on the X side, becoming a real-world launch event."
+            ],
+            "original": [
+              "we registered 1000 people today. this is what it looked like at hour 3. tmr and tuesday going to be absolutely batshit",
+              "because i'm not a design engineer myself, this track is one of the harder ones I struggle to curate. very fortunate to befriend Geoff who has lent a hand to the past 2 years of AI UX meetups, and now is the opener for the Design Engineers at AIE! see you wednesday"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx 在 AI Engineer Summit 当天报了一个数:今天注册 1000 人。hour 3 的现场图是 turnstile。「Tmr and tuesday going to be absolutely batshit.」",
+              "同一天更早的配推,关于他自己 curate 的 Design Engineers 那一轨:「because I'm not a design engineer myself, this track is one of the harder ones I struggle to curate.」他坦承这一轨是最难 curate 的之一,最后请了朋友 Geoff(过去两年 AI UX meetups 都在帮忙)来开场。坦诚自己在 curate 哪一部分吃力,已经成了 builder 的标志性动作。",
+              "1000 是一天的数字;「batshit tomorrow」是预言。这一期在 X 那一面,正在变成一个 real-world 的 launch event。"
+            ],
+            "original": [
+              "Swyx 当天报:AI Engineer Summit 注册 1000 人,「明天和后天 absolutely batshit」;Design Engineers 那一轨他坦承自己不是 designer,是最难 curate 的轨之一——坦诚吃力已经是 builder 标配动作。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "博客:Containment 官方版 / Blog — The Official Version of Containment",
+      "desc": "§7 是官方版那一面:Anthropic Engineering 第一次系统回答「Claude 部署到更多产品里,containment 在哪几层是结构的、哪几层是 case-by-case」——X 那一周的讨论,博客是它的 citation。",
+      "cards": [
+        {
+          "authorKey": "blog:anthropic",
+          "authorName": "Anthropic",
+          "authorHandle": null,
+          "authorTag": "Anthropic 官方博客",
+          "sourceUrl": "https://www.anthropic.com/engineering/how-we-contain-claude",
+          "en": {
+            "rewrite": [
+              "Anthropic Engineering publishes the official version of the containment thread: how does Anthropic keep Claude's behavior bounded as it ships into more products? The post is the engineering team's answer to the question of where containment is structural vs. where it's case-by-case.",
+              "The blog pairs with the day's thread. bcherny's 5 archetypes break the org chart into roles keyed to what you do; the containment post breaks the model-deployment into layers keyed to where you constrain. The PM-with-codebase clip sits between — code access IS a containment control when paired with the right reviews.",
+              "Anthropic's first-party engineering posts are now functioning as the official, durable version of the weekly X-thread discussion. The blog is the citation; the X threads are the conversation around it."
+            ],
+            "original": [
+              "Anthropic Engineering: How we contain Claude across products"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic Engineering 发了一篇官方版 containment 帖:Claude 部署到越来越多产品里,containment 在哪些层是结构的、哪些层是 case-by-case,工程团队这次给了一个系统的回答。",
+              "这篇博客接得上今天的主线。Boris Cherny 用 5 个 archetype 把 org chart 拆成「按做什么分」;containment 这篇把模型部署拆成「按在哪一层 constrain 分」;Peter Yang 那条 PM 读 codebase 的视频正好夹在中间——code access 配 review 流程,本身就是一种 containment control。",
+              "Anthropic 自家的 engineering 帖已经变成「X 那一周讨论」的官方持久化版本。博客是引用;X 是它周围的对话。"
+            ],
+            "original": [
+              "Anthropic 官方版 containment 帖:Claude 部署到更多产品之后,containment 在哪几层是结构的、哪几层是 case-by-case——官方工程团队第一次系统回答这个问题。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Podcast 收尾:AI 工厂的物理层 / Closer — Balaban on the AI Factory's Physical Layer",
+      "desc": "§8 是 issue 的 closer:Balaban(Lambda CTO)上 MAD Podcast 把 cloud compute 重新定义成 vertical-integrated 一整套栈——「2023 年的 H100 今天租出去比当年买还贵」,物理层现在决定「谁有资格当 Builder」。",
+      "cards": [
+        {
+          "authorKey": "podcast:mad-podcast",
+          "authorName": "The MAD Podcast with Matt Turck",
+          "authorHandle": null,
+          "authorTag": "Matt Turck 主理的 AI 与数据播客",
+          "sourceUrl": "https://www.youtube.com/watch?v=0NttU4CbyVs",
+          "en": {
+            "rewrite": [
+              "Matt Turck's MAD Podcast lands Stephen Balaban, Lambda co-founder and CTO, for a deep cut on the physical layer that everything else in AI runs on. The thesis up front: 「It's pretty clear that we have an amazing system that can take in money and output software. The people that are the naysayers, you're gonna throw these GPUs out in five years, are completely wrong.」",
+              "Balaban's frame: cloud compute is NOT a commodity service. It is a vertically-integrated stack spanning land entitlement, construction, HPC design, software, virtualization, cloud services on top — which is why the biggest companies in the world are all in this business. The 「GPU is a commodity」 narrative that floated a few years ago was misunderstood.",
+              "He makes a non-obvious point about used hardware: a 2023 H100 can actually be more expensive to lease today than when it was bought, because the demand curve is that steep. The most direct connection to today's thread: physical-layer work, which used to be the opposite of a builder role, is now the constraint that determines who gets to be a Builder at all."
+            ],
+            "original": [
+              "It's pretty clear that we have an amazing system that can take in money and output software. The people that are the naysayers, you're gonna throw these GPUs out in five years, are completely wrong. They are completely wrong, and they have been wrong the entire time. We continue to be generally underbuilding.",
+              "Cloud compute is not a commodity service. It is a very complicated, highly vertically integrated type of service that spans everything from land entitlement, construction, HPC, high performance computing design, software, virtualization, cloud services on top.",
+              "Most people that are sort of in leadership positions at Neo Clouds or within the market have been recognizing this insatiable amount of demand for large language models to do everything from being an assistant to code generation, we continue to see no end to the scaling laws."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Matt Turck 的 MAD Podcast 这一期请到 Lambda 联合创始人、CTO Stephen Balaban,深拆 AI 那一整套东西跑在上面的物理层。一上来就立 thesis:「我们显然有了一个能把钱吃进去、把软件吐出来的系统。跟你说『五年后这些 GPU 都会被扔掉』的人,完全错了。」",
+              "Balaban 的 frame:cloud compute 不是 commodity 服务。它是 vertical-integrated 的一整套栈——从拿地、建设、HPC 设计、软件、虚拟化、上面再盖 cloud service。正因为是这种生意,全球最大的几家公司全都挤进来。前几年「GPU 会 commodity 化」的叙事,本身就理解错了。",
+              "他提了一个反直觉的事实:2023 年的 H100,今天租出去的价格反而比当年买的时候还贵,因为需求曲线就是这么陡。直接接回今天这条线:物理层的工作,过去是 builder 角色的反面,现在是决定「谁有资格当 Builder」的那一道约束。"
+            ],
+            "original": [
+              "Balaban(Lambda CTO)上 MAD Podcast:cloud compute 不是 commodity,是 vertical-integrated 的一整套栈;「2023 年的 H100 今天租出去比当年买还贵,因为需求曲线就是这么陡」——物理层现在决定了谁有资格当 Builder。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 28 Jun 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jun 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-06-29 · 分型日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-29-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-29-rerun.html</guid>
+      <pubDate>Mon, 29 Jun 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[6-29 Follow Builders 整张 issue 的 load-bearing 帖子是 Boris Cherny 周日写的 5-archetype 框架:Prototyper / Builder / Sweeper / Grower / Maintainer——archetype 不挂在 job function 上,挂在「你做什么」上,而且健康的团队是这五类的 mix,关键看产品处在 pre-PMF / 已找到 PMF / 强 PMF 哪一阶段。同一天 Codex team 周日进 warroom 查 usage drain,Sottiaux 当天 hard-reset 全员限制——这是 ops 那一面的「分型」,把 Codex 团队拆成「在排查」和「不在排查」两个 bucket。Levie 同一周把 mythos 级别 open cyber 模型立成监管 baseline——「赌中国追不上」是 bad bet,要么 gate 自家模型(单边输),要么永远在 frontier 推下一波架构;这是 regulatory 那一面的分型。Peter Yang 翻出 Anthropic PM Jess 访谈,把「PM 能直接读 codebase」立成最大 unlock——code access 配 review 流程本身就是 containment control,这是 Cherny 框架的 operational 答案。trq212 抛「coding agent 改写了 legacy codebase 的工程算账方式」的具体信号、Rauchg 把 LinkedIn-profile 重新定义成 builder 用错的东西——legacy 和「你 link 什么」这两件事,在 6-29 被同时重新定价。Zara「1 小时 build、2 小时解释」立 builder 的标配比例,Swyx 同一周报 AI Engineer Summit 当天注册 1000 人——X 上的对话正在变成 real-world 的 launch event。博客:Anthropic Engineering 第一次系统回答「containment 在哪几层是结构的、哪几层是 case-by-case」。收尾:Balaban(Lambda CTO)上 MAD Podcast 把 cloud compute 重新定义成 vertical-integrated 一整套栈——「2023 年的 H100 今天租出去比当年买还贵」,物理层现在决定「谁有资格当 Builder」——同一天里,人 / 团队 / 模型 / 监管 / 物理层五个层面都在被重新分型。]]></description>
+      <category>Boris Cherny 立 5-archetype 框架 / Cherny Lays the 5-Archetype Map for Future PM Roles, Codex 6-29 周日 warroom / Codex in Sunday Warroom — Hard-Reset Week, Open-source mythos = 监管 baseline 被翻转 / Open-Source Mythos Is the New Regulatory Baseline, PM 用 agent 接进 codebase / PMs Use Agents to Read Codebase Directly, Legacy 与 ship 算账的方法变了 / Legacy Port Math and the Receipt-Over-Resume Reframe, Builder 的 2:1 ratio + 1000 人 / The Builder&apos;s 2:1 Ratio and a 1000-Person Launch, 博客:Containment 官方版 / Blog — The Official Version of Containment, Podcast 收尾:AI 工厂的物理层 / Closer — Balaban on the AI Factory&apos;s Physical Layer</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-06-28 · Codex 入魂日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-28-rerun.html</link>
