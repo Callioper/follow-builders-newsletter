@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 29 Jun 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 30 Jun 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-06-30 · 底盘硬化日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-30-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-30-rerun.html</guid>
+      <pubDate>Tue, 30 Jun 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[6-30 Follow Builders 这张 issue 的主线是「底盘硬化」——model floor、runtime floor、procurement floor、sandbox floor 在同一天被一起收紧。Anthropic Engineering 把 4 月那段 Claude Code 质量变差的 postmortem 摊开了:API 没受影响,锅是 3 月 4 日到 4 月 16 日之间三次 harness 改动叠加。紧接着他们发了 Managed Agents 的架构帖——把 agent 拆成 session / harness / sandbox 三个虚拟化组件,实现可换、抽象耐用,跟 OS 把硬件虚拟化成 process / file 是一路思路;Claude Blog 在这套架构上叠 self-hosted sandboxes + MCP tunnels,把 agent loop 留在 Anthropic,sandbox 跑进客户 perimeter。Boris Cherny 推 Claude Code 下一版:subagents 默认在 background 跑,主对话不再被 block——同一套架构在 CLI 层直接暴露。Claude in Microsoft Foundry GA:Azure 客户拿到 Opus 4.8 / Haiku 4.5,鉴权、计费、commitment retirement 全部打通;这是 procurement 那一层 floor 在硬化。Sottiaux 那一面,Codex 一小时内全量 reset usage limits、bank 多记一笔 reset,小问题叠加没单一 root cause,完整修复清单待发;另一条推 advanced permission profile——可复用可继承、file 规则绑 network / Unix socket、默认 fail-closed,把 Codex 那层 sandbox 拆成可组合的 permission profile。Rauchg demo Vercel 20x 大小的 function,一个 function 顶原来一串,让长跑 / 有 state 的 agent loop 不再必须拆 chain。Peter Yang 的观察是 plain vanilla Claude web 写东西还是最顶——他猜是 coding agent 的 system prompt 把模型写坏了;Managed Agents 拆 harness 的架构隐含同意这件事。Zara 的 Chrome extension 把 read-later 列表直接转成 Google Calendar 上的 30 分钟 reading block,无账号无服务器全本地;Thariq 把写作流程公开成 loop——artifact 不是单位,loop 才是单位。Swyx 在 AIE workshop day 上看到的是 demand 的 floor:non-lab 早上 9 点 workshop,Snyk / Atlassian / neo4j / arize / Akamai / Together 几家厂商同排开,「PEOPLE ARE HUNGRY FOR THIS」。Levie 的长 thread 顶到 AI 大辩论:closed stack 永远在 frontier 大幅领先,vertical integration + 美国自己 gate 才 work;open weights 守住 close second 的话,permanent lead 的假设作废,杠杆转向 distribution + compute 的人。Madhu Guru 给了一个反共识判断:GLM 这种强 open-weight 模型崛起反而增强 Google 位置——价值沉淀到 managed platform 那层,open weights 变 commodity input,Vertex AI 是结构性受益者。收尾:No Priors 这期请 Intel CEO Lip-Bu Tan,把半导体供应链立成主权问题——crawl and be humble、balance sheet、simplify、customer、下一代 leadership 产品;agentic AI 把 CPU 需求打起来,Jensen 投的 50 亿已经变 250 亿。Intel 是今天这一连串 floor 故事的物理层 floor。]]></description>
+      <category>质量复盘:Anthropic 把 4 月那一段 quality degradation 摊开 / Anthropic Surfaces the April Claude Code Quality Postmortem, 抽象层立出来:Managed Agents 把 session / harness / sandbox 拆成可换的组件 / Managed Agents Virtualizes the Agent Into Three Swappable Components, 渠道硬化:Claude in Microsoft Foundry GA + Codex 那一侧的 reset 和 permissions / Channel Floor: Foundry GA and Codex Hardening, Runtime 杠杆:Vercel 把 function size 提到 20x / Runtime Leverage: Vercel 20x Functions, 写作 / 工具:Claude web 仍然是 writer + Thariq 把写作流程公开成 loop / Writing and Tools: Claude Web Still Writes Best, Writing Is a Loop, 生态信号:AIE workshop day 那一边的 builder hunger / Ecosystem Signal: AIE Workshop Day, Open vs closed 的赌:Levie 立题,Madhu Guru 翻成 Google 利好 / The Open-vs-Closed Bet: Levie Frames It, Madhu Guru Flips It to Google, Podcast 收尾:Lip-Bu Tan 把半导体供应链立成主权问题 / Closer — Lip-Bu Tan on the Semiconductor Supply Chain as Sovereignty</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-06-29 · 分型日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-29-rerun.html</link>

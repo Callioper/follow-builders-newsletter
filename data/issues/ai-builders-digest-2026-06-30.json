@@ -1,0 +1,474 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-06-30",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "6-30 Follow Builders 这张 issue 的主线是「底盘硬化」——model floor、runtime floor、procurement floor、sandbox floor 在同一天被一起收紧。Anthropic Engineering 把 4 月那段 Claude Code 质量变差的 postmortem 摊开了:API 没受影响,锅是 3 月 4 日到 4 月 16 日之间三次 harness 改动叠加。紧接着他们发了 Managed Agents 的架构帖——把 agent 拆成 session / harness / sandbox 三个虚拟化组件,实现可换、抽象耐用,跟 OS 把硬件虚拟化成 process / file 是一路思路;Claude Blog 在这套架构上叠 self-hosted sandboxes + MCP tunnels,把 agent loop 留在 Anthropic,sandbox 跑进客户 perimeter。Boris Cherny 推 Claude Code 下一版:subagents 默认在 background 跑,主对话不再被 block——同一套架构在 CLI 层直接暴露。Claude in Microsoft Foundry GA:Azure 客户拿到 Opus 4.8 / Haiku 4.5,鉴权、计费、commitment retirement 全部打通;这是 procurement 那一层 floor 在硬化。Sottiaux 那一面,Codex 一小时内全量 reset usage limits、bank 多记一笔 reset,小问题叠加没单一 root cause,完整修复清单待发;另一条推 advanced permission profile——可复用可继承、file 规则绑 network / Unix socket、默认 fail-closed,把 Codex 那层 sandbox 拆成可组合的 permission profile。Rauchg demo Vercel 20x 大小的 function,一个 function 顶原来一串,让长跑 / 有 state 的 agent loop 不再必须拆 chain。Peter Yang 的观察是 plain vanilla Claude web 写东西还是最顶——他猜是 coding agent 的 system prompt 把模型写坏了;Managed Agents 拆 harness 的架构隐含同意这件事。Zara 的 Chrome extension 把 read-later 列表直接转成 Google Calendar 上的 30 分钟 reading block,无账号无服务器全本地;Thariq 把写作流程公开成 loop——artifact 不是单位,loop 才是单位。Swyx 在 AIE workshop day 上看到的是 demand 的 floor:non-lab 早上 9 点 workshop,Snyk / Atlassian / neo4j / arize / Akamai / Together 几家厂商同排开,「PEOPLE ARE HUNGRY FOR THIS」。Levie 的长 thread 顶到 AI 大辩论:closed stack 永远在 frontier 大幅领先,vertical integration + 美国自己 gate 才 work;open weights 守住 close second 的话,permanent lead 的假设作废,杠杆转向 distribution + compute 的人。Madhu Guru 给了一个反共识判断:GLM 这种强 open-weight 模型崛起反而增强 Google 位置——价值沉淀到 managed platform 那层,open weights 变 commodity input,Vertex AI 是结构性受益者。收尾:No Priors 这期请 Intel CEO Lip-Bu Tan,把半导体供应链立成主权问题——crawl and be humble、balance sheet、simplify、customer、下一代 leadership 产品;agentic AI 把 CPU 需求打起来,Jensen 投的 50 亿已经变 250 亿。Intel 是今天这一连串 floor 故事的物理层 floor。"
+  },
+  "archive": {
+    "title": "底盘硬化日",
+    "desc": "6-30 Follow Builders 的主旋律是「底盘硬化」——Anthropic Engineering 同一天摊出 4 月 Claude Code 质量 postmortem + Managed Agents 拆 session / harness / sandbox 两篇,Claude in Microsoft Foundry GA 把 procurement 层 floor 也通了,Sottiaux 把 Codex 那层 sandbox 拆成可组合的 permission profile,Boris Cherny 把 subagents 默认 background 化;Rauchg 把 Vercel function size 提了 20x;Peter Yang 赌 writing 还是 plain vanilla Claude web 最顶;Levie 长 thread 立 open vs closed 的赌,Madhu Guru 反共识地把 GLM 翻成 Google 利好;收尾是 No Priors 把 Intel CEO Lip-Bu Tan 立成物理层 floor——model、runtime、procurement、sandbox、物理,五层底盘同一天被一起收紧。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-06-30 source feeds.",
+  "sections": [
+    {
+      "title": "质量复盘:Anthropic 把 4 月那一段 quality degradation 摊开 / Anthropic Surfaces the April Claude Code Quality Postmortem",
+      "desc": "Anthropic Engineering 把 4 月那段 Claude Code 质量投诉的官方 postmortem 摊出来:API 没受影响,锅是 3 月 4 日到 4 月 16 日之间三次 harness 改动叠加;reset usage limits 是官方认错的动作。",
+      "cards": [
+        {
+          "authorKey": "blog:anthropic",
+          "authorName": "Anthropic",
+          "authorHandle": null,
+          "authorTag": "Anthropic 官方博客",
+          "sourceUrl": "https://www.anthropic.com/engineering/april-23-postmortem",
+          "en": {
+            "rewrite": [
+              "Anthropic Engineering posts the official postmortem for the April Claude Code quality complaints. The conclusion: API was unaffected, but three independent harness changes between March 4 and April 16 cumulatively degraded Claude Code, Claude Agent SDK, and Claude Cowork — and the way they stacked on different traffic slices made the aggregate look like generic, inconsistent quality drift.",
+              "The three changes: March 4 dropped Claude Code's default reasoning effort from high to medium (reverted April 7); March 26 introduced an idle-session thinking-clear bug that fired every turn (fixed April 10); April 16 added a verbosity-reducing system prompt instruction that hurt coding quality (reverted April 20). All three impacted Sonnet 4.6 / Opus 4.6, and the last one also impacted Opus 4.7.",
+              "The post is significant for what it admits without flinching: harness changes, not model regressions, were the cause. Internal usage data and evals did NOT initially reproduce the user-reported issues. As of April 23 they reset all subscriber usage limits. The takeaway for builders: when a model's behavior changes, the model is the variable you suspect first — but a week of harness changes can produce the same shape of complaint at fleet scale."
+            ],
+            "original": [
+              "Over the past month, we've been looking into reports that Claude's responses have worsened for some users. We've traced these reports to three separate changes that affected Claude Code, the Claude Agent SDK, and Claude Cowork. The API was not impacted.",
+              "On March 4, we changed Claude Code's default reasoning effort from high to medium to reduce the very long latency—enough to make the UI appear frozen—some users were seeing in high mode. This was the wrong tradeoff. We reverted this change on April 7.",
+              "On March 26, we shipped a change to clear Claude's older thinking from sessions that had been idle for over an hour, to reduce latency when users resumed those sessions. A bug caused this to keep happening every turn for the rest of the session instead of just once.",
+              "On April 16, we added a system prompt instruction to reduce verbosity. In combination with other prompt changes, it hurt coding quality and was reverted on April 20.",
+              "As of April 23, we're resetting usage limits for all subscribers."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic Engineering 把 4 月那波「Claude Code 质量变差」投诉的官方 postmortem 摊出来了。结论:API 没受影响,问题出在 3 月 4 日到 4 月 16 日之间三次独立的 harness 改动,分别影响了 Claude Code / Claude Agent SDK / Claude Cowork——三次改动打到不同 traffic slice 上,叠起来就变成「整体质量漂移」那种最难定位的形状。",
+              "三次改动:3-4 把 Claude Code 默认 reasoning effort 从 high 降到 medium(4-7 撤回);3-26 上线 idle session 清理 thinking 的改动有个 bug,每 turn 都触发(4-10 修);4-16 加了减少 verbosity 的 system prompt,组合其他 prompt 改动一起把 coding quality 拉下去了(4-20 撤回)。三次都打到 Sonnet 4.6 / Opus 4.6,第三次还打到 Opus 4.7。",
+              "这篇 post 的价值在它敢直接说:锅在 harness,不在模型。内部 usage 数据和 evals 一开始都没复现用户报的 issue。4-23 起对所有订阅用户 reset usage limits。给 builder 的提醒:模型行为变了,先怀疑模型;但一周的 harness 改动也能在 fleet 尺度上产出形状一样的投诉。"
+            ],
+            "original": [
+              "Anthropic Engineering 官方版 4 月 Claude Code 质量投诉 postmortem:3 月 4 日到 4 月 16 日之间三次 harness 改动叠加,影响了 Claude Code / Claude Agent SDK / Claude Cowork;API 没受影响。4-23 起对所有订阅用户 reset usage limits。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "抽象层立出来:Managed Agents 把 session / harness / sandbox 拆成可换的组件 / Managed Agents Virtualizes the Agent Into Three Swappable Components",
+      "desc": "Anthropic Engineering 紧接着发 Managed Agents 架构帖,把 agent 拆成 session / harness / sandbox 三个可换的虚拟化组件;Claude Blog 在上面叠 self-hosted sandboxes + MCP tunnels;Boris Cherny 把 subagents 默认 background 化——同一套思路在 blog / service / CLI 三个 surface 一起铺。",
+      "cards": [
+        {
+          "authorKey": "blog:anthropic",
+          "authorName": "Anthropic",
+          "authorHandle": null,
+          "authorTag": "Anthropic 官方博客",
+          "sourceUrl": "https://www.anthropic.com/engineering/managed-agents",
+          "en": {
+            "rewrite": [
+              "Anthropic Engineering follows up the quality postmortem with the architectural follow-up: Managed Agents, a hosted service that virtualizes an agent into three swappable components — a session (the append-only log of everything that happened), a harness (the loop that calls Claude and routes tool calls), and a sandbox (the execution environment). The implementation of any one can change without disturbing the others.",
+              "The framing is borrowed from operating systems: 'programs as yet unthought of' is the design constraint, and the right move is to virtualize hardware into abstractions (process, file) general enough for programs that don't exist yet. Managed Agents applies the same pattern to agents — opinionated about the shape of the interfaces, agnostic about what runs behind them.",
+              "The worked example is 'context anxiety' in Claude Sonnet 4.5 (wrapping up tasks as context fills). The fix was harness-level context resets. When the same harness ran on Claude Opus 4.5, the behavior was gone — the resets were dead weight. The architecture accepts that this will keep happening: as models improve, today's harness assumptions go stale, and the only durable thing is the interface.",
+              "The 'don't adopt a pet' line is the operational maxim: don't grow attached to a particular harness implementation, because the model underneath it will change and your pet will stop being load-bearing. Managed Agents is the explicit service-wrapped version of that stance."
+            ],
+            "original": [
+              "A running topic on the Engineering Blog is how to build effective agents and design harnesses for long-running work. A common thread across this work is that harnesses encode assumptions about what Claude can't do on its own. However, those assumptions need to be frequently questioned because they can go stale as models improve.",
+              "As just one example, in prior work we found that Claude Sonnet 4.5 would wrap up tasks prematurely as it sensed its context limit approaching—a behavior sometimes called 'context anxiety.' We addressed this by adding context resets to the harness. But when we used the same harness on Claude Opus 4.5, we found that the behavior was gone. The resets had become dead weight.",
+              "Building Managed Agents meant solving an old problem in computing: how to design a system for 'programs as yet unthought of.' Decades ago, operating systems solved this problem by virtualizing hardware into abstractions—process, file—general enough for programs that didn't exist yet. The abstractions outlasted the hardware.",
+              "Managed Agents follow the same pattern. We virtualized the components of an agent: a session (the append-only log of everything that happened), a harness (the loop that calls Claude and routes Claude's tool calls to the relevant infrastructure), and a sandbox (an execution environment where Claude can run code and edit files). This allows the implementation of each to be swapped without disturbing the others.",
+              "Don't adopt a pet."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic Engineering 在 quality postmortem 之后发了架构层面的 follow-up:Managed Agents,把 agent 拆成三个可换的组件——session(append-only 的事件日志)、harness(调 Claude + route tool call 的循环)、sandbox(执行环境)。任何一层的实现变了,不会扰动另外两层。",
+              "思路是从 OS 借的:设计约束是「为还没被想出来的程序」设计,正确做法是把硬件虚拟化成 process / file 这种通用到「程序不存在也能用」的抽象。Managed Agents 套同一套模式——对接口的形状有 opinion,对接口后面跑什么保持中立。",
+              "worked example 是 Claude Sonnet 4.5 的「context anxiety」(context 快满时主动收尾)。harness 层加 context reset 解决了。同一套 harness 跑到 Opus 4.5 上,这个行为消失了——那些 reset 成了 dead weight。架构接受这件事会一直发生:模型变强,今天的 harness 假设就过期;唯一耐用的只有接口本身。",
+              "'Don't adopt a pet' 是操作守则:不要对某一套 harness 实现产生感情,底下的模型一换,你的 pet 就不是 load-bearing 了。Managed Agents 是这个立场的服务化版本。"
+            ],
+            "original": [
+              "Anthropic Engineering 把 agent 拆成 session / harness / sandbox 三个虚拟化组件,每层可独立替换,不动其他层——OS 时代「为还没想出来的程序设计」思路的服务化版。"
+            ]
+          }
+        },
+        {
+          "authorKey": "blog:claudeai",
+          "authorName": "Claude",
+          "authorHandle": null,
+          "authorTag": "Claude 官方博客",
+          "sourceUrl": "https://claude.com/blog/claude-managed-agents-updates",
+          "en": {
+            "rewrite": [
+              "Claude Blog adds the self-hosted / enterprise-friendly layer on top of the Managed Agents architecture: self-hosted sandboxes (public beta) and MCP tunnels (research preview). The agent loop stays on Anthropic's infrastructure; the sandbox moves into the customer's perimeter, with supported providers being Cloudflare, Daytona, Modal, and Vercel.",
+              "The architectural split is the point: orchestration, context management, and error recovery live in Anthropic's control; tool execution, files, and network egress live in the customer's control. Audit logging, network policy, and security tooling already in the customer's perimeter now extend naturally over the agent's tool calls. Compute sizing and the runtime image are also customer-side, so compute-heavy work (long builds, image generation) gets the resources the task needs without fighting the agent host's resource model.",
+              "The Cloudflare path runs sandboxes at scale using microVMs and lighter-weight isolates, with customizable egress proxies and zero-trust secrets injection. The Daytona path is composable, long-running, and stateful — Clay's GTM workflow is cited as a customer that runs Daytona sandboxes for hours at a time. The decoupling between agent loop and sandbox is the part that makes both viable: the customer can pick the isolation primitive that matches their security model without re-architecting how the agent reasons."
+            ],
+            "original": [
+              "Starting today, Claude Managed Agents can operate in a sandbox you control and connect to your private Model Context Protocol (MCP) servers. Both the sandbox where an agent executes tools and the services it reaches run within the established boundaries of your enterprise, under your security and runtime controls.",
+              "The sandbox runs on your own infrastructure, or with managed providers like Cloudflare, Daytona, Modal, or Vercel to handle the compute and isolation for you. On the Claude Platform, self-hosted sandboxes is available in public beta and MCP tunnels in research preview (request access).",
+              "With self-hosted sandboxes, you keep sensitive files, packages, and services in your own infrastructure or with a managed sandbox provider. The agent loop that handles orchestration, context management, and error recovery stays on Anthropic's infrastructure, while tool execution moves to your own configured environment.",
+              "Cloudflare runs sandboxes at scale using microVMs and lighter weight isolates. Outbound network requests are in your control with zero-trust secrets injection, customizable proxies to audit, reroute, or modify egress, and the ability to connect to internal services over Cloudflare's network.",
+              "Daytona sandboxes are full composable computers, long-running and stateful. The same primitive runs a quick burst or an agent that works for hours. The sandbox stays accessible while a session runs over SSH or an authenticated preview URL, or can be paused and restored with full state preserved."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude Blog 在 Managed Agents 架构上叠了自托管 / 企业友好这一层:self-hosted sandboxes(public beta)+ MCP tunnels(research preview)。Agent loop 留在 Anthropic 这边,sandbox 挪到客户自己的 perimeter,首批支持的 provider 是 Cloudflare / Daytona / Modal / Vercel。",
+              "架构上的 split 是关键:orchestration / context management / error recovery 归 Anthropic;tool 执行 / 文件 / 网络 egress 归客户。客户 perimeter 里既有的 audit logging / network policy / security tooling 现在自然延伸到 agent 的 tool call 上。Compute sizing 和 runtime image 也在客户侧,长 build / 图像生成这种重算任务不必和 agent host 的资源模型博弈。",
+              "Cloudflare 路径用 microVM 和轻量 isolate 跑大规模 sandbox,egress proxy 可定制 + zero-trust secrets injection。Daytona 路径是可组合、长跑、有 state 的完整电脑,Clay 的 GTM workflow 跑 Daytona sandbox 跑几个小时。Agent loop 和 sandbox 的解耦是让这两条路都成立的那部分:客户按自己的安全模型挑隔离原语,不必重新设计 agent 的推理方式。"
+            ],
+            "original": [
+              "Claude Managed Agents 上线 self-hosted sandboxes + MCP tunnels:agent loop 留 Anthropic,sandbox 跑在客户 perimeter(Cloudflare / Daytona / Modal / Vercel 可选)——抽象层之上又叠了一层企业友好的隔离。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:bcherny",
+          "authorName": "Boris Cherny",
+          "authorHandle": "@bcherny",
+          "authorTag": "Salesforce AI 工程负责人",
+          "sourceUrl": "https://x.com/bcherny/status/2071647677591466098",
+          "en": {
+            "rewrite": [
+              "Boris Cherny ships the next version of Claude Code: subagents run in the background by default, so you can keep talking to Claude while your subagents work. If you want a subagent to run in the foreground, you just tell Claude.",
+              "The UX move is small in lines-of-code terms but large in workflow terms: the main loop and the subagent loop no longer contend for the user's attention. You issue a delegated task, get back to your main thread, and the subagent's work is no longer blocking the conversation. This is the same architectural shape as Anthropic Engineering's Managed Agents split — main agent + sandboxing/subagent — but exposed at the CLI level."
+            ],
+            "original": [
+              "In the next version of Claude Code: subagents run in the background by default, so you can keep talking to Claude while your subagents work. If you want your agent to run in the foreground, just tell Claude."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Boris Cherny 推 Claude Code 下一版:subagents 默认在 background 跑,你可以继续跟 Claude 对话,subagent 自己干自己的活。想让某个 agent 在 foreground 跑,直接告诉 Claude 就行。",
+              "UX 上的改动行数不多,但 workflow 上的影响很大:主 loop 和 subagent loop 不再抢用户的注意力了。派个活出去,回到主线程继续聊,subagent 的工作不再 block 对话。同样的架构形状——主 agent + sandboxing/subagent——在 CLI 那一层直接暴露出来,跟 Anthropic Engineering 那篇 Managed Agents 拆 session / harness / sandbox 的思路是一路。"
+            ],
+            "original": [
+              "Boris Cherny 推 Claude Code 下一版:subagents 默认 background 跑,主对话不被 block——想 foreground 跑就直接告诉 Claude。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "渠道硬化:Claude in Microsoft Foundry GA + Codex 那一侧的 reset 和 permissions / Channel Floor: Foundry GA and Codex Hardening",
+      "desc": "Claude in Microsoft Foundry GA,Azure 客户拿到 Opus 4.8 / Haiku 4.5,procurement 那层 floor 通了;Sottiaux 把 Codex 那一层 usage limits 全量 reset、bank 多记一笔,紧接着把 sandbox modes 拆成可组合的 permission profile,默认 fail-closed。",
+      "cards": [
+        {
+          "authorKey": "x:claudeai",
+          "authorName": "Claude",
+          "authorHandle": "@claudeai",
+          "authorTag": "Anthropic Claude 官方账号",
+          "sourceUrl": "https://x.com/claudeai/status/2071653958905467027",
+          "en": {
+            "rewrite": [
+              "Claude on Microsoft Foundry hits general availability. Azure customers get Claude Opus 4.8 and Claude Haiku 4.5, with Azure authentication, billing, and commitment retirement — meaning existing Azure commit spend can be redirected at Claude without renegotiating enterprise procurement. A follow-up tweet clarifies that inference runs on Azure infrastructure, operated by Anthropic; prompt caching and extended thinking are supported today, with more capabilities on the way.",
+              "The enterprise floor is the load-bearing story. The same pattern of decoupling the agent loop from the runtime environment that the Managed Agents architecture articulates at the model layer shows up here at the procurement layer: Azure customers can keep their commit, their billing, and their identity stack, and the model underneath is operated by Anthropic. For the procurement audience the message is 'your Azure commit works for Claude now.'"
+            ],
+            "original": [
+              "Claude in Microsoft Foundry is now generally available, hosted on Azure. Azure customers get Claude Opus 4.8 and Claude Haiku 4.5, with Azure authentication, billing, and commitment retirement.",
+              "Inference runs on Azure infrastructure, operated by Anthropic. Prompt caching and extended thinking are supported today, with more capabilities on the way."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude on Microsoft Foundry 进入 GA。Azure 客户可以直接拿到 Claude Opus 4.8 和 Claude Haiku 4.5,Azure 鉴权 / 计费 / commitment 都可以 retirement——意思是既有 Azure commit 不用重新谈采购,直接拿来用 Claude。第二条推补一句:inference 跑在 Azure infra 上,Anthropic 来运营;prompt caching 和 extended thinking 已经支持,后面还有更多。",
+              "企业 floor 是这次发布 load-bearing 的故事。Managed Agents 那篇在 model 层拆 agent loop 和 runtime;这里在 procurement 层做同一件事:Azure 客户可以保留自己的 commit、计费、身份栈,模型底下是 Anthropic 在运营。对采购受众,信息就是「你的 Azure commit 现在能花给 Claude 了」。"
+            ],
+            "original": [
+              "Claude in Microsoft Foundry 进入 GA:Azure 客户可以拿 Opus 4.8 / Haiku 4.5,鉴权 / 计费 / Azure commitment retirement 都打通;inference 跑在 Azure infra 上,Anthropic 运营。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT",
+          "sourceUrl": "https://x.com/thsottiaux/status/2071740419030053227",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux (Codex): Codex usage limits will be fully reset again in the next hour, and one additional reset will be credited into each user's bank for their own usage over the next 24 hours. The team investigated reports that Codex usage was being consumed faster than expected; the finding is that there was no single central issue, but a few smaller problems compounded for some users. The post commits to publishing the full set of changes that were made.",
+              "The framing is unusual: the team is not blaming user behavior or claim spikes, and is not promising that the underlying problem is gone. They are crediting every user an extra reset as a goodwill gesture while the diagnosis continues. For a high-velocity agent product, the messaging choice is to make the floor visible rather than paper over it."
+            ],
+            "original": [
+              "Codex usage limits will be fully reset again in the next hour and we will credit one additional reset into your bank for your own usage over the next 24 hours. We investigated reports that Codex usage was being consumed faster than expected. There wasn't one central issue, but a few smaller problems compounded for some users. Here's what we found and changed: - Actual usage: Auto-review had"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux(Codex 那边):Codex usage limits 一个小时内会再次全量 reset,每位用户 bank 里再额外记一笔 reset,24 小时内自己用。团队调查了「Codex usage 比预期消耗更快」的反馈;结论是没有一个中心 root cause,是一堆小问题对部分用户叠加起来。帖子承诺会发完整的修复清单。",
+              "这种 framing 挺少见:团队没有甩给用户行为或 usage spike,也没有说「问题已解决」。在 diagnosis 还在进行的同时,给所有用户多记一笔 reset 当作 goodwill。对一个高 velocity 的 agent 产品,这种选择是把 floor 摆到台面上,而不是用话术糊过去。"
+            ],
+            "original": [
+              "Sottiaux(Codex):一小时后全量 reset usage limits,所有用户 bank 多记一笔 reset(24 小时内可用);调查结论是没单一 root cause,是小问题叠加;完整修复清单待发。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT",
+          "sourceUrl": "https://x.com/thsottiaux/status/2071636285807059315",
+          "en": {
+            "rewrite": [
+              "Sottiaux follows up: Advanced Codex users get a replacement to coarse sandbox modes — reusable, inheritable permission profiles binding OS-enforced file read/write/deny rules (including env files) to per-domain network and Unix sockets. Plus fail-closed admin allowlists. The principle: least privilege per task.",
+              "The shape is the same as Anthropic Engineering's Managed Agents decoupling: the model / agent loop and the security primitive are split, and the security primitive becomes composable. A permission profile is no longer a one-off 'allow / disallow' toggle — it's a binding of file rules to network rules, inheritable, reusable, and the default is fail-closed. This is the floor of Codex hardening in the same week the brain/hands Managed Agents post lands."
+            ],
+            "original": [
+              "Advanced Codex users. We shipped a replacement to coarse sandbox modes: reusable, inheritable permission profiles binding OS-enforced file read/write/deny rules (even **/*.env) to per-domain network + Unix sockets. Plus fail-closed admin allowlists. Least privilege per task."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Sottiaux 紧接着又来一条:Advanced Codex 用户拿到 coarse sandbox modes 的替代——可复用、可继承的 permission profile,把 OS 强制的 file 读 / 写 / deny 规则(包括 env 文件)和按 domain 分的 network + Unix socket 绑在一起。再加上 fail-closed 的 admin allowlist。原则是 per task 的 least privilege。",
+              "形状跟 Anthropic Engineering 那篇 Managed Agents 拆 session / harness / sandbox 是一路:model / agent loop 和安全原语分开,安全原语变得可组合。Permission profile 不再是「allow / disallow」的一次性开关,而是 file 规则 + network 规则的绑定,可继承、可复用、默认 fail-closed。这是 Codex 那一侧这一周铺的 floor,跟 brain/hands 那篇 Managed Agents 同一周。"
+            ],
+            "original": [
+              "Sottiaux 推 Codex 新权限模型:可复用可继承的 permission profile,把 file 规则和 network/Unix socket 规则绑在一起,默认 fail-closed——per task least privilege。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Runtime 杠杆:Vercel 把 function size 提到 20x / Runtime Leverage: Vercel 20x Functions",
+      "desc": "Rauchg demo Vercel 20x 大小的 function,一个 function 顶原来一串;让长跑 / 有 state 的 agent loop 不再必须拆 chain——runtime 那一层在腾地方。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO",
+          "sourceUrl": "https://x.com/rauchg/status/2071716510389662153",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch demos 20x larger functions on Vercel — a single function on the platform can now do what used to require a chain. The teaser tweet sets up the same architectural shape the day keeps coming back to: the floor is expanding, and the abstractions on top stay stable.",
+              "Vercel as a deploy surface is closer to the runtime than to the model. A 20x function size limit move is the kind of floor change that lets a single deploy unit carry an entire agent loop, or a long-running job that previously had to be split across functions. For the Vercel ecosystem this is the equivalent of Anthropic Engineering's harness-decoupling post: a runtime layer is making room for the kind of long-running, stateful work that agents want to do, without forcing builders to re-architect their code into chains."
+            ],
+            "original": [
+              "20x larger functions on Vercel"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch demo 了 Vercel 上 20x 大小的 function——一个 function 顶原来一串。预告推把架构形状点出来:floor 在扩大,上面的抽象保持稳定——这跟今天反复出现的那条主线是同一件事。",
+              "Vercel 作为 deploy surface,比 model 更接近 runtime 一侧。Function size 提 20x 是这一类 floor 改动:让一个 deploy unit 能直接扛下一个完整的 agent loop,或一个原本必须拆成 chain 的长跑任务。对 Vercel 生态来说,这件事和 Anthropic Engineering 拆 harness 是一路——runtime 层在腾地方,让长跑、有 state 的工作能直接干,不用把代码拆碎。"
+            ],
+            "original": [
+              "Rauchg demo Vercel 20x 大小的 function:一个 function 顶原来一串,agent loop / 长跑任务不再必须拆 chain。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "写作 / 工具:Claude web 仍然是 writer + Thariq 把写作流程公开成 loop / Writing and Tools: Claude Web Still Writes Best, Writing Is a Loop",
+      "desc": "Peter Yang 赌 plain vanilla Claude web 写东西还是最顶,他猜是 coding agent 的 system prompt 把模型写坏了;Zara 的 Chrome extension 把 read-later 转成日历上的 reading block,无账号无服务器全本地;Thariq 把写作流程公开成 loop——artifact 不是单位,loop 才是单位。",
+      "cards": [
+        {
+          "authorKey": "x:petergyang",
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者",
+          "sourceUrl": "https://x.com/petergyang/status/2071731343390851519",
+          "en": {
+            "rewrite": [
+              "Peter Yang: For writing and editing, plain vanilla Claude web is still the best — versus Codex and Claude Code. His guess is that something in the coding agents' system prompts makes them crappier writers.",
+              "The claim is small and specific, but the implication is bigger. Coding agents and writing agents have been collapsed into the same surface ('just use Claude Code for everything'), and Peter's bet is that the system prompt tuning for code quality actively makes the model worse at prose. The Managed Agents architecture — virtualize the session, the harness, the sandbox — implicitly endorses the same conclusion: the harness shapes the model's output more than people assume."
+            ],
+            "original": [
+              "For writing and editing, plain vanilla Claude web is still the best (vs Codex and Claude Code). My guess is something in the coding agent's system prompts make them crappier writers."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang:写和编辑,plain vanilla 的 Claude web 还是最顶——比 Codex 和 Claude Code 都好。他猜是 coding agent 的 system prompt 里有东西把它们变成了更烂的 writer。",
+              "论点小而具体,含义更大。Coding agent 和 writing agent 已经被合并到同一个 surface 上(「都直接用 Claude Code 就行」),Peter 的赌注是:为 code quality 调的 system prompt 会主动把模型变差。Managed Agents 架构——把 session / harness / sandbox 虚拟化——隐含同意同一件事:harness 对模型输出 shape 的影响比大家以为的要大。"
+            ],
+            "original": [
+              "Peter Yang:写和编辑,plain vanilla Claude web 仍是最顶(比 Codex / Claude Code 都好);他猜是 coding agent 的 system prompt 把它变成了更烂的 writer。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2071766827345285411",
+          "en": {
+            "rewrite": [
+              "Zara Zhang ships a Chrome extension that turns the 'read later' list into a dedicated reading time on the calendar. Save 5 articles, the extension auto-books a 30-minute 'reading block' on Google Calendar, links included. No account, no server, everything local. Open source.",
+              "The pattern is small but specific: instead of building a read-later app, build a 'convert your read-later list into a calendar block' extension. The 'no account, no server' framing places it firmly in the build-with-AI + no-AI-in-the-loop product category — the kind of tool a person with a strong opinion about their own attention ship in a weekend. The local-only architecture matches the day: the floor of trust and privacy is the file system the user controls."
+            ],
+            "original": [
+              "I built a Chrome extension that turns your 'read later' list into dedicated reading time on your calendar. Save 5 articles → it auto-books a 30-min 'reading block' on your Google calendar, links included. So you'll actually sit down and go through them. No account, no server, everything local. Open source (link below)"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zara Zhang 推了一个 Chrome extension:把 'read later' 列表直接变成日历上的阅读时间。存 5 篇文章,extension 自动在 Google Calendar 上约一个 30 分钟的 'reading block',链接带上。无账号、无服务器、全本地、开源。",
+              "形态小而具体:不做一个 read-later app,做一个「把 read-later 列表转成日历 block」的 extension。「无账号、无服务器」的 framing 把它明确放在「build-with-AI + no-AI-in-the-loop」那一类产品里——这是那种对自己的注意力有强意见的人周末就能 ship 出来的工具。本地架构跟今天主线也对得上:信任和隐私的 floor 就是用户自己控制的文件系统。"
+            ],
+            "original": [
+              "Zara Zhang 推一个 Chrome extension:把 read-later 列表转成日历上 30 分钟的 reading block;无账号、无服务器、全本地、开源。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:trq212",
+          "authorName": "Tao Li",
+          "authorHandle": "@trq212",
+          "authorTag": "AI 研究员 / Follow Builders 维护者",
+          "sourceUrl": "https://x.com/trq212/status/2071787401475960892",
+          "en": {
+            "rewrite": [
+              "Thariq shares his writing process: do some engineering work, talk to a bunch of people about it, brainstorm and research with Claude, write a post, give 1 or 2 talks on it, rewrite the post, give another talk, rewrite the intro, wake up at 6am and rewrite it again, then post.",
+              "The sequence is structured as a loop, not a linear flow. Engineering → talking → research → draft → talk → rewrite → talk → rewrite intro → 6am rewrite → post. The interesting part is that the loop is the point: the writing is not the last step, it's the most-iterated step. The 6am rewrite is not a frantic last-minute pass; it's the last iteration of a loop that has been running for weeks.",
+              "For builders, the implication is the same: the artifact is the wrong unit of work. The loop — engineering + talking + research + draft + talks + rewrites — is the unit. The post is what you ship at the end of the loop, not what you do."
+            ],
+            "original": [
+              "my process for writing right now is to do some engineering work, talk to a bunch of people about it, brainstorm and research with Claude, write a post, give 1 or 2 talks on it, rewrite the post, give another talk, rewrite the intro, wake up at 6am and rewrite it again, then post"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thariq 公开写作流程:做点工程、和一堆人聊、用 Claude brainstorm 和 research、写一稿、给 1-2 场 talk、改稿、再给一场 talk、改 intro、6 点起床再改一遍、然后发。",
+              "这条 sequence 是 loop,不是线性。Engineering → talking → research → draft → talk → rewrite → talk → rewrite intro → 6am rewrite → post。有意思的是 loop 本身就是目的:写不是最后一步,是最多次迭代的那一步。6 点的改稿不是临阵磨枪,是跑了好几周 loop 的最后一轮。",
+              "对 builder 来说含义一样:artifact 是错的工作单位。Loop——engineering + talking + research + draft + talks + rewrites——才是单位。Post 是 loop 跑完 ship 出来的东西,不是做的事本身。"
+            ],
+            "original": [
+              "Thariq 的写作流程:工程 → 聊天 → Claude research → 写稿 → talk → 改 → talk → 改 intro → 6 点再改 → 发——artifact 不是单位,loop 才是单位。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "生态信号:AIE workshop day 那一边的 builder hunger / Ecosystem Signal: AIE Workshop Day",
+      "desc": "Swyx 在 AIE workshop day 上看到的是 demand 的 floor:周一 9 点的 non-lab workshop,隔壁 OpenAI 也在开,AIE 自己 Snyk / Atlassian / neo4j / arize / Akamai / Together 几家厂商同排开——「PEOPLE ARE HUNGRY FOR THIS」。",
+      "cards": [
+        {
+          "authorKey": "x:swyx",
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师",
+          "sourceUrl": "https://x.com/swyx/status/2071634789669777716",
+          "en": {
+            "rewrite": [
+              "Swyx reports from the AI Engineer (AIE) workshop day: the context is non-lab workshops at 9am on a Monday, with a competing OpenAI workshop happening next door. The AIE rooms — Snyk, Atlassian, neo4j, arize AI, Akamai, Together Compute — are running concurrently. His read: 'PEOPLE ARE HUNGRY FOR THIS.'",
+              "The signal is the floor of demand, not the headline of any single talk. Snyk + Atlassian + neo4j + arize + Akamai + Together — that's a vendors-across-the-stack lineup that says 'applied AI is now an infra concern,' not a research concern. The OpenAI workshop running next door is a useful data point: applied-AI workshop attendance is the metric the lab-vs-applied split is decided on. The day is also the day Anthropic Engineering publishes Managed Agents — the timeline is consistent: the applied layer is the floor where the build is happening."
+            ],
+            "original": [
+              "ok for context this is non-lab workshops at 9am on a monday. theres a competing @OpenAI workshop going on next door but here are the @snyksec, @Atlassian, @neo4j, @arizeai, @Akamai, @togethercompute rooms concurrently. PEOPLE ARE HUNGRY FOR THIS."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx 在 AI Engineer(AIE)workshop day 上的现场:context 是周一早上 9 点的 non-lab workshop,隔壁是 OpenAI 在开自己的 workshop。AIE 自己的房间——Snyk、Atlassian、neo4j、arize AI、Akamai、Together Compute——同时在跑。他的判断:「PEOPLE ARE HUNGRY FOR THIS」。",
+              "信号是 demand 的 floor,不是任何单场 talk 的头条。Snyk + Atlassian + neo4j + arize + Akamai + Together——这个 lineup 说的是「applied AI 已经是 infra 议题」,不是 research 议题。隔壁 OpenAI 在开 workshop 是有用的数据点:applied-AI workshop 出勤率是 lab vs applied 分流定在哪一侧的指标。同一天 Anthropic Engineering 发了 Managed Agents——时间线对得上:applied 层是 build 在发生的那一层 floor。"
+            ],
+            "original": [
+              "Swyx 报 AIE workshop day:周一 9 点的 non-lab workshop,隔壁 OpenAI 也在开;AIE 自己房间 Snyk / Atlassian / neo4j / arize / Akamai / Together 并排跑——「PEOPLE ARE HUNGRY FOR THIS」。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Open vs closed 的赌:Levie 立题,Madhu Guru 翻成 Google 利好 / The Open-vs-Closed Bet: Levie Frames It, Madhu Guru Flips It to Google",
+      "desc": "Levie 长 thread:closed stack 永远在 frontier 大幅领先,vertical integration + gate 才 work;open weights 守住 close second 的话,permanent lead 的假设作废,杠杆转向 distribution + compute 的人。Madhu Guru 反共识:GLM 这种强 open-weight 模型崛起反而增强 Google 位置——价值沉淀到 managed platform,Vertex AI 是结构性受益者。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie/status/2071775583072375214",
+          "en": {
+            "rewrite": [
+              "Aaron Levie's long thread gets to the core of one of the central debates in AI. The frame: if a closed stack is always perpetually at the frontier by a wide margin, then being vertically integrated and gate-keeping in the US can work — you always have control over who gets access to the best technology, and it will be in high enough demand that it always favors you. If, however, open weights AI can remain a close second, the calculus changes: the closed-stack advantage is no longer durable, and the leverage shifts to whoever owns the distribution and the compute.",
+              "The thread continues to argue that the open-weights path puts a real ceiling on how much leverage any single frontier lab can extract from the technology, and that the closed stack's bet requires a permanent lead at the frontier. Levie's read is that the closed-stack defenders have been making the second bet (assume open stays behind) and getting away with it; the moment open-weights models stay within a close second for any sustained period, the entire geopolitical and commercial framing of 'who controls the frontier' has to be rewritten.",
+              "The follow-on implication for builders: the platform you're building on matters less than the dynamics of who can keep the lead. If the lead is durable, the platform's owner captures the value. If the lead is contested, the value migrates to whoever owns the runtime / distribution / integration — which is exactly the direction the day's Managed Agents and Foundry GA stories point at."
+            ],
+            "original": [
+              "This gets to the core of one of the central debates in AI. If a closed stack is always perpetually at the frontier by a wide margin, then being vertically integrated, and gate keeping in the US can work. Because you always have control over who gets access to the best technology, and it will be in high enough demand that it always favors you.",
+              "If, however, open weights AI can remain a close second, the calculus changes. The closed stack no longer gets to assume a permanent lead, and the leverage shifts."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 的长 thread 顶到这场 AI 大辩论的核心。框架:如果 closed stack 永远在 frontier 上大幅领先,那 vertical integration + 美国自己 gate 就行——你永远能控制谁能拿到最好的技术,而需求又足够高,永远对你有利。但只要 open weights 的 AI 能稳住 close second,算式就变了:closed stack 不能再假设自己有 permanent lead,杠杆转向有 distribution 和 compute 的人。",
+              "Thread 接着说:open weights 这条路给任何一家 frontier lab 的 leverage 装了一个真实的天花板;closed stack 的赌注是「在 frontier 永远领先」。Levie 的判断是,closed stack 的支持者一直在下第二种注(假设 open 一直掉队),而且暂时没出事;一旦 open-weights 模型在任意一段时间内保持 close second,「谁控制 frontier」这个地缘 + 商业框架就要重写。",
+              "给 builder 的延伸含义:你 build 的平台没你想的重要,谁能把 lead 守住才重要。Lead 耐守,平台 owner 抓价值;Lead 被抢,价值迁移到有 runtime / distribution / integration 的人——这正好是今天 Managed Agents 和 Foundry GA 这一串故事指向的方向。"
+            ],
+            "original": [
+              "Levie 长 thread 顶 AI 大辩论:closed stack 永远在 frontier 大幅领先,vertical integration + 美国自己 gate 才 work;open weights 守住 close second 的话,closed stack 的 permanent lead 假设作废,杠杆转向 distribution + compute 的人。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:realmadhuguru",
+          "authorName": "Madhusudhan",
+          "authorHandle": "@realmadhuguru",
+          "authorTag": "AI 工程师 / 开源贡献者",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2071637885154148785",
+          "en": {
+            "rewrite": [
+              "Madhu Guru's contrarian read on the rise of strong open-weight models like GLM: this will actually strengthen Google's position. More companies will start fine-tuning open-weight models such as GLM, and the value will accrue to the infra. Enterprises want the flexibility to run and fine-tune open models on a managed platform with enterprise-grade reliability, security, and support.",
+              "The frame inverts the 'open weights hurt the labs' reading. If the value of open-weights models accrues to the managed platform underneath them — fine-tuning, serving, security, enterprise SLAs — then the open-weights layer becomes a commodity input and the platform layer becomes the value capture layer. Google, with Vertex AI and the deepest managed-model infra, is the structural beneficiary of the open-weights layer commoditizing. This is the same direction Levie's thread points to (the leverage migrates to whoever owns the runtime / distribution) — but arriving at Google specifically as the answer, not the labs."
+            ],
+            "original": [
+              "What's underappreciated is that the rise of strong open-weight models like GLM will actually strengthen Google's position. More companies will now start experimenting with fine tuning open-weight models such as GLM and the value will accrue to the infra. Enterprises want the flexibility to run and fine-tune open models on a managed platform with enterprise-grade reliability, security, and support."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Madhu Guru 对「GLM 这种强 open-weight 模型崛起」有一个反共识的判断:这件事会增强 Google 的位置。原因——会有更多公司开始 fine-tune GLM 这种 open-weight 模型,价值会沉淀到 infra。Enterprise 想要的是在 managed platform 上跑和 fine-tune open model,有企业级 reliability、security、support。",
+              "框架把「open weights 伤到 lab」的解读翻过来了。如果 open-weight 模型的价值沉淀到下面那层 managed platform——fine-tuning、serving、security、企业级 SLA——那 open-weights 这一层就是 commodity input,platform 这一层才是 value capture 层。Google 有 Vertex AI 和最深的 managed-model infra,是 open-weights 层 commodity 化的结构性受益者。这跟 Levie thread 指向的方向一样(杠杆迁移到有 runtime / distribution 的人),只是具体答案落在 Google,不落在 lab。"
+            ],
+            "original": [
+              "Madhu Guru 的反共识判断:GLM 这种强 open-weight 模型崛起会增强 Google 位置——价值沉淀到 managed platform 那层,open weights 变 commodity input,Vertex AI 是结构性受益者。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Podcast 收尾:Lip-Bu Tan 把半导体供应链立成主权问题 / Closer — Lip-Bu Tan on the Semiconductor Supply Chain as Sovereignty",
+      "desc": "No Priors 这期请 Intel CEO Lip-Bu Tan 把半导体供应链立成主权问题:crawl and be humble → balance sheet → simplify → customer → 下一代 leadership 产品;agentic AI 把 CPU 需求打起来,Jensen Huang 投的 50 亿已经变 250 亿——Intel 是今天这一连串 floor 故事的物理层 floor。",
+      "cards": [
+        {
+          "authorKey": "podcast:no-priors",
+          "authorName": "No Priors",
+          "authorHandle": null,
+          "authorTag": "AI 与创业对话播客",
+          "sourceUrl": "https://www.youtube.com/watch?v=asCgCv2XB4s",
+          "en": {
+            "rewrite": [
+              "No Priors lands Lip-Bu Tan — legendary investor (Walden, Cadence), now CEO of Intel — for a long, candid conversation on the semiconductor supply chain as a sovereignty problem. His opening stance is direct: 'you crawl and be humble, listen to the customer. First step is to strengthen the balance sheet, focus on the products, simplify the product, listen to the customer, and then drive the next generation leadership products.'",
+              "On the demand side, agentic AI and inference have made CPU highly in demand — and Tan is direct that this is good for Intel's revenue line. On the capital side, the US government's role as a major shareholder is the structural fact; Jensen Huang's $5B personal investment has grown to $25B, the kind of stakeholder alignment that doesn't happen without a national-strategic frame.",
+              "The longer-arc question the episode lands: ten years out, which company is the 'winning company' — the one that built the right thing under the right conditions while everyone else was treating chips as a commodity. Tan's framing is that the right conditions right now are: balance sheet, product focus, customer intimacy, and the willingness to simplify before adding. The closing connection to the day: every other story in this issue is about a floor hardening — model floors, runtime floors, procurement floors, sandbox floors. Intel is the physical floor of the same story."
+            ],
+            "original": [
+              "Nine of the 10 company I invest, halfway they change their business plan because market have changed. Yeah. So I like to have entrepreneur as team, not just one person.",
+              "I always believed in when I was at Cadence and also at Intel is first of all you crawl and be humble, listen to customer. And then first step for me is to strengthen my balance sheet, focus on the products, and I really simplify the product, listen to the customer, and then drive the next generation leadership products.",
+              "And then right now, the agentic AI and influence CPU become highly in demand. And so in some way, I'm happy. Right now, the demand is very high for my CPU. Secondly, very happy that Jensen Huang, my all time friend, he also put 5,000,000,000 in investing and support me. This 5,000,000,000 become 25,000,000,000 now."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "No Priors 这期请到 Lip-Bu Tan——传奇投资人(Walden / Cadence),现在 Intel CEO——对半导体供应链做了一场长而坦率的对话,把它立成主权问题。一上来的立场直接:「你 crawl and be humble,listen to customer。第一步是强化 balance sheet,聚焦产品,把产品简化,听 customer,然后才推下一代 leadership 产品」。",
+              "需求那一面,agentic AI 和 inference 让 CPU 需求爆了——Tan 直说这对 Intel 的营收线是好消息。资本那一面,美国政府是 major shareholder 这个结构性事实摆在那儿;Jensen Huang 个人投的 50 亿已经长到 250 亿,这种 stakeholder alignment 不是没有 national-strategic frame 就能出现的。",
+              "这一集落下的更长期问题是:十年后,谁是「winning company」——那个在所有人都把 chip 当 commodity 的时候,押对了条件、造对了东西的公司。Tan 的 framing 是,现在对的条件是:balance sheet、产品聚焦、customer 亲密、敢 simplify 再 add。跟今天 issue 收尾的连接:今天其它所有故事都在讲一层 floor 在 hardening——model floor、runtime floor、procurement floor、sandbox floor。Intel 是同一个故事的物理层 floor。"
+            ],
+            "original": [
+              "No Priors 这期请 Intel CEO Lip-Bu Tan,把半导体供应链立成主权问题:crawl and be humble → balance sheet → simplify → customer → 下一代 leadership 产品;agentic AI 把 CPU 需求打起来,Jensen 的 50 亿已经变 250 亿。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
