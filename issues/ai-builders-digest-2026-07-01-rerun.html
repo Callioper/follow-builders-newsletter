@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Builders Digest · 2026-07-01</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ed;
+    --accent: #c0392b;
+    --accent-light: #e8d5c4;
+    --border: #d4cdc0;
+    --muted: #7a7265;
+    --tag-bg: #e8e2d6;
+    --en-bg: #ffffff;
+    --cn-bg: #faf7f2;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  .masthead, .intro, .section-header, .feed, footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .masthead { padding-top: 48px; }
+  .masthead-rule { border: none; border-top: 3px solid var(--ink); margin: 0 0 12px; }
+  .masthead-inner { display: flex; justify-content: center; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; letter-spacing: -0.4px; }
+  .masthead-subtitle { margin-top: 8px; padding-bottom: 10px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  .edition-strip {
+    position: relative;
+    margin-top: 8px;
+    min-height: 46px;
+    padding: 10px 132px 12px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.34);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+
+  .edition-strip .edition-sep { margin: 0 8px; color: #b8ae9f; }
+  .edition-strip-text { display: block; }
+  .edition-return-link { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; padding: 6px 10px; border: 1px dashed rgba(192, 57, 43, 0.55); border-radius: 999px; color: var(--accent); text-decoration: none; font-size: 12px; line-height: 1; letter-spacing: 0.06em; background: rgba(255, 255, 255, 0.45); transition: background 160ms ease, border-color 160ms ease, transform 160ms ease; }
+  .edition-return-link:hover, .edition-return-link:focus-visible { background: rgba(255, 255, 255, 0.82); border-color: var(--accent); transform: translateY(-50%) translateX(-1px); }
+  .edition-return-link:focus-visible { outline: none; }
+  .intro { padding-top: 22px; }
+  .intro-inner { max-width: 920px; margin: 0 auto; padding: 0 0 0 18px; border-left: 3px solid #d9cdbc; }
+  .intro-kicker { margin: 0 0 8px; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .intro p { margin: 0; max-width: none; color: var(--muted); font-size: clamp(15px, 1.6vw, 16px); line-height: 1.9; text-wrap: pretty; font-family: 'Noto Serif SC', serif; overflow-wrap: anywhere; }
+
+  .section-header { margin-top: 40px; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; margin: 0 0 6px; }
+  .section-desc { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+
+  .feed { display: flex; flex-direction: column; gap: 20px; }
+  .card { background: var(--en-bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .card-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid #eee7dd; flex-wrap: wrap; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .avatar-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .avatar.is-fallback img { display: none; }
+  .avatar.is-fallback .avatar-fallback { display: flex; }
+
+  .author-info { flex: 1; min-width: 160px; }
+  .author-name { font-weight: 600; font-size: 15px; }
+  .author-name-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .author-handle { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+  .author-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; background: var(--tag-bg); color: var(--muted); padding: 4px 8px; border-radius: 999px; }
+  .author-tag.is-inline { padding: 3px 8px; }
+
+  .card-controls { margin-left: auto; display: inline-flex; gap: 8px; }
+  .view-toggle { border: 1px solid var(--border); background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 999px; font-size: 12px; line-height: 1; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; }
+  .view-toggle.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .card-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .lang-col { padding: 18px 20px 22px; }
+  .lang-col.cn { background: var(--cn-bg); border-right: 1px solid #f0ece4; font-family: 'Noto Serif SC', serif; }
+  .lang-col.en { background: var(--en-bg); }
+  .lang-label { margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+  .content-shell { position: relative; transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .content-variant { position: absolute; inset: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(4px); transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; will-change: opacity, transform; }
+  .content-variant.is-active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+  .content-variant p, .content-variant li { margin: 0 0 12px; font-size: 14px; }
+  .content-variant ol { margin: 0 0 12px 20px; padding: 0; }
+  .inline-code { display: inline-block; font-family: 'IBM Plex Mono', monospace; background: #f4efe7; padding: 3px 6px; border-radius: 6px; margin-bottom: 8px; }
+
+  .card-footer { padding: 12px 20px 16px; border-top: 1px solid #eee7dd; background: #fcfaf6; }
+  .card-footer a { color: var(--accent); text-decoration: none; font-size: 14px; }
+  footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 680px) {
+    .masthead-inner { align-items: center; }
+    .edition-strip { padding-right: 12px; padding-left: 12px; }
+    .edition-strip-text { padding-right: 0; }
+    .edition-return-link { position: static; transform: none; margin-top: 8px; font-size: 11px; }
+    .card-controls { margin-left: 0; }
+    .card-body { grid-template-columns: 1fr; }
+    .lang-col.cn { border-right: none; border-bottom: 1px solid #f0ece4; }
+    .edition-strip .edition-sep { margin: 0 5px; }
+    .intro-inner { padding-left: 14px; }
+    .intro p { line-height: 1.84; }
+  }
+</style>
+</head>
+<body data-publish-date="2026-07-01" data-issue-number="37" data-edition-name="双语精选版" data-view-label-rewrite="速读" data-view-label-original="原文" data-author-identities-path="/home/eclaw/.follow-builders/assets/author-identities.json" data-avatar-manifest-path="/home/eclaw/.follow-builders/assets/avatar-manifest.json">
+  <header class="masthead">
+    <hr class="masthead-rule">
+    <div class="masthead-inner">
+      <div class="masthead-title">AI Builders Digest</div>
+    </div>
+    <div class="masthead-subtitle">Bilingual edition · 双语对照版</div>
+    <div class="edition-strip">
+      <span class="edition-strip-text" id="edition-strip-text">第 37 期｜2026-07-01｜双语精选版｜18 条精选｜17 位作者｜8 个主题</span>
+      <a class="edition-return-link" href="../index.html">返回目录</a>
+    </div>
+  </header>
+
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="7-1 这张 issue 的主轴是「Sonnet 5 出舱」——Anthropic 官方三连发把 Sonnet 5 从 early-access 翻成默认,Free / Pro 即用、Max / Team / Enterprise 全面开通,introductory pricing 持续到 8-31;Box 紧接着把 Sonnet 5 跑过 Box AI Complex Work Eval(1600+ 中大型企业真实 enterprise 文档任务的 agentic benchmark),在 multi-step quality 上拿到 frontier 等级、价格比对手低一档,enterprise 端 frontier-class 的标签被独立背书。Sonnet 5 launch day 没只发 model:Boris Cherny 同日推 Claude Desktop Linux,client surface 扩一个;Trq212 把 updated Codex classifier 的 policy 写明,refine middle path;Amasad 把 Etched 推出来,把 inference 这层 hardware 翻成结构 lever。Fable 5 今晚回归这条线在另一边跑得最响——Peter Yang 设闹钟、Nikunj Kothari 提前一天官宣、Dan Shipper 在 Cabo 度假准备开直播 rip token,赌的就是 cap 这一刀被抬掉。Rauchg 推 Vercel Services,把 Python backend + ExpressJS + React SPA 三件套 collocate 到一个 project,long-running agent 的 deployment surface 摆到跟 agent runtime 同一个 unit。AI native 的四个反共识在同一天被同时问:Madhu Guru 说 trad PM 转 AI native building 缺的是 magical thinking;Aditya Agarwal 抛「为美国创新供能的模型是 Chinese open source」这个 structural claim;Nan Yu 把官方 distillation 定义反过来贴 Cursor 早期用 Claude 训练的例子;Garry Tan 把 gbrain 推到 10000+ markdown files 的 scale。Taste 经济学和长跑 loop 是 production 之后的新瓶颈:zarazhangrui 引用 taste 的结构定义,steipete 把 Price per token != cost per task 立成新单位,workflow 划掉换成 loops。Swyx 收 AIEWF poster sessions day,「left shark」、tweets to print pipeline、attendee 到 co-producer 的 gap 被压扁;Amasad 同晚在纽约地铁办「world&#39;s first subway hackathon」——两个城市同一天被量到「PEOPLE ARE HUNGRY FOR THIS」。收尾:Training Data 这期请 SemiAnalysis 的 Dylan Patel 把 hardware-software co-design 立成 AI 真正的 100x——pre-LLM-era 硬件跑现代 AI 是 cost-of-goods 主导项,Etched 是结构 lever,不是 2x model improvement,这一段把 6-30「五层底盘」的物理层 floor 和今天「Sonnet 5 出舱」接在同一根线上。">
+    <div class="intro-inner">
+      <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
+      <p class="intro-copy">7-1 这张 issue 的主轴是「Sonnet 5 出舱」——Anthropic 官方三连发把 Sonnet 5 从 early-access 翻成默认,Free / Pro 即用、Max / Team / Enterprise 全面开通,introductory pricing 持续到 8-31;Box 紧接着把 Sonnet 5 跑过 Box AI Complex Work Eval(1600+ 中大型企业真实 enterprise 文档任务的 agentic benchmark),在 multi-step quality 上拿到 frontier 等级、价格比对手低一档,enterprise 端 frontier-class 的标签被独立背书。Sonnet 5 launch day 没只发 model:Boris Cherny 同日推 Claude Desktop Linux,client surface 扩一个;Trq212 把 updated Codex classifier 的 policy 写明,refine middle path;Amasad 把 Etched 推出来,把 inference 这层 hardware 翻成结构 lever。Fable 5 今晚回归这条线在另一边跑得最响——Peter Yang 设闹钟、Nikunj Kothari 提前一天官宣、Dan Shipper 在 Cabo 度假准备开直播 rip token,赌的就是 cap 这一刀被抬掉。Rauchg 推 Vercel Services,把 Python backend + ExpressJS + React SPA 三件套 collocate 到一个 project,long-running agent 的 deployment surface 摆到跟 agent runtime 同一个 unit。AI native 的四个反共识在同一天被同时问:Madhu Guru 说 trad PM 转 AI native building 缺的是 magical thinking;Aditya Agarwal 抛「为美国创新供能的模型是 Chinese open source」这个 structural claim;Nan Yu 把官方 distillation 定义反过来贴 Cursor 早期用 Claude 训练的例子;Garry Tan 把 gbrain 推到 10000+ markdown files 的 scale。Taste 经济学和长跑 loop 是 production 之后的新瓶颈:zarazhangrui 引用 taste 的结构定义,steipete 把 Price per token != cost per task 立成新单位,workflow 划掉换成 loops。Swyx 收 AIEWF poster sessions day,「left shark」、tweets to print pipeline、attendee 到 co-producer 的 gap 被压扁;Amasad 同晚在纽约地铁办「world&#39;s first subway hackathon」——两个城市同一天被量到「PEOPLE ARE HUNGRY FOR THIS」。收尾:Training Data 这期请 SemiAnalysis 的 Dylan Patel 把 hardware-software co-design 立成 AI 真正的 100x——pre-LLM-era 硬件跑现代 AI 是 cost-of-goods 主导项,Etched 是结构 lever,不是 2x model improvement,这一段把 6-30「五层底盘」的物理层 floor 和今天「Sonnet 5 出舱」接在同一根线上。</p>
+    </div>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 01</div>
+    <h2 class="section-title">Sonnet 5 出舱 + Levie 在 enterprise 端独立背书 / Sonnet 5 Goes Default, Box Confirms</h2>
+    <p class="section-desc">Anthropic 官方三连发:Sonnet 5 reasoning / tool / coding / knowledge 全面 &gt; Sonnet 4.6、接近 Opus 4.8;Free / Pro 默认即用,Max / Team / Enterprise 全面开通,introductory pricing 持续到 8-31;early-access partner 评价是「自己 review 自己的 output 不需要人催」。Box 把 Sonnet 5 跑过 Box AI Complex Work Eval(1600+ 中大型企业真实 enterprise 文档任务,multi-step agentic benchmark),在 multi-step quality 上达到 frontier 等级、价格比对手低一档——enterprise 端的 frontier-class 标签被独立背书。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:claudeai" data-author-name="Claude" data-author-tag="Anthropic Claude 官方账号" data-author-handle="@claudeai" data-author-avatar="../assets/avatars/x-claudeai.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-claudeai.jpg" alt="Claude avatar"><span class="avatar-fallback">C</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Claude</div>
+            <div class="author-tag is-inline">Anthropic Claude 官方账号</div>
+          </div>
+          <div class="author-handle">@claudeai</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic 官方账号三连发:Sonnet 5 在 Claude Free / Pro 上设为默认,Max / Team / Enterprise 全量开通,所有 Claude app 和 Claude Platform 当天上架,introductory pricing 持续到 8-31。</p>
+              <p>官方定位是 Sonnet 4.6 之上一大步——reasoning / tool use / coding / knowledge work 全面显著提升,性能接近 Opus 4.8 但价格更低。early-access partner 的描述是「自己 review 自己的 output 不需要人催」「agentic work 的价格点更友好」。</p>
+              <p>Sonnet 5 从 early-access 升级成默认,是今天 load-bearing 的产品事件。每一个 Claude app、每一个 Claude API 集成、每一段 Claude Code 都会在今天翻到 Sonnet 5。introductory pricing 窗口到 8-31——差不多也是下一轮 Sonnet 训练周期开始把 frontier 再推一次的时间点。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Anthropic 官方三连发:Sonnet 5 在 Free / Pro 上默认、Max / Team / Enterprise 全量开通,introductory pricing 持续到 8-31,reasoning / tool / coding / knowledge 全面 &gt; 4.6、接近 Opus 4.8 价格更低。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic&#39;s official account posts a three-tweet announcement: Sonnet 5 is now the default model on Claude Free and Pro, and available to Max, Team, and Enterprise users across all Claude apps and the Claude Platform. The launch comes with introductory pricing through August 31.</p>
+              <p>The positioning is a substantial step up from Sonnet 4.6 — reasoning, tool use, coding, and knowledge work are all meaningfully better, and the performance approaches Opus 4.8 at a lower price point. Early-access partners describe the model as one that &#39;finishes complex tasks where previous Sonnets stopped short, checks its own output without being asked, and does all its agentic work at an attractive price point&#39;.</p>
+              <p>Sonnet 5 leaving the early-access tier and becoming the default is the day&#39;s load-bearing product event. Every Claude app, every Claude API integration, every Claude Code session — all flip to Sonnet 5 today. The introductory pricing window is the part to watch: it ends August 31, which is also roughly when the next Sonnet training cycle is expected to start moving the frontier again.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Sonnet 5 is now the default on Free and Pro, and available to Max, Team, and Enterprise users. It&#39;s live across all Claude apps and the Claude Platform today, with introductory pricing through August 31: https://t.co/4nNWO80Er7</p>
+              <p>Early access partners found Sonnet 5 finishes complex tasks where previous Sonnets stopped short, checks its own output without being asked, and does all its agentic work at an attractive price point.</p>
+              <p>Sonnet 5 is a substantial improvement over Sonnet 4.6 on reasoning, tool use, coding, and knowledge work. Its performance is close to Opus 4.8, at lower prices. https://t.co/VOISbk14Lk</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/claudeai/status/2072017457057853480" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:levie" data-author-name="Aaron Levie" data-author-tag="Box CEO" data-author-handle="@levie" data-author-avatar="../assets/avatars/x-levie.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-levie.jpg" alt="Aaron Levie avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie</div>
+            <div class="author-tag is-inline">Box CEO</div>
+          </div>
+          <div class="author-handle">@levie</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie(Box CEO)发了一个独立背书:Box 把 Claude Sonnet 5 跑过 Box AI Complex Work Eval(自家 agentic benchmark,跑的是真实企业文档工作 end-to-end),结论是 Sonnet 5 在 multi-step quality 上达到 frontier 等级、价格领先。</p>
+              <p>这个 benchmark 有两层意义。第一,这是一个没有 model 财务关系的独立背书——Box 用的就是它的客户要用的模型,eval 跟它用来跟 OpenAI / Google 拼的是同一套。第二,「frontier-class quality at lower prices」这个组合是真正能撬动 enterprise procurement 的——更便宜的模型同时也是更好的模型,成本账一晚上翻向。</p>
+              <p>对 Box 来说,这个 eval 本身是销售工具:每来一次 model 升级,Box 重跑一次,结果就变成「这是当前 frontier,这是我们自家 enterprise 数据形状」的对外口径。Levie 公开发出来,是一次软发布——披着 model review 的外衣。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Levie 在 Box AI Complex Work Eval 上把 Sonnet 5 跑过一遍:在 multi-step quality 上达到 frontier 等级、价格领先,这是给 enterprise 端的一个独立背书。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie (Box CEO) reports that Box has been running Anthropic&#39;s Claude Sonnet 5 through the Box AI Complex Work Eval, Box&#39;s agentic benchmark that puts models through real enterprise document work end-to-end. The result: Sonnet 5 holds frontier-class quality on complex multi-step work and pulls ahead on price.</p>
+              <p>The benchmark is significant for two reasons. First, it is an independent confirmation of Sonnet 5&#39;s enterprise-grade capability from a vendor with no financial relationship to Anthropic on the model — Box is using the same model its customers would use, and the eval is the same one Box uses to sell against OpenAI and Google. Second, &#39;frontier-class quality at lower prices&#39; is the precise combination that moves enterprise procurement: when the cheaper model is also the better model, the cost-of-goods argument flips direction overnight.</p>
+              <p>For Box specifically, the eval is a selling tool: every time a model upgrade lands, Box re-runs the eval, and the result becomes the basis of a &#39;here is the current frontier, on our own enterprise data shape&#39; message to their customer base. Levie posting it publicly is a soft launch announcement disguised as a model review.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>We&#39;ve been running Anthropic&#39;s Claude Sonnet 5 through the Box AI Complex Work Eval, our agentic benchmark that puts models through real enterprise document work end-to-end. Sonnet 5 holds frontier-class quality on complex multi-step work and pulls ahead on price.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/levie/status/2072046374045249671" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 02</div>
+    <h2 class="section-title">Fable 5 归零:三个城市的人在等同一件事 / Fable 5 Returns Tonight</h2>
+    <p class="section-desc">三个独立信号指向同一件事:Fable 5 今夜回归——Peter Yang 设闹钟、Nikunj Kothari 提前一天官宣、Dan Shipper 在 Cabo 度假准备开直播 rip token。Fable 是个 50% usage throttle 后会断的高争议配额产品,今晚这一刀让 5 重新变成有供给的体验。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:petergyang" data-author-name="Peter Yang" data-author-tag="产品教练 / 创作者经济研究者" data-author-handle="@petergyang" data-author-avatar="../assets/avatars/x-petergyang.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-petergyang.jpg" alt="Peter Yang avatar"><span class="avatar-fallback">PY</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Yang</div>
+            <div class="author-tag is-inline">产品教练 / 创作者经济研究者</div>
+          </div>
+          <div class="author-handle">@petergyang</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang 设了一个午夜闹钟,专门等 Fable——那个 50% weekly usage 就会断的模型。语气是开玩笑,但底层机制是真的:Fable 这一阵一直在一个 usage cap 下跑,体验是「用一次,本周再见」,赌的就是午夜 cap 会被新的发布抬掉。</p>
+              <p>几小时后的 follow-up 是诊断性的:「btw I have no idea if it&#39;s coming out midnight or not」——意思是 announcement 窗口本身是模糊的,但「今晚有事发生」的社群信念已经强到让人真的设闹钟。第三条最尖锐:「hit 50% weekly usage Fable 就不可用了?」是 throttling policy 直接打到用户身上的痛。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Peter Yang 设闹钟等 Fable 5 午夜上线,抱怨 50% weekly usage cap 是 throttling policy 直接打到用户身上的痛;announcement 窗口本身是模糊的,但社群赌的就是今晚。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang sets an alarm at midnight specifically to use Fable, the model that was throttled at 50% weekly usage. The framing is humorous but the underlying mechanic is real: Fable has been operating under a usage cap that made it a &#39;try once and lose it for the week&#39; experience, and the bet is that the cap is about to be lifted on whatever ships at midnight.</p>
+              <p>The follow-up tweet (a few hours later) is the diagnostic: &#39;btw I have no idea if it&#39;s coming out midnight or not&#39; — which means the announcement window is fuzzy, but the community belief that &#39;something is coming tonight&#39; is strong enough to set an actual alarm. The third tweet is the most pointed: &#39;After I hit 50% weekly usage Fable is no longer available?&#39; is the user-facing pain of the throttling policy.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Setting an alarm at midnight to get Fable to fix all my projects 😅 https://t.co/LUuH9x8vl3</p>
+              <p>What does this mean btw? After I hit 50% weekly usage Fable is no longer available? https://t.co/nU5J9p9KsC</p>
+              <p>btw I have no idea if it&#39;s coming out midnight or not</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/petergyang/status/2072111311396438410" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:nikunj" data-author-name="Nikunj Kothari" data-author-tag="Afore Capital 合伙人" data-author-handle="@nikunj" data-author-avatar="../assets/avatars/x-nikunj.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-nikunj.jpg" alt="Nikunj Kothari avatar"><span class="avatar-fallback">NK</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Nikunj Kothari</div>
+            <div class="author-tag is-inline">Afore Capital 合伙人</div>
+          </div>
+          <div class="author-handle">@nikunj</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj Kothari(Afore Capital 合伙人)从现场发信号:「Every developer in SF right now running back to their desks post AIEWF after they heard Fable 5 is coming back」。「is coming back」(而不是 is launching)是 load-bearing 的措辞——Fable 5 在被框架成一次 restoration 而不是新产品,因为 cap 和原来的 5-week cliff 留了一个需要被填上的洞。</p>
+              <p>Follow-up tweet:「Ok a day early. This is coming tomorrow!」——确认了日期,信号是 developer community 已经正确预期到了时间点。当一个 tier-1 基金的 venture partner 出来发「developers 跑回工位」,说明这个 news 已经从 model-launch 那一层穿到了更广的 builder network。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Nikunj Kothari 从 AIEWF 现场发信号:Fable 5 is coming back,措辞是 restoration 而非新发布——cap 和 5-week cliff 留的洞,今天被填。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj Kothari (Afore Capital partner) reports from the field: &#39;Every developer in SF right now running back to their desks post AIEWF after they heard Fable 5 is coming back.&#39; The phrasing &#39;is coming back&#39; (not &#39;is launching&#39;) is the load-bearing part: Fable 5 is being framed as a restoration, not a new product, because the cap and the original 5-week cliff left a hole that needed to be filled.</p>
+              <p>Follow-up tweet: &#39;Ok a day early. This is coming tomorrow!&#39; — confirms the date and signals the developer community has correctly anticipated the timing. When a venture partner at a tier-1 firm is the one reporting &#39;developers running back to their desks&#39;, the signal is that the news has crossed from the model-launch beat into the broader builder network.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Every developer in SF right now running back to their desks post AIEWF after they heard Fable 5 is coming back.. https://t.co/HsCFU0Usz7</p>
+              <p>Ok a day early. This is coming tomorrow!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/nikunj/status/2072106393256218883" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:danshipper" data-author-name="Dan Shipper" data-author-tag="Every 联合创始人 / AI 写作工具链" data-author-handle="@danshipper" data-author-avatar="../assets/avatars/x-danshipper.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-danshipper.jpg" alt="Dan Shipper avatar"><span class="avatar-fallback">DS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Dan Shipper</div>
+            <div class="author-tag is-inline">Every 联合创始人 / AI 写作工具链</div>
+          </div>
+          <div class="author-handle">@danshipper</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Dan Shipper(Every 联合创始人)正在墨西哥度假,Fable 5 消息一出来三连发,语气是 escalation:第一条「if this happens im livestreaming and ripping tokens from my vacation in cabo tonight」;第二条贴了一张度假照,「me, on a vacation in mexico, hearing that fable might be coming back tonight」;第三条「LETS FUCKIN GO」。</p>
+              <p>信号是:Fable 5 发布已经跨过了 model-launch 那一层,变成一个 builder-cultural 事件。从度假直播这个 framing 是关键点——一个严肃的 founder 不会为了普通的 model release 中断度假,只有当社区围绕一个 release 已经建立起足够强的预期,才会出现这种情况。Shipper 的反应同时也是给 Every 分发的一次有机信号放大。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Dan Shipper 度假中三连发:Cabo 直播、度假照、LETS FUCKIN GO——Fable 5 已经从 model launch 升格成 builder-cultural 事件,严肃 founder 愿意为它中断度假。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Dan Shipper (Every co-founder) is on vacation in Mexico when the Fable 5 rumor breaks. Three consecutive tweets in escalation: (1) &#39;if this happens im livestreaming and ripping tokens from my vacation in cabo tonight&#39;; (2) &#39;me, on a vacation in mexico, hearing that fable might be coming back tonight&#39; with a vacation photo; (3) &#39;LETS FUCKIN GO&#39;.</p>
+              <p>The signal: the Fable 5 release has crossed the threshold from a model-launch beat to a builder-cultural event. The livestreaming-from-Cabo framing is the part that matters — a serious founder isn&#39;t going to interrupt a vacation for a normal model release, only for something that the community has been building anticipation around. Shipper&#39;s reaction also serves as organic signal-boosting for Every&#39;s distribution.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>if this happens im livestreaming and ripping tokens from my vacation in cabo tonight https://t.co/6jJZx8mOp2</p>
+              <p>me, on a vacation in mexico, hearing that fable might be coming back tonight https://t.co/OHp0diROKl</p>
+              <p>LETS FUCKIN GO https://t.co/V11siBIHyo</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/danshipper/status/2072094163378622822" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 03</div>
+    <h2 class="section-title">Vercel 把服务边界拆出来 / Vercel Redraws the Service Boundary</h2>
+    <p class="section-desc">Rauchg 三条连发:Vercel Services 允许一个 project 同时 collocate Python backend + ExpressJS + React SPA(同 deploy、同 rollback、同 observe);与 Shopify 合作推 agentic web;Vercel 「for everyone」——tech executive 和他 12 岁儿子同时反馈。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:rauchg" data-author-name="Guillermo Rauch" data-author-tag="Vercel CEO" data-author-handle="@rauchg" data-author-avatar="../assets/avatars/x-rauchg.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-rauchg.jpg" alt="Guillermo Rauch avatar"><span class="avatar-fallback">GR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Guillermo Rauch</div>
+            <div class="author-tag is-inline">Vercel CEO</div>
+          </div>
+          <div class="author-handle">@rauchg</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch(Vercel CEO)推出 Vercel Services——一个 Vercel project 可以 collocate Python backend API + ExpressJS server + React SPA,本地用 `vc dev` 跑,deploy 和 rollback 一起做,observe / monitor / debug 也在一起。</p>
+              <p>故事核心是 long-running agent。以前 Python backend + Express server + React SPA 是三套独立服务(Vercel Functions + 外部 Python host + 独立 Node.js server)。Agent 架构的直接含义:一个 long-running agent loop 可以把 stateful backend、request handler、frontend 三者放在一个 project 里,deployment unit 直接对上 agent 的天然 runtime 边界。</p>
+              <p>Rauch 同日另外两条推强化同一根线:一条是兴奋地宣告跟 Tobi / Shopify 团队合作推 agentic web,另一条是私人段子——tech executive 和他 12 岁儿子同时反馈 Vercel,「Vercel is for everyone」。三条连起来,是在把 Vercel 摆成下一代 agent-built app 的 deployment surface,而不是 React 前端的 deployment surface。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Rauch 推 Vercel Services:一个 project collocate Python backend + ExpressJS + React SPA,本地同跑、deploy / rollback / observe 同做;同日还有 Shopify agentic web 合作 + 「Vercel is for everyone」段子——把 Vercel 摆成 long-running agent 的 deployment surface。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch (Vercel CEO) announces Vercel Services, a new product that lets a single Vercel project collocate e.g. a Python backend API, an ExpressJS server, and a React SPA — all deployable with `vc dev`, all deploying and rolling back together, all observable and debuggable as one unit.</p>
+              <p>The pitch is the long-running agent story. Until now, a Python backend, an Express server, and a React SPA would have been three separate services (Vercel Functions + external Python host + a separate Node.js server). The agent-architecture implication is direct: a long-running agent loop can now host the stateful backend, the request handler, and the frontend in one project, with the deployment unit matching the agent&#39;s natural runtime boundary.</p>
+              <p>Rauch&#39;s other two tweets from the same day reinforce the same line: an enthusiastic post about partnering with Tobi and the Shopify team to push the &#39;agentic web&#39; forward, and a personal anecdote about a tech executive&#39;s 12-year-old son giving Vercel feedback at dinner — the &#39;Vercel is for everyone&#39; framing. The three together are positioning Vercel as the deployment surface for the next generation of agent-built apps, not just React frontends.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Vercel Services
+
+              You can now collocate e.g.: a Python backend API, an ExpressJS server, and a React SPA in one Vercel project.
+
+              tl;dr;
+              ▪ You can run all locally with vc dev
+              ▪ Deploy and rollback all at once
+              ▪ Observe, monitor, debug together
+              ▪ I...</p>
+              <p>So great to get to work with @tobi and the wonderful @shopify team. Excited to push the agentic web forward. https://t.co/2dke1MwSDS</p>
+              <p>At dinner, tech executive is relaying his company&#39;s @vercel feedback, and then his 12-year-old son&#39;s @vercel feedback 😁
+
+              Vercel is for everyone.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/rauchg/status/2071966055308607765" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 04</div>
+    <h2 class="section-title">Harness 层在同一天被三边压 / The Harness Layer Compresses, Three Sides at Once</h2>
+    <p class="section-desc">Amasad 把 Etched 推出来——为现代 inference 重新设计的首款系统,大部分 workload 跑在 pre-LLM 时代的通用硬件上是 AI 「贵」的真实原因。Boris Cherny 推 Claude Desktop Linux——社区 ask 久,Anthropic 正式 ship。Trq212 把 Codex 升级 classifier 的 policy 写明:小比例日常 coding / debugging 任务被误判降级到 Opus,目标是区分「真正的 misuse」和「legitimate request」。三件事指向同一根线:harness / client / policy 三层表面在同一天被独立收紧。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:amasad" data-author-name="Amjad Masad" data-author-tag="Replit CEO" data-author-handle="@amasad" data-author-avatar="../assets/avatars/x-amasad.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-amasad.jpg" alt="Amjad Masad avatar"><span class="avatar-fallback">AM</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Amjad Masad</div>
+            <div class="author-tag is-inline">Replit CEO</div>
+          </div>
+          <div class="author-handle">@amasad</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Amjad Masad(Replit CEO)一条推把 inference-hardware 的故事讲完了:「AI is expensive to run partly because most workloads today run on generic hardware designed pre-LLMs. Etched is the first system designed from the ground up for modern inference」。</p>
+              <p>经济论断是结构性的:今天的 GPU 硅是通用目的,inference cost-of-goods 反映了这种通用性。一个为 transformer inference 专门设计的 chip(不要 general matrix multiply 兜底、不要 legacy 支持)有可能打到 5-10x perf-per-watt,这才是为什么 inference cost 的对话未来 18 个月会从「更便宜的模型」转向「更便宜的硅」的真实原因。Replit 角度:Replit 给每一个用户跑 inference,inference cost 是他们 first-order 的 P&amp;L 行,Etched 这类系统会改变 agentic product development 的 unit economics。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Amasad 一条推把 inference hardware 的故事讲完:Etched 是为现代 inference 重新设计的首款系统,大部分 workload 跑在 pre-LLM 时代的通用硬件上是 AI 「贵」的真实原因;Replit 的角度是 inference cost 是 first-order P&amp;L。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Amjad Masad (Replit CEO) makes the inference-hardware case in one tweet: &#39;AI is expensive to run partly because most workloads today run on generic hardware designed pre-LLMs. Etched is the first system designed from the ground up for modern inference.&#39;</p>
+              <p>The economic claim is structural: GPU silicon today is general-purpose, and the inference cost-of-goods reflects that generality. A chip designed specifically for transformer inference (no general matrix multiply fallback, no legacy support) can plausibly hit 5-10x perf-per-watt, which is the real reason the cost-of-inference conversation is going to move from &#39;cheaper models&#39; to &#39;cheaper silicon&#39; over the next 18 months. The Replit angle: Replit runs inference for every user, so inference-cost is a first-order P&amp;L line for them, and an Etched-class system would change the unit economics of agentic product development.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>AI is expensive to run partly because most workloads today run on generic hardware designed pre-LLMs. Etched is the first system designed from the ground up for modern inference. https://t.co/KluYZIZATE</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/amasad/status/2071992110132117740" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:bcherny" data-author-name="Boris Cherny" data-author-tag="Salesforce AI 工程负责人" data-author-handle="@bcherny" data-author-avatar="../assets/avatars/x-bcherny.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-bcherny.jpg" alt="Boris Cherny avatar"><span class="avatar-fallback">BC</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Boris Cherny</div>
+            <div class="author-tag is-inline">Salesforce AI 工程负责人</div>
+          </div>
+          <div class="author-handle">@bcherny</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Boris Cherny(Anthropic)把 Claude Desktop for Linux 推上线。推文很短——「You asked, we listened. Claude Desktop on Linux is here! Download link:」——但运营意义是 developer-segment 的覆盖:「Python / data / ML engineers on Linux」这一群人是 native Claude Code / Claude Desktop parity 最响的 asker,出一个 native Linux desktop app 是回应。</p>
+              <p>框架重要:这条接在 Sonnet 5 默认、Box AI Sonnet 5 eval 后面,Anthropic 不让 Sonnet 5 launch day 只发 model、不发 developer-experience。Model launch 和 client-surface 扩展的配对是稳定 pattern:每一次 model 升级都顺带加一个 surface,surfaces 在累积。(Boris 当天另一条是关于 Fable cliff 的一句同意,跟 digest 主题无关,cut 掉。)</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Boris Cherny 推 Claude Desktop for Linux——Anthropic 不让 Sonnet 5 launch day 只发 model,model 升级配对 client surface 扩展是稳定 pattern,surfaces 在累积。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Boris Cherny (Anthropic) ships Claude Desktop for Linux. The tweet is short — &#39;You asked, we listened. Claude Desktop on Linux is here! Download link:&#39; — but the operational significance is the developer-segment coverage: the cohort of &#39;Python / data / ML engineers on Linux&#39; has been the loudest asker for native Claude Code and Claude Desktop parity, and shipping a native Linux desktop app is the response.</p>
+              <p>The frame matters: it follows Sonnet 5 default, the Box AI Sonnet 5 eval, and the broader Sonnet 5 day. Anthropic is not letting a Sonnet 5 launch day pass without also shipping a developer-experience win. The pairing of a model launch with a client-surface expansion is the consistent pattern: every model upgrade is also an excuse to add a surface, and the surfaces accumulate. (Boris&#39;s other tweet of the day is a one-liner agreement on the Fable cliff, off-topic for the digest.)</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>You asked, we listened. Claude Desktop on Linux is here!
+
+              Download link: https://t.co/gjgHZvbKyi https://t.co/O3P6B3fuGk</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/bcherny/status/2072000214634742243" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:trq212" data-author-name="Tao Li" data-author-tag="AI 研究员 / Follow Builders 维护者" data-author-handle="@trq212" data-author-avatar="../assets/avatars/x-trq212.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-trq212.jpg" alt="Tao Li avatar"><span class="avatar-fallback">TL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Tao Li</div>
+            <div class="author-tag is-inline">AI 研究员 / Follow Builders 维护者</div>
+          </div>
+          <div class="author-handle">@trq212</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thariq(Follow Builders 维护者)对 updated Codex classifiers 的疑问做 follow-up。澄清:跟原来的 classifiers 一样,小比例的日常 coding / debugging 任务会被 flag 并降级到 Opus。团队兴奋于让用户拿回 access,会持续 refine 这些 safeguards,以更好地区分「genuine misuse」和「legitimate request」、减少 false positives。</p>
+              <p>结构性的读法:Codex(或 Thariq 推的那个产品)classifier 收紧的方式影响了一部分 legitimate coding 任务,修法是 iterative——团队承诺收紧,但承认 over-tightening 会挡住真活儿。诚实的 framing(「refining, false positives 是真的,但 policy 站得住」)在这个赛道里是少见的,值得记一笔:同类别的 launch 大多走 full-defense(「we got stricter,sorry about false positives,deal with it」)或者 full-apology(「we walked it back」)。中间路线是扛得过一年 usage growth 的那条。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Trq212 把 updated Codex classifier 的 policy 写明:小比例日常 coding / debugging 任务被误判降级到 Opus;团队会持续 refine,目标区分 misuse 和 legitimate request;走 middle path 不走 full-defense / full-apology。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thariq (Follow Builders maintainer) follows up on questions about the updated Codex classifiers. The clarification: a small fraction of routine coding and debugging tasks will still be flagged and fall back to Opus, same as with the original classifiers. The team is excited to give users access back, and is continuing to refine the safeguards to better distinguish genuine misuse from legitimate requests and reduce false positives.</p>
+              <p>The structural read: Codex (or whatever product Thariq is shipping) had its classifier tightened in a way that affected some legitimate coding tasks, and the fix is iterative — the team is committed to tightening, but recognizes that over-tightening blocks real work. The honest framing (&#39;we&#39;re refining, false positives are real, but the policy stands&#39;) is unusual in this space and worth noting: most launches in the same category go either full-defense (&#39;we got stricter, sorry about the false positives, deal with it&#39;) or full-apology (&#39;we walked it back&#39;). The middle path is the one that survives a year of usage growth.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Have seen some questions about the updated classifiers and wanted to clarify.
+
+              As with the original classifiers, a small fraction of routine coding and debugging tasks will be flagged and fall back to Opus.
+
+              We&#39;re excited for guys to get access back...</p>
+              <p>And as we say in our blog, we&#39;re continuing to refine these safeguards to better distinguish genuine misuse from legitimate requests and reduce false positives.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/trq212/status/2072185565076988326" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 05</div>
+    <h2 class="section-title">AI native 的四个反共识同时被问 / Four AI-Native Assumptions Get Re-Asked at Once</h2>
+    <p class="section-desc">Madhu Guru 指出 trad PM 转 AI native building 的最大障碍不是 skill gap,是 magical thinking 缺位——十年 framework / agile / metric obsession 把思考方式锁在 constraint-first 增量模式,要靠 magic first / magic-only 的提问框架破。Aditya Agarwal 抛出一个反共识观察:为美国创新供能的模型正在是 Chinese open source——一个非常奇怪的 state of the world。Nan Yu 把官方 distillation 定义翻出来,贴出 Cursor 早期用 Claude 训练的例子——按这套逻辑,Cursor 整个早期训练数据都「蒸馏」自 Claude。Garry Tan 把 gbrain 推到 10000+ markdown files 的 scale,YC 总裁开始认真地聊「个人脑 + 公司脑」。四件不相干的事指向同一根线:在 Sonnet 5 默认出舱这天,几个底层假设(PM 框架、中美模型来源、distillation 边界、个人知识规模)同时被重新问。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:realmadhuguru" data-author-name="Madhusudhan" data-author-tag="AI 工程师 / 开源贡献者" data-author-handle="@realmadhuguru" data-author-avatar="../assets/avatars/x-realmadhuguru.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-realmadhuguru.jpg" alt="Madhusudhan avatar"><span class="avatar-fallback">M</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Madhusudhan</div>
+            <div class="author-tag is-inline">AI 工程师 / 开源贡献者</div>
+          </div>
+          <div class="author-handle">@realmadhuguru</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Madhusudhan(Madhu Guru)给了一个硬判断:trad PM 转 AI native building 的最大障碍是 magical thinking 缺位。十年 framework / agile / metric obsession 把思考方式锁在 constraint-first 增量模式。他以前在团队里用过的对抗法是问:「how would you ship this if magic were free?」</p>
+              <p>这条线有意思是因为它是对 PM 这个职业十年 optimization culture 沉淀的 cognitive habit 的结构论断。Frameworks 和 metrics 优化的是 known-knowns,但 AI native build loop 是在探索 model 能做什么的 unknown-knowns。一个 first instinct 是「this 移动哪个 metric」的 PM,在 AI 产品头 80% 的阶段是处在错误的 cognitive mode 里。Madhu 用过的 recovery move 是一个 forcing question:假设 magic,然后倒推最便宜的、能 ship 的 magic 版本。这就是 magical-thinking-first 的纪律。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Madhu Guru 给硬判断:trad PM 转 AI native building 的最大障碍是 magical thinking 缺位;十年 framework / metric obsession 把思考方式锁在 constraint-first 增量模式;recovery move 是 ask「how would you ship this if magic were free?」。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Madhusudhan (Madhu Guru) posts a hard-edged claim: the biggest challenge for traditional PMs trying to adapt to AI native building is a lack of magical thinking. A decade of frameworks, &#39;agile&#39;, and metric obsession has led to constraint-first, incremental thinking. The framing is that magical thinking is the missing input, and the rebuttal he used to run internally on his teams was to ask: &#39;how would you ship this if magic were free?&#39;</p>
+              <p>The line is interesting because it&#39;s a structural claim about the cognitive habits the PM profession has built over a decade of optimization culture. Frameworks and metrics optimize for known-knowns, but the AI native build loop is about exploring the unknown-knowns of what a model can do. A PM whose first instinct is &#39;what metric does this move&#39; is in the wrong cognitive mode for the first 80% of an AI product. The recovery move Madhu used was a forcing question: assume magic, then work backward to the cheapest version of magic that&#39;s still shippable. That is the magical-thinking-first discipline.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The biggest challenge for trad PMs trying to adapt to AI native building is a lack of magical thinking. A decade of frameworks, &#39;agile&#39; and metric obsession has led to constraint-first, incremental thinking.
+
+              I used to combat this on my teams by aski...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/realmadhuguru/status/2071970221477470694" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:adityaag" data-author-name="Aditya Agarwal" data-author-tag="Dropbox Engineering VP / 前 Facebook 平台工程负责人" data-author-handle="@adityaag" data-author-avatar="../assets/avatars/x-adityaag.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-adityaag.jpg" alt="Aditya Agarwal avatar"><span class="avatar-fallback">AA</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aditya Agarwal</div>
+            <div class="author-tag is-inline">Dropbox Engineering VP / 前 Facebook 平台工程负责人</div>
+          </div>
+          <div class="author-handle">@adityaag</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aditya Agarwal(Dropbox Engineering VP,前 Facebook)丢了一行结构性论断:「It is a very strange state of the world where the models powering innovation in the USA are Chinese open source models」。</p>
+              <p>claim 读起来像 contrarian,但在结构层面越来越是共识:2026 年非小比例的美国 AI startup 是建在 GLM / Qwen / DeepSeek 的模型权重上。Pricing dynamics 是其中一部分(open-weights 模型在很多任务上比 frontier closed 模型便宜一个量级、质量可比),distribution dynamics 是另一部分(open-weights 意味着 developer 控制 inference stack,这正是受监管行业客户需要的)。地缘反转是需要时间消化的部分:「American innovation」作为一个分类,现在被建在不是 American 的 weights 上。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Aditya Agarwal 丢一行硬判断:为美国创新供能的模型是 Chinese open source——一个非常奇怪的 state of the world;pricing + distribution 两层 dynamics 在 2026 已经把 inversion 推到了不可逆的位置。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aditya Agarwal (Dropbox engineering VP, former Facebook) drops a one-line structural claim: &#39;It is a very strange state of the world where the models powering innovation in the USA are Chinese open source models.&#39;</p>
+              <p>The claim reads as contrarian but is increasingly the consensus at the structural level: a non-trivial share of US AI startups in 2026 are building on top of GLM / Qwen / DeepSeek model weights. The pricing dynamics are part of it (the open-weights models are an order of magnitude cheaper than the frontier closed models for comparable quality on many tasks), and the distribution dynamics are part of it (open-weights means the developer controls the inference stack, which is exactly what a regulated-industry customer needs). The geopolitical inversion is the part that takes time to absorb: &#39;American innovation&#39; as a category is currently being built on top of weights that are not American.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>It is a very strange state of the world where the models powering innovation in the USA are Chinese open source models.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/adityaag/status/2071983952894837062" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:thenanyu" data-author-name="Nan Yu" data-author-tag="AI 创业者 / 投资人" data-author-handle="@thenanyu" data-author-avatar="../assets/avatars/x-thenanyu.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-thenanyu.jpg" alt="Nan Yu avatar"><span class="avatar-fallback">NY</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Nan Yu</div>
+            <div class="author-tag is-inline">AI 创业者 / 投资人</div>
+          </div>
+          <div class="author-handle">@thenanyu</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nan Yu(AI 创业者 / 投资人)把官方 distillation 的定义翻出来,把隐含 implication 翻到台面:「Going by this logic, the entirety of Cursor&#39;s training data was distilled from Claude in the early days」。quote-tweet 是 meta-commentary——Nan 在指出 vendor 用来给竞品立规矩的 distillation 定义,反过来同样覆盖他们自己的训练数据史。</p>
+              <p>Follow-up 推(一个「tru tru」加 quote-tweet)是 confirmation gesture。读法:distillation 这个对话不是一条干净的法律线,是一个 moving target。Vendor 想让 distillation 等于「在更大模型的 output 上 fine-tune 一个更小的模型」(Cursor、Cognition 们做的就是这个)——但同样的定义,对称地套用,会把早期 web-trained 的基础模型「distilled from」它们的 web-scraped 数据源。这条线 enforce 不了;它是一个 posture。Nan 在命名这个 posture,不站对错。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Nan Yu 把官方 distillation 定义翻出来贴 Cursor 早期用 Claude 训练的例子——按这套逻辑,Cursor 整段早期训练数据都「蒸馏」自 Claude。distillation 边界 enforce 不了,是一个 moving target,是一个 posture。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nan Yu (AI founder / investor) reads the official definition of &#39;distillation&#39; and surfaces the implication: &#39;Going by this logic, the entirety of Cursor&#39;s training data was distilled from Claude in the early days.&#39; The quote-tweet is the meta-commentary — Nan is pointing out that the very definition of distillation that vendors use to police competitors also covers their own training-data history.</p>
+              <p>The follow-up tweet (a one-word &#39;tru tru&#39; with a quote-tweet) is a confirmation gesture. The read: the distillation conversation is not a clean legal line, it&#39;s a moving target. Vendors want distillation to mean &#39;fine-tuning a smaller model on outputs of a larger one&#39; (which Cursor, Cognition, and others do) — but the same definition, applied symmetrically, makes the early web-trained foundation models &#39;distilled from&#39; their web-scraped sources. The line is not enforceable; it&#39;s a posture. Nan is naming the posture, not arguing for or against it.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The definition of &#39;distillation&#39; is interesting. Going by this logic, the entirety of Cursor&#39;s training data was distilled from Claude in the early days https://t.co/V08OTUG9QA</p>
+              <p>tru tru https://t.co/GCmvVpSNHq</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/thenanyu/status/2071973229070033322" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:garrytan" data-author-name="Garry Tan" data-author-tag="Y Combinator 总裁" data-author-handle="@garrytan" data-author-avatar="../assets/avatars/x-garrytan.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-garrytan.jpg" alt="Garry Tan avatar"><span class="avatar-fallback">GT</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Garry Tan</div>
+            <div class="author-tag is-inline">Y Combinator 总裁</div>
+          </div>
+          <div class="author-handle">@garrytan</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Garry Tan(Y Combinator 总裁)分享一个 usage threshold:「Gbrain is mostly useful at 10,000+ markdown files in your personal brain or company brain」。措辞有意义因为它把 Garry 摆在 hands-on tool builder 的位置,不只是 YC-figurehead:threshold 这种数字只有真的在用工具的时候才会出现,「10,000+」足够具体,是一个真信号。</p>
+              <p>更深一层读:personal-knowledge-management 这一类目已经成熟到 YC 总裁公开分享 personal-brain 工具「click」的阈值。Garry 这同时是一个 positioning move——YC portfolio 里很多 knowledge-tool startup,「10,000+」这个数字一旦公开,就会成为下一批 cohort 的 self-fulfilling target。(「Build to 10,000 markdown files」现在是一个具体目标。) Garry 当天另一条是政治 / California 框架的,跟 digest 主题无关,cut。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Garry Tan 公开 Gbrain 的 usage threshold:10,000+ markdown files 时 personal brain / company brain 真正「click」——这同时是 hands-on 工具构建者的 positioning,也是给 YC portfolio knowledge-tool startups 立的下一个 self-fulfilling target。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Garry Tan (Y Combinator president) shares a usage threshold: &#39;Gbrain is mostly useful at 10,000+ markdown files in your personal brain or company brain.&#39; The framing is significant because it positions Garry as a hands-on tool builder, not just a YC-figurehead: the threshold is the kind of number that only comes from actually using the tool, and the &#39;10,000+&#39; is specific enough to be a real signal.</p>
+              <p>The deeper read: the personal-knowledge-management category has matured to the point where a YC president is publicly sharing thresholds for when a personal-brain tool &#39;clicks&#39;. For Garry this is also a positioning move — YC&#39;s portfolio is full of knowledge-tool startups, and the 10,000+ number is the kind of signal that, once public, becomes a self-fulfilling target for the next cohort. (&#39;Build to 10,000 markdown files&#39; is now a concrete goal.) Garry&#39;s other tweet of the day is a political / California-framing post, off-topic for the digest, cut.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Gbrain is mostly useful at 10,000+ markdown files in your personal brain or company brain https://t.co/ifVPMxILhY</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/garrytan/status/2071910876496757145" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 06</div>
+    <h2 class="section-title">Taste 经济学 + 长跑 loop / What Comes After Production</h2>
+    <p class="section-desc">zarazhangrui 引用 taste 的定义——「taste 之所以值钱不是因为别人抄不了,是因为 taste 决定了别人抄什么」;steipete 把 long-running loop 摆到台面,「Price per token != cost per task」,一晚连发两条对 conference / workflow 节奏的吐槽,把 workflow -&gt; loops 重新命名。production 已经不是瓶颈,curation / loop / 节拍 才是。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:zarazhangrui" data-author-name="Zhang Rui" data-author-tag="Follow Builders 创始人 / 策展人" data-author-handle="@zarazhangrui" data-author-avatar="../assets/avatars/x-zarazhangrui.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-zarazhangrui.jpg" alt="Zhang Rui avatar"><span class="avatar-fallback">ZR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Zhang Rui</div>
+            <div class="author-tag is-inline">Follow Builders 创始人 / 策展人</div>
+          </div>
+          <div class="author-handle">@zarazhangrui</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zara Zhang(Follow Builders 创始人 / 策展人)分享一条 taste 的定义:「Taste isn&#39;t valuable because it&#39;s impossible to copy. Taste is valuable exactly because it defines what everyone else chooses to copy」。重新框架这一下重要:taste-as-impossible-to-copy 是浪漫版,taste-as-defines-what-others-copy 是结构版。</p>
+              <p>结构版读法:在每一个 model 都能以 cent 级成本生成一千个选项的世界里,bottleneck 从「你能 production」移到「你能选择 production 什么」。选择者定义了选项的场,其他人的 copy 都是这个选择的下游。一个 founder 的 taste 强到能为接下来六个月定义这个场,实际就是一个 taste monopolist。Taste-as-definer 的经济价值比 taste-as-personal-aesthetic 高好几个数量级——前者是市场塑造的 input,后者是私人偏好。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Zara Zhang 把 taste 的定义翻到结构版:taste 之所以值钱不是因为别人抄不了,是因为 taste 决定了别人抄什么——在 model 能 cent 级生成一千个选项的世界里,选择者是市场塑造的 input;taste monopolist 是一种真实存在。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zara Zhang (Follow Builders founder / curator) shares a definition of taste: &#39;Taste isn&#39;t valuable because it&#39;s impossible to copy. Taste is valuable exactly because it defines what everyone else chooses to copy.&#39; The reframing matters: taste-as-impossible-to-copy is the romantic version, taste-as-defines-what-others-copy is the structural one.</p>
+              <p>The structural read: in a world where every model can generate a thousand options at a cent each, the bottleneck has moved from &#39;can you produce&#39; to &#39;can you choose what to produce&#39;. The chooser defines the field of options, and everyone else&#39;s copies are downstream of that choice. A founder whose taste is strong enough to define the field for the next six months is, in effect, a taste monopolist. The economic value of taste-as-definer is several orders of magnitude above taste-as-personal-aesthetic — the first is a market-shaping input, the second is a private preference.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>&quot;Taste isn&#39;t valuable because it&#39;s impossible to copy. Taste is valuable exactly because it defines what everyone else chooses to copy.&quot; https://t.co/kDs4ibnvbL</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/zarazhangrui/status/2072197929138602079" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:steipete" data-author-name="Peter Steinberger" data-author-tag="OpenClaw 创始人" data-author-handle="@steipete" data-author-avatar="../assets/avatars/x-steipete.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-steipete.jpg" alt="Peter Steinberger avatar"><span class="avatar-fallback">PS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Steinberger</div>
+            <div class="author-tag is-inline">OpenClaw 创始人</div>
+          </div>
+          <div class="author-handle">@steipete</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Steinberger(OpenClaw 创始人)把 long-running agent 的 cost 故事压成一行:「Price per token != cost per task」。框架是跟一直在更新的 model-pricing 新闻周期对冲:重要的 unit 是 task,不是 token,两者之间的比例由 agent loop 怎么接(context management、tool design、retry policy、loop depth)决定。</p>
+              <p>当天另外两条推用不同口吻强化同一根线。一条是自嘲的 conference 段子(「Apparently we didn&#39;t talk enough about workflows loops yet! See ya there!」)把 workflows 用删除线划掉,只留 loops——编辑口径是单位是 loop,不是 workflow。第三条是 emoji-only(🙃 加 media link),是关于某件 off-camera 的玩笑,cut。Peter 的论点是 unit-of-account 的转移:一个 model per-token 价格 5x 更贵,但 loop 迭代次数只要 60%,总成本更便宜。主导成本是 loop,不是 token,optimization 的 frontier 在 loop 设计里,不在 token 价格里。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Steipete 压成一行:Price per token != cost per task——unit 是 task 不是 token,主导成本是 loop,optimization frontier 在 loop 设计里不在 token 价格里;同一天把 workflows 删除线划掉换成 loops,口吻不一样方向一样。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Steinberger (OpenClaw founder) puts a one-liner on the long-running agent cost story: &#39;Price per token != cost per task.&#39; The framing is a counter to the constant model-pricing-update news cycle: the unit that matters is the task, not the token, and the ratio between the two is set by how well the agent loop is wired (context management, tool design, retry policy, loop depth).</p>
+              <p>The other two tweets of the day reinforce the same line in different registers. One is a self-deprecating conference joke (&#39;Apparently we didn&#39;t talk enough about workflows loops yet! See ya there!&#39;) with a redaction of &#39;workflows&#39; to &#39;loops&#39; — the editorial line is that the unit is the loop, not the workflow. The third is an emoji-only post (🙃 with a media link) which is a joke about... something off-camera; cut. Peter&#39;s argument is the unit-of-account shift: a model that costs 5x more per token but finishes the task in 60% of the loop iterations is cheaper. The dominant cost is the loop, not the token, and the optimization frontier is in loop design, not in token price.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Price per token != cost per task https://t.co/dxuXgri7nD</p>
+              <p>Apparently we didn&#39;t talk enough about w̶o̶r̶k̶f̶l̶o̶w̶s̶ loops yet! See ya there! https://t.co/A9mc4pKPC4</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/steipete/status/2072144627474579925" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 07</div>
+    <h2 class="section-title">需求 floor 在两个城市被同时量到 / The Demand Floor, Measured in Two Cities at Once</h2>
+    <p class="section-desc">Swyx 在 AIEWF poster sessions day 收尾——非赞助商早上 9 点 workshop,Snyk / Atlassian / neo4j / arize / Akamai / Together 几家厂商同排开,「PEOPLE ARE HUNGRY FOR THIS」。Amasad 同一晚在纽约地铁办了「world&#39;s first subway hackathon」。一个 conference floor + 一个 subway floor,加上 podcast 那一边,这一天 Follow Builders 上能直接数到的「demand 被量到」信号至少在两个城市同时发生。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:swyx" data-author-name="Swyx" data-author-tag="AI 工程师" data-author-handle="@swyx" data-author-avatar="../assets/avatars/x-swyx.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-swyx.jpg" alt="Swyx avatar"><span class="avatar-fallback">S</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Swyx</div>
+            <div class="author-tag is-inline">AI 工程师</div>
+          </div>
+          <div class="author-handle">@swyx</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx 收尾 AIEWF(AI Engineer World&#39;s Fair)Day 1:「very successful first poster sessions day at AIEWF, thanks to @heathercmiller and @ACM_President for the support!! tomorrow: Poaster sessions! submit your hottest tweets to @vibhuuuus for printing! spotted: left shark」。「PEOPLE ARE HUNGRY FOR THIS」的隐含信号:conference 已经走过了「sponsors 摆展位等人来」的阶段,进入「posters and submissions and printing」阶段,意味着 demand 本身成了一个 organizing input,不再是一个 side effect。</p>
+              <p>「left shark」这个细节是只有在 audience in on the joke 的 conference 才会出现的。运营这一行:当 conference 有了「tweets to print」pipeline(一个人在 audience 里收 tweet、physically print 给 poster session),参与的需求就从「attend」跨到「co-produce」。这是跟 2023 年那种 trade-show booth 不一样的事件类型——format 已经把 attendee 和 contributor 之间的 gap 压扁了。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Swyx 收 AIEWF Day 1:poster sessions 满、当场有「tweets to print」pipeline、left shark 这种 in-on-the-joke 的细节——demand 已经从 attend 跨到 co-produce,format 把 attendee 和 contributor 之间的 gap 压扁了。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx wraps day 1 of AIEWF (AI Engineer World&#39;s Fair): &#39;very successful first poster sessions day at AIEWF, thanks to @heathercmiller and @ACM_President for the support!! tomorrow: Poaster sessions! submit your hottest tweets to @vibhuuuus for printing! spotted: left shark&#39; The &#39;PEOPLE ARE HUNGRY FOR THIS&#39; implicit signal: the conference has moved past the &#39;sponsors set up booths and wait for people&#39; phase into a &#39;posters and submissions and printing&#39; phase, which means the demand is now an organizing input, not a side effect.</p>
+              <p>The &#39;left shark&#39; reference is the kind of detail that only happens at a conference where the audience is in on the joke. The operational line: when the conference has a &#39;tweets to print&#39; pipeline (a person collecting tweets from the audience and physically printing them for the poster session), the demand for participation has crossed from &#39;attend&#39; to &#39;co-produce&#39;. That&#39;s a different kind of event than the trade-show booths of 2023 — the format has compressed the gap between attendee and contributor.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>very successful first poster sessions day at AIEWF, thanks to @heathercmiller and @ACM_President for the support!!
+
+              tomorrow: Poaster sessions! submit your hottest tweets to @vibhuuuus for printing!
+
+              spotted: left shark https://t.co/nv2I2l00Oe</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/swyx/status/2072048730581405800" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:amasad" data-author-name="Amjad Masad" data-author-tag="Replit CEO" data-author-handle="@amasad" data-author-avatar="../assets/avatars/x-amasad.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-amasad.jpg" alt="Amjad Masad avatar"><span class="avatar-fallback">AM</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Amjad Masad</div>
+            <div class="author-tag is-inline">Replit CEO</div>
+          </div>
+          <div class="author-handle">@amasad</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Amjad Masad(Replit CEO)宣布「World&#39;s first subway hackathon」——一场在纽约地铁里跑的 hackathon,看起来是 Replit 办的。两字 framing(「World&#39;s first」)是 marketing claim;结构 claim 是 hackathons 正在从 office / co-working venue 移到 public infrastructure。</p>
+              <p>Subway-as-venue 是一个有意识的信号:它把 hackathon 摆在任何带手机的人都能触达的位置,不是只有能去 co-working 或 sponsor office 的人。Replit 的 distribution model(browser-based、free tier、instant setup)是真正能在地铁的弱网下 work 的唯一 toolchain——这就是 point。「world&#39;s first」framing 同时是一个 brand-defensible claim:即使别人在非常规地点办过 hackathon,「subway」这个具体 venue 给了 Replit 一条干净的、不存在过的 category 上的 line。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Amasad 宣布 World&#39;s first subway hackathon——hackathon 从 office / co-working 移到 public infrastructure;Replit 的 browser-based / free tier / instant setup toolchain 是唯一能在地铁弱网下 work 的,「subway」venue 给了一条 brand-defensible 的 category line。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Amjad Masad (Replit CEO) announces the &#39;World&#39;s first subway hackathon&#39; — a hackathon happening on the New York subway, presumably organized by Replit. The two-word framing (&#39;World&#39;s first&#39;) is the marketing claim; the structural claim is that hackathons are moving out of the office / co-working venue and into public infrastructure.</p>
+              <p>The subway-as-venue is a deliberate signal: it positions the hackathon as accessible to anyone with a phone, not just people who can get to a co-working space or a sponsor&#39;s office. Replit&#39;s distribution model (browser-based, free tier, instant setup) is the only toolchain that actually works on a subway&#39;s spotty connectivity — and that&#39;s the point. The &#39;world&#39;s first&#39; framing is also a brand-defensible claim: even if other people have run hackathons in unusual venues, &#39;subway&#39; as the specific venue gives Replit a clean line on a category that didn&#39;t exist before.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>World&#39;s first subway hackathon! https://t.co/uRTezD2dak</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/amasad/status/2071992670394765407" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 08</div>
+    <h2 class="section-title">硬件 / 软件同设计:SemiAnalysis 的 100x 立成这轮物理层 / Hardware-Software Co-Design as the 100x Lever</h2>
+    <p class="section-desc">Training Data 这期请 SemiAnalysis 的 Dylan Patel 把 hardware-software co-design 立成 AI 真正的 100x:90 人的 SemiAnalysis 沿着整条 supply chain 摆开,Etched 是为现代 inference 重新设计的首款系统——大部分 workload 跑在 pre-LLM 时代的通用硬件上,这是为什么 AI 「贵」的真实原因。收尾:这一期把「物理层 floor」接在 6-30「五层底盘」和今天「Sonnet 5 出舱」的尾巴上。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="podcast:training-data" data-author-name="Training Data Podcast" data-author-tag="AI 播客" data-author-handle="" data-author-avatar="../assets/avatars/podcast-training-data.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/podcast-training-data.jpg" alt="Training Data Podcast avatar"><span class="avatar-fallback">TD</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Training Data Podcast</div>
+            <div class="author-tag is-inline">AI 播客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Training Data 这期请 SemiAnalysis 的 Dylan Patel,把 hardware-software co-design 立成 AI 真正的 100x。Patel 团队 90 人,一大部分是覆盖整条 supply chain 的 technologist engineer,另一大块是 hedge fund 出身——公司内部一直在「cost argument」和「technology is the coolest」之间 informal 地 fight it out。</p>
+              <p>主持人(Sean from Sequoia,合伙人 Sonja Huang)铺背景:五年前 semis 在西方不太 sexy,Patel 当时看得很 long,做出 premier research company,从 technical detail 到 supply chain 到 bigger picture 都在教世界。SemiAnalysis 最近过了 $100M revenue(rumor),还有 rumor 说 Patel 可能 start a venture fund。实质 thread:Patel 的 claim 是 AI inference cost-of-goods 被「用 pre-LLM-era 硬件跑现代 AI」这个选择主导,Etched 这类 chip(为 transformer inference 从硅开始设计)是结构 lever,不是 2x model improvement。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Training Data 请 SemiAnalysis 的 Dylan Patel 把 hardware-software co-design 立成 AI 真正的 100x:90 人沿整条 supply chain 摆开,内部 informal 地 fight out「cost vs technology」;AI inference cost-of-goods 被「pre-LLM-era 硬件跑现代 AI」主导,Etched 是结构 lever,不是 2x model improvement。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Training Data (this week&#39;s episode) hosts Dylan Patel of SemiAnalysis, the premier research firm on the AI supply chain. The framing: hardware-software co-design is AI&#39;s real 100x. Patel&#39;s team is 90 people, with a big chunk being technologist engineers across the whole supply chain, and another big chunk being people formerly at hedge funds — the firm runs an internal fight between &#39;the cost argument&#39; and &#39;the technology is the coolest&#39; that gets sorted out informally.</p>
+              <p>The host (Sean from Sequoia, with partner Sonja Huang) sets the table: semis were not very sexy in the West five years ago, but Patel went very long on them and built the premier research company educating the world from technical detail to supply chain to bigger picture. SemiAnalysis recently crossed $100M in revenue (per rumor), and there are rumors Patel may start a venture fund. The substantive thread: Patel&#39;s claim is that the AI inference cost-of-goods is dominated by the choice to run modern AI on pre-LLM-era hardware, and that an Etched-class chip (designed for transformer inference from the silicon up) is the structural lever, not a 2x model improvement.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Speaker 1 | 00:00 - 00:24
+              I think it&#39;s really fun inside of Semi Analysis because we have 90 people, and a big chunk of them are technologist engineers across the whole supply chain, and then a big chunk is people who are formerly at hedge funds. And you see these arguments, people are like, Oh, that doesn&#39;t matter. Someone&#39;s like, well, but cost? And then the engineer&#39;s like, no, no, no, but this technology is the coolest. And you see this organically fight it out, and we&#39;re pretty informal.</p>
+              <p>Speaker 2 | 00:50 - 01:04
+              We&#39;re here in the semi analysis office with Dylan Patel. I&#39;m Sean from Sequoia. My partner Sonja Huang. It&#39;s pretty insane what you&#39;ve done. Semi semis five years ago were not very sexy in the West.</p>
+              <p>Speaker 1 | 01:30 - 01:33
+              It&#39;s as accurate as the information is. You never know. There&#39;s also rumors that you might start a venture fund.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.youtube.com/watch?v=f6D_aiy8qyU" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <footer data-source-note="Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-01 source feeds.">Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-01 source feeds.</footer>
+
+  <script>
+    function getTemplateAuthorSources() {
+      const sources = window.AI_BUILDERS_TEMPLATE_SOURCES || {};
+      return { identities: sources.identities || {}, avatars: sources.avatars || {} };
+    }
+
+    function getAuthorInitials(name) {
+      return (name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(function(part) { return part[0]; }).join('').toUpperCase();
+    }
+
+    function hydrateTemplateCopy() {
+      const intro = document.querySelector('.intro');
+      if (intro) {
+        const kicker = intro.querySelector('.intro-kicker');
+        const copy = intro.querySelector('.intro-copy');
+        if (kicker) kicker.textContent = intro.dataset.kicker || '';
+        if (copy) copy.textContent = intro.dataset.text || '';
+      }
+
+      const footer = document.querySelector('footer');
+      if (footer) footer.textContent = footer.dataset.sourceNote || '';
+
+      const rewriteLabel = document.body.dataset.viewLabelRewrite || '速读';
+      const originalLabel = document.body.dataset.viewLabelOriginal || '原文';
+      document.querySelectorAll('.view-toggle').forEach(function(button) {
+        if (button.dataset.viewTarget === 'rewrite') button.textContent = rewriteLabel;
+        if (button.dataset.viewTarget === 'original') button.textContent = originalLabel;
+      });
+    }
+
+    function hydrateAuthorMeta() {
+      const sources = getTemplateAuthorSources();
+      document.querySelectorAll('.card').forEach(function(card) {
+        const authorKey = card.dataset.authorKey || '';
+        const identity = sources.identities[authorKey] || {};
+        const avatarEntry = sources.avatars[authorKey] || {};
+
+        const name = identity.name || card.dataset.authorName || '';
+        const rawHandle = identity.handle || card.dataset.authorHandle || '';
+        const handle = rawHandle && rawHandle.startsWith('@') ? rawHandle : (rawHandle ? '@' + rawHandle : '');
+        const tag = identity.label || card.dataset.authorTag || '';
+        const avatar = avatarEntry.fileUrl || avatarEntry.localPath || card.dataset.authorAvatar || '';
+
+        const nameNode = card.querySelector('.author-name');
+        const tagNode = card.querySelector('.author-tag');
+        const handleNode = card.querySelector('.author-handle');
+        const avatarNode = card.querySelector('.avatar');
+        const avatarImg = card.querySelector('.avatar img');
+        const avatarFallback = card.querySelector('.avatar-fallback');
+
+        if (nameNode) nameNode.textContent = name;
+        if (tagNode) tagNode.textContent = tag;
+        if (handleNode) handleNode.textContent = handle;
+        if (avatarImg) {
+          avatarImg.src = avatar;
+          avatarImg.alt = name ? name + ' avatar' : 'Author avatar';
+        }
+        if (avatarNode) avatarNode.classList.toggle('is-fallback', !avatar);
+        if (avatarFallback) avatarFallback.textContent = getAuthorInitials(name);
+      });
+    }
+
+    function updateEditionStrip() {
+      const publishDate = document.body.dataset.publishDate;
+      const editionName = document.body.dataset.editionName || '双语精选版';
+      const editionStrip = document.getElementById('edition-strip-text');
+      if (!publishDate || !editionStrip) return;
+
+      const issueNumber = document.body.dataset.issueNumber || '';
+      if (!issueNumber) return;
+
+      const selectedCount = document.querySelectorAll('.card').length;
+      const authorCount = new Set([].slice.call(document.querySelectorAll('.author-handle')).map(function(node) { return node.textContent.trim(); }).filter(Boolean)).size;
+      const themeCount = document.querySelectorAll('.section-header').length;
+      const parts = ['第 ' + issueNumber + ' 期', publishDate, editionName, selectedCount + ' 条精选', authorCount + ' 位作者', themeCount + ' 个主题'];
+      editionStrip.innerHTML = parts.map(function(part) { return '<span class="edition-item">' + part + '</span>'; }).join('<span class="edition-sep">|</span>');
+    }
+
+    function measureVariantHeight(variant) {
+      const prevPosition = variant.style.position;
+      const prevInset = variant.style.inset;
+      const prevVisibility = variant.style.visibility;
+      const prevPointerEvents = variant.style.pointerEvents;
+      const prevOpacity = variant.style.opacity;
+      const prevTransform = variant.style.transform;
+      const prevTransition = variant.style.transition;
+      const prevOverflowY = variant.style.overflowY;
+      const prevDisplay = variant.style.display;
+
+      variant.style.position = 'relative';
+      variant.style.inset = 'auto';
+      variant.style.visibility = 'hidden';
+      variant.style.pointerEvents = 'none';
+      variant.style.opacity = '1';
+      variant.style.transform = 'none';
+      variant.style.transition = 'none';
+      variant.style.overflowY = 'visible';
+      variant.style.display = 'block';
+
+      const height = variant.scrollHeight;
+
+      variant.style.position = prevPosition;
+      variant.style.inset = prevInset;
+      variant.style.visibility = prevVisibility;
+      variant.style.pointerEvents = prevPointerEvents;
+      variant.style.opacity = prevOpacity;
+      variant.style.transform = prevTransform;
+      variant.style.transition = prevTransition;
+      variant.style.overflowY = prevOverflowY;
+      variant.style.display = prevDisplay;
+
+      return Math.ceil(height);
+    }
+
+    function getTargetHeight(shell, target) {
+      const variant = shell.querySelector('.content-variant[data-view="' + target + '"]');
+      return measureVariantHeight(variant);
+    }
+
+    function syncShellHeights() {
+      document.querySelectorAll('.content-shell').forEach(function(shell) {
+        const active = shell.querySelector('.content-variant.is-active');
+        const target = active ? active.dataset.view : 'rewrite';
+        shell.style.height = getTargetHeight(shell, target) + 'px';
+      });
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', function() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(syncShellHeights, 120);
+    });
+
+    document.querySelectorAll('.card').forEach(function(card) {
+      const buttons = card.querySelectorAll('.view-toggle');
+      const shells = card.querySelectorAll('.content-shell');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const target = button.dataset.viewTarget;
+          if (button.classList.contains('is-active')) return;
+
+          buttons.forEach(function(btn) {
+            btn.classList.toggle('is-active', btn === button);
+          });
+
+          shells.forEach(function(shell) {
+            const current = shell.querySelector('.content-variant.is-active');
+            const next = shell.querySelector('.content-variant[data-view="' + target + '"]');
+            if (!current || !next || current === next) return;
+
+            shell.style.height = shell.offsetHeight + 'px';
+            requestAnimationFrame(function() {
+              current.classList.remove('is-active');
+              next.classList.add('is-active');
+              shell.style.height = getTargetHeight(shell, target) + 'px';
+            });
+          });
+        });
+      });
+    });
+
+    hydrateTemplateCopy();
+    hydrateAuthorMeta();
+    updateEditionStrip();
+    syncShellHeights();
+  </script>
+</body>
+</html>

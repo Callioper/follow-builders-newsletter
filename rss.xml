@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 30 Jun 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 01 Jul 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-07-01 · 5 出舱日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-01-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-01-rerun.html</guid>
+      <pubDate>Wed, 01 Jul 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[7-1 这张 issue 的主轴是「Sonnet 5 出舱」——Anthropic 官方三连发把 Sonnet 5 从 early-access 翻成默认,Free / Pro 即用、Max / Team / Enterprise 全面开通,introductory pricing 持续到 8-31;Box 紧接着把 Sonnet 5 跑过 Box AI Complex Work Eval(1600+ 中大型企业真实 enterprise 文档任务的 agentic benchmark),在 multi-step quality 上拿到 frontier 等级、价格比对手低一档,enterprise 端 frontier-class 的标签被独立背书。Sonnet 5 launch day 没只发 model:Boris Cherny 同日推 Claude Desktop Linux,client surface 扩一个;Trq212 把 updated Codex classifier 的 policy 写明,refine middle path;Amasad 把 Etched 推出来,把 inference 这层 hardware 翻成结构 lever。Fable 5 今晚回归这条线在另一边跑得最响——Peter Yang 设闹钟、Nikunj Kothari 提前一天官宣、Dan Shipper 在 Cabo 度假准备开直播 rip token,赌的就是 cap 这一刀被抬掉。Rauchg 推 Vercel Services,把 Python backend + ExpressJS + React SPA 三件套 collocate 到一个 project,long-running agent 的 deployment surface 摆到跟 agent runtime 同一个 unit。AI native 的四个反共识在同一天被同时问:Madhu Guru 说 trad PM 转 AI native building 缺的是 magical thinking;Aditya Agarwal 抛「为美国创新供能的模型是 Chinese open source」这个 structural claim;Nan Yu 把官方 distillation 定义反过来贴 Cursor 早期用 Claude 训练的例子;Garry Tan 把 gbrain 推到 10000+ markdown files 的 scale。Taste 经济学和长跑 loop 是 production 之后的新瓶颈:zarazhangrui 引用 taste 的结构定义,steipete 把 Price per token != cost per task 立成新单位,workflow 划掉换成 loops。Swyx 收 AIEWF poster sessions day,「left shark」、tweets to print pipeline、attendee 到 co-producer 的 gap 被压扁;Amasad 同晚在纽约地铁办「world's first subway hackathon」——两个城市同一天被量到「PEOPLE ARE HUNGRY FOR THIS」。收尾:Training Data 这期请 SemiAnalysis 的 Dylan Patel 把 hardware-software co-design 立成 AI 真正的 100x——pre-LLM-era 硬件跑现代 AI 是 cost-of-goods 主导项,Etched 是结构 lever,不是 2x model improvement,这一段把 6-30「五层底盘」的物理层 floor 和今天「Sonnet 5 出舱」接在同一根线上。]]></description>
+      <category>Sonnet 5 出舱 + Levie 在 enterprise 端独立背书 / Sonnet 5 Goes Default, Box Confirms, Fable 5 归零:三个城市的人在等同一件事 / Fable 5 Returns Tonight, Vercel 把服务边界拆出来 / Vercel Redraws the Service Boundary, Harness 层在同一天被三边压 / The Harness Layer Compresses, Three Sides at Once, AI native 的四个反共识同时被问 / Four AI-Native Assumptions Get Re-Asked at Once, Taste 经济学 + 长跑 loop / What Comes After Production, 需求 floor 在两个城市被同时量到 / The Demand Floor, Measured in Two Cities at Once, 硬件 / 软件同设计:SemiAnalysis 的 100x 立成这轮物理层 / Hardware-Software Co-Design as the 100x Lever</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-06-30 · 底盘硬化日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-06-30-rerun.html</link>

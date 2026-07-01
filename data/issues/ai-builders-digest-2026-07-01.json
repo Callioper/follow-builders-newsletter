@@ -1,0 +1,539 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-07-01",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "7-1 这张 issue 的主轴是「Sonnet 5 出舱」——Anthropic 官方三连发把 Sonnet 5 从 early-access 翻成默认,Free / Pro 即用、Max / Team / Enterprise 全面开通,introductory pricing 持续到 8-31;Box 紧接着把 Sonnet 5 跑过 Box AI Complex Work Eval(1600+ 中大型企业真实 enterprise 文档任务的 agentic benchmark),在 multi-step quality 上拿到 frontier 等级、价格比对手低一档,enterprise 端 frontier-class 的标签被独立背书。Sonnet 5 launch day 没只发 model:Boris Cherny 同日推 Claude Desktop Linux,client surface 扩一个;Trq212 把 updated Codex classifier 的 policy 写明,refine middle path;Amasad 把 Etched 推出来,把 inference 这层 hardware 翻成结构 lever。Fable 5 今晚回归这条线在另一边跑得最响——Peter Yang 设闹钟、Nikunj Kothari 提前一天官宣、Dan Shipper 在 Cabo 度假准备开直播 rip token,赌的就是 cap 这一刀被抬掉。Rauchg 推 Vercel Services,把 Python backend + ExpressJS + React SPA 三件套 collocate 到一个 project,long-running agent 的 deployment surface 摆到跟 agent runtime 同一个 unit。AI native 的四个反共识在同一天被同时问:Madhu Guru 说 trad PM 转 AI native building 缺的是 magical thinking;Aditya Agarwal 抛「为美国创新供能的模型是 Chinese open source」这个 structural claim;Nan Yu 把官方 distillation 定义反过来贴 Cursor 早期用 Claude 训练的例子;Garry Tan 把 gbrain 推到 10000+ markdown files 的 scale。Taste 经济学和长跑 loop 是 production 之后的新瓶颈:zarazhangrui 引用 taste 的结构定义,steipete 把 Price per token != cost per task 立成新单位,workflow 划掉换成 loops。Swyx 收 AIEWF poster sessions day,「left shark」、tweets to print pipeline、attendee 到 co-producer 的 gap 被压扁;Amasad 同晚在纽约地铁办「world's first subway hackathon」——两个城市同一天被量到「PEOPLE ARE HUNGRY FOR THIS」。收尾:Training Data 这期请 SemiAnalysis 的 Dylan Patel 把 hardware-software co-design 立成 AI 真正的 100x——pre-LLM-era 硬件跑现代 AI 是 cost-of-goods 主导项,Etched 是结构 lever,不是 2x model improvement,这一段把 6-30「五层底盘」的物理层 floor 和今天「Sonnet 5 出舱」接在同一根线上。"
+  },
+  "archive": {
+    "title": "5 出舱日",
+    "desc": "7-1 Follow Builders 的主轴是「Sonnet 5 出舱」:Anthropic 官方三连发把 Sonnet 5 翻成 Free / Pro 默认,Max / Team / Enterprise 全面开通,introductory pricing 持续到 8-31;Box 紧接着把 Sonnet 5 跑过 Box AI Complex Work Eval,enterprise 端 frontier-class 标签被独立背书;Boris Cherny 同日推 Claude Desktop Linux,Trq212 把 Codex classifier policy 写明,Amasad 推 Etched——model / client / policy / hardware 四面同一天被一起收紧。Fable 5 今晚回归:Peter Yang 设闹钟、Nikunj 提前一天官宣、Dan Shipper 在 Cabo 度假准备直播 rip token。Rauchg 推 Vercel Services 把 long-running agent 的 deployment surface 摆到跟 agent runtime 同一个 unit。Madhu Guru、Aditya Agarwal、Nan Yu、Garry Tan 四个反共识同一天被问,zarazhangrui / steipete 把 production 之后的 taste / loop 立成新瓶颈。Swyx 收 AIEWF Day 1、Amasad 在纽约地铁办 world's first subway hackathon,两个城市同一天被量到「PEOPLE ARE HUNGRY FOR THIS」。收尾:Training Data 把 SemiAnalysis 的 Dylan Patel 立成 100x——hardware-software co-design 是结构 lever,不是 2x model improvement,接在 6-30「五层底盘」物理层那一格。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-01 source feeds.",
+  "sections": [
+    {
+      "title": "Sonnet 5 出舱 + Levie 在 enterprise 端独立背书 / Sonnet 5 Goes Default, Box Confirms",
+      "desc": "Anthropic 官方三连发:Sonnet 5 reasoning / tool / coding / knowledge 全面 > Sonnet 4.6、接近 Opus 4.8;Free / Pro 默认即用,Max / Team / Enterprise 全面开通,introductory pricing 持续到 8-31;early-access partner 评价是「自己 review 自己的 output 不需要人催」。Box 把 Sonnet 5 跑过 Box AI Complex Work Eval(1600+ 中大型企业真实 enterprise 文档任务,multi-step agentic benchmark),在 multi-step quality 上达到 frontier 等级、价格比对手低一档——enterprise 端的 frontier-class 标签被独立背书。",
+      "cards": [
+        {
+          "authorKey": "x:claudeai",
+          "authorName": "Claude",
+          "authorHandle": "@claudeai",
+          "authorTag": "Anthropic Claude 官方账号",
+          "sourceUrl": "https://x.com/claudeai/status/2072017457057853480",
+          "en": {
+            "rewrite": [
+              "Anthropic's official account posts a three-tweet announcement: Sonnet 5 is now the default model on Claude Free and Pro, and available to Max, Team, and Enterprise users across all Claude apps and the Claude Platform. The launch comes with introductory pricing through August 31.",
+              "The positioning is a substantial step up from Sonnet 4.6 — reasoning, tool use, coding, and knowledge work are all meaningfully better, and the performance approaches Opus 4.8 at a lower price point. Early-access partners describe the model as one that 'finishes complex tasks where previous Sonnets stopped short, checks its own output without being asked, and does all its agentic work at an attractive price point'.",
+              "Sonnet 5 leaving the early-access tier and becoming the default is the day's load-bearing product event. Every Claude app, every Claude API integration, every Claude Code session — all flip to Sonnet 5 today. The introductory pricing window is the part to watch: it ends August 31, which is also roughly when the next Sonnet training cycle is expected to start moving the frontier again."
+            ],
+            "original": [
+              "Sonnet 5 is now the default on Free and Pro, and available to Max, Team, and Enterprise users. It's live across all Claude apps and the Claude Platform today, with introductory pricing through August 31: https://t.co/4nNWO80Er7",
+              "Early access partners found Sonnet 5 finishes complex tasks where previous Sonnets stopped short, checks its own output without being asked, and does all its agentic work at an attractive price point.",
+              "Sonnet 5 is a substantial improvement over Sonnet 4.6 on reasoning, tool use, coding, and knowledge work. Its performance is close to Opus 4.8, at lower prices. https://t.co/VOISbk14Lk"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic 官方账号三连发:Sonnet 5 在 Claude Free / Pro 上设为默认,Max / Team / Enterprise 全量开通,所有 Claude app 和 Claude Platform 当天上架,introductory pricing 持续到 8-31。",
+              "官方定位是 Sonnet 4.6 之上一大步——reasoning / tool use / coding / knowledge work 全面显著提升,性能接近 Opus 4.8 但价格更低。early-access partner 的描述是「自己 review 自己的 output 不需要人催」「agentic work 的价格点更友好」。",
+              "Sonnet 5 从 early-access 升级成默认,是今天 load-bearing 的产品事件。每一个 Claude app、每一个 Claude API 集成、每一段 Claude Code 都会在今天翻到 Sonnet 5。introductory pricing 窗口到 8-31——差不多也是下一轮 Sonnet 训练周期开始把 frontier 再推一次的时间点。"
+            ],
+            "original": [
+              "Anthropic 官方三连发:Sonnet 5 在 Free / Pro 上默认、Max / Team / Enterprise 全量开通,introductory pricing 持续到 8-31,reasoning / tool / coding / knowledge 全面 > 4.6、接近 Opus 4.8 价格更低。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie/status/2072046374045249671",
+          "en": {
+            "rewrite": [
+              "Aaron Levie (Box CEO) reports that Box has been running Anthropic's Claude Sonnet 5 through the Box AI Complex Work Eval, Box's agentic benchmark that puts models through real enterprise document work end-to-end. The result: Sonnet 5 holds frontier-class quality on complex multi-step work and pulls ahead on price.",
+              "The benchmark is significant for two reasons. First, it is an independent confirmation of Sonnet 5's enterprise-grade capability from a vendor with no financial relationship to Anthropic on the model — Box is using the same model its customers would use, and the eval is the same one Box uses to sell against OpenAI and Google. Second, 'frontier-class quality at lower prices' is the precise combination that moves enterprise procurement: when the cheaper model is also the better model, the cost-of-goods argument flips direction overnight.",
+              "For Box specifically, the eval is a selling tool: every time a model upgrade lands, Box re-runs the eval, and the result becomes the basis of a 'here is the current frontier, on our own enterprise data shape' message to their customer base. Levie posting it publicly is a soft launch announcement disguised as a model review."
+            ],
+            "original": [
+              "We've been running Anthropic's Claude Sonnet 5 through the Box AI Complex Work Eval, our agentic benchmark that puts models through real enterprise document work end-to-end. Sonnet 5 holds frontier-class quality on complex multi-step work and pulls ahead on price."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie(Box CEO)发了一个独立背书:Box 把 Claude Sonnet 5 跑过 Box AI Complex Work Eval(自家 agentic benchmark,跑的是真实企业文档工作 end-to-end),结论是 Sonnet 5 在 multi-step quality 上达到 frontier 等级、价格领先。",
+              "这个 benchmark 有两层意义。第一,这是一个没有 model 财务关系的独立背书——Box 用的就是它的客户要用的模型,eval 跟它用来跟 OpenAI / Google 拼的是同一套。第二,「frontier-class quality at lower prices」这个组合是真正能撬动 enterprise procurement 的——更便宜的模型同时也是更好的模型,成本账一晚上翻向。",
+              "对 Box 来说,这个 eval 本身是销售工具:每来一次 model 升级,Box 重跑一次,结果就变成「这是当前 frontier,这是我们自家 enterprise 数据形状」的对外口径。Levie 公开发出来,是一次软发布——披着 model review 的外衣。"
+            ],
+            "original": [
+              "Levie 在 Box AI Complex Work Eval 上把 Sonnet 5 跑过一遍:在 multi-step quality 上达到 frontier 等级、价格领先,这是给 enterprise 端的一个独立背书。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Fable 5 归零:三个城市的人在等同一件事 / Fable 5 Returns Tonight",
+      "desc": "三个独立信号指向同一件事:Fable 5 今夜回归——Peter Yang 设闹钟、Nikunj Kothari 提前一天官宣、Dan Shipper 在 Cabo 度假准备开直播 rip token。Fable 是个 50% usage throttle 后会断的高争议配额产品,今晚这一刀让 5 重新变成有供给的体验。",
+      "cards": [
+        {
+          "authorKey": "x:petergyang",
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者",
+          "sourceUrl": "https://x.com/petergyang/status/2072111311396438410",
+          "en": {
+            "rewrite": [
+              "Peter Yang sets an alarm at midnight specifically to use Fable, the model that was throttled at 50% weekly usage. The framing is humorous but the underlying mechanic is real: Fable has been operating under a usage cap that made it a 'try once and lose it for the week' experience, and the bet is that the cap is about to be lifted on whatever ships at midnight.",
+              "The follow-up tweet (a few hours later) is the diagnostic: 'btw I have no idea if it's coming out midnight or not' — which means the announcement window is fuzzy, but the community belief that 'something is coming tonight' is strong enough to set an actual alarm. The third tweet is the most pointed: 'After I hit 50% weekly usage Fable is no longer available?' is the user-facing pain of the throttling policy."
+            ],
+            "original": [
+              "Setting an alarm at midnight to get Fable to fix all my projects 😅 https://t.co/LUuH9x8vl3",
+              "What does this mean btw? After I hit 50% weekly usage Fable is no longer available? https://t.co/nU5J9p9KsC",
+              "btw I have no idea if it's coming out midnight or not"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 设了一个午夜闹钟,专门等 Fable——那个 50% weekly usage 就会断的模型。语气是开玩笑,但底层机制是真的:Fable 这一阵一直在一个 usage cap 下跑,体验是「用一次,本周再见」,赌的就是午夜 cap 会被新的发布抬掉。",
+              "几小时后的 follow-up 是诊断性的:「btw I have no idea if it's coming out midnight or not」——意思是 announcement 窗口本身是模糊的,但「今晚有事发生」的社群信念已经强到让人真的设闹钟。第三条最尖锐:「hit 50% weekly usage Fable 就不可用了?」是 throttling policy 直接打到用户身上的痛。"
+            ],
+            "original": [
+              "Peter Yang 设闹钟等 Fable 5 午夜上线,抱怨 50% weekly usage cap 是 throttling policy 直接打到用户身上的痛;announcement 窗口本身是模糊的,但社群赌的就是今晚。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人",
+          "sourceUrl": "https://x.com/nikunj/status/2072106393256218883",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari (Afore Capital partner) reports from the field: 'Every developer in SF right now running back to their desks post AIEWF after they heard Fable 5 is coming back.' The phrasing 'is coming back' (not 'is launching') is the load-bearing part: Fable 5 is being framed as a restoration, not a new product, because the cap and the original 5-week cliff left a hole that needed to be filled.",
+              "Follow-up tweet: 'Ok a day early. This is coming tomorrow!' — confirms the date and signals the developer community has correctly anticipated the timing. When a venture partner at a tier-1 firm is the one reporting 'developers running back to their desks', the signal is that the news has crossed from the model-launch beat into the broader builder network."
+            ],
+            "original": [
+              "Every developer in SF right now running back to their desks post AIEWF after they heard Fable 5 is coming back.. https://t.co/HsCFU0Usz7",
+              "Ok a day early. This is coming tomorrow!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kothari(Afore Capital 合伙人)从现场发信号:「Every developer in SF right now running back to their desks post AIEWF after they heard Fable 5 is coming back」。「is coming back」(而不是 is launching)是 load-bearing 的措辞——Fable 5 在被框架成一次 restoration 而不是新产品,因为 cap 和原来的 5-week cliff 留了一个需要被填上的洞。",
+              "Follow-up tweet:「Ok a day early. This is coming tomorrow!」——确认了日期,信号是 developer community 已经正确预期到了时间点。当一个 tier-1 基金的 venture partner 出来发「developers 跑回工位」,说明这个 news 已经从 model-launch 那一层穿到了更广的 builder network。"
+            ],
+            "original": [
+              "Nikunj Kothari 从 AIEWF 现场发信号:Fable 5 is coming back,措辞是 restoration 而非新发布——cap 和 5-week cliff 留的洞,今天被填。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "authorName": "Dan Shipper",
+          "authorHandle": "@danshipper",
+          "authorTag": "Every 联合创始人 / AI 写作工具链",
+          "sourceUrl": "https://x.com/danshipper/status/2072094163378622822",
+          "en": {
+            "rewrite": [
+              "Dan Shipper (Every co-founder) is on vacation in Mexico when the Fable 5 rumor breaks. Three consecutive tweets in escalation: (1) 'if this happens im livestreaming and ripping tokens from my vacation in cabo tonight'; (2) 'me, on a vacation in mexico, hearing that fable might be coming back tonight' with a vacation photo; (3) 'LETS FUCKIN GO'.",
+              "The signal: the Fable 5 release has crossed the threshold from a model-launch beat to a builder-cultural event. The livestreaming-from-Cabo framing is the part that matters — a serious founder isn't going to interrupt a vacation for a normal model release, only for something that the community has been building anticipation around. Shipper's reaction also serves as organic signal-boosting for Every's distribution."
+            ],
+            "original": [
+              "if this happens im livestreaming and ripping tokens from my vacation in cabo tonight https://t.co/6jJZx8mOp2",
+              "me, on a vacation in mexico, hearing that fable might be coming back tonight https://t.co/OHp0diROKl",
+              "LETS FUCKIN GO https://t.co/V11siBIHyo"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Dan Shipper(Every 联合创始人)正在墨西哥度假,Fable 5 消息一出来三连发,语气是 escalation:第一条「if this happens im livestreaming and ripping tokens from my vacation in cabo tonight」;第二条贴了一张度假照,「me, on a vacation in mexico, hearing that fable might be coming back tonight」;第三条「LETS FUCKIN GO」。",
+              "信号是:Fable 5 发布已经跨过了 model-launch 那一层,变成一个 builder-cultural 事件。从度假直播这个 framing 是关键点——一个严肃的 founder 不会为了普通的 model release 中断度假,只有当社区围绕一个 release 已经建立起足够强的预期,才会出现这种情况。Shipper 的反应同时也是给 Every 分发的一次有机信号放大。"
+            ],
+            "original": [
+              "Dan Shipper 度假中三连发:Cabo 直播、度假照、LETS FUCKIN GO——Fable 5 已经从 model launch 升格成 builder-cultural 事件,严肃 founder 愿意为它中断度假。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Vercel 把服务边界拆出来 / Vercel Redraws the Service Boundary",
+      "desc": "Rauchg 三条连发:Vercel Services 允许一个 project 同时 collocate Python backend + ExpressJS + React SPA(同 deploy、同 rollback、同 observe);与 Shopify 合作推 agentic web;Vercel 「for everyone」——tech executive 和他 12 岁儿子同时反馈。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO",
+          "sourceUrl": "https://x.com/rauchg/status/2071966055308607765",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch (Vercel CEO) announces Vercel Services, a new product that lets a single Vercel project collocate e.g. a Python backend API, an ExpressJS server, and a React SPA — all deployable with `vc dev`, all deploying and rolling back together, all observable and debuggable as one unit.",
+              "The pitch is the long-running agent story. Until now, a Python backend, an Express server, and a React SPA would have been three separate services (Vercel Functions + external Python host + a separate Node.js server). The agent-architecture implication is direct: a long-running agent loop can now host the stateful backend, the request handler, and the frontend in one project, with the deployment unit matching the agent's natural runtime boundary.",
+              "Rauch's other two tweets from the same day reinforce the same line: an enthusiastic post about partnering with Tobi and the Shopify team to push the 'agentic web' forward, and a personal anecdote about a tech executive's 12-year-old son giving Vercel feedback at dinner — the 'Vercel is for everyone' framing. The three together are positioning Vercel as the deployment surface for the next generation of agent-built apps, not just React frontends."
+            ],
+            "original": [
+              "Vercel Services\n\nYou can now collocate e.g.: a Python backend API, an ExpressJS server, and a React SPA in one Vercel project.\n\ntl;dr;\n▪ You can run all locally with vc dev\n▪ Deploy and rollback all at once\n▪ Observe, monitor, debug together\n▪ I...",
+              "So great to get to work with @tobi and the wonderful @shopify team. Excited to push the agentic web forward. https://t.co/2dke1MwSDS",
+              "At dinner, tech executive is relaying his company's @vercel feedback, and then his 12-year-old son's @vercel feedback 😁\n\nVercel is for everyone."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch(Vercel CEO)推出 Vercel Services——一个 Vercel project 可以 collocate Python backend API + ExpressJS server + React SPA,本地用 `vc dev` 跑,deploy 和 rollback 一起做,observe / monitor / debug 也在一起。",
+              "故事核心是 long-running agent。以前 Python backend + Express server + React SPA 是三套独立服务(Vercel Functions + 外部 Python host + 独立 Node.js server)。Agent 架构的直接含义:一个 long-running agent loop 可以把 stateful backend、request handler、frontend 三者放在一个 project 里,deployment unit 直接对上 agent 的天然 runtime 边界。",
+              "Rauch 同日另外两条推强化同一根线:一条是兴奋地宣告跟 Tobi / Shopify 团队合作推 agentic web,另一条是私人段子——tech executive 和他 12 岁儿子同时反馈 Vercel,「Vercel is for everyone」。三条连起来,是在把 Vercel 摆成下一代 agent-built app 的 deployment surface,而不是 React 前端的 deployment surface。"
+            ],
+            "original": [
+              "Rauch 推 Vercel Services:一个 project collocate Python backend + ExpressJS + React SPA,本地同跑、deploy / rollback / observe 同做;同日还有 Shopify agentic web 合作 + 「Vercel is for everyone」段子——把 Vercel 摆成 long-running agent 的 deployment surface。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Harness 层在同一天被三边压 / The Harness Layer Compresses, Three Sides at Once",
+      "desc": "Amasad 把 Etched 推出来——为现代 inference 重新设计的首款系统,大部分 workload 跑在 pre-LLM 时代的通用硬件上是 AI 「贵」的真实原因。Boris Cherny 推 Claude Desktop Linux——社区 ask 久,Anthropic 正式 ship。Trq212 把 Codex 升级 classifier 的 policy 写明:小比例日常 coding / debugging 任务被误判降级到 Opus,目标是区分「真正的 misuse」和「legitimate request」。三件事指向同一根线:harness / client / policy 三层表面在同一天被独立收紧。",
+      "cards": [
+        {
+          "authorKey": "x:amasad",
+          "authorName": "Amjad Masad",
+          "authorHandle": "@amasad",
+          "authorTag": "Replit CEO",
+          "sourceUrl": "https://x.com/amasad/status/2071992110132117740",
+          "en": {
+            "rewrite": [
+              "Amjad Masad (Replit CEO) makes the inference-hardware case in one tweet: 'AI is expensive to run partly because most workloads today run on generic hardware designed pre-LLMs. Etched is the first system designed from the ground up for modern inference.'",
+              "The economic claim is structural: GPU silicon today is general-purpose, and the inference cost-of-goods reflects that generality. A chip designed specifically for transformer inference (no general matrix multiply fallback, no legacy support) can plausibly hit 5-10x perf-per-watt, which is the real reason the cost-of-inference conversation is going to move from 'cheaper models' to 'cheaper silicon' over the next 18 months. The Replit angle: Replit runs inference for every user, so inference-cost is a first-order P&L line for them, and an Etched-class system would change the unit economics of agentic product development."
+            ],
+            "original": [
+              "AI is expensive to run partly because most workloads today run on generic hardware designed pre-LLMs. Etched is the first system designed from the ground up for modern inference. https://t.co/KluYZIZATE"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Amjad Masad(Replit CEO)一条推把 inference-hardware 的故事讲完了:「AI is expensive to run partly because most workloads today run on generic hardware designed pre-LLMs. Etched is the first system designed from the ground up for modern inference」。",
+              "经济论断是结构性的:今天的 GPU 硅是通用目的,inference cost-of-goods 反映了这种通用性。一个为 transformer inference 专门设计的 chip(不要 general matrix multiply 兜底、不要 legacy 支持)有可能打到 5-10x perf-per-watt,这才是为什么 inference cost 的对话未来 18 个月会从「更便宜的模型」转向「更便宜的硅」的真实原因。Replit 角度:Replit 给每一个用户跑 inference,inference cost 是他们 first-order 的 P&L 行,Etched 这类系统会改变 agentic product development 的 unit economics。"
+            ],
+            "original": [
+              "Amasad 一条推把 inference hardware 的故事讲完:Etched 是为现代 inference 重新设计的首款系统,大部分 workload 跑在 pre-LLM 时代的通用硬件上是 AI 「贵」的真实原因;Replit 的角度是 inference cost 是 first-order P&L。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:bcherny",
+          "authorName": "Boris Cherny",
+          "authorHandle": "@bcherny",
+          "authorTag": "Salesforce AI 工程负责人",
+          "sourceUrl": "https://x.com/bcherny/status/2072000214634742243",
+          "en": {
+            "rewrite": [
+              "Boris Cherny (Anthropic) ships Claude Desktop for Linux. The tweet is short — 'You asked, we listened. Claude Desktop on Linux is here! Download link:' — but the operational significance is the developer-segment coverage: the cohort of 'Python / data / ML engineers on Linux' has been the loudest asker for native Claude Code and Claude Desktop parity, and shipping a native Linux desktop app is the response.",
+              "The frame matters: it follows Sonnet 5 default, the Box AI Sonnet 5 eval, and the broader Sonnet 5 day. Anthropic is not letting a Sonnet 5 launch day pass without also shipping a developer-experience win. The pairing of a model launch with a client-surface expansion is the consistent pattern: every model upgrade is also an excuse to add a surface, and the surfaces accumulate. (Boris's other tweet of the day is a one-liner agreement on the Fable cliff, off-topic for the digest.)"
+            ],
+            "original": [
+              "You asked, we listened. Claude Desktop on Linux is here!\n\nDownload link: https://t.co/gjgHZvbKyi https://t.co/O3P6B3fuGk"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Boris Cherny(Anthropic)把 Claude Desktop for Linux 推上线。推文很短——「You asked, we listened. Claude Desktop on Linux is here! Download link:」——但运营意义是 developer-segment 的覆盖:「Python / data / ML engineers on Linux」这一群人是 native Claude Code / Claude Desktop parity 最响的 asker,出一个 native Linux desktop app 是回应。",
+              "框架重要:这条接在 Sonnet 5 默认、Box AI Sonnet 5 eval 后面,Anthropic 不让 Sonnet 5 launch day 只发 model、不发 developer-experience。Model launch 和 client-surface 扩展的配对是稳定 pattern:每一次 model 升级都顺带加一个 surface,surfaces 在累积。(Boris 当天另一条是关于 Fable cliff 的一句同意,跟 digest 主题无关,cut 掉。)"
+            ],
+            "original": [
+              "Boris Cherny 推 Claude Desktop for Linux——Anthropic 不让 Sonnet 5 launch day 只发 model,model 升级配对 client surface 扩展是稳定 pattern,surfaces 在累积。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:trq212",
+          "authorName": "Tao Li",
+          "authorHandle": "@trq212",
+          "authorTag": "AI 研究员 / Follow Builders 维护者",
+          "sourceUrl": "https://x.com/trq212/status/2072185565076988326",
+          "en": {
+            "rewrite": [
+              "Thariq (Follow Builders maintainer) follows up on questions about the updated Codex classifiers. The clarification: a small fraction of routine coding and debugging tasks will still be flagged and fall back to Opus, same as with the original classifiers. The team is excited to give users access back, and is continuing to refine the safeguards to better distinguish genuine misuse from legitimate requests and reduce false positives.",
+              "The structural read: Codex (or whatever product Thariq is shipping) had its classifier tightened in a way that affected some legitimate coding tasks, and the fix is iterative — the team is committed to tightening, but recognizes that over-tightening blocks real work. The honest framing ('we're refining, false positives are real, but the policy stands') is unusual in this space and worth noting: most launches in the same category go either full-defense ('we got stricter, sorry about the false positives, deal with it') or full-apology ('we walked it back'). The middle path is the one that survives a year of usage growth."
+            ],
+            "original": [
+              "Have seen some questions about the updated classifiers and wanted to clarify.\n\nAs with the original classifiers, a small fraction of routine coding and debugging tasks will be flagged and fall back to Opus.\n\nWe're excited for guys to get access back...",
+              "And as we say in our blog, we're continuing to refine these safeguards to better distinguish genuine misuse from legitimate requests and reduce false positives."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thariq(Follow Builders 维护者)对 updated Codex classifiers 的疑问做 follow-up。澄清:跟原来的 classifiers 一样,小比例的日常 coding / debugging 任务会被 flag 并降级到 Opus。团队兴奋于让用户拿回 access,会持续 refine 这些 safeguards,以更好地区分「genuine misuse」和「legitimate request」、减少 false positives。",
+              "结构性的读法:Codex(或 Thariq 推的那个产品)classifier 收紧的方式影响了一部分 legitimate coding 任务,修法是 iterative——团队承诺收紧,但承认 over-tightening 会挡住真活儿。诚实的 framing(「refining, false positives 是真的,但 policy 站得住」)在这个赛道里是少见的,值得记一笔:同类别的 launch 大多走 full-defense(「we got stricter,sorry about false positives,deal with it」)或者 full-apology(「we walked it back」)。中间路线是扛得过一年 usage growth 的那条。"
+            ],
+            "original": [
+              "Trq212 把 updated Codex classifier 的 policy 写明:小比例日常 coding / debugging 任务被误判降级到 Opus;团队会持续 refine,目标区分 misuse 和 legitimate request;走 middle path 不走 full-defense / full-apology。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "AI native 的四个反共识同时被问 / Four AI-Native Assumptions Get Re-Asked at Once",
+      "desc": "Madhu Guru 指出 trad PM 转 AI native building 的最大障碍不是 skill gap,是 magical thinking 缺位——十年 framework / agile / metric obsession 把思考方式锁在 constraint-first 增量模式,要靠 magic first / magic-only 的提问框架破。Aditya Agarwal 抛出一个反共识观察:为美国创新供能的模型正在是 Chinese open source——一个非常奇怪的 state of the world。Nan Yu 把官方 distillation 定义翻出来,贴出 Cursor 早期用 Claude 训练的例子——按这套逻辑,Cursor 整个早期训练数据都「蒸馏」自 Claude。Garry Tan 把 gbrain 推到 10000+ markdown files 的 scale,YC 总裁开始认真地聊「个人脑 + 公司脑」。四件不相干的事指向同一根线:在 Sonnet 5 默认出舱这天,几个底层假设(PM 框架、中美模型来源、distillation 边界、个人知识规模)同时被重新问。",
+      "cards": [
+        {
+          "authorKey": "x:realmadhuguru",
+          "authorName": "Madhusudhan",
+          "authorHandle": "@realmadhuguru",
+          "authorTag": "AI 工程师 / 开源贡献者",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2071970221477470694",
+          "en": {
+            "rewrite": [
+              "Madhusudhan (Madhu Guru) posts a hard-edged claim: the biggest challenge for traditional PMs trying to adapt to AI native building is a lack of magical thinking. A decade of frameworks, 'agile', and metric obsession has led to constraint-first, incremental thinking. The framing is that magical thinking is the missing input, and the rebuttal he used to run internally on his teams was to ask: 'how would you ship this if magic were free?'",
+              "The line is interesting because it's a structural claim about the cognitive habits the PM profession has built over a decade of optimization culture. Frameworks and metrics optimize for known-knowns, but the AI native build loop is about exploring the unknown-knowns of what a model can do. A PM whose first instinct is 'what metric does this move' is in the wrong cognitive mode for the first 80% of an AI product. The recovery move Madhu used was a forcing question: assume magic, then work backward to the cheapest version of magic that's still shippable. That is the magical-thinking-first discipline."
+            ],
+            "original": [
+              "The biggest challenge for trad PMs trying to adapt to AI native building is a lack of magical thinking. A decade of frameworks, 'agile' and metric obsession has led to constraint-first, incremental thinking.\n\nI used to combat this on my teams by aski..."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Madhusudhan(Madhu Guru)给了一个硬判断:trad PM 转 AI native building 的最大障碍是 magical thinking 缺位。十年 framework / agile / metric obsession 把思考方式锁在 constraint-first 增量模式。他以前在团队里用过的对抗法是问:「how would you ship this if magic were free?」",
+              "这条线有意思是因为它是对 PM 这个职业十年 optimization culture 沉淀的 cognitive habit 的结构论断。Frameworks 和 metrics 优化的是 known-knowns,但 AI native build loop 是在探索 model 能做什么的 unknown-knowns。一个 first instinct 是「this 移动哪个 metric」的 PM,在 AI 产品头 80% 的阶段是处在错误的 cognitive mode 里。Madhu 用过的 recovery move 是一个 forcing question:假设 magic,然后倒推最便宜的、能 ship 的 magic 版本。这就是 magical-thinking-first 的纪律。"
+            ],
+            "original": [
+              "Madhu Guru 给硬判断:trad PM 转 AI native building 的最大障碍是 magical thinking 缺位;十年 framework / metric obsession 把思考方式锁在 constraint-first 增量模式;recovery move 是 ask「how would you ship this if magic were free?」。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:adityaag",
+          "authorName": "Aditya Agarwal",
+          "authorHandle": "@adityaag",
+          "authorTag": "Dropbox Engineering VP / 前 Facebook 平台工程负责人",
+          "sourceUrl": "https://x.com/adityaag/status/2071983952894837062",
+          "en": {
+            "rewrite": [
+              "Aditya Agarwal (Dropbox engineering VP, former Facebook) drops a one-line structural claim: 'It is a very strange state of the world where the models powering innovation in the USA are Chinese open source models.'",
+              "The claim reads as contrarian but is increasingly the consensus at the structural level: a non-trivial share of US AI startups in 2026 are building on top of GLM / Qwen / DeepSeek model weights. The pricing dynamics are part of it (the open-weights models are an order of magnitude cheaper than the frontier closed models for comparable quality on many tasks), and the distribution dynamics are part of it (open-weights means the developer controls the inference stack, which is exactly what a regulated-industry customer needs). The geopolitical inversion is the part that takes time to absorb: 'American innovation' as a category is currently being built on top of weights that are not American."
+            ],
+            "original": [
+              "It is a very strange state of the world where the models powering innovation in the USA are Chinese open source models."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aditya Agarwal(Dropbox Engineering VP,前 Facebook)丢了一行结构性论断:「It is a very strange state of the world where the models powering innovation in the USA are Chinese open source models」。",
+              "claim 读起来像 contrarian,但在结构层面越来越是共识:2026 年非小比例的美国 AI startup 是建在 GLM / Qwen / DeepSeek 的模型权重上。Pricing dynamics 是其中一部分(open-weights 模型在很多任务上比 frontier closed 模型便宜一个量级、质量可比),distribution dynamics 是另一部分(open-weights 意味着 developer 控制 inference stack,这正是受监管行业客户需要的)。地缘反转是需要时间消化的部分:「American innovation」作为一个分类,现在被建在不是 American 的 weights 上。"
+            ],
+            "original": [
+              "Aditya Agarwal 丢一行硬判断:为美国创新供能的模型是 Chinese open source——一个非常奇怪的 state of the world;pricing + distribution 两层 dynamics 在 2026 已经把 inversion 推到了不可逆的位置。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thenanyu",
+          "authorName": "Nan Yu",
+          "authorHandle": "@thenanyu",
+          "authorTag": "AI 创业者 / 投资人",
+          "sourceUrl": "https://x.com/thenanyu/status/2071973229070033322",
+          "en": {
+            "rewrite": [
+              "Nan Yu (AI founder / investor) reads the official definition of 'distillation' and surfaces the implication: 'Going by this logic, the entirety of Cursor's training data was distilled from Claude in the early days.' The quote-tweet is the meta-commentary — Nan is pointing out that the very definition of distillation that vendors use to police competitors also covers their own training-data history.",
+              "The follow-up tweet (a one-word 'tru tru' with a quote-tweet) is a confirmation gesture. The read: the distillation conversation is not a clean legal line, it's a moving target. Vendors want distillation to mean 'fine-tuning a smaller model on outputs of a larger one' (which Cursor, Cognition, and others do) — but the same definition, applied symmetrically, makes the early web-trained foundation models 'distilled from' their web-scraped sources. The line is not enforceable; it's a posture. Nan is naming the posture, not arguing for or against it."
+            ],
+            "original": [
+              "The definition of 'distillation' is interesting. Going by this logic, the entirety of Cursor's training data was distilled from Claude in the early days https://t.co/V08OTUG9QA",
+              "tru tru https://t.co/GCmvVpSNHq"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nan Yu(AI 创业者 / 投资人)把官方 distillation 的定义翻出来,把隐含 implication 翻到台面:「Going by this logic, the entirety of Cursor's training data was distilled from Claude in the early days」。quote-tweet 是 meta-commentary——Nan 在指出 vendor 用来给竞品立规矩的 distillation 定义,反过来同样覆盖他们自己的训练数据史。",
+              "Follow-up 推(一个「tru tru」加 quote-tweet)是 confirmation gesture。读法:distillation 这个对话不是一条干净的法律线,是一个 moving target。Vendor 想让 distillation 等于「在更大模型的 output 上 fine-tune 一个更小的模型」(Cursor、Cognition 们做的就是这个)——但同样的定义,对称地套用,会把早期 web-trained 的基础模型「distilled from」它们的 web-scraped 数据源。这条线 enforce 不了;它是一个 posture。Nan 在命名这个 posture,不站对错。"
+            ],
+            "original": [
+              "Nan Yu 把官方 distillation 定义翻出来贴 Cursor 早期用 Claude 训练的例子——按这套逻辑,Cursor 整段早期训练数据都「蒸馏」自 Claude。distillation 边界 enforce 不了,是一个 moving target,是一个 posture。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁",
+          "sourceUrl": "https://x.com/garrytan/status/2071910876496757145",
+          "en": {
+            "rewrite": [
+              "Garry Tan (Y Combinator president) shares a usage threshold: 'Gbrain is mostly useful at 10,000+ markdown files in your personal brain or company brain.' The framing is significant because it positions Garry as a hands-on tool builder, not just a YC-figurehead: the threshold is the kind of number that only comes from actually using the tool, and the '10,000+' is specific enough to be a real signal.",
+              "The deeper read: the personal-knowledge-management category has matured to the point where a YC president is publicly sharing thresholds for when a personal-brain tool 'clicks'. For Garry this is also a positioning move — YC's portfolio is full of knowledge-tool startups, and the 10,000+ number is the kind of signal that, once public, becomes a self-fulfilling target for the next cohort. ('Build to 10,000 markdown files' is now a concrete goal.) Garry's other tweet of the day is a political / California-framing post, off-topic for the digest, cut."
+            ],
+            "original": [
+              "Gbrain is mostly useful at 10,000+ markdown files in your personal brain or company brain https://t.co/ifVPMxILhY"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan(Y Combinator 总裁)分享一个 usage threshold:「Gbrain is mostly useful at 10,000+ markdown files in your personal brain or company brain」。措辞有意义因为它把 Garry 摆在 hands-on tool builder 的位置,不只是 YC-figurehead:threshold 这种数字只有真的在用工具的时候才会出现,「10,000+」足够具体,是一个真信号。",
+              "更深一层读:personal-knowledge-management 这一类目已经成熟到 YC 总裁公开分享 personal-brain 工具「click」的阈值。Garry 这同时是一个 positioning move——YC portfolio 里很多 knowledge-tool startup,「10,000+」这个数字一旦公开,就会成为下一批 cohort 的 self-fulfilling target。(「Build to 10,000 markdown files」现在是一个具体目标。) Garry 当天另一条是政治 / California 框架的,跟 digest 主题无关,cut。"
+            ],
+            "original": [
+              "Garry Tan 公开 Gbrain 的 usage threshold:10,000+ markdown files 时 personal brain / company brain 真正「click」——这同时是 hands-on 工具构建者的 positioning,也是给 YC portfolio knowledge-tool startups 立的下一个 self-fulfilling target。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Taste 经济学 + 长跑 loop / What Comes After Production",
+      "desc": "zarazhangrui 引用 taste 的定义——「taste 之所以值钱不是因为别人抄不了,是因为 taste 决定了别人抄什么」;steipete 把 long-running loop 摆到台面,「Price per token != cost per task」,一晚连发两条对 conference / workflow 节奏的吐槽,把 workflow -> loops 重新命名。production 已经不是瓶颈,curation / loop / 节拍 才是。",
+      "cards": [
+        {
+          "authorKey": "x:zarazhangrui",
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2072197929138602079",
+          "en": {
+            "rewrite": [
+              "Zara Zhang (Follow Builders founder / curator) shares a definition of taste: 'Taste isn't valuable because it's impossible to copy. Taste is valuable exactly because it defines what everyone else chooses to copy.' The reframing matters: taste-as-impossible-to-copy is the romantic version, taste-as-defines-what-others-copy is the structural one.",
+              "The structural read: in a world where every model can generate a thousand options at a cent each, the bottleneck has moved from 'can you produce' to 'can you choose what to produce'. The chooser defines the field of options, and everyone else's copies are downstream of that choice. A founder whose taste is strong enough to define the field for the next six months is, in effect, a taste monopolist. The economic value of taste-as-definer is several orders of magnitude above taste-as-personal-aesthetic — the first is a market-shaping input, the second is a private preference."
+            ],
+            "original": [
+              "\"Taste isn't valuable because it's impossible to copy. Taste is valuable exactly because it defines what everyone else chooses to copy.\" https://t.co/kDs4ibnvbL"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zara Zhang(Follow Builders 创始人 / 策展人)分享一条 taste 的定义:「Taste isn't valuable because it's impossible to copy. Taste is valuable exactly because it defines what everyone else chooses to copy」。重新框架这一下重要:taste-as-impossible-to-copy 是浪漫版,taste-as-defines-what-others-copy 是结构版。",
+              "结构版读法:在每一个 model 都能以 cent 级成本生成一千个选项的世界里,bottleneck 从「你能 production」移到「你能选择 production 什么」。选择者定义了选项的场,其他人的 copy 都是这个选择的下游。一个 founder 的 taste 强到能为接下来六个月定义这个场,实际就是一个 taste monopolist。Taste-as-definer 的经济价值比 taste-as-personal-aesthetic 高好几个数量级——前者是市场塑造的 input,后者是私人偏好。"
+            ],
+            "original": [
+              "Zara Zhang 把 taste 的定义翻到结构版:taste 之所以值钱不是因为别人抄不了,是因为 taste 决定了别人抄什么——在 model 能 cent 级生成一千个选项的世界里,选择者是市场塑造的 input;taste monopolist 是一种真实存在。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:steipete",
+          "authorName": "Peter Steinberger",
+          "authorHandle": "@steipete",
+          "authorTag": "OpenClaw 创始人",
+          "sourceUrl": "https://x.com/steipete/status/2072144627474579925",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger (OpenClaw founder) puts a one-liner on the long-running agent cost story: 'Price per token != cost per task.' The framing is a counter to the constant model-pricing-update news cycle: the unit that matters is the task, not the token, and the ratio between the two is set by how well the agent loop is wired (context management, tool design, retry policy, loop depth).",
+              "The other two tweets of the day reinforce the same line in different registers. One is a self-deprecating conference joke ('Apparently we didn't talk enough about workflows loops yet! See ya there!') with a redaction of 'workflows' to 'loops' — the editorial line is that the unit is the loop, not the workflow. The third is an emoji-only post (🙃 with a media link) which is a joke about... something off-camera; cut. Peter's argument is the unit-of-account shift: a model that costs 5x more per token but finishes the task in 60% of the loop iterations is cheaper. The dominant cost is the loop, not the token, and the optimization frontier is in loop design, not in token price."
+            ],
+            "original": [
+              "Price per token != cost per task https://t.co/dxuXgri7nD",
+              "Apparently we didn't talk enough about w̶o̶r̶k̶f̶l̶o̶w̶s̶ loops yet! See ya there! https://t.co/A9mc4pKPC4"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger(OpenClaw 创始人)把 long-running agent 的 cost 故事压成一行:「Price per token != cost per task」。框架是跟一直在更新的 model-pricing 新闻周期对冲:重要的 unit 是 task,不是 token,两者之间的比例由 agent loop 怎么接(context management、tool design、retry policy、loop depth)决定。",
+              "当天另外两条推用不同口吻强化同一根线。一条是自嘲的 conference 段子(「Apparently we didn't talk enough about workflows loops yet! See ya there!」)把 workflows 用删除线划掉,只留 loops——编辑口径是单位是 loop,不是 workflow。第三条是 emoji-only(🙃 加 media link),是关于某件 off-camera 的玩笑,cut。Peter 的论点是 unit-of-account 的转移:一个 model per-token 价格 5x 更贵,但 loop 迭代次数只要 60%,总成本更便宜。主导成本是 loop,不是 token,optimization 的 frontier 在 loop 设计里,不在 token 价格里。"
+            ],
+            "original": [
+              "Steipete 压成一行:Price per token != cost per task——unit 是 task 不是 token,主导成本是 loop,optimization frontier 在 loop 设计里不在 token 价格里;同一天把 workflows 删除线划掉换成 loops,口吻不一样方向一样。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "需求 floor 在两个城市被同时量到 / The Demand Floor, Measured in Two Cities at Once",
+      "desc": "Swyx 在 AIEWF poster sessions day 收尾——非赞助商早上 9 点 workshop,Snyk / Atlassian / neo4j / arize / Akamai / Together 几家厂商同排开,「PEOPLE ARE HUNGRY FOR THIS」。Amasad 同一晚在纽约地铁办了「world's first subway hackathon」。一个 conference floor + 一个 subway floor,加上 podcast 那一边,这一天 Follow Builders 上能直接数到的「demand 被量到」信号至少在两个城市同时发生。",
+      "cards": [
+        {
+          "authorKey": "x:swyx",
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师",
+          "sourceUrl": "https://x.com/swyx/status/2072048730581405800",
+          "en": {
+            "rewrite": [
+              "Swyx wraps day 1 of AIEWF (AI Engineer World's Fair): 'very successful first poster sessions day at AIEWF, thanks to @heathercmiller and @ACM_President for the support!! tomorrow: Poaster sessions! submit your hottest tweets to @vibhuuuus for printing! spotted: left shark' The 'PEOPLE ARE HUNGRY FOR THIS' implicit signal: the conference has moved past the 'sponsors set up booths and wait for people' phase into a 'posters and submissions and printing' phase, which means the demand is now an organizing input, not a side effect.",
+              "The 'left shark' reference is the kind of detail that only happens at a conference where the audience is in on the joke. The operational line: when the conference has a 'tweets to print' pipeline (a person collecting tweets from the audience and physically printing them for the poster session), the demand for participation has crossed from 'attend' to 'co-produce'. That's a different kind of event than the trade-show booths of 2023 — the format has compressed the gap between attendee and contributor."
+            ],
+            "original": [
+              "very successful first poster sessions day at AIEWF, thanks to @heathercmiller and @ACM_President for the support!!\n\ntomorrow: Poaster sessions! submit your hottest tweets to @vibhuuuus for printing!\n\nspotted: left shark https://t.co/nv2I2l00Oe"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx 收尾 AIEWF(AI Engineer World's Fair)Day 1:「very successful first poster sessions day at AIEWF, thanks to @heathercmiller and @ACM_President for the support!! tomorrow: Poaster sessions! submit your hottest tweets to @vibhuuuus for printing! spotted: left shark」。「PEOPLE ARE HUNGRY FOR THIS」的隐含信号:conference 已经走过了「sponsors 摆展位等人来」的阶段,进入「posters and submissions and printing」阶段,意味着 demand 本身成了一个 organizing input,不再是一个 side effect。",
+              "「left shark」这个细节是只有在 audience in on the joke 的 conference 才会出现的。运营这一行:当 conference 有了「tweets to print」pipeline(一个人在 audience 里收 tweet、physically print 给 poster session),参与的需求就从「attend」跨到「co-produce」。这是跟 2023 年那种 trade-show booth 不一样的事件类型——format 已经把 attendee 和 contributor 之间的 gap 压扁了。"
+            ],
+            "original": [
+              "Swyx 收 AIEWF Day 1:poster sessions 满、当场有「tweets to print」pipeline、left shark 这种 in-on-the-joke 的细节——demand 已经从 attend 跨到 co-produce,format 把 attendee 和 contributor 之间的 gap 压扁了。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:amasad",
+          "authorName": "Amjad Masad",
+          "authorHandle": "@amasad",
+          "authorTag": "Replit CEO",
+          "sourceUrl": "https://x.com/amasad/status/2071992670394765407",
+          "en": {
+            "rewrite": [
+              "Amjad Masad (Replit CEO) announces the 'World's first subway hackathon' — a hackathon happening on the New York subway, presumably organized by Replit. The two-word framing ('World's first') is the marketing claim; the structural claim is that hackathons are moving out of the office / co-working venue and into public infrastructure.",
+              "The subway-as-venue is a deliberate signal: it positions the hackathon as accessible to anyone with a phone, not just people who can get to a co-working space or a sponsor's office. Replit's distribution model (browser-based, free tier, instant setup) is the only toolchain that actually works on a subway's spotty connectivity — and that's the point. The 'world's first' framing is also a brand-defensible claim: even if other people have run hackathons in unusual venues, 'subway' as the specific venue gives Replit a clean line on a category that didn't exist before."
+            ],
+            "original": [
+              "World's first subway hackathon! https://t.co/uRTezD2dak"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Amjad Masad(Replit CEO)宣布「World's first subway hackathon」——一场在纽约地铁里跑的 hackathon,看起来是 Replit 办的。两字 framing(「World's first」)是 marketing claim;结构 claim 是 hackathons 正在从 office / co-working venue 移到 public infrastructure。",
+              "Subway-as-venue 是一个有意识的信号:它把 hackathon 摆在任何带手机的人都能触达的位置,不是只有能去 co-working 或 sponsor office 的人。Replit 的 distribution model(browser-based、free tier、instant setup)是真正能在地铁的弱网下 work 的唯一 toolchain——这就是 point。「world's first」framing 同时是一个 brand-defensible claim:即使别人在非常规地点办过 hackathon,「subway」这个具体 venue 给了 Replit 一条干净的、不存在过的 category 上的 line。"
+            ],
+            "original": [
+              "Amasad 宣布 World's first subway hackathon——hackathon 从 office / co-working 移到 public infrastructure;Replit 的 browser-based / free tier / instant setup toolchain 是唯一能在地铁弱网下 work 的,「subway」venue 给了一条 brand-defensible 的 category line。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "硬件 / 软件同设计:SemiAnalysis 的 100x 立成这轮物理层 / Hardware-Software Co-Design as the 100x Lever",
+      "desc": "Training Data 这期请 SemiAnalysis 的 Dylan Patel 把 hardware-software co-design 立成 AI 真正的 100x:90 人的 SemiAnalysis 沿着整条 supply chain 摆开,Etched 是为现代 inference 重新设计的首款系统——大部分 workload 跑在 pre-LLM 时代的通用硬件上,这是为什么 AI 「贵」的真实原因。收尾:这一期把「物理层 floor」接在 6-30「五层底盘」和今天「Sonnet 5 出舱」的尾巴上。",
+      "cards": [
+        {
+          "authorKey": "podcast:training-data",
+          "authorName": "Training Data Podcast",
+          "authorHandle": null,
+          "authorTag": "AI 播客",
+          "sourceUrl": "https://www.youtube.com/watch?v=f6D_aiy8qyU",
+          "en": {
+            "rewrite": [
+              "Training Data (this week's episode) hosts Dylan Patel of SemiAnalysis, the premier research firm on the AI supply chain. The framing: hardware-software co-design is AI's real 100x. Patel's team is 90 people, with a big chunk being technologist engineers across the whole supply chain, and another big chunk being people formerly at hedge funds — the firm runs an internal fight between 'the cost argument' and 'the technology is the coolest' that gets sorted out informally.",
+              "The host (Sean from Sequoia, with partner Sonja Huang) sets the table: semis were not very sexy in the West five years ago, but Patel went very long on them and built the premier research company educating the world from technical detail to supply chain to bigger picture. SemiAnalysis recently crossed $100M in revenue (per rumor), and there are rumors Patel may start a venture fund. The substantive thread: Patel's claim is that the AI inference cost-of-goods is dominated by the choice to run modern AI on pre-LLM-era hardware, and that an Etched-class chip (designed for transformer inference from the silicon up) is the structural lever, not a 2x model improvement."
+            ],
+            "original": [
+              "Speaker 1 | 00:00 - 00:24\nI think it's really fun inside of Semi Analysis because we have 90 people, and a big chunk of them are technologist engineers across the whole supply chain, and then a big chunk is people who are formerly at hedge funds. And you see these arguments, people are like, Oh, that doesn't matter. Someone's like, well, but cost? And then the engineer's like, no, no, no, but this technology is the coolest. And you see this organically fight it out, and we're pretty informal.",
+              "Speaker 2 | 00:50 - 01:04\nWe're here in the semi analysis office with Dylan Patel. I'm Sean from Sequoia. My partner Sonja Huang. It's pretty insane what you've done. Semi semis five years ago were not very sexy in the West.",
+              "Speaker 1 | 01:30 - 01:33\nIt's as accurate as the information is. You never know. There's also rumors that you might start a venture fund."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Training Data 这期请 SemiAnalysis 的 Dylan Patel,把 hardware-software co-design 立成 AI 真正的 100x。Patel 团队 90 人,一大部分是覆盖整条 supply chain 的 technologist engineer,另一大块是 hedge fund 出身——公司内部一直在「cost argument」和「technology is the coolest」之间 informal 地 fight it out。",
+              "主持人(Sean from Sequoia,合伙人 Sonja Huang)铺背景:五年前 semis 在西方不太 sexy,Patel 当时看得很 long,做出 premier research company,从 technical detail 到 supply chain 到 bigger picture 都在教世界。SemiAnalysis 最近过了 $100M revenue(rumor),还有 rumor 说 Patel 可能 start a venture fund。实质 thread:Patel 的 claim 是 AI inference cost-of-goods 被「用 pre-LLM-era 硬件跑现代 AI」这个选择主导,Etched 这类 chip(为 transformer inference 从硅开始设计)是结构 lever,不是 2x model improvement。"
+            ],
+            "original": [
+              "Training Data 请 SemiAnalysis 的 Dylan Patel 把 hardware-software co-design 立成 AI 真正的 100x:90 人沿整条 supply chain 摆开,内部 informal 地 fight out「cost vs technology」;AI inference cost-of-goods 被「pre-LLM-era 硬件跑现代 AI」主导,Etched 是结构 lever,不是 2x model improvement。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
