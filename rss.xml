@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 01 Jul 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jul 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-07-02 · Fable 归日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-02-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-02-rerun.html</guid>
+      <pubDate>Thu, 02 Jul 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[7-2 这张 issue 的主轴是「Fable 5 归零」——Anthropic 把旗舰模型重新开放给所有 paid plan,weekly usage 50% 划给 Fable、7-7 截止,claudeai 一天三连把 availability / feedback loop / blog post 一起发出来;thsottiaux 用三个字「It's happening」点起这条线,alexalbert__ 用「welcome back to the world」把它锚住,nikunj / danshipper 在 24 小时内从投资人圈 + writer 圈同步回应。Peter Yang 当天同步出 5-cases tutorial + vibe check + 装 explain-diff skill,把 adoption funnel 一个人跑完。Vercel 把 long-running agent 的 deployment 立成 production unit:rauchg 一天内把 Fluid Active CPU 的 30s deployment 和 agent dry-run step 一起 ship。Levie 用 Devin 的 agentic mapreduce 把「为什么我们需要 100x more AI inference」立成具体答案——swarms + bounded shards + reduce + isolated sandbox verification,pharma / banking 会被这套 pattern 复制。Zhang Rui 把 skill 的位置反过来:你「先跑出一整圈 workflow,skill 是末端产物」;同时把 Codex 的 model swap 推到 GLM,model choice 翻成用户侧的旋钮。资本结构 / 人才市场 / AI 实验室的信号同向:Turck 拆 Lime 用 toxic loans 转 equity + FCF positive + Uber backstop 把 $1B 债务 IPO 立成 last-man-standing 的 financial engineering;Nikunj 把 OpenAI / Anthropic 的 talent vortex 描述成「consequential + pre-IPO 流动性」的双重拉力;Garry Tan 把 Anthropic 把 UC Berkeley EECS 系主任招进来读成 mega get。AI native 城市底色在三个方向被量到:Swyx 把 AIEWF day 的 Manning + Abshk 双 keynote 立成 sandboxing + world models 的 anchor 会议;Aditya Agarwal 把 SF 的底色立成 optimism,默认悲观者是 wall-street 移民的预期差;Amasad 把 Replit app 通过 Whop 上架立成 first customer / first dollar 的标准路径。工具收编:Google Labs 把 MusicFX / MusicFX DJ 7-31 sunset,所有学习合到 FlowMusic;Steinberger 给 Steve Yegge 正名——他只是太早,今天 building factory 是 mainstream;Tao Li 在 AI Engineer Summit 现场打卡「hello from AI engineer」。收尾:Every 这期把 Natalia 请回来讲 consulting team 怎么用 Codex 把 email / admin 翻成「super alien tool supports you」,knowledge work 从亲手捏植物翻成造生长条件——consulting line 本身就是这一期的 case study,接住上一期 6-30「五层底盘」的 gardening metaphor 这一格。]]></description>
+      <category>Fable 5 回零 / Fable 5 Returns to Zero, Fable 5 落地用例 / Fable 5 Use Cases That Actually Ship, Vercel 把 agent deployment 立成 production unit / Vercel Codifies Agent Deploy, 100x inference 的应用层逻辑 / Where 100x Inference Actually Comes From, Skill 是末端产物;Codex 换模型 / Skills as the End Product; Code Models as a User Knob, 资本与人才的双向虹吸 / Capital and Talent, Both Directions, AI native 城市底色 / AI-Native City Texture, 工具收编与现场 / Tool Consolidation and On-the-Ground, Every 把咨询团队的 AI workflow 立成 operating system / Every Codifies the Consulting Stack</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-07-01 · 5 出舱日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-01-rerun.html</link>

@@ -1,0 +1,650 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-07-02",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "7-2 这张 issue 的主轴是「Fable 5 归零」——Anthropic 把旗舰模型重新开放给所有 paid plan,weekly usage 50% 划给 Fable、7-7 截止,claudeai 一天三连把 availability / feedback loop / blog post 一起发出来;thsottiaux 用三个字「It's happening」点起这条线,alexalbert__ 用「welcome back to the world」把它锚住,nikunj / danshipper 在 24 小时内从投资人圈 + writer 圈同步回应。Peter Yang 当天同步出 5-cases tutorial + vibe check + 装 explain-diff skill,把 adoption funnel 一个人跑完。Vercel 把 long-running agent 的 deployment 立成 production unit:rauchg 一天内把 Fluid Active CPU 的 30s deployment 和 agent dry-run step 一起 ship。Levie 用 Devin 的 agentic mapreduce 把「为什么我们需要 100x more AI inference」立成具体答案——swarms + bounded shards + reduce + isolated sandbox verification,pharma / banking 会被这套 pattern 复制。Zhang Rui 把 skill 的位置反过来:你「先跑出一整圈 workflow,skill 是末端产物」;同时把 Codex 的 model swap 推到 GLM,model choice 翻成用户侧的旋钮。资本结构 / 人才市场 / AI 实验室的信号同向:Turck 拆 Lime 用 toxic loans 转 equity + FCF positive + Uber backstop 把 $1B 债务 IPO 立成 last-man-standing 的 financial engineering;Nikunj 把 OpenAI / Anthropic 的 talent vortex 描述成「consequential + pre-IPO 流动性」的双重拉力;Garry Tan 把 Anthropic 把 UC Berkeley EECS 系主任招进来读成 mega get。AI native 城市底色在三个方向被量到:Swyx 把 AIEWF day 的 Manning + Abshk 双 keynote 立成 sandboxing + world models 的 anchor 会议;Aditya Agarwal 把 SF 的底色立成 optimism,默认悲观者是 wall-street 移民的预期差;Amasad 把 Replit app 通过 Whop 上架立成 first customer / first dollar 的标准路径。工具收编:Google Labs 把 MusicFX / MusicFX DJ 7-31 sunset,所有学习合到 FlowMusic;Steinberger 给 Steve Yegge 正名——他只是太早,今天 building factory 是 mainstream;Tao Li 在 AI Engineer Summit 现场打卡「hello from AI engineer」。收尾:Every 这期把 Natalia 请回来讲 consulting team 怎么用 Codex 把 email / admin 翻成「super alien tool supports you」,knowledge work 从亲手捏植物翻成造生长条件——consulting line 本身就是这一期的 case study,接住上一期 6-30「五层底盘」的 gardening metaphor 这一格。"
+  },
+  "archive": {
+    "title": "Fable 归日",
+    "desc": "7-2 Follow Builders 的主轴是「Fable 5 归零」——Anthropic 把 flagship model 重新开放给 paid plan,claudeai 一天三连 + alexalbert__ 关系线 + nikunj 投资人圈 + danshipper writer 圈同时回应;Peter Yang 把 Fable 的 adoption funnel 用 5-cases tutorial + vibe check + skill install 一个人跑完。Vercel 把 agent deployment 立成 production unit,Levie 用 Devin mapreduce 把 100x inference 落成 pharma / banking / unstructured data 的具体答案;Zhang Rui 把 skill 翻成 workflow 末端产物,把 Codex 的 model swap 推到 GLM。Turck / Nikunj / Garry Tan 三人把 Lime IPO / talent vortex / lab hire 同一天里同向立;Swyx / Aditya / Amasad 把 AIE / SF / Replit 三个城市 texture 量到;Google Labs / Steinberger / Tao Li 把工具收编 + 现场坐标收掉。收尾 Every 把 consulting team 的 AI workflow 立成 operating system,knowledge work 翻成 gardening。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-02 source feeds.",
+  "sections": [
+    {
+      "title": "Fable 5 回零 / Fable 5 Returns to Zero",
+      "desc": "Anthropic 把 Fable 5 重新开放给所有 paid plan,7-7 截止;claudeai 一天三连把 availability / feedback loop / blog post 一起发布;alexalbert__ / nikunj / danshipper 三个城市的人在 24 小时内把「欢迎回来」打成共识。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT",
+          "sourceUrl": "https://x.com/thsottiaux/status/2072410623380468190",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux 一个 tweet 三个词把整条 Fable 5 线索点起来:「It's happening」——这条不发 product link、不发 chart,就是一个 insider 的零点打卡,后面 24 小时里所有围绕 Fable 5 的狂欢都是对这一句的注解。"
+            ],
+            "original": [
+              "It's happening https://t.co/PtS0ZoYL09"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux 只发三个字:「It's happening」。没有链接、没有数据图,就是 insider 自己凌晨零点的打卡。后面的 24 小时里所有围绕 Fable 5 回来的帖子,本质上都是给这一句做注释。"
+            ],
+            "original": [
+              "Thibault Sottiaux 只发三个字:「It's happening」。没有链接、没有数据图,就是 insider 自己凌晨零点的打卡,后面所有围绕 Fable 5 的狂欢都是从这一句接出来的。https://t.co/PtS0ZoYL09"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:claudeai",
+          "authorName": "Claude",
+          "authorHandle": "@claudeai",
+          "authorTag": "Anthropic Claude 官方账号",
+          "sourceUrl": "https://x.com/claudeai/status/2072402639644766602",
+          "en": {
+            "rewrite": [
+              "Anthropic Claude 官方账号发布 availability 政策:所有带 usage 的 paid plan 都能用到 7-7,weekly usage 上限的 50% 用来跑 Fable,跑满可以切回其他模型继续用——把「caps」从限制翻成 budget,把 model access 切成 cap-and-fallback 的对称结构。"
+            ],
+            "original": [
+              "All paid plans with usage included can access Fable 5 through July 7. You can use Fable 5 up to 50% of your weekly usage limit, after which you can switch to another model for the remainder of your usage. You can also continue using Fable via usage credits.\n\nMore here: https://t.co/5reBCfXAqy"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude 官方:所有 paid plan(带 usage 的)7-7 前都能用 Fable 5,weekly quota 50% 给 Fable,跑满之后自动切回别的模型继续用——cap 变成 budget,access 变成 cap-and-fallback。"
+            ],
+            "original": [
+              "Anthropic Claude 官方:所有带 usage 的 paid plan 7-7 前都能用 Fable 5;weekly usage 上限的 50% 给 Fable,跑满可以切回其他模型继续用;也可以直接用 usage credits 跑 Fable。更多细节见原推。https://t.co/5reBCfXAqy"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:claudeai",
+          "authorName": "Claude",
+          "authorHandle": "@claudeai",
+          "authorTag": "Anthropic Claude 官方账号",
+          "sourceUrl": "https://x.com/claudeai/status/2072402642836615273",
+          "en": {
+            "rewrite": [
+              "Anthropic 把 Fable 5 的 blog post 单独发了一次,而不是只塞进 availability 的那条——说明这条 model line 的 launch narrative 要被独立 preserve,不是 weekly shipping 里的一个 feature,是一个被立过碑的 release。"
+            ],
+            "original": [
+              "Read the Fable 5 blog post here: https://t.co/iQymY0jQvY"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic 单独给 Fable 5 发了一条 blog 链接,而不是塞进 availability 那条——Fable 这一支的 launch narrative 要独立存档,它不是 weekly shipping 的一个 feature,是被立过碑的 release。"
+            ],
+            "original": [
+              "Anthropic 单独给 Fable 5 出一条 blog post 链接,链接见原推。https://t.co/iQymY0jQvY"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:alexalbert__",
+          "authorName": "Alex Albert",
+          "authorHandle": "@alexalbert__",
+          "authorTag": "Anthropic Claude 关系负责人",
+          "sourceUrl": "https://x.com/alexalbert__/status/2072404717490360727",
+          "en": {
+            "rewrite": [
+              "Alex Albert(Anthropic Claude 关系负责人)贴出「Welcome back to the world Fable!!」——Anthropic 内部把 Fable 复出描述成「回到世界」,不是「重新发布」,语感上把 model 当作一个回乡的 entity 而不是 new release。"
+            ],
+            "original": [
+              "Welcome back to the world Fable!! https://t.co/krcdkuYId8"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Alex Albert(Anthropic Claude 关系线)发的是「Welcome back to the world Fable!!」——内部把 Fable 复出讲成「回到世界」,不是 re-launch。语感上 model 是一个回乡的 entity,不是 new release。"
+            ],
+            "original": [
+              "Alex Albert(Anthropic Claude 关系负责人):「Fable,欢迎回到这个世界!!」https://t.co/krcdkuYId8"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人",
+          "sourceUrl": "https://x.com/nikunj/status/2072406317617262753",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari(Afore Capital)简短两行加一张图:「Fable is back」——他是投资人,但这条 tweet 的语气和 claudeai 官方、alexalbert__ 关系线、danshipper 用户线几乎同步,说明 Fable 的 launch 不只是 product news,而是这一波 Anthropic 阵营集体情绪的 anchor。"
+            ],
+            "original": [
+              "Fable is back https://t.co/ceX26h5PcT"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kothari(Afore Capital)两个字加一张图:「Fable is back」。投资人的语气和官方、关系线、用户线几乎同步——说明 Fable 复出不只是 product news,是这一轮 Anthropic 阵营的集体情绪 anchor。"
+            ],
+            "original": [
+              "Nikunj Kothari(Afore Capital)两个字加一张图:「Fable 回来了。」"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "authorName": "Dan Shipper",
+          "authorHandle": "@danshipper",
+          "authorTag": "Every 联合创始人 / AI 写作工具链",
+          "sourceUrl": "https://x.com/danshipper/status/2072402230041272669",
+          "en": {
+            "rewrite": [
+              "Dan Shipper(Every 联合创始人)贴出「FABLE IS BACK!!!」三个感叹号——Every 的读者群是 writer + knowledge worker,Fable 的 brand positioning 在 writer 圈,Shipper 的反应速度决定了这条 launch 在 knowledge worker 这一侧的传播半径。"
+            ],
+            "original": [
+              "FABLE IS BACK!!! https://t.co/H7fsnFZQVV"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Dan Shipper(Every 联合创始人)三个感叹号:「FABLE IS BACK!!!」。Every 的读者是 writer + knowledge worker,Fable 的 brand 在这一圈,Shipper 反应速度决定了 Fable 5 在 knowledge worker 这条线的扩散半径。"
+            ],
+            "original": [
+              "Dan Shipper(Every 联合创始人):「FABLE 回来了!!!」https://t.co/H7fsnFZQVV"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "authorName": "Dan Shipper",
+          "authorHandle": "@danshipper",
+          "authorTag": "Every 联合创始人 / AI 写作工具链",
+          "sourceUrl": "https://x.com/danshipper/status/2072402843819212909",
+          "en": {
+            "rewrite": [
+              "Dan Shipper 同一天的「LET'S RIP FABLE TOKENS FROM THE JACUZZI」——把 Fable 比作 hot tub 里泡着的 token budget,要抓紧 7-7 截止前把它 rip 出来用,这种 prose 把 availability 政策翻译成 user-side 的态度:caps 还在,prompt 必须变狠。"
+            ],
+            "original": [
+              "LET'S RIP FABLE TOKENS FROM THE JACUZZI https://t.co/denvBof2Yp"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Dan Shipper 同一天的「LET'S RIP FABLE TOKENS FROM THE JACUZZI」——把 Fable 比作 hot tub 里泡着的 token 预算,要赶在 7-7 截止前把它 rip 出来用。这条把 availability 政策翻译成 user-side 的姿态:cap 还在,prompt 要变狠。"
+            ],
+            "original": [
+              "Dan Shipper 同一天:「我们去 jacuzzi 里把 FABLE 的 token 撕下来用!!」https://t.co/denvBof2Yp"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Fable 5 落地用例 / Fable 5 Use Cases That Actually Ship",
+      "desc": "Peter Yang 在 Fable 5 开放当天同步出一条 5-cases tutorial + 一条 vibe check + 一条 install explain-diff skill——把 Fable 从「回来了」翻成「下面是五个用法,这是 vibe,这是配套 skill」。",
+      "cards": [
+        {
+          "authorKey": "x:petergyang",
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者",
+          "sourceUrl": "https://x.com/petergyang/status/2072458983886205333",
+          "en": {
+            "rewrite": [
+              "Peter Yang 在 Fable 5 开放当天同步发一条 5-cases tutorial:find Fable-worthy work / life advice / ship-ready / plan big thing / refactor——把 Fable 从 flagship model 翻译成 five concrete workflows,每一条都对应一个 subscription 用户付费后能立刻跑出来的 outcome。"
+            ],
+            "original": [
+              "Claude Fable 5 is finally back, but you only have until July 7 to use it on your Claude subscription.\n\nI made a new tutorial walking through 5 use cases worth trying Fable on:\n\n→ Find Fable-worthy work\n→ Get life and business advice\n→ Make projects ship-ready\n→ Plan the next big thing\n→ Refactor your project or codebase\n\nAs usual, it's no BS, and I show you Fable's actual output.\n\n📌 Watch now: https://t.co/XElMEV3FwK"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 在 Fable 5 开放当天发 5 个用例的 tutorial:找 Fable-worthy work / 给生活和商业建议 / 把项目推到 ship-ready / 规划下一个大事 / refactor 代码库。把 flagship model 翻成 five concrete workflows,每一条都对应订阅用户付费后能立刻跑出来的产出。"
+            ],
+            "original": [
+              "Peter Yang:Claude Fable 5 终于回来了,7-7 前都能在 Claude 订阅上用。我做了一个 tutorial 走过 5 个值得用 Fable 的场景——找 Fable-worthy work / 给生活和商业建议 / 把项目推到 ship-ready / 规划下一件大事 / refactor 你的项目或代码库。和往常一样 no BS,我会给你看 Fable 真实的输出。📌 视频链接见原推。https://t.co/XElMEV3FwK"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者",
+          "sourceUrl": "https://x.com/petergyang/status/2072470191511113732",
+          "en": {
+            "rewrite": [
+              "Peter Yang 同一天的 vibe check:「It's still really ****ing good. This is a step function above any other model. Hope GPT 5.6 can match.」——四个 f-bomb 是 informal 的 quality stamp,把 Fable 5 在 subscription 用户群里的体感定位成「这是一档高过其他所有模型」。"
+            ],
+            "original": [
+              "Here's my Fable 5 vibe check:\n\nIt's still really ****ing good. \n\nThis is a step function above any other model. Hope GPT 5.6 can match. https://t.co/p9N7cG86QW"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 同一天的 vibe check:「It's still really ****ing good. This is a step function above any other model. Hope GPT 5.6 can match.」——四个 f-bomb 是非正式的 quality stamp,把 Fable 5 在订阅用户那边的体感直接钉成「比其他所有模型高一档」。"
+            ],
+            "original": [
+              "Peter Yang 同一天的 vibe check:「Fable 5 还是真的 ****ing 好。这是比其他所有模型高一档的 step function。希望 GPT 5.6 能跟上。」https://t.co/p9N7cG86QW"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者",
+          "sourceUrl": "https://x.com/petergyang/status/2072525669704384612",
+          "en": {
+            "rewrite": [
+              "Peter Yang 第三条(同一天):「As someone still trying to learn how to read code this is great! Installing the explain-diff skill asap」——把 explain-diff skill 装上;这条是配套 deliverable,从 tutorial 到 vibe check 到具体 skill install,三个动作把 Fable 5 的 adoption funnel 走完。"
+            ],
+            "original": [
+              "As someone still trying to learn how to read code this is great! Installing the explain-diff skill asap https://t.co/lChjp2D7kS"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 第三条(同一天):他自己承认「still trying to learn how to read code」,但立刻把 explain-diff skill 装上。tutorial → vibe check → skill install,Fable 5 的 adoption funnel 被他一个人跑完了。"
+            ],
+            "original": [
+              "Peter Yang:作为还在学怎么读代码的人,这东西太棒了——我等下就把 explain-diff skill 装上。https://t.co/lChjp2D7kS"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Vercel 把 agent deployment 立成 production unit / Vercel Codifies Agent Deploy",
+      "desc": "rauchg 同一天把 Vercel Fluid Active CPU 的 30s deployment + agent 用的 dry-run step 同时推出来——把 long-running agent 的 deployment surface 摆到和 agent runtime 同一个 production unit 里,再用一个 pre-deploy check 把 cost / risk 收掉。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO",
+          "sourceUrl": "https://x.com/rauchg/status/2072463293654942090",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch(Vercel CEO)同一天连发,第一条是 WordPress on Vercel Fluid Active CPU:从单一 Dockerfile.vercel + PlanetScale MySQL 到 30s 完成 docker build in cloud,「just one command: now vercel」——把 WordPress 这种十多年 legacy stack 翻成 Vercel Fluid 单元里的可 deploy 项目,deployment 时间压到 30s。"
+            ],
+            "original": [
+              "WordPress on @vercel Fluid with Active CPU from a single 𝙳𝚘𝚌𝚔𝚎𝚛𝚏𝚒𝚕𝚎.𝚟𝚎𝚛𝚌𝚎𝚕. MySQL on @planetscale. 30s deployments incl. \"𝚍𝚘𝚌𝚔𝚎𝚛 𝚋𝚞𝚒𝚕𝚍\" in the cloud. Just one command: 𝚗̶𝚘̶𝚠̶ 𝚟𝚎𝚛𝚌𝚎𝚕. https://t.co/q1X5ZOFVIx"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch(Vercel CEO)同一天第一条:WordPress 上 Vercel Fluid Active CPU,从单个 Dockerfile.vercel + PlanetScale MySQL,30s 在 cloud 里跑完 docker build。「just one command: now vercel」——把十多年的 legacy stack 翻成 Fluid 单元里一个可 deploy 的项目。"
+            ],
+            "original": [
+              "rauchg 同一天:WordPress 上 Vercel Fluid + Active CPU,从单个 Dockerfile.vercel 起,MySQL 用 PlanetScale。30s 在 cloud 里跑完 docker build。一个命令搞定:𝚗̶𝚘̶𝚠̶ 𝚟𝚎𝚛𝚌𝚎𝚕。https://t.co/q1X5ZOFVIx"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO",
+          "sourceUrl": "https://x.com/rauchg/status/2072398926175404250",
+          "en": {
+            "rewrite": [
+              "rauchg 同一天的 dry-run step for agentic deployments:agents 总会在 push 前自检(npm test / tsc --noEmit / next build 之类),Vercel 现在 shipping 一个 dry-run step 把 cost + risk 收掉——把 deployment 从「agent 跑完就推」变成「先 dry-run 再推」,long-running agent 的 cost surface 被 controlled。"
+            ],
+            "original": [
+              "Agents love to check their work before they push. \n\nYou probably see it in the form of 𝚗𝚘𝚍𝚎 --𝚌𝚑𝚎𝚌𝚔, 𝚝𝚜𝚌 --𝚗𝚘𝙴𝚖𝚒𝚝, 𝚗𝚎𝚡𝚝 𝚋𝚞𝚒𝚕𝚍, etc all over your agent sessions.\n\nWe're now shipping the dry-run step for agentic deployments, minimizing costs and risk. https://t.co/HpOXSROT3X"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "rauchg 同一天的 dry-run step for agentic deployments:agent 总会在 push 前自检(npm test / tsc --noEmit / next build),Vercel 现在 shipping 一个 dry-run step 把 cost + risk 收掉。deployment 从「agent 跑完就推」变成「先 dry-run 再推」,long-running agent 的 cost surface 被 controlled。"
+            ],
+            "original": [
+              "rauchg 同一天的 dry-run step for agentic deployments:agent 在 push 前总爱自检——你大概在 agent session 里到处看到 𝚗𝚘𝚍𝚎 --𝚌𝚑𝚎𝚌𝚔、𝚝𝚜𝚌 --𝚗𝚘𝙴𝚖𝚒𝚝、𝚗𝚎𝚡𝚝 𝚋𝚞𝚒𝚕𝚍 这些命令。Vercel 现在 ship 一个 dry-run step,把 cost 和 risk 都收掉。https://t.co/HpOXSROT3X"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "100x inference 的应用层逻辑 / Where 100x Inference Actually Comes From",
+      "desc": "Levie 把 Devin 的 agentic mapreduce 立成「为什么我们需要 100x more AI inference」的具体答案——swarms of agents + bounded shards + reduce + isolated sandbox verification,这套 pattern 在 code security 之外会被复制到 pharma / banking / 所有 unstructured data。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie/status/2072519377371459836",
+          "en": {
+            "rewrite": [
+              "Aaron Levie(Box CEO)用 Devin 的 agentic mapreduce 回答「为什么我们需要 100x more AI inference」:Devin 跨 repo 找相关 signal,fans out focused agents over bounded shards,reduce 之后到 isolated sandbox 做 verification——这种 pattern 在 code security 之外会被复制到 pharma / banking / 所有 unstructured data。"
+            ],
+            "original": [
+              "If you've ever wondered why we will need 100X more AI inference in the future, and what it's going to be driven by, this is another good example. \n\nDevin pushes forward an idea of agentic mapreduce, which means we'll now have swarms of agents that are processing large amounts of data (code) to handle tasks that humans never could have done before.\n\n\"Devin maps relevant signals across the repo, fans out focused agents over bounded shards, reduces their findings into one report, then verifies serious vulnerabilities in isolated sandboxes before marking them confirmed.\"\n\nIn this case it's code security, but there are tons of other use-cases in code and knowledge work. We see this at Box with customers that want to process and understand millions of documents for risk, insights, relationships, and more. This will play out in pharma, banking, and many other industries across all forms of unstructured data.\n\nAs an aside, these types of capabilities are generally only possible when you can deploy a variety of models (both the frontier and lower cost) because of the sheer amount of tokens that go into these use-cases. This is going to be a major value proposition for the applied AI layer."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie(Box CEO)用 Devin 的 agentic mapreduce 答「为什么我们要 100x more AI inference」:Devin 跨 repo 找 signal,fans out focused agents over bounded shards,reduce 到 isolated sandbox 做 verification。code security 是 first case,pharma / banking / 所有 unstructured data 都会被这套 pattern 复制。"
+            ],
+            "original": [
+              "Aaron Levie:如果你曾好奇「为什么未来我们要 100x more AI inference,这件事是被什么驱动的」——Devin 又给了一个具体答案。Devin 提出 agentic mapreduce 这个想法:会有 swarms of agents 在大量数据(代码)上跑,处理人以前根本做不到的任务。「Devin 在 repo 里 map 出相关 signal,把 focused agents fan out 到有界的 shard 上,把它们的 findings reduce 到一个 report,然后在 isolated sandbox 里 verify 严重漏洞再标 confirmed。」这一例是 code security,但 code 和 knowledge work 里有大量其他 use case。Box 这边看到的客户想处理和理解 millions of 文档,做 risk、insight、关系等。这一 pattern 会在 pharma、banking 和所有 unstructured data 上铺开。顺带一句,这类能力通常只在你能 deploy 一组模型(frontier 加 lower cost 都要)时才做得到,因为 token 量级巨大。这会是 applied AI layer 的一个主要价值主张。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Skill 是末端产物;Codex 换模型 / Skills as the End Product; Code Models as a User Knob",
+      "desc": "zarazhangrui 把 skill 的位置反过来了:你不是「先写一个 skill 再用它」,而是「最后才把它沉淀成 skill」——同时把 Codex 的 model swap 推到 GLM 这一侧,把 model choice 从 admin-only 翻成 user-side 的简单操作。",
+      "cards": [
+        {
+          "authorKey": "x:zarazhangrui",
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2072381929366987087",
+          "en": {
+            "rewrite": [
+              "Zhang Rui(Follow Builders 创始人)把 skill 的工作流位置反过来:「HOW TO BUILD A SKILL — You don't START with a skill. You END with a skill.」——skill 不是 workflow 的起点,是你跑完一整圈之后才凝出来的副产物;把「先写 skill 再用它」这套动作翻成「先跑出来再抽象成 skill」。"
+            ],
+            "original": [
+              "HOW TO BUILD A SKILL\nYou don't START with a skill. You END with a skill.\nBuilding the skill is the last step of your workflow, not the first step https://t.co/ngvvnml9uQ https://t.co/dqohk7MJwT"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zhang Rui(Follow Builders 创始人)把 skill 的位置反过来了:「HOW TO BUILD A SKILL — You don't START with a skill. You END with a skill.」skill 不是 workflow 的起点,是你跑完一圈才凝出来的副产物。「先写 skill 再用」翻成「先跑出来再抽象成 skill」。"
+            ],
+            "original": [
+              "Zhang Rui:「怎么写一个 SKILL —— 你不是从 skill 开始的。你 END 在 skill。写 skill 是 workflow 的最后一步,不是第一步。」"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2072391971721884073",
+          "en": {
+            "rewrite": [
+              "Zhang Rui 同一天的 PSA:「You can change Codex's model to GLM」——把 model swap 从 admin-only / fork-only 的隐式操作翻成 user 能用 settings 直接切的动作,Codex 在「model 是用户的旋钮」这一边立得更明显。"
+            ],
+            "original": [
+              "PSA: You can change Codex's model to GLM https://t.co/G3RQfWiS4j https://t.co/BeGZABjgTQ"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zhang Rui 同一天的 PSA:「You can change Codex's model to GLM」。model swap 从 admin-only / fork-only 的隐式操作,翻成用户能在 settings 里直接切的旋钮。Codex 在「model 是用户的旋钮」这一边立得更明显。"
+            ],
+            "original": [
+              "Zhang Rui:「PSA:你可以把 Codex 的 model 换成 GLM。」"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "资本与人才的双向虹吸 / Capital and Talent, Both Directions",
+      "desc": "Lime 在 $1B 债务 + substantial doubt 之后还 IPO 成功,micro-mobility 的 last-man-standing 模式;Nikunj 指出 OpenAI / Anthropic 的 talent vortex 把 established role 的人吸走;Garry Tan 把 Anthropic 把 UC Berkeley EECS 系主任招进来读成 mega get——同一周里 IPO 端 / 人才端 / 实验室端的信号是同一个方向。",
+      "cards": [
+        {
+          "authorKey": "x:mattturck",
+          "authorName": "Matt Turck",
+          "authorHandle": "@mattturck",
+          "authorTag": "First Mark Capital 合伙人 / MAD Podcast 主理人",
+          "sourceUrl": "https://x.com/mattturck/status/2072419592354529712",
+          "en": {
+            "rewrite": [
+              "Matt Turck(First Mark 合伙人)把 Lime 的 IPO 拆成四件:toxic loans 转换成 equity 让资产负债表干净、Uber 占 22% 是 backstop、连续 3 年 FCF positive 加近 30% YoY 增长、micro-mobility 大逃杀里的 last-man-standing——把 $1B 债务 + substantial doubt 的 Lime 翻成 financial engineering + 渠道 + 经营的三重 evidence。"
+            ],
+            "original": [
+              "Fascinated by Lime going public - in an age where AI gets all the attention, how does a scooter company with $1B in debt pull off a successful IPO literally after expressing \"substantial doubt\" that they might not even survive the year?\n\n* Impressive financial engineering - the IPO paid off the toxic loans and converted the rest to equity, so the slate is clean\n\n* Uber owns 22% of Lime and refers riders directly to Lime, so obviously a great backstop and partner\n\n* They've actually been FCF positive for 3 consecutive years with revenue growing nearly 30% YoY\n\n* Something about being the last man standing and surviging the micromobility bloodbath (RIP Bird). Never give up!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Matt Turck(First Mark 合伙人)把 Lime 的 IPO 拆成四件:toxic loans 换 equity 让资产负债表干净;Uber 占 22% 是 backstop;连续 3 年 FCF positive 加近 30% YoY 增长;micro-mobility 大逃杀里的 last-man-standing。把 $1B 债务 + substantial doubt 的 Lime 翻成 financial engineering + 渠道 + 经营的三重 evidence。"
+            ],
+            "original": [
+              "Matt Turck:Lime 这单 IPO 很值得看——在 AI 拿走所有注意力的年代,一家有 $1B 债务的 scooter 公司怎么在「substantial doubt 自己可能撑不过这一年」的表态之后还能成功 IPO?四个原因:financial engineering 漂亮(IPO 用 toxic loans 转 equity,资产负债表干净);Uber 占 22% 并直接给 Lime 引流,是 great backstop;连续 3 年 FCF positive,营收近 30% YoY 增长;micro-mobility 大逃杀里的 last-man-standing(RIP Bird)。永远别放弃!"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人",
+          "sourceUrl": "https://x.com/nikunj/status/2072344802570756121",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari(Afore Capital)指出 OpenAI / Anthropic 的 talent vortex:过去两个月有四个 personal friends 从 established role 跳到 labs——双重拉力是「最 consequential 的公司 + pre-IPO 流动性」。同时指出 Xavi 的反向观点:大多数 VC 不会赚到 life-changing money,有人主动 deflect 到 labs 也是因为这一点。"
+            ],
+            "original": [
+              "The talent vortex of @OpenAI and @AnthropicAI is only getting crazier.. in the last 2 months, four personal friends have left VERY established roles to join the labs. \n\nThe dual draw of building one of the most consequential companies plus it being pre-IPO and getting liquidity is just too hard to pass up. \n\nThis means having strong conviction and MASSIVE ambition if you choose to do it on your own.\n\nMy only counter to Xavi's position will be that most VCs actually won't make a lot of money.. at least life changing money. Some of them have actually deflected to the labs knowing this. Like any role the best ones will thrive and survive!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kothari(Afore Capital)指出 OpenAI / Anthropic 的 talent vortex:过去两个月有四个 personal friends 从 established role 跳到 labs。双重拉力是「最 consequential 的公司 + pre-IPO 流动性」。同时顶 Xavi:多数 VC 不会赚 life-changing money,有人主动 deflect 到 labs 就是因为知道这一点。"
+            ],
+            "original": [
+              "Nikunj Kothari:OpenAI 和 Anthropic 的 talent vortex 越来越夸张——过去两个月有四个 personal friends 从 VERY established role 跳到 labs。双重拉力是「做最 consequential 的公司 + pre-IPO 流动性」,这两个一起实在太难拒。这意味着如果你选择自己出来做,需要 strong conviction 加 MASSIVE ambition。我对 Xavi 的观点只有一个反驳:大多数 VC 不会赚到太多钱——至少 life-changing money 这种。有些 VC 知道这一点后直接 deflect 到 labs。任何 role 都一样,最 best 的人会 thrive + survive。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁",
+          "sourceUrl": "https://x.com/garrytan/status/2072331451270606933",
+          "en": {
+            "rewrite": [
+              "Garry Tan(YC 总裁):「Mega get, head of UC Berkeley EECS omg — Anthropic is on a tear」——把 Anthropic 把 Berkeley EECS 系主任招进来读成 mega get,既是对 lab recruiting muscle 的 stamp,也是这一周 talent vortex 的具体 case。"
+            ],
+            "original": [
+              "Mega get, head of UC Berkeley EECS omg\n\nAnthropic is on a tear https://t.co/6lTQhG7BIo"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan(YC 总裁):「Mega get, head of UC Berkeley EECS omg — Anthropic is on a tear」。把 Anthropic 把 Berkeley EECS 系主任招进来读成 mega get,既是对 lab recruiting muscle 的盖章,也是这一周 talent vortex 的具体 case。"
+            ],
+            "original": [
+              "Garry Tan:「mega get,UC Berkeley EECS 系主任 omyg——Anthropic 正在 tear。」https://t.co/6lTQhG7BIo"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "AI native 城市底色 / AI-Native City Texture",
+      "desc": "三个不同 city texture 在同一天被量到:swyx 把 AIE / World Models 大会的 Manning + Abshk 双 keynote 收成 AIEWF day;adityaag 把 SF 的 default-pessimism 读成 wall-street 移民的预期差;amasad 把 Replit app 通过 Whop 上架这件事立成「first customer / first dollar」的标准路径。",
+      "cards": [
+        {
+          "authorKey": "x:swyx",
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师",
+          "sourceUrl": "https://x.com/swyx/status/2072562702703046855",
+          "en": {
+            "rewrite": [
+              "Swyx(AI Engineer Summit 主办方):AIE 当天 Christopher Manning 和 Abshk 做了 double-length 双 keynote,主题是 sandboxing 和 world models,会场坐满 + 在线 audience 是现场的 1000x——把 AI Engineer Summit 立成 world model 的 anchor 会议。"
+            ],
+            "original": [
+              "for what it's worth, i only invite double-length track keynotes when I'm very sure that both speaker and content deserve it. Today, @chrmanning and @abshkbh did double duty at AIE and by all accounts* people loved the opportunity to go deeper on sandboxing and world models. Look at this insane room - and the online audience is going to be >1000x this!!\n\n*i unfortunately have to do show duties so rely on secondhand accounts"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx(AI Engineer Summit 主办):AIE 当天 Christopher Manning 和 Abshk 做了 double-length 双 keynote,主题是 sandboxing 和 world models。现场坐满 + 在线 audience 是现场的 1000x。AIEWF 把 AI Engineer Summit 立成 world model 的 anchor 会议。"
+            ],
+            "original": [
+              "Swyx(AI Engineer Summit 主办):说真的,我只在确定 speaker 和内容都值的时候才请 double-length track keynote。今天 @chrmanning 和 @abshkbh 在 AIE 做了 double duty,从现场反馈来看大家都爱 sandboxing 和 world models 这两个主题。看看这爆满的会场——而且 online audience 是现场的 1000x!!(我自己要 show duties,现场只能靠二手反馈)"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:adityaag",
+          "authorName": "Aditya Agarwal",
+          "authorHandle": "@adityaag",
+          "authorTag": "Dropbox Engineering VP / 前 Facebook 平台工程负责人",
+          "sourceUrl": "https://x.com/adityaag/status/2072449611550380526",
+          "en": {
+            "rewrite": [
+              "Aditya Agarwal(Dropbox Engineering VP):「Every once in a while, I meet a very very smart but default-pessimistic person in SF. They are often from the growthy/wall-street part of the world. — Why would you want to be in this city? We run on optimism.」——把 SF 的底色立成 optimism,默认悲观者是 wall-street 移民的预期差。"
+            ],
+            "original": [
+              "Every once in a while, I meet a very very smart but default-pessimistic person in SF. They are often from the growthy/wall-street part of the world.\n\nAnd my first thought is: \"Why would you want to be in this city? We run on optimism. Are you here to be a contrarian in your sadness?\""
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aditya Agarwal(Dropbox Engineering VP):「Every once in a while, I meet a very very smart but default-pessimistic person in SF. They are often from the growthy/wall-street part of the world. — Why would you want to be in this city? We run on optimism.」把 SF 的底色立成 optimism,默认悲观者被读成 wall-street 移民的预期差。"
+            ],
+            "original": [
+              "Aditya Agarwal:每隔一阵子,我在 SF 遇到一个非常聪明但默认悲观的人。他们通常是从 growthy / wall-street 那一侧来的。我的第一反应是:「你为什么想来这个城市?我们靠 optimism 跑。你来这里是想做 contrarian in your sadness 吗?」"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:amasad",
+          "authorName": "Amjad Masad",
+          "authorHandle": "@amasad",
+          "authorTag": "Replit CEO",
+          "sourceUrl": "https://x.com/amasad/status/2072385092824260748",
+          "en": {
+            "rewrite": [
+              "Amjad Masad(Replit CEO):building 已经被 AI 摆平之后,Replit 把精力放在把 entrepreneur 推到 first customer + first dollar;Whop 是现在 monetization 的最好场所,Replit app 现在可以直接在 Whop 上卖——把 distribution + monetization 这一层从 app store 翻成 creator-side commerce。"
+            ],
+            "original": [
+              "Now that building is easy, we've been increasingly focused on getting entrepreneurs to market, helping them reach their first customer and first dollar.\n\nWhop is one of the best places on the internet to monetize your creations — and now you can sell your Replit apps on there. https://t.co/lEGZGn51Wg"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Amjad Masad(Replit CEO):building 已经被 AI 摆平之后,Replit 把精力放在把 entrepreneur 推到 first customer + first dollar。Whop 是现在 monetize 的最好场所,Replit app 可以直接在 Whop 上卖。distribution + monetization 从 app store 翻成 creator-side commerce。"
+            ],
+            "original": [
+              "Amasad:既然 building 已经变容易了,我们越来越多地把精力放在把 entrepreneur 推到 market,帮他们 reach first customer 和 first dollar。Whop 是现在网上最适合 monetize creation 的地方之一——现在你可以在 Whop 上卖你的 Replit app。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "工具收编与现场 / Tool Consolidation and On-the-Ground",
+      "desc": "GoogleLabs 把 MusicFX 7-31 sunset,把所有学到的合到 FlowMusic;steipete 给 Steve Yegge 正名——他只是早;trq212 在 AI Engineer Summit 现场打卡;swyx 的另外两位 keynoter 把 sandboxing + world model 立成 AIEWF 的主线。",
+      "cards": [
+        {
+          "authorKey": "x:googlelabs",
+          "authorName": "Google Labs",
+          "authorHandle": "@GoogleLabs",
+          "authorTag": "Google AI 实验产品",
+          "sourceUrl": "https://x.com/GoogleLabs/status/2072417166952136789",
+          "en": {
+            "rewrite": [
+              "Google Labs:MusicFX 和 MusicFX DJ 会在 7-31 sunset,Google 把做这两个项目学到的合到 FlowMusic(原创音乐生成 / 分享 / remix 工具)——把两条 AI music 的早期产品线收编到 FlowMusic 一个 unit,工具 consolidation 的典型 case。"
+            ],
+            "original": [
+              "Every good chord progression needs a resolution. 🎹\n\nTo focus on building @GoogleFlowMusic - our tool for creating, sharing, and remixing original music - we will be saying a fond farewell to MusicFX and MusicFX DJ on July 31, 2026.\n\nThese early experiments pushed the boundaries of AI for real-time music creation, and we're taking everything we learned from them to provide a long-term home for musical projects.\n\nKeep jamming at https://t.co/3XMUc2pkzU 🎵"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Google Labs:MusicFX 和 MusicFX DJ 会在 7-31 sunset,Google 把做这两个项目学到的合到 FlowMusic(原创音乐生成 / 分享 / remix 工具)。把两条 AI music 的早期产品线收编到 FlowMusic 一个 unit,工具 consolidation 的典型 case。"
+            ],
+            "original": [
+              "Google Labs:每个好的和弦进行都需要一个 resolution 🎹。为了专心做 @GoogleFlowMusic——我们做原创音乐生成 / 分享 / remix 的工具——我们会在 7-31 跟 MusicFX 和 MusicFX DJ 说再见。这些早期实验把 AI 在实时音乐上的边界往前推了,我们会把学到的所有东西带到 FlowMusic,给 musical projects 一个 long-term home。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:steipete",
+          "authorName": "Peter Steinberger",
+          "authorHandle": "@steipete",
+          "authorTag": "OpenClaw 创始人",
+          "sourceUrl": "https://x.com/steipete/status/2072532278476148881",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger(OpenClaw 创始人):「Never thought I give @Steve_Yegge a shoutout. He was just early, like most visionaries. Now everyone is building factories.」——给 Steve Yegge 正名:他不是错过,他只是太早;今天 building factory 已经是主流,visionary 早年的判断被 industry 慢慢追上。"
+            ],
+            "original": [
+              "Never thought I give @Steve_Yegge a shoutout. He was just early, like most visionaries. Now everyone is building factories."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger(OpenClaw 创始人):「Never thought I give @Steve_Yegge a shoutout. He was just early, like most visionaries. Now everyone is building factories.」给 Steve Yegge 正名:他不是错过,他只是太早;今天 building factory 已经是主流,visionary 早年判断被 industry 慢慢追上。"
+            ],
+            "original": [
+              "Steinberger:从没想到我会给 @Steve_Yegge 喊话。他只是早——和大多数 visionary 一样。现在大家都在建 factory。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:trq212",
+          "authorName": "Tao Li",
+          "authorHandle": "@trq212",
+          "authorTag": "AI 研究员 / Follow Builders 维护者",
+          "sourceUrl": "https://x.com/trq212/status/2072360902964511171",
+          "en": {
+            "rewrite": [
+              "Tao Li(Follow Builders 维护者、AI 研究员)在 AI Engineer Summit 现场打卡「hello from AI engineer」——把 Follow Builders 维护者本人放在 AIEWF day 的第一线,既是社区出席的 stamp,也是接下来一周 Follow Builders 报道的现场坐标。"
+            ],
+            "original": [
+              "hello from AI engineer! https://t.co/J8sFn5pbyC"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Tao Li(Follow Builders 维护者、AI 研究员)在 AI Engineer Summit 现场打卡「hello from AI engineer」。把 Follow Builders 维护者本人放在 AIEWF day 的第一线,既是社区出席的盖章,也是接下来一周 Follow Builders 报道的现场坐标。"
+            ],
+            "original": [
+              "Tao Li:「hello from AI engineer!」——他在 AI Engineer Summit 现场给 Follow Builders 做的打卡。https://t.co/J8sFn5pbyC"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Every 把咨询团队的 AI workflow 立成 operating system / Every Codifies the Consulting Stack",
+      "desc": "AI & I by Every 这期把 Every 的咨询负责人 Natalia 请回来,讲她怎么用 Codex 把 email / admin 这些认知工作翻成「super alien tool 支持的 gardening」——knowledge work 从手捏植物翻成造生长条件。",
+      "cards": [
+        {
+          "authorKey": "podcast:ai-and-i-by-every",
+          "authorName": "AI & I by Every",
+          "authorHandle": null,
+          "authorTag": "AI 商业与产品深访",
+          "sourceUrl": "https://www.youtube.com/playlist?list=PLuMcoKK9mKgHtW_o9h5sGO2vXrffKHwJL",
+          "en": {
+            "rewrite": [
+              "Dan Shipper(Natalia 是 Every 的咨询线 head + Claudi 咨询 agent 的 manager)这期让她回来:她用 Codex 把 email / 行政这些 cognitive work 翻成「a super alien tool supports you」——knowledge work 从「亲手捏植物」翻成「给生长造条件」,即 gardening metaphor 的具体版。Every 的咨询线本身就是这一期的 case study。"
+            ],
+            "original": [
+              "Speaker 1 | 00:00 - 00:10\nYou go and teach executives and other people at big companies how to use AI. And so I think what you're doing is a good window into how great operators and executives are starting to use this stuff.\n\nSpeaker 2 | 00:10 - 00:16\nWhat Codex helped me do was basically create kind of like an operating system. My email knows what's going on\n\nSpeaker 1 | 00:16 - 00:16\nMhmm.\n\nSpeaker 2 | 00:16 - 00:27\nMore than I do. I'm just so bullish on all of the administrative tasks that will suddenly kind of like be taken care of because now we have this sort of like super alien tool that can support on those things.\n\nSpeaker 1 | 00:27 - 01:03\nKnowledge work now is turning into something like gardening, where when you're gardening, you're creating the conditions for the growth to happen, but you're not like making the plant with your hands. Every is the only subscription you need to stay at the edge of AI. If you care about being on top of the latest models and using the latest tools, you have to subscribe to Every to separate out the signal from the noise. Go to every. Tosubscribe today.\n\nSpeaker 1 | 01:03 - 01:05\nNatalia, welcome to the show.\n\nSpeaker 2 | 01:05 - 01:06\nThanks, Dan. Good to be back."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Dan Shipper 把 Every 的咨询负责人 Natalia 请回来。她讲自己用 Codex 把 email / 行政这些 cognitive work 翻成「a super alien tool supports you」——knowledge work 从「亲手捏植物」翻成「给生长造条件」。Every 的咨询线本身是这一期的 case study。"
+            ],
+            "original": [
+              "Dan Shipper(Natalia 是 Every 的咨询线 head + Claudi 咨询 agent 的 manager)这期让她回来:她用 Codex 把 email / 行政这些 cognitive work 翻成「a super alien tool supports you」——knowledge work 从「亲手捏植物」翻成「给生长造条件」。Every 的咨询线本身就是这一期的 case study。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
