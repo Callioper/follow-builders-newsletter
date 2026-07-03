@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 02 Jul 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 03 Jul 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-07-03 · Tag 全员日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-03-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-03-rerun.html</guid>
+      <pubDate>Fri, 03 Jul 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[7-3 这张 issue 的主轴是「Claude Tag 全员 + Fable 7-7 收窄」:Anthropic 同日把 Claude Tag 从 internal tool 翻成全员产品——Cat Wu 把 credits 摆出来(Enterprise $25k / Team $2.5k,用到 9-1)、把内部使用量讲明白(eng / product / data / sales / marketing 全用、内部版直接 land 65% 的 product PRs),Claude 官方把 Cat + Boris 那场对谈挂出来做对外公告,Boris 紧接着把 Artifacts 从内部 preview 推到 Pro / Max paid plan 默认——Tag + Code 这条产品同日收编。Fable 5 在订阅 plan 上的窗口同一天被三边回应:Tao Li 把「7-7 退出、capacity 允许再回归」的 lifecycle 讲明白,Peter Yang 出一条 5-cases tutorial 把 adoption funnel 跑完,Dan Shipper 把长跑 agent 的 narrative surface 缺口写实——「off 几个小时,2 段文字总结做了什么,we need better ways for AI to tell us stories」。Vercel 把两层 platform 同一天压:Rauch 把 AI Gateway Rules 推出来,模型退役在 routing 层解决、不需要 redeploy;private connectivity bindings 立成 1-LOC vercel.json 配置,跨服务私连从 K8s 那一套拽到 JSON。Levie 把 enterprise 端 AI 部署的真实成本写出来——不是 chatbot、是对齐到 underlying business processes,FDE 是这轮 tech 里最 critical 的 job 之一。Matt Turck 把 NVIDIA 的 Catanzaro 那场放出来,Nemotron 不是在追 frontier、是把 open model 立成 enterprise 真正愿意选的 infra 层;Zhang Rui 把 slop 的根翻掉——没有 substance、不是 style 差——再把 pedagogy 这条线用一个 grad 把 lecture deck 喂 AI 教得比 professor 好的 case 立成实测拐点。Texture 在四个方向被量到:Nikunj 用 14 年 SF 居民的资格对游客说一句,Steinberger 用 ATT 客服代表当画面——那个 rep 知道 OpenClaw 而且自己每天都在用,Aditya 带儿子看 USMNT、Sama 把 USA birthday week 的 World Cup 一句话叠起来。收尾:Thibault 把 GPT-5.6 Sol Ultra 之前的窗口讲出来——把 hardest prompts stash 起来;Nan Yu 一句话反讽 multi-agent 协作没有原生 system 是 industry 当前缺口;No Priors 把 Valar Atomics 创始人 Isaiah Taylor 请来,讲 nuclear 怎么 unlock energy abundance——War 250 当天发电、第一颗 AI chip 由 nuclear reactor 供电,Triso reactor 50 年来美国第一颗重启。下一代 model 之前、multi-agent system 的缺口、energy 的物理底层,这一轮 AI 的三个真正杠杆在同一期被一起量到。]]></description>
+      <category>Claude Tag 把 Code 推到全员 / Claude Tag Crosses Engineering, Fable 5 在 7-7 之前被三边同时回应 / Fable 5 Closes Its Window, Three Angles at Once, Vercel 把模型退役 / 跨服务 connectivity 同一天立成 platform 能力 / Vercel Codifies Two Platform Layers in One Day, Enterprise deploy 是 100x inference 的真正答案 / Enterprise Deploy Is Where the 100x Comes From, NVIDIA 把 Nemotron 立成 infra 层 / NVIDIA Casts Nemotron as the Infra Layer, AI slop 的根是没有 substance;教材被 AI 翻过来 / Substance Over Style; Pedagogy Flips, 城市底色与下周的前置 / City Texture and the Setup for Next Week, 收尾:下一代模型 + agent 协同 + 能源 / Closer — Next-Gen Models, Agent Coordination, Energy</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-07-02 · Fable 归日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-02-rerun.html</link>
