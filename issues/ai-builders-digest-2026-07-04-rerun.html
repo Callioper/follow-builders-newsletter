@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Builders Digest · 2026-07-04</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ed;
+    --accent: #c0392b;
+    --accent-light: #e8d5c4;
+    --border: #d4cdc0;
+    --muted: #7a7265;
+    --tag-bg: #e8e2d6;
+    --en-bg: #ffffff;
+    --cn-bg: #faf7f2;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  .masthead, .intro, .section-header, .feed, footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .masthead { padding-top: 48px; }
+  .masthead-rule { border: none; border-top: 3px solid var(--ink); margin: 0 0 12px; }
+  .masthead-inner { display: flex; justify-content: center; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; letter-spacing: -0.4px; }
+  .masthead-subtitle { margin-top: 8px; padding-bottom: 10px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  .edition-strip {
+    position: relative;
+    margin-top: 8px;
+    min-height: 46px;
+    padding: 10px 132px 12px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.34);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+
+  .edition-strip .edition-sep { margin: 0 8px; color: #b8ae9f; }
+  .edition-strip-text { display: block; }
+  .edition-return-link { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; padding: 6px 10px; border: 1px dashed rgba(192, 57, 43, 0.55); border-radius: 999px; color: var(--accent); text-decoration: none; font-size: 12px; line-height: 1; letter-spacing: 0.06em; background: rgba(255, 255, 255, 0.45); transition: background 160ms ease, border-color 160ms ease, transform 160ms ease; }
+  .edition-return-link:hover, .edition-return-link:focus-visible { background: rgba(255, 255, 255, 0.82); border-color: var(--accent); transform: translateY(-50%) translateX(-1px); }
+  .edition-return-link:focus-visible { outline: none; }
+  .intro { padding-top: 22px; }
+  .intro-inner { max-width: 920px; margin: 0 auto; padding: 0 0 0 18px; border-left: 3px solid #d9cdbc; }
+  .intro-kicker { margin: 0 0 8px; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .intro p { margin: 0; max-width: none; color: var(--muted); font-size: clamp(15px, 1.6vw, 16px); line-height: 1.9; text-wrap: pretty; font-family: 'Noto Serif SC', serif; overflow-wrap: anywhere; }
+
+  .section-header { margin-top: 40px; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; margin: 0 0 6px; }
+  .section-desc { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+
+  .feed { display: flex; flex-direction: column; gap: 20px; }
+  .card { background: var(--en-bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .card-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid #eee7dd; flex-wrap: wrap; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .avatar-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .avatar.is-fallback img { display: none; }
+  .avatar.is-fallback .avatar-fallback { display: flex; }
+
+  .author-info { flex: 1; min-width: 160px; }
+  .author-name { font-weight: 600; font-size: 15px; }
+  .author-name-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .author-handle { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+  .author-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; background: var(--tag-bg); color: var(--muted); padding: 4px 8px; border-radius: 999px; }
+  .author-tag.is-inline { padding: 3px 8px; }
+
+  .card-controls { margin-left: auto; display: inline-flex; gap: 8px; }
+  .view-toggle { border: 1px solid var(--border); background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 999px; font-size: 12px; line-height: 1; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; }
+  .view-toggle.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .card-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .lang-col { padding: 18px 20px 22px; }
+  .lang-col.cn { background: var(--cn-bg); border-right: 1px solid #f0ece4; font-family: 'Noto Serif SC', serif; }
+  .lang-col.en { background: var(--en-bg); }
+  .lang-label { margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+  .content-shell { position: relative; transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .content-variant { position: absolute; inset: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(4px); transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; will-change: opacity, transform; }
+  .content-variant.is-active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+  .content-variant p, .content-variant li { margin: 0 0 12px; font-size: 14px; }
+  .content-variant ol { margin: 0 0 12px 20px; padding: 0; }
+  .inline-code { display: inline-block; font-family: 'IBM Plex Mono', monospace; background: #f4efe7; padding: 3px 6px; border-radius: 6px; margin-bottom: 8px; }
+
+  .card-footer { padding: 12px 20px 16px; border-top: 1px solid #eee7dd; background: #fcfaf6; }
+  .card-footer a { color: var(--accent); text-decoration: none; font-size: 14px; }
+  footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 680px) {
+    .masthead-inner { align-items: center; }
+    .edition-strip { padding-right: 12px; padding-left: 12px; }
+    .edition-strip-text { padding-right: 0; }
+    .edition-return-link { position: static; transform: none; margin-top: 8px; font-size: 11px; }
+    .card-controls { margin-left: 0; }
+    .card-body { grid-template-columns: 1fr; }
+    .lang-col.cn { border-right: none; border-bottom: 1px solid #f0ece4; }
+    .edition-strip .edition-sep { margin: 0 5px; }
+    .intro-inner { padding-left: 14px; }
+    .intro p { line-height: 1.84; }
+  }
+</style>
+</head>
+<body data-publish-date="2026-07-04" data-issue-number="40" data-edition-name="双语精选版" data-view-label-rewrite="速读" data-view-label-original="原文" data-author-identities-path="/home/eclaw/.follow-builders/assets/author-identities.json" data-avatar-manifest-path="/home/eclaw/.follow-builders/assets/avatar-manifest.json">
+  <header class="masthead">
+    <hr class="masthead-rule">
+    <div class="masthead-inner">
+      <div class="masthead-title">AI Builders Digest</div>
+    </div>
+    <div class="masthead-subtitle">Bilingual edition · 双语对照版</div>
+    <div class="edition-strip">
+      <span class="edition-strip-text" id="edition-strip-text">第 40 期｜2026-07-04｜双语精选版｜14 条精选｜14 位作者｜5 个主题</span>
+      <a class="edition-return-link" href="../index.html">返回目录</a>
+    </div>
+  </header>
+
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="7-4 这一期的主轴是「Fable 5 + agent 工作流骨架 + Nemotron enterprise infra」:trq212 把 AIE talk 背后那篇 post 放出来——用 Fable 5 最重要的一步是先发现自己 prompt 之前的 unknown,HTML artifacts 立成可视化 workflow,swyx 同一天把基于这场 talk 的稿子 publish,geoffreylitt 那场对谈帮他 refine 出 quiz 这条线;Cat Wu 把 Claude Tag 的 setup friction 用 Claude Code + computer use 削掉,指向 docs 就能自动接 GitHub repo / data warehouse / Google Drive。Levie 把这一轮 AI 的真正战场写实——battle for context;Zhang Rui 把 tool 商品化的拐点钉在一句话上——人们越来越不愿意买 tool,愿意付的是 hiring expertise they don&#39;t have;Dan Shipper 把 token 用量按真实产品摊开——personal iOS 5M、prod bug backlog 20M、邮件 Slack text 长回 30M。Rauch 把 agentic self-improvement 立成 observability 的下一波——给 agent 内省过去 run、spot inefficiency、产出新 prompt 和 skill;Amasad 同一天把 Replit 的 video generation 立成可试,生成式视频拽到 IDE 里。Matt Turck 把和 NVIDIA Catanzaro 那场 81 分钟对谈放出来——Nemotron 不是追 frontier、是把 open model 立成 enterprise 真正愿意选的 infra layer;同一天 MAD Podcast 把这条播成完整版。Texture:Steinberger 把 80,000 条自己的 tweet 喂 Fable roast 自己;Nikunj 把 model release timing 的 pattern 写实——labs 选长周末前发;Garry Tan 把 specialist wait time 和 AI 拐点对齐;Nan Yu 一句话把训练数据 quality 等价于 field quality——不产好 training data 的 field 大概率本来就是 crap。发现自己的 unknown、context 的四件齐备、tool 商品化、agent 改自己、open model 进 enterprise,这一轮 AI 的真正杠杆在 7-4 一起被一起量到。">
+    <div class="intro-inner">
+      <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
+      <p class="intro-copy">7-4 这一期的主轴是「Fable 5 + agent 工作流骨架 + Nemotron enterprise infra」:trq212 把 AIE talk 背后那篇 post 放出来——用 Fable 5 最重要的一步是先发现自己 prompt 之前的 unknown,HTML artifacts 立成可视化 workflow,swyx 同一天把基于这场 talk 的稿子 publish,geoffreylitt 那场对谈帮他 refine 出 quiz 这条线;Cat Wu 把 Claude Tag 的 setup friction 用 Claude Code + computer use 削掉,指向 docs 就能自动接 GitHub repo / data warehouse / Google Drive。Levie 把这一轮 AI 的真正战场写实——battle for context;Zhang Rui 把 tool 商品化的拐点钉在一句话上——人们越来越不愿意买 tool,愿意付的是 hiring expertise they don&#39;t have;Dan Shipper 把 token 用量按真实产品摊开——personal iOS 5M、prod bug backlog 20M、邮件 Slack text 长回 30M。Rauch 把 agentic self-improvement 立成 observability 的下一波——给 agent 内省过去 run、spot inefficiency、产出新 prompt 和 skill;Amasad 同一天把 Replit 的 video generation 立成可试,生成式视频拽到 IDE 里。Matt Turck 把和 NVIDIA Catanzaro 那场 81 分钟对谈放出来——Nemotron 不是追 frontier、是把 open model 立成 enterprise 真正愿意选的 infra layer;同一天 MAD Podcast 把这条播成完整版。Texture:Steinberger 把 80,000 条自己的 tweet 喂 Fable roast 自己;Nikunj 把 model release timing 的 pattern 写实——labs 选长周末前发;Garry Tan 把 specialist wait time 和 AI 拐点对齐;Nan Yu 一句话把训练数据 quality 等价于 field quality——不产好 training data 的 field 大概率本来就是 crap。发现自己的 unknown、context 的四件齐备、tool 商品化、agent 改自己、open model 进 enterprise,这一轮 AI 的真正杠杆在 7-4 一起被一起量到。</p>
+    </div>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 01</div>
+    <h2 class="section-title">Fable 5 把「发现自己未知」立成 agent 工作流的核心 / Fable 5 Codifies the Discover-Your-Own-Unknowns Loop</h2>
+    <p class="section-desc">Thariq (trq212) 把他 AIE 演讲背后那篇关于 Fable 5 的 post 完整放出来——核心一句话:用 Fable 最重要的一步是先发现自己 prompt 之前的 unknown,然后才能 prompt 好它,配套有 HTML artifacts 找 unknown 的实操例子,S/O 给 geoffreylitt 那场 AIE 对谈帮他把这条线 refine 出来、加了 quiz。Swyx 把基于 trq212 AIE talk 的稿子 publish 出来——同一份 unknown-mapping,swyx 在 publishing 层把它立成可读内容。Cat Wu 把 Claude Tag 的 setup friction 削掉:用 Claude Code 加 computer use 指向 Tag 文档,agent 会自动接 GitHub repo / data warehouse / Google Drive,把 Tag 推到 enterprise 的那条链路直接短一档。三条线在 7-4 一起把「Fable 这条产品的工作流骨架」画实。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:trq212" data-author-name="Tao Li" data-author-tag="AI 研究员 / Follow Builders 维护者" data-author-handle="@trq212" data-author-avatar="../assets/avatars/x-trq212.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-trq212.jpg" alt="Tao Li avatar"><span class="avatar-fallback">TL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Tao Li</div>
+            <div class="author-tag is-inline">AI 研究员 / Follow Builders 维护者</div>
+          </div>
+          <div class="author-handle">@trq212</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thariq (trq212) 把他 AIE 演讲背后那篇 post 完整放出来——核心一句话:用 Fable 5 最重要的一步是先发现自己 prompt 之前的 unknown,然后才能 prompt 好它。配套的 HTML artifacts 例子立成可复用 pattern,直接把 unknown-finding 从口诀变成 workflow。</p>
+              <p>trq212 单独一条把 HTML artifacts 找 unknown 的 examples 链接给出来——examples 站在 https://t.co/eNS8g7P94x,把「看不见自己不知道什么」转成「看得见自己不知道什么」的可视化界面。</p>
+              <p>trq212 收尾 S/O 给 geoffreylitt:AIE 那场对谈帮他 refine 了 unknown 这条线,包括加了 quiz。Fable 这条产品的方法论不是 solo 出来,是对谈里长出来的。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>trq212:用 Fable 5 最重要的一步是先发现自己 prompt 之前的 unknown,然后才能 prompt 好它。完整方法在 https://t.co/CFUAjHoSI3。</p>
+              <p>trq212 单独一条:HTML artifacts 找 unknown 的 examples 站在 https://t.co/eNS8g7P94x。</p>
+              <p>trq212 收尾:这条是 AIE talk 的原稿之一,S/O 给 geoffreylitt 那场对谈帮他 refine、加了 quiz。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thariq (trq212) 把他 AIE 演讲背后那篇 post 完整放出来——核心一句话:用 Fable 5 最重要的一步是先发现自己 prompt 之前的 unknown,然后才能 prompt 好它。配套的 HTML artifacts 例子立成可复用 pattern,直接把 unknown-finding 这件事从口诀变成 workflow。</p>
+              <p>trq212 单独一条把 HTML artifacts 找 unknown 的 examples 链接给出来——examples 站 https://t.co/eNS8g7P94x,把「看不见自己不知道什么」这件事转成「看得见自己不知道什么」的可视化界面。</p>
+              <p>trq212 收尾一条 S/O 给 geoffreylitt:这次 AIE 对谈帮他 refine 了 unknown 这条线,包括加了 quiz——Fable 这条产品的方法论不是 solo 出来,是对谈里长出来的。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I&#39;ve found the most important part of working with Fable is discovering my own unknowns so I can prompt it better, heres how I do that. https://t.co/CFUAjHoSI3</p>
+              <p>You can see examples of HTML artifacts for finding unknowns here: https://t.co/eNS8g7P94x</p>
+              <p>this is one of the posts that my AIE talk was based on
+
+              s/o to @geoffreylitt for an incredible discussion at AIE that helped me refine some of this, including adding quizzes</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/trq212/status/2073101078145724589" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:swyx" data-author-name="Swyx" data-author-tag="AI 工程师" data-author-handle="@swyx" data-author-avatar="../assets/avatars/x-swyx.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-swyx.jpg" alt="Swyx avatar"><span class="avatar-fallback">S</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Swyx</div>
+            <div class="author-tag is-inline">AI 工程师</div>
+          </div>
+          <div class="author-handle">@swyx</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx 把基于 trq212 AIE talk 的稿子 publish 出来——tag 是 trq212 / simonw / catwu,三个人是这场 Fable 5 unknown-mapping discussion 的核心 voice。Swyx 这一手把「演讲底稿」转成「可读内容」,unknown 工作流的 secondary surface 立起来。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Swyx publish 了基于 trq212 AIE talk 的稿子,tag 是 trq212 / simonw / catwu。https://t.co/pHeHN6wHcM</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx 把基于 trq212 AIE talk 的稿子 publish 出来——tag 是 trq212 / simonw / catwu,三个人是这场 Fable 5 unknown-mapping discussion 的核心 voice。Swyx 这一手把「演讲底稿」转成「可读内容」,unknown 这条工作流的 secondary surface 立起来。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>@trq212 @simonw @_catwu published: https://t.co/pHeHN6wHcM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/swyx/status/2073202637135331796" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:_catwu" data-author-name="Cat Wu" data-author-tag="Anthropic 产品工程" data-author-handle="@_catwu" data-author-avatar="../assets/avatars/x-_catwu.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-_catwu.jpg" alt="Cat Wu avatar"><span class="avatar-fallback">CW</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Cat Wu</div>
+            <div class="author-tag is-inline">Anthropic 产品工程</div>
+          </div>
+          <div class="author-handle">@_catwu</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Cat Wu 把 Claude Tag 的 setup friction 削掉:用 Claude Code 加 computer use,指向 Tag 的 docs,agent 会自动接团队的 GitHub repo / data warehouse / Google Drive 和其他 data sources。这一手把 Tag 在 enterprise 落地那条链路从「文档 + 工程师手动」短到「agent 帮你接」。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Cat Wu:用 Claude Code 加 computer use 可以把 Claude Tag 装起来——指一下 docs,agent 会自动接 GitHub repo / data warehouse / Google Drive。https://t.co/TqjeYVMnDB</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Cat Wu 把 Claude Tag 的 setup friction 削掉:用 Claude Code 加 computer use,指向 Tag 的 docs,agent 会自动接团队 GitHub repo / data warehouse / Google Drive 和其他 data sources。这一手把 Tag 在 enterprise 落地那条链路从「文档 + 工程师手动」短一档到「agent 帮你接」。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Small tip: You can use Claude Code with computer use to set up Claude Tag. Just point it to the Claude Tag docs and it will connect your team&#39;s GitHub repo, data warehouse, google drive, and other data sources. https://t.co/TqjeYVMnDB</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/_catwu/status/2073149354412822738" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 02</div>
+    <h2 class="section-title">context 这场仗 / token 经济学 / 工具 vs 雇佣专业知识 / The Context Battle, Token Economics, Tool vs Expertise</h2>
+    <p class="section-desc">Levie 把这一轮 AI 的真正战场写出来——battle for context:agent 要 effective,关键是 right context + right tools + right time + right place,这四件事同时对齐才能 land outcome。Zhang Rui 一句话把 tool 商业的现实翻掉:人们越来越不愿意买 tool,自己用 coding agent 就能造;真正愿意付的是「hiring expertise they don&#39;t have」——把视角从「build tool」转到「provide expertise」。Dan Shipper 把 token 的实际成本摊开:一个 personal iOS app 端到端 5M tokens、清掉 prod bug backlog 20M、给每封未读邮件/Slack/text 写长回 30M——token 用量决定产品形态,不是反过来。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:levie" data-author-name="Aaron Levie" data-author-tag="Box CEO" data-author-handle="@levie" data-author-avatar="../assets/avatars/x-levie.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-levie.jpg" alt="Aaron Levie avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie</div>
+            <div class="author-tag is-inline">Box CEO</div>
+          </div>
+          <div class="author-handle">@levie</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie 把这一轮 AI 的真正战场写出来——battle for context。Agent 要 effective,关键是 right context、right tools、right time、right place 这四件事同时对齐。这一句把过去两年模型尺寸 / benchmark / agent framework 的讨论收拢到同一个根:context engineering 是这一仗的主战场。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Aaron Levie:这一轮 AI 的真正战场是 battle for context——agent 要 effective,关键是 right context + right tools + right time + right place 同时对齐。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie 把这一轮 AI 的真正战场写出来——battle for context。Agent 要 effective,关键是 right context、right tools、right time、right place 这四件事同时对齐。这一句把过去两年模型尺寸 / benchmark / agent framework 的讨论收拢到同一个根:context engineering 是这一仗的主战场。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The battle in AI is shaping up to be a battle for context.
+
+              Everything in AI is about making sure that agents are effective as possible. That effectiveness comes down to whether the agent has the right context, the right tools, the right time, and the right place to do the work. The biggest opportunity, and risk, will be around providing the right context at the right time.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/levie/status/2073138135014502777" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:zarazhangrui" data-author-name="Zhang Rui" data-author-tag="Follow Builders 创始人 / 策展人" data-author-handle="@zarazhangrui" data-author-avatar="../assets/avatars/x-zarazhangrui.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-zarazhangrui.jpg" alt="Zhang Rui avatar"><span class="avatar-fallback">ZR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Zhang Rui</div>
+            <div class="author-tag is-inline">Follow Builders 创始人 / 策展人</div>
+          </div>
+          <div class="author-handle">@zarazhangrui</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zhang Rui 把工具商业的现实翻掉:人们越来越不愿意买 tool——如果它就是 tool,自己用 coding agent 就能造;真正愿意付费的是「hiring expertise they don&#39;t have」。这条把 SaaS 这十年的「订阅一个 tool」逻辑重新立成「订阅一种能力」,tool 商品化的拐点被一句话钉住。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Zhang Rui:人们越来越不愿意买 tool——自己用 coding agent 就能造;真正愿意付的是「hiring expertise they don&#39;t have」或「doing something novel on top」。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zhang Rui 把工具商业的现实翻掉:人们越来越不愿意买 tool——如果它就是 tool,自己用 coding agent 就能造;真正愿意付费的是「hiring expertise they don&#39;t have」。这条把 SaaS 这十年的「订阅一个 tool」逻辑重新立成「订阅一种能力」,tool 商品化的拐点被一句话钉住。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>People are getting less willing to buy tools. If it&#39;s just a tool, they figure they can build it themselves with coding agents
+
+              What they&#39;ll pay for is the feeling of hiring expertise they don&#39;t have
+
+              and/or doing something novel on top</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/zarazhangrui/status/2073295900395606401" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:danshipper" data-author-name="Dan Shipper" data-author-tag="Every 联合创始人 / AI 写作工具链" data-author-handle="@danshipper" data-author-avatar="../assets/avatars/x-danshipper.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-danshipper.jpg" alt="Dan Shipper avatar"><span class="avatar-fallback">DS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Dan Shipper</div>
+            <div class="author-tag is-inline">Every 联合创始人 / AI 写作工具链</div>
+          </div>
+          <div class="author-handle">@danshipper</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Dan Shipper 把 token 用量按实际产品摊开:一个 personal iOS app 端到端 5M tokens;清掉 prod bug backlog 20M;给每封未读邮件 / Slack / text 写一段详细回复 30M。token 用量不是抽象的 infrastructure 数字,直接对应产品形态——3 个真实场景 3 个量级,design 一个 AI 产品先决定 token 量级,再决定 UX。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Dan Shipper:personal iOS app 端到端 5M tokens、清 prod bug backlog 20M、给每封未读邮件 / Slack / text 写长回 30M。AI 产品本质上是 token pump,先决定 pump 什么再 design。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Dan Shipper 把 token 用量按实际产品摊开:一个 personal iOS app 端到端 5M tokens;清掉 prod bug backlog 20M;给每封未读邮件 / Slack / text 写一段详细回复 30M。token 用量不是抽象的 infrastructure 数字,直接对应产品形态——3 个真实场景 3 个量级,design 一个 AI 产品先决定 token 量级,再决定 UX。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>A new personal iOS app working end to end: 5M tokens
+              Your whole prod bug backlog cleared: 20M tokens
+              Unnecessarily detailed responses to every single unread email, Slack, and text message: 30M tokens
+
+              This is how I think about AI products - they are fundamentally token pumps and you have to decide what to pump</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/danshipper/status/2073076447992746379" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 03</div>
+    <h2 class="section-title">Rauch 把 agent observability 立成 self-improvement 的入口;Replit 把 video gen 推到 0-config / Agent Self-Improvement Loop; Zero-Config Video</h2>
+    <p class="section-desc">Rauch 把 agentic self-improvement 这条产品哲学讲明白——给 agent 内省过去 run 的能力,spot 掉 inefficiency、error、redundant tool calls,然后产出新的 prompt 和 skill。这是 agent observability 不是 telemetry 的真正差异:telemetry 看指标,observability 让 agent 改自己。Amasad 同一天把 Replit 的 video generation 立成 0-config:在 Replit 里直接试 video gen,把生成式视频这条能力从大厂 studio 拽到 IDE 里。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:rauchg" data-author-name="Guillermo Rauch" data-author-tag="Vercel CEO" data-author-handle="@rauchg" data-author-avatar="../assets/avatars/x-rauchg.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-rauchg.jpg" alt="Guillermo Rauch avatar"><span class="avatar-fallback">GR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Guillermo Rauch</div>
+            <div class="author-tag is-inline">Vercel CEO</div>
+          </div>
+          <div class="author-handle">@rauchg</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Rauch 把 agentic self-improvement 这条产品哲学讲明白:给 agent 内省过去 run 的能力,spot 掉 inefficiency、error、redundant tool calls,然后产出新的 prompt 和 skill。这一手把 observability 从「看指标」拉成「让 agent 改自己」——self-improvement loop 是 agent observability 的下一个商品形态。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Rauch:agentic self-improvement——给 agent 内省过去 run、spot inefficiency / error / redundant tool call、产出新 prompt 和 skill。这是 agent observability 下一波的核心。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Rauch 把 agentic self-improvement 这条产品哲学讲明白:给 agent 内省过去 run 的能力,spot 掉 inefficiency、error、redundant tool calls,然后产出新的 prompt 和 skill。这一手把 observability 从「看指标」拉成「让 agent 改自己」——self-improvement loop 是 agent observability 的下一个商品形态。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Agentic self-improvement.
+
+              Give your agent the ability to introspect its past runs, spot inefficiencies, errors, redundant tool calls, and produce new prompts and skills.
+
+              That&#39;s why agent observability is going to be huge.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/rauchg/status/2073132174958841887" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:amasad" data-author-name="Amjad Masad" data-author-tag="Replit CEO" data-author-handle="@amasad" data-author-avatar="../assets/avatars/x-amasad.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-amasad.jpg" alt="Amjad Masad avatar"><span class="avatar-fallback">AM</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Amjad Masad</div>
+            <div class="author-tag is-inline">Replit CEO</div>
+          </div>
+          <div class="author-handle">@amasad</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Amasad 把 Replit 的 video generation 立成可试:在 Replit 里直接跑 video gen,把生成式视频从专业 studio / 大厂 API 拽到 IDE 里。和 Rauch 同一天的「agent 改自己」一起,7-4 这条产品线是「agent / 生成式能力 / agent 的 agent」三件事一起被推出来。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Amasad:在 Replit 里直接试 video generation。https://t.co/QCD8pmQEPy</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Amasad 把 Replit 的 video generation 立成可试:在 Replit 里直接跑 video gen,把生成式视频这条能力从专业 studio / 大厂 API 拽到 IDE 里。和 Rauch 同一天的「agent 改自己」一起,7-4 这条产品线是「agent / 生成式能力 / agent 的 agent」这三件事同时被推出来。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Try video generation on Replit https://t.co/QCD8pmQEPy</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/amasad/status/2073003971287863717" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 04</div>
+    <h2 class="section-title">NVIDIA 把 Nemotron 立成 enterprise 真正愿意选的 open infra / NVIDIA Casts Nemotron as the Enterprise Infra Layer</h2>
+    <p class="section-desc">Matt Turck 把和 NVIDIA 的 Bryan Catanzaro 那场对谈放出来,主线是一个 chip company 为什么要养几百个研究员做 AI model、再免费送出去:不是追 frontier,是把 Nemotron 立成 enterprise 真正愿意选的 open infra 层。同一天 MAD Podcast 把这条播成 81 分钟完整版——从 2008「GPU 上跑 ML」的 crazy bet 到 Hybrid Mamba-Transformer、multi-token prediction、multi-teacher distillation,把 Nemotron 站在「open weights 收编 + enterprise infra 选择」这两条线交叉点上的位置钉死。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:mattturck" data-author-name="Matt Turck" data-author-tag="First Mark Capital 合伙人 / MAD Podcast 主理人" data-author-handle="@mattturck" data-author-avatar="../assets/avatars/x-mattturck.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-mattturck.jpg" alt="Matt Turck avatar"><span class="avatar-fallback">MT</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Matt Turck</div>
+            <div class="author-tag is-inline">First Mark Capital 合伙人 / MAD Podcast 主理人</div>
+          </div>
+          <div class="author-handle">@mattturck</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Matt Turck 把和 NVIDIA 的 Bryan Catanzaro 那场对谈放出来——chip company 为什么要养几百个研究员做 AI model、再免费送?从 Nemotron Nano / Super / Ultra 三个 tier,到 2008「GPU 上跑 ML」的 crazy bet,到 Hybrid Mamba-Transformer、multi-token prediction、multi-teacher distillation。NVIDIA 不是在追 model frontier,是在把 open model 立成 enterprise 真正愿意选的 infra layer。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Matt Turck 把和 NVIDIA Bryan Catanzaro 那场对谈放出来:从 Nemotron Nano / Super / Ultra 三 tier,到 2008「GPU 上跑 ML」crazy bet,到 Hybrid Mamba-Transformer / multi-token prediction / multi-teacher distillation。NVIDIA 不是追 frontier,是把 open model 立成 enterprise 真正愿意选的 infra 层。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Matt Turck 把和 NVIDIA 的 Bryan Catanzaro 那场对谈放出来——一个 chip company 为什么要养几百个研究员做 AI model、再把它们免费送出去?从 Nemotron Nano / Super / Ultra 三个 tier,到 2008「GPU 上跑 ML」的 crazy bet,到 Hybrid Mamba-Transformer、multi-token prediction、multi-teacher distillation。NVIDIA 不是在追 model frontier,是在把 open model 立成 enterprise 真正愿意选的 infra layer。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Inside Nemotron and NVIDIA&#39;s AI lab: my conversation with Bryan Catanzaro (@ctnzr).
+
+              @nvidia is a chip company. So why does it put hundreds of researchers on building AI models - and then give them away for free? We go deep into the Nemotron models, what it takes to build a top AI lab, and the future of frontier AI.
+
+              01:33 - Is open source AI catching the frontier?
+              05:29 - Do closed labs blocking distillation slow open source down?
+              07:42 - Is the US falling behind China?
+              10:30 - Why companies actually choose open models
+              12:39 - A &quot;crazy&quot; 2008 bet: machine learning on GPUs
+              15:33 - Working with Andrew Ng and Dario Amodei at Baidu
+              17:41 - Coming back to NVIDIA: DLSS and the birth of Megatron
+              21:55 - The real reason NVIDIA builds its own models
+              24:28 - Is Moore&#39;s Law really dead?
+              33:37 - The Nemotron family: Nano, Super, Ultra
+              35:09 - Built for agents: why NVIDIA bets on speed
+              36:02 - How you train a 550B model in 4 bits
+              39:25 - Hybrid Mamba-Transformer, explained simply
+              42:31 - Mixture of experts, and why NVIDIA built NVL72 around it
+              47:26 - Why a 1-million-token context window matters
+              49:26 - Multi-token prediction: how the model predicts 5 tokens at once
+              52:47 - Multi-teacher distillation: teaching one model from many
+              58:01 - Where reinforcement learning goes next
+              01:00:16 - Inside NVIDIA&#39;s research org: &quot;the mission is the boss&quot;
+              01:04:03 - How NVIDIA decides who gets the GPUs
+              01:10:53 - Why NVIDIA still feels entrepreneurial after 33 years
+              01:12:58 - Why Bryan doesn&#39;t believe in the singularity
+              01:17:50 - The AI backlash
+              01:19:18 - The controversial case: open AI is safer than closed</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/mattturck/status/2072723410975629364" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="podcast:mad-podcast" data-author-name="The MAD Podcast" data-author-tag="Matt Turck 主理的 AI 与数据播客" data-author-handle="" data-author-avatar="../assets/avatars/podcast-mad-podcast.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/podcast-mad-podcast.jpg" alt="The MAD Podcast avatar"><span class="avatar-fallback">TM</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">The MAD Podcast</div>
+            <div class="author-tag is-inline">Matt Turck 主理的 AI 与数据播客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>MAD Podcast 同一天把这场对谈播成 81 分钟完整版——Catanzaro 从「如果 accept 跑到极限是事实,那拿更多 intelligence 的方式是更 efficient」开始,把 Nemotron 立在「we have to be more thoughtful about how we use what we have」。这一手把 chip company → research org → open model → enterprise infra 这条链拉成一条线,enterprise 选 open model 的真正理由不是 license、是为 agent 优化的 speed + Hybrid Mamba-Transformer 的 cost-per-token 优势。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>MAD Podcast:Catanzaro 从「accept 跑到极限是事实,那拿更多 intelligence 的方式是更 efficient」开讲,把 Nemotron 立在「we have to be more thoughtful about how we use what we have」。enterprise 选 open model 不是 license 问题,是 agent 优化的 speed + Hybrid Mamba-Transformer 的 cost-per-token 优势。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>MAD Podcast 同一天把这场对谈播成 81 分钟完整版——Catanzaro 从「如果我们要 accept 跑到极限是事实,那拿更多 intelligence 的方式是更 efficient」开始,把 Nemotron 立在「we have to be more thoughtful about how we use what we have」。这一手把 chip company → research org → open model → enterprise infra 这条链拉成一条线,enterprise 选 open model 的真正理由不是 license、是为 agent 优化的 speed + Hybrid Mamba-Transformer 的 cost-per-token 优势。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Speaker 1 | 00:00 - 00:21: If you accept as the truth that we&#39;re gonna be running at the limit, then what that means is that the way to get more intelligence is to be more efficient. We can&#39;t get more intelligence by applying more force if we&#39;re already at the limit. We have to be more thoughtful about how we use what we have. We build tools. We build external organs that help us solve problems.
+
+              Speaker 1 | 00:21 - 00:30: You know, we we have an external stomach. We call it kitchen. Now we&#39;re creating an external brain. What is the implications of an external brain? Pretty profound.
+
+              Speaker 1 | 00:30 - 00:31: Nobody actually really knows.
+
+              Speaker 2 | 00:32 - 00:48: Hi. I&#39;m Matt Turk. Welcome back to the mad podcast. Open source AI is having yet another moment with powerful new models arriving seemingly every week. On the other side, we keep hearing about the frontier scaling story running into headwinds and the labs. So today we are thrilled to welcome Bryan Catanzaro, VP of Applied Deep Learning Research at NVIDIA.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.youtube.com/watch?v=Oojrfdl42LI" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 05</div>
+    <h2 class="section-title">7-4 周末底色:模型、医疗、城市、训练数据 / Weekend Texture: Models, Care, City, Training Data</h2>
+    <p class="section-desc">Steinberger 把 80,000 条他自己的 tweet 喂 Fable 让它 roast 自己——long-weekend 的 Fable 5 用法样本立起来。Nikunj 把两个 surface 同一天叠在一起:Fable 5 在 7-4 长周末前发,和 Opus 4.5 在 Thanksgiving 前发一样,labs 选长周末发模型的 pattern 是有意为之;同日抛一个问题给 OpenClaw / Hermes 的 daily user——hosting 在哪里。Garry Tan 把 AI 医疗的 timing 写实:specialist 等候时间在涨,AI 这一波正好能把 care 的 quality 拉 100x。Nan Yu 一句话把训练数据的 quality 和 field 的 quality 等价:如果一个 field 不产出好 training data,那这个 field 大概率本来就是 crap——这一句把 AI evaluation 的根翻到行业 evaluation。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:steipete" data-author-name="Peter Steinberger" data-author-tag="OpenClaw 创始人" data-author-handle="@steipete" data-author-avatar="../assets/avatars/x-steipete.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-steipete.jpg" alt="Peter Steinberger avatar"><span class="avatar-fallback">PS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Steinberger</div>
+            <div class="author-tag is-inline">OpenClaw 创始人</div>
+          </div>
+          <div class="author-handle">@steipete</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Steinberger 把 80,000 条他自己的 tweet 喂给 Fable 让它 roast 自己——long-weekend 的 Fable 5 用法样本立起来。同一天的「codex sucks at design」那条是同一个作者:把 imagegen 接进 codex 让它「重新想象并实现」这个 design,把 codex 从写 code 推到 design 复刻。这一手把 Fable 和 imagegen-codegen 两条产品线同一天给到 long-weekend demo 用例。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Steinberger:把 80,000 条自己的 tweet 喂 Fable 让它 roast 自己——long-weekend 的 Fable 5 用法样本立起来。https://t.co/l3I8CzqpcU</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Steinberger 把 80,000 条他自己的 tweet 喂给 Fable 让它 roast 自己——long-weekend 的 Fable 5 用法样本立起来。同一天的「codex sucks at design」那条是同一个作者:把 imagegen 接进 codex 让它「重新想象并实现」这个 design,把 codex 从写 code 推到 design 复刻。这一手把 Fable 和 imagegen-codegen 两条产品线同一天给到 long-weekend demo 用例。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I fed Fable 80.000 of my tweets so it could roast me even more. 💀 https://t.co/l3I8CzqpcU</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/steipete/status/2073295890857758810" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:nikunj" data-author-name="Nikunj Kothari" data-author-tag="Afore Capital 合伙人" data-author-handle="@nikunj" data-author-avatar="../assets/avatars/x-nikunj.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-nikunj.jpg" alt="Nikunj Kothari avatar"><span class="avatar-fallback">NK</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Nikunj Kothari</div>
+            <div class="author-tag is-inline">Afore Capital 合伙人</div>
+          </div>
+          <div class="author-handle">@nikunj</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj 把 model release timing 的 pattern 写实:labs 选长周末前发模型——Opus 4.5 在 Thanksgiving 前,Fable 5 在 July 4 前——给 masses time to tinker、play、find edges。release timing 不是 calendar 巧合,是产品策略:让社区在「没有其他事」那段窗口把模型推到位。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Nikunj:labs 选长周末前发模型——Opus 4.5 在 Thanksgiving 前、Fable 5 在 July 4 前——给 masses time to tinker、play、find edges。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj 把 model release timing 的 pattern 写实:labs 选长周末前发模型——Opus 4.5 在 Thanksgiving 前,Fable 5 在 July 4 前——给 masses time to tinker、play、find edges。release timing 不是 calendar 巧合,是产品策略:让社区在「没有其他事」的那段窗口把模型推到位。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I think the labs secretly release models when there are long weekends coming up..
+
+              Opus 4.5 right before Thanksgiving.
+
+              Fable 5 now right before July of 4th.
+
+              Giving the masses time to tinker, play, and find edges</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/nikunj/status/2073071325644816440" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:garrytan" data-author-name="Garry Tan" data-author-tag="Y Combinator 总裁" data-author-handle="@garrytan" data-author-avatar="../assets/avatars/x-garrytan.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-garrytan.jpg" alt="Garry Tan avatar"><span class="avatar-fallback">GT</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Garry Tan</div>
+            <div class="author-tag is-inline">Y Combinator 总裁</div>
+          </div>
+          <div class="author-handle">@garrytan</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Garry Tan 把 AI 医疗的 timing 写实:specialist 等候时间在涨,AI 这一波正好能把 care 的 quality 拉 100x——「not a moment too soon for patients everywhere」。这一句把 specialist wait time 这条硬数据和 AI 这波拐点对齐,enterprise 端 AI 的 high-value vertical 之一是 health care。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Garry Tan:specialist 等候时间在涨,AI 这一波正好能把 care 的 quality 拉 100x——not a moment too soon for patients everywhere。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Garry Tan 把 AI 医疗的 timing 写实:specialist 等候时间在涨,AI 这一波正好能把 care 的 quality 拉 100x——「not a moment too soon for patients everywhere」。这一句把 specialist wait time 这条硬数据和 AI 这波拐点对齐,enterprise 端 AI 的 high-value vertical 之一是 health care。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Wait time for specialists is going up at a moment AI is about to change it all
+
+              I have a feeling AI will bring the quality of care up 100x and not a moment too soon for patients everywhere</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/garrytan/status/2073053799791710301" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:thenanyu" data-author-name="Nan Yu" data-author-tag="AI 创业者 / 投资人" data-author-handle="@thenanyu" data-author-avatar="../assets/avatars/x-thenanyu.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-thenanyu.jpg" alt="Nan Yu avatar"><span class="avatar-fallback">NY</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Nan Yu</div>
+            <div class="author-tag is-inline">AI 创业者 / 投资人</div>
+          </div>
+          <div class="author-handle">@thenanyu</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nan Yu 一句话把训练数据的 quality 和 field 的 quality 等价:如果一个 field 不产出好 training data,那这个 field 大概率本来就是 crap。这一句把 AI evaluation 的根翻到行业 evaluation——你没办法 eval 自己的模型比自己 field 上限更聪明。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Nan Yu:如果一个 field 不产出好 training data,那这个 field 大概率本来就是 crap。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nan Yu 一句话把训练数据的 quality 和 field 的 quality 等价:如果一个 field 不产出好 training data,那这个 field 大概率本来就是 crap。这一句把 AI evaluation 的根翻到行业 evaluation——你没办法 eval 自己的模型比自己 field 上限更聪明。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Love the observation: if your field doesn&#39;t produce good training data it was probably full of crap to begin with</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/thenanyu/status/2073070255031615877" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <footer data-source-note="Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-04 source feeds.">Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-04 source feeds.</footer>
+
+  <script>
+    function getTemplateAuthorSources() {
+      const sources = window.AI_BUILDERS_TEMPLATE_SOURCES || {};
+      return { identities: sources.identities || {}, avatars: sources.avatars || {} };
+    }
+
+    function getAuthorInitials(name) {
+      return (name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(function(part) { return part[0]; }).join('').toUpperCase();
+    }
+
+    function hydrateTemplateCopy() {
+      const intro = document.querySelector('.intro');
+      if (intro) {
+        const kicker = intro.querySelector('.intro-kicker');
+        const copy = intro.querySelector('.intro-copy');
+        if (kicker) kicker.textContent = intro.dataset.kicker || '';
+        if (copy) copy.textContent = intro.dataset.text || '';
+      }
+
+      const footer = document.querySelector('footer');
+      if (footer) footer.textContent = footer.dataset.sourceNote || '';
+
+      const rewriteLabel = document.body.dataset.viewLabelRewrite || '速读';
+      const originalLabel = document.body.dataset.viewLabelOriginal || '原文';
+      document.querySelectorAll('.view-toggle').forEach(function(button) {
+        if (button.dataset.viewTarget === 'rewrite') button.textContent = rewriteLabel;
+        if (button.dataset.viewTarget === 'original') button.textContent = originalLabel;
+      });
+    }
+
+    function hydrateAuthorMeta() {
+      const sources = getTemplateAuthorSources();
+      document.querySelectorAll('.card').forEach(function(card) {
+        const authorKey = card.dataset.authorKey || '';
+        const identity = sources.identities[authorKey] || {};
+        const avatarEntry = sources.avatars[authorKey] || {};
+
+        const name = identity.name || card.dataset.authorName || '';
+        const rawHandle = identity.handle || card.dataset.authorHandle || '';
+        const handle = rawHandle && rawHandle.startsWith('@') ? rawHandle : (rawHandle ? '@' + rawHandle : '');
+        const tag = identity.label || card.dataset.authorTag || '';
+        const avatar = avatarEntry.fileUrl || avatarEntry.localPath || card.dataset.authorAvatar || '';
+
+        const nameNode = card.querySelector('.author-name');
+        const tagNode = card.querySelector('.author-tag');
+        const handleNode = card.querySelector('.author-handle');
+        const avatarNode = card.querySelector('.avatar');
+        const avatarImg = card.querySelector('.avatar img');
+        const avatarFallback = card.querySelector('.avatar-fallback');
+
+        if (nameNode) nameNode.textContent = name;
+        if (tagNode) tagNode.textContent = tag;
+        if (handleNode) handleNode.textContent = handle;
+        if (avatarImg) {
+          avatarImg.src = avatar;
+          avatarImg.alt = name ? name + ' avatar' : 'Author avatar';
+        }
+        if (avatarNode) avatarNode.classList.toggle('is-fallback', !avatar);
+        if (avatarFallback) avatarFallback.textContent = getAuthorInitials(name);
+      });
+    }
+
+    function updateEditionStrip() {
+      const publishDate = document.body.dataset.publishDate;
+      const editionName = document.body.dataset.editionName || '双语精选版';
+      const editionStrip = document.getElementById('edition-strip-text');
+      if (!publishDate || !editionStrip) return;
+
+      const issueNumber = document.body.dataset.issueNumber || '';
+      if (!issueNumber) return;
+
+      const selectedCount = document.querySelectorAll('.card').length;
+      const authorCount = new Set([].slice.call(document.querySelectorAll('.author-handle')).map(function(node) { return node.textContent.trim(); }).filter(Boolean)).size;
+      const themeCount = document.querySelectorAll('.section-header').length;
+      const parts = ['第 ' + issueNumber + ' 期', publishDate, editionName, selectedCount + ' 条精选', authorCount + ' 位作者', themeCount + ' 个主题'];
+      editionStrip.innerHTML = parts.map(function(part) { return '<span class="edition-item">' + part + '</span>'; }).join('<span class="edition-sep">|</span>');
+    }
+
+    function measureVariantHeight(variant) {
+      const prevPosition = variant.style.position;
+      const prevInset = variant.style.inset;
+      const prevVisibility = variant.style.visibility;
+      const prevPointerEvents = variant.style.pointerEvents;
+      const prevOpacity = variant.style.opacity;
+      const prevTransform = variant.style.transform;
+      const prevTransition = variant.style.transition;
+      const prevOverflowY = variant.style.overflowY;
+      const prevDisplay = variant.style.display;
+
+      variant.style.position = 'relative';
+      variant.style.inset = 'auto';
+      variant.style.visibility = 'hidden';
+      variant.style.pointerEvents = 'none';
+      variant.style.opacity = '1';
+      variant.style.transform = 'none';
+      variant.style.transition = 'none';
+      variant.style.overflowY = 'visible';
+      variant.style.display = 'block';
+
+      const height = variant.scrollHeight;
+
+      variant.style.position = prevPosition;
+      variant.style.inset = prevInset;
+      variant.style.visibility = prevVisibility;
+      variant.style.pointerEvents = prevPointerEvents;
+      variant.style.opacity = prevOpacity;
+      variant.style.transform = prevTransform;
+      variant.style.transition = prevTransition;
+      variant.style.overflowY = prevOverflowY;
+      variant.style.display = prevDisplay;
+
+      return Math.ceil(height);
+    }
+
+    function getTargetHeight(shell, target) {
+      const variant = shell.querySelector('.content-variant[data-view="' + target + '"]');
+      return measureVariantHeight(variant);
+    }
+
+    function syncShellHeights() {
+      document.querySelectorAll('.content-shell').forEach(function(shell) {
+        const active = shell.querySelector('.content-variant.is-active');
+        const target = active ? active.dataset.view : 'rewrite';
+        shell.style.height = getTargetHeight(shell, target) + 'px';
+      });
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', function() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(syncShellHeights, 120);
+    });
+
+    document.querySelectorAll('.card').forEach(function(card) {
+      const buttons = card.querySelectorAll('.view-toggle');
+      const shells = card.querySelectorAll('.content-shell');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const target = button.dataset.viewTarget;
+          if (button.classList.contains('is-active')) return;
+
+          buttons.forEach(function(btn) {
+            btn.classList.toggle('is-active', btn === button);
+          });
+
+          shells.forEach(function(shell) {
+            const current = shell.querySelector('.content-variant.is-active');
+            const next = shell.querySelector('.content-variant[data-view="' + target + '"]');
+            if (!current || !next || current === next) return;
+
+            shell.style.height = shell.offsetHeight + 'px';
+            requestAnimationFrame(function() {
+              current.classList.remove('is-active');
+              next.classList.add('is-active');
+              shell.style.height = getTargetHeight(shell, target) + 'px';
+            });
+          });
+        });
+      });
+    });
+
+    hydrateTemplateCopy();
+    hydrateAuthorMeta();
+    updateEditionStrip();
+    syncShellHeights();
+  </script>
+</body>
+</html>

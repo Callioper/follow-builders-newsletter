@@ -1,0 +1,381 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-07-04",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "7-4 这一期的主轴是「Fable 5 + agent 工作流骨架 + Nemotron enterprise infra」:trq212 把 AIE talk 背后那篇 post 放出来——用 Fable 5 最重要的一步是先发现自己 prompt 之前的 unknown,HTML artifacts 立成可视化 workflow,swyx 同一天把基于这场 talk 的稿子 publish,geoffreylitt 那场对谈帮他 refine 出 quiz 这条线;Cat Wu 把 Claude Tag 的 setup friction 用 Claude Code + computer use 削掉,指向 docs 就能自动接 GitHub repo / data warehouse / Google Drive。Levie 把这一轮 AI 的真正战场写实——battle for context;Zhang Rui 把 tool 商品化的拐点钉在一句话上——人们越来越不愿意买 tool,愿意付的是 hiring expertise they don't have;Dan Shipper 把 token 用量按真实产品摊开——personal iOS 5M、prod bug backlog 20M、邮件 Slack text 长回 30M。Rauch 把 agentic self-improvement 立成 observability 的下一波——给 agent 内省过去 run、spot inefficiency、产出新 prompt 和 skill;Amasad 同一天把 Replit 的 video generation 立成可试,生成式视频拽到 IDE 里。Matt Turck 把和 NVIDIA Catanzaro 那场 81 分钟对谈放出来——Nemotron 不是追 frontier、是把 open model 立成 enterprise 真正愿意选的 infra layer;同一天 MAD Podcast 把这条播成完整版。Texture:Steinberger 把 80,000 条自己的 tweet 喂 Fable roast 自己;Nikunj 把 model release timing 的 pattern 写实——labs 选长周末前发;Garry Tan 把 specialist wait time 和 AI 拐点对齐;Nan Yu 一句话把训练数据 quality 等价于 field quality——不产好 training data 的 field 大概率本来就是 crap。发现自己的 unknown、context 的四件齐备、tool 商品化、agent 改自己、open model 进 enterprise,这一轮 AI 的真正杠杆在 7-4 一起被一起量到。"
+  },
+  "archive": {
+    "title": "未知画图日",
+    "desc": "7-4 Follow Builders 的主轴是「Fable 5 把 unknown-finding 立成 agent 工作流核心 + Nemotron enterprise infra」:trq212 把 AIE talk 背后那篇 discover-your-own-unknowns post 完整放出来,Swyx 同日 publish 基于它的稿子,Cat Wu 用 Claude Code + computer use 削掉 Claude Tag 的 setup friction。Levie 把 battle for context 钉住;Zhang Rui 把 tool 商品化翻到「hiring expertise」;Dan Shipper 把 token 用量按真实产品摊开。Rauch 把 agentic self-improvement 立成 observability 的下一波;Amasad 把 video gen 拽到 Replit 里。Matt Turck 把 NVIDIA Catanzaro 那场对谈放出来,Nemotron 立成 enterprise 真正愿意选的 open infra 层;MAD Podcast 同日把这条播成完整版。Texture:Steinberger 把 80K tweet 喂 Fable roast 自己;Nikunj 把 labs 长周末前发模型的 pattern 写实;Garry Tan 把 specialist wait time 和 AI 拐点对齐;Nan Yu 一句话把 training data quality 等价于 field quality——不产好 training data 的 field 大概率本来就是 crap。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-04 source feeds.",
+  "sections": [
+    {
+      "title": "Fable 5 把「发现自己未知」立成 agent 工作流的核心 / Fable 5 Codifies the Discover-Your-Own-Unknowns Loop",
+      "desc": "Thariq (trq212) 把他 AIE 演讲背后那篇关于 Fable 5 的 post 完整放出来——核心一句话:用 Fable 最重要的一步是先发现自己 prompt 之前的 unknown,然后才能 prompt 好它,配套有 HTML artifacts 找 unknown 的实操例子,S/O 给 geoffreylitt 那场 AIE 对谈帮他把这条线 refine 出来、加了 quiz。Swyx 把基于 trq212 AIE talk 的稿子 publish 出来——同一份 unknown-mapping,swyx 在 publishing 层把它立成可读内容。Cat Wu 把 Claude Tag 的 setup friction 削掉:用 Claude Code 加 computer use 指向 Tag 文档,agent 会自动接 GitHub repo / data warehouse / Google Drive,把 Tag 推到 enterprise 的那条链路直接短一档。三条线在 7-4 一起把「Fable 这条产品的工作流骨架」画实。",
+      "cards": [
+        {
+          "authorKey": "x:trq212",
+          "authorName": "Tao Li",
+          "authorHandle": "@trq212",
+          "authorTag": "AI 研究员 / Follow Builders 维护者",
+          "sourceUrl": "https://x.com/trq212/status/2073101078145724589",
+          "en": {
+            "rewrite": [
+              "Thariq (trq212) 把他 AIE 演讲背后那篇 post 完整放出来——核心一句话:用 Fable 5 最重要的一步是先发现自己 prompt 之前的 unknown,然后才能 prompt 好它。配套的 HTML artifacts 例子立成可复用 pattern,直接把 unknown-finding 这件事从口诀变成 workflow。",
+              "trq212 单独一条把 HTML artifacts 找 unknown 的 examples 链接给出来——examples 站 https://t.co/eNS8g7P94x,把「看不见自己不知道什么」这件事转成「看得见自己不知道什么」的可视化界面。",
+              "trq212 收尾一条 S/O 给 geoffreylitt:这次 AIE 对谈帮他 refine 了 unknown 这条线,包括加了 quiz——Fable 这条产品的方法论不是 solo 出来,是对谈里长出来的。"
+            ],
+            "original": [
+              "I've found the most important part of working with Fable is discovering my own unknowns so I can prompt it better, heres how I do that. https://t.co/CFUAjHoSI3",
+              "You can see examples of HTML artifacts for finding unknowns here: https://t.co/eNS8g7P94x",
+              "this is one of the posts that my AIE talk was based on\n\ns/o to @geoffreylitt for an incredible discussion at AIE that helped me refine some of this, including adding quizzes"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thariq (trq212) 把他 AIE 演讲背后那篇 post 完整放出来——核心一句话:用 Fable 5 最重要的一步是先发现自己 prompt 之前的 unknown,然后才能 prompt 好它。配套的 HTML artifacts 例子立成可复用 pattern,直接把 unknown-finding 从口诀变成 workflow。",
+              "trq212 单独一条把 HTML artifacts 找 unknown 的 examples 链接给出来——examples 站在 https://t.co/eNS8g7P94x,把「看不见自己不知道什么」转成「看得见自己不知道什么」的可视化界面。",
+              "trq212 收尾 S/O 给 geoffreylitt:AIE 那场对谈帮他 refine 了 unknown 这条线,包括加了 quiz。Fable 这条产品的方法论不是 solo 出来,是对谈里长出来的。"
+            ],
+            "original": [
+              "trq212:用 Fable 5 最重要的一步是先发现自己 prompt 之前的 unknown,然后才能 prompt 好它。完整方法在 https://t.co/CFUAjHoSI3。",
+              "trq212 单独一条:HTML artifacts 找 unknown 的 examples 站在 https://t.co/eNS8g7P94x。",
+              "trq212 收尾:这条是 AIE talk 的原稿之一,S/O 给 geoffreylitt 那场对谈帮他 refine、加了 quiz。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:swyx",
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师",
+          "sourceUrl": "https://x.com/swyx/status/2073202637135331796",
+          "en": {
+            "rewrite": [
+              "Swyx 把基于 trq212 AIE talk 的稿子 publish 出来——tag 是 trq212 / simonw / catwu,三个人是这场 Fable 5 unknown-mapping discussion 的核心 voice。Swyx 这一手把「演讲底稿」转成「可读内容」,unknown 这条工作流的 secondary surface 立起来。"
+            ],
+            "original": [
+              "@trq212 @simonw @_catwu published: https://t.co/pHeHN6wHcM"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx 把基于 trq212 AIE talk 的稿子 publish 出来——tag 是 trq212 / simonw / catwu,三个人是这场 Fable 5 unknown-mapping discussion 的核心 voice。Swyx 这一手把「演讲底稿」转成「可读内容」,unknown 工作流的 secondary surface 立起来。"
+            ],
+            "original": [
+              "Swyx publish 了基于 trq212 AIE talk 的稿子,tag 是 trq212 / simonw / catwu。https://t.co/pHeHN6wHcM"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:_catwu",
+          "authorName": "Cat Wu",
+          "authorHandle": "@_catwu",
+          "authorTag": "Anthropic 产品工程",
+          "sourceUrl": "https://x.com/_catwu/status/2073149354412822738",
+          "en": {
+            "rewrite": [
+              "Cat Wu 把 Claude Tag 的 setup friction 削掉:用 Claude Code 加 computer use,指向 Tag 的 docs,agent 会自动接团队 GitHub repo / data warehouse / Google Drive 和其他 data sources。这一手把 Tag 在 enterprise 落地那条链路从「文档 + 工程师手动」短一档到「agent 帮你接」。"
+            ],
+            "original": [
+              "Small tip: You can use Claude Code with computer use to set up Claude Tag. Just point it to the Claude Tag docs and it will connect your team's GitHub repo, data warehouse, google drive, and other data sources. https://t.co/TqjeYVMnDB"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Cat Wu 把 Claude Tag 的 setup friction 削掉:用 Claude Code 加 computer use,指向 Tag 的 docs,agent 会自动接团队的 GitHub repo / data warehouse / Google Drive 和其他 data sources。这一手把 Tag 在 enterprise 落地那条链路从「文档 + 工程师手动」短到「agent 帮你接」。"
+            ],
+            "original": [
+              "Cat Wu:用 Claude Code 加 computer use 可以把 Claude Tag 装起来——指一下 docs,agent 会自动接 GitHub repo / data warehouse / Google Drive。https://t.co/TqjeYVMnDB"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "context 这场仗 / token 经济学 / 工具 vs 雇佣专业知识 / The Context Battle, Token Economics, Tool vs Expertise",
+      "desc": "Levie 把这一轮 AI 的真正战场写出来——battle for context:agent 要 effective,关键是 right context + right tools + right time + right place,这四件事同时对齐才能 land outcome。Zhang Rui 一句话把 tool 商业的现实翻掉:人们越来越不愿意买 tool,自己用 coding agent 就能造;真正愿意付的是「hiring expertise they don't have」——把视角从「build tool」转到「provide expertise」。Dan Shipper 把 token 的实际成本摊开:一个 personal iOS app 端到端 5M tokens、清掉 prod bug backlog 20M、给每封未读邮件/Slack/text 写长回 30M——token 用量决定产品形态,不是反过来。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie/status/2073138135014502777",
+          "en": {
+            "rewrite": [
+              "Aaron Levie 把这一轮 AI 的真正战场写出来——battle for context。Agent 要 effective,关键是 right context、right tools、right time、right place 这四件事同时对齐。这一句把过去两年模型尺寸 / benchmark / agent framework 的讨论收拢到同一个根:context engineering 是这一仗的主战场。"
+            ],
+            "original": [
+              "The battle in AI is shaping up to be a battle for context.\n\nEverything in AI is about making sure that agents are effective as possible. That effectiveness comes down to whether the agent has the right context, the right tools, the right time, and the right place to do the work. The biggest opportunity, and risk, will be around providing the right context at the right time."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 把这一轮 AI 的真正战场写出来——battle for context。Agent 要 effective,关键是 right context、right tools、right time、right place 这四件事同时对齐。这一句把过去两年模型尺寸 / benchmark / agent framework 的讨论收拢到同一个根:context engineering 是这一仗的主战场。"
+            ],
+            "original": [
+              "Aaron Levie:这一轮 AI 的真正战场是 battle for context——agent 要 effective,关键是 right context + right tools + right time + right place 同时对齐。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2073295900395606401",
+          "en": {
+            "rewrite": [
+              "Zhang Rui 把工具商业的现实翻掉:人们越来越不愿意买 tool——如果它就是 tool,自己用 coding agent 就能造;真正愿意付费的是「hiring expertise they don't have」。这条把 SaaS 这十年的「订阅一个 tool」逻辑重新立成「订阅一种能力」,tool 商品化的拐点被一句话钉住。"
+            ],
+            "original": [
+              "People are getting less willing to buy tools. If it's just a tool, they figure they can build it themselves with coding agents\n\nWhat they'll pay for is the feeling of hiring expertise they don't have\n\nand/or doing something novel on top"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zhang Rui 把工具商业的现实翻掉:人们越来越不愿意买 tool——如果它就是 tool,自己用 coding agent 就能造;真正愿意付费的是「hiring expertise they don't have」。这条把 SaaS 这十年的「订阅一个 tool」逻辑重新立成「订阅一种能力」,tool 商品化的拐点被一句话钉住。"
+            ],
+            "original": [
+              "Zhang Rui:人们越来越不愿意买 tool——自己用 coding agent 就能造;真正愿意付的是「hiring expertise they don't have」或「doing something novel on top」。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "authorName": "Dan Shipper",
+          "authorHandle": "@danshipper",
+          "authorTag": "Every 联合创始人 / AI 写作工具链",
+          "sourceUrl": "https://x.com/danshipper/status/2073076447992746379",
+          "en": {
+            "rewrite": [
+              "Dan Shipper 把 token 用量按实际产品摊开:一个 personal iOS app 端到端 5M tokens;清掉 prod bug backlog 20M;给每封未读邮件 / Slack / text 写一段详细回复 30M。token 用量不是抽象的 infrastructure 数字,直接对应产品形态——3 个真实场景 3 个量级,design 一个 AI 产品先决定 token 量级,再决定 UX。"
+            ],
+            "original": [
+              "A new personal iOS app working end to end: 5M tokens\nYour whole prod bug backlog cleared: 20M tokens\nUnnecessarily detailed responses to every single unread email, Slack, and text message: 30M tokens\n\nThis is how I think about AI products - they are fundamentally token pumps and you have to decide what to pump"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Dan Shipper 把 token 用量按实际产品摊开:一个 personal iOS app 端到端 5M tokens;清掉 prod bug backlog 20M;给每封未读邮件 / Slack / text 写一段详细回复 30M。token 用量不是抽象的 infrastructure 数字,直接对应产品形态——3 个真实场景 3 个量级,design 一个 AI 产品先决定 token 量级,再决定 UX。"
+            ],
+            "original": [
+              "Dan Shipper:personal iOS app 端到端 5M tokens、清 prod bug backlog 20M、给每封未读邮件 / Slack / text 写长回 30M。AI 产品本质上是 token pump,先决定 pump 什么再 design。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Rauch 把 agent observability 立成 self-improvement 的入口;Replit 把 video gen 推到 0-config / Agent Self-Improvement Loop; Zero-Config Video",
+      "desc": "Rauch 把 agentic self-improvement 这条产品哲学讲明白——给 agent 内省过去 run 的能力,spot 掉 inefficiency、error、redundant tool calls,然后产出新的 prompt 和 skill。这是 agent observability 不是 telemetry 的真正差异:telemetry 看指标,observability 让 agent 改自己。Amasad 同一天把 Replit 的 video generation 立成 0-config:在 Replit 里直接试 video gen,把生成式视频这条能力从大厂 studio 拽到 IDE 里。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO",
+          "sourceUrl": "https://x.com/rauchg/status/2073132174958841887",
+          "en": {
+            "rewrite": [
+              "Rauch 把 agentic self-improvement 这条产品哲学讲明白:给 agent 内省过去 run 的能力,spot 掉 inefficiency、error、redundant tool calls,然后产出新的 prompt 和 skill。这一手把 observability 从「看指标」拉成「让 agent 改自己」——self-improvement loop 是 agent observability 的下一个商品形态。"
+            ],
+            "original": [
+              "Agentic self-improvement.\n\nGive your agent the ability to introspect its past runs, spot inefficiencies, errors, redundant tool calls, and produce new prompts and skills.\n\nThat's why agent observability is going to be huge."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Rauch 把 agentic self-improvement 这条产品哲学讲明白:给 agent 内省过去 run 的能力,spot 掉 inefficiency、error、redundant tool calls,然后产出新的 prompt 和 skill。这一手把 observability 从「看指标」拉成「让 agent 改自己」——self-improvement loop 是 agent observability 的下一个商品形态。"
+            ],
+            "original": [
+              "Rauch:agentic self-improvement——给 agent 内省过去 run、spot inefficiency / error / redundant tool call、产出新 prompt 和 skill。这是 agent observability 下一波的核心。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:amasad",
+          "authorName": "Amjad Masad",
+          "authorHandle": "@amasad",
+          "authorTag": "Replit CEO",
+          "sourceUrl": "https://x.com/amasad/status/2073003971287863717",
+          "en": {
+            "rewrite": [
+              "Amasad 把 Replit 的 video generation 立成可试:在 Replit 里直接跑 video gen,把生成式视频这条能力从专业 studio / 大厂 API 拽到 IDE 里。和 Rauch 同一天的「agent 改自己」一起,7-4 这条产品线是「agent / 生成式能力 / agent 的 agent」这三件事同时被推出来。"
+            ],
+            "original": [
+              "Try video generation on Replit https://t.co/QCD8pmQEPy"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Amasad 把 Replit 的 video generation 立成可试:在 Replit 里直接跑 video gen,把生成式视频从专业 studio / 大厂 API 拽到 IDE 里。和 Rauch 同一天的「agent 改自己」一起,7-4 这条产品线是「agent / 生成式能力 / agent 的 agent」三件事一起被推出来。"
+            ],
+            "original": [
+              "Amasad:在 Replit 里直接试 video generation。https://t.co/QCD8pmQEPy"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "NVIDIA 把 Nemotron 立成 enterprise 真正愿意选的 open infra / NVIDIA Casts Nemotron as the Enterprise Infra Layer",
+      "desc": "Matt Turck 把和 NVIDIA 的 Bryan Catanzaro 那场对谈放出来,主线是一个 chip company 为什么要养几百个研究员做 AI model、再免费送出去:不是追 frontier,是把 Nemotron 立成 enterprise 真正愿意选的 open infra 层。同一天 MAD Podcast 把这条播成 81 分钟完整版——从 2008「GPU 上跑 ML」的 crazy bet 到 Hybrid Mamba-Transformer、multi-token prediction、multi-teacher distillation,把 Nemotron 站在「open weights 收编 + enterprise infra 选择」这两条线交叉点上的位置钉死。",
+      "cards": [
+        {
+          "authorKey": "x:mattturck",
+          "authorName": "Matt Turck",
+          "authorHandle": "@mattturck",
+          "authorTag": "First Mark Capital 合伙人 / MAD Podcast 主理人",
+          "sourceUrl": "https://x.com/mattturck/status/2072723410975629364",
+          "en": {
+            "rewrite": [
+              "Matt Turck 把和 NVIDIA 的 Bryan Catanzaro 那场对谈放出来——一个 chip company 为什么要养几百个研究员做 AI model、再把它们免费送出去?从 Nemotron Nano / Super / Ultra 三个 tier,到 2008「GPU 上跑 ML」的 crazy bet,到 Hybrid Mamba-Transformer、multi-token prediction、multi-teacher distillation。NVIDIA 不是在追 model frontier,是在把 open model 立成 enterprise 真正愿意选的 infra layer。"
+            ],
+            "original": [
+              "Inside Nemotron and NVIDIA's AI lab: my conversation with Bryan Catanzaro (@ctnzr).\n\n@nvidia is a chip company. So why does it put hundreds of researchers on building AI models - and then give them away for free? We go deep into the Nemotron models, what it takes to build a top AI lab, and the future of frontier AI.\n\n01:33 - Is open source AI catching the frontier?\n05:29 - Do closed labs blocking distillation slow open source down?\n07:42 - Is the US falling behind China?\n10:30 - Why companies actually choose open models\n12:39 - A \"crazy\" 2008 bet: machine learning on GPUs\n15:33 - Working with Andrew Ng and Dario Amodei at Baidu\n17:41 - Coming back to NVIDIA: DLSS and the birth of Megatron\n21:55 - The real reason NVIDIA builds its own models\n24:28 - Is Moore's Law really dead?\n33:37 - The Nemotron family: Nano, Super, Ultra\n35:09 - Built for agents: why NVIDIA bets on speed\n36:02 - How you train a 550B model in 4 bits\n39:25 - Hybrid Mamba-Transformer, explained simply\n42:31 - Mixture of experts, and why NVIDIA built NVL72 around it\n47:26 - Why a 1-million-token context window matters\n49:26 - Multi-token prediction: how the model predicts 5 tokens at once\n52:47 - Multi-teacher distillation: teaching one model from many\n58:01 - Where reinforcement learning goes next\n01:00:16 - Inside NVIDIA's research org: \"the mission is the boss\"\n01:04:03 - How NVIDIA decides who gets the GPUs\n01:10:53 - Why NVIDIA still feels entrepreneurial after 33 years\n01:12:58 - Why Bryan doesn't believe in the singularity\n01:17:50 - The AI backlash\n01:19:18 - The controversial case: open AI is safer than closed"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Matt Turck 把和 NVIDIA 的 Bryan Catanzaro 那场对谈放出来——chip company 为什么要养几百个研究员做 AI model、再免费送?从 Nemotron Nano / Super / Ultra 三个 tier,到 2008「GPU 上跑 ML」的 crazy bet,到 Hybrid Mamba-Transformer、multi-token prediction、multi-teacher distillation。NVIDIA 不是在追 model frontier,是在把 open model 立成 enterprise 真正愿意选的 infra layer。"
+            ],
+            "original": [
+              "Matt Turck 把和 NVIDIA Bryan Catanzaro 那场对谈放出来:从 Nemotron Nano / Super / Ultra 三 tier,到 2008「GPU 上跑 ML」crazy bet,到 Hybrid Mamba-Transformer / multi-token prediction / multi-teacher distillation。NVIDIA 不是追 frontier,是把 open model 立成 enterprise 真正愿意选的 infra 层。"
+            ]
+          }
+        },
+        {
+          "authorKey": "podcast:mad-podcast",
+          "authorName": "The MAD Podcast",
+          "authorHandle": null,
+          "authorTag": "Matt Turck 主理的 AI 与数据播客",
+          "sourceUrl": "https://www.youtube.com/watch?v=Oojrfdl42LI",
+          "en": {
+            "rewrite": [
+              "MAD Podcast 同一天把这场对谈播成 81 分钟完整版——Catanzaro 从「如果我们要 accept 跑到极限是事实,那拿更多 intelligence 的方式是更 efficient」开始,把 Nemotron 立在「we have to be more thoughtful about how we use what we have」。这一手把 chip company → research org → open model → enterprise infra 这条链拉成一条线,enterprise 选 open model 的真正理由不是 license、是为 agent 优化的 speed + Hybrid Mamba-Transformer 的 cost-per-token 优势。"
+            ],
+            "original": [
+              "Speaker 1 | 00:00 - 00:21: If you accept as the truth that we're gonna be running at the limit, then what that means is that the way to get more intelligence is to be more efficient. We can't get more intelligence by applying more force if we're already at the limit. We have to be more thoughtful about how we use what we have. We build tools. We build external organs that help us solve problems.\n\nSpeaker 1 | 00:21 - 00:30: You know, we we have an external stomach. We call it kitchen. Now we're creating an external brain. What is the implications of an external brain? Pretty profound.\n\nSpeaker 1 | 00:30 - 00:31: Nobody actually really knows.\n\nSpeaker 2 | 00:32 - 00:48: Hi. I'm Matt Turk. Welcome back to the mad podcast. Open source AI is having yet another moment with powerful new models arriving seemingly every week. On the other side, we keep hearing about the frontier scaling story running into headwinds and the labs. So today we are thrilled to welcome Bryan Catanzaro, VP of Applied Deep Learning Research at NVIDIA."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "MAD Podcast 同一天把这场对谈播成 81 分钟完整版——Catanzaro 从「如果 accept 跑到极限是事实,那拿更多 intelligence 的方式是更 efficient」开始,把 Nemotron 立在「we have to be more thoughtful about how we use what we have」。这一手把 chip company → research org → open model → enterprise infra 这条链拉成一条线,enterprise 选 open model 的真正理由不是 license、是为 agent 优化的 speed + Hybrid Mamba-Transformer 的 cost-per-token 优势。"
+            ],
+            "original": [
+              "MAD Podcast:Catanzaro 从「accept 跑到极限是事实,那拿更多 intelligence 的方式是更 efficient」开讲,把 Nemotron 立在「we have to be more thoughtful about how we use what we have」。enterprise 选 open model 不是 license 问题,是 agent 优化的 speed + Hybrid Mamba-Transformer 的 cost-per-token 优势。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "7-4 周末底色:模型、医疗、城市、训练数据 / Weekend Texture: Models, Care, City, Training Data",
+      "desc": "Steinberger 把 80,000 条他自己的 tweet 喂 Fable 让它 roast 自己——long-weekend 的 Fable 5 用法样本立起来。Nikunj 把两个 surface 同一天叠在一起:Fable 5 在 7-4 长周末前发,和 Opus 4.5 在 Thanksgiving 前发一样,labs 选长周末发模型的 pattern 是有意为之;同日抛一个问题给 OpenClaw / Hermes 的 daily user——hosting 在哪里。Garry Tan 把 AI 医疗的 timing 写实:specialist 等候时间在涨,AI 这一波正好能把 care 的 quality 拉 100x。Nan Yu 一句话把训练数据的 quality 和 field 的 quality 等价:如果一个 field 不产出好 training data,那这个 field 大概率本来就是 crap——这一句把 AI evaluation 的根翻到行业 evaluation。",
+      "cards": [
+        {
+          "authorKey": "x:steipete",
+          "authorName": "Peter Steinberger",
+          "authorHandle": "@steipete",
+          "authorTag": "OpenClaw 创始人",
+          "sourceUrl": "https://x.com/steipete/status/2073295890857758810",
+          "en": {
+            "rewrite": [
+              "Steinberger 把 80,000 条他自己的 tweet 喂给 Fable 让它 roast 自己——long-weekend 的 Fable 5 用法样本立起来。同一天的「codex sucks at design」那条是同一个作者:把 imagegen 接进 codex 让它「重新想象并实现」这个 design,把 codex 从写 code 推到 design 复刻。这一手把 Fable 和 imagegen-codegen 两条产品线同一天给到 long-weekend demo 用例。"
+            ],
+            "original": [
+              "I fed Fable 80.000 of my tweets so it could roast me even more. 💀 https://t.co/l3I8CzqpcU"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Steinberger 把 80,000 条他自己的 tweet 喂给 Fable 让它 roast 自己——long-weekend 的 Fable 5 用法样本立起来。同一天的「codex sucks at design」那条是同一个作者:把 imagegen 接进 codex 让它「重新想象并实现」这个 design,把 codex 从写 code 推到 design 复刻。这一手把 Fable 和 imagegen-codegen 两条产品线同一天给到 long-weekend demo 用例。"
+            ],
+            "original": [
+              "Steinberger:把 80,000 条自己的 tweet 喂 Fable 让它 roast 自己——long-weekend 的 Fable 5 用法样本立起来。https://t.co/l3I8CzqpcU"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人",
+          "sourceUrl": "https://x.com/nikunj/status/2073071325644816440",
+          "en": {
+            "rewrite": [
+              "Nikunj 把 model release timing 的 pattern 写实:labs 选长周末前发模型——Opus 4.5 在 Thanksgiving 前,Fable 5 在 July 4 前——给 masses time to tinker、play、find edges。release timing 不是 calendar 巧合,是产品策略:让社区在「没有其他事」的那段窗口把模型推到位。"
+            ],
+            "original": [
+              "I think the labs secretly release models when there are long weekends coming up..\n\nOpus 4.5 right before Thanksgiving.\n\nFable 5 now right before July of 4th.\n\nGiving the masses time to tinker, play, and find edges"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj 把 model release timing 的 pattern 写实:labs 选长周末前发模型——Opus 4.5 在 Thanksgiving 前,Fable 5 在 July 4 前——给 masses time to tinker、play、find edges。release timing 不是 calendar 巧合,是产品策略:让社区在「没有其他事」那段窗口把模型推到位。"
+            ],
+            "original": [
+              "Nikunj:labs 选长周末前发模型——Opus 4.5 在 Thanksgiving 前、Fable 5 在 July 4 前——给 masses time to tinker、play、find edges。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁",
+          "sourceUrl": "https://x.com/garrytan/status/2073053799791710301",
+          "en": {
+            "rewrite": [
+              "Garry Tan 把 AI 医疗的 timing 写实:specialist 等候时间在涨,AI 这一波正好能把 care 的 quality 拉 100x——「not a moment too soon for patients everywhere」。这一句把 specialist wait time 这条硬数据和 AI 这波拐点对齐,enterprise 端 AI 的 high-value vertical 之一是 health care。"
+            ],
+            "original": [
+              "Wait time for specialists is going up at a moment AI is about to change it all\n\nI have a feeling AI will bring the quality of care up 100x and not a moment too soon for patients everywhere"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan 把 AI 医疗的 timing 写实:specialist 等候时间在涨,AI 这一波正好能把 care 的 quality 拉 100x——「not a moment too soon for patients everywhere」。这一句把 specialist wait time 这条硬数据和 AI 这波拐点对齐,enterprise 端 AI 的 high-value vertical 之一是 health care。"
+            ],
+            "original": [
+              "Garry Tan:specialist 等候时间在涨,AI 这一波正好能把 care 的 quality 拉 100x——not a moment too soon for patients everywhere。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thenanyu",
+          "authorName": "Nan Yu",
+          "authorHandle": "@thenanyu",
+          "authorTag": "AI 创业者 / 投资人",
+          "sourceUrl": "https://x.com/thenanyu/status/2073070255031615877",
+          "en": {
+            "rewrite": [
+              "Nan Yu 一句话把训练数据的 quality 和 field 的 quality 等价:如果一个 field 不产出好 training data,那这个 field 大概率本来就是 crap。这一句把 AI evaluation 的根翻到行业 evaluation——你没办法 eval 自己的模型比自己 field 上限更聪明。"
+            ],
+            "original": [
+              "Love the observation: if your field doesn't produce good training data it was probably full of crap to begin with"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nan Yu 一句话把训练数据的 quality 和 field 的 quality 等价:如果一个 field 不产出好 training data,那这个 field 大概率本来就是 crap。这一句把 AI evaluation 的根翻到行业 evaluation——你没办法 eval 自己的模型比自己 field 上限更聪明。"
+            ],
+            "original": [
+              "Nan Yu:如果一个 field 不产出好 training data,那这个 field 大概率本来就是 crap。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
