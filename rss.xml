@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 04 Jul 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 05 Jul 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-07-05 · 流量变天日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-05-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-05-rerun.html</guid>
+      <pubDate>Sun, 05 Jul 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[7-5 这一期的主轴是「bot 超过人 + Claude 上 Apple + Codex 进 ChatGPT」:Cloudflare 的 Matthew Prince 在 MAD Podcast 把这周他自己那条 x 的实测摆到台面——2026 年上半年 bot 请求已经超过人类,五年后他押 over 千倍;广告这种 28 年没换过的互联网生意模型因为 bot 不点广告而失效;Claude Blog 同一周把 Claude 嵌进 Apple Foundation Models framework——on-device 跑 journaling / summarization 这种本地能干的、复杂推理 / 代码 / 联网才交给 Claude,是 Apple 平台第一次正经把 frontier model 立成 typed value 之后的下一棒。Cat Wu 把 Fable 5 的 judgment 立到 retention analysis 这种活里——你还没要求 propensity score matching 它就先做了,主动做对的统计决定。Rauch 把 Vercel AI Gateway 整个 lifetime 的 token 花费画成动画——Anthropic 的 dominance + open weight 的崛起这两条曲线被肉眼看见。Dan Shipper 把 Codex in ChatGPT 摆出来——You exec 出 image,ChatGPT 自己起一个 sub-agent 用 Codex 跑子任务,Codex 从 Claude Code 的同级产品被 ChatGPT 内化。Thibault 同一天追问 Codex 还有哪件应该早就做对的事没做对。Texture:Steinberger 用 自己的产品加 valuation game 提示词 / Sam Altman 与 Amanda Askell 同日把 4th July变成一条 AI 历史上的 subordinate 节点 / 然后是 World Cup 和 NIMBY 这种打底色。bot 超过人、Claude 进 OS、Codex 进 ChatGPT、judgment 进入分析——7-5 这场和未知画图日(7-4)对位:7-4 立的是流程骨架,7-5 立的是这条骨架开始嵌入平台 / 嵌入产品 / 嵌入统计本身。]]></description>
+      <category>Cloudflare 把 bot&gt;人立成 internet business model 失效的实测起点 / Cloudflare Pins the Bot&gt;Crossover as the Internet&apos;s Reset, Claude Blog 把 Claude 嵌进 Apple Foundation Models framework / Claude Blog Embeds Claude into Apple&apos;s Foundation Models, Cat Wu 把 Fable 5 的 judgment 立到 retention analysis 这种活里 / Cat Wu Lifts Fable 5 Judgment into Retention Analysis, Rauch / Dan Shipper / Thibault 把 token 战 + Codex 入 ChatGPT + Codex 缺口 三条线一起推 / Rauch / Dan Shipper / Thibault Frame Token War, Codex-in-ChatGPT, Codex Gaps Together, Nan Yu / Steinberger 把 developer practice 这种体验并列立起来 / Nan Yu / Steinberger Place Developer Practice Alongside, 7-4 周末底色:America 250、Codex dance crew、World Cup、NIMBY / Weekend Texture — America 250, Dance Crew, World Cup, NIMBY</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-07-04 · 未知画图日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-04-rerun.html</link>

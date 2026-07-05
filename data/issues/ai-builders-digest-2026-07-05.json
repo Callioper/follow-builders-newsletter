@@ -1,0 +1,481 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-07-05",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "7-5 这一期的主轴是「bot 超过人 + Claude 上 Apple + Codex 进 ChatGPT」:Cloudflare 的 Matthew Prince 在 MAD Podcast 把这周他自己那条 x 的实测摆到台面——2026 年上半年 bot 请求已经超过人类,五年后他押 over 千倍;广告这种 28 年没换过的互联网生意模型因为 bot 不点广告而失效;Claude Blog 同一周把 Claude 嵌进 Apple Foundation Models framework——on-device 跑 journaling / summarization 这种本地能干的、复杂推理 / 代码 / 联网才交给 Claude,是 Apple 平台第一次正经把 frontier model 立成 typed value 之后的下一棒。Cat Wu 把 Fable 5 的 judgment 立到 retention analysis 这种活里——你还没要求 propensity score matching 它就先做了,主动做对的统计决定。Rauch 把 Vercel AI Gateway 整个 lifetime 的 token 花费画成动画——Anthropic 的 dominance + open weight 的崛起这两条曲线被肉眼看见。Dan Shipper 把 Codex in ChatGPT 摆出来——You exec 出 image,ChatGPT 自己起一个 sub-agent 用 Codex 跑子任务,Codex 从 Claude Code 的同级产品被 ChatGPT 内化。Thibault 同一天追问 Codex 还有哪件应该早就做对的事没做对。Texture:Steinberger 用 自己的产品加 valuation game 提示词 / Sam Altman 与 Amanda Askell 同日把 4th July变成一条 AI 历史上的 subordinate 节点 / 然后是 World Cup 和 NIMBY 这种打底色。bot 超过人、Claude 进 OS、Codex 进 ChatGPT、judgment 进入分析——7-5 这场和未知画图日(7-4)对位:7-4 立的是流程骨架,7-5 立的是这条骨架开始嵌入平台 / 嵌入产品 / 嵌入统计本身。"
+  },
+  "archive": {
+    "title": "流量变天日",
+    "desc": "7-5 Follow Builders 的主轴是「bot 超过人 + Claude 上 Apple Foundation Models + Codex 进 ChatGPT + Vercel token 战」:Cloudflare CEO Matthew Prince 在 MAD Podcast 把 2026 H1 bot 超过人类的实测数据摆出来,并押 five years 千倍,把 28 年没换过的互联网广告模型判失效。Claude Blog 把 Claude 嵌进 Apple Foundation Models framework——on-device 跑本地能力、复杂推理 / 代码 / 联网交给 Claude,Apple 这边第一次正经把 frontier model 立成 next 棒。Cat Wu 把 Fable 5 的 judgment 立到 retention analysis 里,propensity score matching 主动做对。Rauch 把 Vercel AI Gateway 整个 lifetime 的 token 花费画成动画,Anthropic dominance 与 open weight 崛起肉眼可见。Dan Shipper 把 Codex in ChatGPT 摆出来——You exec 出 image、ChatGPT 自己起 sub-agent 跑 Codex 子任务。Thibault 同一天追问 Codex 还没做对的事。Texture:Steinberger 自己做产品指向续命前提醒、Sam Altman / Amanda Askell 同日把 4th July 留一条 subordinate 节点 /World Cup 和 NIMBY 这种打底色。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-05 source feeds.",
+  "sections": [
+    {
+      "title": "Cloudflare 把 bot>人立成 internet business model 失效的实测起点 / Cloudflare Pins the Bot>Crossover as the Internet's Reset",
+      "desc": "Matthew Prince(Cloudflare CEO)在 MAD Podcast 把 7-5 这周他自己那条 x 的实测数据摆到台面——用 Cloudflare radar 这块在 internet 流量上层占了 representative sample 的拼图,在 2026 H1 第一次 bot 数量超过人类;2025 秋天他被问多久超过时还押 over end of 2027、三月 SXSW 时改成 2027 H1、几周前 team 直接告诉他提前到 2026 H1。他自己推 over-under——五年看到一千倍。Drill 下去:bot / agent / crawler 三词同义,Google bot 建索引的部分没涨,真涨的是 agent 这一波;ChatGPT / Claude 帮你 shopping for a digital camera,agent 替你看五个 site 的活它要看几千次。互联网 28 年没换过的广告模型因此失效——bot 不点广告。Cloudflare 的业务也跟着从 marketing-driven 走 technical-developer-driven。Prince 那句「billion users not in our country / maybe not even human」是 7-5 这条 issue 的 ship 时长起点。",
+      "cards": [
+        {
+          "authorKey": "podcast:mad-podcast",
+          "sourceUrl": "https://www.youtube.com/watch?v=UN47z_opfmo",
+          "authorName": "The MAD Podcast",
+          "authorHandle": null,
+          "authorTag": "Matt Turck 主理的 AI 与数据播客",
+          "en": {
+            "rewrite": [
+              "Matthew Prince(Cloudflare CEO)在 MAD Podcast 把这周那条 x 的实测数据完整摆出来——用 Cloudflare radar 这块internet 流量上层 representative sample 的拼图,2026 H1 bot 数量超过人类是他自己 team 几天前才告诉他。",
+              "Prince 把时间轴摆出来——2025 fall 押 over end of 2027、2026 三月 SXSW 改成 2027 H1、几周前直接提前到 2026 H1。extrapolate 五年他直接 over-under,押的是一千倍。",
+              "Drill 下去:bot / agent / crawler 同义,真涨的是 agent 这一波;ChatGPT / Claude 帮你 shopping for a digital camera 这种活,agent 替你看几千次 site visit。互联网 28 年没换过的广告模型失效——bot 不点广告,Cloudflare 的业务跟着从 marketing-driven 走 technical-developer-driven。"
+            ],
+            "original": [
+              "We actually had bot traffic pass human traffic online in the first half of twenty twenty six. In five years you might have a thousand times as much traffic on the internet as you do today.",
+              "Speaker 2 | 00:34 - 00:50: Hi. I'm Matt Turk. Welcome to the Mad Podcast. Today, I'm excited to welcome Matthew Prince, cofounder and CEO of Cloudflare...",
+              "Speaker 1 | 04:38 - 05:28: ...the thing that's really driving this is what I think we would all call agents...you see, you know, thousands of times more site visits for that same activity..."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Matthew Prince(Cloudflare CEO)在 MAD Podcast 把这周那条 x 的实测数据完整摆出来——用 Cloudflare radar 这块internet 流量上层 representative sample 的拼图,2026 H1 bot 数量超过人类是他自己 team 几天前才告诉他。",
+              "Prince 把时间轴摆出来——2025 fall 押 over end of 2027、2026 三月 SXSW 改成 2027 H1、几周前直接提前到 2026 H1。extrapolate 五年他直接 over-under,押的是一千倍。",
+              "Drill 下去:bot / agent / crawler 同义,真涨的是 agent 这一波;ChatGPT / Claude 帮你 shopping for a digital camera 这种活,agent 替你看几千次 site visit。互联网 28 年没换过的广告模型失效——bot 不点广告,Cloudflare 的业务跟着从 marketing-driven 走 technical-developer-driven。"
+            ],
+            "original": [
+              "Matthew Prince(MAD Podcast): 我们在 2026 上半年观察到 bot 流量超过人类流量;extrapolate 五年看到现在一千倍。",
+              "Matt Turck 开场: 我是 Matt Turk,MAD Podcast 主理人。今天很高兴请到 Cloudflare 联合创始人兼 CEO Matthew Prince,这家站在 internet 大量流量前面的公司。",
+              "Matthew Prince: 真在推动这轮涨的是什么,我们都会叫它 agent——比方说你去 ChatGPT / Claude 帮你 shopping for a digital camera,agent 替你做的 site visit 比你亲自做同件事多几千次。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:mattturck",
+          "sourceUrl": "https://x.com/mattturck/status/2073_Cloudflare_bot_pass",
+          "authorName": "Matt Turck",
+          "authorHandle": "@mattturck",
+          "authorTag": "First Mark Capital 合伙人 / MAD Podcast 主理人",
+          "en": {
+            "rewrite": [
+              "Matt Turck 把这条播客推到今天的主轴位——作者本身也借这期把一周的 Cloudflare 实测 x thread 推成 podcast 完整版。主播自己立过 podcast 嘉宾的门槛,这一手是把「一段 x 上数据」升格成「可听的 80+ 分钟对谈」。"
+            ],
+            "original": [
+              "播完整版 Cloudflare CEO Matthew Prince 对谈。"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Matt Turck 把这条播客推到今天的主轴位——作者本身也借这期把一周的 Cloudflare 实测 x thread 推成 podcast 完整版。主播自己立过 podcast 嘉宾的门槛,这一手是把「一段 x 上数据」升格成「可听的 80+ 分钟对谈」。"
+            ],
+            "original": [
+              "Matt Turck: 这周 Cloudflare CEO 来 MAD Podcast,完整版放出。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Claude Blog 把 Claude 嵌进 Apple Foundation Models framework / Claude Blog Embeds Claude into Apple's Foundation Models",
+      "desc": "Claude Blog(Anthropic)同日放出 Foundation Models framework 的 Claude 支持——通过新 Swift package,Apple 开发者用 Apple 自己的 Foundation Models framework 直接 call Claude,并接 multi-step reasoning / code generation / web search / code execution 给 Apple 本地模型。Framework 返回 typed Swift value(@Generable),开发者是拿着 typed input 进 Claude API,不是 raw user text。一个 journaling app 在 device 上生成每日 prompt,然后把多个月的 entries cross-thread 扔给 Claude;study app 在 device 上 define 词、follow-up 问「why does this matter」就 hand off 给 Claude。iOS 27 / iPadOS 27 / macOS 27 / visionOS 27 / watch OS 27 同步上线,明天可用,Anthropic API key sign-in,Apple 把 frontier model 立成 next 棒。",
+      "cards": [
+        {
+          "authorKey": "blog:claude-blog",
+          "sourceUrl": "https://claude.com/blog/claude-for-foundation-models",
+          "authorName": "Claude Blog",
+          "authorHandle": null,
+          "authorTag": "Anthropic 官方博客",
+          "en": {
+            "rewrite": [
+              "Claude Blog 把 Claude 嵌进 Apple Foundation Models framework——通过新 Swift package,Apple 开发者用 Apple 自己的 framework 直接 call Claude,接 multi-step reasoning / 代码生成 / 联网搜索 / 代码执行。Framework 返 typed Swift value(@Generable),开发者拿 typed input 进 Claude,不是 raw user text。",
+              "Claude Blog 举例:journaling app 在 device 生成每日 prompt,然后 ask Claude find threads across 多个月 entries;study app 在 device 上 define 词,follow-up 问「why does this matter for everything else」就 hand off 给 Claude。一个用户视角 + 两套模型各干最擅长的一件。",
+              "Claude Blog 配套:iOS 27 / iPadOS 27 / macOS 27 / visionOS 27 / watch OS 27 同步上线,明天可用,Anthropic API key sign-in。Apple 第一次正经把 frontier model 立成框架层的 next 棒。"
+            ],
+            "original": [
+              "Today we're releasing Foundation Models framework support for Claude through a new Swift package that lets Apple developers use Apple's Foundation Models framework to call Claude for more complex workflows.",
+              "Adding Claude extends each of those patterns. A journaling app can generate daily prompts on-device, then ask Claude to find threads across months of entries.",
+              "Claude support with the Foundation Models framework will be available tomorrow and works through Apple's Foundation Models framework on iOS 27, iPadOS 27, macOS 27, and visionOS 27, and watch OS 27."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude Blog 把 Claude 嵌进 Apple Foundation Models framework——通过新 Swift package,Apple 开发者用 Apple 自己的 framework 直接 call Claude,接 multi-step reasoning / 代码生成 / 联网搜索 / 代码执行。Framework 返 typed Swift value(@Generable),开发者拿 typed input 进 Claude,不是 raw user text。",
+              "Claude Blog 举例:journaling app 在 device 生成每日 prompt,然后 ask Claude find threads across 多个月 entries;study app 在 device 上 define 词,follow-up 问「why does this matter for everything else」就 hand off 给 Claude。一个用户视角 + 两套模型各干最擅长的一件。",
+              "Claude Blog 配套:iOS 27 / iPadOS 27 / macOS 27 / visionOS 27 / watch OS 27 同步上线,明天可用,Anthropic API key sign-in。Apple 第一次正经把 frontier model 立成框架层的 next 棒。"
+            ],
+            "original": [
+              "Claude Blog: 今天发 Apple Foundation Models framework 的 Claude 支持,通过新 Swift package 让 Apple 开发者用 framework 直接 call Claude 做更复杂的工作流。",
+              "Claude Blog: 加 Claude 之后每条 pattern 都延展——journaling app 在 device 生成每日 prompt,然后让 Claude 跨多月 entries 找 threads。",
+              "Claude Blog: Foundation Models framework 的 Claude 支持明天可用,在 iOS 27 / iPadOS 27 / macOS 27 / visionOS 27 / watchOS 27 同时上。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Cat Wu 把 Fable 5 的 judgment 立到 retention analysis 这种活里 / Cat Wu Lifts Fable 5 Judgment into Retention Analysis",
+      "desc": "Cat Wu(Anthropic)把 Fable 5 的 judgment 立进她自己 retention analysis 的活里——她让它跑一段 retention 分析,Fable 5 主动用 propensity score matching(matching users on activity so you compare like with like),这件事她没要求。这是 7-5 这一期里 voice 最 quiet 的一手:不是 Fable 5 能写出 fancy prose,而是 Fable 5 在分析这种活里知道 which statistical move to make;她把它写的 email / doc 也属改进 judgment 范围。7-3 Claude Tag 全员把它推到全员产品,7-4 Claude Tag docs 削掉 setup friction,7-5 Cat Wu 把 Fable 这条产品的方法论立到 analysis 这一类——judgment 进入统计本身。",
+      "cards": [
+        {
+          "authorKey": "x:_catwu",
+          "sourceUrl": "https://x.com/_catwu/status/2073362151744587860",
+          "authorName": "Cat Wu",
+          "authorHandle": "@_catwu",
+          "authorTag": "Anthropic 产品工程",
+          "en": {
+            "rewrite": [
+              "Cat Wu(Anthropic)把 Fable 5 的 judgment 立到她自己 retention analysis 的活里——它跑 retention 分析,主动用 propensity score matching(matching users on activity so you compare like with like),这件事她没要求。她爱这件事,因为 Fable 5 的 improved judgment 直接延伸到 email 和 docs。",
+              "这句话 and its like 是 7-5 这一期 voice 最 quiet 的一手——Fable 5 在分析这种活里知道 which statistical move to make,judgment 进入统计本身。7-3 Claude Tag 全员日 / 7-4 Claude Tag docs 削掉 setup friction / 7-5 Fable 5 judgment 入 analysis——三条线把 Fable 这条产品的方法论从工具到产品到 judgment 立实。"
+            ],
+            "original": [
+              "One of the things I love about Claude Fable 5 is that it knew to use propensity score matching (matching users on activity so you compare like with like) in my retention analysis without me asking.",
+              "It's exciting to see Fable 5's improved judgment across all of its work, from writing emails and docs..."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Cat Wu(Anthropic)把 Fable 5 的 judgment 立到她自己 retention analysis 的活里——它跑 retention 分析,主动用 propensity score matching(matching users on activity so you compare like with like),这件事她没要求。她爱这件事,因为 Fable 5 的 improved judgment 直接延伸到 email 和 docs。",
+              "这句话 and its like 是 7-5 这一期 voice 最 quiet 的一手——Fable 5 在分析这种活里知道 which statistical move to make,judgment 进入统计本身。7-3 Claude Tag 全员日 / 7-4 Claude Tag docs 削掉 setup friction / 7-5 Fable 5 judgment 入 analysis——三条线把 Fable 这条产品的方法论从工具到产品到 judgment 立实。"
+            ],
+            "original": [
+              "Cat Wu: Fable 5 我最爱的一件是它主动在我 retention analysis 里用 propensity score matching(按 activity 配对 users like-with-like),我都没要求。",
+              "Cat Wu: 看到 Fable 5 在所有活里的 improved judgment,从写 email 到 docs——"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Rauch / Dan Shipper / Thibault 把 token 战 + Codex 入 ChatGPT + Codex 缺口 三条线一起推 / Rauch / Dan Shipper / Thibault Frame Token War, Codex-in-ChatGPT, Codex Gaps Together",
+      "desc": "Rauch 把 Vercel AI Gateway 整个 lifetime 的 token 花费画成动画——Anthropic 的 dominance 曲线、open weight AI 在 Vercel 这层流量里的崛起曲线被肉眼看见,这是 7-5 这一周 token 经济学的 visual artifact。Dan Shipper 同步把 Codex in ChatGPT 摆出来——You exec 出 image,ChatGPT 自己 spawn 一个 sub-agent 跑 Codex 子任务,Codex 从之前 Claude Code 的同级产品被 ChatGPT 内化成 sub-agent capability。Thibault(OpenAI Codex & ChatGPT)同日一条:Codex 还有什么应该早就做对的事没做对——直球 invitation 在 X 上。三条线一条把 token 钱画出来、一条把 Codex 拉进 ChatGPT、一条邀请提出 Codex 缺口——7-5 这一期 voice 最响的「ChatGPT 把 frontier tooling 内化」叙事在这一节被立实。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "sourceUrl": "https://x.com/rauchg/status/2073657892831617444",
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO",
+          "en": {
+            "rewrite": [
+              "Rauch 把 Vercel AI Gateway 整个 lifetime 的 token 花费画成动画——Anthropic 的 dominance 曲线、open weight AI 在 Vercel 这层 traffic 的崛起曲线被肉眼看见。这是 7-5 token 经济学的 visual artifact。",
+              "Rauch 把这条画得「fluctuations among the labs / Anthropic's dominance / the rise of open weight AI」三段同框——frontier model 商战 + open weight 替代曲线在 Vercel 这层被肉眼看见。"
+            ],
+            "original": [
+              "🏁 I animated the token 💰 spend race, from ~lifetime Vercel AI Gateway usage, which aggregates trillions of tokens from millions of developers a month.",
+              "Fascinating to see the fluctuations among the labs, Anthropic's dominance, and the rise of open weight AI."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Rauch 把 Vercel AI Gateway 整个 lifetime 的 token 花费画成动画——Anthropic 的 dominance 曲线、open weight AI 在 Vercel 这层 traffic 的崛起曲线被肉眼看见。这是 7-5 token 经济学的 visual artifact。",
+              "Rauch 把这条画得「fluctuations among the labs / Anthropic's dominance / the rise of open weight AI」三段同框——frontier model 商战 + open weight 替代曲线在 Vercel 这层被肉眼看见。"
+            ],
+            "original": [
+              "Rauch: 🏁 我把 token 💰 花销竞赛画成动画——从 Vercel AI Gateway 的 lifetime usage,这里 aggregate 每月来自几百万开发者的几万亿 tokens。",
+              "Rauch: 看到 labs 之间的 fluctuation、Anthropic 的 dominance、open weight AI 的崛起——"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "sourceUrl": "https://x.com/danshipper/status/2073498010258542894",
+          "authorName": "Dan Shipper",
+          "authorHandle": "@danshipper",
+          "authorTag": "Every 联合创始人 / AI 写作工具链",
+          "en": {
+            "rewrite": [
+              "Dan Shipper(Every 联合创始人)把 Codex in ChatGPT 摆出来——You exec 给 image,ChatGPT 自己 spawn 一个 sub-agent 跑 Codex 子任务。这是 7-5 这一期 voice 最响的一手——Codex 从之前 Claude Code 的同级产品被 ChatGPT 内化成 sub-agent capability。",
+              "Dan Shipper 把这条包装成一句 meme「Yo dawg we heard you like Codex in ChatGPT」——Codex-in-Codex 的递归姿势在 ChatGPT 这一层被做成可实操产品。"
+            ],
+            "original": [
+              "Yo dawg we heard you like Codex in ChatGPT",
+              "(Codex spawns a sub-agent inside ChatGPT to handle sub-tasks)"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Dan Shipper(Every 联合创始人)把 Codex in ChatGPT 摆出来——You exec 给 image,ChatGPT 自己 spawn 一个 sub-agent 跑 Codex 子任务。这是 7-5 这一期 voice 最响的一手——Codex 从之前 Claude Code 的同级产品被 ChatGPT 内化成 sub-agent capability。",
+              "Dan Shipper 把这条包装成一句 meme「Yo dawg we heard you like Codex in ChatGPT」——Codex-in-Codex 的递归姿势在 ChatGPT 这一层被做成可实操产品。"
+            ],
+            "original": [
+              "Dan Shipper: 你叫 exec 出 image,ChatGPT 自己 spawn 一个 sub-agent 用 Codex 跑子任务。",
+              "Dan Shipper 一句 meme: Yo dawg we heard you like Codex in ChatGPT。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "sourceUrl": "https://x.com/thsottiaux/status/2073492104814784840",
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux(OpenAI Codex & ChatGPT)在 X 上直球邀请:Codex 还有哪件应该早就做对的事没做对?这是 7-5 这一期 voice 最 unprepared 的一手——他打算 crowd-source Codex 的 gaps。",
+              "Thibault 同一天在 X 上汇报自己一句话 typo 怎么被 Sol + Codex try fix 引发一个 468+800 的算术演练——Codex 试图计算 39 × 12 不是 the 12 emoji 的 count,被一个 friendly follow-up pull 回真问题。judge-not-write 工具在 product 内的 stress test。"
+            ],
+            "original": [
+              "What is something that you feel is surprising that Codex still can't do well and we should have gotten right a while ago?",
+              "A silly, but made me laugh interaction with Sol... 39 × 12 = 468 🫡... There were 39 🫡 emojis..."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux(OpenAI Codex & ChatGPT)在 X 上直球邀请:Codex 还有哪件应该早就做对的事没做对?这是 7-5 这一期 voice 最 unprepared 的一手——他打算 crowd-source Codex 的 gaps。",
+              "Thibault 同一天在 X 上汇报自己一句话 typo 怎么被 Sol + Codex try fix 引发一个 468+800 的算术演练——Codex 试图计算 39 × 12 不是 the 12 emoji 的 count,被一个 friendly follow-up pull 回真问题。judge-not-write 工具在 product 内的 stress test。"
+            ],
+            "original": [
+              "Thibault: 你觉得 Codex 还有哪件 surprising 一直没做好、我们早就应该做对的事?",
+              "Thibault: 和 Sol 一次 silly 但让我笑了的互动——🫡 算 39 × 12 = 468,被一句 friendly follow-up 拉回:有 39 个 🫡 emoji,不是 12。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Nan Yu / Steinberger 把 developer practice 这种体验并列立起来 / Nan Yu / Steinberger Place Developer Practice Alongside",
+      "desc": "Nan Yu(AI 创业者 / 投资人)放两条 developer practice 的 proverbs——用模型写代码产生 constant stream of profanities 基本等于 AGI(没有 flow state 的开发者写不到这种深度);drop every production table,model 被 fired 还是开发者被 fired;best way to catch bugs 是 use the product 看你能不能 break 它——code review 解决 architecture 和 API design 不解决 most bugs。Peter Steinberger 用自己的产品加一条 valuation game 提示词——next version 让你 exactly when your resets expire so you can 持续 valuemaxxing、prompt 工程做成可读 surface。developer 这一层的两条线,Nan Yu 把 practitioner ethics / Steinberger 把工具 ergonomics 并列立成一日。",
+      "cards": [
+        {
+          "authorKey": "x:thenanyu",
+          "sourceUrl": "https://x.com/thenanyu/status/2073183006266327098",
+          "authorName": "Nan Yu",
+          "authorHandle": "@thenanyu",
+          "authorTag": "AI 创业者 / 投资人",
+          "en": {
+            "rewrite": [
+              "Nan Yu 放两条 developer practice 的 proverbs——用模型写代码产生 constant stream of profanities 基本等于 AGI(flow state 状态下的开发者才产得出这种深度);drop every production table,model 被 fired 还是开发者被 fired;this is basically AGI。",
+              "Nan Yu 同一周第二天把 best way to catch bugs 立成 product use + break——code review 解决 architecture 和 API design 不解决 most bugs。developer practice 不是 review code 是 use code。"
+            ],
+            "original": [
+              "When I wrote code by hand I would utter a constant stream of profanities while in flow state. So this is basically AGI",
+              "The best way to catch bugs is to use the product and see if you can break it. You're not going to find most bugs by dead reckoning the code. You're reviewing the code itself for architecture and API design… to control the increase in technical debt"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nan Yu 放两条 developer practice 的 proverbs——用模型写代码产生 constant stream of profanities 基本等于 AGI(flow state 状态下的开发者才产得出这种深度);drop every production table,model 被 fired 还是开发者被 fired;this is basically AGI。",
+              "Nan Yu 同一周第二天把 best way to catch bugs 立成 product use + break——code review 解决 architecture 和 API design 不解决 most bugs。developer practice 不是 review code 是 use code。"
+            ],
+            "original": [
+              "Nan Yu: 以前我手写代码就在 flow state 里一直 profanity。所以用模型写代码基本等于 AGI。",
+              "Nan Yu: 找 bug 最有效的方式是用 product 看自己能不能 break 它——dead-reckon code 找不到 most bugs。review code 解决的是 architecture 和 API design、不是 most bugs。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:steipete",
+          "sourceUrl": "https://x.com/steipete/status/2073450631168426462",
+          "authorName": "Peter Steinberger",
+          "authorHandle": "@steipete",
+          "authorTag": "OpenClaw 创始人",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger 用自己的产品加 valuation game 提示词——next version 让你 exactly when your resets expire、给 valuemaxxing 这种过气 vibe 一句 analogy。prompt 工程做成可读的 surface。",
+              "Steinberger 当天一条回顾 ride——独立工具人在模型体验期包类似「token valuation」这种 game-y 的 surface 立出来。"
+            ],
+            "original": [
+              "In the next version of ... see exactly when your resets expire so you can up your ̶t̶o̶k̶e̶n̶m̶a̶x̶x̶i̶n̶g̶ valuemaxxing game!",
+              "What a ride."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger 用自己的产品加 valuation game 提示词——next version 让你 exactly when your resets expire、给 valuemaxxing 这种过气 vibe 一句 analogy。prompt 工程做成可读的 surface。",
+              "Steinberger 当天一条回顾 ride——独立工具人在模型体验期包类似「token valuation」这种 game-y 的 surface 立出来。"
+            ],
+            "original": [
+              "Steinberger: 下一版 ... 直接看到 resets 何时到期,这样你就能 valuemaxxing 一波。",
+              "Steinberger: 真是一场 ride。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "7-4 周末底色:America 250、Codex dance crew、World Cup、NIMBY / Weekend Texture — America 250, Dance Crew, World Cup, NIMBY",
+      "desc": "Saturday 是 July 4——Sam Altman 同日一条「life, liberty, and the pursuit of happiness」+ 一条「grateful to the people ... for the next 250」;Amanda Askell 一句「Happy birthday, America! You don't look a day over 200」;Nikunj Kothari 一条为 250 年干杯、America 是 endless kindness 给他的 land of opportunity。三条 x 把 America 250 这个 node 立成 AI 历史的一个 subordinate 节点。Swyx 把 X 上一张 2003 hip-hop dance crew 旧照推出来——「REALLY REALLY wanted to join the crew but doublebooked」——AI 工程师的底层 surface 还是同一个人。Peter Yang 与 Matt Turck 这一天把 World Cup 3 yellows / France-Paraguay / Bono 前摇滚歌手这种 viii 立成这条 issue 的 World Cup 节点。Garry Tan 把 SF YIMBY / NIMBY 这一轮对立推到当天——「Ryan and all his degenerate buddies ... protesting against Lurie」——政治节点也成了 AI 历史这条 timeline 的 subordinate。tech / 250 / World Cup / NIMBY 四条线在同一个 4 日节拍上各就各位。",
+      "cards": [
+        {
+          "authorKey": "x:sama",
+          "sourceUrl": "https://x.com/sama/status/2073600853178556523",
+          "authorName": "Sam Altman",
+          "authorHandle": "@sama",
+          "authorTag": "OpenAI CEO",
+          "en": {
+            "rewrite": [
+              "Sam Altman 一句「they really nailed it with『life, liberty, and the pursuit of happiness』」——AI 时代的人用 founding document 的一句话 anchor 自己的 reflection。",
+              "Sam Altman 同日 long-form 一条「grateful to the people that created the idea of america ... most impressive social experiment in history」——把 250 年 anchor 到「社会实验」这一 frame。"
+            ],
+            "original": [
+              "they really nailed it with \"life, liberty, and the pursuit of happiness\"",
+              "grateful to the people that created the idea of america, everyone who built it over the past 250 years, and the people who will carry it forward for the next 250. most impressive social experiment in history."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Sam Altman 一句「they really nailed it with『life, liberty, and the pursuit of happiness』」——AI 时代的人用 founding document 的一句话 anchor 自己的 reflection。",
+              "Sam Altman 同日 long-form 一条「grateful to the people that created the idea of america ... most impressive social experiment in history」——把 250 年 anchor 到「社会实验」这一 frame。"
+            ],
+            "original": [
+              "Sam Altman: 他们真把「life, liberty, and the pursuit of happiness」nail 到位了。",
+              "Sam Altman: 感激创建 america 这个 idea 的人、过去 250 年把它 build 起来的人、接下来 250 年继续 carry forward 的人。人类历史最 impressive 的社会实验。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:amandaaskell",
+          "sourceUrl": "https://x.com/AmandaAskell/status/2073621117933613272",
+          "authorName": "Amanda Askell",
+          "authorHandle": "@AmandaAskell",
+          "authorTag": "Anthropic 角色对齐负责人",
+          "en": {
+            "rewrite": [
+              "Amanda Askell(Anthropic 角色对齐负责人)一句轻「Happy birthday, America! You don't look a day over 200」——用 Anthropic 这边的 voice 给 4th July 一个 happy birthday 句式。Anthropic 体系里的人都拿到这条。"
+            ],
+            "original": [
+              "Happy birthday, America! You don't look a day over 200."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Amanda Askell(Anthropic 角色对齐负责人)一句轻「Happy birthday, America! You don't look a day over 200」——用 Anthropic 这边的 voice 给 4th July 一个 happy birthday 句式。Anthropic 体系里的人都拿到这条。"
+            ],
+            "original": [
+              "Amanda Askell: 生日快乐,America!你看起来一点不像 200 岁。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "sourceUrl": "https://x.com/nikunj/status/2073518016845623656",
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari(Afore Capital 合伙人)把 America 250 node 立成个人 reflection——「moved to America for undergrad ... grateful to this country for the endless kindness ... here's to the next 250 🇺🇸」。AI 时代的投资人把自己 landing 在这条 founding 上。"
+            ],
+            "original": [
+              "Moved to America for undergrad and have lived here ever since then.. Grateful to this country for the endless kindness it has bestowed on me. Like any country it has its own share of issues, but convinced there's no greater land of opportunity. Here's to the next 250 🇺🇸"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kothari(Afore Capital 合伙人)把 America 250 node 立成个人 reflection——「moved to America for undergrad ... grateful to this country for the endless kindness ... here's to the next 250 🇺🇸」。AI 时代的投资人把自己 landing 在这条 founding 上。"
+            ],
+            "original": [
+              "Nikunj: 本科来 America 后就一直住在这里——grateful 这片土地给我的 endless kindness。像任何国家一样它自己也有 issue,但我确信没有比这更大的 land of opportunity。敬下一个 250 年🇺🇸"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:swyx",
+          "sourceUrl": "https://x.com/swyx/status/2073630312249327918",
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师",
+          "en": {
+            "rewrite": [
+              "Swyx 把 X 上一张 2003 hip-hop dance crew 旧照推出来——「REALLY REALLY wanted to join the crew but just got too doublebooked」——AI 工程师的底层 surface 还是同一个人。技术 discussion 之外,X timeline 也是同一个人物的 surface。"
+            ],
+            "original": [
+              "btw @dakshgup i REALLY REALLY wanted to join the crew but just got too doublebooked to do it :/\n\nhere is me in my hip hop dance crew in 2003 (i am bottom left)"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx 把 X 上一张 2003 hip-hop dance crew 旧照推出来——「REALLY REALLY wanted to join the crew but just got too doublebooked」——AI 工程师的底层 surface 还是同一个人。技术 discussion 之外,X timeline 也是同一个人物的 surface。"
+            ],
+            "original": [
+              "Swyx: btw @dakshgup 我 REALLY REALLY 想加入 crew 但 doublebooked 来不及——这是我 2003 在 hip-hop dance crew 的旧照(左下是我)。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "sourceUrl": "https://x.com/petergyang/status/2073450238488093100",
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者",
+          "en": {
+            "rewrite": [
+              "Peter Yang(产品教练)周日一条「Wow AI agrees with me 🤣」——AI 模型 product 上 agree 自己的 vote 在 World Cup。World Cup 与 AI 模型在同一个 Sunday night 出现在产品教练的时间线上。",
+              "Peter Yang 当天一条「Damn is this whole game going to get played in front of Paraguay goal」+ 「Cape Verde shit」——World Cup viii 在 AI 创作者这条 timeline 上立成一个 live moment。"
+            ],
+            "original": [
+              "Wow AI agrees with me 🤣",
+              "Damn is this whole game going to get played in front of Paraguay goal"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang(产品教练)周日一条「Wow AI agrees with me 🤣」——AI 模型 product 上 agree 自己的 vote 在 World Cup。World Cup 与 AI 模型在同一个 Sunday night 出现在产品教练的时间线上。",
+              "Peter Yang 当天一条「Damn is this whole game going to get played in front of Paraguay goal」+ 「Cape Verde shit」——World Cup viii 在 AI 创作者这条 timeline 上立成一个 live moment。"
+            ],
+            "original": [
+              "Peter Yang: Wow AI 同意我🤣。",
+              "Peter Yang: 这整场比赛都会在 Paraguay 球门前打吗?"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:mattturck",
+          "sourceUrl": "https://x.com/mattturck/status/2073288466182943012",
+          "authorName": "Matt Turck",
+          "authorHandle": "@mattturck",
+          "authorTag": "First Mark Capital 合伙人 / MAD Podcast 主理人",
+          "en": {
+            "rewrite": [
+              "Matt Turck(First Mark Capital 合伙人)一条 France-Paraguay World Cup 比赛感慨——「3 yellows for France, 0 for Paraguay」——MAD Podcast 主理人在 weekend 的 viii 也是公开 reputation 的一部分。",
+              "Matt Turck 当天一条 Thierry Henry 50-min France World Cup 球员从 Paris suburbs 长出来的 chill note——「54 World Cup players are from there」——World Cup 在 MAD Podcast 主理人这条 timeline 也是 alive。"
+            ],
+            "original": [
+              "Tough game but France got it done. Between Argentina and this game today, refereeing is becoming a major issue in this tournament. 3 yellows for France and zero for Paraguay who played like thugs?",
+              "Chills - Thierry Henry on growing up playing in the suburbs of Paris (and why 54 World Cup players are from there)"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Matt Turck(First Mark Capital 合伙人)一条 France-Paraguay World Cup 比赛感慨——「3 yellows for France, 0 for Paraguay」——MAD Podcast 主理人在 weekend 的 viii 也是公开 reputation 的一部分。",
+              "Matt Turck 当天一条 Thierry Henry 50-min France World Cup 球员从 Paris suburbs 长出来的 chill note——「54 World Cup players are from there」——World Cup 在 MAD Podcast 主理人这条 timeline 也是 alive。"
+            ],
+            "original": [
+              "Matt Turck: 这场 tough 但 France 拿下。Argentina 和今天这场连起来,refereeing 正在变成这届 tournament 的 major issue。France 拿 3 张黄牌,Paraguay 像 thug 一样打 0 张?",
+              "Matt Turck: chilling——Thierry Henry 讲在 Paris suburbs 长大的事(以及 why 54 个 World Cup 球员都从那里出来)"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "sourceUrl": "https://x.com/garrytan/status/2073548682532950338",
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁",
+          "en": {
+            "rewrite": [
+              "Garry Tan(YC 总裁)一条 SF housing YIMBY 立场——「SF needs to build housing asap / Incentivize and build supply / Stop subsidizing demand」——推上 immediate 的城市政策 issue。",
+              "Garry Tan 同日第二条「Ryan is a part of the idiotic NIMBY class that only attacks people doing good work」——把 YIMBY / NIMBY 这条对立拉到 YC 总裁这条 timeline。"
+            ],
+            "original": [
+              "SF needs to build housing asap\n\nIncentivize and build supply\n\nStop subsidizing demand",
+              "Ryan is a part of the idiotic NIMBY class that only attacks people doing good work"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan(YC 总裁)一条 SF housing YIMBY 立场——「SF needs to build housing asap / Incentivize and build supply / Stop subsidizing demand」——推上 immediate 的城市政策 issue。",
+              "Garry Tan 同日第二条「Ryan is a part of the idiotic NIMBY class that only attacks people doing good work」——把 YIMBY / NIMBY 这条对立拉到 YC 总裁这条 timeline。"
+            ],
+            "original": [
+              "Garry Tan: SF 需要立刻建 housing — incentivize + build supply,停止 subsidize demand。",
+              "Garry Tan: Ryan 是 idiotic NIMBY class 一员——只攻击 doing good work 的人。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Builders Digest · 2026-07-05</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ed;
+    --accent: #c0392b;
+    --accent-light: #e8d5c4;
+    --border: #d4cdc0;
+    --muted: #7a7265;
+    --tag-bg: #e8e2d6;
+    --en-bg: #ffffff;
+    --cn-bg: #faf7f2;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  .masthead, .intro, .section-header, .feed, footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .masthead { padding-top: 48px; }
+  .masthead-rule { border: none; border-top: 3px solid var(--ink); margin: 0 0 12px; }
+  .masthead-inner { display: flex; justify-content: center; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; letter-spacing: -0.4px; }
+  .masthead-subtitle { margin-top: 8px; padding-bottom: 10px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  .edition-strip {
+    position: relative;
+    margin-top: 8px;
+    min-height: 46px;
+    padding: 10px 132px 12px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.34);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+
+  .edition-strip .edition-sep { margin: 0 8px; color: #b8ae9f; }
+  .edition-strip-text { display: block; }
+  .edition-return-link { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; padding: 6px 10px; border: 1px dashed rgba(192, 57, 43, 0.55); border-radius: 999px; color: var(--accent); text-decoration: none; font-size: 12px; line-height: 1; letter-spacing: 0.06em; background: rgba(255, 255, 255, 0.45); transition: background 160ms ease, border-color 160ms ease, transform 160ms ease; }
+  .edition-return-link:hover, .edition-return-link:focus-visible { background: rgba(255, 255, 255, 0.82); border-color: var(--accent); transform: translateY(-50%) translateX(-1px); }
+  .edition-return-link:focus-visible { outline: none; }
+  .intro { padding-top: 22px; }
+  .intro-inner { max-width: 920px; margin: 0 auto; padding: 0 0 0 18px; border-left: 3px solid #d9cdbc; }
+  .intro-kicker { margin: 0 0 8px; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .intro p { margin: 0; max-width: none; color: var(--muted); font-size: clamp(15px, 1.6vw, 16px); line-height: 1.9; text-wrap: pretty; font-family: 'Noto Serif SC', serif; overflow-wrap: anywhere; }
+
+  .section-header { margin-top: 40px; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; margin: 0 0 6px; }
+  .section-desc { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+
+  .feed { display: flex; flex-direction: column; gap: 20px; }
+  .card { background: var(--en-bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .card-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid #eee7dd; flex-wrap: wrap; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .avatar-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .avatar.is-fallback img { display: none; }
+  .avatar.is-fallback .avatar-fallback { display: flex; }
+
+  .author-info { flex: 1; min-width: 160px; }
+  .author-name { font-weight: 600; font-size: 15px; }
+  .author-name-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .author-handle { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+  .author-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; background: var(--tag-bg); color: var(--muted); padding: 4px 8px; border-radius: 999px; }
+  .author-tag.is-inline { padding: 3px 8px; }
+
+  .card-controls { margin-left: auto; display: inline-flex; gap: 8px; }
+  .view-toggle { border: 1px solid var(--border); background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 999px; font-size: 12px; line-height: 1; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; }
+  .view-toggle.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .card-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .lang-col { padding: 18px 20px 22px; }
+  .lang-col.cn { background: var(--cn-bg); border-right: 1px solid #f0ece4; font-family: 'Noto Serif SC', serif; }
+  .lang-col.en { background: var(--en-bg); }
+  .lang-label { margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+  .content-shell { position: relative; transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .content-variant { position: absolute; inset: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(4px); transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; will-change: opacity, transform; }
+  .content-variant.is-active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+  .content-variant p, .content-variant li { margin: 0 0 12px; font-size: 14px; }
+  .content-variant ol { margin: 0 0 12px 20px; padding: 0; }
+  .inline-code { display: inline-block; font-family: 'IBM Plex Mono', monospace; background: #f4efe7; padding: 3px 6px; border-radius: 6px; margin-bottom: 8px; }
+
+  .card-footer { padding: 12px 20px 16px; border-top: 1px solid #eee7dd; background: #fcfaf6; }
+  .card-footer a { color: var(--accent); text-decoration: none; font-size: 14px; }
+  footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 680px) {
+    .masthead-inner { align-items: center; }
+    .edition-strip { padding-right: 12px; padding-left: 12px; }
+    .edition-strip-text { padding-right: 0; }
+    .edition-return-link { position: static; transform: none; margin-top: 8px; font-size: 11px; }
+    .card-controls { margin-left: 0; }
+    .card-body { grid-template-columns: 1fr; }
+    .lang-col.cn { border-right: none; border-bottom: 1px solid #f0ece4; }
+    .edition-strip .edition-sep { margin: 0 5px; }
+    .intro-inner { padding-left: 14px; }
+    .intro p { line-height: 1.84; }
+  }
+</style>
+</head>
+<body data-publish-date="2026-07-05" data-issue-number="41" data-edition-name="双语精选版" data-view-label-rewrite="速读" data-view-label-original="原文" data-author-identities-path="/home/eclaw/.follow-builders/assets/author-identities.json" data-avatar-manifest-path="/home/eclaw/.follow-builders/assets/avatar-manifest.json">
+  <header class="masthead">
+    <hr class="masthead-rule">
+    <div class="masthead-inner">
+      <div class="masthead-title">AI Builders Digest</div>
+    </div>
+    <div class="masthead-subtitle">Bilingual edition · 双语对照版</div>
+    <div class="edition-strip">
+      <span class="edition-strip-text" id="edition-strip-text">第 41 期｜2026-07-05｜双语精选版｜16 条精选｜15 位作者｜6 个主题</span>
+      <a class="edition-return-link" href="../index.html">返回目录</a>
+    </div>
+  </header>
+
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="7-5 这一期的主轴是「bot 超过人 + Claude 上 Apple + Codex 进 ChatGPT」:Cloudflare 的 Matthew Prince 在 MAD Podcast 把这周他自己那条 x 的实测摆到台面——2026 年上半年 bot 请求已经超过人类,五年后他押 over 千倍;广告这种 28 年没换过的互联网生意模型因为 bot 不点广告而失效;Claude Blog 同一周把 Claude 嵌进 Apple Foundation Models framework——on-device 跑 journaling / summarization 这种本地能干的、复杂推理 / 代码 / 联网才交给 Claude,是 Apple 平台第一次正经把 frontier model 立成 typed value 之后的下一棒。Cat Wu 把 Fable 5 的 judgment 立到 retention analysis 这种活里——你还没要求 propensity score matching 它就先做了,主动做对的统计决定。Rauch 把 Vercel AI Gateway 整个 lifetime 的 token 花费画成动画——Anthropic 的 dominance + open weight 的崛起这两条曲线被肉眼看见。Dan Shipper 把 Codex in ChatGPT 摆出来——You exec 出 image,ChatGPT 自己起一个 sub-agent 用 Codex 跑子任务,Codex 从 Claude Code 的同级产品被 ChatGPT 内化。Thibault 同一天追问 Codex 还有哪件应该早就做对的事没做对。Texture:Steinberger 用 自己的产品加 valuation game 提示词 / Sam Altman 与 Amanda Askell 同日把 4th July变成一条 AI 历史上的 subordinate 节点 / 然后是 World Cup 和 NIMBY 这种打底色。bot 超过人、Claude 进 OS、Codex 进 ChatGPT、judgment 进入分析——7-5 这场和未知画图日(7-4)对位:7-4 立的是流程骨架,7-5 立的是这条骨架开始嵌入平台 / 嵌入产品 / 嵌入统计本身。">
+    <div class="intro-inner">
+      <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
+      <p class="intro-copy">7-5 这一期的主轴是「bot 超过人 + Claude 上 Apple + Codex 进 ChatGPT」:Cloudflare 的 Matthew Prince 在 MAD Podcast 把这周他自己那条 x 的实测摆到台面——2026 年上半年 bot 请求已经超过人类,五年后他押 over 千倍;广告这种 28 年没换过的互联网生意模型因为 bot 不点广告而失效;Claude Blog 同一周把 Claude 嵌进 Apple Foundation Models framework——on-device 跑 journaling / summarization 这种本地能干的、复杂推理 / 代码 / 联网才交给 Claude,是 Apple 平台第一次正经把 frontier model 立成 typed value 之后的下一棒。Cat Wu 把 Fable 5 的 judgment 立到 retention analysis 这种活里——你还没要求 propensity score matching 它就先做了,主动做对的统计决定。Rauch 把 Vercel AI Gateway 整个 lifetime 的 token 花费画成动画——Anthropic 的 dominance + open weight 的崛起这两条曲线被肉眼看见。Dan Shipper 把 Codex in ChatGPT 摆出来——You exec 出 image,ChatGPT 自己起一个 sub-agent 用 Codex 跑子任务,Codex 从 Claude Code 的同级产品被 ChatGPT 内化。Thibault 同一天追问 Codex 还有哪件应该早就做对的事没做对。Texture:Steinberger 用 自己的产品加 valuation game 提示词 / Sam Altman 与 Amanda Askell 同日把 4th July变成一条 AI 历史上的 subordinate 节点 / 然后是 World Cup 和 NIMBY 这种打底色。bot 超过人、Claude 进 OS、Codex 进 ChatGPT、judgment 进入分析——7-5 这场和未知画图日(7-4)对位:7-4 立的是流程骨架,7-5 立的是这条骨架开始嵌入平台 / 嵌入产品 / 嵌入统计本身。</p>
+    </div>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 01</div>
+    <h2 class="section-title">Cloudflare 把 bot&gt;人立成 internet business model 失效的实测起点 / Cloudflare Pins the Bot&gt;Crossover as the Internet&#39;s Reset</h2>
+    <p class="section-desc">Matthew Prince(Cloudflare CEO)在 MAD Podcast 把 7-5 这周他自己那条 x 的实测数据摆到台面——用 Cloudflare radar 这块在 internet 流量上层占了 representative sample 的拼图,在 2026 H1 第一次 bot 数量超过人类;2025 秋天他被问多久超过时还押 over end of 2027、三月 SXSW 时改成 2027 H1、几周前 team 直接告诉他提前到 2026 H1。他自己推 over-under——五年看到一千倍。Drill 下去:bot / agent / crawler 三词同义,Google bot 建索引的部分没涨,真涨的是 agent 这一波;ChatGPT / Claude 帮你 shopping for a digital camera,agent 替你看五个 site 的活它要看几千次。互联网 28 年没换过的广告模型因此失效——bot 不点广告。Cloudflare 的业务也跟着从 marketing-driven 走 technical-developer-driven。Prince 那句「billion users not in our country / maybe not even human」是 7-5 这条 issue 的 ship 时长起点。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="podcast:mad-podcast" data-author-name="The MAD Podcast" data-author-tag="Matt Turck 主理的 AI 与数据播客" data-author-handle="" data-author-avatar="../assets/avatars/podcast-mad-podcast.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/podcast-mad-podcast.jpg" alt="The MAD Podcast avatar"><span class="avatar-fallback">TM</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">The MAD Podcast</div>
+            <div class="author-tag is-inline">Matt Turck 主理的 AI 与数据播客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Matthew Prince(Cloudflare CEO)在 MAD Podcast 把这周那条 x 的实测数据完整摆出来——用 Cloudflare radar 这块internet 流量上层 representative sample 的拼图,2026 H1 bot 数量超过人类是他自己 team 几天前才告诉他。</p>
+              <p>Prince 把时间轴摆出来——2025 fall 押 over end of 2027、2026 三月 SXSW 改成 2027 H1、几周前直接提前到 2026 H1。extrapolate 五年他直接 over-under,押的是一千倍。</p>
+              <p>Drill 下去:bot / agent / crawler 同义,真涨的是 agent 这一波;ChatGPT / Claude 帮你 shopping for a digital camera 这种活,agent 替你看几千次 site visit。互联网 28 年没换过的广告模型失效——bot 不点广告,Cloudflare 的业务跟着从 marketing-driven 走 technical-developer-driven。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Matthew Prince(MAD Podcast): 我们在 2026 上半年观察到 bot 流量超过人类流量;extrapolate 五年看到现在一千倍。</p>
+              <p>Matt Turck 开场: 我是 Matt Turk,MAD Podcast 主理人。今天很高兴请到 Cloudflare 联合创始人兼 CEO Matthew Prince,这家站在 internet 大量流量前面的公司。</p>
+              <p>Matthew Prince: 真在推动这轮涨的是什么,我们都会叫它 agent——比方说你去 ChatGPT / Claude 帮你 shopping for a digital camera,agent 替你做的 site visit 比你亲自做同件事多几千次。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Matthew Prince(Cloudflare CEO)在 MAD Podcast 把这周那条 x 的实测数据完整摆出来——用 Cloudflare radar 这块internet 流量上层 representative sample 的拼图,2026 H1 bot 数量超过人类是他自己 team 几天前才告诉他。</p>
+              <p>Prince 把时间轴摆出来——2025 fall 押 over end of 2027、2026 三月 SXSW 改成 2027 H1、几周前直接提前到 2026 H1。extrapolate 五年他直接 over-under,押的是一千倍。</p>
+              <p>Drill 下去:bot / agent / crawler 同义,真涨的是 agent 这一波;ChatGPT / Claude 帮你 shopping for a digital camera 这种活,agent 替你看几千次 site visit。互联网 28 年没换过的广告模型失效——bot 不点广告,Cloudflare 的业务跟着从 marketing-driven 走 technical-developer-driven。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>We actually had bot traffic pass human traffic online in the first half of twenty twenty six. In five years you might have a thousand times as much traffic on the internet as you do today.</p>
+              <p>Speaker 2 | 00:34 - 00:50: Hi. I&#39;m Matt Turk. Welcome to the Mad Podcast. Today, I&#39;m excited to welcome Matthew Prince, cofounder and CEO of Cloudflare...</p>
+              <p>Speaker 1 | 04:38 - 05:28: ...the thing that&#39;s really driving this is what I think we would all call agents...you see, you know, thousands of times more site visits for that same activity...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.youtube.com/watch?v=UN47z_opfmo" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:mattturck" data-author-name="Matt Turck" data-author-tag="First Mark Capital 合伙人 / MAD Podcast 主理人" data-author-handle="@mattturck" data-author-avatar="../assets/avatars/x-mattturck.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-mattturck.jpg" alt="Matt Turck avatar"><span class="avatar-fallback">MT</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Matt Turck</div>
+            <div class="author-tag is-inline">First Mark Capital 合伙人 / MAD Podcast 主理人</div>
+          </div>
+          <div class="author-handle">@mattturck</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Matt Turck 把这条播客推到今天的主轴位——作者本身也借这期把一周的 Cloudflare 实测 x thread 推成 podcast 完整版。主播自己立过 podcast 嘉宾的门槛,这一手是把「一段 x 上数据」升格成「可听的 80+ 分钟对谈」。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Matt Turck: 这周 Cloudflare CEO 来 MAD Podcast,完整版放出。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Matt Turck 把这条播客推到今天的主轴位——作者本身也借这期把一周的 Cloudflare 实测 x thread 推成 podcast 完整版。主播自己立过 podcast 嘉宾的门槛,这一手是把「一段 x 上数据」升格成「可听的 80+ 分钟对谈」。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>播完整版 Cloudflare CEO Matthew Prince 对谈。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/mattturck/status/2073_Cloudflare_bot_pass" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 02</div>
+    <h2 class="section-title">Claude Blog 把 Claude 嵌进 Apple Foundation Models framework / Claude Blog Embeds Claude into Apple&#39;s Foundation Models</h2>
+    <p class="section-desc">Claude Blog(Anthropic)同日放出 Foundation Models framework 的 Claude 支持——通过新 Swift package,Apple 开发者用 Apple 自己的 Foundation Models framework 直接 call Claude,并接 multi-step reasoning / code generation / web search / code execution 给 Apple 本地模型。Framework 返回 typed Swift value(@Generable),开发者是拿着 typed input 进 Claude API,不是 raw user text。一个 journaling app 在 device 上生成每日 prompt,然后把多个月的 entries cross-thread 扔给 Claude;study app 在 device 上 define 词、follow-up 问「why does this matter」就 hand off 给 Claude。iOS 27 / iPadOS 27 / macOS 27 / visionOS 27 / watch OS 27 同步上线,明天可用,Anthropic API key sign-in,Apple 把 frontier model 立成 next 棒。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="blog:claude-blog" data-author-name="Claude Blog" data-author-tag="Anthropic 官方博客" data-author-handle="" data-author-avatar="../assets/avatars/blog-claude-blog.png">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/blog-claude-blog.png" alt="Claude Blog avatar"><span class="avatar-fallback">CB</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Claude Blog</div>
+            <div class="author-tag is-inline">Anthropic 官方博客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Claude Blog 把 Claude 嵌进 Apple Foundation Models framework——通过新 Swift package,Apple 开发者用 Apple 自己的 framework 直接 call Claude,接 multi-step reasoning / 代码生成 / 联网搜索 / 代码执行。Framework 返 typed Swift value(@Generable),开发者拿 typed input 进 Claude,不是 raw user text。</p>
+              <p>Claude Blog 举例:journaling app 在 device 生成每日 prompt,然后 ask Claude find threads across 多个月 entries;study app 在 device 上 define 词,follow-up 问「why does this matter for everything else」就 hand off 给 Claude。一个用户视角 + 两套模型各干最擅长的一件。</p>
+              <p>Claude Blog 配套:iOS 27 / iPadOS 27 / macOS 27 / visionOS 27 / watch OS 27 同步上线,明天可用,Anthropic API key sign-in。Apple 第一次正经把 frontier model 立成框架层的 next 棒。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Claude Blog: 今天发 Apple Foundation Models framework 的 Claude 支持,通过新 Swift package 让 Apple 开发者用 framework 直接 call Claude 做更复杂的工作流。</p>
+              <p>Claude Blog: 加 Claude 之后每条 pattern 都延展——journaling app 在 device 生成每日 prompt,然后让 Claude 跨多月 entries 找 threads。</p>
+              <p>Claude Blog: Foundation Models framework 的 Claude 支持明天可用,在 iOS 27 / iPadOS 27 / macOS 27 / visionOS 27 / watchOS 27 同时上。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Claude Blog 把 Claude 嵌进 Apple Foundation Models framework——通过新 Swift package,Apple 开发者用 Apple 自己的 framework 直接 call Claude,接 multi-step reasoning / 代码生成 / 联网搜索 / 代码执行。Framework 返 typed Swift value(@Generable),开发者拿 typed input 进 Claude,不是 raw user text。</p>
+              <p>Claude Blog 举例:journaling app 在 device 生成每日 prompt,然后 ask Claude find threads across 多个月 entries;study app 在 device 上 define 词,follow-up 问「why does this matter for everything else」就 hand off 给 Claude。一个用户视角 + 两套模型各干最擅长的一件。</p>
+              <p>Claude Blog 配套:iOS 27 / iPadOS 27 / macOS 27 / visionOS 27 / watch OS 27 同步上线,明天可用,Anthropic API key sign-in。Apple 第一次正经把 frontier model 立成框架层的 next 棒。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Today we&#39;re releasing Foundation Models framework support for Claude through a new Swift package that lets Apple developers use Apple&#39;s Foundation Models framework to call Claude for more complex workflows.</p>
+              <p>Adding Claude extends each of those patterns. A journaling app can generate daily prompts on-device, then ask Claude to find threads across months of entries.</p>
+              <p>Claude support with the Foundation Models framework will be available tomorrow and works through Apple&#39;s Foundation Models framework on iOS 27, iPadOS 27, macOS 27, and visionOS 27, and watch OS 27.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://claude.com/blog/claude-for-foundation-models" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 03</div>
+    <h2 class="section-title">Cat Wu 把 Fable 5 的 judgment 立到 retention analysis 这种活里 / Cat Wu Lifts Fable 5 Judgment into Retention Analysis</h2>
+    <p class="section-desc">Cat Wu(Anthropic)把 Fable 5 的 judgment 立进她自己 retention analysis 的活里——她让它跑一段 retention 分析,Fable 5 主动用 propensity score matching(matching users on activity so you compare like with like),这件事她没要求。这是 7-5 这一期里 voice 最 quiet 的一手:不是 Fable 5 能写出 fancy prose,而是 Fable 5 在分析这种活里知道 which statistical move to make;她把它写的 email / doc 也属改进 judgment 范围。7-3 Claude Tag 全员把它推到全员产品,7-4 Claude Tag docs 削掉 setup friction,7-5 Cat Wu 把 Fable 这条产品的方法论立到 analysis 这一类——judgment 进入统计本身。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:_catwu" data-author-name="Cat Wu" data-author-tag="Anthropic 产品工程" data-author-handle="@_catwu" data-author-avatar="../assets/avatars/x-_catwu.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-_catwu.jpg" alt="Cat Wu avatar"><span class="avatar-fallback">CW</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Cat Wu</div>
+            <div class="author-tag is-inline">Anthropic 产品工程</div>
+          </div>
+          <div class="author-handle">@_catwu</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Cat Wu(Anthropic)把 Fable 5 的 judgment 立到她自己 retention analysis 的活里——它跑 retention 分析,主动用 propensity score matching(matching users on activity so you compare like with like),这件事她没要求。她爱这件事,因为 Fable 5 的 improved judgment 直接延伸到 email 和 docs。</p>
+              <p>这句话 and its like 是 7-5 这一期 voice 最 quiet 的一手——Fable 5 在分析这种活里知道 which statistical move to make,judgment 进入统计本身。7-3 Claude Tag 全员日 / 7-4 Claude Tag docs 削掉 setup friction / 7-5 Fable 5 judgment 入 analysis——三条线把 Fable 这条产品的方法论从工具到产品到 judgment 立实。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Cat Wu: Fable 5 我最爱的一件是它主动在我 retention analysis 里用 propensity score matching(按 activity 配对 users like-with-like),我都没要求。</p>
+              <p>Cat Wu: 看到 Fable 5 在所有活里的 improved judgment,从写 email 到 docs——</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Cat Wu(Anthropic)把 Fable 5 的 judgment 立到她自己 retention analysis 的活里——它跑 retention 分析,主动用 propensity score matching(matching users on activity so you compare like with like),这件事她没要求。她爱这件事,因为 Fable 5 的 improved judgment 直接延伸到 email 和 docs。</p>
+              <p>这句话 and its like 是 7-5 这一期 voice 最 quiet 的一手——Fable 5 在分析这种活里知道 which statistical move to make,judgment 进入统计本身。7-3 Claude Tag 全员日 / 7-4 Claude Tag docs 削掉 setup friction / 7-5 Fable 5 judgment 入 analysis——三条线把 Fable 这条产品的方法论从工具到产品到 judgment 立实。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>One of the things I love about Claude Fable 5 is that it knew to use propensity score matching (matching users on activity so you compare like with like) in my retention analysis without me asking.</p>
+              <p>It&#39;s exciting to see Fable 5&#39;s improved judgment across all of its work, from writing emails and docs...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/_catwu/status/2073362151744587860" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 04</div>
+    <h2 class="section-title">Rauch / Dan Shipper / Thibault 把 token 战 + Codex 入 ChatGPT + Codex 缺口 三条线一起推 / Rauch / Dan Shipper / Thibault Frame Token War, Codex-in-ChatGPT, Codex Gaps Together</h2>
+    <p class="section-desc">Rauch 把 Vercel AI Gateway 整个 lifetime 的 token 花费画成动画——Anthropic 的 dominance 曲线、open weight AI 在 Vercel 这层流量里的崛起曲线被肉眼看见,这是 7-5 这一周 token 经济学的 visual artifact。Dan Shipper 同步把 Codex in ChatGPT 摆出来——You exec 出 image,ChatGPT 自己 spawn 一个 sub-agent 跑 Codex 子任务,Codex 从之前 Claude Code 的同级产品被 ChatGPT 内化成 sub-agent capability。Thibault(OpenAI Codex &amp; ChatGPT)同日一条:Codex 还有什么应该早就做对的事没做对——直球 invitation 在 X 上。三条线一条把 token 钱画出来、一条把 Codex 拉进 ChatGPT、一条邀请提出 Codex 缺口——7-5 这一期 voice 最响的「ChatGPT 把 frontier tooling 内化」叙事在这一节被立实。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:rauchg" data-author-name="Guillermo Rauch" data-author-tag="Vercel CEO" data-author-handle="@rauchg" data-author-avatar="../assets/avatars/x-rauchg.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-rauchg.jpg" alt="Guillermo Rauch avatar"><span class="avatar-fallback">GR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Guillermo Rauch</div>
+            <div class="author-tag is-inline">Vercel CEO</div>
+          </div>
+          <div class="author-handle">@rauchg</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Rauch 把 Vercel AI Gateway 整个 lifetime 的 token 花费画成动画——Anthropic 的 dominance 曲线、open weight AI 在 Vercel 这层 traffic 的崛起曲线被肉眼看见。这是 7-5 token 经济学的 visual artifact。</p>
+              <p>Rauch 把这条画得「fluctuations among the labs / Anthropic&#39;s dominance / the rise of open weight AI」三段同框——frontier model 商战 + open weight 替代曲线在 Vercel 这层被肉眼看见。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Rauch: 🏁 我把 token 💰 花销竞赛画成动画——从 Vercel AI Gateway 的 lifetime usage,这里 aggregate 每月来自几百万开发者的几万亿 tokens。</p>
+              <p>Rauch: 看到 labs 之间的 fluctuation、Anthropic 的 dominance、open weight AI 的崛起——</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Rauch 把 Vercel AI Gateway 整个 lifetime 的 token 花费画成动画——Anthropic 的 dominance 曲线、open weight AI 在 Vercel 这层 traffic 的崛起曲线被肉眼看见。这是 7-5 token 经济学的 visual artifact。</p>
+              <p>Rauch 把这条画得「fluctuations among the labs / Anthropic&#39;s dominance / the rise of open weight AI」三段同框——frontier model 商战 + open weight 替代曲线在 Vercel 这层被肉眼看见。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>🏁 I animated the token 💰 spend race, from ~lifetime Vercel AI Gateway usage, which aggregates trillions of tokens from millions of developers a month.</p>
+              <p>Fascinating to see the fluctuations among the labs, Anthropic&#39;s dominance, and the rise of open weight AI.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/rauchg/status/2073657892831617444" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:danshipper" data-author-name="Dan Shipper" data-author-tag="Every 联合创始人 / AI 写作工具链" data-author-handle="@danshipper" data-author-avatar="../assets/avatars/x-danshipper.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-danshipper.jpg" alt="Dan Shipper avatar"><span class="avatar-fallback">DS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Dan Shipper</div>
+            <div class="author-tag is-inline">Every 联合创始人 / AI 写作工具链</div>
+          </div>
+          <div class="author-handle">@danshipper</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Dan Shipper(Every 联合创始人)把 Codex in ChatGPT 摆出来——You exec 给 image,ChatGPT 自己 spawn 一个 sub-agent 跑 Codex 子任务。这是 7-5 这一期 voice 最响的一手——Codex 从之前 Claude Code 的同级产品被 ChatGPT 内化成 sub-agent capability。</p>
+              <p>Dan Shipper 把这条包装成一句 meme「Yo dawg we heard you like Codex in ChatGPT」——Codex-in-Codex 的递归姿势在 ChatGPT 这一层被做成可实操产品。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Dan Shipper: 你叫 exec 出 image,ChatGPT 自己 spawn 一个 sub-agent 用 Codex 跑子任务。</p>
+              <p>Dan Shipper 一句 meme: Yo dawg we heard you like Codex in ChatGPT。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Dan Shipper(Every 联合创始人)把 Codex in ChatGPT 摆出来——You exec 给 image,ChatGPT 自己 spawn 一个 sub-agent 跑 Codex 子任务。这是 7-5 这一期 voice 最响的一手——Codex 从之前 Claude Code 的同级产品被 ChatGPT 内化成 sub-agent capability。</p>
+              <p>Dan Shipper 把这条包装成一句 meme「Yo dawg we heard you like Codex in ChatGPT」——Codex-in-Codex 的递归姿势在 ChatGPT 这一层被做成可实操产品。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Yo dawg we heard you like Codex in ChatGPT</p>
+              <p>(Codex spawns a sub-agent inside ChatGPT to handle sub-tasks)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/danshipper/status/2073498010258542894" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:thsottiaux" data-author-name="Thibault Sottiaux" data-author-tag="OpenAI Codex &amp; ChatGPT" data-author-handle="@thsottiaux" data-author-avatar="../assets/avatars/x-thsottiaux.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-thsottiaux.jpg" alt="Thibault Sottiaux avatar"><span class="avatar-fallback">TS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Thibault Sottiaux</div>
+            <div class="author-tag is-inline">OpenAI Codex &amp; ChatGPT</div>
+          </div>
+          <div class="author-handle">@thsottiaux</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thibault Sottiaux(OpenAI Codex &amp; ChatGPT)在 X 上直球邀请:Codex 还有哪件应该早就做对的事没做对?这是 7-5 这一期 voice 最 unprepared 的一手——他打算 crowd-source Codex 的 gaps。</p>
+              <p>Thibault 同一天在 X 上汇报自己一句话 typo 怎么被 Sol + Codex try fix 引发一个 468+800 的算术演练——Codex 试图计算 39 × 12 不是 the 12 emoji 的 count,被一个 friendly follow-up pull 回真问题。judge-not-write 工具在 product 内的 stress test。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Thibault: 你觉得 Codex 还有哪件 surprising 一直没做好、我们早就应该做对的事?</p>
+              <p>Thibault: 和 Sol 一次 silly 但让我笑了的互动——🫡 算 39 × 12 = 468,被一句 friendly follow-up 拉回:有 39 个 🫡 emoji,不是 12。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thibault Sottiaux(OpenAI Codex &amp; ChatGPT)在 X 上直球邀请:Codex 还有哪件应该早就做对的事没做对?这是 7-5 这一期 voice 最 unprepared 的一手——他打算 crowd-source Codex 的 gaps。</p>
+              <p>Thibault 同一天在 X 上汇报自己一句话 typo 怎么被 Sol + Codex try fix 引发一个 468+800 的算术演练——Codex 试图计算 39 × 12 不是 the 12 emoji 的 count,被一个 friendly follow-up pull 回真问题。judge-not-write 工具在 product 内的 stress test。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>What is something that you feel is surprising that Codex still can&#39;t do well and we should have gotten right a while ago?</p>
+              <p>A silly, but made me laugh interaction with Sol... 39 × 12 = 468 🫡... There were 39 🫡 emojis...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/thsottiaux/status/2073492104814784840" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 05</div>
+    <h2 class="section-title">Nan Yu / Steinberger 把 developer practice 这种体验并列立起来 / Nan Yu / Steinberger Place Developer Practice Alongside</h2>
+    <p class="section-desc">Nan Yu(AI 创业者 / 投资人)放两条 developer practice 的 proverbs——用模型写代码产生 constant stream of profanities 基本等于 AGI(没有 flow state 的开发者写不到这种深度);drop every production table,model 被 fired 还是开发者被 fired;best way to catch bugs 是 use the product 看你能不能 break 它——code review 解决 architecture 和 API design 不解决 most bugs。Peter Steinberger 用自己的产品加一条 valuation game 提示词——next version 让你 exactly when your resets expire so you can 持续 valuemaxxing、prompt 工程做成可读 surface。developer 这一层的两条线,Nan Yu 把 practitioner ethics / Steinberger 把工具 ergonomics 并列立成一日。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:thenanyu" data-author-name="Nan Yu" data-author-tag="AI 创业者 / 投资人" data-author-handle="@thenanyu" data-author-avatar="../assets/avatars/x-thenanyu.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-thenanyu.jpg" alt="Nan Yu avatar"><span class="avatar-fallback">NY</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Nan Yu</div>
+            <div class="author-tag is-inline">AI 创业者 / 投资人</div>
+          </div>
+          <div class="author-handle">@thenanyu</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nan Yu 放两条 developer practice 的 proverbs——用模型写代码产生 constant stream of profanities 基本等于 AGI(flow state 状态下的开发者才产得出这种深度);drop every production table,model 被 fired 还是开发者被 fired;this is basically AGI。</p>
+              <p>Nan Yu 同一周第二天把 best way to catch bugs 立成 product use + break——code review 解决 architecture 和 API design 不解决 most bugs。developer practice 不是 review code 是 use code。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Nan Yu: 以前我手写代码就在 flow state 里一直 profanity。所以用模型写代码基本等于 AGI。</p>
+              <p>Nan Yu: 找 bug 最有效的方式是用 product 看自己能不能 break 它——dead-reckon code 找不到 most bugs。review code 解决的是 architecture 和 API design、不是 most bugs。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nan Yu 放两条 developer practice 的 proverbs——用模型写代码产生 constant stream of profanities 基本等于 AGI(flow state 状态下的开发者才产得出这种深度);drop every production table,model 被 fired 还是开发者被 fired;this is basically AGI。</p>
+              <p>Nan Yu 同一周第二天把 best way to catch bugs 立成 product use + break——code review 解决 architecture 和 API design 不解决 most bugs。developer practice 不是 review code 是 use code。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>When I wrote code by hand I would utter a constant stream of profanities while in flow state. So this is basically AGI</p>
+              <p>The best way to catch bugs is to use the product and see if you can break it. You&#39;re not going to find most bugs by dead reckoning the code. You&#39;re reviewing the code itself for architecture and API design… to control the increase in technical debt</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/thenanyu/status/2073183006266327098" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:steipete" data-author-name="Peter Steinberger" data-author-tag="OpenClaw 创始人" data-author-handle="@steipete" data-author-avatar="../assets/avatars/x-steipete.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-steipete.jpg" alt="Peter Steinberger avatar"><span class="avatar-fallback">PS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Steinberger</div>
+            <div class="author-tag is-inline">OpenClaw 创始人</div>
+          </div>
+          <div class="author-handle">@steipete</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Steinberger 用自己的产品加 valuation game 提示词——next version 让你 exactly when your resets expire、给 valuemaxxing 这种过气 vibe 一句 analogy。prompt 工程做成可读的 surface。</p>
+              <p>Steinberger 当天一条回顾 ride——独立工具人在模型体验期包类似「token valuation」这种 game-y 的 surface 立出来。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Steinberger: 下一版 ... 直接看到 resets 何时到期,这样你就能 valuemaxxing 一波。</p>
+              <p>Steinberger: 真是一场 ride。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Steinberger 用自己的产品加 valuation game 提示词——next version 让你 exactly when your resets expire、给 valuemaxxing 这种过气 vibe 一句 analogy。prompt 工程做成可读的 surface。</p>
+              <p>Steinberger 当天一条回顾 ride——独立工具人在模型体验期包类似「token valuation」这种 game-y 的 surface 立出来。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>In the next version of ... see exactly when your resets expire so you can up your ̶t̶o̶k̶e̶n̶m̶a̶x̶x̶i̶n̶g̶ valuemaxxing game!</p>
+              <p>What a ride.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/steipete/status/2073450631168426462" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 06</div>
+    <h2 class="section-title">7-4 周末底色:America 250、Codex dance crew、World Cup、NIMBY / Weekend Texture — America 250, Dance Crew, World Cup, NIMBY</h2>
+    <p class="section-desc">Saturday 是 July 4——Sam Altman 同日一条「life, liberty, and the pursuit of happiness」+ 一条「grateful to the people ... for the next 250」;Amanda Askell 一句「Happy birthday, America! You don&#39;t look a day over 200」;Nikunj Kothari 一条为 250 年干杯、America 是 endless kindness 给他的 land of opportunity。三条 x 把 America 250 这个 node 立成 AI 历史的一个 subordinate 节点。Swyx 把 X 上一张 2003 hip-hop dance crew 旧照推出来——「REALLY REALLY wanted to join the crew but doublebooked」——AI 工程师的底层 surface 还是同一个人。Peter Yang 与 Matt Turck 这一天把 World Cup 3 yellows / France-Paraguay / Bono 前摇滚歌手这种 viii 立成这条 issue 的 World Cup 节点。Garry Tan 把 SF YIMBY / NIMBY 这一轮对立推到当天——「Ryan and all his degenerate buddies ... protesting against Lurie」——政治节点也成了 AI 历史这条 timeline 的 subordinate。tech / 250 / World Cup / NIMBY 四条线在同一个 4 日节拍上各就各位。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:sama" data-author-name="Sam Altman" data-author-tag="OpenAI CEO" data-author-handle="@sama" data-author-avatar="../assets/avatars/x-sama.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-sama.jpg" alt="Sam Altman avatar"><span class="avatar-fallback">SA</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Sam Altman</div>
+            <div class="author-tag is-inline">OpenAI CEO</div>
+          </div>
+          <div class="author-handle">@sama</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Sam Altman 一句「they really nailed it with『life, liberty, and the pursuit of happiness』」——AI 时代的人用 founding document 的一句话 anchor 自己的 reflection。</p>
+              <p>Sam Altman 同日 long-form 一条「grateful to the people that created the idea of america ... most impressive social experiment in history」——把 250 年 anchor 到「社会实验」这一 frame。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Sam Altman: 他们真把「life, liberty, and the pursuit of happiness」nail 到位了。</p>
+              <p>Sam Altman: 感激创建 america 这个 idea 的人、过去 250 年把它 build 起来的人、接下来 250 年继续 carry forward 的人。人类历史最 impressive 的社会实验。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Sam Altman 一句「they really nailed it with『life, liberty, and the pursuit of happiness』」——AI 时代的人用 founding document 的一句话 anchor 自己的 reflection。</p>
+              <p>Sam Altman 同日 long-form 一条「grateful to the people that created the idea of america ... most impressive social experiment in history」——把 250 年 anchor 到「社会实验」这一 frame。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>they really nailed it with &quot;life, liberty, and the pursuit of happiness&quot;</p>
+              <p>grateful to the people that created the idea of america, everyone who built it over the past 250 years, and the people who will carry it forward for the next 250. most impressive social experiment in history.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/sama/status/2073600853178556523" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:amandaaskell" data-author-name="Amanda Askell" data-author-tag="Anthropic 角色对齐负责人" data-author-handle="@AmandaAskell" data-author-avatar="../assets/avatars/x-amandaaskell.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-amandaaskell.jpg" alt="Amanda Askell avatar"><span class="avatar-fallback">AA</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Amanda Askell</div>
+            <div class="author-tag is-inline">Anthropic 角色对齐负责人</div>
+          </div>
+          <div class="author-handle">@AmandaAskell</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Amanda Askell(Anthropic 角色对齐负责人)一句轻「Happy birthday, America! You don&#39;t look a day over 200」——用 Anthropic 这边的 voice 给 4th July 一个 happy birthday 句式。Anthropic 体系里的人都拿到这条。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Amanda Askell: 生日快乐,America!你看起来一点不像 200 岁。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Amanda Askell(Anthropic 角色对齐负责人)一句轻「Happy birthday, America! You don&#39;t look a day over 200」——用 Anthropic 这边的 voice 给 4th July 一个 happy birthday 句式。Anthropic 体系里的人都拿到这条。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Happy birthday, America! You don&#39;t look a day over 200.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/AmandaAskell/status/2073621117933613272" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:nikunj" data-author-name="Nikunj Kothari" data-author-tag="Afore Capital 合伙人" data-author-handle="@nikunj" data-author-avatar="../assets/avatars/x-nikunj.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-nikunj.jpg" alt="Nikunj Kothari avatar"><span class="avatar-fallback">NK</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Nikunj Kothari</div>
+            <div class="author-tag is-inline">Afore Capital 合伙人</div>
+          </div>
+          <div class="author-handle">@nikunj</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj Kothari(Afore Capital 合伙人)把 America 250 node 立成个人 reflection——「moved to America for undergrad ... grateful to this country for the endless kindness ... here&#39;s to the next 250 🇺🇸」。AI 时代的投资人把自己 landing 在这条 founding 上。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Nikunj: 本科来 America 后就一直住在这里——grateful 这片土地给我的 endless kindness。像任何国家一样它自己也有 issue,但我确信没有比这更大的 land of opportunity。敬下一个 250 年🇺🇸</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj Kothari(Afore Capital 合伙人)把 America 250 node 立成个人 reflection——「moved to America for undergrad ... grateful to this country for the endless kindness ... here&#39;s to the next 250 🇺🇸」。AI 时代的投资人把自己 landing 在这条 founding 上。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Moved to America for undergrad and have lived here ever since then.. Grateful to this country for the endless kindness it has bestowed on me. Like any country it has its own share of issues, but convinced there&#39;s no greater land of opportunity. Here&#39;s to the next 250 🇺🇸</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/nikunj/status/2073518016845623656" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:swyx" data-author-name="Swyx" data-author-tag="AI 工程师" data-author-handle="@swyx" data-author-avatar="../assets/avatars/x-swyx.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-swyx.jpg" alt="Swyx avatar"><span class="avatar-fallback">S</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Swyx</div>
+            <div class="author-tag is-inline">AI 工程师</div>
+          </div>
+          <div class="author-handle">@swyx</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx 把 X 上一张 2003 hip-hop dance crew 旧照推出来——「REALLY REALLY wanted to join the crew but just got too doublebooked」——AI 工程师的底层 surface 还是同一个人。技术 discussion 之外,X timeline 也是同一个人物的 surface。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Swyx: btw @dakshgup 我 REALLY REALLY 想加入 crew 但 doublebooked 来不及——这是我 2003 在 hip-hop dance crew 的旧照(左下是我)。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx 把 X 上一张 2003 hip-hop dance crew 旧照推出来——「REALLY REALLY wanted to join the crew but just got too doublebooked」——AI 工程师的底层 surface 还是同一个人。技术 discussion 之外,X timeline 也是同一个人物的 surface。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>btw @dakshgup i REALLY REALLY wanted to join the crew but just got too doublebooked to do it :/
+
+              here is me in my hip hop dance crew in 2003 (i am bottom left)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/swyx/status/2073630312249327918" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:petergyang" data-author-name="Peter Yang" data-author-tag="产品教练 / 创作者经济研究者" data-author-handle="@petergyang" data-author-avatar="../assets/avatars/x-petergyang.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-petergyang.jpg" alt="Peter Yang avatar"><span class="avatar-fallback">PY</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Yang</div>
+            <div class="author-tag is-inline">产品教练 / 创作者经济研究者</div>
+          </div>
+          <div class="author-handle">@petergyang</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang(产品教练)周日一条「Wow AI agrees with me 🤣」——AI 模型 product 上 agree 自己的 vote 在 World Cup。World Cup 与 AI 模型在同一个 Sunday night 出现在产品教练的时间线上。</p>
+              <p>Peter Yang 当天一条「Damn is this whole game going to get played in front of Paraguay goal」+ 「Cape Verde shit」——World Cup viii 在 AI 创作者这条 timeline 上立成一个 live moment。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Peter Yang: Wow AI 同意我🤣。</p>
+              <p>Peter Yang: 这整场比赛都会在 Paraguay 球门前打吗?</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang(产品教练)周日一条「Wow AI agrees with me 🤣」——AI 模型 product 上 agree 自己的 vote 在 World Cup。World Cup 与 AI 模型在同一个 Sunday night 出现在产品教练的时间线上。</p>
+              <p>Peter Yang 当天一条「Damn is this whole game going to get played in front of Paraguay goal」+ 「Cape Verde shit」——World Cup viii 在 AI 创作者这条 timeline 上立成一个 live moment。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Wow AI agrees with me 🤣</p>
+              <p>Damn is this whole game going to get played in front of Paraguay goal</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/petergyang/status/2073450238488093100" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:mattturck" data-author-name="Matt Turck" data-author-tag="First Mark Capital 合伙人 / MAD Podcast 主理人" data-author-handle="@mattturck" data-author-avatar="../assets/avatars/x-mattturck.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-mattturck.jpg" alt="Matt Turck avatar"><span class="avatar-fallback">MT</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Matt Turck</div>
+            <div class="author-tag is-inline">First Mark Capital 合伙人 / MAD Podcast 主理人</div>
+          </div>
+          <div class="author-handle">@mattturck</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Matt Turck(First Mark Capital 合伙人)一条 France-Paraguay World Cup 比赛感慨——「3 yellows for France, 0 for Paraguay」——MAD Podcast 主理人在 weekend 的 viii 也是公开 reputation 的一部分。</p>
+              <p>Matt Turck 当天一条 Thierry Henry 50-min France World Cup 球员从 Paris suburbs 长出来的 chill note——「54 World Cup players are from there」——World Cup 在 MAD Podcast 主理人这条 timeline 也是 alive。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Matt Turck: 这场 tough 但 France 拿下。Argentina 和今天这场连起来,refereeing 正在变成这届 tournament 的 major issue。France 拿 3 张黄牌,Paraguay 像 thug 一样打 0 张?</p>
+              <p>Matt Turck: chilling——Thierry Henry 讲在 Paris suburbs 长大的事(以及 why 54 个 World Cup 球员都从那里出来)</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Matt Turck(First Mark Capital 合伙人)一条 France-Paraguay World Cup 比赛感慨——「3 yellows for France, 0 for Paraguay」——MAD Podcast 主理人在 weekend 的 viii 也是公开 reputation 的一部分。</p>
+              <p>Matt Turck 当天一条 Thierry Henry 50-min France World Cup 球员从 Paris suburbs 长出来的 chill note——「54 World Cup players are from there」——World Cup 在 MAD Podcast 主理人这条 timeline 也是 alive。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Tough game but France got it done. Between Argentina and this game today, refereeing is becoming a major issue in this tournament. 3 yellows for France and zero for Paraguay who played like thugs?</p>
+              <p>Chills - Thierry Henry on growing up playing in the suburbs of Paris (and why 54 World Cup players are from there)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/mattturck/status/2073288466182943012" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:garrytan" data-author-name="Garry Tan" data-author-tag="Y Combinator 总裁" data-author-handle="@garrytan" data-author-avatar="../assets/avatars/x-garrytan.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-garrytan.jpg" alt="Garry Tan avatar"><span class="avatar-fallback">GT</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Garry Tan</div>
+            <div class="author-tag is-inline">Y Combinator 总裁</div>
+          </div>
+          <div class="author-handle">@garrytan</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Garry Tan(YC 总裁)一条 SF housing YIMBY 立场——「SF needs to build housing asap / Incentivize and build supply / Stop subsidizing demand」——推上 immediate 的城市政策 issue。</p>
+              <p>Garry Tan 同日第二条「Ryan is a part of the idiotic NIMBY class that only attacks people doing good work」——把 YIMBY / NIMBY 这条对立拉到 YC 总裁这条 timeline。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Garry Tan: SF 需要立刻建 housing — incentivize + build supply,停止 subsidize demand。</p>
+              <p>Garry Tan: Ryan 是 idiotic NIMBY class 一员——只攻击 doing good work 的人。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Garry Tan(YC 总裁)一条 SF housing YIMBY 立场——「SF needs to build housing asap / Incentivize and build supply / Stop subsidizing demand」——推上 immediate 的城市政策 issue。</p>
+              <p>Garry Tan 同日第二条「Ryan is a part of the idiotic NIMBY class that only attacks people doing good work」——把 YIMBY / NIMBY 这条对立拉到 YC 总裁这条 timeline。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>SF needs to build housing asap
+
+              Incentivize and build supply
+
+              Stop subsidizing demand</p>
+              <p>Ryan is a part of the idiotic NIMBY class that only attacks people doing good work</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/garrytan/status/2073548682532950338" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <footer data-source-note="Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-05 source feeds.">Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-05 source feeds.</footer>
+
+  <script>
+    function getTemplateAuthorSources() {
+      const sources = window.AI_BUILDERS_TEMPLATE_SOURCES || {};
+      return { identities: sources.identities || {}, avatars: sources.avatars || {} };
+    }
+
+    function getAuthorInitials(name) {
+      return (name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(function(part) { return part[0]; }).join('').toUpperCase();
+    }
+
+    function hydrateTemplateCopy() {
+      const intro = document.querySelector('.intro');
+      if (intro) {
+        const kicker = intro.querySelector('.intro-kicker');
+        const copy = intro.querySelector('.intro-copy');
+        if (kicker) kicker.textContent = intro.dataset.kicker || '';
+        if (copy) copy.textContent = intro.dataset.text || '';
+      }
+
+      const footer = document.querySelector('footer');
+      if (footer) footer.textContent = footer.dataset.sourceNote || '';
+
+      const rewriteLabel = document.body.dataset.viewLabelRewrite || '速读';
+      const originalLabel = document.body.dataset.viewLabelOriginal || '原文';
+      document.querySelectorAll('.view-toggle').forEach(function(button) {
+        if (button.dataset.viewTarget === 'rewrite') button.textContent = rewriteLabel;
+        if (button.dataset.viewTarget === 'original') button.textContent = originalLabel;
+      });
+    }
+
+    function hydrateAuthorMeta() {
+      const sources = getTemplateAuthorSources();
+      document.querySelectorAll('.card').forEach(function(card) {
+        const authorKey = card.dataset.authorKey || '';
+        const identity = sources.identities[authorKey] || {};
+        const avatarEntry = sources.avatars[authorKey] || {};
+
+        const name = identity.name || card.dataset.authorName || '';
+        const rawHandle = identity.handle || card.dataset.authorHandle || '';
+        const handle = rawHandle && rawHandle.startsWith('@') ? rawHandle : (rawHandle ? '@' + rawHandle : '');
+        const tag = identity.label || card.dataset.authorTag || '';
+        const avatar = avatarEntry.fileUrl || avatarEntry.localPath || card.dataset.authorAvatar || '';
+
+        const nameNode = card.querySelector('.author-name');
+        const tagNode = card.querySelector('.author-tag');
+        const handleNode = card.querySelector('.author-handle');
+        const avatarNode = card.querySelector('.avatar');
+        const avatarImg = card.querySelector('.avatar img');
+        const avatarFallback = card.querySelector('.avatar-fallback');
+
+        if (nameNode) nameNode.textContent = name;
+        if (tagNode) tagNode.textContent = tag;
+        if (handleNode) handleNode.textContent = handle;
+        if (avatarImg) {
+          avatarImg.src = avatar;
+          avatarImg.alt = name ? name + ' avatar' : 'Author avatar';
+        }
+        if (avatarNode) avatarNode.classList.toggle('is-fallback', !avatar);
+        if (avatarFallback) avatarFallback.textContent = getAuthorInitials(name);
+      });
+    }
+
+    function updateEditionStrip() {
+      const publishDate = document.body.dataset.publishDate;
+      const editionName = document.body.dataset.editionName || '双语精选版';
+      const editionStrip = document.getElementById('edition-strip-text');
+      if (!publishDate || !editionStrip) return;
+
+      const issueNumber = document.body.dataset.issueNumber || '';
+      if (!issueNumber) return;
+
+      const selectedCount = document.querySelectorAll('.card').length;
+      const authorCount = new Set([].slice.call(document.querySelectorAll('.author-handle')).map(function(node) { return node.textContent.trim(); }).filter(Boolean)).size;
+      const themeCount = document.querySelectorAll('.section-header').length;
+      const parts = ['第 ' + issueNumber + ' 期', publishDate, editionName, selectedCount + ' 条精选', authorCount + ' 位作者', themeCount + ' 个主题'];
+      editionStrip.innerHTML = parts.map(function(part) { return '<span class="edition-item">' + part + '</span>'; }).join('<span class="edition-sep">|</span>');
+    }
+
+    function measureVariantHeight(variant) {
+      const prevPosition = variant.style.position;
+      const prevInset = variant.style.inset;
+      const prevVisibility = variant.style.visibility;
+      const prevPointerEvents = variant.style.pointerEvents;
+      const prevOpacity = variant.style.opacity;
+      const prevTransform = variant.style.transform;
+      const prevTransition = variant.style.transition;
+      const prevOverflowY = variant.style.overflowY;
+      const prevDisplay = variant.style.display;
+
+      variant.style.position = 'relative';
+      variant.style.inset = 'auto';
+      variant.style.visibility = 'hidden';
+      variant.style.pointerEvents = 'none';
+      variant.style.opacity = '1';
+      variant.style.transform = 'none';
+      variant.style.transition = 'none';
+      variant.style.overflowY = 'visible';
+      variant.style.display = 'block';
+
+      const height = variant.scrollHeight;
+
+      variant.style.position = prevPosition;
+      variant.style.inset = prevInset;
+      variant.style.visibility = prevVisibility;
+      variant.style.pointerEvents = prevPointerEvents;
+      variant.style.opacity = prevOpacity;
+      variant.style.transform = prevTransform;
+      variant.style.transition = prevTransition;
+      variant.style.overflowY = prevOverflowY;
+      variant.style.display = prevDisplay;
+
+      return Math.ceil(height);
+    }
+
+    function getTargetHeight(shell, target) {
+      const variant = shell.querySelector('.content-variant[data-view="' + target + '"]');
+      return measureVariantHeight(variant);
+    }
+
+    function syncShellHeights() {
+      document.querySelectorAll('.content-shell').forEach(function(shell) {
+        const active = shell.querySelector('.content-variant.is-active');
+        const target = active ? active.dataset.view : 'rewrite';
+        shell.style.height = getTargetHeight(shell, target) + 'px';
+      });
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', function() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(syncShellHeights, 120);
+    });
+
+    document.querySelectorAll('.card').forEach(function(card) {
+      const buttons = card.querySelectorAll('.view-toggle');
+      const shells = card.querySelectorAll('.content-shell');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const target = button.dataset.viewTarget;
+          if (button.classList.contains('is-active')) return;
+
+          buttons.forEach(function(btn) {
+            btn.classList.toggle('is-active', btn === button);
+          });
+
+          shells.forEach(function(shell) {
+            const current = shell.querySelector('.content-variant.is-active');
+            const next = shell.querySelector('.content-variant[data-view="' + target + '"]');
+            if (!current || !next || current === next) return;
+
+            shell.style.height = shell.offsetHeight + 'px';
+            requestAnimationFrame(function() {
+              current.classList.remove('is-active');
+              next.classList.add('is-active');
+              shell.style.height = getTargetHeight(shell, target) + 'px';
+            });
+          });
+        });
+      });
+    });
+
+    hydrateTemplateCopy();
+    hydrateAuthorMeta();
+    updateEditionStrip();
+    syncShellHeights();
+  </script>
+</body>
+</html>
