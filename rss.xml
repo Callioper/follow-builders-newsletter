@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 05 Jul 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 06 Jul 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-07-06 · tab 终局日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-06-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-06-rerun.html</guid>
+      <pubDate>Mon, 06 Jul 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[7-6 这一期的主轴是「管 agent 的纪律 + test-time compute 改写评测 + over-delegation meme 化」:Cat Wu 把 Claude Code 用成 sourcing 工具——告诉 CC 你要的 role、让它自己启动一个 dynamic workflow 跑出 100 个候选人、再把 artifact 发邮件给她,锁屏出门。Nan Yu 把同一天里两件事钉死——「10 个 Claude Code tab 是 theater」、「把 agent 当 RTS 单位 micro 是死胡同,旧 AI 都能 out-micro 99% 的人类玩家」。Noam Brown 在 No Priors 上把这条线接进 foundation-model 那一层——benchmark grid 没控制 test-time compute 是错,5.5 在 paper 上看只比 5.4 好一点但 thinking 效率高很多,一旦把思考时间控制住才是大幅跳升;safety evaluation 同样错位,capability 现在是预算的函数,policy 框架没回答「应该按哪档预算评估」。Nikunj 紧接把 VC 端相同的 friction-vs-value 翻出来——founder 应该带着至少两条产品反馈来,两边把 personal prompt 上传 Claude 异步跑更省。Dan Shipper 当天把 Fable 的「让 agent 改按钮颜色它开 100 个 agent 舰队」和「make no mistakes」两次扔出来,Matt Turck 同一天接梗,over-delegation 这一天自己长成了多作者 meme。Garry Tan 在 Osaka 给「leverage 被删」盖章——三十年零增长跑完 ceiling 实验,leverage 没了之后分胜负的是 judgment 和 ship 的意愿;同日的「Age of the Unc confirmed」两字收口。Texture:Peter Yang 看世界杯淘汰赛,Rauch 押 USA-ARG 决赛,Turck 把 Norway 压成「best jersey, best fan celebration, best striker」,Masad 一行 Happy 250;Sama 把孩子第一次双词句和 GPT-5.6 第一次发现新数学并列惊叹,Askell 把医生概率等价于calibrated-model 概率——两边都缺 calibration。10-tab 终局日(7-6)对位 流量变天日(7-5)和 未知画图日(7-4):7-4 立流程骨架,7-5 把骨架嵌入平台/产品/统计,7-6 把管 agent 这件事本身拆开重写。]]></description>
+      <category>Cat Wu 把 CC 用成 sourcing 工具 / Cat Wu Runs Sourcing on Claude Code, Nan Yu 把「管 agent」这件事拆开重写 / Nan Yu Rewrites the Discipline of Managing Agents, Noam Brown 在 No Priors 上讲 test-time compute 怎样改写评测与 safety / Noam Brown on No Priors: Test-Time Compute Reshapes Benchmarks and Safety, Nikunj 把 Zoom 上的 deck 念读判失效 / Nikunj Calls the Parroted-Deck VC Meeting Dead, Fable 的 over-delegation 这一天变成了多作者 meme / Fable&apos;s Over-Delegation Goes Multi-Author Meme, Garry Tan 在 Osaka 给「杠杆被删」盖章 / Garry Tan in Osaka Seals the Leverage-Deleted Frame, 7-6 周末底色:World Cup、4th July、creator economics / Weekend Texture: World Cup, 4th July, Creator Economics, 生活纹理收口:孩子双词、医生概率、20 年后再去 Paris / Life-Texture Closer: Two Words, Probability, Paris After 20 Years</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-07-05 · 流量变天日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-05-rerun.html</link>

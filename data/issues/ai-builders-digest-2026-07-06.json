@@ -1,0 +1,747 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-07-06",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "7-6 这一期的主轴是「管 agent 的纪律 + test-time compute 改写评测 + over-delegation meme 化」:Cat Wu 把 Claude Code 用成 sourcing 工具——告诉 CC 你要的 role、让它自己启动一个 dynamic workflow 跑出 100 个候选人、再把 artifact 发邮件给她,锁屏出门。Nan Yu 把同一天里两件事钉死——「10 个 Claude Code tab 是 theater」、「把 agent 当 RTS 单位 micro 是死胡同,旧 AI 都能 out-micro 99% 的人类玩家」。Noam Brown 在 No Priors 上把这条线接进 foundation-model 那一层——benchmark grid 没控制 test-time compute 是错,5.5 在 paper 上看只比 5.4 好一点但 thinking 效率高很多,一旦把思考时间控制住才是大幅跳升;safety evaluation 同样错位,capability 现在是预算的函数,policy 框架没回答「应该按哪档预算评估」。Nikunj 紧接把 VC 端相同的 friction-vs-value 翻出来——founder 应该带着至少两条产品反馈来,两边把 personal prompt 上传 Claude 异步跑更省。Dan Shipper 当天把 Fable 的「让 agent 改按钮颜色它开 100 个 agent 舰队」和「make no mistakes」两次扔出来,Matt Turck 同一天接梗,over-delegation 这一天自己长成了多作者 meme。Garry Tan 在 Osaka 给「leverage 被删」盖章——三十年零增长跑完 ceiling 实验,leverage 没了之后分胜负的是 judgment 和 ship 的意愿;同日的「Age of the Unc confirmed」两字收口。Texture:Peter Yang 看世界杯淘汰赛,Rauch 押 USA-ARG 决赛,Turck 把 Norway 压成「best jersey, best fan celebration, best striker」,Masad 一行 Happy 250;Sama 把孩子第一次双词句和 GPT-5.6 第一次发现新数学并列惊叹,Askell 把医生概率等价于calibrated-model 概率——两边都缺 calibration。10-tab 终局日(7-6)对位 流量变天日(7-5)和 未知画图日(7-4):7-4 立流程骨架,7-5 把骨架嵌入平台/产品/统计,7-6 把管 agent 这件事本身拆开重写。"
+  },
+  "archive": {
+    "title": "tab 终局日",
+    "desc": "7-6 Follow Builders 的主轴是「管 agent 的纪律 + test-time compute 改写评测 + over-delegation meme 化」:Cat Wu 把 Claude Code 用成 sourcing 工具——一次 dynamic workflow 替掉整条 recruiter pipeline;Nan Yu 钉死「10-tab 是 theater、RTS 模式是死 胡同」;Noam Brown 在 No Priors 上讲 benchmark 没控制 test-time compute 是错、capability 现在是预算的函数,safety policy 没追上;Nikunj 把 Zoom 上的 parroted deck 念读判失效、两边 prompt 上传 Claude 异步更省;Dan Shipper + Matt Turck 把 Fable 的「改按钮色 开 100 agent 舰队」和「make no mistakes」同日变成多作者 meme;Garry Tan 在 Osaka 给「leverage 被删」盖章,「Age of the Unc confirmed」两字收口。Texture:Peter Yang 看世界杯淘汰赛 + 1.5K 离 100K YouTube 订阅的生日 ask,Rauch 押 USA-ARG 决赛,Turck 把 Norway 压成三 best,Masad Happy 250,Sama 把孩子双词和 GPT-5.6 新数学并列惊叹,Askell 把医生概率等价于 model 概率——两边 calibration 都缺。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-06 source feeds.",
+  "sections": [
+    {
+      "title": "Cat Wu 把 CC 用成 sourcing 工具 / Cat Wu Runs Sourcing on Claude Code",
+      "desc": "一条 dynamic workflow 替掉整条 recruiter pipeline,artifact 当交付物。",
+      "cards": [
+        {
+          "authorKey": "x:_catwu",
+          "authorName": "Cat Wu",
+          "authorHandle": "@_catwu",
+          "authorTag": "Anthropic 产品工程",
+          "sourceUrl": "https://x.com/_catwu/status/2073806626965049686",
+          "en": {
+            "rewrite": [
+              "Cat Wu puts Claude Code on a sourcing job: tell it the role and background you want, then ask CC to kick off a dynamic workflow that finds 100 candidates with LinkedIn, Twitter, blog, podcast appearances and a one-line pitch each, and have CC mail the artifact. She locks her laptop and reviews the list on the go when CC is done.",
+              "The point isn't that CC is magical; it's that the workflow of one human + one CC session replaces the entire recruiter-side pipeline. The artifact is the deliverable, not the chat log."
+            ],
+            "original": [
+              "what are your top claude code + workflows + artifacts use cases?",
+              "one of my new favorites is for sourcing candidates:",
+              "- tell cc about the role and backgrounds i'm looking for",
+              "- ask cc to kick off a dynamic workflow to find 100 candidates, and include linkedin, twitter, blog, podcasts, and one-line pitch for each",
+              "- ask cc to make an artifact and email it to me. then, i lock my laptop and head out for the day",
+              "- i review the list on the go once cc is done!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Cat Wu 把 Claude Code 用成 sourcing 工具:你只告诉 CC 你想找什么 role 和 background,让 CC 启动一个 dynamic workflow 自己跑出 100 个候选人,每个附 LinkedIn、Twitter、blog、podcast 露面和一句话 pitch,再让 CC 把结果做成 artifact 直接发邮件。她锁屏出门,CC 跑完她在路上看清单。",
+              "重点不是 CC 多神,是「一个人 + 一次 CC session」就把整个 recruiter 端 pipeline 替掉了。交付物是 artifact,不是聊天记录。"
+            ],
+            "original": [
+              "你用 claude code + workflows + artifacts 的最强场景是什么?",
+              "我自己最近最爱的一个是 sourcing 候选人:",
+              "——告诉 cc 我想要的 role 和 background",
+              "——让 cc 启动一个 dynamic workflow 跑出 100 个候选人,每个附 LinkedIn、Twitter、blog、podcast 露面和一句话 pitch",
+              "——让 cc 把结果做成 artifact 直接发邮件给我,我锁屏出门",
+              "——cc 跑完我路上看清单!"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Nan Yu 把「管 agent」这件事拆开重写 / Nan Yu Rewrites the Discipline of Managing Agents",
+      "desc": "10-tab 是 theater,RTS 模式是死胡同——管 agent 必须上一档。",
+      "cards": [
+        {
+          "authorKey": "x:thenanyu",
+          "authorName": "Nan Yu",
+          "authorHandle": "@thenanyu",
+          "authorTag": "AI 创业者 / 投资人",
+          "sourceUrl": "https://x.com/thenanyu/status/2073920959011074292",
+          "en": {
+            "rewrite": [
+              "Nan Yu cuts the 10-Claude-Code-tabs flex for what it is: theater. The number of tabs you keep open is not a productivity metric; it's a story you tell other people.",
+              "Real leverage in agent work is on workflow design — what the agents actually do in parallel — not on the human-side screen count."
+            ],
+            "original": [
+              "Bragging about running 10 Claude code tabs is just theater"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nan Yu 把「我同时开 10 个 Claude Code tab」这种炫技一刀切:tab 数量不是生产力指标,是讲给外人听的故事。",
+              "agent 工作真正的杠杆在 workflow 设计——agent 实际在并行做什么,不是人这边屏幕上挂几个 tab。"
+            ],
+            "original": [
+              "炫「我同时跑 10 个 Claude Code tab」就是做戏"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thenanyu",
+          "authorName": "Nan Yu",
+          "authorHandle": "@thenanyu",
+          "authorTag": "AI 创业者 / 投资人",
+          "sourceUrl": "https://x.com/thenanyu/status/2073920326304460847",
+          "en": {
+            "rewrite": [
+              "Nan Yu's follow-up: the RTS-style mental model of managing agents — click here, send there, micro each agent like a unit — is clearly a dead end. Even AI that's ancient by current standards already beats more than 99% of human players and out-micros them to an extreme degree.",
+              "Implication: the management discipline has to move up a level — set objectives and constraints, not click on units. Treating agents like StarCraft units is what gets you out-microwed by the agent itself."
+            ],
+            "original": [
+              "The \"real-time strategy game\" model of managing agents is clearly a dead end.",
+              "AI that's ancient by current standards already beats >99% of human players and out-micros them to an extreme degree"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nan Yu 紧接一句:把 agent 当即时战略游戏来管——点这里、派那、像 StarCraft 单位一样 micro 每只 agent——这条路线明显是死胡同。当前标准下已经算旧的 AI 都能打过 99% 以上的人类玩家,而且 out-micro 人类到极端程度。",
+              "推论:管 agent 的方法必须上一档——定目标和约束,不要再 click 单位。把 agent 当单位 micro,你就是被 agent 本身 out-micro 的那个。"
+            ],
+            "original": [
+              "「把管 agent 当即时战略游戏」这个模型明显是死胡同。",
+              "当前标准下已经算旧版的 AI 都能打过 99% 以上的人类玩家,而且 out-micro 人类到极端程度"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Noam Brown 在 No Priors 上讲 test-time compute 怎样改写评测与 safety / Noam Brown on No Priors: Test-Time Compute Reshapes Benchmarks and Safety",
+      "desc": "benchmarks 没控制 test-time compute 是错;capability 现在是预算的函数,policy 框架还没追上。",
+      "cards": [
+        {
+          "authorKey": "podcast:no-priors",
+          "authorName": "No Priors",
+          "authorHandle": null,
+          "authorTag": "AI 与创业对话播客",
+          "sourceUrl": "https://www.youtube.com/watch?v=AZrU6y3pUcU",
+          "en": {
+            "rewrite": [
+              "Noam Brown on No Priors: the benchmark grid that gets published with every new model release is presenting the numbers in the wrong way — it isn't controlling for the amount of test-time compute used on each benchmark question.",
+              "5.5 looked only marginally better than 5.4 on paper. But 5.5 is just much more efficient with its thinking; once you control for thinking time, it's a substantial jump. That matches what people felt when they actually played with it."
+            ],
+            "original": [
+              "It's like a single number for a model on a single benchmark. And if you look on paper at the difference between, like, five point five and five point four or other models, it wasn't it was an improvement, but it wasn't a huge improvement.",
+              "It's only a few percentage points on some benchmarks. So people looked at that, and they were skeptical that it was actually a better model.",
+              "I think the reason why it doesn't show up as so much better on the benchmarks is because the benchmarks are being presented in the wrong way. They're not controlling for the amount of test on compute that is being used on that benchmark question.",
+              "It turned out that 5.5 is just much more efficient with its thinking. If you run it at max settings, 5.4 is thinking for a lot longer."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Noam Brown 在 No Priors 上讲:每次新模型发布时附的那张 benchmark grid 数字呈现方式错了——它没有控制每道 benchmark 题实际用了多少 test-time compute。",
+              "5.5 在 paper 上看只比 5.4 好一点,但 5.5 只是 thinking 效率高很多;一旦把思考时间控制住,5.5 是大幅跳升。这和用户拿到手玩起来的实际感受对得上。"
+            ],
+            "original": [
+              "它就是一个模型在一个 benchmark 上的一个数字。你看 paper 上 5.5 和 5.4 之间的差——是有提升,但不是巨大提升。",
+              "在某些 benchmark 上只多了几个百分点。所以大家看了之后怀疑 5.5 真的更好。",
+              "我觉得它在 benchmark 上看不出大幅提升的原因是 benchmark 的呈现方式错了——它没有控制那道 benchmark 题实际用了多少 test-time compute。",
+              "结果是 5.5 的 thinking 效率就是高很多。如果跑 max 设置,5.4 想的时间要长得多。"
+            ]
+          }
+        },
+        {
+          "authorKey": "podcast:no-priors",
+          "authorName": "No Priors",
+          "authorHandle": null,
+          "authorTag": "AI 与创业对话播客",
+          "sourceUrl": "https://www.youtube.com/watch?v=AZrU6y3pUcU",
+          "en": {
+            "rewrite": [
+              "Noam Brown on safety evaluations: current responsible scaling policies and preparedness frameworks are asking the wrong question. They measure a model's capability as if it were a fixed number, but capability is now a function of how much money you throw at it.",
+              "Give a frontier model a $10 budget or a $10,000 budget or a $10,000,000 budget and you get three different capability curves. The policy frameworks don't address at what budget you should evaluate these models, which is exactly the question that matters for safety."
+            ],
+            "original": [
+              "The precarious frameworks and responsible scaling policies, they don't really account for the amount of test time compute.",
+              "They just say, okay. Well, what's the capability of the model? The problem is we're in a world now where the capability of the model is a function of how much money you put into it, basically.",
+              "If you give it a budget of $10,000, it can do a lot more than what it can do with a budget of $10. Give it a budget of $10,000,000, it can do even more.",
+              "At what budget should you evaluate these models? The policies that exist today don't really address that question."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Noam Brown 接着讲 safety evaluation:目前的 responsible scaling policy 和 preparedness framework 问的是错的问题。它们把模型 capability 当成一个固定数字去量,但 capability 现在是一个关于你往里砸多少钱的函数。",
+              "给 frontier 模型 $10、$10,000、$10,000,000 三档预算,跑出来的是三条不同的 capability 曲线。现有政策框架没回答「应该按哪档预算来评估」,而这正是 safety 真正要问的问题。"
+            ],
+            "original": [
+              "那些 preparedness framework 和 responsible scaling policy,它们其实没把 test-time compute 的量算进去。",
+              "它们只问:这个模型的 capability 是什么?问题是我们现在活在一个模型 capability 是关于你往里砸多少钱的函数的世界里。",
+              "给 $10,000 预算它能做的事远多于给 $10 预算。给 $10,000,000 预算还能做更多。",
+              "应该按哪档预算来评估这些模型?现行政策根本没回答这个问题。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Nikunj 把 Zoom 上的 deck 念读判失效 / Nikunj Calls the Parroted-Deck VC Meeting Dead",
+      "desc": "founder 带着产品反馈来;两边把 prompt 上传 Claude 异步跑更省。",
+      "cards": [
+        {
+          "authorKey": "x:nikunj",
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人",
+          "sourceUrl": "https://x.com/nikunj/status/2073903310982218088",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari's first ask: a founder who gates a VC chat until they've actually played with the product and brought at least two pieces of feedback. Zoom-for-30-minutes-on-a-parroted-deck is, in his words, blowing his mind that people do it all day.",
+              "He finishes with the punchline that's clearly been waiting all post: at this point both sides could just upload their personal prompts to Claude and let the meeting happen asynchronously."
+            ],
+            "original": [
+              "Still waiting on that one founder who gates a VC chat until they have played with the product and come with at least two pieces of feedback..",
+              "Blows my mind that people go on Zoom and chat for 30 mins on a parroted deck for literally the entire day - where it could have been a significantly more productive conversation if you just did a product brainstorm instead. Or even better just spend the entire time getting to know each other.",
+              "Am I just weird? Like how do you (both founders while fundraising and VCs generally) do this all day? What alpha do you get from hearing the same story again?",
+              "It's just more efficient for both sides to upload their personal \"prompts\" to Claude at this point to do this digitally"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kothari 第一个 ask:有没有 founder 把和 VC 的 chat 门在「你先玩过产品、至少带两条反馈来」之后。Zoom 上 30 分钟念一遍 deck,他原话是「blows my mind that people go on Zoom and chat for 30 mins on a parroted deck for literally the entire day」。",
+              "他最后一句显然憋了一整贴:到这个节点,两边各自把 personal prompt 上传给 Claude,异步跑完这场会更省。"
+            ],
+            "original": [
+              "我还在等那么一个 founder——和 VC 聊之前先玩过产品,带至少两条反馈来。",
+              "我想不通大家一整天都在 Zoom 上花 30 分钟照着一份 deck 念——换成 product brainstorm 本来可以聊得更高效,更好的是把整场时间用来认识彼此。",
+              "是我奇怪吗?你们(founder 融资时和 VC 那边)整天都这么做?听同一套故事到底能拿到什么 alpha?",
+              "到现在这个节点,两边各自把 personal prompt 上传给 Claude 异步做这场更省。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Fable 的 over-delegation 这一天变成了多作者 meme / Fable's Over-Delegation Goes Multi-Author Meme",
+      "desc": "Shipper / Turck 同日把「让 agent 干一行小活」和「make no mistakes」变成梗。",
+      "cards": [
+        {
+          "authorKey": "x:danshipper",
+          "authorName": "Dan Shipper",
+          "authorHandle": "@danshipper",
+          "authorTag": "Every 联合创始人 / AI 写作工具链",
+          "sourceUrl": "https://x.com/danshipper/status/2073894034225897602",
+          "en": {
+            "rewrite": [
+              "Dan Shipper publishes Fable's take on ultracode's \"make no mistakes\" prompt — the screenshot of the agent's response when you ask it to make no mistakes is the punchline.",
+              "The meta-joke: the better the agent, the more dangerous the prompt is. Asking a high-capability agent to \"make no mistakes\" is the closest you get to a self-fulfilling failure mode."
+            ],
+            "original": [
+              "fable on ultracode \"make no mistakes\""
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Dan Shipper 把 Fable 对 ultracode 「make no mistakes」prompt 的反应贴出来——你让 agent「不要犯错」时 agent 的回复截图就是笑点。",
+              "meta-joke:agent 越强,这种 prompt 越危险。让一个高 capability agent「不要犯错」是最接近自证失败的形态。"
+            ],
+            "original": [
+              "fable 对 ultracode 的「make no mistakes」"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "authorName": "Dan Shipper",
+          "authorHandle": "@danshipper",
+          "authorTag": "Every 联合创始人 / AI 写作工具链",
+          "sourceUrl": "https://x.com/danshipper/status/2073764166700048480",
+          "en": {
+            "rewrite": [
+              "Dan Shipper's second Fable joke of the day: \"me: change this button color. Fable: sure I just spun up a fleet of 100 agents to get that done for you.\"",
+              "The over-delegation thread from this week — Fable takes a one-line change and answers with a fleet of sub-agents — is now its own meme format."
+            ],
+            "original": [
+              "me: change this button color",
+              "Fable: sure I just spun up a fleet of 100 agents to get that done for you"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Dan Shipper 当天第二条 Fable 梗:「我:把按钮颜色改一下。Fable:行,我刚拉了一支 100 个 agent 的 fleet 来搞。」",
+              "本周的 over-delegation 线——Fable 把一行小改动答成一支 sub-agent 舰队——已经成了自己的 meme 格式。"
+            ],
+            "original": [
+              "我:把按钮颜色改一下",
+              "Fable:行,我刚拉了一支 100 个 agent 的舰队来给你搞"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:mattturck",
+          "authorName": "Matt Turck",
+          "authorHandle": "@mattturck",
+          "authorTag": "First Mark Capital 合伙人 / MAD Podcast 主理人",
+          "sourceUrl": "https://x.com/mattturck/status/2073972907491865062",
+          "en": {
+            "rewrite": [
+              "Matt Turck joins the same Fable/over-delegation thread: when I ask my AI agent to \"make no mistakes\" — the screenshot/clip is the visual punchline.",
+              "The thread is now multi-author and cross-platform: Shipper, Turck, Fable, ultracode — the same observation landing from different angles on the same day."
+            ],
+            "original": [
+              "when I ask my AI agent to \"make no mistakes\""
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Matt Turck 加入同一条 Fable/over-delegation 线:「当我跟我的 AI agent 说『不要犯错』」——截图就是视觉笑点。",
+              "这条线现在是多作者跨平台共振: Shipper、Turck、Fable、ultracode——同一个观察在同一天从不同角度落地。"
+            ],
+            "original": [
+              "我跟我的 AI agent 说「make no mistakes」的时候"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Garry Tan 在 Osaka 给「杠杆被删」盖章 / Garry Tan in Osaka Seals the Leverage-Deleted Frame",
+      "desc": "三十年零增长跑完 ceiling 实验;leverage 没了之后分胜负的是 judgment 和 ship 的意愿。",
+      "cards": [
+        {
+          "authorKey": "x:garrytan",
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁",
+          "sourceUrl": "https://x.com/garrytan/status/2073881439700168925",
+          "en": {
+            "rewrite": [
+              "Garry Tan's \"the real constraint on human wealth was never resources\" post: it was good ideas for how to serve one another, plus the leverage to act on them. We just deleted the leverage constraint for everybody.",
+              "\"Now it's only the ideas. Go have them, and then build them. It's your time.\" — frame for the rest of the week."
+            ],
+            "original": [
+              "So the real constraint on human wealth was never resources. It was good ideas for how to serve one another, and the leverage to act on them. We just deleted the leverage constraint for everybody.",
+              "Now it's only the ideas. Go have them, and then build them. It's your time."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan「人类财富真正的约束从来不是资源」那条:是好想法——怎么服务彼此——加上执行它的杠杆。我们刚把 leverage 这条约束给删了。",
+              "「现在只剩 idea。去有它,然后建它。这是你的时间。」——给这周剩下的内容一个总框架。"
+            ],
+            "original": [
+              "所以人类财富真正的约束从来不是资源。是怎么服务彼此的好想法,以及执行它的杠杆。我们刚把 leverage 这条约束给所有人都删了。",
+              "现在只剩 idea。去有它,然后建它。这是你的时间。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁",
+          "sourceUrl": "https://x.com/garrytan/status/2073881438123110512",
+          "en": {
+            "rewrite": [
+              "Garry Tan's Osaka observation: Japan ran the experiment on the ceiling — thirty years of near-zero growth and built the best trains, service, and craft on earth. When you can't compete on more, you compete on better. Better AND more at the same time.",
+              "A second cut at the same idea: scarcity of growth wasn't the end of quality, it was the discipline that produced quality."
+            ],
+            "original": [
+              "I'm in Osaka now, and it's clear: Japan already ran the experiment on the ceiling. Thirty years of zero growth and it built the best trains, service, and craft on earth.",
+              "When you can't compete on more, you compete on better. Better AND more at the same time."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan 在大阪看到的事:日本已经把这个 ceiling 实验跑完了——三十年近零增长,反而造出了世界上最好的列车、服务和工艺。当你没法在 more 上竞争,就去 better 上竞争。Better 和 more 一起要。",
+              "同一条 idea 的另一个切面:增长稀缺不是质量的终点,是产出质量的纪律。"
+            ],
+            "original": [
+              "我人在大阪,结论很清楚:日本已经把 ceiling 这件事当实验跑完了。三十年零增长,它造出了世界上最好的列车、服务和工艺。",
+              "没法在 more 上竞争的时候,就在 better 上竞争。Better AND more,要同时要。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁",
+          "sourceUrl": "https://x.com/garrytan/status/2073997128222040471",
+          "en": {
+            "rewrite": [
+              "Garry Tan's two-word closer from the same day: \"Age of the Unc confirmed.\" The capper for the leverage-deleted framing: once leverage is gone, what differentiates a builder is judgment, taste, and willingness to ship."
+            ],
+            "original": [
+              "Age of the Unc confirmed"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan 同日两个字收口:「Age of the Unc confirmed。」给 leverage 被删这条框架一个盖子:杠杆没了之后,builder 之间分胜负的就是 judgment、taste、和愿不愿意 ship。"
+            ],
+            "original": [
+              "Age of the Unc 已确认"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "7-6 周末底色:World Cup、4th July、creator economics / Weekend Texture: World Cup, 4th July, Creator Economics",
+      "desc": "Peter Yang 看球 / Rauch 押 USA-ARG 决赛 / Turck 给 Norway 三词 / Masad Happy 250 / Peter Yang 离 100K 差 1.5K。",
+      "cards": [
+        {
+          "authorKey": "x:petergyang",
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者",
+          "sourceUrl": "https://x.com/petergyang/status/2073966701629374820",
+          "en": {
+            "rewrite": [
+              "Peter Yang's World Cup two-word reaction: \"What a game wow what a game.\" The simplest possible take on a high-stakes knockout."
+            ],
+            "original": [
+              "What a game wow what a game"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 看世界杯淘汰赛的两个词反应:「What a game wow what a game。」一场大场面比赛最简的 take。"
+            ],
+            "original": [
+              "这比赛真精彩 哇 真的太精彩了"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者",
+          "sourceUrl": "https://x.com/petergyang/status/2073945318283252167",
+          "en": {
+            "rewrite": [
+              "Peter Yang's follow-up the same day — \"Damn they better have some armored vehicles to escort these English players out of the stadium.\" The English exit is the texture."
+            ],
+            "original": [
+              "Damn they better have some armored vehicles to escort these English players out of the stadium"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 同一天紧接一条:「Damn they better have some armored vehicles to escort these English players out of the stadium。」英格兰出局是底色。"
+            ],
+            "original": [
+              "靠 他们最好准备几辆装甲车 把英格兰球员护送出体育场"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者",
+          "sourceUrl": "https://x.com/petergyang/status/2073930836551032858",
+          "en": {
+            "rewrite": [
+              "Peter Yang's pre-emptive ask: his birthday is on Thursday July 9 and he'd love to hit 100K YouTube subscribers by then. He's at 98.5K now.",
+              "A rare moment of the build-side creator economics surfaced in the feed — the small \"please subscribe, I'm 1.5K from a milestone\" ask, sandwiched between the World Cup reactions."
+            ],
+            "original": [
+              "I'm really excited to share these upcoming episodes for my podcast soon.",
+              "One small ask: My birthday is on Thursday, July 9, and it would be amazing to finally hit 100K YouTube subscribers by then.",
+              "I'm at 98.5K now, so pretty close :)"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 的预 ask:他生日 7 月 9 号周四,希望到时能到 100K YouTube 订阅,现在 98.5K。",
+              "feed 里少见的 creator-economics 一面——夹在世界杯反应中间,一条「请订阅我离里程碑差 1.5K」的小 ask。"
+            ],
+            "original": [
+              "我很快就要分享接下来几期播客,真的很兴奋。",
+              "一个小 ask:我生日是 7 月 9 号周四,要是到那天能涨到 100K YouTube 订阅就太好了。",
+              "我现在 98.5K,挺接近 :)"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO",
+          "sourceUrl": "https://x.com/rauchg/status/2073822630742983062",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch makes his World Cup final call: 🇺🇸 USA — 🇦🇷 ARG final. \"You heard it here first.\"",
+              "The confidence-pretournament call that nobody else in the feed is making — and Rauch's prediction track record elsewhere makes it the kind of call that's worth remembering when the final is set."
+            ],
+            "original": [
+              "🇺🇸 USA - 🇦🇷 ARG final",
+              "you heard it here first"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch 给出了他的世界杯决赛预测:🇺🇸 美国 vs 🇦🇷 阿根廷。\"You heard it here first。\"",
+              "feed 里没人敢这么早下这种 confident 预测——Rauch 在别处的预测命中率让这条值得在决赛打出来时回查。"
+            ],
+            "original": [
+              "🇺🇸 美国 — 🇦🇷 阿根廷 决赛",
+              "你们从我这里先听到的"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:mattturck",
+          "authorName": "Matt Turck",
+          "authorHandle": "@mattturck",
+          "authorTag": "First Mark Capital 合伙人 / MAD Podcast 主理人",
+          "sourceUrl": "https://x.com/mattturck/status/2073890630569251150",
+          "en": {
+            "rewrite": [
+              "Matt Turck's World Cup texture entry: \"Tournament of the older goalies.\" The meme-of-the-day is about the keepers carrying the tournament."
+            ],
+            "original": [
+              "Tournament of the older goalies"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Matt Turck 的世界杯底色一条:「Tournament of the older goalies。」本届 meme of the day 就是老门将在扛着整届赛事。"
+            ],
+            "original": [
+              "老门将的一届赛事"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:mattturck",
+          "authorName": "Matt Turck",
+          "authorHandle": "@mattturck",
+          "authorTag": "First Mark Capital 合伙人 / MAD Podcast 主理人",
+          "sourceUrl": "https://x.com/mattturck/status/2073889293567693110",
+          "en": {
+            "rewrite": [
+              "Matt Turck's three-word Norway: \"best jersey, best fan celebration, best striker.\""
+            ],
+            "original": [
+              "Norway: best jersey, best fan celebration, best striker."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Matt Turck 给挪威的三个词:「best jersey, best fan celebration, best striker。」"
+            ],
+            "original": [
+              "挪威:最好看的球衣、最好的球迷庆祝、最好的前锋。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:amasad",
+          "authorName": "Amjad Masad",
+          "authorHandle": "@amasad",
+          "authorTag": "Replit CEO",
+          "sourceUrl": "https://x.com/amasad/status/2073840276414616006",
+          "en": {
+            "rewrite": [
+              "Amjad Masad posts the 4th of July \"Happy 250\" for America's semiquincentennial — a one-line cultural-texture marker that lands alongside the World Cup weekend."
+            ],
+            "original": [
+              "Happy 250 🇺🇸"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Amjad Masad 在 7-4 当天发「Happy 250 🇺🇸」纪念美国 250 周年——一条夹在世界杯周末里的一行文化底色。"
+            ],
+            "original": [
+              "250 岁生日快乐 🇺🇸"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "生活纹理收口:孩子双词、医生概率、20 年后再去 Paris / Life-Texture Closer: Two Words, Probability, Paris After 20 Years",
+      "desc": "Sama / Askell / Zhang / Nikunj / Thariq / Steinberger 把当天的 builder 帖之外的人味留下来。",
+      "cards": [
+        {
+          "authorKey": "x:thenanyu",
+          "authorName": "Nan Yu",
+          "authorHandle": "@thenanyu",
+          "authorTag": "AI 创业者 / 投资人",
+          "sourceUrl": "https://x.com/thenanyu/status/2073873527082566097",
+          "en": {
+            "rewrite": [
+              "Nan Yu's third tweet of the day — the World Cup complaint: \"Guess you can give up a goal when the opponent is down a man and their best player, and still talk shit.\" The off-pitch anger is part of the texture."
+            ],
+            "original": [
+              "Guess you can give up a goal when the opponent is down a man and their best player, and still talk shit"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nan Yu 当天第三条——世界杯吐槽:「Guess you can give up a goal when the opponent is down a man and their best player, and still talk shit。」场外的怒气也是底色一部分。"
+            ],
+            "original": [
+              "对方少一人、核心球员都下了,还能丢球,然后嘴上还硬——也就这样了。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:sama",
+          "authorName": "Sam Altman",
+          "authorHandle": "@sama",
+          "authorTag": "OpenAI CEO",
+          "sourceUrl": "https://x.com/sama/status/2073791666553844074",
+          "en": {
+            "rewrite": [
+              "Sam Altman's \"personal\" tweet: \"our older kid put two words together for the first time and i am approximately as amazed by this cognitive feat as i am by GPT-5.6 discovering new math.\"",
+              "The two feats-of-cognition comparison — a kid's first two-word sentence alongside GPT-5.6's first new math — is the most Sam Altman sentence possible: equal amazement at scale, and at the smallest scale."
+            ],
+            "original": [
+              "our older kid put two words together for the first time and i am approximately as amazed by this cognitive feat as i am by GPT-5.6 discovering new math"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Sam Altman 的「个人」一条:「our older kid put two words together for the first time and i am approximately as amazed by this cognitive feat as i am by GPT-5.6 discovering new math。」",
+              "把孩子的第一次双词句和 GPT-5.6 第一次发现新数学并列惊叹——最 Sam Altman 式的句子:对 scale 和最小 scale 等量惊叹。"
+            ],
+            "original": [
+              "我们大孩子第一次把两个词拼在一起说了,我对这个认知成就的惊叹程度,和我对 GPT-5.6 第一次发现新数学的惊叹程度差不多。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:AmandaAskell",
+          "authorName": "Amanda Askell",
+          "authorHandle": "@AmandaAskell",
+          "authorTag": "Anthropic 研究员",
+          "sourceUrl": "https://x.com/AmandaAskell/status/2073786264059625897",
+          "en": {
+            "rewrite": [
+              "Amanda Askell: extracting a probability from a doctor is one of life's unnecessary boss battles. Even if you beg them for an interval-valued subjective probability, you end up with basically their hunch. She doesn't know if they get sued for giving out information or something.",
+              "The model-side parallel is the unspoken half: ask a model for a calibrated probability and you get a hunch dressed in interval form. Calibration is the missing infrastructure on both sides of the table."
+            ],
+            "original": [
+              "Extracting a probability from a doctor is one of life's unnecessary boss battles. Even if you beg them for an interval-valued subjective probability, and at that point you're basically asking for their hunch. I don't know if they get sued for giving out information or something."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Amanda Askell:从医生那里要一个概率是人生里不必要的 boss 战。你哪怕开口要 interval-valued subjective probability,拿到的也基本就是他的 hunch。不知道他们是不是因为怕被起诉才不给。",
+              "model 那边那条平行线是隐含的另一半:跟 model 要 calibrated probability,拿到的也是穿 interval 外衣的 hunch。calibration 是两边都缺的基础设施。"
+            ],
+            "original": [
+              "从医生那里要一个概率是人生里不必要的 boss 战。你哪怕求他们给一个区间形式的主观概率,到那个节点你基本只是在要他的直觉。不知道他们是不是因为怕被起诉才不敢给信息。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2073768913310200310",
+          "en": {
+            "rewrite": [
+              "Zara Zhang resurfaces a skill she built earlier — \"understanding your code\" — now that understanding-code is back in vogue. The self-aware \"I built this before it was cool\" is a small builder-economics marker."
+            ],
+            "original": [
+              "Resurfacing this skill I built (now that understanding your code is in vogue)"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zara Zhang 把之前自己写的一个 skill「understanding your code」重新挂出来——理由是「现在理解代码又流行了」。「我早写过」的自嘲是一条小小的 builder-economics 标记。"
+            ],
+            "original": [
+              "把我之前写的这个 skill 再放出来(现在「理解你的代码」又流行了)。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人",
+          "sourceUrl": "https://x.com/nikunj/status/2073803608722939935",
+          "en": {
+            "rewrite": [
+              "Nikunj's \"I'm headed to Paris, Interlaken and Zurich after 20+ years\" ask — kid-friendly (4.5yr + 1.5yr), vegetarian-friendly, looking for play-date families. A travel ask that uses the same builder-economics lens as his VC-meeting post."
+            ],
+            "original": [
+              "Headed to Paris, Interlaken and Zurich after 20+ years in just a few days..",
+              "Hit me with your favorite spots that are kid-friendly (4.5 yr old + 1.5 yr old) and vegetarian-friendly.",
+              "Trying to see if we can set up play dates with local families - DM if that's you!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj「20 多年后再去 Paris/Interlaken/Zurich」的 ask——要求 4.5 岁 + 1.5 岁孩子友好、vegetarian 友好、想找当地家庭 play date。一条用和 VC 会谈贴同一副 builder-economics 眼镜写的旅行 ask。"
+            ],
+            "original": [
+              "20 多年后终于要去 Paris、Interlaken、Zurich,几天后出发。",
+              "给我推荐适合小孩(4.5 岁 + 1.5 岁)、对 vegetarian 友好的地方。",
+              "看能不能和当地家庭 play date——是你就 DM!"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:trq212",
+          "authorName": "Tao Li",
+          "authorHandle": "@trq212",
+          "authorTag": "AI 研究员 / Follow Builders 维护者",
+          "sourceUrl": "https://x.com/trq212/status/2073956140610924936",
+          "en": {
+            "rewrite": [
+              "Thariq's \"God gave me a sign\" — but then remembers he lives in San Francisco — \"I mean, I was casually influenced by the ASI at the end of time to maximize EV for humanity.\" The \"remembering I live in SF\" punchline lands as a counter-take to the day's earnest builder posts."
+            ],
+            "original": [
+              "\"God gave me a sign\"",
+              "(remembering i live in San Francisco)",
+              "\"I mean, I was acasually influenced by the ASI at the end of time to maximize EV for humanity\""
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thariq 的「God gave me a sign」——然后想起来自己在旧金山——「I mean, I was casually influenced by the ASI at the end of time to maximize EV for humanity.」「remembering I live in SF」这句给当天一整串正经 builder 帖收一个反 take。"
+            ],
+            "original": [
+              "「上帝给了我一个信号」",
+              "(想起来我住在旧金山)",
+              "「我的意思是,我只是被末日 ASI 顺便影响了一下,去最大化人类的 EV」"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人",
+          "sourceUrl": "https://x.com/nikunj/status/2073860953687638344",
+          "en": {
+            "rewrite": [
+              "Nikunj's two-word AI-side update: \"All recommendations acknowledged by Claude Code thanks!\" A small Claude-Code-applied-to-PR-review note — the kind of day-to-day builder evidence that sits between the bigger posts."
+            ],
+            "original": [
+              "All recommendations acknowledged by Claude Code thanks!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj 当天 AI 这边的两个字 update:「All recommendations acknowledged by Claude Code thanks!」一条小小的 Claude-Code-用-PR-review 案例——夹在那些大帖中间的日常 builder 证据。"
+            ],
+            "original": [
+              "所有建议 Claude Code 已经全部确认收到,谢谢!"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
