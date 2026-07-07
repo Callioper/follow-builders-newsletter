@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 06 Jul 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 07 Jul 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-07-07 · 回炉日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-07-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-07-rerun.html</guid>
+      <pubDate>Tue, 07 Jul 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[7-7 这一期的主轴是「两边同一天写 origin + ship 节奏 + 评估体系重写」:Anthropic 这边 Boris Cherny 同一周把 Claude Code 是怎么从 safety research 走出来的故事第一次正式发出来,「we are 1% done」收口;Cat Wu 把早期团队版本的 retrospective 同天发出;Claude 官方账号同天把第三段 origin 摆出——builder / 官方 / 产品三视角同日对齐,Claude Code 的来路正式成为可读文本。Claude Blog 同期把 artifacts 立成 Claude Code 默认输出形态,session 在跑 artifact 就在自己更新。Every 侧 Surge 创始人 Edwin 在 AI & I by Every 上把数据公司重新框架成「为 AGI 办的学校」,并把 frontier 推下一档:一年前是 IMO 级数学,几个月前发的 Riemann bench 直接测 research-level math——同一天 Claude Code 摆「当下怎么造」,Surge 摆「下一档怎么训」,两侧同日写 origin。Rauch 同周给 eve 上 eval「eve 用 eve eval 自我评估」+ coding AI 的 ultimate test 立成「软件世界有没有整体变好」,Vercel CTO 带一群 agent 把 novel software 推到 production;Levie 同日把 open vs closed 拆成「frontier 开新 + 企业 use case 剥层」,前提是要有一个能 eval、能选模型、最终自己训的 applied AI layer——Rauch 立 build side、Levie 立 peel side,同日两侧同时立起来。Masad 把 Replit「agent 自己改自己」立成闭环,同日配 Salesforce 替掉案例——技术叙事和商业案例同日同帖两个方向。7-7 ship 节奏:Thibault 把 ChatGPT / Codex / OpenClaw 三支团队同时点名,ship 窗口的截图直接贴出;Thariq 把 Fable 5 离开 Claude 订阅的时间钉死到太平洋时间 7/7 晚上 11:59:59;Dan Shipper 简短一句「gremlins 进了 fable」——OpenAI 侧和 Every 侧两条产品线同一时点。Texture:Nan Yu 把 996 框架被 agent-era flip「leverage 不再是小时数,是并行度」;Swyx 把 Anthropic J-space 论文最重要部分拎出来「开颅手术级别 reasoning 干预 + 模型能自己检测到被干预」;Zara Zhang 把 AI Engineer / Cursor Compile / Figma Config 三场会议串成 AI builder 升级清单;Steinberger 抛出 AI-assisted 工程面试的小提问。回炉日(7-7)对位 tab 终局日(7-6):7-6 把管 agent 的纪律和 over-delegation meme 拆开重写,7-7 把造 Claude Code 这件事 + 数据公司怎么训下一代 + 评估体系怎么变 + ship 节奏 + agent-era 996 flip 同日同时写 origin,builder 视角、官方视角、产品视角、applied AI layer 视角同一天都把来路摆到台面。]]></description>
+      <category>Boris Cherny / Cat Wu / Claude 三方同日把 Claude Code 怎么造出来摆在台面 / The Claude Code Builders Tell the Origin Story, Claude Blog 把 artifacts 立成 Claude Code 的默认输出形态 / Claude Blog: Artifacts Are Now CC&apos;s Default Output, Surge 把数据公司重新框架成「给 AGI 办的学校」 / Surge Frames Itself as a School for AGI, Rauch + Levie 把 ship-with-agents 和 open-weight 剥层同日同档立起 / Rauch + Levie: Ship-With-Agents and the Open-Weight Peel-Off, Masad 把「agent 自己改自己」立成闭环,同日配 Salesforce 替掉案例 / Replit&apos;s Closed-Loop Agent and the $100K Salesforce Replace, 7-7 ship 节奏:Codex / OpenClaw / Fable 5 同日交表 / 7-7 Ship Beats: Codex, OpenClaw, Fable 5, 7-7 底色:996 时代 / J-space paper / 会议清单 / AI-assisted 面试 / Weekend Texture: 996, J-Space, Conference Binge, AI Interviews</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-07-06 · tab 终局日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-06-rerun.html</link>

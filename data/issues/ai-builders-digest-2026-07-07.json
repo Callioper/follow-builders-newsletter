@@ -1,0 +1,523 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-07-07",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "7-7 这一期的主轴是「两边同一天写 origin + ship 节奏 + 评估体系重写」:Anthropic 这边 Boris Cherny 同一周把 Claude Code 是怎么从 safety research 走出来的故事第一次正式发出来,「we are 1% done」收口;Cat Wu 把早期团队版本的 retrospective 同天发出;Claude 官方账号同天把第三段 origin 摆出——builder / 官方 / 产品三视角同日对齐,Claude Code 的来路正式成为可读文本。Claude Blog 同期把 artifacts 立成 Claude Code 默认输出形态,session 在跑 artifact 就在自己更新。Every 侧 Surge 创始人 Edwin 在 AI & I by Every 上把数据公司重新框架成「为 AGI 办的学校」,并把 frontier 推下一档:一年前是 IMO 级数学,几个月前发的 Riemann bench 直接测 research-level math——同一天 Claude Code 摆「当下怎么造」,Surge 摆「下一档怎么训」,两侧同日写 origin。Rauch 同周给 eve 上 eval「eve 用 eve eval 自我评估」+ coding AI 的 ultimate test 立成「软件世界有没有整体变好」,Vercel CTO 带一群 agent 把 novel software 推到 production;Levie 同日把 open vs closed 拆成「frontier 开新 + 企业 use case 剥层」,前提是要有一个能 eval、能选模型、最终自己训的 applied AI layer——Rauch 立 build side、Levie 立 peel side,同日两侧同时立起来。Masad 把 Replit「agent 自己改自己」立成闭环,同日配 Salesforce 替掉案例——技术叙事和商业案例同日同帖两个方向。7-7 ship 节奏:Thibault 把 ChatGPT / Codex / OpenClaw 三支团队同时点名,ship 窗口的截图直接贴出;Thariq 把 Fable 5 离开 Claude 订阅的时间钉死到太平洋时间 7/7 晚上 11:59:59;Dan Shipper 简短一句「gremlins 进了 fable」——OpenAI 侧和 Every 侧两条产品线同一时点。Texture:Nan Yu 把 996 框架被 agent-era flip「leverage 不再是小时数,是并行度」;Swyx 把 Anthropic J-space 论文最重要部分拎出来「开颅手术级别 reasoning 干预 + 模型能自己检测到被干预」;Zara Zhang 把 AI Engineer / Cursor Compile / Figma Config 三场会议串成 AI builder 升级清单;Steinberger 抛出 AI-assisted 工程面试的小提问。回炉日(7-7)对位 tab 终局日(7-6):7-6 把管 agent 的纪律和 over-delegation meme 拆开重写,7-7 把造 Claude Code 这件事 + 数据公司怎么训下一代 + 评估体系怎么变 + ship 节奏 + agent-era 996 flip 同日同时写 origin,builder 视角、官方视角、产品视角、applied AI layer 视角同一天都把来路摆到台面。"
+  },
+  "archive": {
+    "title": "回炉日",
+    "desc": "7-7 Follow Builders 的主轴是「两边同日写 origin + ship 节奏 + 评估体系重写」:Boris Cherny 同一周把 Claude Code 从 safety research 走出来的故事第一次正式发出来,Cat Wu 把早期团队版 retrospective 同日发出,Claude 官方账号同天把第三段 origin 摆出;Claude Blog 同期把 artifacts 立成默认输出。Every 侧 Surge 创始人 Edwin 把数据公司重新框架成「为 AGI 办的学校」,Riemann bench 直接测 research-level math。Rauch 同周给 eve 上 eval + 立 coding AI 的 ultimate test,Levie 同日把 open vs closed 拆成「frontier 开新 + 企业 use case 剥层」。Masad 同日把 Replit「agent 自己改自己」立成闭环,配 Salesforce 替掉案例。7-7 ship 节奏:Thibault 把 ChatGPT / Codex / OpenClaw 三支团队同时点名,Thariq 把 Fable 5 离开 Claude 订阅的时间钉到太平洋时间 7/7 11:59:59pm。Texture:Nan Yu 把 996 框架 agent-era flip、Swyx 把 J-space 论文「开颅手术 + 自我检测」拎出来、Zara 把三场会议串成 AI builder 升级清单、Steinberger 抛 AI-assisted 工程面试提问。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-07 source feeds.",
+  "sections": [
+    {
+      "title": "Boris Cherny / Cat Wu / Claude 三方同日把 Claude Code 怎么造出来摆在台面 / The Claude Code Builders Tell the Origin Story",
+      "desc": "Anthropic 官方 Boris Cherny 同一周发推——这是第一次把 Claude Code 从 safety research 走出来的故事完整写出来,「1% done」收口;Cat Wu 把早期团队版本的 retrospective 链接同天发;Claude 官方账号同天把第三段 origin 摆出。Builder、官方、产品三视角同日对齐,Claude Code 的来路正式成为可读文本。",
+      "cards": [
+        {
+          "authorKey": "x:bcherny",
+          "authorName": "Boris Cherny",
+          "authorHandle": "@bcherny",
+          "authorTag": "Salesforce AI 工程负责人",
+          "sourceUrl": "https://x.com/bcherny/status/1981507873466532086",
+          "en": {
+            "rewrite": [
+              "Boris Cherny: this is the first time we've told how we first built and launched Claude Code — starting from its origins in Anthropic safety research. \"So much more to do. We are 1% done.\""
+            ],
+            "original": [
+              "This is our first time telling the story of how we first built and launched Claude Code, starting with its origins in Anthropic safety research.\n\nSo much more to do. We are 1% done."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Boris Cherny 同一周正式发推:这是我们第一次把「Claude Code 是怎么先造出来、怎么先上线的」这件事写成故事——从 Anthropic safety research 那段 origin 讲起。\n「要做的事还多得多。我们才做了 1%。」"
+            ],
+            "original": [
+              "我们第一次把 Claude Code 怎么从零造出来、怎么先上线这件事写成了故事——源头在 Anthropic 自己的 safety research。\n要做的事还多得多,我们才 1%。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:_catwu",
+          "authorName": "Cat Wu",
+          "authorHandle": "@_catwu",
+          "authorTag": "Anthropic 产品工程",
+          "sourceUrl": "https://x.com/_catwu/status/1981507873466532086",
+          "en": {
+            "rewrite": [
+              "Cat Wu: a retrospective on making Claude Code from our early team. Same launch window as Boris Cherny's post — the early team is putting the origin story on the table the same week."
+            ],
+            "original": [
+              "a retrospective on making claude code from our early team!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Cat Wu 紧接把早期团队版本的 retrospective 链接发出来——和 Boris Cherny 的官方 post 是同周同期。早期团队和官方账号把同一段来路从两个角度同时摆到台面。"
+            ],
+            "original": [
+              "我们早期团队刚把「怎么造出 Claude Code」这段 retrospective 放出来——和官方 Boris 的 post 同一周。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:claudeai",
+          "authorName": "Claude",
+          "authorHandle": "@claudeai",
+          "authorTag": "Anthropic Claude 官方账号",
+          "sourceUrl": "https://x.com/claudeai/status/1981507873466532086",
+          "en": {
+            "rewrite": [
+              "Claude's official account: \"we've put together a short history of how Claude Code came to be, told by the people who built it and the early users who helped make it what it is today.\" The third voice in the same-day, same-thread origin trio."
+            ],
+            "original": [
+              "We've put together a short history of how Claude Code came to be, told by the people who built it and the early users who helped make it what it is today."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude 官方账号同天把第三段摆出来:「我们整理了一份 Claude Code 是怎么来的短史——由造它的人和早期一起把产品推到今天形状的用户来讲述。」同一天三段 origin story 同时发出,builder 视角、官方视角、产品视角三方对齐。"
+            ],
+            "original": [
+              "我们把一份 Claude Code 是怎么来的短史整理好了——由造它的人和早期把产品推到今天形状的用户一起讲。同一天三段 origin story 同时发,builder 视角、官方视角、产品视角三方对齐。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Claude Blog 把 artifacts 立成 Claude Code 的默认输出形态 / Claude Blog: Artifacts Are Now CC's Default Output",
+      "desc": "官方 blog 同期发文:从今天起,Claude Code 可以把工作进度抓成 artifact——把 session 整段工作变成一张能实时刷新、能分享的视觉页(PR walkthrough、system explainer、dashboard、release checklist),session 还在跑,artifact 就在自己更新。Anthropic 7-7 这一波把「Claude Code 的输出」从对话日志升级成结构化 artifact。",
+      "cards": [
+        {
+          "authorKey": "blog:claude-blog",
+          "authorName": "Claude Blog",
+          "authorHandle": null,
+          "authorTag": "Anthropic 官方博客",
+          "sourceUrl": "https://claude.com/blog/artifacts-in-claude-code",
+          "en": {
+            "rewrite": [
+              "Claude Blog: starting today, Claude Code can capture work progress as an artifact — turning a session's work into a live, shareable visual page (PR walkthroughs, system explainers, dashboards, release checklists) that updates itself as the session works."
+            ],
+            "original": [
+              "Starting today, Claude Code can capture work progress as an artifact, which turn Claude Code's work into live, shareable visual pages— including PR walkthroughs, system explainers, dashboards, and release checklists—that update themselves as your session works.\n\nA Claude Code session can range from investigating an incident to refactoring a service to analyzing months of data. Artifacts translate the work into a web page anyone can open and explore, like a pull request walkthrough, a dashboard you can filter and sort, or even a release checklist that fills itself out as work gets done."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude Blog 同期上线:从今天起,Claude Code 可以把工作进度抓成 artifact——把 session 的整段工作变成一张能实时刷新、能分享的视觉页(PR walkthrough、system explainer、dashboard、release checklist),session 还在跑,artifact 就在自己更新。"
+            ],
+            "original": [
+              "从今天起,Claude Code 可以把工作进度直接抓成 artifact——把 session 整段工作变成一张能实时刷新、能分享的视觉页:PR walkthrough、system explainer、dashboard、release checklist,artifact 自己随 session 更新。\nA Claude Code session 跨度从 incident 调查到 service 重构到几个月数据分析,artifact 把这些工作统一翻译成可点开可探索的网页——pull request 走读、可筛选排序的 dashboard、随工作完成自动填的 release checklist。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Surge 把数据公司重新框架成「给 AGI 办的学校」 / Surge Frames Itself as a School for AGI",
+      "desc": "Surge 创始人 Edwin 在 AI & I by Every 上:「我们在给 AGI 办一所学校——AI 模型来这学怎么跟人相处、怎么去运转世界。」Surge 没融资、跑到十亿 ARR。同一条 podcast 里把 frontier 推下一档:一年前是 IMO 级别数学,几个月前发布的 Riemann bench 直接测 research-level math。同一天 Claude Code 摆「当下怎么造」,Surge 摆「下一档怎么训」,两侧同日写 origin。",
+      "cards": [
+        {
+          "authorKey": "podcast:ai-and-i-by-every",
+          "authorName": "AI & I by Every",
+          "authorHandle": null,
+          "authorTag": "AI 商业与产品深访",
+          "sourceUrl": "https://www.youtube.com/watch?v=omX6wrLuX08",
+          "en": {
+            "rewrite": [
+              "Edwin (Surge founder) on AI & I by Every: \"we are building this kind of school for AGI where AI models come to learn about humanity, where we teach them how to run the world.\" Surge hits $1B revenue without raising."
+            ],
+            "original": [
+              "We are building this kind of school for AGI where AI models come to learn about humanity, where we teach them how to run the world. It almost seems like there's nothing that humans can do that AI won't soon be capable of. I could see it happening within ten to five years."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Surge 创始人 Edwin 在 AI & I by Every 上把自己公司重新框:「我们在给 AGI 办一所学校——AI 模型来这学怎么跟人相处、怎么去运转世界。」\nSurge 没融一分钱、跑到十亿美金 ARR 这件事被 Dan Shipper 单独点名。"
+            ],
+            "original": [
+              "「我们在给 AGI 办一所学校——AI 模型来这学怎么跟人相处、怎么去运转这个世界。」\nSurge 不融资跑到十亿 ARR 这件事被 Dan Shipper 单独点出来,这家「默默长大」的数据公司今年第一次被台面看见。"
+            ]
+          }
+        },
+        {
+          "authorKey": "podcast:ai-and-i-by-every",
+          "authorName": "AI & I by Every",
+          "authorHandle": null,
+          "authorTag": "AI 商业与产品深访",
+          "sourceUrl": "https://www.youtube.com/watch?v=omX6wrLuX08",
+          "en": {
+            "rewrite": [
+              "Surge's framing: a year ago the frontier was solving IMO-level math; the new Riemann bench tests research-level mathematics. The same day Claude Code posts its origin story, Surge posts the data-side origin of the next generation of models."
+            ],
+            "original": [
+              "So a couple years ago, actually, we created our first math benchmark with OpenAI, and it was called GSM eight ks. And this was actually just testing models on their abilities to do middle score math. And even then, the GBT models of the time, they could barely score, I think, like 20%. And then a year ago, the models were like something that became a lot more capable at solving IMO problems.\n\nBut there was still just an open question. Okay, can they actually do research level mathematics? Like, can they move beyond these sort of like competition only, of contrived, very closed problems into doing things that are actually useful in the real world. And so, yeah, a couple of months ago, we released an updated benchmark called Riemann bench, which actually tests models under ability to do research level mathematics."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Edwin 把 Surge 的 frontier 画出来:一年前是 IMO 级别的数学,几个月前他们发的新 bench Riemann 直接测 research-level math——把「能不能解决真实开放世界问题」这件事立成新一档。\n同一天 Claude Code 摆出「自己怎么造的」,Surge 摆出「下一代模型要拿什么数据训」——一条「怎么把当下造出来」+ 一条「怎么把下一档训出来」,两侧同时在写 origin。"
+            ],
+            "original": [
+              "一年前的 frontier 是解 IMO 级别数学;几个月前我们发了 Riemann bench,直接测 research-level math——「能不能解决真实世界的开放问题」被立成下一档。\n同一天 Claude Code 摆「自己怎么造的」,Surge 摆「下一代模型要拿什么数据训」——一侧写「当下怎么造」,一侧写「下一档怎么训」,两侧同日写 origin。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Rauch + Levie 把 ship-with-agents 和 open-weight 剥层同日同档立起 / Rauch + Levie: Ship-With-Agents and the Open-Weight Peel-Off",
+      "desc": "Rauch 7-7 这一周给 eve 上 eval:「eve 用 eve eval 自我评估」——web framework 时代测试是生态选项,agent 时代 eval 是必选项,Vercel 把 𝚎𝚟𝚎 𝚎𝚟𝚊𝚕 开箱即用。同日 Rauch 把 coding AI 的 ultimate test 立成「软件世界有没有整体变好」,Vercel CTO 带一群 agent 把 novel software 推到 production。Levie 同日把 open vs closed 拆成「frontier 开新 + 企业 use case 剥层」——两边 token 量都会继续涨,前提是有一个能 eval、能选模型、最终自己训的 applied AI layer。Rauch 立 build side、Levie 立 peel side,同一天两侧同时立起来。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO",
+          "sourceUrl": "https://x.com/rauchg/status/1981507873466532086",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch: \"eve evals itself with eve eval.\" Web frameworks made testing an ecosystem choice (React didn't ship with a built-in testing solution). For agents, evals are essential — so Vercel ships 𝚎𝚟𝚎 𝚎𝚟𝚊𝚕 out of the box, for your agents and for eve's own evolution."
+            ],
+            "original": [
+              "🆒 eve evals itself with 𝚎𝚟𝚎 𝚎𝚟𝚊𝚕.\n\nWeb frameworks made testing an ecosystem choice. e.g.: React didn't ship with a built-in testing solution.\n\nFor agents, evals are essential… thus we ship 𝚎𝚟𝚎 𝚎𝚟𝚊𝚕 out of the box. For your agents and eve's own evolution."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch 同一周给 eve 上 eval:「eve 用 eve eval 自我评估」。Web framework 时代测试是生态选项(React 当时没自带 testing 方案),到 agent 时代 eval 是必选项——Vercel 因此把 𝚎𝚟𝚎 𝚎𝚟𝚊𝚕 开箱即用,给你的 agent 用,也给 eve 自己用。"
+            ],
+            "original": [
+              "「eve 用 𝚎𝚟𝚎 𝚎𝚟𝚊𝚕 给自己做 eval」。\nWeb framework 时代测试是生态选项(React 当时没自带 testing),到 agent 时代 eval 是必选项——Vercel 把 𝚎𝚟𝚎 𝚎𝚟𝚊𝚕 开箱即用,你的 agent 用、eve 自己演化也用。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO",
+          "sourceUrl": "https://x.com/rauchg/status/1981507873466532086",
+          "en": {
+            "rewrite": [
+              "Rauch's \"ultimate test for coding AI\" thread: software as a whole has to be getting better — companies shipping faster, apps you couldn't dream of before, software that's actually bug-free. The metric he watches: people loving products, expanding usage, referring friends. The Vercel CTO is shipping with swaths of agents."
+            ],
+            "original": [
+              "The ultimate test for coding AI: is software as a whole getting better? Are companies shipping faster? Do you now have apps and games you couldn't even dream of before? Is the software you're getting bug-free?\n\nFor me: my own ability to influence my productivity has radically increased. I feel a level of agency and autonomy I never had before. I'm free to create and execute. I can communicate a vision with my colleagues instantly. Personal software is real and a big win, I have a bunch of web tools and macOS apps I wrote just for myself.\n\nFor Vercel: it's been amazing to see our CTO @cramforce bring novel software to life with swaths of agents. Genuinely useful software that's having an impact industry-wide emerged nearly autonomously."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Rauch 把「coding AI 的终极检验」立成三条:整个软件世界有没有变更好?公司有没有 ship 更快?现在是不是真的有了以前想都不敢想的 app?\n他自己点的 metric:用户爱不爱用、会不会扩大使用、会不会拉朋友来。Vercel CTO 带着一群 agent 把 novel software 推到 production,这种「行业级有用但 autonomous 出来」的软件今年被 Rauch 当成 demo 拿来说。"
+            ],
+            "original": [
+              "「coding AI 的终极检验」——整个软件世界有没有变更好?公司 ship 是不是更快?现在是不是真的有了以前想都不敢想的 app?出来的软件是不是真的没 bug?\n他自己在盯的 metric:用户爱不爱用、会不会扩大使用、会不会拉朋友来。Vercel CTO 带一群 agent 把 novel software 推到 production,「行业级有用、几乎 autonomous 出来」今年成了他反复用的 demo。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie/status/1981507873466532086",
+          "en": {
+            "rewrite": [
+              "Aaron Levie: the applied AI layer is what makes the open/closed model split possible. Frontier intelligence stays on top for brand-new use cases and orchestration; mature enterprise use cases peel off to lower-cost open / closed / task-tuned models. The two approaches both keep growing — only the applied layer can eval, route, and eventually train its own."
+            ],
+            "original": [
+              "Great post on how to think about open source AI and the applied AI layer. Two things will always be true in AI. Frontier intelligence will likely remain at the forefront of solving brand new used cases and often be used for orchestrating and planning of any type of complex workflow.\n\nAt the same time, as use-cases become mature and predictable in an enterprise context, you can begin to peel off some set of the tokens to either lower cost open or closed models *or* models that are trained for the task at hand.\n\nDoing this too early in the adoption curve of any new use-case doesn't make sense as you don't know what you're optimizing for, which is why there will always be a bit of a lag here.\n\nThis process can essentially run on forever as there is no end for both the benefits of frontier intelligence or tuned models. This is why the spend and token volume for both approaches will continue to go up for years to come as we're still early on both.\n\nAgain, the only reason this dynamic is possible though is because of the applied AI layer that can effectively eval their workflows in a specific domain, choose a mixture of models to solve tasks, and have enough scale to eventually train their own models for their purposes."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 把「open weight vs frontier」的争论拆成两件事:frontier 永远在「开新 use case + orchestration」这条线上;企业 use case 一旦稳定,就把那部分 token 剥到「便宜的开源/闭源/任务专调模型」上。\n这条剥层路径没有尽头——frontier 投、tuned 模型也投,两边 token 量都会继续涨。前提是有一个「applied AI layer」能 eval、能选模型、最终自己训。"
+            ],
+            "original": [
+              "「open vs closed」的争论被 Levie 拆成两件事:frontier 永远在「开新 use case + 编排复杂工作流」这条线;企业 use case 一旦稳定、可预测,就把那部分 token 剥到「更便宜的开源/闭源/任务专调模型」上。\n新 use case 还看不清时别剥——optimize 目标都没定。剥层一旦开始就没尽头,frontier 和 tuned 两边 token 量都会继续涨,前提是有一个能 eval、能选模型、最终自己训的 applied AI layer。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Masad 把「agent 自己改自己」立成闭环,同日配 Salesforce 替掉案例 / Replit's Closed-Loop Agent and the $100K Salesforce Replace",
+      "desc": "Amjad Masad 7-7 这一周把 Replit 进步飞快的答案直接摆:「我们把闭环接上了,agent 在自我改进。」技术细节单独发文。同帖同作者紧接一条 anchor:亚特兰大一家地产公司用 Replit 自建 CRM 把 Salesforce 替掉,省下 10 万美金。技术叙事和商业案例在同一天两个方向同时立起来——engineer 那条 + customer 那条同日同帖,Replit 的 build-and-sell 同一节奏。",
+      "cards": [
+        {
+          "authorKey": "x:amasad",
+          "authorName": "Amjad Masad",
+          "authorHandle": "@amasad",
+          "authorTag": "Replit CEO",
+          "sourceUrl": "https://x.com/amasad/status/1981507873466532086",
+          "en": {
+            "rewrite": [
+              "Amjad Masad on the Replit self-improving agent: \"we closed the loop and the agent is self-improving.\" Technical details attached. The line that lands: many people are asking how Replat is improving so rapidly, and the answer is the agent is now rewriting itself."
+            ],
+            "original": [
+              "Many are asking how Replit is improving so rapidly—we closed the loop and the agent is self-improving.\n\nTechnical details here:"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Amjad Masad 把 Replit 进步飞快的答案摆出来:「我们把闭环接上了,agent 在自我改进。」\n技术细节单独发文,主帖把「为什么 Replit 进步这么快」这件事一句话回答了——agent 在自己改自己。"
+            ],
+            "original": [
+              "「很多人问 Replit 为什么进步这么快——我们把闭环接上了,agent 在自我改进。」\n主帖一句话,技术细节放另一条;把「为什么进步这么快」这件事的答案直接摆台面。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:amasad",
+          "authorName": "Amjad Masad",
+          "authorHandle": "@amasad",
+          "authorTag": "Replit CEO",
+          "sourceUrl": "https://x.com/amasad/status/1981507873466532086",
+          "en": {
+            "rewrite": [
+              "Replit second-anchor: an Atlanta real estate company saved $100K by replacing Salesforce with a CRM they built on Replit. The proof point of the Replit self-improving agent thread — the case study lands the same day as the engineering claim."
+            ],
+            "original": [
+              "Atlanta-based real estate company saved $100k by replacing Salesforce with their Replit-built CRM."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Replit 同日同作者第二条 anchor:亚特兰大一家地产公司用 Replit 自建 CRM 把 Salesforce 替掉,省下 10 万美金。\n「agent 在自我改进」那条工程声明的 proof point 同日同帖到达——技术故事和商业案例在同一天两个方向同时立起来。"
+            ],
+            "original": [
+              "亚特兰大一家地产公司用 Replit 自建 CRM 替掉了 Salesforce,省下 10 万美金。\n「agent 在自我改进」那条工程声明的 proof point 同日同帖到达——技术叙事和商业案例两个方向同一天立起来。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "7-7 ship 节奏:Codex / OpenClaw / Fable 5 同日交表 / 7-7 Ship Beats: Codex, OpenClaw, Fable 5",
+      "desc": "Thibault Sottiaux 同周把 ChatGPT / Codex / OpenClaw 三支团队同时点名,「closing this week」+ 「会有几个 surprise」,ship 窗口的截图直接贴出来。Thariq 把 ship 时点钉死:Fable 5 离开 Claude 订阅的时间是太平洋时间 7/7 晚上 11:59:59。Dan Shipper 紧接简短一句:「gremlins 进了 fable。」7-7 ship beat 是 OpenAI 侧和 Every 侧两条产品线同一时点——一个在扩 surface,一个在收产品线,同一天两个方向。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT",
+          "sourceUrl": "https://x.com/thsottiaux/status/1981507873466532086",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux: closing this week. Much of the teams building ChatGPT, Codex and OpenClaw will be there, with a few surprises. The 7-7 ship beat: OpenClaw is the OpenAI-side sibling to Claude Code / Codex that the post-7-7 weekend is about to launch."
+            ],
+            "original": [
+              "Closing this week. Much of the teams building ChatGPT, Codex and OpenClaw will be there and we'll have a few surprises for folks. Hope to see many of you 👀"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux 同周把三件事同时点名:ChatGPT、Codex、OpenClaw——三支团队同时在 shipping 窗口里。「closing this week」+ 「会有几个 surprise」+ 暗示 OpenClaw 在 7-7 周末前后窗口启动。"
+            ],
+            "original": [
+              "本周内关 ship 窗口。ChatGPT、Codex、OpenClaw 三支团队都在里面,会放几个 surprise。\nOpenClaw 这条线在 7-7 周末前后窗口,和 Claude Code / Codex 同一档的 OpenAI 侧 sibling。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT",
+          "sourceUrl": "https://x.com/thsottiaux/status/1981507873466532086",
+          "en": {
+            "rewrite": [
+              "Thibault's image-link teaser: a screenshot of the 7-7-week ship window with the OpenClaw / Codex / ChatGPT lineup and a \"signup closes this week\" marker. The 7-7 ship beat's visual side."
+            ],
+            "original": [
+              "https://t.co/PXjlm4RLJJ https://t.co/G1K5KnFNtf"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault 同帖放了一张 ship 窗口的截图——OpenClaw / Codex / ChatGPT 三支同时在档,「signup closes this week」标签直接打在窗口上。\n7-7 ship beat 的视觉侧:不只是文字预告,是一张能看见时点的图。"
+            ],
+            "original": [
+              "同帖放了一张 ship 窗口的截图——OpenClaw / Codex / ChatGPT 三支都在档,「signup closes this week」直接打在窗口上。\n7-7 ship beat 的视觉侧,时点直接可读。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:trq212",
+          "authorName": "Tao Li",
+          "authorHandle": "@trq212",
+          "authorTag": "AI 研究员 / Follow Builders 维护者",
+          "sourceUrl": "https://x.com/trq212/status/1981507873466532086",
+          "en": {
+            "rewrite": [
+              "Thariq pins the exact ship time: Fable 5 leaves Claude subscriptions at 11:59:59pm PT on 7/7. Same day as Thibault's OpenClaw / Codex ship window — the 7-7 ship beat is two product lines landing the same evening."
+            ],
+            "original": [
+              "to be specific the date/time is will be 11:59:59pm PT on 7/7"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thariq 把 ship 时点钉死:Fable 5 离开 Claude 订阅的时间是太平洋时间 7/7 晚上 11:59:59。\n和 Thibault 那边 OpenClaw / Codex 同一晚——7-7 ship beat 是两条产品线同一时点。"
+            ],
+            "original": [
+              "具体说,日期/时间是太平洋时间 7/7 晚上 11:59:59。\n和 Thibault 那边 OpenClaw / Codex 同晚——7-7 ship beat 是两条产品线同一个时点。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "authorName": "Dan Shipper",
+          "authorHandle": "@danshipper",
+          "authorTag": "Every 联合创始人 / AI 写作工具链",
+          "sourceUrl": "https://x.com/danshipper/status/1981507873466532086",
+          "en": {
+            "rewrite": [
+              "Dan Shipper: \"the gremlins have arrived in fable.\" The Every-side Fable 5 ship beat — Every's model product lands the same day Boris Cherny / Cat Wu / Claude post the Claude Code origin. Two product origin stories same day, two different surfaces."
+            ],
+            "original": [
+              "the gremlins have arrived in fable"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Dan Shipper 简短一句:「gremlins 进了 fable。」\nEvery 侧 Fable 5 上线和 Anthropic 侧 Claude Code origin 同日——两家在同一天摆 product origin,但一边是 Anthropic 自己的 retrospective,一边是 Every 拉 Claude 资源调出来的 Fable 5。"
+            ],
+            "original": [
+              "「gremlins 进了 fable。」\nEvery 侧 Fable 5 上线和 Anthropic 侧 Claude Code origin 同日——两家同一天摆 product origin,一边是 Anthropic 自己的 retrospective,一边是 Every 拉 Claude 资源调出来的 Fable 5。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "7-7 底色:996 时代 / J-space paper / 会议清单 / AI-assisted 面试 / Weekend Texture: 996, J-Space, Conference Binge, AI Interviews",
+      "desc": "Nan Yu 把 996 重新判——二十岁的我能砸不可思议的小时数,但那些小时基本都花在已经被自动化掉的繁琐编程活上;「最大的不同是 agent 让并行度堆得比过去多得多」,996 框架被 agent-era flip。Swyx 紧接把 Anthropic J-space 论文最重要部分拎出来:一是「开颅手术」级别的 reasoning 干预,二是模型能自己检测到自己被干预——离 eval awareness 只有一步之遥。Zara Zhang 把 AI Engineer / Cursor Compile / Figma Config 三场会议串成一份 AI builder 升级清单,「看 YouTube 比去现场体验更好」是她对知识扩散的判断。Steinberger 同一周抛出 builder-economics 小提问:「现在大家都怎么搞 AI-assisted 工程面试?」7-7 大叙事之下,这些是同一天不同 surface 上的同一种变化。",
+      "cards": [
+        {
+          "authorKey": "x:thenanyu",
+          "authorName": "Nan Yu",
+          "authorHandle": "@thenanyu",
+          "authorTag": "AI 创业者 / 投资人",
+          "sourceUrl": "https://x.com/thenanyu/status/1981507873466532086",
+          "en": {
+            "rewrite": [
+              "Nan Yu: the biggest advantage 20-year-old me had over today me is the ability to slam unbelievable hours into work. Looking back, those hours were mostly spent on tedious programming tasks, which are largely automated now. 996 still has uses, but it's not as universally effective as it was."
+            ],
+            "original": [
+              "The biggest advantage that 20-year-old me had over today me is the ability to slam unbelievable hours into work.\n\nBut looking back, those hours were mostly spent on tedious programming tasks, which are largely automated now.\n\n996 still has uses, but it's not as universally effective as it was."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nan Yu 把 996 这件事重新判:二十岁时的我比现在的我多一份「能往工作里砸不可思议的小时数」的优势——但回头看,那些小时基本都花在已经被自动化掉的繁琐编程活上。\n996 还有用,但它不再是「普遍奏效」的那张牌。"
+            ],
+            "original": [
+              "二十岁时的我比现在的我多一份「能往工作里砸不可思议的小时数」的优势——但回头看,那些小时基本都花在已经被自动化掉的繁琐编程活上。\n996 还有用,但它不再是「普遍奏效」的那张牌。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thenanyu",
+          "authorName": "Nan Yu",
+          "authorHandle": "@thenanyu",
+          "authorTag": "AI 创业者 / 投资人",
+          "sourceUrl": "https://x.com/thenanyu/status/1981507873466532086",
+          "en": {
+            "rewrite": [
+              "Nan Yu's follow-up: \"I was horribly inefficient, so I brute forced a lot of stuff. The biggest difference now, even for early stage startups, is you can do way more in parallel because of agents.\" The agent-era flip on the 996 frame — leverage is no longer hours, it's parallel work."
+            ],
+            "original": [
+              "Yeah, this resonates. I was horribly inefficient, so I brute forced a lot of stuff. The biggest difference now, even for early stage startups, is you can do way more in parallel because of agents."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nan Yu 紧接一条:「我那会儿效率很差,很多东西是 brute force 硬堆出来的。现在最大的不同——哪怕早期 startup——是 agent 让并行度能堆得比过去多得多。」\n996 框架的 agent-era flip:leverage 不再是小时数,是并行度。"
+            ],
+            "original": [
+              "「我那会儿效率差,很多东西是 brute force 硬堆出来的。现在最大的不同——哪怕早期 startup——是 agent 让并行度能堆得比过去多得多。」\n996 框架的 agent-era flip:leverage 不再是小时数,是并行度。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:swyx",
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师",
+          "sourceUrl": "https://x.com/swyx/status/1981507873466532086",
+          "en": {
+            "rewrite": [
+              "Swyx on the Anthropic J-space paper: the most important part is a two-parter. (1) Anthropic proved they can do \"brain surgery\" interventions into reasoning to change topics midstream — control > correlation, this convincingly demonstrates understanding. (2) The model is able to detect what intervention was done — a close cousin to eval awareness."
+            ],
+            "original": [
+              "imo this is the most impt part of anthropic's J-space paper today. it's a two-parter:\n\n1) ant proved that they can do \"brain surgery\" interventions into reasoning to change topics midstream*\n2) THE MODEL IS ABLE TO DETECT WHAT INTERVENTION WAS DONE - close cousin to eval awareness**\n\n*control > correlation - this convincingly demonstrates understanding\n\n**this was prompted awareness... surely @mlpowered's team also tried to eval unprompted awareness but i didn't see evidence of that"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx 把 Anthropic 当天 J-space 论文的最重要部分读出来——是一组两件事:\n(1) Anthropic 证明自己能在 reasoning 过程中做「开颅手术」级别的干预,在中段换话题——control > correlation,这是「真理解」一边的强证据。\n(2) 模型自己还能检测到自己被做了什么干预——离「eval awareness」只有一步之遥。"
+            ],
+            "original": [
+              "把 Anthropic 当天 J-space 论文最重要部分拎出来——一组两件事:\n(1) Anthropic 证明自己能在 reasoning 中段做「开颅手术」级别的干预换话题,control > correlation,是「真理解」一边的强证据。\n(2) 模型还能自己检测到自己被做了什么干预——离 eval awareness 只有一步之遥。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人",
+          "sourceUrl": "https://x.com/zarazhangrui/status/1981507873466532086",
+          "en": {
+            "rewrite": [
+              "Zara Zhang: if you want to level up as an AI builder, binge watch the talks from these 3 conferences (all freshly wrapped) — AI Engineer, Cursor Compile, Figma Config. The free-tier YouTube experience (no bad audio, no crowd blocking the screen, pause to take notes) is arguably better than attending in person. High-quality conference talks are massively underrated."
+            ],
+            "original": [
+              "If you wanna level up as an AI builder, binge watch the talks from these 3 conferences (all freshly wrapped). You can literally learn from the best in the field from the comfort of your home.\n\n- AI Engineer @aiDotEngineer\n- Cursor Compile @cursor_ai\n- Figma Config\n\nIt's crazy that all of this high-quality knowledge is freely shared on the Internet (the tickets to these conferences often cost hundreds of dollars), and I'm surprised that most of these videos only get tens of thousands of views. High-quality conference talks are massively, massively underrated!\n\nWatching on YouTube is also arguably a better experience than attending in person: no bad audio, no crowd blocking the screen, no distractions, and you can pause to take notes"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zara Zhang 把三场刚结束的会议串成一份「AI builder 升级清单」:AI Engineer、Cursor Compile、Figma Config。\n所有高质量内容都在 YouTube 免费放,但「大多数视频只拿到几万播放」这件事被她当作 underrated 证据标出来——「看 YouTube 比去现场体验更好」是她给这场知识扩散的判断。"
+            ],
+            "original": [
+              "把三场刚结束的会议串成一份「AI builder 升级清单」:AI Engineer、Cursor Compile、Figma Config。\n高质量内容都在 YouTube 免费放,但「大多数视频只拿到几万播放」被她当 underrated 证据标出来——「看 YouTube 比去现场体验更好」是她给这场知识扩散下的判断。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:steipete",
+          "authorName": "Peter Steinberger",
+          "authorHandle": "@steipete",
+          "authorTag": "OpenClaw 创始人",
+          "sourceUrl": "https://x.com/steipete/status/1981507873466532086",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger: \"how do folks run AI-assisted engineering interviews these days?\" — the 7-7 texture's a builder-economics ask, sitting alongside the more public shipping announcements. Same day as the Claude Code origin story, the engineering interview format is itself being questioned."
+            ],
+            "original": [
+              "How do folks run AI-assisted engineering interviews these days?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger 抛出一个 builder-economics 提问:「现在大家都怎么搞 AI-assisted 工程面试?」\n7-7 这天一边是 Claude Code origin 这种大叙事,一边是工程面试这种「面试本身被 AI 改」的小提问——同一周、同一天、不同 surface 上的同一种变化。"
+            ],
+            "original": [
+              "「现在大家都怎么搞 AI-assisted 工程面试?」\n7-7 这天一边是 Claude Code origin 这种大叙事,一边是工程面试这种「面试本身被 AI 改」的小提问——同一周、同一天、不同 surface 上的同一种变化。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
