@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 07 Jul 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-07-08 · 围栏日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-08-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-08-rerun.html</guid>
+      <pubDate>Wed, 08 Jul 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[7-8 这一期的主轴是「containment 立成工程一等公民 + ship 节奏由两侧同日撑起 + 企业 IT leader 们把 7 条共性摆出来」:Anthropic Engineering 同日发了可能是迄今最完整的一份公开稿,讲清楚他们怎么在 claude.ai / Claude Code / Claude Cowork 三个产品上「围住」Claude——环境层先做硬,再回到 model 层去调行为,blast radius 圈住才是真章;三条最值得带走的:approval fatigue 是真的(93% 弹窗被秒过)、他们自己写的中间件反复出事、攻击者最爱 egress(两起最严重的事故都是数据沿着「被允许的路径」走出去的)。ship 节奏:OpenAI 那边 Sam Altman 一句「GPT-5.6 sol launches thursday」、Thibault 一小时内用 C 端语气再确认;Anthropic 那边 Claude 官方同日三连——Fable 5 访问延长到 7/12、Cowork 翻倍使用上限延长到 8/5,Fable 5 的 50% 周上限是「新结构的硬约束」、Cowork 撑住 2x 流量等于在公开承认 containment 架构稳得住。Levie 同日把企业 IT leader 们 7 条共性用 3.2K 字摆出来:operating model 必须破 silo、数据碎片化是 agent 准确率天花板、数据护城河在替代分发护城河、token 不是对的指标、多模型路由迟早会来、AI 人才最稀缺、最好 use case 是「改工作方式」不是「加速」——正好是 Anthropic 那篇 containment 文章的「企业侧前置条件」。播客这边:Training Data 同日发了一期 Zipline——1.4 亿英里零事故,「我们不是 drone 公司,我们要做的是地球上的自动化物流系统」,跟 Anthropic 的「ship 的是 containment 不是 model 本身」是同一种工程哲学。]]></description>
+      <category>Anthropic 把 containment 立成工程一等公民 / Anthropic Elevates Containment to First-Class Engineering, 7-8 ship 节奏:OpenAI 与 Anthropic 两侧同日交表 / 7-8 Ship Beats: OpenAI sol Thursday + Claude Fable/Cowork Extension, Levie 把企业 IT leader 们 7 条共性摆出来 / Levie Names the Seven Recurring Themes from Enterprise IT, Rauch 把 Vercel 的 open-SDK 哲学用 TypeScript 文件摆出来 / Rauch: Open SDK as Files, Vercel Welcomes Better Auth, Thibault 与 Tao Li:Claude 跨进「自己拿主意」那一边 / Thibault + Tao Li: Claude Crosses into Self-Directed Work, 用 Claude 做事:在 Fable 里榨 CC / cron 该跑本地还是云 / 学什么 / Steinberger 的提示框设计 / Build-with-Claude: Fable-CC Loops, Cron Local vs Cloud, Alerts, 7-8 底色:USA-ARG 之后 / 8 年前的 SaaS 还在烧钱 / SF 市政战 / Weekend Texture: USA-ARG Aftermath, SaaS Runway, Civic Ws, Training Data:走进 Zipline 的 1.4 亿英里零事故 / Training Data: Inside Zipline&apos;s 1.4M-Mile Zero-Incident Autonomy</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-07-07 · 回炉日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-07-rerun.html</link>

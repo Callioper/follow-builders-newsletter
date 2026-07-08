@@ -1,0 +1,1785 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Builders Digest · 2026-07-08</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ed;
+    --accent: #c0392b;
+    --accent-light: #e8d5c4;
+    --border: #d4cdc0;
+    --muted: #7a7265;
+    --tag-bg: #e8e2d6;
+    --en-bg: #ffffff;
+    --cn-bg: #faf7f2;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  .masthead, .intro, .section-header, .feed, footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .masthead { padding-top: 48px; }
+  .masthead-rule { border: none; border-top: 3px solid var(--ink); margin: 0 0 12px; }
+  .masthead-inner { display: flex; justify-content: center; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; letter-spacing: -0.4px; }
+  .masthead-subtitle { margin-top: 8px; padding-bottom: 10px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  .edition-strip {
+    position: relative;
+    margin-top: 8px;
+    min-height: 46px;
+    padding: 10px 132px 12px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.34);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+
+  .edition-strip .edition-sep { margin: 0 8px; color: #b8ae9f; }
+  .edition-strip-text { display: block; }
+  .edition-return-link { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; padding: 6px 10px; border: 1px dashed rgba(192, 57, 43, 0.55); border-radius: 999px; color: var(--accent); text-decoration: none; font-size: 12px; line-height: 1; letter-spacing: 0.06em; background: rgba(255, 255, 255, 0.45); transition: background 160ms ease, border-color 160ms ease, transform 160ms ease; }
+  .edition-return-link:hover, .edition-return-link:focus-visible { background: rgba(255, 255, 255, 0.82); border-color: var(--accent); transform: translateY(-50%) translateX(-1px); }
+  .edition-return-link:focus-visible { outline: none; }
+  .intro { padding-top: 22px; }
+  .intro-inner { max-width: 920px; margin: 0 auto; padding: 0 0 0 18px; border-left: 3px solid #d9cdbc; }
+  .intro-kicker { margin: 0 0 8px; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .intro p { margin: 0; max-width: none; color: var(--muted); font-size: clamp(15px, 1.6vw, 16px); line-height: 1.9; text-wrap: pretty; font-family: 'Noto Serif SC', serif; overflow-wrap: anywhere; }
+
+  .section-header { margin-top: 40px; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; margin: 0 0 6px; }
+  .section-desc { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+
+  .feed { display: flex; flex-direction: column; gap: 20px; }
+  .card { background: var(--en-bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .card-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid #eee7dd; flex-wrap: wrap; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .avatar-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .avatar.is-fallback img { display: none; }
+  .avatar.is-fallback .avatar-fallback { display: flex; }
+
+  .author-info { flex: 1; min-width: 160px; }
+  .author-name { font-weight: 600; font-size: 15px; }
+  .author-name-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .author-handle { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+  .author-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; background: var(--tag-bg); color: var(--muted); padding: 4px 8px; border-radius: 999px; }
+  .author-tag.is-inline { padding: 3px 8px; }
+
+  .card-controls { margin-left: auto; display: inline-flex; gap: 8px; }
+  .view-toggle { border: 1px solid var(--border); background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 999px; font-size: 12px; line-height: 1; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; }
+  .view-toggle.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .card-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .lang-col { padding: 18px 20px 22px; }
+  .lang-col.cn { background: var(--cn-bg); border-right: 1px solid #f0ece4; font-family: 'Noto Serif SC', serif; }
+  .lang-col.en { background: var(--en-bg); }
+  .lang-label { margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+  .content-shell { position: relative; transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .content-variant { position: absolute; inset: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(4px); transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; will-change: opacity, transform; }
+  .content-variant.is-active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+  .content-variant p, .content-variant li { margin: 0 0 12px; font-size: 14px; }
+  .content-variant ol { margin: 0 0 12px 20px; padding: 0; }
+  .inline-code { display: inline-block; font-family: 'IBM Plex Mono', monospace; background: #f4efe7; padding: 3px 6px; border-radius: 6px; margin-bottom: 8px; }
+
+  .card-footer { padding: 12px 20px 16px; border-top: 1px solid #eee7dd; background: #fcfaf6; }
+  .card-footer a { color: var(--accent); text-decoration: none; font-size: 14px; }
+  footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 680px) {
+    .masthead-inner { align-items: center; }
+    .edition-strip { padding-right: 12px; padding-left: 12px; }
+    .edition-strip-text { padding-right: 0; }
+    .edition-return-link { position: static; transform: none; margin-top: 8px; font-size: 11px; }
+    .card-controls { margin-left: 0; }
+    .card-body { grid-template-columns: 1fr; }
+    .lang-col.cn { border-right: none; border-bottom: 1px solid #f0ece4; }
+    .edition-strip .edition-sep { margin: 0 5px; }
+    .intro-inner { padding-left: 14px; }
+    .intro p { line-height: 1.84; }
+  }
+</style>
+</head>
+<body data-publish-date="2026-07-08" data-issue-number="44" data-edition-name="双语精选版" data-view-label-rewrite="速读" data-view-label-original="原文" data-author-identities-path="/home/eclaw/.follow-builders/assets/author-identities.json" data-avatar-manifest-path="/home/eclaw/.follow-builders/assets/avatar-manifest.json">
+  <header class="masthead">
+    <hr class="masthead-rule">
+    <div class="masthead-inner">
+      <div class="masthead-title">AI Builders Digest</div>
+    </div>
+    <div class="masthead-subtitle">Bilingual edition · 双语对照版</div>
+    <div class="edition-strip">
+      <span class="edition-strip-text" id="edition-strip-text">第 44 期｜2026-07-08｜双语精选版｜31 条精选｜17 位作者｜8 个主题</span>
+      <a class="edition-return-link" href="../index.html">返回目录</a>
+    </div>
+  </header>
+
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="7-8 这一期的主轴是「containment 立成工程一等公民 + ship 节奏由两侧同日撑起 + 企业 IT leader 们把 7 条共性摆出来」:Anthropic Engineering 同日发了可能是迄今最完整的一份公开稿,讲清楚他们怎么在 claude.ai / Claude Code / Claude Cowork 三个产品上「围住」Claude——环境层先做硬,再回到 model 层去调行为,blast radius 圈住才是真章;三条最值得带走的:approval fatigue 是真的(93% 弹窗被秒过)、他们自己写的中间件反复出事、攻击者最爱 egress(两起最严重的事故都是数据沿着「被允许的路径」走出去的)。ship 节奏:OpenAI 那边 Sam Altman 一句「GPT-5.6 sol launches thursday」、Thibault 一小时内用 C 端语气再确认;Anthropic 那边 Claude 官方同日三连——Fable 5 访问延长到 7/12、Cowork 翻倍使用上限延长到 8/5,Fable 5 的 50% 周上限是「新结构的硬约束」、Cowork 撑住 2x 流量等于在公开承认 containment 架构稳得住。Levie 同日把企业 IT leader 们 7 条共性用 3.2K 字摆出来:operating model 必须破 silo、数据碎片化是 agent 准确率天花板、数据护城河在替代分发护城河、token 不是对的指标、多模型路由迟早会来、AI 人才最稀缺、最好 use case 是「改工作方式」不是「加速」——正好是 Anthropic 那篇 containment 文章的「企业侧前置条件」。播客这边:Training Data 同日发了一期 Zipline——1.4 亿英里零事故,「我们不是 drone 公司,我们要做的是地球上的自动化物流系统」,跟 Anthropic 的「ship 的是 containment 不是 model 本身」是同一种工程哲学。">
+    <div class="intro-inner">
+      <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
+      <p class="intro-copy">7-8 这一期的主轴是「containment 立成工程一等公民 + ship 节奏由两侧同日撑起 + 企业 IT leader 们把 7 条共性摆出来」:Anthropic Engineering 同日发了可能是迄今最完整的一份公开稿,讲清楚他们怎么在 claude.ai / Claude Code / Claude Cowork 三个产品上「围住」Claude——环境层先做硬,再回到 model 层去调行为,blast radius 圈住才是真章;三条最值得带走的:approval fatigue 是真的(93% 弹窗被秒过)、他们自己写的中间件反复出事、攻击者最爱 egress(两起最严重的事故都是数据沿着「被允许的路径」走出去的)。ship 节奏:OpenAI 那边 Sam Altman 一句「GPT-5.6 sol launches thursday」、Thibault 一小时内用 C 端语气再确认;Anthropic 那边 Claude 官方同日三连——Fable 5 访问延长到 7/12、Cowork 翻倍使用上限延长到 8/5,Fable 5 的 50% 周上限是「新结构的硬约束」、Cowork 撑住 2x 流量等于在公开承认 containment 架构稳得住。Levie 同日把企业 IT leader 们 7 条共性用 3.2K 字摆出来:operating model 必须破 silo、数据碎片化是 agent 准确率天花板、数据护城河在替代分发护城河、token 不是对的指标、多模型路由迟早会来、AI 人才最稀缺、最好 use case 是「改工作方式」不是「加速」——正好是 Anthropic 那篇 containment 文章的「企业侧前置条件」。播客这边:Training Data 同日发了一期 Zipline——1.4 亿英里零事故,「我们不是 drone 公司,我们要做的是地球上的自动化物流系统」,跟 Anthropic 的「ship 的是 containment 不是 model 本身」是同一种工程哲学。</p>
+    </div>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 01</div>
+    <h2 class="section-title">Anthropic 把 containment 立成工程一等公民 / Anthropic Elevates Containment to First-Class Engineering</h2>
+    <p class="section-desc">今天 Anthropic 工程博客发了可能是迄今最完整的一份公开稿,讲清楚他们怎么在 claude.ai / Claude Code / Claude Cowork 三个产品上「围住」Claude。同一个哲学——先把环境层做硬,再回到 model 层去调行为——落到三种完全不同的 containment 架构上。三条线最值得带走:approval fatigue 是真的(93% 的权限弹窗被秒过),他们自己写的中间件反复出事(allowlist proxy、trust 之前的配置解析),而攻击者最爱 egress(两起最严重的事故都是数据沿着「被允许的路径」走出去的)。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="blog:anthropic-engineering" data-author-name="Anthropic Engineering" data-author-tag="Anthropic 官方工程博客" data-author-handle="" data-author-avatar="../assets/avatars/blog-anthropic-engineering.png">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/blog-anthropic-engineering.png" alt="Anthropic Engineering avatar"><span class="avatar-fallback">AE</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Anthropic Engineering</div>
+            <div class="author-tag is-inline">Anthropic 官方工程博客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic Engineering 发了可能是迄今最完整的一份公开稿,讲清楚他们怎么在 claude.ai、Claude Code、Claude Cowork 三个产品上「围住」Claude。同一个哲学——先把环境层做硬,再回到 model 层去调行为,不是去调 agent 本身——落到三种完全不同的 containment 架构上。</p>
+              <p>三件事值得带走:(1)approval fatigue 是真的——93% 的权限弹窗用户都会点同意,human-in-the-loop 跑着跑着就成 human-in-the-confirm;(2)他们自己写的中间件(allowlist proxy、trust 之前的配置解析)反复出事,而 gVisor、seccomp、hypervisor 这些标准件一直稳;(3)攻击者最爱 egress——两起最严重的事故,数据都是沿着被允许的路径走出去的(员工被钓鱼、第三方 allowlist 泄漏)。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>一年前,我们会直接拒绝把「足以打到内部服务」的权限交给 Claude。今天这种权限已经常规化,Anthropic 自己的开发效率也是被它撑起来的。部署风险有两部分:失败概率,失败后果。前者随着模型训练和防护在持续下降;后者——理论上的 blast radius——只会随能力变强、可访问范围变大而继续扩大。</p>
+              <p>第一种思路是 human-in-the-loop,让用户在每一轮监督 agent。早期的 Claude Code 就是这么做的:每次写、跑命令、走网络,都弹窗让用户点同意。理论上能 work,但我们发现这条路实际守不住——遥测显示用户点同意的比例是 93%,弹窗越频繁,用户越不认真。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic Engineering publishes the most detailed public account of how the company contains Claude across claude.ai, Claude Code, and Claude Cowork. Three product surfaces, three containment architectures, and a clear philosophy: design the environment first, then steer behavior at the model layer. The blast radius is what gets capped, not the agent itself.</p>
+              <p>Three core lessons: (1) approval fatigue is real — 93% of permission prompts get approved, so the human-in-the-loop stops being a loop; (2) the custom pieces (their allowlist proxy, their pre-trust parser) keep breaking, while the standard primitives (gVisor, seccomp, hypervisor) hold; (3) egress is the attacker&#39;s favorite — two of the worst incidents were data leaving through permitted paths (employee phish, third-party allowlist disclosure).</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Twelve months ago, we&#39;d have rejected out of hand the idea of granting Claude access sufficient to take down an internal Anthropic service. Today that level of access is routine, and Anthropic developers are more productive for it. The risk of these deployments has two components: how likely a failure is, and how much damage one could do. Progress on safeguards and model training has steadily driven down the first; the second—the theoretical blast radius—only grows as capabilities and access expand.</p>
+              <p>The first is to supervise the agent&#39;s behavior via a human-in-the-loop. Claude Code previously protected against agents taking unintended actions by asking users for permission at each turn. Theoretically that works, but we&#39;ve found the approach to be fallible. Our telemetry showed users approved roughly 93% of permission prompts. The more approvals a user sees, the less attention they pay to each.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.anthropic.com/engineering/how-we-contain-claude" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 02</div>
+    <h2 class="section-title">7-8 ship 节奏:OpenAI 与 Anthropic 两侧同日交表 / 7-8 Ship Beats: OpenAI sol Thursday + Claude Fable/Cowork Extension</h2>
+    <p class="section-desc">今天的 ship 节奏由两侧同时撑起。OpenAI 那边 Sam Altman 一句「GPT-5.6 sol launches thursday」,Thibault Sottiaux 一小时内用 C 端语气再确认一次「Sol is coming」,ship beat 从两个 OpenAI 视角同时落到同一时间。Anthropic 那边 Claude 官方账号同日三连:Fable 5 访问延长到 7/12、Cowork 翻倍使用上限延长到 8/5。Fable 5 的 50% 周上限是「新结构的硬约束,不是临时降速」,Cowork 能撑 2x 流量等于在公开承认 containment 架构稳得住。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:sama" data-author-name="Sam Altman" data-author-tag="OpenAI CEO" data-author-handle="@sama" data-author-avatar="../assets/avatars/x-sama.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-sama.jpg" alt="Sam Altman avatar"><span class="avatar-fallback">SA</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Sam Altman</div>
+            <div class="author-tag is-inline">OpenAI CEO</div>
+          </div>
+          <div class="author-handle">@sama</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Sam Altman:GPT-5.6 sol 周四上线。和 6-30 那个 GPT-5.6 暗示一脉相承——「sol」是 sun 的指代,模型命名已经走完 5 / 5.6 一轮,现在开始往新方向拐。一个 ship beat,没多解释。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>GPT-5.6 sol 周四上线!祝大家 build 顺利。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Sam Altman: GPT-5.6 sol launches Thursday. Same thread as 6-30&#39;s GPT-5.6 hint, and the symbolic timing is hard to miss — &#39;sol&#39; is a sun reference, and the model naming had already cycled through 5 / 5.6 before this new direction. Ship beat, with no further context.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>GPT-5.6 sol launches thursday! happy building</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/sama/status/2074709023807664454" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:claudeai" data-author-name="Claude" data-author-tag="Anthropic Claude 官方账号" data-author-handle="@claudeai" data-author-avatar="../assets/avatars/x-claudeai.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-claudeai.jpg" alt="Claude avatar"><span class="avatar-fallback">C</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Claude</div>
+            <div class="author-tag is-inline">Anthropic Claude 官方账号</div>
+          </div>
+          <div class="author-handle">@claudeai</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Claude 官方账号:Claude Fable 5 在所有付费方案上的访问窗口延长到 7 月 12 日,每周可用额度上限 50%,超过部分走 usage credits 或者切别的模型。50% 这条线是新结构的硬约束,不是临时降速——Fable 5 还是同一个模型,但它能吃到的预算就是 Claude Code 整体流量的一部分。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>和之前一样,你每周对 Claude Fable 5 的使用上限是 50%。超过之后可以继续用 Fable 5 走 usage credits,也可以切到别的模型,在剩余额度里继续工作。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Claude (official): Fable 5 access extended on all paid plans through July 12, with up to 50% of weekly usage available before credits kick in. The 50% cap is the new structural rule, not a temporary throttle — same Fable 5 model, the same weekly budget that already runs the rest of Claude Code&#39;s traffic.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>As before, you can use up to 50% of your weekly usage limit on Claude Fable 5. After that, you can keep using Fable 5 with usage credits, or switch to another model to keep working within your remaining limits. Read more: https://t.co/aNtorRFPnV</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/claudeai/status/2074548243971604641" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:claudeai" data-author-name="Claude" data-author-tag="Anthropic Claude 官方账号" data-author-handle="@claudeai" data-author-avatar="../assets/avatars/x-claudeai.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-claudeai.jpg" alt="Claude avatar"><span class="avatar-fallback">C</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Claude</div>
+            <div class="author-tag is-inline">Anthropic Claude 官方账号</div>
+          </div>
+          <div class="author-handle">@claudeai</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Claude 官方账号:Claude Cowork 的翻倍使用上限延长到 8 月 5 日。Cowork 是那份 containment 文章里写的最危险的那类产品——用户是非技术背景的知识工作者,会把自己整个工作目录交给 Claude。能撑住 2x 流量,等于在公开承认 containment 架构稳得住。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>我们把 Claude Cowork 的翻倍使用上限延长到 8 月 5 日,这样你可以把更大的活交给 Claude 来 delegate。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Claude (official): doubled Cowork usage limits extended through August 5. Cowork is the workspace product most exposed to the containment problem the engineering blog writes about — a knowledge worker who can&#39;t read bash, sharing their files. Doubled limits signal the architecture is holding at 2x load.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>We&#39;re extending doubled Cowork usage limits through August 5, so you can delegate bigger work to Claude. Read more: https://t.co/ONu7xLO6js</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/claudeai/status/2074548242386178258" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:claudeai" data-author-name="Claude" data-author-tag="Anthropic Claude 官方账号" data-author-handle="@claudeai" data-author-avatar="../assets/avatars/x-claudeai.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-claudeai.jpg" alt="Claude avatar"><span class="avatar-fallback">C</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Claude</div>
+            <div class="author-tag is-inline">Anthropic Claude 官方账号</div>
+          </div>
+          <div class="author-handle">@claudeai</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Claude 官方账号:作为 Cowork 翻倍延长的脚注——usage 阶梯是 Anthropic 发出来的最易读的产品信号。「翻倍上限延到 8/5」读出来是 containment 这件事赌对了,不是市场话术。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>我们把 Claude Cowork 的翻倍使用上限延长到 8 月 5 日,这样你可以把更大的活交给 Claude 来 delegate。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Claude (official): as a footnote to the Cowork extension — usage tiers are the most legible product signal Anthropic ships. &#39;Doubled limits through August 5&#39; reads as a containment bet that paid off, not a marketing claim.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>We&#39;re extending doubled Cowork usage limits through August 5, so you can delegate bigger work to Claude. Read more: https://t.co/ONu7xLO6js</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/claudeai/status/2074525821755101458" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 03</div>
+    <h2 class="section-title">Levie 把企业 IT leader 们 7 条共性摆出来 / Levie Names the Seven Recurring Themes from Enterprise IT</h2>
+    <p class="section-desc">Aaron Levie 刚从一打企业 IT leader 的会里出来,这条 3.2K 字的帖是 Anthropic containment 文章的「企业侧前置条件」——他列的就是「公司还没解决、containment 假设已经解决了」那些事。Operating model 必须打破 silo,数据碎片化是 agent 准确率的天花板,数据护城河在替代分发护城河,token 不是对的指标(业务结果才是),多模型路由迟早会来,AI 人才最稀缺,最好的 use case 是「改工作方式」不是「单纯加速」。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:levie" data-author-name="Aaron Levie" data-author-tag="Box CEO" data-author-handle="@levie" data-author-avatar="../assets/avatars/x-levie.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-levie.jpg" alt="Aaron Levie avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie</div>
+            <div class="author-tag is-inline">Box CEO</div>
+          </div>
+          <div class="author-handle">@levie</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie 刚从一打企业 IT leader 的会里出来,把这七条共性摆出来:(1)operating model——agent 要打破组织里的孤岛;(2)数据碎片化是 agent 准确率的天花板;(3)数据护城河正在替代分发护城河;(4)token 不是对的指标,业务结果才是;(5)多模型路由是迟早的事;(6)AI 人才是最稀缺的;(7)最好的 use case 是改工作方式,不是单纯加速。</p>
+              <p>这份清单正好是 Anthropic 那篇 containment 文章的「企业侧前置条件」——Levie 在列「公司还没解决的、containment 假设已经被解决的」那些事。数据碎片化、多模型路由这两条,直接对应 containment 必须在环境层挡住的攻击面。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>刚和一打企业 IT leader 开完 agent 的会,共同议题至少七条:
+
+              * 多数讨论卡在 operating model——大公司的组织历来是按 silo 切的,但 agent 只有绑在流程上才跑得动,流程又经常横跨 silo。问题变成:谁来管这些 agent?怎么部署、怎么被采用?
+
+              * 数据碎片化是普遍痛点。只要数据继续散在各处、格式不统一,或者该看到的人和 agent 看不到,企业就只能接受 agent 给的答案要么不准确、要么不符合自己的业务口径。结构化数据(产品指标、收入)和非结构化数据(产品路线图、客户合同)都中招。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie, fresh off meetings with a couple dozen enterprise IT leaders, lays out the seven recurring themes: (1) operating model — agents have to break org silos; (2) data fragmentation blocks agent accuracy; (3) data moats replace distribution moats; (4) tokens are not the right metric, business outcomes are; (5) multi-model routing is coming; (6) AI talent is the bottleneck; (7) best use cases change the work, not just speed it up.</p>
+              <p>This is a complementary read to the Anthropic containment blog — Levie is naming the enterprise-side blockers the containment blog assumes are solved. The data-fragmentation bullet and the multi-model-routing bullet are the two that map directly onto what containment has to handle.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Just coming off of meetings with a couple dozen enterprise IT leaders discussing AI agents. Here are a few of the common themes that stand out:
+
+              * Lots of conversation that you have to solve an operating model challenge to get the full benefits of AI. Most companies have orgs that have always operated in siloes; but agents are most effectively when they are tied to a process, which often cuts across these siloes. So the big question is how do you start to deploy centrally managed agents that can work across organizational boundaries. Who manages these agents? How do they get deployed and adopted?
+
+              * Data fragmentation remains a major issue for most organizations. As long as data remains highly fragmented and not in standard formats, or data is not available to the right people and agents, enterprises are dealing with issues around being able to get answers from agents that are accurate or that conform to their business practices. This cuts across both systems with structured data (product metrics or revenue figures) and unstructured data (product roadmap or customer contracts).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/levie/status/2074719479377109312" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:levie" data-author-name="Aaron Levie" data-author-tag="Box CEO" data-author-handle="@levie" data-author-avatar="../assets/avatars/x-levie.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-levie.jpg" alt="Aaron Levie avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie</div>
+            <div class="author-tag is-inline">Box CEO</div>
+          </div>
+          <div class="author-handle">@levie</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie 续帖:「数据是新石油」这一句老话被他重提,但 Levie 的版本更克制——真正有用的数据大多数都在企业内部,在遗留系统里、在人脑子里、或者散在各个角落。能安全地把这些数据送到 agent 那里,会变成公司之间最分化的运营能力。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>能用来训练或者被 agent 直接吃的有用数据,只有一小部分在公网。绝大多数都在企业内部——遗留系统里、人脑子里、或者散落在公司的各个角落。
+
+              营销计划、产品路线图、研发实践、合同、财务数据、战略和通用的公司知识——所有这些,都是公司真正在凭它运转的东西。
+
+              不管是用来训练模型,还是作为 agent 的上下文,这些数据只会越来越值钱。能不能安全地把对的数据交给 agent 去用,会变成未来公司运营和竞争的决定性特征。
+
+              谁能用 AI,最后会落到谁的 agent 最懂自家业务、最能代替人做对的决策。数据其实真的是新石油。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie, the second beat: &#39;data is the new oil&#39; makes a comeback, but Levie&#39;s version is more careful — useful data lives inside orgs, often in legacy systems, in people&#39;s heads, or fragmented across the enterprise. The ability to get that data to agents (securely) becomes the defining operating characteristic of a company.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>A small percentage of useful data is on the open web available to all models for training or for agents to operate with. Most of it lives inside of organizations and often is in legacy systems, in people&#39;s heads, or is fragmented across the enterprise.
+
+              It&#39;s the marketing plans, product roadmaps, development practices, contracts, financial data, strategies, and general corporate knowledge that every company operates off of.
+
+              Whether it&#39;s for training a model or used as context for agents, this data will increasingly be more valuable over time. The ability to get the right data to agents to operate on, securely, will be a defining characteristic of how companies operate and compete in the future.
+
+              Effective use of AI will in the economy will largely come down to the companies that are able to have agents best understand their business and make the right decisions on their behalf. Data actually is the new oil.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/levie/status/2074528241990394178" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 04</div>
+    <h2 class="section-title">Rauch 把 Vercel 的 open-SDK 哲学用 TypeScript 文件摆出来 / Rauch: Open SDK as Files, Vercel Welcomes Better Auth</h2>
+    <p class="section-desc">Guillermo Rauch 同日三连,把 Vercel 的 open-SDK 哲学用代码讲清楚:每个 tool 就是一个 `tools/&lt;name&gt;.ts`,导出 `create&lt;Tool&gt;Tools()`。Eve 是装着「可插拔模型 + skills + channels + tools」的运行时。同一天他还宣布 Vercel 迎进 @bekacru 和 Better Auth 团队——这是「open SDK、agent-first auth」这条线第一次以 acqui-hire 的形式合到 Vercel 里。中间夹一句「Heavenly victory 🇦🇷」,ship beat 和世界杯余温在同一条时间线。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:rauchg" data-author-name="Guillermo Rauch" data-author-tag="Vercel CEO" data-author-handle="@rauchg" data-author-avatar="../assets/avatars/x-rauchg.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-rauchg.jpg" alt="Guillermo Rauch avatar"><span class="avatar-fallback">GR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Guillermo Rauch</div>
+            <div class="author-tag is-inline">Vercel CEO</div>
+          </div>
+          <div class="author-handle">@rauchg</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch:agent 的 filesystem 是漂亮的——你想让它有 GitHub 能力,只要写一个 `tools/github.ts`,导出 `createGithubTools()` 就行。这是「open SDK as code」的写法:每个 tool 就是一个 TypeScript 文件,丢在 `tools/` 下。Eve 是装着这套可插拔模型 + skills + channels + tools 的运行时。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>filesystem 真的美。想让你的 agent 拥有 GitHub 能力?
+
+              定义一个 `tools/github.ts`,导出 `createGithubTools()` 就行。
+
+              Eve 就是为打造这种「模型、技能、channel、工具」都可插拔的开源生态而生的 ↓</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch: an agent&#39;s filesystem is beautiful — write `tools/github.ts`, export `createGithubTools()`, and your agent has GitHub powers. This is the open-SDK philosophy as code: any tool is a TypeScript file in `tools/`. Eve is the runtime that hosts the pluggable model + skills + channels + tools ecosystem.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The filesystem is beautiful. Want your https://t.co/99eEa13mZ3 agent to have GitHub powers?
+
+              Define 𝚝𝚘𝚘𝚕𝚜/𝚐𝚒𝚝𝚑𝚞𝚋.𝚝𝚜 and export 𝚌𝚛𝚎𝚊𝚝𝚎𝙶𝚒𝚝𝚑𝚞𝚋𝚃𝚘𝚘𝚕𝚜().
+
+              Eve exists to shape an open ecosystem of pluggable models, skills, channels, and tools like this ↓ https://t.co/3fsag2HwnM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/rauchg/status/2074630835878453601" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:rauchg" data-author-name="Guillermo Rauch" data-author-tag="Vercel CEO" data-author-handle="@rauchg" data-author-avatar="../assets/avatars/x-rauchg.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-rauchg.jpg" alt="Guillermo Rauch avatar"><span class="avatar-fallback">GR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Guillermo Rauch</div>
+            <div class="author-tag is-inline">Vercel CEO</div>
+          </div>
+          <div class="author-handle">@rauchg</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch:贴一句「Heavenly victory 🇦🇷」,发在 USA-ARG 那场决赛前后。ship beat 和世界杯余温是同一条时间线。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>天上的胜利 🇦🇷</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch: a one-line aside — &#39;Heavenly victory 🇦🇷&#39; — timestamped around the USA-ARG final. Ship beats and World Cup afterglow travel on the same feed.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Heavenly victory 🇦🇷</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/rauchg/status/2074555608578281920" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:rauchg" data-author-name="Guillermo Rauch" data-author-tag="Vercel CEO" data-author-handle="@rauchg" data-author-avatar="../assets/avatars/x-rauchg.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-rauchg.jpg" alt="Guillermo Rauch avatar"><span class="avatar-fallback">GR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Guillermo Rauch</div>
+            <div class="author-tag is-inline">Vercel CEO</div>
+          </div>
+          <div class="author-handle">@rauchg</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch:Vercel 迎来 @bekacru——Bereket 和 Better Auth 团队。「open SDK、agent-first auth」这条线第一次以 acqui-hire 的形式合到 Vercel 里。给人和给 agent 用的 auth,都是开源、都是 taste。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>欢迎 @bekacru 加入 Vercel。能和 Bereket 以及 Better Auth 一起把 Open SDK 这件事推下去,是我的荣幸。开发者值得更好的 auth,为人服务、为 agent 服务,开源、taste 也在线。这就是 Bereket 已经做到的事。恭喜!🇪🇹🇺🇸</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch: Vercel welcomes @bekacru — Bereket and the Better Auth team. The &#39;open SDK, agents-first auth&#39; narrative gets its first acqui-hire-style consolidation. Auth for humans and agents, built in the open, with taste.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Welcome @bekacru to Vercel. It&#39;s a privilege to join forces with Bereket and Better Auth to further our Open SDK vision. Developers deserve better auth, to serve humans and agents, built in the open and with taste. That&#39;s what Bereket has accomplished. Congrats! 🇪🇹🇺🇸 https://t.co/LWhzUBMysp</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/rauchg/status/2074523653488947338" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 05</div>
+    <h2 class="section-title">Thibault 与 Tao Li:Claude 跨进「自己拿主意」那一边 / Thibault + Tao Li: Claude Crosses into Self-Directed Work</h2>
+    <p class="section-desc">Thibault Sottiaux 用一句「Sol is coming」把 OpenAI 的 ship beat 跟 GPT-5.6 sol 串起来。Tao Li(Follow Builders 维护者)同天三连:Claude 渲染的 slide layout clip、Claude「自己决定」做 YouTube Shorts、转录故意做乱 + 视频质量压低来跑快速渲染。Anthropic containment 文章里那条 84% 权限弹窗下降,就是「让 Claude 不打扰用户、随便跑渲染和重试」这件事能成立的根因——Claude 现在能 cross 进「自己拿主意」那一边,前提是环境层已经把 blast radius 圈住。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:thsottiaux" data-author-name="Thibault Sottiaux" data-author-tag="OpenAI Codex &amp; ChatGPT" data-author-handle="@thsottiaux" data-author-avatar="../assets/avatars/x-thsottiaux.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-thsottiaux.jpg" alt="Thibault Sottiaux avatar"><span class="avatar-fallback">TS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Thibault Sottiaux</div>
+            <div class="author-tag is-inline">OpenAI Codex &amp; ChatGPT</div>
+          </div>
+          <div class="author-handle">@thsottiaux</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thibault Sottiaux(OpenAI Codex &amp; ChatGPT):「戴上你的墨镜。Sol 要来了。😎」——和 Sama 的 GPT-5.6 sol 周四上线是同一条线,只是用的是面向 C 端用户的语气。一小时里 OpenAI 两侧同时确认了同一个 ship beat。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>准备好你的墨镜。Sol 要来了。😎</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thibault Sottiaux (OpenAI Codex &amp; ChatGPT): &#39;Prepare your sunglasses. Sol is coming. 😎&#39; — same thread as Sama&#39;s GPT-5.6 sol Thursday announcement, with the consumer-facing voice. Ship beat confirmed from two OpenAI angles within an hour.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Prepare your sunglasses. Sol is coming. 😎 https://t.co/nGm6GI905c</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/thsottiaux/status/2074705681920520526" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:trq212" data-author-name="Tao Li" data-author-tag="AI 研究员 / Follow Builders 维护者" data-author-handle="@trq212" data-author-avatar="../assets/avatars/x-trq212.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-trq212.jpg" alt="Tao Li avatar"><span class="avatar-fallback">TL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Tao Li</div>
+            <div class="author-tag is-inline">AI 研究员 / Follow Builders 维护者</div>
+          </div>
+          <div class="author-handle">@trq212</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Tao Li(Follow Builders 维护者):贴了一支 Claude 渲染的演示片,几个 slide layout 都展示了。Anthropic containment 文章里那条 84% 权限弹窗下降,就是「让 Claude 不打扰用户、随便跑渲染和重试」这件事能成立的根因。「后面让 Claude 跑一个完整渲染再来回报。」</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>这一支 clip 把几种 layout 都展示出来了。
+
+              我对结果挺满意,slide layout 可能还能调,而且我很好奇它在镜头切换之间会怎么处理。
+
+              先这样,后面让 Claude 跑一个完整渲染再来报告。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Tao Li (Follow Builders maintainer): showing a Claude-rendered clip with a few slide layouts. The 84% permission-prompt reduction from the Anthropic containment blog is what makes unattended video rendering possible — Claude is free to fail and retry without nagging the user. &#39;Will get Claude to do a full render &amp; report back later.&#39;</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>This is a good clip that shows a few layouts.
+
+              I&#39;m pretty happy with this, maybe the slide layout could be a bit different and I&#39;m curious how it will alternate between camera cuts.
+
+              That&#39;s all for now, will get Claude to do a full render &amp;amp; report back later. https://t.co/7TT2dDwcTO</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/trq212/status/2074622734118924561" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:trq212" data-author-name="Tao Li" data-author-tag="AI 研究员 / Follow Builders 维护者" data-author-handle="@trq212" data-author-avatar="../assets/avatars/x-trq212.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-trq212.jpg" alt="Tao Li avatar"><span class="avatar-fallback">TL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Tao Li</div>
+            <div class="author-tag is-inline">AI 研究员 / Follow Builders 维护者</div>
+          </div>
+          <div class="author-handle">@trq212</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Tao Li:「Claude 自己决定去做 YouTube Shorts。转录是乱的(视频质量故意压低,为了快出渲染)。」——模型开始自己拿主意。用户没要 shorts,Claude 自己选了格式。和 7-7 「agent 改写工作」那条线一致,都是同一种「不踏实但产出高」的状态。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>我很喜欢它把原本静态的 slide(原 deck 里每张都是独立的一页)变成动画的方式。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Tao Li: &#39;Claude decided to make YouTube short clips. The transcription is chaotic (and the video quality is purposefully low for quick rendering).&#39; — model agency. The user didn&#39;t ask for shorts; Claude chose the format. Same 7-7 &#39;agent rewrites the work&#39; thread, same disorienting productivity gain.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I really like how it takes some of the slides which are static (each one of these is its own slide in the original deck) and turns them into animations. https://t.co/1ITW2UWWna</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/trq212/status/2074619715826381168" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:trq212" data-author-name="Tao Li" data-author-tag="AI 研究员 / Follow Builders 维护者" data-author-handle="@trq212" data-author-avatar="../assets/avatars/x-trq212.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-trq212.jpg" alt="Tao Li avatar"><span class="avatar-fallback">TL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Tao Li</div>
+            <div class="author-tag is-inline">AI 研究员 / Follow Builders 维护者</div>
+          </div>
+          <div class="author-handle">@trq212</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Tao Li:「转录真的非常乱(视频质量故意压低,为了快出渲染)。」——同一天、同一维护者、第三条 beat。视频质量是有意压低的,目的是让「重做一次」的循环成本低。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Claude 自己决定做 YouTube Shorts。再次声明:转录非常乱(视频质量故意压低,为了快出渲染)。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Tao Li: &#39;The transcription is really chaotic (and the video quality is purposefully low for quick rendering).&#39; — the third beat on the same day from the same Follow Builders maintainer. The video quality is intentionally degraded to make the iteration loop cheap.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Claude decided to make Youtube short clips. Again the transcription is really chaotic (and the video quality is purposefully low for quick rendering). https://t.co/Rl5yvXLVcf</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/trq212/status/2074619539145568562" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 06</div>
+    <h2 class="section-title">用 Claude 做事:在 Fable 里榨 CC / cron 该跑本地还是云 / 学什么 / Steinberger 的提示框设计 / Build-with-Claude: Fable-CC Loops, Cron Local vs Cloud, Alerts</h2>
+    <p class="section-desc">这一组帖都从「自己用 Claude 做事」的角度出发。Nikunj Kothari 给出他最喜欢的 Fable 实战用法——在 Claude Code 上跑 `/insights`,喂给 Fable,问「Fable 时代我应该怎么用 CC」,让 Fable 帮你 implement,顺带把「GMV 不是 ARR」这条一年喊一次的提醒再喊一次。Peter Yang 三连:问早期访问资格的标准、AI-native designer 用 design.md + components 怎么 build、cron 该跑本地还是云(答案取决于 blast radius 和凭据本来就住哪里)。Peter Steinberger 三连:大客户从记者那里知道 Anthropic 诉讼的事(containment 失败发生在 vendor-to-vendor 层级)、让 Fable 把 codex 设为 workhorse、给 agent 的「求助弹窗」要做得让人读懂(否则 approval fatigue)。Zhang Rui 一行 hook 收口:How to learn in the age of AI。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:nikunj" data-author-name="Nikunj Kothari" data-author-tag="Afore Capital 合伙人" data-author-handle="@nikunj" data-author-avatar="../assets/avatars/x-nikunj.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-nikunj.jpg" alt="Nikunj Kothari avatar"><span class="avatar-fallback">NK</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Nikunj Kothari</div>
+            <div class="author-tag is-inline">Afore Capital 合伙人</div>
+          </div>
+          <div class="author-handle">@nikunj</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj Kothari:一个实战派的 Fable 用法——先在 Claude Code 上跑出 `/insights`,把它喂给 Fable,问一句「Fable 时代,我应该怎么用 Claude Code 才能把它的效用榨到最干?」,再让 Fable 帮你把答案 implement 出来。整条 loop:从你自己的 CC session 里抽出用法信号,再用这个信号去改你用 CC 的方式。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>到目前为止我最喜欢的 Fable 实战用法是:先在 Claude Code 上生成 `/insights`,把它喂进 Fable,然后问——
+
+              「在 Fable 时代,我应该怎么用 Claude Code 才能把它的效用榨到最干?」
+
+              你接下来可以让它帮你 implement。输出节选见下方 👇</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj Kothari: a practical Fable use case — generate `/insights` on Claude Code, feed it into Fable, ask: &#39;In a Fable era, how should I be using Claude Code to maximize its utility?&#39; — and have Fable implement the answer. The loop is: extract usage signal from your own CC sessions, then re-task CC based on it.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>My favorite practical Fable use case (so far) has been generating /insights on Claude Code, feeding it in, and asking..
+
+              &quot;In a Fable era, how should I be using Claude Code to maximize its utility?&quot;
+
+              You can then ask it to implement it for you. See part of the output below 👇 https://t.co/qmMP30x5AF</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/nikunj/status/2074530614745960792" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:nikunj" data-author-name="Nikunj Kothari" data-author-tag="Afore Capital 合伙人" data-author-handle="@nikunj" data-author-avatar="../assets/avatars/x-nikunj.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-nikunj.jpg" alt="Nikunj Kothari avatar"><span class="avatar-fallback">NK</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Nikunj Kothari</div>
+            <div class="author-tag is-inline">Afore Capital 合伙人</div>
+          </div>
+          <div class="author-handle">@nikunj</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj Kothari:「GMV 不是 ARR」——这条提醒他已经喊了一年,每次 VC 会上有人拿这种 deck 来念都会被再喊一次。最持久的 alpha 就在于「把术语用对」这件事。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>这件事我已经喊了一年,但还是温柔提醒一下:GMV 不是 ARR。一次把定义对齐,或者至少诚实地标注它是哪一类🤦‍♂️</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj Kothari: &#39;GMV is NOT ARR&#39; — a year-long reminder that gets repeated every time a VC meeting slides a deck that confuses the two. The most durable alpha is in keeping the vocabulary honest.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I have been screaming this for the past year, but kind reminder to everyone: GMV is NOT ARR. Let&#39;s get our definitions right for once and for all.. or at least be honest what it is🤦‍♂️ https://t.co/w856j9BUC3</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/nikunj/status/2074597133286851064" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:petergyang" data-author-name="Peter Yang" data-author-tag="产品教练 / 创作者经济研究者" data-author-handle="@petergyang" data-author-avatar="../assets/avatars/x-petergyang.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-petergyang.jpg" alt="Peter Yang avatar"><span class="avatar-fallback">PY</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Yang</div>
+            <div class="author-tag is-inline">产品教练 / 创作者经济研究者</div>
+          </div>
+          <div class="author-handle">@petergyang</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang:「什么样的人能拿到这个模型的早期访问资格?」——这个问题比看上去有意思。早期访问变成了新的漏斗,而筛选标准大多没说。「资格」这个框架本身,就是一个 containment 问题:谁能拿到更大的 blast radius?</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>什么样的人才能拿到这个模型的早期访问资格?</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang: &#39;So what is the qualification criteria for folks to get early access to this model?&#39; — the question is more interesting than it looks. Pre-launch access is the new funnel, and the criteria are mostly unstated. The &#39;qualification&#39; framing is implicitly a containment question: who gets the wider blast radius?</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>So what is the qualification criteria for folks to get early access to this model? https://t.co/CFc9wVvfk4</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/petergyang/status/2074733842230108672" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:petergyang" data-author-name="Peter Yang" data-author-tag="产品教练 / 创作者经济研究者" data-author-handle="@petergyang" data-author-avatar="../assets/avatars/x-petergyang.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-petergyang.jpg" alt="Peter Yang avatar"><span class="avatar-fallback">PY</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Yang</div>
+            <div class="author-tag is-inline">产品教练 / 创作者经济研究者</div>
+          </div>
+          <div class="author-handle">@petergyang</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang:想找一位 AI-native designer 来访谈,讲讲「怎么用 design.md、components 这套去 build,跟传统流程有什么不一样」。话外音:「传统流程」已经不是默认,是缺一项能力。components + design.md 才是新流程。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>我想访谈一位 AI-native designer,带大家看「用 design.md、components 等方式去 build,跟典型流程有什么不同」。
+
+              谁是最合适的人选?</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang: looking for an AI-native designer to interview — wants to show &#39;how to build with design.md, components, and more vs. the typical process.&#39; The implied ask: the &#39;typical process&#39; is now a feature deficit, not a default. Component-driven + design.md is the new process.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I woudl like to interview an AI-native designer to show us how to build with design.md, components, and more vs. the typical process.
+
+              Who&#39;s the best person to talk to?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/petergyang/status/2074705840284815678" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:petergyang" data-author-name="Peter Yang" data-author-tag="产品教练 / 创作者经济研究者" data-author-handle="@petergyang" data-author-avatar="../assets/avatars/x-petergyang.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-petergyang.jpg" alt="Peter Yang avatar"><span class="avatar-fallback">PY</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Yang</div>
+            <div class="author-tag is-inline">产品教练 / 创作者经济研究者</div>
+          </div>
+          <div class="author-handle">@petergyang</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang,「operational model」那一条:定时任务跑在本地 Mac Mini 上(它已经登着 Google Workspace 等),还是搬到云上,把这些 app 的 OAuth 挂到自己的 Claude 或 ChatGPT 账户上?老实讲答案不是「永远云」——而是要看「每个 job 的 blast radius 是多大、凭据本来就住在哪里」。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>一个有点 dumb 的问题:
+
+              我大部分 cron 任务都跑在本地 Mac Mini 上,因为它已经登着 Google Workspace 和其他我用的 app。
+
+              但我是不是应该把这些任务搬到云上,把这些 app 用 OAuth 挂到我的 Claude 或者 ChatGPT 账户上?
+
+              我应该怎么判断「哪些 job 留本地、哪些搬云」?</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang, the operating-model beat: cron jobs running on a local Mac Mini (already authenticated to Google Workspace etc.) vs. running in the cloud with OAuth&#39;d accounts. The honest answer isn&#39;t &#39;always cloud&#39; — it&#39;s &#39;what&#39;s the blast radius of each job, and where do the credentials already live?&#39;</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Dumb question:
+
+              I&#39;ve been running most of my cron jobs locally on my Mac Mini because it&#39;s already authenticated with Google Workspace and the other apps I use.
+
+              But should I run these jobs in the cloud instead with these apps OAuth&#39;d to my Claude or ChatGPT account?
+
+              How should I think about what jobs should stay local vs. move to the cloud?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/petergyang/status/2074616982197174515" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:steipete" data-author-name="Peter Steinberger" data-author-tag="OpenClaw 创始人" data-author-handle="@steipete" data-author-avatar="../assets/avatars/x-steipete.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-steipete.jpg" alt="Peter Steinberger avatar"><span class="avatar-fallback">PS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Steinberger</div>
+            <div class="author-tag is-inline">OpenClaw 创始人</div>
+          </div>
+          <div class="author-handle">@steipete</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Steinberger:「我们是 Anthropic 的大客户,但他们到现在都没主动告知我们这场诉讼的事。我是从记者那里知道的,不是从我们的『合作伙伴』那里。」——和 Anthropic 那篇 containment 文章警告的是同一类失败,只是出在 vendor-to-vendor 这个层级,不是 sandbox 内部。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>「我们是 Anthropic 的大客户,但他们到现在都没主动告知我们这场诉讼的事。我是从记者那里知道的,不是从我们的『合作伙伴』那里。」</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Steinberger: &#39;We&#39;re a very large customer of Anthropic and they still have yet to tell us about the lawsuit. I learned about it from a reporter, not our &quot;partner.&quot;&#39; — the same kind of containment failure Anthropic&#39;s blog warns about, except between vendors instead of inside a sandbox.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>&quot;We&#39;re a very large customer of Anthropic and they still have yet to tell us about the lawsuit. I learned about it from a reporter, not our &quot;partner.&quot; https://t.co/O9swsh4U6v</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/steipete/status/2074739318103629979" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:steipete" data-author-name="Peter Steinberger" data-author-tag="OpenClaw 创始人" data-author-handle="@steipete" data-author-avatar="../assets/avatars/x-steipete.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-steipete.jpg" alt="Peter Steinberger avatar"><span class="avatar-fallback">PS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Steinberger</div>
+            <div class="author-tag is-inline">OpenClaw 创始人</div>
+          </div>
+          <div class="author-handle">@steipete</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Steinberger:一个 Fable workflow 的实战小贴士——「跑这个 workflow 时,让 Fable 把 codex 设为 workhorse。」模式上跟 Nikunj 那条「在 Fable 里用 Claude Code」一样:把贵的模型放在 Fable 里,把便宜的 agent 留作执行者。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>如果你跑这个 workflow,记得让 Fable 把 codex 设为 workhorse。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Steinberger: a practical Fable workflow tip — &#39;ask Fable to make codex the workhorse.&#39; The pattern is the same as Nikunj&#39;s CC-on-Fable: pull the heavy model into Fable, keep the cheaper agent as the doer.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>If you run this workflow, ask Fable to make codex the workhorse. https://t.co/o20OwqaoAt https://t.co/Xg5akpBkwA</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/steipete/status/2074638582418231495" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:steipete" data-author-name="Peter Steinberger" data-author-tag="OpenClaw 创始人" data-author-handle="@steipete" data-author-avatar="../assets/avatars/x-steipete.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-steipete.jpg" alt="Peter Steinberger avatar"><span class="avatar-fallback">PS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Steinberger</div>
+            <div class="author-tag is-inline">OpenClaw 创始人</div>
+          </div>
+          <div class="author-handle">@steipete</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Steinberger:「附赠一个 skill:agent 需要你补上下文时,弹一个大大的提示框,而不是像 1Password 那种『没上下文的小弹窗』。」——设计层面的一条经验。给 agent 提需求的「容器」必须让人能读懂;否则用户习惯性关掉,approval fatigue 就上来了。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Bonus:附赠一个 skill——agent 需要你帮忙补上下文时,弹一个明显的大提示,而不是像 1Password 那种没有上下文的弹窗。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Steinberger: &#39;comes with a skill to show a big alert when agents need your help, instead of (e.g.) a no-context 1Password dialog.&#39; — design lesson. The container for an agent&#39;s ask has to be legible; otherwise the user dismisses the prompt, and approval fatigue takes over.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Bonus: Comes with a skill to show a big alert when agents need your help for additional context, instead of (e.g.) just a no-context 1Password dialog.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/steipete/status/2074624388301987947" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:zarazhangrui" data-author-name="Zhang Rui" data-author-tag="Follow Builders 创始人 / 策展人" data-author-handle="@zarazhangrui" data-author-avatar="../assets/avatars/x-zarazhangrui.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-zarazhangrui.jpg" alt="Zhang Rui avatar"><span class="avatar-fallback">ZR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Zhang Rui</div>
+            <div class="author-tag is-inline">Follow Builders 创始人 / 策展人</div>
+          </div>
+          <div class="author-handle">@zarazhangrui</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zhang Rui(Follow Builders):「How to learn in the age of AI」——一行 hook,一个链接,策展式发法。「这个时代的……怎么办」是这一个月每天都在问的问题:当工具就是干活的那一个,「学习」这件事会变什么?</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>AI 时代,人该怎么学东西。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zhang Rui (Follow Builders): &#39;How to learn in the age of AI&#39; — a single-line hook, link-only, the curatorial mode. The age question is the daily question: what changes about learning when the tool is the same one doing the work?</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>How to learn in the age of AI https://t.co/9u9JV7eQbM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/zarazhangrui/status/2074661564964307153" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 07</div>
+    <h2 class="section-title">7-8 底色:USA-ARG 之后 / 8 年前的 SaaS 还在烧钱 / SF 市政战 / Weekend Texture: USA-ARG Aftermath, SaaS Runway, Civic Ws</h2>
+    <p class="section-desc">周末的底色由几条彼此不相关、但合在一起读出一种「周末收口」味道的帖组成。Aditya Agarwal 用 builder 的 postmortem 语气写 USMNT 输球后的第二天——「倒了但没出局」,一个明显的 typo 「outclasses」反而读出诚实的分量。Matt Turck 当天 meme:VC 跟 top AI 投的 portfolio 打招呼 vs 跟 8 年前那笔 SaaS 现金快烧光的公司打招呼——8 年前那笔就是字面意义上的「pre-AI comp」。Nan Yu 一行私人帖「starting a family tbh」,接在 6-29 的 996 翻转、6-30 的 10-tab theater 之后,变成另一种纹理。Garry Tan 同日三连,civic-flavor 帖把「SF 不建住房会从 W 变 L」、「dirty smear politics」、「radical leftism + asset seizure」连成同一种声音。Swyx 一行 meme:「it_happening.gif」,整条 beat 装在一个 gif 里。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:adityaag" data-author-name="Aditya Agarwal" data-author-tag="Dropbox Engineering VP / 前 Facebook 平台工程负责人" data-author-handle="@adityaag" data-author-avatar="../assets/avatars/x-adityaag.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-adityaag.jpg" alt="Aditya Agarwal avatar"><span class="avatar-fallback">AA</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aditya Agarwal</div>
+            <div class="author-tag is-inline">Dropbox Engineering VP / 前 Facebook 平台工程负责人</div>
+          </div>
+          <div class="author-handle">@adityaag</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aditya Agarwal:「输球的第二天,反而更要穿这身球衣。USMNT 让人骄傲。我们昨天是被 outclass 的。倒了但没出局,我们会回来。」——USA-ARG 那场之后的次日帖,写得像 builder 写的 postmortem。「outclasses」(应该是 outclassed)反而读出诚实的分量。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>输球的第二天,反而更要穿这身球衣。
+
+              为 USMNT 骄傲。
+
+              我们昨天被打 outclass 了。
+
+              倒了但没出局,我们会回来。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aditya Agarwal: &#39;More important to wear the colors proudly the day after a loss. Proud of USMNT. We were outclasses yesterday. Down but not out. We will be back.&#39; — the morning-after USA-ARG beat, written like a builder&#39;s postmortem. &#39;Outclasses&#39; (a typo for outclassed) reads as the honest kind of admission.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>More important to wear the colors proudly the day after a loss.
+
+              Proud of USMNT. 
+
+              We were outclasses yesterday 
+
+              Down but not out. We will be back. https://t.co/N1TTwo5mD5</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/adityaag/status/2074512219434602995" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:mattturck" data-author-name="Matt Turck" data-author-tag="First Mark Capital 合伙人 / MAD Podcast 主理人" data-author-handle="@mattturck" data-author-avatar="../assets/avatars/x-mattturck.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-mattturck.jpg" alt="Matt Turck avatar"><span class="avatar-fallback">MT</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Matt Turck</div>
+            <div class="author-tag is-inline">First Mark Capital 合伙人 / MAD Podcast 主理人</div>
+          </div>
+          <div class="author-handle">@mattturck</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Matt Turck:「VC 跟 top AI 投的 portfolio 打招呼,vs 跟 8 年前投的那家 SaaS 现金快烧光的公司打招呼」——当天的 meme。8 年前那笔 SaaS 就是字面意义上的「pre-AI comp」,没说出口的那层意思是:VC 拿来对比的那家已经被时代换了。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>VC 跟 top AI portfolio 公司打招呼的样子,vs 跟 8 年前投的那家 SaaS(现金快烧光了)打招呼的样子</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Matt Turck: &#39;VC greeting his top AI portfolio company vs that SaaS investment from 8 years ago that&#39;s running out of cash&#39; — the meme of the day. The 8-year-old SaaS portfolio is the literal &#39;pre-AI&#39; comp, and the implication lands without saying it: the comp the VC is comparing to changed underneath them.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>VC greeting his top AI portfolio company vs that SaaS investment from 8 years ago that&#39;s running out of cash https://t.co/pj8GAdCqBT</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/mattturck/status/2074441949772169216" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:thenanyu" data-author-name="Nan Yu" data-author-tag="AI 创业者 / 投资人" data-author-handle="@thenanyu" data-author-avatar="../assets/avatars/x-thenanyu.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-thenanyu.jpg" alt="Nan Yu avatar"><span class="avatar-fallback">NY</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Nan Yu</div>
+            <div class="author-tag is-inline">AI 创业者 / 投资人</div>
+          </div>
+          <div class="author-handle">@thenanyu</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nan Yu:「starting a family tbh」+ 一个链接。一行私人帖,信息密度比任何 thread 都重。接在 6-29 的 996 翻转、6-30 的 10-tab theater 之后,这一条是另一种纹理——build 在继续,build 在家里也在继续。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>说真的,要开始组建家庭了。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nan Yu: &#39;starting a family tbh&#39; + a link. The single-line personal beat that lands harder than any thread. After 6-29&#39;s 996 flip and 6-30&#39;s 10-tab theater, the cadence is a different kind of texture — the build goes on, the build also continues at home.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>starting a family tbh
+
+              https://t.co/72X5WekiNi</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/thenanyu/status/2074484075314733323" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:garrytan" data-author-name="Garry Tan" data-author-tag="Y Combinator 总裁" data-author-handle="@garrytan" data-author-avatar="../assets/avatars/x-garrytan.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-garrytan.jpg" alt="Garry Tan avatar"><span class="avatar-fallback">GT</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Garry Tan</div>
+            <div class="author-tag is-inline">Y Combinator 总裁</div>
+          </div>
+          <div class="author-handle">@garrytan</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Garry Tan:「脏政斗在 SF 还活得好好的...我们要求现在就把造谣的代价算清楚。」——一条 civic 帖,YC 总裁写得像 SF 居民。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>脏政斗在 SF 依然活得好好的,现在是时候让这套剧本反噬回去。
+
+              几个不老实的组织造出一个谣言,本地老媒体因为对人民失职就把它照单全发出来。
+
+              我们现在就要求把这些谎言的代价算清楚。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Garry Tan: &#39;Dirty smear politics is alive and well in SF...we demand consequences for the lies now&#39; — civic-flavor post, YC president reading like a SF resident.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Dirty smear politics is alive and well in SF, and it&#39;s high time we made sure the playbook backfires from here
+
+              A few dishonest groups invent a smear and the local legacy media rubber stamps it out of abdication of duty to the people
+
+              We demand consequences for the lies now https://t.co/o7K12SYkqh</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/garrytan/status/2074750229044502663" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:garrytan" data-author-name="Garry Tan" data-author-tag="Y Combinator 总裁" data-author-handle="@garrytan" data-author-avatar="../assets/avatars/x-garrytan.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-garrytan.jpg" alt="Garry Tan avatar"><span class="avatar-fallback">GT</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Garry Tan</div>
+            <div class="author-tag is-inline">Y Combinator 总裁</div>
+          </div>
+          <div class="author-handle">@garrytan</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Garry Tan:「不建住房,旧金山会把这个经济 W 翻成市政史上最大的 L。」——住房那条 frame 又是他。同一个「YC 总裁=SF 居民」的声音。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>不建住房,旧金山会把这个巨大的经济 W 翻成市政史上最大的 L。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Garry Tan: &#39;Without building housing, San Francisco will turn a mega economic W into the biggest L in civic history.&#39; — the housing frame, again. Same YC-president-as-SF-resident voice.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Without building housing, San Francisco will turn a mega economic W into the biggest L in civic history https://t.co/IBFwtRaSRo</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/garrytan/status/2074744830492868764" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:garrytan" data-author-name="Garry Tan" data-author-tag="Y Combinator 总裁" data-author-handle="@garrytan" data-author-avatar="../assets/avatars/x-garrytan.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-garrytan.jpg" alt="Garry Tan avatar"><span class="avatar-fallback">GT</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Garry Tan</div>
+            <div class="author-tag is-inline">Y Combinator 总裁</div>
+          </div>
+          <div class="author-handle">@garrytan</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Garry Tan:「讲常识的民主党人士注意——现在该在党内组织起来,反对激进左翼和资产没收。」——他当天第三条,同一个声音、同一个 frame。读起来就是「同一天同一个作者发三条,会被自然收进同一个 texture section」的样本。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>讲常识的民主党人士注意。
+
+              是时候在党内组织起来,反对激进左翼和资产没收。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Garry Tan: &#39;Common sense Democrats take note — time to organize against radical leftism and asset seizure inside the party&#39; — the third of his three same-day posts, same voice, same frame. Reads as a sample of how a single author with three same-day posts clusters into one texture section.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Common sense Democrats take note 
+
+              Time to organize against radical leftism and asset seizure inside the party https://t.co/etExoPSgiN</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/garrytan/status/2074599259803160773" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:swyx" data-author-name="Swyx" data-author-tag="AI 工程师" data-author-handle="@swyx" data-author-avatar="../assets/avatars/x-swyx.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-swyx.jpg" alt="Swyx avatar"><span class="avatar-fallback">S</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Swyx</div>
+            <div class="author-tag is-inline">AI 工程师</div>
+          </div>
+          <div class="author-handle">@swyx</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx:「it_happening.gif」+ 两个媒体链接——一行帖把整条 beat 装在一个 meme 里。gif 本身、caption、帖子的 meta,说的都是同一件事:「这一刻正在发生。」</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>「正在发生.gif」</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx: &#39;it_happening.gif&#39; + two media links — a one-line post carrying the whole beat in a single meme. The gif, the caption, and the meta of the post are all the same content: a &#39;this is happening&#39; moment.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>it_happening.gif https://t.co/XiwgDUvyWi https://t.co/91NK1liTMQ</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/swyx/status/2074683022503490012" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 08</div>
+    <h2 class="section-title">Training Data:走进 Zipline 的 1.4 亿英里零事故 / Training Data: Inside Zipline&#39;s 1.4M-Mile Zero-Incident Autonomy</h2>
+    <p class="section-desc">这一期 Training Data 把 Zipline 联合创始人 Keller 和系统工程 / 安全负责人 Eric 一起请过来。Zipline 累计飞了 1.4 亿英里,零事故——他们说「我们不是 drone 公司,我们要做的是地球上的自动化物流系统」。在卢旺达的起家故事:医生和 lab tech 反馈的不是「drone 不好」,而是「人 24/7 都在生病,你们为什么一天只开 12 小时」——于是整个公司从头再调一遍。结尾 Keller 那段「我们必须重新学会做东西——车、硬件、基础设施。金门大桥的防自杀网装网花的钱比祖辈当年建桥花的钱还多」是这一期最 builder 的一段。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="podcast:training-data" data-author-name="Training Data Podcast" data-author-tag="AI 播客" data-author-handle="" data-author-avatar="../assets/avatars/podcast-training-data.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/podcast-training-data.jpg" alt="Training Data Podcast avatar"><span class="avatar-fallback">TD</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Training Data Podcast</div>
+            <div class="author-tag is-inline">AI 播客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Training Data 这一期请到 Zipline 联合创始人 Keller 和系统工程 / 安全负责人 Eric。Zipline 累计飞了 1.4 亿英里,零事故;2011 年起步,2014 年 pivot,主持人问他愿不愿意被叫「drone company」,他拒绝——他们要做的是「地球上的自动化物流系统,逼近瞬间移动」。最初的洞察来自卢旺达:医生和 lab tech 反馈的不是「drone 不好」,而是「人 24/7 都在生病,你们为什么一天只开 12 小时」。</p>
+              <p>「我们不是 drone 公司」这句话,是今天 containment 主题最直接的回声。Anthropic 那篇博客讲「ship 的是 containment,不是 model 本身」;Zipline 讲「ship 的是物流系统,不是 drone」。两家公司学到的是同一件事——客户不 care 帘子后面跑的是什么技术,他们 care 的是体验。</p>
+              <p>结尾那句最 builder:Keller 说「我们必须重新学会做东西——车、硬件、基础设施。我们现在用的是祖辈给我们建的基础设施,最近装金门大桥的防自杀网,装网花的钱比祖辈当年建桥花的钱还多。」一段 US competitiveness / build 的话,作为这一期播客的收口。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>我记得刚开始在卢旺达的时候,出去见我们服务的医生和 lab tech,问他们「怎么样、你们怎么想、有没有反馈」。那时候我还是个新人工程师,以为他们会说点 drone 怎么样、或者我们哪里做不好。结果拿到的最大反馈是——人 24/7 都在生病。
+
+              「你们为什么一天只开 12 小时?」
+
+              「对,尤其是在你们送的是救命的血的时候。」</p>
+              <p>我们一直想做一家极度 customer obsessed 的公司,事实是我们的客户根本不 care drone。我们的目标一直是「在地球上建一套自动化物流系统,逼近瞬间移动」。今天所有在用 Zipline 的客户,不 care 帘子后面跑的是什么技术,他们在 care 的是——能下载一个 app、打开、看到一堆品牌和他们想吃的餐厅、按一个钮、5 分钟后东西送到。所以我们一直努力把焦点放在体验,而不是具体某项技术上。</p>
+              <p>尤其对美国的竞争力、对我们能不能把一个「我们愿意交到孩子、孙辈手里」的未来建出来、对我们能不能兑现小时候被许诺的「科幻版未来」,我们必须重新学会做东西。不仅是车和硬件,还要建基础设施。我们现在依赖的基础设施是祖辈给我们搭的——我最近看到金门大桥新装的防自杀网,装网花的钱比祖辈当年建桥花的钱还多。我相信。
+
+              我们是真的兴奋——我们认为那个 promising 的未来,是「我们应该能建基础设施」。我们必须对它有兴趣,大家也要有这个胃量,我们要重新学会怎么制造、怎么跑复杂的供应链。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Training Data sits down with Zipline co-founder Keller and systems/safety lead Eric. Zipline has flown 140 million miles with zero incidents, started in 2011, pivoted in 2014, and refuses to be called a drone company — they are an &#39;automated logistics system for Earth, approximating teleportation.&#39; The founding insight: in Rwanda, doctors and lab techs didn&#39;t want better drones, they wanted a 24/7 service because &#39;people get sick twenty-four seven.&#39;</p>
+              <p>The &#39;we are not a drone company&#39; line is the most direct echo of today&#39;s containment theme. Just as Anthropic&#39;s blog argues containment is what you ship, not the model itself, Zipline&#39;s product is the logistics system, not the drone. Both companies learned the same lesson — the customer doesn&#39;t care about the technology operating behind the curtain, they care about the experience.</p>
+              <p>The closer is the most builder-coded: &#39;we gotta get good at building stuff again — vehicles, hardware, infrastructure. The anti-suicide nets on the Golden Gate Bridge cost more to install than it cost our grandparents to build the bridge.&#39; A US competitiveness / build-thing argument that lands as a podcast closer.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I remember being in Rwanda early days and going out and meeting with some of the doctors and lab techs that we were serving and asking for them, like, you know, how&#39;s it going? What what do you think? What&#39;s your feedback? Here I am kind of, you know, a a up and coming, you know, learning engineer thinking they&#39;re gonna say something about the drone or some of these things. And the main piece of feedback that I received was people get sick twenty four seven.
+
+              Why are you guys only open twelve hours a day?
+
+              Right? Especially when you&#39;re delivering life saving blood.</p>
+              <p>We&#39;ve always wanted to be an extremely customer obsessed company, and the reality is none of our customers care at all about drones. Our goal was always to build an automated logistics system for Earth and to approximate teleportation. And all the customers who are living on zipline today, they don&#39;t care about the technology operating behind the curtain. What they care about is their ability to download an app, open it up, see a huge number of different brands and amazing restaurants that they want to shop with, and then click a button and have it delivered to them five minutes later. So, we&#39;ve always really tried to focus on the experience rather than on the specific technology.</p>
+              <p>Especially important for US competitiveness and just for our ability to build the future that we&#39;d be really proud to hand to our kids and to our grandkids and to build the sci fi version of the future that we were all promised, we gotta get good at building stuff again. And we gotta get good at building not just vehicles and hardware, we gotta get good at building infrastructure. We&#39;re depending on the crumbling infrastructure that our grandparents built for us. I read the other day that, you know, we just installed these, like, anti suicide nets on the Golden Gate Bridge.
+
+              Have you guys It heard about that cost more to install those nets than it cost our grandparents to build that bridge. I believe it. So anyway, we get really excited. Just like, we think the future, like, promising future, is we should be able to build infrastructure. We have to be interested in it, and I think people have to have the stomach for it, and we have to learn how to manufacture and run complex supply chains again.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.youtube.com/watch?v=6bGxm8gX41o" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <footer data-source-note="Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-08 source feeds.">Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-08 source feeds.</footer>
+
+  <script>
+    function getTemplateAuthorSources() {
+      const sources = window.AI_BUILDERS_TEMPLATE_SOURCES || {};
+      return { identities: sources.identities || {}, avatars: sources.avatars || {} };
+    }
+
+    function getAuthorInitials(name) {
+      return (name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(function(part) { return part[0]; }).join('').toUpperCase();
+    }
+
+    function hydrateTemplateCopy() {
+      const intro = document.querySelector('.intro');
+      if (intro) {
+        const kicker = intro.querySelector('.intro-kicker');
+        const copy = intro.querySelector('.intro-copy');
+        if (kicker) kicker.textContent = intro.dataset.kicker || '';
+        if (copy) copy.textContent = intro.dataset.text || '';
+      }
+
+      const footer = document.querySelector('footer');
+      if (footer) footer.textContent = footer.dataset.sourceNote || '';
+
+      const rewriteLabel = document.body.dataset.viewLabelRewrite || '速读';
+      const originalLabel = document.body.dataset.viewLabelOriginal || '原文';
+      document.querySelectorAll('.view-toggle').forEach(function(button) {
+        if (button.dataset.viewTarget === 'rewrite') button.textContent = rewriteLabel;
+        if (button.dataset.viewTarget === 'original') button.textContent = originalLabel;
+      });
+    }
+
+    function hydrateAuthorMeta() {
+      const sources = getTemplateAuthorSources();
+      document.querySelectorAll('.card').forEach(function(card) {
+        const authorKey = card.dataset.authorKey || '';
+        const identity = sources.identities[authorKey] || {};
+        const avatarEntry = sources.avatars[authorKey] || {};
+
+        const name = identity.name || card.dataset.authorName || '';
+        const rawHandle = identity.handle || card.dataset.authorHandle || '';
+        const handle = rawHandle && rawHandle.startsWith('@') ? rawHandle : (rawHandle ? '@' + rawHandle : '');
+        const tag = identity.label || card.dataset.authorTag || '';
+        const avatar = avatarEntry.fileUrl || avatarEntry.localPath || card.dataset.authorAvatar || '';
+
+        const nameNode = card.querySelector('.author-name');
+        const tagNode = card.querySelector('.author-tag');
+        const handleNode = card.querySelector('.author-handle');
+        const avatarNode = card.querySelector('.avatar');
+        const avatarImg = card.querySelector('.avatar img');
+        const avatarFallback = card.querySelector('.avatar-fallback');
+
+        if (nameNode) nameNode.textContent = name;
+        if (tagNode) tagNode.textContent = tag;
+        if (handleNode) handleNode.textContent = handle;
+        if (avatarImg) {
+          avatarImg.src = avatar;
+          avatarImg.alt = name ? name + ' avatar' : 'Author avatar';
+        }
+        if (avatarNode) avatarNode.classList.toggle('is-fallback', !avatar);
+        if (avatarFallback) avatarFallback.textContent = getAuthorInitials(name);
+      });
+    }
+
+    function updateEditionStrip() {
+      const publishDate = document.body.dataset.publishDate;
+      const editionName = document.body.dataset.editionName || '双语精选版';
+      const editionStrip = document.getElementById('edition-strip-text');
+      if (!publishDate || !editionStrip) return;
+
+      const issueNumber = document.body.dataset.issueNumber || '';
+      if (!issueNumber) return;
+
+      const selectedCount = document.querySelectorAll('.card').length;
+      const authorCount = new Set([].slice.call(document.querySelectorAll('.author-handle')).map(function(node) { return node.textContent.trim(); }).filter(Boolean)).size;
+      const themeCount = document.querySelectorAll('.section-header').length;
+      const parts = ['第 ' + issueNumber + ' 期', publishDate, editionName, selectedCount + ' 条精选', authorCount + ' 位作者', themeCount + ' 个主题'];
+      editionStrip.innerHTML = parts.map(function(part) { return '<span class="edition-item">' + part + '</span>'; }).join('<span class="edition-sep">|</span>');
+    }
+
+    function measureVariantHeight(variant) {
+      const prevPosition = variant.style.position;
+      const prevInset = variant.style.inset;
+      const prevVisibility = variant.style.visibility;
+      const prevPointerEvents = variant.style.pointerEvents;
+      const prevOpacity = variant.style.opacity;
+      const prevTransform = variant.style.transform;
+      const prevTransition = variant.style.transition;
+      const prevOverflowY = variant.style.overflowY;
+      const prevDisplay = variant.style.display;
+
+      variant.style.position = 'relative';
+      variant.style.inset = 'auto';
+      variant.style.visibility = 'hidden';
+      variant.style.pointerEvents = 'none';
+      variant.style.opacity = '1';
+      variant.style.transform = 'none';
+      variant.style.transition = 'none';
+      variant.style.overflowY = 'visible';
+      variant.style.display = 'block';
+
+      const height = variant.scrollHeight;
+
+      variant.style.position = prevPosition;
+      variant.style.inset = prevInset;
+      variant.style.visibility = prevVisibility;
+      variant.style.pointerEvents = prevPointerEvents;
+      variant.style.opacity = prevOpacity;
+      variant.style.transform = prevTransform;
+      variant.style.transition = prevTransition;
+      variant.style.overflowY = prevOverflowY;
+      variant.style.display = prevDisplay;
+
+      return Math.ceil(height);
+    }
+
+    function getTargetHeight(shell, target) {
+      const variant = shell.querySelector('.content-variant[data-view="' + target + '"]');
+      return measureVariantHeight(variant);
+    }
+
+    function syncShellHeights() {
+      document.querySelectorAll('.content-shell').forEach(function(shell) {
+        const active = shell.querySelector('.content-variant.is-active');
+        const target = active ? active.dataset.view : 'rewrite';
+        shell.style.height = getTargetHeight(shell, target) + 'px';
+      });
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', function() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(syncShellHeights, 120);
+    });
+
+    document.querySelectorAll('.card').forEach(function(card) {
+      const buttons = card.querySelectorAll('.view-toggle');
+      const shells = card.querySelectorAll('.content-shell');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const target = button.dataset.viewTarget;
+          if (button.classList.contains('is-active')) return;
+
+          buttons.forEach(function(btn) {
+            btn.classList.toggle('is-active', btn === button);
+          });
+
+          shells.forEach(function(shell) {
+            const current = shell.querySelector('.content-variant.is-active');
+            const next = shell.querySelector('.content-variant[data-view="' + target + '"]');
+            if (!current || !next || current === next) return;
+
+            shell.style.height = shell.offsetHeight + 'px';
+            requestAnimationFrame(function() {
+              current.classList.remove('is-active');
+              next.classList.add('is-active');
+              shell.style.height = getTargetHeight(shell, target) + 'px';
+            });
+          });
+        });
+      });
+    });
+
+    hydrateTemplateCopy();
+    hydrateAuthorMeta();
+    updateEditionStrip();
+    syncShellHeights();
+  </script>
+</body>
+</html>

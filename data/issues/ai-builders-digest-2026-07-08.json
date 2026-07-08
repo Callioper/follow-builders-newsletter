@@ -1,0 +1,796 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-07-08",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "7-8 这一期的主轴是「containment 立成工程一等公民 + ship 节奏由两侧同日撑起 + 企业 IT leader 们把 7 条共性摆出来」:Anthropic Engineering 同日发了可能是迄今最完整的一份公开稿,讲清楚他们怎么在 claude.ai / Claude Code / Claude Cowork 三个产品上「围住」Claude——环境层先做硬,再回到 model 层去调行为,blast radius 圈住才是真章;三条最值得带走的:approval fatigue 是真的(93% 弹窗被秒过)、他们自己写的中间件反复出事、攻击者最爱 egress(两起最严重的事故都是数据沿着「被允许的路径」走出去的)。ship 节奏:OpenAI 那边 Sam Altman 一句「GPT-5.6 sol launches thursday」、Thibault 一小时内用 C 端语气再确认;Anthropic 那边 Claude 官方同日三连——Fable 5 访问延长到 7/12、Cowork 翻倍使用上限延长到 8/5,Fable 5 的 50% 周上限是「新结构的硬约束」、Cowork 撑住 2x 流量等于在公开承认 containment 架构稳得住。Levie 同日把企业 IT leader 们 7 条共性用 3.2K 字摆出来:operating model 必须破 silo、数据碎片化是 agent 准确率天花板、数据护城河在替代分发护城河、token 不是对的指标、多模型路由迟早会来、AI 人才最稀缺、最好 use case 是「改工作方式」不是「加速」——正好是 Anthropic 那篇 containment 文章的「企业侧前置条件」。播客这边:Training Data 同日发了一期 Zipline——1.4 亿英里零事故,「我们不是 drone 公司,我们要做的是地球上的自动化物流系统」,跟 Anthropic 的「ship 的是 containment 不是 model 本身」是同一种工程哲学。"
+  },
+  "archive": {
+    "title": "围栏日",
+    "desc": "7-8 Follow Builders 的主轴是「containment 立成工程一等公民 + ship 节奏由两侧同日撑起 + 企业 IT leader 们把 7 条共性摆出来 + Zipline 用 1.4 亿英里把「ship 的是系统不是技术」再讲一次」:Anthropic Engineering 发了最完整的一份 containment 公开稿,围栏哲学落到三种产品架构,approval fatigue + 自写中间件 + egress 三条经验同日摆出;OpenAI 那边 Sam Altman 一句 GPT-5.6 sol Thursday、Thibault 一小时内 C 端语气再确认,Anthropic 那边 Claude 官方 Fable 5 延长到 7/12 + Cowork 翻倍上限延长到 8/5;Levie 同日用 3.2K 字把企业 IT leader 7 条共性摆出,operating model + 数据碎片化 + 多模型路由三条直接对应 containment 假设企业已解决的事;Rauch 用 `tools/<name>.ts` 把 open-SDK 哲学用 TypeScript 文件摆出来,同日迎进 Better Auth;Tao Li 同日三连,Claude 跨进「自己拿主意」那一边;Nikunj / Peter Yang / Steinberger / Zhang Rui 把「怎么用 Claude 做事」拆成 cron 本地还是云、Fable 里榨 CC、GMV 不是 ARR、早期访问资格怎么定、AI-native designer 怎么 build、vendor-to-vendor containment 失败、agent 求助框怎么设计、How to learn in the age of AI;Texture:USA-ARG 之后、8 年前那笔 SaaS 还在烧钱、SF 市政战、Swyx 的 it_happening.gif、Nan Yu 的 starting a family tbh;Podcast:Training Data 走进 Zipline,1.4 亿英里零事故,「我们不是 drone 公司」是 containment 主题的工程回声。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-08 source feeds.",
+  "sections": [
+    {
+      "title": "Anthropic 把 containment 立成工程一等公民 / Anthropic Elevates Containment to First-Class Engineering",
+      "desc": "今天 Anthropic 工程博客发了可能是迄今最完整的一份公开稿,讲清楚他们怎么在 claude.ai / Claude Code / Claude Cowork 三个产品上「围住」Claude。同一个哲学——先把环境层做硬,再回到 model 层去调行为——落到三种完全不同的 containment 架构上。三条线最值得带走:approval fatigue 是真的(93% 的权限弹窗被秒过),他们自己写的中间件反复出事(allowlist proxy、trust 之前的配置解析),而攻击者最爱 egress(两起最严重的事故都是数据沿着「被允许的路径」走出去的)。",
+      "cards": [
+        {
+          "authorKey": "blog:anthropic-engineering",
+          "authorName": "Anthropic Engineering",
+          "authorHandle": null,
+          "authorTag": "Anthropic 官方工程博客",
+          "sourceUrl": "https://www.anthropic.com/engineering/how-we-contain-claude",
+          "en": {
+            "rewrite": [
+              "Anthropic Engineering publishes the most detailed public account of how the company contains Claude across claude.ai, Claude Code, and Claude Cowork. Three product surfaces, three containment architectures, and a clear philosophy: design the environment first, then steer behavior at the model layer. The blast radius is what gets capped, not the agent itself.",
+              "Three core lessons: (1) approval fatigue is real — 93% of permission prompts get approved, so the human-in-the-loop stops being a loop; (2) the custom pieces (their allowlist proxy, their pre-trust parser) keep breaking, while the standard primitives (gVisor, seccomp, hypervisor) hold; (3) egress is the attacker's favorite — two of the worst incidents were data leaving through permitted paths (employee phish, third-party allowlist disclosure)."
+            ],
+            "original": [
+              "Twelve months ago, we'd have rejected out of hand the idea of granting Claude access sufficient to take down an internal Anthropic service. Today that level of access is routine, and Anthropic developers are more productive for it. The risk of these deployments has two components: how likely a failure is, and how much damage one could do. Progress on safeguards and model training has steadily driven down the first; the second—the theoretical blast radius—only grows as capabilities and access expand.",
+              "The first is to supervise the agent's behavior via a human-in-the-loop. Claude Code previously protected against agents taking unintended actions by asking users for permission at each turn. Theoretically that works, but we've found the approach to be fallible. Our telemetry showed users approved roughly 93% of permission prompts. The more approvals a user sees, the less attention they pay to each."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic Engineering 发了可能是迄今最完整的一份公开稿,讲清楚他们怎么在 claude.ai、Claude Code、Claude Cowork 三个产品上「围住」Claude。同一个哲学——先把环境层做硬,再回到 model 层去调行为,不是去调 agent 本身——落到三种完全不同的 containment 架构上。",
+              "三件事值得带走:(1)approval fatigue 是真的——93% 的权限弹窗用户都会点同意,human-in-the-loop 跑着跑着就成 human-in-the-confirm;(2)他们自己写的中间件(allowlist proxy、trust 之前的配置解析)反复出事,而 gVisor、seccomp、hypervisor 这些标准件一直稳;(3)攻击者最爱 egress——两起最严重的事故,数据都是沿着被允许的路径走出去的(员工被钓鱼、第三方 allowlist 泄漏)。"
+            ],
+            "original": [
+              "一年前,我们会直接拒绝把「足以打到内部服务」的权限交给 Claude。今天这种权限已经常规化,Anthropic 自己的开发效率也是被它撑起来的。部署风险有两部分:失败概率,失败后果。前者随着模型训练和防护在持续下降;后者——理论上的 blast radius——只会随能力变强、可访问范围变大而继续扩大。",
+              "第一种思路是 human-in-the-loop,让用户在每一轮监督 agent。早期的 Claude Code 就是这么做的:每次写、跑命令、走网络,都弹窗让用户点同意。理论上能 work,但我们发现这条路实际守不住——遥测显示用户点同意的比例是 93%,弹窗越频繁,用户越不认真。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "7-8 ship 节奏:OpenAI 与 Anthropic 两侧同日交表 / 7-8 Ship Beats: OpenAI sol Thursday + Claude Fable/Cowork Extension",
+      "desc": "今天的 ship 节奏由两侧同时撑起。OpenAI 那边 Sam Altman 一句「GPT-5.6 sol launches thursday」,Thibault Sottiaux 一小时内用 C 端语气再确认一次「Sol is coming」,ship beat 从两个 OpenAI 视角同时落到同一时间。Anthropic 那边 Claude 官方账号同日三连:Fable 5 访问延长到 7/12、Cowork 翻倍使用上限延长到 8/5。Fable 5 的 50% 周上限是「新结构的硬约束,不是临时降速」,Cowork 能撑 2x 流量等于在公开承认 containment 架构稳得住。",
+      "cards": [
+        {
+          "authorKey": "x:sama",
+          "authorName": "Sam Altman",
+          "authorHandle": "@sama",
+          "authorTag": "OpenAI CEO",
+          "sourceUrl": "https://x.com/sama/status/2074709023807664454",
+          "en": {
+            "rewrite": [
+              "Sam Altman: GPT-5.6 sol launches Thursday. Same thread as 6-30's GPT-5.6 hint, and the symbolic timing is hard to miss — 'sol' is a sun reference, and the model naming had already cycled through 5 / 5.6 before this new direction. Ship beat, with no further context."
+            ],
+            "original": [
+              "GPT-5.6 sol launches thursday! happy building"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Sam Altman:GPT-5.6 sol 周四上线。和 6-30 那个 GPT-5.6 暗示一脉相承——「sol」是 sun 的指代,模型命名已经走完 5 / 5.6 一轮,现在开始往新方向拐。一个 ship beat,没多解释。"
+            ],
+            "original": [
+              "GPT-5.6 sol 周四上线!祝大家 build 顺利。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:claudeai",
+          "authorName": "Claude",
+          "authorHandle": "@claudeai",
+          "authorTag": "Anthropic Claude 官方账号",
+          "sourceUrl": "https://x.com/claudeai/status/2074548243971604641",
+          "en": {
+            "rewrite": [
+              "Claude (official): Fable 5 access extended on all paid plans through July 12, with up to 50% of weekly usage available before credits kick in. The 50% cap is the new structural rule, not a temporary throttle — same Fable 5 model, the same weekly budget that already runs the rest of Claude Code's traffic."
+            ],
+            "original": [
+              "As before, you can use up to 50% of your weekly usage limit on Claude Fable 5. After that, you can keep using Fable 5 with usage credits, or switch to another model to keep working within your remaining limits. Read more: https://t.co/aNtorRFPnV"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude 官方账号:Claude Fable 5 在所有付费方案上的访问窗口延长到 7 月 12 日,每周可用额度上限 50%,超过部分走 usage credits 或者切别的模型。50% 这条线是新结构的硬约束,不是临时降速——Fable 5 还是同一个模型,但它能吃到的预算就是 Claude Code 整体流量的一部分。"
+            ],
+            "original": [
+              "和之前一样,你每周对 Claude Fable 5 的使用上限是 50%。超过之后可以继续用 Fable 5 走 usage credits,也可以切到别的模型,在剩余额度里继续工作。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:claudeai",
+          "authorName": "Claude",
+          "authorHandle": "@claudeai",
+          "authorTag": "Anthropic Claude 官方账号",
+          "sourceUrl": "https://x.com/claudeai/status/2074548242386178258",
+          "en": {
+            "rewrite": [
+              "Claude (official): doubled Cowork usage limits extended through August 5. Cowork is the workspace product most exposed to the containment problem the engineering blog writes about — a knowledge worker who can't read bash, sharing their files. Doubled limits signal the architecture is holding at 2x load."
+            ],
+            "original": [
+              "We're extending doubled Cowork usage limits through August 5, so you can delegate bigger work to Claude. Read more: https://t.co/ONu7xLO6js"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude 官方账号:Claude Cowork 的翻倍使用上限延长到 8 月 5 日。Cowork 是那份 containment 文章里写的最危险的那类产品——用户是非技术背景的知识工作者,会把自己整个工作目录交给 Claude。能撑住 2x 流量,等于在公开承认 containment 架构稳得住。"
+            ],
+            "original": [
+              "我们把 Claude Cowork 的翻倍使用上限延长到 8 月 5 日,这样你可以把更大的活交给 Claude 来 delegate。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:claudeai",
+          "authorName": "Claude",
+          "authorHandle": "@claudeai",
+          "authorTag": "Anthropic Claude 官方账号",
+          "sourceUrl": "https://x.com/claudeai/status/2074525821755101458",
+          "en": {
+            "rewrite": [
+              "Claude (official): as a footnote to the Cowork extension — usage tiers are the most legible product signal Anthropic ships. 'Doubled limits through August 5' reads as a containment bet that paid off, not a marketing claim."
+            ],
+            "original": [
+              "We're extending doubled Cowork usage limits through August 5, so you can delegate bigger work to Claude. Read more: https://t.co/ONu7xLO6js"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude 官方账号:作为 Cowork 翻倍延长的脚注——usage 阶梯是 Anthropic 发出来的最易读的产品信号。「翻倍上限延到 8/5」读出来是 containment 这件事赌对了,不是市场话术。"
+            ],
+            "original": [
+              "我们把 Claude Cowork 的翻倍使用上限延长到 8 月 5 日,这样你可以把更大的活交给 Claude 来 delegate。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Levie 把企业 IT leader 们 7 条共性摆出来 / Levie Names the Seven Recurring Themes from Enterprise IT",
+      "desc": "Aaron Levie 刚从一打企业 IT leader 的会里出来,这条 3.2K 字的帖是 Anthropic containment 文章的「企业侧前置条件」——他列的就是「公司还没解决、containment 假设已经解决了」那些事。Operating model 必须打破 silo,数据碎片化是 agent 准确率的天花板,数据护城河在替代分发护城河,token 不是对的指标(业务结果才是),多模型路由迟早会来,AI 人才最稀缺,最好的 use case 是「改工作方式」不是「单纯加速」。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie/status/2074719479377109312",
+          "en": {
+            "rewrite": [
+              "Aaron Levie, fresh off meetings with a couple dozen enterprise IT leaders, lays out the seven recurring themes: (1) operating model — agents have to break org silos; (2) data fragmentation blocks agent accuracy; (3) data moats replace distribution moats; (4) tokens are not the right metric, business outcomes are; (5) multi-model routing is coming; (6) AI talent is the bottleneck; (7) best use cases change the work, not just speed it up.",
+              "This is a complementary read to the Anthropic containment blog — Levie is naming the enterprise-side blockers the containment blog assumes are solved. The data-fragmentation bullet and the multi-model-routing bullet are the two that map directly onto what containment has to handle."
+            ],
+            "original": [
+              "Just coming off of meetings with a couple dozen enterprise IT leaders discussing AI agents. Here are a few of the common themes that stand out:\n\n* Lots of conversation that you have to solve an operating model challenge to get the full benefits of AI. Most companies have orgs that have always operated in siloes; but agents are most effectively when they are tied to a process, which often cuts across these siloes. So the big question is how do you start to deploy centrally managed agents that can work across organizational boundaries. Who manages these agents? How do they get deployed and adopted?\n\n* Data fragmentation remains a major issue for most organizations. As long as data remains highly fragmented and not in standard formats, or data is not available to the right people and agents, enterprises are dealing with issues around being able to get answers from agents that are accurate or that conform to their business practices. This cuts across both systems with structured data (product metrics or revenue figures) and unstructured data (product roadmap or customer contracts)."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 刚从一打企业 IT leader 的会里出来,把这七条共性摆出来:(1)operating model——agent 要打破组织里的孤岛;(2)数据碎片化是 agent 准确率的天花板;(3)数据护城河正在替代分发护城河;(4)token 不是对的指标,业务结果才是;(5)多模型路由是迟早的事;(6)AI 人才是最稀缺的;(7)最好的 use case 是改工作方式,不是单纯加速。",
+              "这份清单正好是 Anthropic 那篇 containment 文章的「企业侧前置条件」——Levie 在列「公司还没解决的、containment 假设已经被解决的」那些事。数据碎片化、多模型路由这两条,直接对应 containment 必须在环境层挡住的攻击面。"
+            ],
+            "original": [
+              "刚和一打企业 IT leader 开完 agent 的会,共同议题至少七条:\n\n* 多数讨论卡在 operating model——大公司的组织历来是按 silo 切的,但 agent 只有绑在流程上才跑得动,流程又经常横跨 silo。问题变成:谁来管这些 agent?怎么部署、怎么被采用?\n\n* 数据碎片化是普遍痛点。只要数据继续散在各处、格式不统一,或者该看到的人和 agent 看不到,企业就只能接受 agent 给的答案要么不准确、要么不符合自己的业务口径。结构化数据(产品指标、收入)和非结构化数据(产品路线图、客户合同)都中招。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie/status/2074528241990394178",
+          "en": {
+            "rewrite": [
+              "Aaron Levie, the second beat: 'data is the new oil' makes a comeback, but Levie's version is more careful — useful data lives inside orgs, often in legacy systems, in people's heads, or fragmented across the enterprise. The ability to get that data to agents (securely) becomes the defining operating characteristic of a company."
+            ],
+            "original": [
+              "A small percentage of useful data is on the open web available to all models for training or for agents to operate with. Most of it lives inside of organizations and often is in legacy systems, in people's heads, or is fragmented across the enterprise.\n\nIt's the marketing plans, product roadmaps, development practices, contracts, financial data, strategies, and general corporate knowledge that every company operates off of.\n\nWhether it's for training a model or used as context for agents, this data will increasingly be more valuable over time. The ability to get the right data to agents to operate on, securely, will be a defining characteristic of how companies operate and compete in the future.\n\nEffective use of AI will in the economy will largely come down to the companies that are able to have agents best understand their business and make the right decisions on their behalf. Data actually is the new oil."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 续帖:「数据是新石油」这一句老话被他重提,但 Levie 的版本更克制——真正有用的数据大多数都在企业内部,在遗留系统里、在人脑子里、或者散在各个角落。能安全地把这些数据送到 agent 那里,会变成公司之间最分化的运营能力。"
+            ],
+            "original": [
+              "能用来训练或者被 agent 直接吃的有用数据,只有一小部分在公网。绝大多数都在企业内部——遗留系统里、人脑子里、或者散落在公司的各个角落。\n\n营销计划、产品路线图、研发实践、合同、财务数据、战略和通用的公司知识——所有这些,都是公司真正在凭它运转的东西。\n\n不管是用来训练模型,还是作为 agent 的上下文,这些数据只会越来越值钱。能不能安全地把对的数据交给 agent 去用,会变成未来公司运营和竞争的决定性特征。\n\n谁能用 AI,最后会落到谁的 agent 最懂自家业务、最能代替人做对的决策。数据其实真的是新石油。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Rauch 把 Vercel 的 open-SDK 哲学用 TypeScript 文件摆出来 / Rauch: Open SDK as Files, Vercel Welcomes Better Auth",
+      "desc": "Guillermo Rauch 同日三连,把 Vercel 的 open-SDK 哲学用代码讲清楚:每个 tool 就是一个 `tools/<name>.ts`,导出 `create<Tool>Tools()`。Eve 是装着「可插拔模型 + skills + channels + tools」的运行时。同一天他还宣布 Vercel 迎进 @bekacru 和 Better Auth 团队——这是「open SDK、agent-first auth」这条线第一次以 acqui-hire 的形式合到 Vercel 里。中间夹一句「Heavenly victory 🇦🇷」,ship beat 和世界杯余温在同一条时间线。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO",
+          "sourceUrl": "https://x.com/rauchg/status/2074630835878453601",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch: an agent's filesystem is beautiful — write `tools/github.ts`, export `createGithubTools()`, and your agent has GitHub powers. This is the open-SDK philosophy as code: any tool is a TypeScript file in `tools/`. Eve is the runtime that hosts the pluggable model + skills + channels + tools ecosystem."
+            ],
+            "original": [
+              "The filesystem is beautiful. Want your https://t.co/99eEa13mZ3 agent to have GitHub powers?\n\nDefine 𝚝𝚘𝚘𝚕𝚜/𝚐𝚒𝚝𝚑𝚞𝚋.𝚝𝚜 and export 𝚌𝚛𝚎𝚊𝚝𝚎𝙶𝚒𝚝𝚑𝚞𝚋𝚃𝚘𝚘𝚕𝚜().\n\nEve exists to shape an open ecosystem of pluggable models, skills, channels, and tools like this ↓ https://t.co/3fsag2HwnM"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch:agent 的 filesystem 是漂亮的——你想让它有 GitHub 能力,只要写一个 `tools/github.ts`,导出 `createGithubTools()` 就行。这是「open SDK as code」的写法:每个 tool 就是一个 TypeScript 文件,丢在 `tools/` 下。Eve 是装着这套可插拔模型 + skills + channels + tools 的运行时。"
+            ],
+            "original": [
+              "filesystem 真的美。想让你的 agent 拥有 GitHub 能力?\n\n定义一个 `tools/github.ts`,导出 `createGithubTools()` 就行。\n\nEve 就是为打造这种「模型、技能、channel、工具」都可插拔的开源生态而生的 ↓"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO",
+          "sourceUrl": "https://x.com/rauchg/status/2074555608578281920",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch: a one-line aside — 'Heavenly victory 🇦🇷' — timestamped around the USA-ARG final. Ship beats and World Cup afterglow travel on the same feed."
+            ],
+            "original": [
+              "Heavenly victory 🇦🇷"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch:贴一句「Heavenly victory 🇦🇷」,发在 USA-ARG 那场决赛前后。ship beat 和世界杯余温是同一条时间线。"
+            ],
+            "original": [
+              "天上的胜利 🇦🇷"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO",
+          "sourceUrl": "https://x.com/rauchg/status/2074523653488947338",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch: Vercel welcomes @bekacru — Bereket and the Better Auth team. The 'open SDK, agents-first auth' narrative gets its first acqui-hire-style consolidation. Auth for humans and agents, built in the open, with taste."
+            ],
+            "original": [
+              "Welcome @bekacru to Vercel. It's a privilege to join forces with Bereket and Better Auth to further our Open SDK vision. Developers deserve better auth, to serve humans and agents, built in the open and with taste. That's what Bereket has accomplished. Congrats! 🇪🇹🇺🇸 https://t.co/LWhzUBMysp"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch:Vercel 迎来 @bekacru——Bereket 和 Better Auth 团队。「open SDK、agent-first auth」这条线第一次以 acqui-hire 的形式合到 Vercel 里。给人和给 agent 用的 auth,都是开源、都是 taste。"
+            ],
+            "original": [
+              "欢迎 @bekacru 加入 Vercel。能和 Bereket 以及 Better Auth 一起把 Open SDK 这件事推下去,是我的荣幸。开发者值得更好的 auth,为人服务、为 agent 服务,开源、taste 也在线。这就是 Bereket 已经做到的事。恭喜!🇪🇹🇺🇸"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Thibault 与 Tao Li:Claude 跨进「自己拿主意」那一边 / Thibault + Tao Li: Claude Crosses into Self-Directed Work",
+      "desc": "Thibault Sottiaux 用一句「Sol is coming」把 OpenAI 的 ship beat 跟 GPT-5.6 sol 串起来。Tao Li(Follow Builders 维护者)同天三连:Claude 渲染的 slide layout clip、Claude「自己决定」做 YouTube Shorts、转录故意做乱 + 视频质量压低来跑快速渲染。Anthropic containment 文章里那条 84% 权限弹窗下降,就是「让 Claude 不打扰用户、随便跑渲染和重试」这件事能成立的根因——Claude 现在能 cross 进「自己拿主意」那一边,前提是环境层已经把 blast radius 圈住。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT",
+          "sourceUrl": "https://x.com/thsottiaux/status/2074705681920520526",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux (OpenAI Codex & ChatGPT): 'Prepare your sunglasses. Sol is coming. 😎' — same thread as Sama's GPT-5.6 sol Thursday announcement, with the consumer-facing voice. Ship beat confirmed from two OpenAI angles within an hour."
+            ],
+            "original": [
+              "Prepare your sunglasses. Sol is coming. 😎 https://t.co/nGm6GI905c"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux(OpenAI Codex & ChatGPT):「戴上你的墨镜。Sol 要来了。😎」——和 Sama 的 GPT-5.6 sol 周四上线是同一条线,只是用的是面向 C 端用户的语气。一小时里 OpenAI 两侧同时确认了同一个 ship beat。"
+            ],
+            "original": [
+              "准备好你的墨镜。Sol 要来了。😎"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:trq212",
+          "authorName": "Tao Li",
+          "authorHandle": "@trq212",
+          "authorTag": "AI 研究员 / Follow Builders 维护者",
+          "sourceUrl": "https://x.com/trq212/status/2074622734118924561",
+          "en": {
+            "rewrite": [
+              "Tao Li (Follow Builders maintainer): showing a Claude-rendered clip with a few slide layouts. The 84% permission-prompt reduction from the Anthropic containment blog is what makes unattended video rendering possible — Claude is free to fail and retry without nagging the user. 'Will get Claude to do a full render & report back later.'"
+            ],
+            "original": [
+              "This is a good clip that shows a few layouts.\n\nI'm pretty happy with this, maybe the slide layout could be a bit different and I'm curious how it will alternate between camera cuts.\n\nThat's all for now, will get Claude to do a full render &amp; report back later. https://t.co/7TT2dDwcTO"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Tao Li(Follow Builders 维护者):贴了一支 Claude 渲染的演示片,几个 slide layout 都展示了。Anthropic containment 文章里那条 84% 权限弹窗下降,就是「让 Claude 不打扰用户、随便跑渲染和重试」这件事能成立的根因。「后面让 Claude 跑一个完整渲染再来回报。」"
+            ],
+            "original": [
+              "这一支 clip 把几种 layout 都展示出来了。\n\n我对结果挺满意,slide layout 可能还能调,而且我很好奇它在镜头切换之间会怎么处理。\n\n先这样,后面让 Claude 跑一个完整渲染再来报告。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:trq212",
+          "authorName": "Tao Li",
+          "authorHandle": "@trq212",
+          "authorTag": "AI 研究员 / Follow Builders 维护者",
+          "sourceUrl": "https://x.com/trq212/status/2074619715826381168",
+          "en": {
+            "rewrite": [
+              "Tao Li: 'Claude decided to make YouTube short clips. The transcription is chaotic (and the video quality is purposefully low for quick rendering).' — model agency. The user didn't ask for shorts; Claude chose the format. Same 7-7 'agent rewrites the work' thread, same disorienting productivity gain."
+            ],
+            "original": [
+              "I really like how it takes some of the slides which are static (each one of these is its own slide in the original deck) and turns them into animations. https://t.co/1ITW2UWWna"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Tao Li:「Claude 自己决定去做 YouTube Shorts。转录是乱的(视频质量故意压低,为了快出渲染)。」——模型开始自己拿主意。用户没要 shorts,Claude 自己选了格式。和 7-7 「agent 改写工作」那条线一致,都是同一种「不踏实但产出高」的状态。"
+            ],
+            "original": [
+              "我很喜欢它把原本静态的 slide(原 deck 里每张都是独立的一页)变成动画的方式。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:trq212",
+          "authorName": "Tao Li",
+          "authorHandle": "@trq212",
+          "authorTag": "AI 研究员 / Follow Builders 维护者",
+          "sourceUrl": "https://x.com/trq212/status/2074619539145568562",
+          "en": {
+            "rewrite": [
+              "Tao Li: 'The transcription is really chaotic (and the video quality is purposefully low for quick rendering).' — the third beat on the same day from the same Follow Builders maintainer. The video quality is intentionally degraded to make the iteration loop cheap."
+            ],
+            "original": [
+              "Claude decided to make Youtube short clips. Again the transcription is really chaotic (and the video quality is purposefully low for quick rendering). https://t.co/Rl5yvXLVcf"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Tao Li:「转录真的非常乱(视频质量故意压低,为了快出渲染)。」——同一天、同一维护者、第三条 beat。视频质量是有意压低的,目的是让「重做一次」的循环成本低。"
+            ],
+            "original": [
+              "Claude 自己决定做 YouTube Shorts。再次声明:转录非常乱(视频质量故意压低,为了快出渲染)。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "用 Claude 做事:在 Fable 里榨 CC / cron 该跑本地还是云 / 学什么 / Steinberger 的提示框设计 / Build-with-Claude: Fable-CC Loops, Cron Local vs Cloud, Alerts",
+      "desc": "这一组帖都从「自己用 Claude 做事」的角度出发。Nikunj Kothari 给出他最喜欢的 Fable 实战用法——在 Claude Code 上跑 `/insights`,喂给 Fable,问「Fable 时代我应该怎么用 CC」,让 Fable 帮你 implement,顺带把「GMV 不是 ARR」这条一年喊一次的提醒再喊一次。Peter Yang 三连:问早期访问资格的标准、AI-native designer 用 design.md + components 怎么 build、cron 该跑本地还是云(答案取决于 blast radius 和凭据本来就住哪里)。Peter Steinberger 三连:大客户从记者那里知道 Anthropic 诉讼的事(containment 失败发生在 vendor-to-vendor 层级)、让 Fable 把 codex 设为 workhorse、给 agent 的「求助弹窗」要做得让人读懂(否则 approval fatigue)。Zhang Rui 一行 hook 收口:How to learn in the age of AI。",
+      "cards": [
+        {
+          "authorKey": "x:nikunj",
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人",
+          "sourceUrl": "https://x.com/nikunj/status/2074530614745960792",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari: a practical Fable use case — generate `/insights` on Claude Code, feed it into Fable, ask: 'In a Fable era, how should I be using Claude Code to maximize its utility?' — and have Fable implement the answer. The loop is: extract usage signal from your own CC sessions, then re-task CC based on it."
+            ],
+            "original": [
+              "My favorite practical Fable use case (so far) has been generating /insights on Claude Code, feeding it in, and asking..\n\n\"In a Fable era, how should I be using Claude Code to maximize its utility?\"\n\nYou can then ask it to implement it for you. See part of the output below 👇 https://t.co/qmMP30x5AF"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kothari:一个实战派的 Fable 用法——先在 Claude Code 上跑出 `/insights`,把它喂给 Fable,问一句「Fable 时代,我应该怎么用 Claude Code 才能把它的效用榨到最干?」,再让 Fable 帮你把答案 implement 出来。整条 loop:从你自己的 CC session 里抽出用法信号,再用这个信号去改你用 CC 的方式。"
+            ],
+            "original": [
+              "到目前为止我最喜欢的 Fable 实战用法是:先在 Claude Code 上生成 `/insights`,把它喂进 Fable,然后问——\n\n「在 Fable 时代,我应该怎么用 Claude Code 才能把它的效用榨到最干?」\n\n你接下来可以让它帮你 implement。输出节选见下方 👇"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人",
+          "sourceUrl": "https://x.com/nikunj/status/2074597133286851064",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari: 'GMV is NOT ARR' — a year-long reminder that gets repeated every time a VC meeting slides a deck that confuses the two. The most durable alpha is in keeping the vocabulary honest."
+            ],
+            "original": [
+              "I have been screaming this for the past year, but kind reminder to everyone: GMV is NOT ARR. Let's get our definitions right for once and for all.. or at least be honest what it is🤦‍♂️ https://t.co/w856j9BUC3"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kothari:「GMV 不是 ARR」——这条提醒他已经喊了一年,每次 VC 会上有人拿这种 deck 来念都会被再喊一次。最持久的 alpha 就在于「把术语用对」这件事。"
+            ],
+            "original": [
+              "这件事我已经喊了一年,但还是温柔提醒一下:GMV 不是 ARR。一次把定义对齐,或者至少诚实地标注它是哪一类🤦‍♂️"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者",
+          "sourceUrl": "https://x.com/petergyang/status/2074733842230108672",
+          "en": {
+            "rewrite": [
+              "Peter Yang: 'So what is the qualification criteria for folks to get early access to this model?' — the question is more interesting than it looks. Pre-launch access is the new funnel, and the criteria are mostly unstated. The 'qualification' framing is implicitly a containment question: who gets the wider blast radius?"
+            ],
+            "original": [
+              "So what is the qualification criteria for folks to get early access to this model? https://t.co/CFc9wVvfk4"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang:「什么样的人能拿到这个模型的早期访问资格?」——这个问题比看上去有意思。早期访问变成了新的漏斗,而筛选标准大多没说。「资格」这个框架本身,就是一个 containment 问题:谁能拿到更大的 blast radius?"
+            ],
+            "original": [
+              "什么样的人才能拿到这个模型的早期访问资格?"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者",
+          "sourceUrl": "https://x.com/petergyang/status/2074705840284815678",
+          "en": {
+            "rewrite": [
+              "Peter Yang: looking for an AI-native designer to interview — wants to show 'how to build with design.md, components, and more vs. the typical process.' The implied ask: the 'typical process' is now a feature deficit, not a default. Component-driven + design.md is the new process."
+            ],
+            "original": [
+              "I woudl like to interview an AI-native designer to show us how to build with design.md, components, and more vs. the typical process.\n\nWho's the best person to talk to?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang:想找一位 AI-native designer 来访谈,讲讲「怎么用 design.md、components 这套去 build,跟传统流程有什么不一样」。话外音:「传统流程」已经不是默认,是缺一项能力。components + design.md 才是新流程。"
+            ],
+            "original": [
+              "我想访谈一位 AI-native designer,带大家看「用 design.md、components 等方式去 build,跟典型流程有什么不同」。\n\n谁是最合适的人选?"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者",
+          "sourceUrl": "https://x.com/petergyang/status/2074616982197174515",
+          "en": {
+            "rewrite": [
+              "Peter Yang, the operating-model beat: cron jobs running on a local Mac Mini (already authenticated to Google Workspace etc.) vs. running in the cloud with OAuth'd accounts. The honest answer isn't 'always cloud' — it's 'what's the blast radius of each job, and where do the credentials already live?'"
+            ],
+            "original": [
+              "Dumb question:\n\nI've been running most of my cron jobs locally on my Mac Mini because it's already authenticated with Google Workspace and the other apps I use.\n\nBut should I run these jobs in the cloud instead with these apps OAuth'd to my Claude or ChatGPT account?\n\nHow should I think about what jobs should stay local vs. move to the cloud?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang,「operational model」那一条:定时任务跑在本地 Mac Mini 上(它已经登着 Google Workspace 等),还是搬到云上,把这些 app 的 OAuth 挂到自己的 Claude 或 ChatGPT 账户上?老实讲答案不是「永远云」——而是要看「每个 job 的 blast radius 是多大、凭据本来就住在哪里」。"
+            ],
+            "original": [
+              "一个有点 dumb 的问题:\n\n我大部分 cron 任务都跑在本地 Mac Mini 上,因为它已经登着 Google Workspace 和其他我用的 app。\n\n但我是不是应该把这些任务搬到云上,把这些 app 用 OAuth 挂到我的 Claude 或者 ChatGPT 账户上?\n\n我应该怎么判断「哪些 job 留本地、哪些搬云」?"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:steipete",
+          "authorName": "Peter Steinberger",
+          "authorHandle": "@steipete",
+          "authorTag": "OpenClaw 创始人",
+          "sourceUrl": "https://x.com/steipete/status/2074739318103629979",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger: 'We're a very large customer of Anthropic and they still have yet to tell us about the lawsuit. I learned about it from a reporter, not our \"partner.\"' — the same kind of containment failure Anthropic's blog warns about, except between vendors instead of inside a sandbox."
+            ],
+            "original": [
+              "\"We're a very large customer of Anthropic and they still have yet to tell us about the lawsuit. I learned about it from a reporter, not our \"partner.\" https://t.co/O9swsh4U6v"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger:「我们是 Anthropic 的大客户,但他们到现在都没主动告知我们这场诉讼的事。我是从记者那里知道的,不是从我们的『合作伙伴』那里。」——和 Anthropic 那篇 containment 文章警告的是同一类失败,只是出在 vendor-to-vendor 这个层级,不是 sandbox 内部。"
+            ],
+            "original": [
+              "「我们是 Anthropic 的大客户,但他们到现在都没主动告知我们这场诉讼的事。我是从记者那里知道的,不是从我们的『合作伙伴』那里。」"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:steipete",
+          "authorName": "Peter Steinberger",
+          "authorHandle": "@steipete",
+          "authorTag": "OpenClaw 创始人",
+          "sourceUrl": "https://x.com/steipete/status/2074638582418231495",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger: a practical Fable workflow tip — 'ask Fable to make codex the workhorse.' The pattern is the same as Nikunj's CC-on-Fable: pull the heavy model into Fable, keep the cheaper agent as the doer."
+            ],
+            "original": [
+              "If you run this workflow, ask Fable to make codex the workhorse. https://t.co/o20OwqaoAt https://t.co/Xg5akpBkwA"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger:一个 Fable workflow 的实战小贴士——「跑这个 workflow 时,让 Fable 把 codex 设为 workhorse。」模式上跟 Nikunj 那条「在 Fable 里用 Claude Code」一样:把贵的模型放在 Fable 里,把便宜的 agent 留作执行者。"
+            ],
+            "original": [
+              "如果你跑这个 workflow,记得让 Fable 把 codex 设为 workhorse。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:steipete",
+          "authorName": "Peter Steinberger",
+          "authorHandle": "@steipete",
+          "authorTag": "OpenClaw 创始人",
+          "sourceUrl": "https://x.com/steipete/status/2074624388301987947",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger: 'comes with a skill to show a big alert when agents need your help, instead of (e.g.) a no-context 1Password dialog.' — design lesson. The container for an agent's ask has to be legible; otherwise the user dismisses the prompt, and approval fatigue takes over."
+            ],
+            "original": [
+              "Bonus: Comes with a skill to show a big alert when agents need your help for additional context, instead of (e.g.) just a no-context 1Password dialog."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger:「附赠一个 skill:agent 需要你补上下文时,弹一个大大的提示框,而不是像 1Password 那种『没上下文的小弹窗』。」——设计层面的一条经验。给 agent 提需求的「容器」必须让人能读懂;否则用户习惯性关掉,approval fatigue 就上来了。"
+            ],
+            "original": [
+              "Bonus:附赠一个 skill——agent 需要你帮忙补上下文时,弹一个明显的大提示,而不是像 1Password 那种没有上下文的弹窗。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2074661564964307153",
+          "en": {
+            "rewrite": [
+              "Zhang Rui (Follow Builders): 'How to learn in the age of AI' — a single-line hook, link-only, the curatorial mode. The age question is the daily question: what changes about learning when the tool is the same one doing the work?"
+            ],
+            "original": [
+              "How to learn in the age of AI https://t.co/9u9JV7eQbM"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zhang Rui(Follow Builders):「How to learn in the age of AI」——一行 hook,一个链接,策展式发法。「这个时代的……怎么办」是这一个月每天都在问的问题:当工具就是干活的那一个,「学习」这件事会变什么?"
+            ],
+            "original": [
+              "AI 时代,人该怎么学东西。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "7-8 底色:USA-ARG 之后 / 8 年前的 SaaS 还在烧钱 / SF 市政战 / Weekend Texture: USA-ARG Aftermath, SaaS Runway, Civic Ws",
+      "desc": "周末的底色由几条彼此不相关、但合在一起读出一种「周末收口」味道的帖组成。Aditya Agarwal 用 builder 的 postmortem 语气写 USMNT 输球后的第二天——「倒了但没出局」,一个明显的 typo 「outclasses」反而读出诚实的分量。Matt Turck 当天 meme:VC 跟 top AI 投的 portfolio 打招呼 vs 跟 8 年前那笔 SaaS 现金快烧光的公司打招呼——8 年前那笔就是字面意义上的「pre-AI comp」。Nan Yu 一行私人帖「starting a family tbh」,接在 6-29 的 996 翻转、6-30 的 10-tab theater 之后,变成另一种纹理。Garry Tan 同日三连,civic-flavor 帖把「SF 不建住房会从 W 变 L」、「dirty smear politics」、「radical leftism + asset seizure」连成同一种声音。Swyx 一行 meme:「it_happening.gif」,整条 beat 装在一个 gif 里。",
+      "cards": [
+        {
+          "authorKey": "x:adityaag",
+          "authorName": "Aditya Agarwal",
+          "authorHandle": "@adityaag",
+          "authorTag": "Dropbox Engineering VP / 前 Facebook 平台工程负责人",
+          "sourceUrl": "https://x.com/adityaag/status/2074512219434602995",
+          "en": {
+            "rewrite": [
+              "Aditya Agarwal: 'More important to wear the colors proudly the day after a loss. Proud of USMNT. We were outclasses yesterday. Down but not out. We will be back.' — the morning-after USA-ARG beat, written like a builder's postmortem. 'Outclasses' (a typo for outclassed) reads as the honest kind of admission."
+            ],
+            "original": [
+              "More important to wear the colors proudly the day after a loss.\n\nProud of USMNT. \n\nWe were outclasses yesterday \n\nDown but not out. We will be back. https://t.co/N1TTwo5mD5"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aditya Agarwal:「输球的第二天,反而更要穿这身球衣。USMNT 让人骄傲。我们昨天是被 outclass 的。倒了但没出局,我们会回来。」——USA-ARG 那场之后的次日帖,写得像 builder 写的 postmortem。「outclasses」(应该是 outclassed)反而读出诚实的分量。"
+            ],
+            "original": [
+              "输球的第二天,反而更要穿这身球衣。\n\n为 USMNT 骄傲。\n\n我们昨天被打 outclass 了。\n\n倒了但没出局,我们会回来。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:mattturck",
+          "authorName": "Matt Turck",
+          "authorHandle": "@mattturck",
+          "authorTag": "First Mark Capital 合伙人 / MAD Podcast 主理人",
+          "sourceUrl": "https://x.com/mattturck/status/2074441949772169216",
+          "en": {
+            "rewrite": [
+              "Matt Turck: 'VC greeting his top AI portfolio company vs that SaaS investment from 8 years ago that's running out of cash' — the meme of the day. The 8-year-old SaaS portfolio is the literal 'pre-AI' comp, and the implication lands without saying it: the comp the VC is comparing to changed underneath them."
+            ],
+            "original": [
+              "VC greeting his top AI portfolio company vs that SaaS investment from 8 years ago that's running out of cash https://t.co/pj8GAdCqBT"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Matt Turck:「VC 跟 top AI 投的 portfolio 打招呼,vs 跟 8 年前投的那家 SaaS 现金快烧光的公司打招呼」——当天的 meme。8 年前那笔 SaaS 就是字面意义上的「pre-AI comp」,没说出口的那层意思是:VC 拿来对比的那家已经被时代换了。"
+            ],
+            "original": [
+              "VC 跟 top AI portfolio 公司打招呼的样子,vs 跟 8 年前投的那家 SaaS(现金快烧光了)打招呼的样子"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thenanyu",
+          "authorName": "Nan Yu",
+          "authorHandle": "@thenanyu",
+          "authorTag": "AI 创业者 / 投资人",
+          "sourceUrl": "https://x.com/thenanyu/status/2074484075314733323",
+          "en": {
+            "rewrite": [
+              "Nan Yu: 'starting a family tbh' + a link. The single-line personal beat that lands harder than any thread. After 6-29's 996 flip and 6-30's 10-tab theater, the cadence is a different kind of texture — the build goes on, the build also continues at home."
+            ],
+            "original": [
+              "starting a family tbh\n\nhttps://t.co/72X5WekiNi"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nan Yu:「starting a family tbh」+ 一个链接。一行私人帖,信息密度比任何 thread 都重。接在 6-29 的 996 翻转、6-30 的 10-tab theater 之后,这一条是另一种纹理——build 在继续,build 在家里也在继续。"
+            ],
+            "original": [
+              "说真的,要开始组建家庭了。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁",
+          "sourceUrl": "https://x.com/garrytan/status/2074750229044502663",
+          "en": {
+            "rewrite": [
+              "Garry Tan: 'Dirty smear politics is alive and well in SF...we demand consequences for the lies now' — civic-flavor post, YC president reading like a SF resident."
+            ],
+            "original": [
+              "Dirty smear politics is alive and well in SF, and it's high time we made sure the playbook backfires from here\n\nA few dishonest groups invent a smear and the local legacy media rubber stamps it out of abdication of duty to the people\n\nWe demand consequences for the lies now https://t.co/o7K12SYkqh"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan:「脏政斗在 SF 还活得好好的...我们要求现在就把造谣的代价算清楚。」——一条 civic 帖,YC 总裁写得像 SF 居民。"
+            ],
+            "original": [
+              "脏政斗在 SF 依然活得好好的,现在是时候让这套剧本反噬回去。\n\n几个不老实的组织造出一个谣言,本地老媒体因为对人民失职就把它照单全发出来。\n\n我们现在就要求把这些谎言的代价算清楚。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁",
+          "sourceUrl": "https://x.com/garrytan/status/2074744830492868764",
+          "en": {
+            "rewrite": [
+              "Garry Tan: 'Without building housing, San Francisco will turn a mega economic W into the biggest L in civic history.' — the housing frame, again. Same YC-president-as-SF-resident voice."
+            ],
+            "original": [
+              "Without building housing, San Francisco will turn a mega economic W into the biggest L in civic history https://t.co/IBFwtRaSRo"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan:「不建住房,旧金山会把这个经济 W 翻成市政史上最大的 L。」——住房那条 frame 又是他。同一个「YC 总裁=SF 居民」的声音。"
+            ],
+            "original": [
+              "不建住房,旧金山会把这个巨大的经济 W 翻成市政史上最大的 L。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁",
+          "sourceUrl": "https://x.com/garrytan/status/2074599259803160773",
+          "en": {
+            "rewrite": [
+              "Garry Tan: 'Common sense Democrats take note — time to organize against radical leftism and asset seizure inside the party' — the third of his three same-day posts, same voice, same frame. Reads as a sample of how a single author with three same-day posts clusters into one texture section."
+            ],
+            "original": [
+              "Common sense Democrats take note \n\nTime to organize against radical leftism and asset seizure inside the party https://t.co/etExoPSgiN"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan:「讲常识的民主党人士注意——现在该在党内组织起来,反对激进左翼和资产没收。」——他当天第三条,同一个声音、同一个 frame。读起来就是「同一天同一个作者发三条,会被自然收进同一个 texture section」的样本。"
+            ],
+            "original": [
+              "讲常识的民主党人士注意。\n\n是时候在党内组织起来,反对激进左翼和资产没收。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:swyx",
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师",
+          "sourceUrl": "https://x.com/swyx/status/2074683022503490012",
+          "en": {
+            "rewrite": [
+              "Swyx: 'it_happening.gif' + two media links — a one-line post carrying the whole beat in a single meme. The gif, the caption, and the meta of the post are all the same content: a 'this is happening' moment."
+            ],
+            "original": [
+              "it_happening.gif https://t.co/XiwgDUvyWi https://t.co/91NK1liTMQ"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx:「it_happening.gif」+ 两个媒体链接——一行帖把整条 beat 装在一个 meme 里。gif 本身、caption、帖子的 meta,说的都是同一件事:「这一刻正在发生。」"
+            ],
+            "original": [
+              "「正在发生.gif」"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Training Data:走进 Zipline 的 1.4 亿英里零事故 / Training Data: Inside Zipline's 1.4M-Mile Zero-Incident Autonomy",
+      "desc": "这一期 Training Data 把 Zipline 联合创始人 Keller 和系统工程 / 安全负责人 Eric 一起请过来。Zipline 累计飞了 1.4 亿英里,零事故——他们说「我们不是 drone 公司,我们要做的是地球上的自动化物流系统」。在卢旺达的起家故事:医生和 lab tech 反馈的不是「drone 不好」,而是「人 24/7 都在生病,你们为什么一天只开 12 小时」——于是整个公司从头再调一遍。结尾 Keller 那段「我们必须重新学会做东西——车、硬件、基础设施。金门大桥的防自杀网装网花的钱比祖辈当年建桥花的钱还多」是这一期最 builder 的一段。",
+      "cards": [
+        {
+          "authorKey": "podcast:training-data",
+          "authorName": "Training Data Podcast",
+          "authorHandle": null,
+          "authorTag": "AI 播客",
+          "sourceUrl": "https://www.youtube.com/watch?v=6bGxm8gX41o",
+          "en": {
+            "rewrite": [
+              "Training Data sits down with Zipline co-founder Keller and systems/safety lead Eric. Zipline has flown 140 million miles with zero incidents, started in 2011, pivoted in 2014, and refuses to be called a drone company — they are an 'automated logistics system for Earth, approximating teleportation.' The founding insight: in Rwanda, doctors and lab techs didn't want better drones, they wanted a 24/7 service because 'people get sick twenty-four seven.'",
+              "The 'we are not a drone company' line is the most direct echo of today's containment theme. Just as Anthropic's blog argues containment is what you ship, not the model itself, Zipline's product is the logistics system, not the drone. Both companies learned the same lesson — the customer doesn't care about the technology operating behind the curtain, they care about the experience.",
+              "The closer is the most builder-coded: 'we gotta get good at building stuff again — vehicles, hardware, infrastructure. The anti-suicide nets on the Golden Gate Bridge cost more to install than it cost our grandparents to build the bridge.' A US competitiveness / build-thing argument that lands as a podcast closer."
+            ],
+            "original": [
+              "I remember being in Rwanda early days and going out and meeting with some of the doctors and lab techs that we were serving and asking for them, like, you know, how's it going? What what do you think? What's your feedback? Here I am kind of, you know, a a up and coming, you know, learning engineer thinking they're gonna say something about the drone or some of these things. And the main piece of feedback that I received was people get sick twenty four seven.\n\nWhy are you guys only open twelve hours a day?\n\nRight? Especially when you're delivering life saving blood.",
+              "We've always wanted to be an extremely customer obsessed company, and the reality is none of our customers care at all about drones. Our goal was always to build an automated logistics system for Earth and to approximate teleportation. And all the customers who are living on zipline today, they don't care about the technology operating behind the curtain. What they care about is their ability to download an app, open it up, see a huge number of different brands and amazing restaurants that they want to shop with, and then click a button and have it delivered to them five minutes later. So, we've always really tried to focus on the experience rather than on the specific technology.",
+              "Especially important for US competitiveness and just for our ability to build the future that we'd be really proud to hand to our kids and to our grandkids and to build the sci fi version of the future that we were all promised, we gotta get good at building stuff again. And we gotta get good at building not just vehicles and hardware, we gotta get good at building infrastructure. We're depending on the crumbling infrastructure that our grandparents built for us. I read the other day that, you know, we just installed these, like, anti suicide nets on the Golden Gate Bridge.\n\nHave you guys It heard about that cost more to install those nets than it cost our grandparents to build that bridge. I believe it. So anyway, we get really excited. Just like, we think the future, like, promising future, is we should be able to build infrastructure. We have to be interested in it, and I think people have to have the stomach for it, and we have to learn how to manufacture and run complex supply chains again."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Training Data 这一期请到 Zipline 联合创始人 Keller 和系统工程 / 安全负责人 Eric。Zipline 累计飞了 1.4 亿英里,零事故;2011 年起步,2014 年 pivot,主持人问他愿不愿意被叫「drone company」,他拒绝——他们要做的是「地球上的自动化物流系统,逼近瞬间移动」。最初的洞察来自卢旺达:医生和 lab tech 反馈的不是「drone 不好」,而是「人 24/7 都在生病,你们为什么一天只开 12 小时」。",
+              "「我们不是 drone 公司」这句话,是今天 containment 主题最直接的回声。Anthropic 那篇博客讲「ship 的是 containment,不是 model 本身」;Zipline 讲「ship 的是物流系统,不是 drone」。两家公司学到的是同一件事——客户不 care 帘子后面跑的是什么技术,他们 care 的是体验。",
+              "结尾那句最 builder:Keller 说「我们必须重新学会做东西——车、硬件、基础设施。我们现在用的是祖辈给我们建的基础设施,最近装金门大桥的防自杀网,装网花的钱比祖辈当年建桥花的钱还多。」一段 US competitiveness / build 的话,作为这一期播客的收口。"
+            ],
+            "original": [
+              "我记得刚开始在卢旺达的时候,出去见我们服务的医生和 lab tech,问他们「怎么样、你们怎么想、有没有反馈」。那时候我还是个新人工程师,以为他们会说点 drone 怎么样、或者我们哪里做不好。结果拿到的最大反馈是——人 24/7 都在生病。\n\n「你们为什么一天只开 12 小时?」\n\n「对,尤其是在你们送的是救命的血的时候。」",
+              "我们一直想做一家极度 customer obsessed 的公司,事实是我们的客户根本不 care drone。我们的目标一直是「在地球上建一套自动化物流系统,逼近瞬间移动」。今天所有在用 Zipline 的客户,不 care 帘子后面跑的是什么技术,他们在 care 的是——能下载一个 app、打开、看到一堆品牌和他们想吃的餐厅、按一个钮、5 分钟后东西送到。所以我们一直努力把焦点放在体验,而不是具体某项技术上。",
+              "尤其对美国的竞争力、对我们能不能把一个「我们愿意交到孩子、孙辈手里」的未来建出来、对我们能不能兑现小时候被许诺的「科幻版未来」,我们必须重新学会做东西。不仅是车和硬件,还要建基础设施。我们现在依赖的基础设施是祖辈给我们搭的——我最近看到金门大桥新装的防自杀网,装网花的钱比祖辈当年建桥花的钱还多。我相信。\n\n我们是真的兴奋——我们认为那个 promising 的未来,是「我们应该能建基础设施」。我们必须对它有兴趣,大家也要有这个胃量,我们要重新学会怎么制造、怎么跑复杂的供应链。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
