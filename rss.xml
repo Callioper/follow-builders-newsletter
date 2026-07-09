@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 08 Jul 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 09 Jul 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-07-09 · 围栏外延日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-09-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-09-rerun.html</guid>
+      <pubDate>Thu, 09 Jul 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[7-9 这一期的主轴是「managed agents 落到架构 + 运行时 + Grok 4.5 开发者侧同日接入 + Claude Code 维护节奏 + Codex/Claude 钟摆」:Anthropic 用三篇 blog 把 managed agents 这条线从质量回溯讲到架构再讲到运行时,工程博客先发一份 Claude Code 质量反馈的 postmortem、再发一篇「Scaling Managed Agents」讲「harness encode assumptions that go stale」、Claude Blog 把 self-hosted sandbox 和 MCP tunnel 同日补上,Grok 4.5 同一天被 Vercel / Cursor / Box 三个开发者表面接进自己的 installed base,Boris Cherny 把 /checkup 这一类维护工具正式发货、Cat Wu 预告 Claude Tag 多 agent 直播、Tao Li 把「rewrites can be good, cheap and fast」摆到台面,Nikunj 以中立 VC 视角拍下这周的钟摆、Zhang Rui 抛出 founder 故事与前端 taste 的卡点,Thibault 把 OpenAI 的 ship 周公开铺开、Sam Altman 用一句即兴把人设钉成产品的一部分,Amjad Masad 用 compiler 类比给 agent 层重新定位、Dan Shipper 用三连贴把这一波变成 Every 周五的可复用 artifact;Texture:Steinberger 把 OpenClaw 基金会的独立性讲清、Garry Tan 把 SF Public Bank 提案读成 grift mill、Matt Turck 把 World Cup 这段时间的 AI 内容从 slop 抬到「这还真有点东西」、Swyx 用 Theo's 手绘 keynote slide 印证同一条审美动力学、Nan Yu 用 PMM 链路把「故事要在每一层重讲里都还活着」画出来、Aditya Agarwal 把「不要浪费这一波」写进 Founder Fellowship 申请表。Podcast:AI & I 跟一位写作者聊「怎么用 AI 不丢声音」——答案非技术,是 attention architecture。]]></description>
+      <category>Anthropic 把 managed agents 落到架构 + 运行时 + 质量回溯 / Anthropic Operationalizes Managed Agents: Quality Postmortem + Brain/Hands Decoupling + Self-Hosted Sandboxes, Grok 4.5 同日进开发者栈的三个表面 / Grok 4.5 Lands on Three Developer Surfaces in One Day, Claude Code 维护节奏:/checkup + Claude Tag + rewrite 重估 / Claude Code Maintenance: /checkup, Claude Tag, Rewrites Repriced, Codex / Claude 钟摆 + 创始人故事 + 前端品味 / The Codex-Claude Pendulum, Founder Stories, and Front-End Taste, OpenAI ship 周 + Sol 人设时刻 / OpenAI&apos;s Ship Week and the Sol Persona Moment, Replit 的编译器类比 + Every 周五 repo / Replit&apos;s Compiler Analogy and Every&apos;s Friday Drop, 7-9 底色:OpenClaw 基金会 / SF 公共银行 / World Cup AI 内容底面 / Swyx 审美 / Nan Yu PMM 链 / Aditya ambition / Weekend Texture: OpenClaw Foundation, SF Public Bank, WC Content, Aesthetics, PMM Chains, Founder Ambition, Podcast:AI &amp; I 跟一位写作者聊「怎么用 AI 不丢声音」 / Podcast: AI &amp; I — How a Writer Uses AI Without Losing His Voice</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-07-08 · 围栏日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-08-rerun.html</link>
