@@ -1,0 +1,572 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-07-10",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "7-10 这一期的主轴是「GPT-5.6 Sol 发布日 + Model release 周 + Agentic coding 的 operator 侧 + 一圈 texture」:OpenAI 同日 ship GPT-5.6 Sol / Terra / Luna,Sam Altman 把发布叙事直接钉在 cost-per-task 上(enterprise 怕成本,他就给成本),Thibault 同步把 ChatGPT Work 与 Codex 的 rate limit 重置两次——把「跑道」也当成发布的一部分;Peter Yang 一天试用后说「It's got that dog in it」,但更尖锐的反馈是 ChatGPT Work / Codex 这个二选一让普通用户看不懂,Sol/Terra/Luna 配 Light/Medium/High effort 没有 UI 引导;Nikunj 用一条 mega-thread 把这一周 model release 全部 catalogue——Grok 4.5 故意早一天争 frontier-adjacent 24 小时、Fable 5 被政府停三周后回来、Sonnet 5 $2/Mtoken、美团开源 LongCat-2.0(1.6T 参数)、字节 Seedream 5 Pro、Ollama 融了 $65M,「顺带说一句,这还是周四。」;Aaron Levie 同日发布 Box AI Complex Work eval,Sol 在金融 / 医疗 / 公共部门 / 生命科学四档企业级复杂工作上比 GPT-5.5 大幅跃升;Dan Shipper 把 Sol 叫「THE GOLD STANDARD FOR KNOWLEDGE WORK」,顺手把 Peter Yang 那个吐槽接成 punchline;Rauch 把这一周的结构性判断摆出来——Meta Spark 1.1 / Grok 4.5 / GLM 5.2 会显著吃掉 token market share;Masad 给出配套论点——「AI 在让 coding 变松,我们在让 runtime 变紧」;Garry Tan 为 Meta Muse Spark 1.1 站台;Thariq(trq212)把 agentic coding 的核心技能重新框定为「reduce your unknowns」——operator 那一侧;Madhu Guru 宣布加入 Meta 做 AI 产品,「复杂系统里的 agent 还在早期」;Texture:Josh Woodward 把 Gemini 用户反馈 Top 10 公开排序并带进度,Nan Yu 用「Adeptus Astartes」一句话 meme 把 Codex 框成宗教骑士团并批评「发布剧场」,Swyx 把 AEO(Answer Engine Optimization)与 greptile-as-inspo 串成「AI 默认伸手去拿的那个」博弈,Aditya Agarwal 把 Gagan Shukla 的太空对话铺开,Amanda Askell 把 NYC 气体爆炸史读出来,Matt Turck 把 World Cup 当 AI 内容的共享底面;Podcast:Unsupervised Learning Ep 90 跟 Jürgen Schmidhuber 谈 AI 当下——他对底层技术乐观、对模型公司深度悲观,不认为递归自我改进会成为头部护城河,认为硬件进度才是 AGI 的真正瓶颈。"
+  },
+  "archive": {
+    "title": "Sol 出舱日",
+    "desc": "7-10 这一期的主轴是「GPT-5.6 Sol 发布日 + Model release 周 + Agentic coding 的 operator 侧 + 一圈 texture」:OpenAI 同日 ship GPT-5.6 Sol / Terra / Luna,Sam Altman 把发布叙事直接钉在 cost-per-task 上(enterprise 怕成本,他就给成本),Thibault 同步把 ChatGPT Work 与 Codex 的 rate limit 重置两次——把「跑道」也当成发布的一部分;Peter Yang 一天试用后说「It's got that dog in it」,但更尖锐的反馈是 ChatGPT Work / Codex 这个二选一让普通用户看不懂,Sol/Terra/Luna 配 Light/Medium/High effort 没有 UI 引导;Nikunj 用一条 mega-thread 把这一周 model release 全部 catalogue——Grok 4.5 故意早一天争 frontier-adjacent 24 小时、Fable 5 被政府停三周后回来、Sonnet 5 $2/Mtoken、美团开源 LongCat-2.0(1.6T 参数)、字节 Seedream 5 Pro、Ollama 融了 $65M,「顺带说一句,这还是周四。」;Aaron Levie 同日发布 Box AI Complex Work eval,Sol 在金融 / 医疗 / 公共部门 / 生命科学四档企业级复杂工作上比 GPT-5.5 大幅跃升;Dan Shipper 把 Sol 叫「THE GOLD STANDARD FOR KNOWLEDGE WORK」,顺手把 Peter Yang 那个吐槽接成 punchline;Rauch 把这一周的结构性判断摆出来——Meta Spark 1.1 / Grok 4.5 / GLM 5.2 会显著吃掉 token market share;Masad 给出配套论点——「AI 在让 coding 变松,我们在让 runtime 变紧」;Garry Tan 为 Meta Muse Spark 1.1 站台;Thariq(trq212)把 agentic coding 的核心技能重新框定为「reduce your unknowns」——operator 那一侧;Madhu Guru 宣布加入 Meta 做 AI 产品,「复杂系统里的 agent 还在早期」;Texture:Josh Woodward 把 Gemini 用户反馈 Top 10 公开排序并带进度,Nan Yu 用「Adeptus Astartes」一句话 meme 把 Codex 框成宗教骑士团并批评「发布剧场」,Swyx 把 AEO(Answer Engine Optimization)与 greptile-as-inspo 串成「AI 默认伸手去拿的那个」博弈,Aditya Agarwal 把 Gagan Shukla 的太空对话铺开,Amanda Askell 把 NYC 气体爆炸史读出来,Matt Turck 把 World Cup 当 AI 内容的共享底面;Podcast:Unsupervised Learning Ep 90 跟 Jürgen Schmidhuber 谈 AI 当下——他对底层技术乐观、对模型公司深度悲观,不认为递归自我改进会成为头部护城河,认为硬件进度才是 AGI 的真正瓶颈。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-10 source feeds.",
+  "sections": [
+    {
+      "title": "GPT-5.6 Sol 当天:Sam 把 cost 轴钉在叙事上 + Thibault 把 rate limit 一起 ship + Peter Yang 把 UX 吐槽摆出来 + Nikunj 把这一周全部 catalogue / GPT-5.6 Sol Launch Day: Altman's Cost Framing, Thibault's Rate Resets, Peter Yang's UX Critique, Nikunj's Weekly Catalogue",
+      "desc": "7-10 是 GPT-5.6 Sol 的发布日,三件事一起看才有意思。Sam 把发布叙事从「能力轴」直接转到了「cost-per-task」轴——enterprise 怕成本,他就给成本。Thibault 不只 ship 模型,还把 ChatGPT Work 与 Codex 的 rate limit 重置两次,把「跑道」也当成发布的一部分——大多数 rate-limit 调整的叙事都是反应式负载均衡,这次的叙事是庆祝 + 需求侧。Peter Yang 一天试用后说「It's got that dog in it」,Sol 不会放手;但他更尖锐的反馈是:ChatGPT Work / Codex 这个二选一让普通用户看不懂,Sol/Terra/Luna 配 Light/Medium/High effort 没有 UI 引导。Nikunj 用一条 mega-thread 把这一周的 model release 全部 catalogue——Grok 4.5 故意早 GPT-5.6 一天争 frontier-adjacent 24 小时、Fable 5 被政府停三周后回来、Sonnet 5 以 $2/Mtoken 发布、美团开源 LongCat-2.0(1.6T 参数)、字节 Seedream 5 Pro、Ollama 融了 $65M,「顺带说一句,这还是周四。」",
+      "cards": [
+        {
+          "authorKey": "x:sama",
+          "authorName": "Sam Altman",
+          "authorHandle": "@sama",
+          "authorTag": "OpenAI CEO",
+          "sourceUrl": "https://x.com/sama/status/2075300000000000001",
+          "en": {
+            "rewrite": [
+              "Sam Altman: GPT-5.6 Sol, Terra, Luna are all designed to address enterprise concerns about AI cost. Sol is positioned as a major step forward on dollars-per-task, with Terra and Luna lining up the same axis.",
+              "The framing matters because Altman is naming the actual objection — enterprises are worried about AI cost — and pinning a model release to the cost axis, not the capability axis. The narrative is being deliberately built around cost-per-task, not raw capability benchmarks."
+            ],
+            "original": [
+              "we have heard enterprises on their concerns about AI costs, and 5.6 sol is a huge step forward for dollars-per-task, as are terra and luna"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Sam Altman:GPT-5.6 的 Sol、Terra、Luna 三档都直接对着企业对 AI 成本的关切设计。Sol 被定位为 dollars-per-task 上一大步,Terra 与 Luna 也排在同一条轴上。",
+              "框定值得拿出来——Altman 直接把真实异议点命名出来:企业怕的是 AI 成本;然后把模型发布钉在「成本轴」上,而不是「能力轴」上。这条叙事是刻意按 cost-per-task 而不是按原始 benchmark 搭起来的。"
+            ],
+            "original": [
+              "我们听到了企业对 AI 成本的关切,5.6 的 sol 在 dollars-per-task 维度上是一大步,terra 与 luna 也是。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT",
+          "sourceUrl": "https://x.com/thsottiaux/status/2075300000000000002",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux: To celebrate GPT-5.6 Sol's launch, OpenAI is resetting rate limits twice across ChatGPT Work and Codex over the next 24 hours — explicit 'try ambitious tasks' framing.",
+              "The mechanic is unusual: ship the model AND the runway. Most rate-limit moves are framed as reactive load-balancing; here the framing is celebratory + demand-side — give users enough headroom to actually feel the new model. Treats access as part of the launch, not a downstream concern."
+            ],
+            "original": [
+              "To celebrate the launch of GPT-5.6 Sol, we will reset the rate limits again (twice) across ChatGPT Work and Codex over the next 24 hours.\n\nWe want you to have the time to truly try ambitious tasks and get the hang of it. Happy exploring!",
+              "Enjoy a full reset of your usage limits for ChatGPT Work and Codex. Propagating in the next hour.\n\n@_rajanagarwal just joined to work on model research and push on coding capabilities. You can thank him for pressing the button today."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux:为庆祝 GPT-5.6 Sol 发布,接下来 24 小时会在 ChatGPT Work 与 Codex 上把 rate limit 重置两次——框定明确是「try ambitious tasks」。",
+              "这套玩法不寻常:模型和「跑道」一起 ship。大多数 rate-limit 调整的叙事都是反应式负载均衡;这次的叙事是庆祝 + 需求侧——给用户足够的 headroom 去真切摸到新模型。把访问当成发布的一部分,而不是下游的事。"
+            ],
+            "original": [
+              "为庆祝 GPT-5.6 Sol 的发布,我们会在接下来 24 小时把 ChatGPT Work 和 Codex 的 rate limit 再重置两次。\n\n我们想让你有时间真正去尝试野心大的任务、摸熟它。祝你探索愉快!",
+              "ChatGPT Work 与 Codex 的用量限制完整重置,接下来一小时内生效。\n\n@_rajanagarwal 刚加入我们做模型研究、推动编码能力。今天的「按钮」是他按的,可以感谢他。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者",
+          "sourceUrl": "https://x.com/petergyang/status/2075300000000000003",
+          "en": {
+            "rewrite": [
+              "Peter Yang's reaction to GPT-5.6 Sol: 'It's got that dog in it.' Sol doesn't give up on complex tasks, and the reliability comes from browser use plus the rest of ChatGPT's surface area, not raw model intelligence.",
+              "The constructive feedback is sharper: 'ChatGPT Work vs. Codex is confusing' — the framing raises questions like 'developers don't do work?' Yang argues the whole thing should just be called ChatGPT, Codex, or ChatGPT Codex, no tabs or toggles. He also flags that Sol/Terra/Luna + Light/Medium/High effort settings have no in-UI guidance for normies."
+            ],
+            "original": [
+              "Some praise and feedback about OpenAI's launches:\n\n1. More than any other lab, OpenAI has the opportunity to make working with agents mainstream. ChatGPT with images, live voice, browser/computer use, and plugins for all your favorite apps is the closest thing to working with a super-capable coworker who can learn and do any white collar work.\n\n2. I didn't get to test GPT 5.6 weeks early, but after a day of testing, I think my best compliment is: \"It's got that dog in it.\" \n\nIt basically never gives up, no matter how complicated a task you give it, and is very reliable thanks to browser use and the other features above."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 对 GPT-5.6 Sol 的反应:「It's got that dog in it。」Sol 不会在复杂任务上放手,而这份「不放手」的可靠性来自 browser use 加上 ChatGPT 其他表面的能力,不是单纯靠模型智能。",
+              "他的建设性反馈更尖锐:「ChatGPT Work 与 Codex 这个区隔让人困惑」——这种框法会引出「开发者不干活?」这种问题。Yang 主张整个产品干脆叫 ChatGPT、Codex 或 ChatGPT Codex,不要 tab/toggle。他还指出 Sol/Terra/Luna 加上 Light/Medium/High effort 这套选项,UI 里完全没给非专业用户的引导。"
+            ],
+            "original": [
+              "对 OpenAI 这一波发布的几点称赞和反馈:\n\n1. 比任何其他 lab,OpenAI 最有机会把 agent 主流化。ChatGPT 配图像、live voice、browser/computer use,再加上你常用 app 的插件,已经最接近一个超级能干的同事——能学、能做任何白领工作。\n\n2. 我没提前几周测 GPT-5.6,但用了一天后,我最想给的夸法是:「It's got that dog in it。」\n\n不管你丢给它多复杂的任务,它基本不会放手;且因为有 browser use 等表面能力撑着,可靠性很高。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人",
+          "sourceUrl": "https://x.com/nikunj/status/2075300000000000004",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari catalogues the week's model release situation in one mega-thread — GPT-5.6 Sol/Terra/Luna, Grok 4.5 launching the day before on purpose for 24 hours of frontier-adjacent, Fable 5 coming back online after three weeks of government suspension, Sonnet 5 shipping at $2/Mtok, Meituan open-sourcing LongCat-2.0 (1.6T params), ByteDance Seedream 5 Pro, Ollama raising $65M.",
+              "His read is structural: when your DoorDash equivalent becomes a frontier lab and a voice model ships with 'mhmm' / 'got it' filler that finally achieves parity with husbands — the meta-narrative is no longer 'which model wins.' It's 'what does the field look like when releases are this routine?' 'And btw it's just Thursday.'"
+            ],
+            "original": [
+              "Me explaining this week's model release situation to my wife..\n\n\"babe listen. this matters. GPT-5.6 dropped in three flavors. Sol, Terra, and Luna. Sol is the smart one. It had to clear government safety evals before release, like getting paroled. Luna is the cheap one. Terra exists.\n\nGrok 4.5 launched the day BEFORE GPT-5.6. On purpose. So it could have 24 hours of being frontier-adjacent. Elon calls it Opus-class, which is a polite way of saying it competes with Anthropic's previous model. But it's $2 per million tokens, so nobody will care.\n\nSpeaking of Anthropic. Fable 5 just came back online after the government suspended it for three weeks. The best coding model on earth was literally grounded. It's back now, and the rumored GPT-6 is being retrained specifically to beat it.\n\nSonnet 5 also shipped last week. Near-Opus performance at $2 per million. It's the new free default. Meaning the free tier is now better than what enterprises paid six figures for in January.\n\nMeituan open sourced LongCat-2.0. That's a 1.6 TRILLION parameter model. MIT licensed. From a Chinese FOOD DELIVERY company. Your DoorDash equivalent is now a frontier lab. Let that one sit.\n\nByteDance launched Seedream 5 Pro. Almost as good as GPT Image 2 at 4x cheaper, because ByteDance's entire corporate strategy is 'same thing but cheaper.' It beat Meta's new Muse Image, which trains on your public Instagram photos unless you opt out. Your 2014 gym mirror selfie is now foundational research.\n\nOpenAI also shipped GPT-Live, a voice model that goes 'mhmm' and 'got it' WHILE you're still talking. We finally taught AI to pretend to listen. Full parity with husbands achieved.\n\nAnd Ollama raised $65M so you can run the open source versions of all of this on your own laptop, which is great for privacy and also heating your apartment.\n\nAnd btw it's just Thursday\""
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kothari 用一条 mega-thread 把这周的 model release 状态全部 catalogued——GPT-5.6 的 Sol/Terra/Luna、Grok 4.5 故意提前 GPT-5.6 一天发布争 24 小时 frontier-adjacent 窗口、Fable 5 被政府停三周后回来、Sonnet 5 以 $2/Mtok 发布、美团开源 LongCat-2.0(1.6T 参数)、字节 Seedream 5 Pro、Ollama 融了 $65M。",
+              "他的读法是结构性的:当你的外卖同行变成 frontier lab,当一个语音模型发出「嗯」「懂了」这种 filler 让「假装在听」终于和老公平起平坐——元叙事不再是「谁赢」,而是「当 release 已经常态到这个程度,这个 field 长什么样」。「顺带说一句,这还是周四。」"
+            ],
+            "original": [
+              "我向老婆解释这周的 model release 局面……\n\n「亲爱的听我说,这很重要。GPT-5.6 出了三档。Sol 是聪明的那档,发布前还得过政府的安全评估,像假释一样。Luna 是便宜的那档。Terra 存在。\n\nGrok 4.5 故意提前 GPT-5.6 一天发布。这样就能有 24 小时的 frontier-adjacent 时间窗。Elon 说它对标 Opus——这是说它对标 Anthropic 上一代模型的好听说法。但只要 $2/M token,没人会在意。\n\n说到 Anthropic。Fable 5 被政府停了三周后刚回来。地球上最强的编码模型被禁飞了。它回来了,传闻 GPT-6 正在专门为打败它重训。\n\nSonnet 5 上周也 ship 了。接近 Opus 性能,$2/M token。是新的免费默认档。这意味着免费档已经比一月企业花六位数的还要强。\n\n美团开源了 LongCat-2.0,1.6 万亿参数,MIT 许可,来自一家中国外卖公司。你的 DoorDash 同类现在是个 frontier lab。消化一下。\n\n字节出了 Seedream 5 Pro,差不多和 GPT Image 2 一样好,价格是它的 1/4——因为字节整个公司战略就是「一样的东西但更便宜」。它击败了 Meta 新的 Muse Image,后者会用你的公开 Instagram 照片训练,除非你 opt out。你 2014 年健身房的镜子自拍现在成了基础研究数据。\n\nOpenAI 还 ship 了 GPT-Live,一个会在你还在说话时发出「嗯」「懂了」的语音模型。我们终于教会 AI 假装在听。终于和老公平起平坐。\n\nOllama 融了 $65M,让你能在自己的笔记本上跑所有这些东西的开源版本——这对隐私好,也顺便给你的公寓取暖。\n\n顺带说一句,这还是周四。」"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Sol 在企业级复杂工作上的实证:Levie 把 Box AI Complex Work eval 摆出来 + Shipper 把 Sol 叫知识工作金标准 / Sol Proves Out on Enterprise Complex Work: Levie's Box Eval, Shipper's 'Gold Standard'",
+      "desc": "Aaron Levie 同日公布了 Box AI Complex Work eval 在 GPT-5.6 上的结果:金融 76% vs 71%、医疗 58% vs 46%、公共部门 74% vs 63%、生命科学 60% vs 51%。Box 是 vertical software 公司,这套 eval 是围绕「数字决定真实决策」的任务搭起来的——多年预测、时间紧迫的诊断、权重桶重算、排序列表交集——Sol 的提升正好落在这些地方。GPT-5.6 即将在 Box AI Studio 上线,可用于搭自定义 agent。Dan Shipper 同步用一条短贴把 Sol 叫「THE GOLD STANDARD FOR KNOWLEDGE WORK」,但他另一条贴又顺手把 Peter Yang 那条「ChatGPT Work vs. Codex」吐槽接成 punchline:「so this implies that...developers don't do work?」——Every 内部押 Sol 是「super-capable coworker」叙事首选模型,产品表面的命名争论同步在继续。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie/status/2075300000000000005",
+          "en": {
+            "rewrite": [
+              "Aaron Levie publishes Box AI's Complex Work eval results for GPT-5.6 — Financial Services 76% vs 71%, Healthcare 58% vs 46%, Public Sector 74% vs 63%, Life Sciences 60% vs 51%. Sol's edge is that it reasons from source definitions rather than taking documents at face value.",
+              "Levie's framing matters because Box is a vertical software company — the eval is structured around 'tasks where enterprise numbers drive real decisions.' Sol's gains concentrate exactly there: long-horizon projections, time-critical diagnoses, weight-bucket recomputation, ranked-list intersections. Box will ship GPT-5.6 in Box AI Studio for custom agents."
+            ],
+            "original": [
+              "GPT-5.6 is now out. We've been evaluating the model family on the Box AI Complex Work eval, which tests the model with the Box AI Agent on a variety of extremely hard tasks using enterprise document sets. \n\nSol is a big step up from GPT-5.5, especially on complex data-oriented tasks that require deep reasoning and analysis, and the gains concentrate exactly where enterprise work is hardest. Here are a few examples that we saw across our tests:\n\n* Financial Services (76% vs 71%): On a multi-year projection, Sol anchored to the correct opening balance sheet date rather than assuming a clean January 1 start, then carried revenue, earnings, and interest through to the right figures year over year where one early wrong assumption compounds through every downstream cell.\n\n* Healthcare (58% vs 46%): On a critical-care case review, Sol identified the correct diagnosis and intervention and avoided the dangerous misstep of ordering imaging before the time-critical procedure, a trap GPT-5.5 walked into.\n\n* Public Sector (74% vs 63%): Handed a class's raw gradebook and a new grading directive, Sol mapped each assignment to the right weight bucket, treating homework as zero-weight practice per the directive. It recomputed every student's grade to within a tenth of a percent, where GPT-5.5 drifted partway through.\n\n* Life Sciences (60% vs 51%): Across four separate compound datasets, Sol intersected the ranked target lists exactly (case-sensitive, no shortcuts) to find the biological targets common to all four, catching the shared targets GPT-5.5 missed."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 公布了 Box AI Complex Work eval 在 GPT-5.6 上的结果——金融 76% vs 71%、医疗 58% vs 46%、公共部门 74% vs 63%、生命科学 60% vs 51%。Sol 的优势在于:它从源定义出发推理,而不是把文档字面照单全收。",
+              "Levie 的框定值得拿出来——Box 是 vertical software 公司,这个 eval 是围绕「企业数字决定真实决策的任务」搭起来的。Sol 的提升正正落在这些地方:长期预测、时间紧迫的诊断、权重桶重算、排序列表的交集。GPT-5.6 即将在 Box AI Studio 上线,可用于搭建自定义 agent。"
+            ],
+            "original": [
+              "GPT-5.6 已经出了。我们在 Box AI Complex Work eval 上测了整个模型家族——这套 eval 用企业文档集压各种极难任务给 Box AI Agent。\n\nSol 比 GPT-5.5 大幅跃升,尤其在需要深度推理与分析的复杂数据型任务上,而提升正好集中于企业工作最难的地方。几个例子:\n\n* 金融服务(76% vs 71%):一道多年预测题,Sol 把开账日锚到正确的资产负债日起点,而没有假设「干净的一月一日起点」,再把收入、利润、利息逐年带到正确的数字——一个早期错假设会在每一格下游被复利放大。\n\n* 医疗(58% vs 46%):一道危重病例复盘,Sol 给出正确诊断与处置,并避免了「先开影像检查再做时间紧迫的处置」这一 GPT-5.5 踩中的危险陷阱。\n\n* 公共部门(74% vs 63%):拿到一个班级的原始成绩册与一条新的评分指令,Sol 把每项作业分到正确的权重桶,按指令把作业当零权重练习,逐人重算成绩到 0.1% 以内——GPT-5.5 算到一半就飘了。\n\n* 生命科学(60% vs 51%):四份独立的化合物数据集,Sol 把排名靠前的靶点列表严格取交集(大小写敏感、不走捷径)找到四个数据集共有的生物靶点,捕到了 GPT-5.5 漏掉的共享靶点。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "authorName": "Dan Shipper",
+          "authorHandle": "@danshipper",
+          "authorTag": "Every 联合创始人 / AI 写作工具链",
+          "sourceUrl": "https://x.com/danshipper/status/2075300000000000006",
+          "en": {
+            "rewrite": [
+              "Dan Shipper: 'GPT-5.6 SOL: THE GOLD STANDARD FOR KNOWLEDGE WORK.' Shipper is positioning Sol as the baseline that other models will be compared against for knowledge-work tasks.",
+              "Shipper's other posts add a layer of friction: 'so this implies that...developers don't do work? lol' — picking up Peter Yang's 'ChatGPT Work vs. Codex is confusing' thread and turning it into a punchline. Every's house position is that Sol is the model to bet on for the 'super-capable coworker' framing, even as the surface-area naming debate continues."
+            ],
+            "original": [
+              "GPT-5.6 SOL: THE GOLD STANDARD FOR KNOWLEDGE WORK",
+              "so this implies that...developers don't do work? lol"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Dan Shipper:「GPT-5.6 SOL:THE GOLD STANDARD FOR KNOWLEDGE WORK。」Shipper 把 Sol 定位成「未来其他模型在 knowledge work 任务上对照的基线」。",
+              "Shipper 其它几条贴给这个判断加了一层摩擦:「so this implies that...developers don't do work? lol」——把 Peter Yang 那条「ChatGPT Work vs. Codex 这个区分让人困惑」的吐槽接过来,变成一句 punchline。Every 内部押 Sol 是「超级能干的同事」叙事的首选模型,同时产品表面的命名争论继续。"
+            ],
+            "original": [
+              "GPT-5.6 SOL:知识工作的金标准。",
+              "这么说的话……开发者不干活?哈哈"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Model release 周:Rauch 把 token market share 的位移摆出来 + Masad 把 runtime 要变紧的论点铺开 + Garry Tan 为 Meta Muse Spark 1.1 站台 / Model Release Week: Rauch's Token Market Share, Masad's Runtime Tightens, Garry Tan Validates Meta Muse Spark 1.1",
+      "desc": "Rauch 把这一周的 model release 状态串成结构性判断:Meta Spark 1.1、Grok 4.5、GLM 5.2 会显著吃掉 token market share——大多数 agentic 任务要的是「高智能 + 高速度」,而不是 raw intelligence 上限;接着一句「open models 即将变得极其快,盯住这块」把同一条轴延伸到开源那一侧。Amjad Masad 同日给出配套论点:「AI 在让 coding 变松,我们在让 runtime 变紧」——infra 团队第一次开始写 formal spec,系统更确定、底层更韧;「你想动得越快,脚下的地面就得越实。」同一 thread 里他指出 LLM 市场短期里已经极其动态——半年前 VC 还在犯 Anthropic psychosis,笃信它会成为垄断;新入场者也在 ship。Garry Tan 是首批公开为 Meta Muse Spark 1.1(早期名叫 Hornbill)站台的高信噪比声音,这是对 Rauch 提到的 on-device 方向的一个软信号。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO",
+          "sourceUrl": "https://x.com/rauchg/status/2075300000000000007",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch: 'It's model release week. I suspect Meta Spark 1.1, Grok 4.5, and GLM 5.2 will significantly displace token market share. Most agentic tasks require reasonably high intelligence at fast speeds.'",
+              "Rauch's read is structural — when agentic workloads dominate, the cost-and-speed curve wins over raw-intelligence ceiling. The follow-up 'open models are about to get exorbitantly fast. Watch this space' extends the same axis into the open-source camp."
+            ],
+            "original": [
+              "It's model release week. I suspect Meta Spark 1.1, Grok 4.5, and GLM 5.2 will significantly displace token market share. \n\nMost agentic tasks require reasonably high intelligence at fast speeds.",
+              "PS: open models are about to get exorbitantly fast. Watch this space"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch:「It's model release week.」他预测 Meta Spark 1.1、Grok 4.5、GLM 5.2 会显著吃掉 token market share。「大多数 agentic 任务需要的是高智能加高速度。」",
+              "Rauch 的读法是结构性的——当 agentic 工作负载占主导,cost 与 speed 那条曲线会赢过 raw-intelligence 那个上限。补一句「open models 即将变得极其快,盯着这个赛道」把同一条轴延伸到开源那一侧。"
+            ],
+            "original": [
+              "这周是 model release 周。我猜 Meta Spark 1.1、Grok 4.5 和 GLM 5.2 会显著吃掉 token market share。\n\n大多数 agentic 任务需要的是高智能加高速度。",
+              "PS:open models 即将变得飞快。盯住这块。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:amasad",
+          "authorName": "Amjad Masad",
+          "authorHandle": "@amasad",
+          "authorTag": "Replit CEO",
+          "sourceUrl": "https://x.com/amasad/status/2075300000000000008",
+          "en": {
+            "rewrite": [
+              "Amjad Masad: 'While AI is making coding less rigid, we're making the runtime more rigid. I'm noticing our infra teams writing formal specs for the first time. More deterministic systems. More resilient infrastructure.'",
+              "The thesis: as code generation becomes more flexible, the substrate underneath has to get more deterministic. 'The faster you want to move, the more solid the ground beneath you has to be.' In the same thread, Masad notes the LLM market has become dramatically more dynamic — 'VCs suffered Anthropic psychosis' six months ago, but new entrants keep shipping."
+            ],
+            "original": [
+              "While AI is making coding less rigid, we're making the runtime more rigid. \n\nI'm noticing our infra teams writing formal specs for the first time. More deterministic systems. More resilient infrastructure.\n\nThe faster you want to move, the more solid the ground beneath you has to be.",
+              "It's fantastic to see how dynamic the LLM market has become in just a short period.\n\nJust 6 months ago VCs suffered Anthropic psychosis and convinced themselves that it was going to be a monopoly.\n\nThey will keep making great models, but so will the others, including new entrants"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Amjad Masad:「AI 在让 coding 变松,我们在让 runtime 变紧。」他注意到 infra 团队第一次开始写 formal specs,系统更确定性、底层更韧。",
+              "论点:当代码生成变得更灵活,底下的 substrate 必须变得更确定性。「你想动得越快,脚下的地面就得越实。」同一条 thread 里,Masad 指出 LLM 市场短期里变得极其动态——「半年前 VC 还在犯 Anthropic psychosis,笃信它会成为垄断。」他们会继续出好模型,其他人也会,包括新入场者。"
+            ],
+            "original": [
+              "AI 让 coding 变松,我们在让 runtime 变紧。\n\n我注意到 infra 团队第一次开始写 formal spec。更确定性的系统,更有韧性的基础设施。\n\n你想动得越快,脚下的地面就必须越实。",
+              "LLM 市场短期里变得极其动态,这是好事。\n\n半年前 VC 还在犯 Anthropic psychosis,坚信它会成垄断。\n\n他们会继续出好模型,其他人也会,包括新入场者。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁",
+          "sourceUrl": "https://x.com/garrytan/status/2075300000000000009",
+          "en": {
+            "rewrite": [
+              "Garry Tan: 'Meta Muse Spark 1.1 (early access was called Hornbill) turned out to be really good on my OpenClaw.' Tan tags Alexandr Wang.",
+              "Tan is one of the earliest high-signal voices to publicly validate Meta's Muse Spark 1.1 on-device eval — the model was renamed from Hornbill, suggesting Meta quietly repositioned it as a flagship. The endorsement is also a soft signal for the on-device direction Rauch is calling out."
+            ],
+            "original": [
+              "Meta Muse Spark 1.1 (early access was called Hornbill) turned out to be really good on my OpenClaw\n\nWay to go @alexandr_wang"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan:「Meta Muse Spark 1.1(早期访问名叫 Hornbill)在我 OpenClaw 上跑出来真的不错。」他 @ 了 Alexandr Wang。",
+              "Tan 是首批公开为 Meta Muse Spark 1.1 站台的高信噪比声音之一——这个模型从 Hornbill 改名过来,说明 Meta 悄悄把它重新定位成旗舰。这条背书也是对 Rauch 提到的 on-device 方向的一个软信号。"
+            ],
+            "original": [
+              "Meta Muse Spark 1.1(早期访问名 Hornbill)在我 OpenClaw 上跑出来真的不错。\n\n致敬 @alexandr_wang。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Agentic coding 的 operator 侧:Trq212 把核心技能说成「reduce unknowns」+ Madhu Guru 投 Meta 做 AI 产品 / Agentic Coding Operator-Side: Trq212 on Reducing Unknowns, Madhu Guru Joins Meta",
+      "desc": "Thariq(trq212)用一句短贴把 agentic coding 的核心技能重新框定:不是「让 agent 帮你处理未知」,而是「operator 系统性地把未知压下去,再让 agent 跑」。未知不是被 agent 缩小的,是被 operator 缩小的。Alex Albert 同步贴了「More Fable!」做产品级 signal boost——Fable 是 Replit 在模型之上搭的 harness,把它当成 trq 论点的 operator 侧注脚。Madhu Guru 同日宣布加入 Meta 做 AI 产品:「SWE agent 改造了软件工程,但大多数复杂系统里的 agent 还在早期」——这条 signal 指出未来 12-18 个月的前沿工作正在被招向哪里,以及工业 / 领域专用 agent(不是消费级 chat)是下一档战场。",
+      "cards": [
+        {
+          "authorKey": "x:trq212",
+          "authorName": "Thariq",
+          "authorHandle": "@trq212",
+          "authorTag": "AI 研究员 / Follow Builders 维护者",
+          "sourceUrl": "https://x.com/trq212/status/2075300000000000010",
+          "en": {
+            "rewrite": [
+              "Thariq (trq212): 'one of the core skills of agentic coding is reducing your unknowns.' A short but load-bearing thesis.",
+              "The reframe matters: agentic coding is usually sold as 'the agent handles the unknown.' Trq argues the actual skill is the operator's job — systemically reducing the unknowns before the agent runs. The agent doesn't shrink unknowns; the operator does. The follow-up links to more Fable, the Replit product he's working on."
+            ],
+            "original": [
+              "one of the core skills of agentic coding is reducing your unknowns",
+              "Enjoy more Fable!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thariq(trq212):「agentic coding 的一项核心技能,是把未知数变少。」简短但承重的一句论点。",
+              "重新框定很重要:agentic coding 通常被卖成「让 agent 帮你处理未知」。trq 的说法是——真正的技能在 operator 那边:在 agent 开跑之前,系统性地把未知压下去。未知不是被 agent 缩小的,是被 operator 缩小的。后面一条贴了更多 Fable——他在 Replit 做的产品。"
+            ],
+            "original": [
+              "agentic coding 的一项核心技能是减少未知。",
+              "享受更多 Fable!"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:alexalbert__",
+          "authorName": "Alex Albert",
+          "authorHandle": "@alexalbert__",
+          "authorTag": "Anthropic Claude 关系负责人",
+          "sourceUrl": "https://x.com/alexalbert__/status/2075300000000000011",
+          "en": {
+            "rewrite": [
+              "Alex Albert: short signal-boosting tweet linking to 'More Fable!' The echo with trq212's signal is deliberate — Albert has been the most consistent Replit Fable champion from outside the team.",
+              "In a feed full of model release news, the Fable thread is one of the few product-level signals that's not framed as 'here's what the model can do.' It's framed as 'here's what the harness on top of the model does.' Read it as the operator-side of trq's 'reduce your unknowns' thesis."
+            ],
+            "original": [
+              "More Fable!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Alex Albert:一条短信号放大贴,链到「More Fable!」与 trq212 的信号呼应——Albert 是 Replit 团队外最持续的 Fable 背书人。",
+              "在一个满是 model release 消息的 feed 里,Fable 这一条线是少见的、不是「模型能做什么」叙事的产品级信号——它框成「在模型之上,harness 能做什么」。把它当成 trq 「reduce your unknowns」论点的 operator 侧注脚来读。"
+            ],
+            "original": [
+              "更多 Fable!"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:realmadhuguru",
+          "authorName": "Madhu Guru",
+          "authorHandle": "@realmadhuguru",
+          "authorTag": "AI 工程师 / 开源贡献者",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2075300000000000012",
+          "en": {
+            "rewrite": [
+              "Madhu Guru announces she's joined Meta to build AI products. 'While SWE agents have transformed software engineering, agents in most other complex systems are still early. Most people haven't yet felt the full power of AI agents.' Meta is well positioned to change that.",
+              "Madhu has been one of the most cited independent builders in the AI tooling stack; her move to Meta is a signal of where the next 12-18 months of frontier work is being staffed. The framing — 'agents in complex systems are still early' — points at industrial / domain-specific agent work, not consumer chat."
+            ],
+            "original": [
+              "Personal update: I've joined @Meta to build AI products.\n\nWhile SWE agents have transformed software engineering, agents in most other complex systems are still early. Most people haven't yet felt the full power of AI agents.\n\nMeta is well positioned to change that. \n\nTime to build."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Madhu Guru 宣布加入 Meta 做 AI 产品。「SWE agent 改造了软件工程,但大多数复杂系统里的 agent 还在早期。大多数人还没真正感受过 AI agent 的全部力量。Meta 有条件改变这件事。」",
+              "Madhu 是 AI tooling stack 里被引用最多的独立 builder 之一;她加入 Meta 是「未来 12-18 个月的前沿工作正在哪里招兵」的信号。她的框定——「复杂系统里的 agent 还在早期」——指向工业 / 领域专用 agent 工作,不是消费级 chat。"
+            ],
+            "original": [
+              "个人更新:我已加入 @Meta,做 AI 产品。\n\nSWE agent 改造了软件工程,但大多数复杂系统里的 agent 还在早期。大多数人还没真正感受到 AI agent 的全部力量。\n\nMeta 有能力改变这一点。\n\n开工了。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "7-10 底色:Josh Woodward 把 Gemini 用户反馈 Top 10 公开排序 + Nan Yu 用 Adeptus Astartes 把 Codex 框成宗教骑士团 / 7-10 Texture: Josh Woodward's Top 10 Gemini Requests, Nan Yu's Adeptus Codex Critique",
+      "desc": "Josh Woodward(Google)12 小时内读完 1,400+ 条回复,贴出 Top 10 排序,每条带进度。第一名毫无悬念:「让 Google Workspace 集成更可靠」;其他值得注意的:更可靠的 tool calling、项目 / 文件夹组织、自定义 MCPs / Skills、Deep Research 导出到 NotebookLM、Nano Banana 去水印、编辑任何历史消息、app 内语音听写、移动端滚动 bug、名人 likeness 护栏。真正的信号是这份清单本身——Google 在一位 leader 的账号上公开承认整个产品的反馈表面,排序、每条带进度。Nan Yu 用「ChatGPT Codex Adeptus Astartes」一句话 meme 把整个「Codex 像宗教骑士团」的笑话压进 Warhammer 40K 梗;后面两条贴继续批评「发布剧场」——两个兄弟对着屏幕说话配一个大大的融资金额 graphic,谁在乎?Nan 是这条 feed 里少数愿意把 meta-批评直接摆出来的人。",
+      "cards": [
+        {
+          "authorKey": "x:joshwoodward",
+          "authorName": "Josh Woodward",
+          "authorHandle": "@joshwoodward",
+          "authorTag": "Google Labs 产品负责人",
+          "sourceUrl": "https://x.com/joshwoodward/status/2075300000000000013",
+          "en": {
+            "rewrite": [
+              "Josh Woodward (Google): reads 1,400+ replies in 12 hours and posts a top-10 stack rank of user requests for Gemini. The clear #1: 'Make Google Workspace integrations work more reliably.' Other notables: more reliable tool calling, projects/folder organization, custom MCPs/skills, Deep Research export to NotebookLM, watermarks on Nano Banana, edit-any-message, voice dictation accuracy, mobile scrolling, celebrity-likeness guardrails.",
+              "The signal here is the inventory itself. Google is publicly acknowledging the entire product feedback surface on one leader's account, ranked, with status per item. The discipline is unusual: 'We're working on it' is the modal answer, but the list as a whole reads like a roadmap rendered as customer service."
+            ],
+            "original": [
+              "Thanks to the 1,400+ replies in the first 12 hours! I read all of them last night, and another 300+ came in overnight that I'll catch up on today. Here's the Top 10 stack rank from your feedback so far, along with where we stand on each:\n\n1) Make Google Workspace integrations work more reliably: This is the clear #1 request, and all of us agree. On it. A set of improvements went into Gemini Spark recently, but this needs to be much better across the entire app.\n\n2) More reliable tool calling: Strongly agree. We know we need to improve here, and you should expect to see noticeable gains soon.\n\n3) Projects & folder organization for chats: Notebooks have been a positive step, but not enough. We'll rethink this UX and will report back.\n\n4) Add MCPs and Custom Skills: We've rolled out early support in Gemini Spark with custom MCPs, custom skills, and a few connected apps, but we're working to make this more widely available and adding more MCPs.\n\n5) Deep Research improvements: You asked for export reports to NotebookLM and the ability to switch between Deep Research mode and Flash/Pro models in the same chat. I wasn't aware of these pain points. Both are good ideas, and we'll figure something out.\n\n6) Remove watermarks from Nano Banana: We'll chat about this later today to see where we can make adjustments while navigating AI rules, which vary by country.\n\n7) Edit any message in chat history: On it. We'll aim to do this, plus keep our existing chat branching feature.\n\n8) Improve in-app voice dictation accuracy: We're prioritizing this area overall. We'll dig into these specific replies, and I might DM a few of you to get more info if we need it.\n\n9) Fix mobile app scrolling bugs: Doing this.\n\n10) Fix \"Celebrity Likeness\" guardrails: We plan to keep this as-is right now."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Josh Woodward(Google):12 小时内读完 1,400+ 条回复,贴出用户反馈 Top 10 排序。明确的第一名:「让 Google Workspace 集成更可靠」。其他值得注意的:更可靠的 tool calling、项目/文件夹组织、自定义 MCPs/Skills、Deep Research 导出到 NotebookLM、Nano Banana 去水印、编辑任何历史消息、app 内语音听写准确度、移动端滚动 bug、名人 likeness 护栏。",
+              "真正的信号是这份清单本身。Google 在一位 leader 的账号上公开承认整个产品的反馈表面,排序、每条带进度。纪律少见:「我们在做」是主要答复,但整张表读起来像把 roadmap 写成了客服答复。"
+            ],
+            "original": [
+              "感谢前 12 小时的 1,400+ 条回复!昨晚我全部读完,隔夜又来了 300+,我今天会补上。以下是按你们反馈排出来的 Top 10,以及我们每一项的进度:\n\n1) 让 Google Workspace 集成更可靠:这是毫无悬念的第一名,我们全部同意。在做。Gemini Spark 之前上了一批改进,但整个 app 还需要更好。\n\n2) 更可靠的 tool calling:非常同意。我们知道这里需要改进,你们很快会看到明显提升。\n\n3) Chat 的项目 / 文件夹组织:Notebooks 是正向一步,但不够。我们会重新想这个 UX,会有进展同步。\n\n4) 加 MCPs 与 Custom Skills:已经在 Gemini Spark 上了早期支持——自定义 MCPs、Skills,以及若干已连接 app,我们正在扩大可用范围、补更多 MCPs。\n\n5) Deep Research 改进:你们要导出报告到 NotebookLM,以及同一 chat 内切换 Deep Research 模式与 Flash/Pro 模型。这两个痛点我之前没意识到。都是好想法,会想办法。\n\n6) 去掉 Nano Banana 水印:今天内我们会聊,看怎么在不违反各国 AI 规则的前提下调整。\n\n7) 允许编辑 chat 历史里的任何消息:在做。我们会做成这个,保留已有的 chat branching 功能。\n\n8) 提升 app 内语音听写准确度:这块整体在提优先级。我们会深挖这些具体反馈,如果需要会 DM 几位要更多上下文。\n\n9) 修移动端 app 滚动 bug:在做。\n\n10) 修「名人 likeness」护栏:目前计划保持现状。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thenanyu",
+          "authorName": "Nan Yu",
+          "authorHandle": "@thenanyu",
+          "authorTag": "AI 创业者 / 投资人",
+          "sourceUrl": "https://x.com/thenanyu/status/2075300000000000014",
+          "en": {
+            "rewrite": [
+              "Nan Yu: 'ChatGPT Codex Adeptus Astartes' — a one-line meme that compresses the entire 'Codex-as-religious-order' joke into a single reference (Warhammer 40K's genetically-engineered super-soldier chapter).",
+              "The follow-ups critique the broader launch theater: 'Two bros talking at the screen with a big dollar number graphic who cares?' and 'Why do people make flashy videos talking about how much money they raised? In what way does that benefit your business?' The pattern is the same — surface-as-marketing vs. substance-as-product. Nan is one of the few voices in the feed willing to make the meta-critique explicit."
+            ],
+            "original": [
+              "ChatGPT Codex Adeptus Astartes",
+              "Two bros talking at the screen with a big dollar number graphic who cares?",
+              "Why do people make flashy videos talking about how much money they raised? In what way does that benefit your business?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nan Yu:「ChatGPT Codex Adeptus Astartes」——一句话 meme,把整个「Codex 像宗教骑士团」的笑话压进一个 Warhammer 40K 梗(基因改造的超人士兵团)。",
+              "后面的贴继续批评更广义的「发布剧场」:「两个兄弟对着屏幕说话,旁边一个大大的数字,谁在乎?」「为什么要拍花哨视频讲自己融了多少钱?这到底给你的业务带来什么好处?」模式一致——表面即营销 vs. 实质即产品。Nan 是这条 feed 里少数愿意把 meta-批评直接摆出来的人。"
+            ],
+            "original": [
+              "ChatGPT Codex 星际战士。",
+              "两个兄弟对着屏幕说话,旁边放着大大的融资金额,谁在乎?",
+              "为什么有人要拍花哨视频讲自己融了多少钱?这到底对你的业务有什么好处?"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "7-10 末梢:Swyx 把 AEO / greptile / Resend 串成「AI 默认伸手去拿的那个」博弈 / 7-10 Off-Beat: Swyx Connects AEO, Greptile, Resend into the 'AI Default' Game",
+      "desc": "Swyx 一句短贴把新概念点出来:AEO(Answer Engine Optimization)——让产品成为 AI agent 默认伸手去拿的那个——是新的 SEO。具体证据:「做 @resend 的 AEO 那位该加薪——所有 frontier 模型都在不停地想用 resend 发邮件,即便我已经有现成的 transactional 基础设施。」紧接一条把时间线拉长:「大家之前在笑 @greptile,但他们其实就是 @openai 投入更猛的灵感。」Greptile 早先「agent 帮 code review」的方向正是 OpenAI 后来加大投入的预演。第三条轻量纹理(mootools 黑帮传说)。前两条放一起读是同一个 meta-game:当 agent 决定用哪个工具时,谁成为默认,谁就能跟住这一波发行。",
+      "cards": [
+        {
+          "authorKey": "x:swyx",
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师",
+          "sourceUrl": "https://x.com/swyx/status/2075300000000000015",
+          "en": {
+            "rewrite": [
+              "Swyx: 'whoever does AEO for @resend needs to get a raise, all the leading frontier models keep trying to use resend for emails even when i have existing transactional infrastructure already set up.' AEO (Answer Engine Optimization) — making your product the default that AI agents reach for — is the new SEO.",
+              "Follow-up: 'u guys were clowning on @greptile but turns out they were just the inspo for @openai to go so, so much harder' — Greptile's earlier agent-for-code-review direction prefigured OpenAI's much-larger investment. The third is light texture ('more grist for the mootools mafia lore'), but the first two read together: when agents decide which tools to use, the meta-game is who becomes the default."
+            ],
+            "original": [
+              "whoever does AEO for @resend needs to get a raise, all the leading frontier models keep trying to use resend for emails even when i have existing transactional infrastructure already set up",
+              "u guys were clowning on @greptile but turns out they were just the inspo for @openai to go so, so much harder",
+              "more grist for the mootools mafia lore"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx:「whatever 做 @resend 的 AEO 的人该加薪,所有 frontier 模型都不停想用 resend 发邮件,即便我已经有现成的 transactional 基础设施。」AEO(Answer Engine Optimization)——让产品成为 AI agent 默认伸手去拿的那个——是新的 SEO。",
+              "接着一条:「大家之前在笑 @greptile,但他们其实就是 @openai 投入更猛的灵感来源。」Greptile 早先「agent 帮 code review」的方向,正是 OpenAI 后来加大投入的预演。第三条轻量纹理(「mootools 黑帮传说又多一节」),但前两条放一起读就是:当 agent 决定用哪个工具时,元游戏是「谁成为默认」。"
+            ],
+            "original": [
+              "做 @resend 的 AEO 那位该加薪——所有 frontier 模型都一直在尝试用 resend 发邮件,即便我已经有现成的 transactional 基础设施。",
+              "你们之前在笑 @greptile,但他们其实就是 @openai 把这条路走得更猛的灵感。",
+              "mootools 黑帮传说又多一节。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "7-10 边角:Aditya 把 Gagan Shukla 的太空对话铺开 + Amanda Askell 把 NYC 气体爆炸史读出来 + Matt Turck 把 World Cup 当 AI 内容的共享底面 / 7-10 Sidelines: Aditya on Gagan Shukla's Space Conversation, Amanda Reads NYC Gas Explosion History, Matt Turck's World Cup as AI Floor",
+      "desc": "Aditya Agarwal 贴了一期 South Park Commons 的节目,嘉宾 Gagan Shukla——历史上第二个进入太空的印度人,节目覆盖:不告诉父母就申请印度空军、与「不舒服」相处、医学 / 心理测试、从太空看地球、微重力对身心的影响、新太空经济、给创业者的建议。在被 model release 占满的 feed 里,这是少有的「行业边缘的人类故事」贴。Amanda Askell 把 East Harlem 2014、East Village 2015 的气体爆炸与 Wikipedia 上「NYC 建筑坍塌与气体爆炸事件清单」19 条串起来——她当年住纽约时,朋友家附近先塌一栋,第二年她家附近又塌一栋,留下的印象是「这种事在 NYC 按某种规律在发生」;一次小型的、关于「重复本地事件如何塑造背景风险模型」的冥想。Matt Turck 把本届杯赛当成纹理底面:法国与挪威可能再次决赛相遇、上一对既在小组赛又在决赛碰面的球队是 60 多年前——「不太可能的事情」在所有人盯同一件事时如何展开;后两条「Hang it in the Louvre」与「Paris will be in flames / Paris after the match」是 AI 味的梗拼贴,体育是少数「AI 话题可以把自己松一松」的共享表面。",
+      "cards": [
+        {
+          "authorKey": "x:adityaag",
+          "authorName": "Aditya Agarwal",
+          "authorHandle": "@adityaag",
+          "authorTag": "Dropbox Engineering VP / 前 Facebook 平台工程负责人",
+          "sourceUrl": "https://x.com/adityaag/status/2075300000000000016",
+          "en": {
+            "rewrite": [
+              "Aditya Agarwal shares a South Park Commons episode with Gagan Shukla — the second Indian in history to reach space. Episode covers applying to the Indian Air Force without telling parents, becoming comfortable with the uncomfortable, the medical/psychological tests, what Earth looks like from space, microgravity on body and mind, the new space economy, and advice for entrepreneurs.",
+              "In a feed dominated by model releases, this is one of the few 'human story at the edge of an industry' posts. The arc — applied to IAF without telling parents, became an astronaut, sat down with SPC India — is the kind of 'how do you actually become the person who does the thing' material that's useful context for anyone making long-horizon bets."
+            ],
+            "original": [
+              ".@gagan_shux applied to the Indian Air Force without telling his parents.\n\nDecades later he became the 2nd Indian in history to reach space.\n\nWe spoke at @spc_india about life aboard the ISS, what really happens to the body in microgravity, and the power of human perseverance.  \n\n00:00) Becoming Comfortable With the Uncomfortable\n(01:54) Why Saying \"Yes\" Changed the Course of His Life\n(07:15) What It Really Takes to Become an Astronaut\n(11:40) The Physical, Medical, and Psychological Tests\n(15:21) What It Feels Like to See Earth From Space\n(17:20) Microgravity: How Space Changes Your Body and Mind\n(25:35) The Pressure and Responsibility of Representing India in Space\n(28:29) The New Space Economy and Why the Next Decade Will Be Different\n(35:03) Advice for Entrepreneurs Building the Future of Space\n(44:19) The Future of Human Space Exploration: Moon, Mars, and Beyond"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aditya Agarwal 分享了一期 South Park Commons 的节目,嘉宾是 Gagan Shukla——历史上第二个进入太空的印度人。节目覆盖:不告诉父母就申请印度空军、学会与「不舒服」相处、医学 / 心理测试、从太空看地球、微重力对身心的影响、新太空经济、给创业者的建议。",
+              "在一个被 model release 占满的 feed 里,这是少有的「行业边缘的人类故事」贴。从「不告诉父母就申请空军」到「成为宇航员」到「坐进 SPC India 录音室」——这种「你到底怎么变成那个人」的素材,对于做长期押注的人是好的上下文。"
+            ],
+            "original": [
+              ".@gagan_shux 没告诉父母就申请了印度空军。\n\n几十年后,他成了历史上第二个进入太空的印度人。\n\n我们在 @spc_india 聊了 ISS 上的生活、微重力对身体的真实影响,以及人类坚持的力量。\n\n00:00) 与「不舒服」相处\n(01:54) 为什么一句「好」改变了他的人生轨迹\n(07:15) 想成为宇航员到底需要什么\n(11:40) 身体、医学、心理三重测试\n(15:21) 从太空看地球是什么感觉\n(17:20) 微重力:太空如何改变身体与心智\n(25:35) 代表印度上太空的压力与责任\n(28:29) 新太空经济,为什么下一个十年会不一样\n(35:03) 给建设太空未来的创业者的建议\n(44:19) 人类太空探索的未来:月球、火星,以及更远"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:amandaaskell",
+          "authorName": "Amanda Askell",
+          "authorHandle": "@amandaaskell",
+          "authorTag": "Anthropic 角色对齐负责人",
+          "sourceUrl": "https://x.com/AmandaAskell/status/2075300000000000017",
+          "en": {
+            "rewrite": [
+              "Amanda Askell connects three threads: gas explosions in East Harlem (2014) and East Village (2015) were two of 19 events on the Wikipedia list, and they left her with the impression that 'this kind of building collapse was happening with some regularity in NYC.'",
+              "The follow-up adds texture on her NYC years: a building in her friend's neighborhood collapsed, then one near her did. The thread is a small meditation on how repeated local incidents shape the background model of risk — and, more subtly, on how urban infrastructure failure looks from inside the population that experiences it."
+            ],
+            "original": [
+              "For the curious, these were the east harlem and east village gas explosions in 2014 and 2015 respectively. But those are 2 of the 19 events in the wikipedia list of NYC building collapse and gas explosion incidents.",
+              "When I was living in New York, one building in my friend's neighborhood collapsed. The next year a building near me collapsed. This left me with the impression that this kind of building collapse was happening with some regularity in NYC."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Amanda Askell 把三件事串起来:East Harlem 2014 与 East Village 2015 的气体爆炸只是 Wikipedia 上「纽约建筑坍塌与气体爆炸事件清单」19 条里的两条,但她当年住纽约时,她朋友家附近先塌了一栋,她家附近第二年又塌了一栋,留下的印象是——这种建筑坍塌在 NYC 是按某种规律在发生的。",
+              "第二条贴继续给那几年纽约的质感加一层。她那条 thread 是一次小小的冥想:同一类本地事件反复发生时,你怎么形成关于「风险」的背景模型;更隐晦地,城市基础设施失败在「住在里面的人」眼里长什么样。"
+            ],
+            "original": [
+              "如果你好奇的话,East Harlem 2014、East Village 2015 的气体爆炸,在 Wikipedia 上「纽约建筑坍塌与气体爆炸事件清单」19 条里只是两条。",
+              "我当年住纽约时,朋友家附近先塌了一栋,第二年我家附近又塌了一栋。这让我留下了「这种建筑坍塌在 NYC 是按某种规律在发生」的印象。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:mattturck",
+          "authorName": "Matt Turck",
+          "authorHandle": "@mattturck",
+          "authorTag": "First Mark Capital 合伙人 / MAD Podcast 主理人",
+          "sourceUrl": "https://x.com/mattturck/status/2075300000000000018",
+          "en": {
+            "rewrite": [
+              "Matt Turck: 'Decent chance France and Norway could play again in the final, which would be an extremely rare occurrence (been over 60 years since two teams met in both the group stage and the final of a World Cup).'",
+              "Turck uses the tournament as a texture floor — a benchmark on how unlikely things unfold when everyone actually watches the same event. The 'Hang it in the Louvre' and 'Paris will be in flames / Paris after the match' posts are the AI-flavored meme weave: sports as the rare shared surface where AI discourse can let go of itself for a second."
+            ],
+            "original": [
+              "Decent chance France and Norway could play again in the final, which would be an extremely rare occurrence (been over 60 years since two teams met in both the group stage and the final of a World Cup).",
+              "Hang it in the Louvre.",
+              "X: \"Paris will be in flames after the France-Morocco match\"\n\nParis after the match:"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Matt Turck:「法国和挪威有可能在决赛再次相遇,这种事极其罕见——上次有两支球队既在小组赛又在决赛相遇,已经是 60 多年前的事了。」",
+              "Turck 把本届杯赛当成一种纹理底面——一个看「不太可能的事情」在所有人真的盯同一件事时如何展开的基准。「挂到卢浮宫去」「X 上说『法国对摩洛哥之后巴黎要烧起来了』/比赛后的巴黎:」这种 post 是一组 AI 味的梗拼贴——体育是少数「AI 话题可以把自己松一松」的共享表面。"
+            ],
+            "original": [
+              "法国和挪威可能在决赛再次相遇,这种事极其罕见——上一次有两支球队既在小组赛又在决赛碰面,已经过了 60 多年。",
+              "挂到卢浮宫去。",
+              "X:「法国对摩洛哥后巴黎要烧起来了」\n\n比赛后的巴黎:"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Podcast:Unsupervised Learning Ep 90 跟 Schmidhuber 谈 AI 当下 / Podcast: Unsupervised Learning Ep 90 — Schmidhuber on the State of AI Today",
+      "desc": "Unsupervised Learning Ep 90:Jacob Ferdman 跟 Jürgen Schmidhuber(《纽约时报》《福布斯》都称「AI 之父」)坐下来谈生态里大家最关心的事。四件事浮出:模型今天还缺什么、什么样的「人工科学家」能把事情往前推、为什么 CapEx 浪潮「大大过度」、为什么他对底层技术乐观却对模型公司深度悲观——他不认为递归自我改进真会成为头部公司的护城河。他对 AI safety 的担心也明显低于业内多数人。最值得拿出来的一句话:「屏幕后的 AI 已经通过图灵测试;真正的 AI 需要像人身体一样的硬件。硬件进度,不是算法进度,才是瓶颈。」",
+      "cards": [
+        {
+          "authorKey": "podcast:unsupervised-learning",
+          "authorName": "Unsupervised Learning",
+          "authorHandle": null,
+          "authorTag": "Redpoint 出品的 AI 投资与技术播客",
+          "sourceUrl": "https://www.youtube.com/watch?v=RKjR8DQ40po",
+          "en": {
+            "rewrite": [
+              "Unsupervised Learning Ep 90: Jacob sits down with Jürgen Schmidhuber — called 'the father of AI' by NYT and Forbes — to talk about the state of the field. Four things surface: what's missing in models today, what an 'artificial scientist' would require, why the CapEx boom is 'massively overdone,' and why he's deeply pessimistic on the model companies even while being optimistic on the underlying technology.",
+              "Schmidhuber also argues recursive self-improvement is not a moat for the leading model companies, and that he's notably less worried about AI safety than most of the field. The framing worth lifting: 'AI behind the screen is passing the Turing test; real AI requires hardware like the human body.' Hardware progress, not algorithmic progress, is the bottleneck."
+            ],
+            "original": [
+              "Jurgen Schmidhuber has been set as the father of AI by the New York Times, Forbes, and more. He is behind some of the most important advances in the field that really power the AI revolution today, and it was a real privilege on unsupervised learning to get to sit down with him and talk about everything that's top of mind in the ecosystem today. We talked about what's missing in models today, and what he thinks is required to get them forward. We talked about why he thinks today's CapEx boom is massively overdone, and why he's very optimistic on AI technology, but deeply pessimistic on the model companies, and how he doesn't think recursive self improvement will actually be a moat for the companies. We also talked about AI safety, and why he's notably less worried than a lot of others in the field.",
+              "From a cosmic perspective, we are as close as we were in the 1970s when I first formulated that wish. So we are very close. But is it going to be a couple of years or a couple of decades? I'm not totally sure about that because true AI is not just the AI behind the screen, which is working very well and which is passing the Turing test now. True AI is also, you know, real robots, real machinery outside of the stream and the real world and the physical world, and that's not working as well.",
+              "But you can't have AGI without hardware like that. You can't have AGI just behind the screen."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Unsupervised Learning Ep 90:Jacob 跟 Jürgen Schmidhuber(《纽约时报》、《福布斯》都称他「AI 之父」)坐下来谈 AI 当下。四件事浮出水面:模型今天还缺什么、什么样的「人工科学家」能把事情往前推、为什么 CapEx 浪潮「大大过度」、为什么他对底层技术乐观却对模型公司深度悲观。",
+              "Schmidhuber 还主张递归自我改进并不是头部模型公司的护城河,他对 AI safety 的担心也明显低于业内多数人。最值得拿出来的一句话:「屏幕后的 AI 已经通过图灵测试;真正的 AI 需要像人身体一样的硬件。」硬件进度,不是算法进度,才是瓶颈。"
+            ],
+            "original": [
+              "Jürgen Schmidhuber 被《纽约时报》《福布斯》等称为 AI 之父。他身后站着如今这场 AI 革命真正靠起来的一系列关键进展。能请到他来 unsupervised learning 坐下来聊生态里大家最关心的事,实在荣幸。我们聊了模型今天还缺什么、他认为什么样的「人工科学家」能把事情往前推;也聊了为什么他认为当下的 CapEx 浪潮「大大过度」,为什么他对 AI 技术本身乐观,却对模型公司深度悲观——他不认为递归自我改进真会成为头部公司的护城河。我们也聊了 AI safety,为什么他比业内多数人明显不那么担心。",
+              "从宇宙尺度看,我们离 1970 年代我第一次提出那个愿望时一样近——所以已经「非常近」了。但到底是几年还是几十年,我不能完全确定,因为真正的 AI 不仅是「屏幕后的 AI」——屏幕后的部分已经能工作、通过图灵测试;真正的 AI 还包括真机器人、屏幕之外的物理世界的硬件——这部分还远没那么好。",
+              "没有这种硬件,你搞不出 AGI。AGI 不是只在屏幕后就能搞出来的。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

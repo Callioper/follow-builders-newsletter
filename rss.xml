@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 09 Jul 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 10 Jul 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-07-10 · Sol 出舱日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-10-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-10-rerun.html</guid>
+      <pubDate>Fri, 10 Jul 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[7-10 这一期的主轴是「GPT-5.6 Sol 发布日 + Model release 周 + Agentic coding 的 operator 侧 + 一圈 texture」:OpenAI 同日 ship GPT-5.6 Sol / Terra / Luna,Sam Altman 把发布叙事直接钉在 cost-per-task 上(enterprise 怕成本,他就给成本),Thibault 同步把 ChatGPT Work 与 Codex 的 rate limit 重置两次——把「跑道」也当成发布的一部分;Peter Yang 一天试用后说「It's got that dog in it」,但更尖锐的反馈是 ChatGPT Work / Codex 这个二选一让普通用户看不懂,Sol/Terra/Luna 配 Light/Medium/High effort 没有 UI 引导;Nikunj 用一条 mega-thread 把这一周 model release 全部 catalogue——Grok 4.5 故意早一天争 frontier-adjacent 24 小时、Fable 5 被政府停三周后回来、Sonnet 5 $2/Mtoken、美团开源 LongCat-2.0(1.6T 参数)、字节 Seedream 5 Pro、Ollama 融了 $65M,「顺带说一句,这还是周四。」;Aaron Levie 同日发布 Box AI Complex Work eval,Sol 在金融 / 医疗 / 公共部门 / 生命科学四档企业级复杂工作上比 GPT-5.5 大幅跃升;Dan Shipper 把 Sol 叫「THE GOLD STANDARD FOR KNOWLEDGE WORK」,顺手把 Peter Yang 那个吐槽接成 punchline;Rauch 把这一周的结构性判断摆出来——Meta Spark 1.1 / Grok 4.5 / GLM 5.2 会显著吃掉 token market share;Masad 给出配套论点——「AI 在让 coding 变松,我们在让 runtime 变紧」;Garry Tan 为 Meta Muse Spark 1.1 站台;Thariq(trq212)把 agentic coding 的核心技能重新框定为「reduce your unknowns」——operator 那一侧;Madhu Guru 宣布加入 Meta 做 AI 产品,「复杂系统里的 agent 还在早期」;Texture:Josh Woodward 把 Gemini 用户反馈 Top 10 公开排序并带进度,Nan Yu 用「Adeptus Astartes」一句话 meme 把 Codex 框成宗教骑士团并批评「发布剧场」,Swyx 把 AEO(Answer Engine Optimization)与 greptile-as-inspo 串成「AI 默认伸手去拿的那个」博弈,Aditya Agarwal 把 Gagan Shukla 的太空对话铺开,Amanda Askell 把 NYC 气体爆炸史读出来,Matt Turck 把 World Cup 当 AI 内容的共享底面;Podcast:Unsupervised Learning Ep 90 跟 Jürgen Schmidhuber 谈 AI 当下——他对底层技术乐观、对模型公司深度悲观,不认为递归自我改进会成为头部护城河,认为硬件进度才是 AGI 的真正瓶颈。]]></description>
+      <category>GPT-5.6 Sol 当天:Sam 把 cost 轴钉在叙事上 + Thibault 把 rate limit 一起 ship + Peter Yang 把 UX 吐槽摆出来 + Nikunj 把这一周全部 catalogue / GPT-5.6 Sol Launch Day: Altman&apos;s Cost Framing, Thibault&apos;s Rate Resets, Peter Yang&apos;s UX Critique, Nikunj&apos;s Weekly Catalogue, Sol 在企业级复杂工作上的实证:Levie 把 Box AI Complex Work eval 摆出来 + Shipper 把 Sol 叫知识工作金标准 / Sol Proves Out on Enterprise Complex Work: Levie&apos;s Box Eval, Shipper&apos;s &apos;Gold Standard&apos;, Model release 周:Rauch 把 token market share 的位移摆出来 + Masad 把 runtime 要变紧的论点铺开 + Garry Tan 为 Meta Muse Spark 1.1 站台 / Model Release Week: Rauch&apos;s Token Market Share, Masad&apos;s Runtime Tightens, Garry Tan Validates Meta Muse Spark 1.1, Agentic coding 的 operator 侧:Trq212 把核心技能说成「reduce unknowns」+ Madhu Guru 投 Meta 做 AI 产品 / Agentic Coding Operator-Side: Trq212 on Reducing Unknowns, Madhu Guru Joins Meta, 7-10 底色:Josh Woodward 把 Gemini 用户反馈 Top 10 公开排序 + Nan Yu 用 Adeptus Astartes 把 Codex 框成宗教骑士团 / 7-10 Texture: Josh Woodward&apos;s Top 10 Gemini Requests, Nan Yu&apos;s Adeptus Codex Critique, 7-10 末梢:Swyx 把 AEO / greptile / Resend 串成「AI 默认伸手去拿的那个」博弈 / 7-10 Off-Beat: Swyx Connects AEO, Greptile, Resend into the &apos;AI Default&apos; Game, 7-10 边角:Aditya 把 Gagan Shukla 的太空对话铺开 + Amanda Askell 把 NYC 气体爆炸史读出来 + Matt Turck 把 World Cup 当 AI 内容的共享底面 / 7-10 Sidelines: Aditya on Gagan Shukla&apos;s Space Conversation, Amanda Reads NYC Gas Explosion History, Matt Turck&apos;s World Cup as AI Floor, Podcast:Unsupervised Learning Ep 90 跟 Schmidhuber 谈 AI 当下 / Podcast: Unsupervised Learning Ep 90 — Schmidhuber on the State of AI Today</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-07-09 · 围栏外延日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-09-rerun.html</link>
