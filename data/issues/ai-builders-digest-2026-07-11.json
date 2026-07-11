@@ -1,0 +1,85 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-07-11",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天只有一份 podcast 进来——MAD Podcast Matt Turck 一年后第二次请回 Stripe 数据与 AI 负责人 Emily Chasser,话题是 agentic commerce 的经济栈。值得拎出来的有两件事:第一,Emily 把 token theft 直接钉成「AI 圈最少被讨论的话题之一」——AI 公司新增用户里超过六分之一是这种滥用,「dine-and-dash 的 token 版」,基于被盗信用卡训练的检测规则对这一整面基本是盲区;第二,她想把 12 个月后的故事从「Emily 给 agent 一个授权让它替我买东西」切到「Emily 拥有了一个 agent,它的本职就是经营一门生意——买、卖、赚利润」。Per-seat 定价正在失效,因为新买家不再是「一个 seat」;信任这一侧和产品挑战一样被低估——朋友家人脱口而出的永远是「会不会超支、会不会买错、能不能叫停」。这一期就这两件事,但每一件都是接下来 12 个月里 AI 经济层的真正主线。"
+  },
+  "archive": {
+    "title": "代付上链日",
+    "desc": "今天的 feed 只来了一份 podcast——MAD Podcast 一年后再次请回 Stripe 的 Emily Chasser,主轴是 agentic commerce 的「经济栈」。两条线:一是 Emily 把 token theft 钉成「AI 圈最少被讨论的话题之一」,AI 公司新增用户里超过六分之一是这种滥用,基于被盗信用卡训练的检测规则对这一面是盲区;二是她想把 12 个月后的故事从「agent 替用户买东西」切到「agent 经营一门生意——买、卖、赚利润」。Per-seat 定价正在失效,信任这一侧和产品挑战一样被低估。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-11 source feeds.",
+  "sections": [
+    {
+      "title": "Stripe 的 AI 负责人把 agentic commerce 的「栈」拆给你看:Token theft 是被低估的欺诈面 + Per-seat 定价正在失效 + 12 个月内 agent 不再替用户买东西,而是经营一门生意 / Stripe's AI Chief on the Agentic-Commerce Stack: Token Theft, Per-Seat Pricing Collapse, and the 12-Month 'Agent Runs the Business' Shift",
+      "desc": "今天的 feed 只来了一份 MAD Podcast,Matt Turck 一年后第二次请回 Stripe 数据与 AI 负责人 Emily Chasser,主轴是「agentic commerce 的经济栈」。两件事值得拎出来:第一,Emily 把 token theft 直接钉成「AI 圈最少被讨论的话题」——AI 公司新增用户里超过六分之一是这种滥用,「dine-and-dash 的 token 版」,现有基于被盗信用卡训练的检测规则对这一面基本是盲区;第二,她想把 12 个月后的故事从「Emily 授权 agent 替我买东西」切到「Emily 拥有了一个 agent,它的本职就是经营一门生意——买、卖、赚利润」。Per-seat 定价正在失效,因为新买家不再是「一个 seat」;信任这一侧和产品挑战一样被低估——朋友家人脱口而出的永远是「会不会超支、会不会买错、能不能叫停」。这一期的两条 card 就分别落在「被低估的 token theft」与「12 个月内的范式切换」上。",
+      "cards": [
+        {
+          "authorKey": "podcast:mad-podcast",
+          "authorName": "The MAD Podcast",
+          "authorHandle": null,
+          "authorTag": "Matt Turck 主理的 AI 与数据播客",
+          "sourceUrl": "https://www.youtube.com/@DataDrivenNYC/videos",
+          "en": {
+            "rewrite": [
+              "Emily Chasser (Stripe Head of Data & AI): token theft is the most under-discussed topic in AI. Fraudsters no longer need to steal money or credentials — they steal tokens.",
+              "Scale hit her when she looked at the numbers: more than one in six signups at AI companies are this kind of abuse. She frames it as 'the dine-and-dash, but for tokens' — a new fraud category the existing stack doesn't really price.",
+              "Why it matters: as agents gain spending authority on behalf of users (and on behalf of businesses), the unit of abuse shifts from the card to the token. Detection rules trained on stolen credit cards miss this surface entirely."
+            ],
+            "original": [
+              "Fraudsters have figured out that in AI, you actually don't really need to steal money or credentials. You can just steal tokens. And the scale of this actually shocked me when I looked at the data. So more than one in six signups at AI companies are this kind of abuse.",
+              "It's a new form of fraud. It's, I think, one of the most under discussed topics in AI right now, maybe by a lot."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Stripe 数据与 AI 负责人 Emily Chasser:token theft 是 AI 圈最被低估的话题。骗子不再需要偷钱或凭证——他们偷 token。",
+              "她看到数据时吓了一跳:AI 公司的新增用户里,超过六分之一是这种滥用。她把它框成「dine-and-dash 的 token 版」——现有风险栈对它基本没有定价。",
+              "为什么重要:当 agent 开始替用户(以及替企业)拥有花钱权限时,滥用的单位从「信用卡」切到「token」。基于被盗信用卡训练的检测规则对这一整面几乎全是盲区。"
+            ],
+            "original": [
+              "骗子已经搞明白了:在 AI 这边,你其实不需要偷钱或偷凭证,只需要偷 token。我看数据时吓了一跳——AI 公司的新增用户里,超过六分之一就是这种滥用。",
+              "这是一种新型欺诈。我认为是当下 AI 圈最少被讨论的话题之一,而且差距可能很大。"
+            ]
+          }
+        },
+        {
+          "authorKey": "podcast:mad-podcast",
+          "authorName": "The MAD Podcast",
+          "authorHandle": null,
+          "authorTag": "Matt Turck 主理的 AI 与数据播客",
+          "sourceUrl": "https://www.youtube.com/@DataDrivenNYC/videos",
+          "en": {
+            "rewrite": [
+              "The 12-month shift Chasser wants to talk about: it's no longer 'Emily permissions an agent to buy on her behalf.' It's 'Emily has an agent whose job is to run a business — buy things, sell things, make profits.'",
+              "Per-seat pricing is breaking because the new buyer isn't a seat. Trust is as under-discussed as the product challenge: when she asks friends and family, the first three reactions are 'will it overspend, will it buy the wrong thing, can I stop it.'",
+              "The arc Matt Turk + Chasser sketch: 5% efficiency on existing processes first (auto-fill the credit card form), then reimagine the system. The interesting layer isn't 'agent buys me stuff' — it's 'agent runs a business I own a slice of.'"
+            ],
+            "original": [
+              "It's not Emily permissioning an agent to buy on her behalf. It's Emily has an agent who's tasked with running a business, and that includes buying some things and selling some things and making some profits. And that'll be the world that I would like to be talking about twelve months from now.",
+              "I actually think the trust dimension here is as underrated or under discussed as the product challenge. Like, when I go and ask my friends and family whether they'd be comfortable letting an agent buy things on their behalf, they usually jump straight to like, well, is it gonna overspend, and is it gonna buy the wrong thing, and can I stop it."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Chasser 想在 12 个月后讲的故事:不再是「Emily 给 agent 一个授权,让它替我买东西」,而是「Emily 有一个 agent,它的本职就是经营一门生意——买东西、卖东西、做出利润」。",
+              "Per-seat 定价正在失效,因为新买家不再是「一个 seat」。信任这一侧和产品挑战一样被低估:她问朋友家人时,前三个反应永远是「会不会超支、会不会买错、能不能叫停」。",
+              "Matt Turk 与 Chasser 共同勾勒的弧线:先用新工具给现有流程加 5% 的效率(自动填信用卡号这种),然后才是重构系统。真正有意思的那一层不是「agent 替我买」,而是「agent 经营一门我占股的生意」。"
+            ],
+            "original": [
+              "不再是 Emily 给 agent 一个授权让它替我买东西。是 Emily 拥有了一个 agent,这个 agent 的本职就是经营一门生意——包括买东西、卖东西、做出利润。这才是 12 个月后我想去讲的那个世界。",
+              "其实信任这一侧和产品挑战一样被低估。每次我问朋友家人「愿不愿意让 agent 替你们买东西」,他们脱口而出的都是:会不会超支、会不会买错、能不能叫停。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 10 Jul 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 11 Jul 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-07-11 · 代付上链日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-11-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-11-rerun.html</guid>
+      <pubDate>Sat, 11 Jul 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[今天只有一份 podcast 进来——MAD Podcast Matt Turck 一年后第二次请回 Stripe 数据与 AI 负责人 Emily Chasser,话题是 agentic commerce 的经济栈。值得拎出来的有两件事:第一,Emily 把 token theft 直接钉成「AI 圈最少被讨论的话题之一」——AI 公司新增用户里超过六分之一是这种滥用,「dine-and-dash 的 token 版」,基于被盗信用卡训练的检测规则对这一整面基本是盲区;第二,她想把 12 个月后的故事从「Emily 给 agent 一个授权让它替我买东西」切到「Emily 拥有了一个 agent,它的本职就是经营一门生意——买、卖、赚利润」。Per-seat 定价正在失效,因为新买家不再是「一个 seat」;信任这一侧和产品挑战一样被低估——朋友家人脱口而出的永远是「会不会超支、会不会买错、能不能叫停」。这一期就这两件事,但每一件都是接下来 12 个月里 AI 经济层的真正主线。]]></description>
+      <category>Stripe 的 AI 负责人把 agentic commerce 的「栈」拆给你看:Token theft 是被低估的欺诈面 + Per-seat 定价正在失效 + 12 个月内 agent 不再替用户买东西,而是经营一门生意 / Stripe&apos;s AI Chief on the Agentic-Commerce Stack: Token Theft, Per-Seat Pricing Collapse, and the 12-Month &apos;Agent Runs the Business&apos; Shift</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-07-10 · Sol 出舱日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-10-rerun.html</link>
