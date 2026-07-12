@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Builders Digest · 2026-07-12</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ed;
+    --accent: #c0392b;
+    --accent-light: #e8d5c4;
+    --border: #d4cdc0;
+    --muted: #7a7265;
+    --tag-bg: #e8e2d6;
+    --en-bg: #ffffff;
+    --cn-bg: #faf7f2;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  .masthead, .intro, .section-header, .feed, footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .masthead { padding-top: 48px; }
+  .masthead-rule { border: none; border-top: 3px solid var(--ink); margin: 0 0 12px; }
+  .masthead-inner { display: flex; justify-content: center; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; letter-spacing: -0.4px; }
+  .masthead-subtitle { margin-top: 8px; padding-bottom: 10px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  .edition-strip {
+    position: relative;
+    margin-top: 8px;
+    min-height: 46px;
+    padding: 10px 132px 12px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.34);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+
+  .edition-strip .edition-sep { margin: 0 8px; color: #b8ae9f; }
+  .edition-strip-text { display: block; }
+  .edition-return-link { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; padding: 6px 10px; border: 1px dashed rgba(192, 57, 43, 0.55); border-radius: 999px; color: var(--accent); text-decoration: none; font-size: 12px; line-height: 1; letter-spacing: 0.06em; background: rgba(255, 255, 255, 0.45); transition: background 160ms ease, border-color 160ms ease, transform 160ms ease; }
+  .edition-return-link:hover, .edition-return-link:focus-visible { background: rgba(255, 255, 255, 0.82); border-color: var(--accent); transform: translateY(-50%) translateX(-1px); }
+  .edition-return-link:focus-visible { outline: none; }
+  .intro { padding-top: 22px; }
+  .intro-inner { max-width: 920px; margin: 0 auto; padding: 0 0 0 18px; border-left: 3px solid #d9cdbc; }
+  .intro-kicker { margin: 0 0 8px; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .intro p { margin: 0; max-width: none; color: var(--muted); font-size: clamp(15px, 1.6vw, 16px); line-height: 1.9; text-wrap: pretty; font-family: 'Noto Serif SC', serif; overflow-wrap: anywhere; }
+
+  .section-header { margin-top: 40px; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; margin: 0 0 6px; }
+  .section-desc { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+
+  .feed { display: flex; flex-direction: column; gap: 20px; }
+  .card { background: var(--en-bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .card-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid #eee7dd; flex-wrap: wrap; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .avatar-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .avatar.is-fallback img { display: none; }
+  .avatar.is-fallback .avatar-fallback { display: flex; }
+
+  .author-info { flex: 1; min-width: 160px; }
+  .author-name { font-weight: 600; font-size: 15px; }
+  .author-name-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .author-handle { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+  .author-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; background: var(--tag-bg); color: var(--muted); padding: 4px 8px; border-radius: 999px; }
+  .author-tag.is-inline { padding: 3px 8px; }
+
+  .card-controls { margin-left: auto; display: inline-flex; gap: 8px; }
+  .view-toggle { border: 1px solid var(--border); background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 999px; font-size: 12px; line-height: 1; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; }
+  .view-toggle.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .card-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .lang-col { padding: 18px 20px 22px; }
+  .lang-col.cn { background: var(--cn-bg); border-right: 1px solid #f0ece4; font-family: 'Noto Serif SC', serif; }
+  .lang-col.en { background: var(--en-bg); }
+  .lang-label { margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+  .content-shell { position: relative; transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .content-variant { position: absolute; inset: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(4px); transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; will-change: opacity, transform; }
+  .content-variant.is-active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+  .content-variant p, .content-variant li { margin: 0 0 12px; font-size: 14px; }
+  .content-variant ol { margin: 0 0 12px 20px; padding: 0; }
+  .inline-code { display: inline-block; font-family: 'IBM Plex Mono', monospace; background: #f4efe7; padding: 3px 6px; border-radius: 6px; margin-bottom: 8px; }
+
+  .card-footer { padding: 12px 20px 16px; border-top: 1px solid #eee7dd; background: #fcfaf6; }
+  .card-footer a { color: var(--accent); text-decoration: none; font-size: 14px; }
+  footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 680px) {
+    .masthead-inner { align-items: center; }
+    .edition-strip { padding-right: 12px; padding-left: 12px; }
+    .edition-strip-text { padding-right: 0; }
+    .edition-return-link { position: static; transform: none; margin-top: 8px; font-size: 11px; }
+    .card-controls { margin-left: 0; }
+    .card-body { grid-template-columns: 1fr; }
+    .lang-col.cn { border-right: none; border-bottom: 1px solid #f0ece4; }
+    .edition-strip .edition-sep { margin: 0 5px; }
+    .intro-inner { padding-left: 14px; }
+    .intro p { line-height: 1.84; }
+  }
+</style>
+</head>
+<body data-publish-date="2026-07-12" data-issue-number="48" data-edition-name="双语精选版" data-view-label-rewrite="速读" data-view-label-original="原文" data-author-identities-path="/home/eclaw/.follow-builders/assets/author-identities.json" data-avatar-manifest-path="/home/eclaw/.follow-builders/assets/avatar-manifest.json">
+  <header class="masthead">
+    <hr class="masthead-rule">
+    <div class="masthead-inner">
+      <div class="masthead-title">AI Builders Digest</div>
+    </div>
+    <div class="masthead-subtitle">Bilingual edition · 双语对照版</div>
+    <div class="edition-strip">
+      <span class="edition-strip-text" id="edition-strip-text">第 48 期｜2026-07-12｜双语精选版｜4 条精选｜3 位作者｜2 个主题</span>
+      <a class="edition-return-link" href="../index.html">返回目录</a>
+    </div>
+  </header>
+
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="今天的 feed 是一条 podcast + 十条 X,主题意外收敛到一个词:护城河——或者说,护城河已经没了。Booking Holdings CEO Glenn Fogel 给 No Priors 开场就把这件事钉下来:There is no such thing as a moat。今天的 competitive advantage 明天就可能没,长期能赢的唯一办法是每个季度都出新服务。这个 operator 视角配上他手里的真实数字——去年 $186B 的 travel、10 亿+ room nights、Penny 这个 agent 过去几个月每月翻倍但绝对量「真的、真的很小」——就比任何战略 PPT 都具体。同一天 Box 的 Aaron Levie 把反直觉的数字摆出来:软件相关 job postings 的增速超过其他领域,跟「AI 取代程序员」那个叙事完全反过来;swyx 把 Jevons Paradox 从 coding 推到所有知识工作——单位成本塌方时,总需求上升,不下降。Fogel、Levie、swyx 是同一件事的三个面:incumbent 的优势是被一段段磨掉的,代码是 herald,不是例外。这一期就这两层。">
+    <div class="intro-inner">
+      <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
+      <p class="intro-copy">今天的 feed 是一条 podcast + 十条 X,主题意外收敛到一个词:护城河——或者说,护城河已经没了。Booking Holdings CEO Glenn Fogel 给 No Priors 开场就把这件事钉下来:There is no such thing as a moat。今天的 competitive advantage 明天就可能没,长期能赢的唯一办法是每个季度都出新服务。这个 operator 视角配上他手里的真实数字——去年 $186B 的 travel、10 亿+ room nights、Penny 这个 agent 过去几个月每月翻倍但绝对量「真的、真的很小」——就比任何战略 PPT 都具体。同一天 Box 的 Aaron Levie 把反直觉的数字摆出来:软件相关 job postings 的增速超过其他领域,跟「AI 取代程序员」那个叙事完全反过来;swyx 把 Jevons Paradox 从 coding 推到所有知识工作——单位成本塌方时,总需求上升,不下降。Fogel、Levie、swyx 是同一件事的三个面:incumbent 的优势是被一段段磨掉的,代码是 herald,不是例外。这一期就这两层。</p>
+    </div>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 01</div>
+    <h2 class="section-title">Booking Holdings CEO Glenn Fogel 把 moat 那件事在 AI 时代重新讲了一遍:没有 moat,只有持续出新服务的 operator 节奏 + Penny agent 每月翻倍但相对 $186B 的盘子还「真的、真的很小」/ Booking Holdings CEO Glenn Fogel on AI-Era Moats: No Moat, Just Continuous New Services; Penny&#39;s Monthly Doubling Against the $186B Base</h2>
+    <p class="section-desc">今天 feed 里只有一份 podcast,但这份分量够——No Priors 跟 Booking Holdings CEO Glenn Fogel 坐下来聊。整场最值得拎出来的是他开场那句「There is no such thing as a moat」,以及他这个 operator 给当下 AI 时代的具体回应:不押战略护城河,押持续出新服务的节奏;Penny 这个 agent 产品过去几个月每月翻倍,但放在 $186B 的 travel 盘子、10 亿+ room nights 的基数上,AI 在绝对量上「真的、真的很小」,Fogel 把 token economics 摆到 operator 第一问题(每个 trip 服务下来的成本 + ROI 都还没算清楚)。这一期两张 card 就分别落在「no moat + operator 节奏」与「$186B 规模下 Penny 的翻倍和 token 经济学」上。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="podcast:no-priors" data-author-name="No Priors" data-author-tag="AI 与创业对话播客" data-author-handle="" data-author-avatar="../assets/avatars/podcast-no-priors.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/podcast-no-priors.jpg" alt="No Priors avatar"><span class="avatar-fallback">NP</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">No Priors</div>
+            <div class="author-tag is-inline">AI 与创业对话播客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Booking Holdings CEO Glenn Fogel 给 No Priors 开了个 thesis,AI 时代每个 operator 都要面对:没有 moat 这种东西。你今天有的是 competitive advantage,明天就可能没了。</p>
+              <p>他的框架是 operator,不是 strategist。唯一 long term 能赢的就是持续开发新服务——每个季度,不是一次。他提醒创始人别掉进一个经典坑:以为可以空手走进一个复杂行业,把 incumbent 推翻之前,先搞清楚这门生意到底是什么。</p>
+              <p>放在 AI 时代,这条经验更尖锐。Priceline 的 agent 产品(Penny)过去几个月每月翻倍,但放在 $186B 的旅行盘子、10 亿+ room nights 面前,AI 在绝对量上仍然很小。规模把 moat 这件事讲得很具体。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>没有 moat 这种东西。没有什么地方能让你被保护住、不被创新颠覆。今天你在某些领域有 competitive advantage,绝对有。但这些明天可能就消失。</p>
+              <p>长期能赢的唯一办法就是持续开发新服务、新做事方式。怎么把你的生意做得更好?你需要什么?哪里需要更多需求?你哪里在痛?</p>
+              <p>这生意复杂得多。如果你觉得你直接进来就能把这些大玩家推翻,我的建议是先搞清楚这门生意是什么,再决定要不要把资本押上去。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Booking Holdings CEO Glenn Fogel opens No Priors with a thesis the AI era is forcing every operator to face: there is no such thing as a moat. What you have today is a competitive advantage; tomorrow it can be gone.</p>
+              <p>His frame is operator, not strategist. The only durable move is to keep developing new services — every quarter, not once. The classic trap he warns founders against: assuming you can walk into a complex industry and displace incumbents without first understanding what the business actually is.</p>
+              <p>For an AI-era audience the lesson is sharper. Priceline&#39;s bet on an agent (Penny) doubled every month for the past few months, but in absolute terms AI is still tiny against $186B of travel and 1B+ room nights. Scale makes the moat discussion concrete.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>There is no such thing as a moat. There is no such thing as somewhere you&#39;re gonna be protected against innovation. Today, we have a competitive advantage on areas. Absolutely. But those can go away tomorrow.</p>
+              <p>The only one to win long term is to continue to develop new services, new ways to do things. How can we do your business better? What do you need? Where you need more demand? Where are you hurting?</p>
+              <p>It&#39;s so much more complex. Complex. If you think you&#39;re just gonna come in and do this business and knock away these very big players, I&#39;d say you should really understand what the business is before you decide to commit your capital.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.youtube.com/watch?v=8nj_0wZkbtA" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="podcast:no-priors" data-author-name="No Priors" data-author-tag="AI 与创业对话播客" data-author-handle="" data-author-avatar="../assets/avatars/podcast-no-priors.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/podcast-no-priors.jpg" alt="No Priors avatar"><span class="avatar-fallback">NP</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">No Priors</div>
+            <div class="author-tag is-inline">AI 与创业对话播客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Fogel 说他在 AI rollout 上卡住的最难问题是:告诉我这一单 trip 的成本是多少——tokens、重试、模型选型——ROI 又是多少。去年 Booking 做了 $186B 的 travel,AI 相对这个基数「真的、真的很小」。</p>
+              <p>Token economics 现在是个一等公民的 operator 问题:哪个模型做哪个用途、什么时候 routing、客户服务成本怎么压(已经降了大概 10%)、又不能 AI 走到头、把想要真人的客户给丢了。</p>
+              <p>他披露今年 AI / 平台相关的再投资大概是 $700M。值得看的不是这个数字本身,是 Fogel 把 AI 投入和客服 ROI 当成同一个问题来看,答案目前都还 TBD。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>告诉我:这趟 trip 服务下来我们花了多少钱,ROI 是多少?然后下一步是长期回报怎么样?是不是 LTV 涨了?用户回来了?loyalty 上去了?多少?会不会再变?</p>
+              <p>现在整个 token economics 的事——哪个模型做哪个用途,什么时候用。你知道,显然某些环节用某些模型能拿到便宜得多的 token。</p>
+              <p>我们每个客服 contact 的成本降了,客户满意度涨了。这更好。但我们要保证自己一直能识别——有些客户想要的是真人。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>The hardest question Fogel says he&#39;s wrestling with on AI rollout: tell me how much it cost us to serve that trip — tokens, retries, model choice — and what&#39;s the ROI. Booking did $186B in travel last year; AI is still &#39;really, really small&#39; against that base.</p>
+              <p>Token economics are now a first-class operator question: which model for which purpose, when to route, how to balance customer-service cost reduction (~10% already) against the risk of going too AI-only for customers who want a human.</p>
+              <p>His reported AI/AI-adjacent reinvestment for this year is about $700M. The interesting bit isn&#39;t the spend — it&#39;s that Fogel frames AI investment and customer-service ROI as the same problem, with the answers still TBD.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Tell me how much was the cost of us getting that trip for that person, and what is our ROI going to be? Then the next thing is, well, what&#39;s the return long term? Did it mean lifetime value? Did they come back? Are the loyalties up or what? How much? And will it change?</p>
+              <p>The whole thing of token economics now, which model should we be using? For which purpose? And when? And stuff. You know, obviously, you can get tokens a lot cheaper and certain parts to different models.</p>
+              <p>Our costs per customer service per contact are down. Customer satisfaction is up. That&#39;s even better. But we have to make sure that we are able to always recognize some customers want a human being.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.youtube.com/watch?v=8nj_0wZkbtA" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 02</div>
+    <h2 class="section-title">Post-Sol 验证:Levie 把软件需求往上抬的实证摆出来 + Swyx 把 Jevons 从 coding 推到所有知识工作 / Post-Sol Validation: Levie on Software Demand Bending Up + Swyx Extends Jevons from Coding to All Knowledge Work</h2>
+    <p class="section-desc">GPT-5.6 Sol 发布(7-10)两天后,业界在用「需求往上抬」和「Jevons 扩面」这两条线回填它。Aaron Levie(Box CEO)把反直觉的数字摆出来:软件相关 job postings 的增速超过其他领域,跟「AI 取代程序员」那个叙事完全反过来——单位成本压下去,总需求上升,不下降。Swyx 同一天把 Jevons Paradox 从 coding 推到所有知识工作:三个条件——能驾驭 coding agent 的人类、coding agent 自己突破 containment 进到相邻知识工作、知识工作的单位成本塌方——叠加在一起,让代码身上发生的事不是例外,是 herald。Fogel 的「no moat」、Levie 的「需求往上抬」、Swyx 的「Jevons 扩面」是同一件事的三个面:incumbent 的优势是被一段段磨掉的,代码是 herald,不是例外。这一期的两张 card 就分别落在 Levie 和 Swyx 各自的展开上。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:levie" data-author-name="Aaron Levie" data-author-tag="Box CEO" data-author-handle="@levie" data-author-avatar="../assets/avatars/x-levie.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-levie.jpg" alt="Aaron Levie avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie</div>
+            <div class="author-tag is-inline">Box CEO</div>
+          </div>
+          <div class="author-handle">@levie</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Box CEO Aaron Levie 把这条反直觉的数字摆出来了:软件相关 job postings 的增速超过其他领域,跟「AI 取代程序员」那个叙事完全反过来。原因——如果你把某样有很多 use case 的东西的生产成本压下去,人们想要的是更多,不是更少。</p>
+              <p>重点不是 AI 不改变工作(它确实改变),重点是需求曲线比供给曲线先往上抬,至少在第一个 product cycle 是这样。会被要的软件变多,会雇来 ship 软件的人也变多,产能会冒到没人计划过的地方。</p>
+              <p>Fogel 的「no moat」和 Levie 的就业数据其实是同一个论点的两个面:incumbent 的优势是被一段段磨掉的,不是被一次性击穿的。moat 不是墙,是一条被 AI 不断往上抬的移动成本曲线。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>那个 AI 据说要取代的岗位,正在经历预期之外的结果。软件相关 job postings 的增速超过其他领域。</p>
+              <p>为什么?如果你把某样有大量 use case 的东西的生产成本压下去,人们想要的是更多,不是更少。</p>
+              <p>这是关于 AI 对就业影响里更细的那一面。需求曲线比供给曲线先往上抬。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie (Box CEO) is publishing the counter-intuitive number now: software job postings are outpacing other fields — the opposite of the &#39;AI replaces programmers&#39; story. If you lower the cost of producing something with lots of use cases, people want more of it, not less.</p>
+              <p>The point isn&#39;t that AI doesn&#39;t change work — it does. The point is that the demand curve bends up faster than supply shifts, at least for the first product cycle. More software gets asked for, more people get hired to ship it, more capacity shows up in places nobody planned for.</p>
+              <p>Fogel&#39;s &#39;no moat&#39; thesis and Levie&#39;s jobs data are the same argument from two angles: incumbent advantage erodes in steps, not in one blow. The moat isn&#39;t a wall — it&#39;s a moving cost curve that AI keeps bending.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The job that AI was supposed to replace is experiencing the opposite of the expected outcome. Software job postings are outpacing other fields.</p>
+              <p>Why is that? If you lower the cost of production of something that has lots of use cases, people want more of it, not less.</p>
+              <p>This is the more nuanced take on what AI does to jobs. The demand curve bends up faster than the supply curve shifts.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/levie/status/2076116544980214164" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:swyx" data-author-name="Swyx" data-author-tag="AI 工程师" data-author-handle="@swyx" data-author-avatar="../assets/avatars/x-swyx.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-swyx.jpg" alt="Swyx avatar"><span class="avatar-fallback">S</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Swyx</div>
+            <div class="author-tag is-inline">AI 工程师</div>
+          </div>
+          <div class="author-handle">@swyx</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx 把 Jevons Paradox 从 coding 推到所有知识工作——在 agentic engineering 时代让软件需求爆掉的那套机制,正在向所有人类能用 coding-style agent 的领域同步显形。</p>
+              <p>让 Jevons 这一波打得更狠的三个条件:能驾驭 coding agent 的人类、coding agent 自己突破 containment 进到相邻知识工作、以及知识工作的单位成本塌方带来的是总需求上升而不是下降。</p>
+              <p>他的落点:代码身上发生的事不是例外,是 herald。如果你只把 Jevons 当成软件故事来理解,你会错过它接下来要在所有其他知识工作领域重现的那一面。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>如果你主要是在 agentic engineering 时代的 software demand 上下文里学到 Jevons paradox,你可能还没有完整 get 到它在以下条件下的影响:能驾驭 coding agent 的人类、coding agent 自己突破 containment 进到所有其他知识工作。</p>
+              <p>当劳动效率上升 / 知识工作的单位成本普遍下降,总工作量和更好知识的需求是上升的,不是下降的。</p>
+              <p>代码身上发生的事不是例外,是 herald。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Swyx extends Jevons Paradox out of coding into all knowledge work — the same mechanism that exploded software demand in the agentic-engineering era is now visible wherever humans can wield coding-style agents.</p>
+              <p>Three conditions that make the Jevons move hit harder: humans who are good at wielding coding agents, coding agents themselves breaking containment into adjacent knowledge work, and a unit-cost collapse on labor that lifts total demand rather than lowering it.</p>
+              <p>His punchline: what happened to coding isn&#39;t the exception, it&#39;s the herald. If you only internalized Jevons as a software story, you missed the version that&#39;s about to hit every other knowledge-work domain.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>if you only learned about jevons paradox primarily wrt software demand in the age of agentic engineering, you may not have fully internalized jevons parodox&#39;s impact under the conditions of: humans who can wield coding agents well, coding agents breaking containment to all other knowledge work.</p>
+              <p>as the efficiency of labor goes up/unit cost of knowledge work goes broadly down, the demand for total work and better knowledge goes up, not down.</p>
+              <p>what happened to coding isn&#39;t the exception; it&#39;s the herald.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/swyx/status/2076155833428431012" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <footer data-source-note="Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-12 source feeds.">Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-12 source feeds.</footer>
+
+  <script>
+    function getTemplateAuthorSources() {
+      const sources = window.AI_BUILDERS_TEMPLATE_SOURCES || {};
+      return { identities: sources.identities || {}, avatars: sources.avatars || {} };
+    }
+
+    function getAuthorInitials(name) {
+      return (name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(function(part) { return part[0]; }).join('').toUpperCase();
+    }
+
+    function hydrateTemplateCopy() {
+      const intro = document.querySelector('.intro');
+      if (intro) {
+        const kicker = intro.querySelector('.intro-kicker');
+        const copy = intro.querySelector('.intro-copy');
+        if (kicker) kicker.textContent = intro.dataset.kicker || '';
+        if (copy) copy.textContent = intro.dataset.text || '';
+      }
+
+      const footer = document.querySelector('footer');
+      if (footer) footer.textContent = footer.dataset.sourceNote || '';
+
+      const rewriteLabel = document.body.dataset.viewLabelRewrite || '速读';
+      const originalLabel = document.body.dataset.viewLabelOriginal || '原文';
+      document.querySelectorAll('.view-toggle').forEach(function(button) {
+        if (button.dataset.viewTarget === 'rewrite') button.textContent = rewriteLabel;
+        if (button.dataset.viewTarget === 'original') button.textContent = originalLabel;
+      });
+    }
+
+    function hydrateAuthorMeta() {
+      const sources = getTemplateAuthorSources();
+      document.querySelectorAll('.card').forEach(function(card) {
+        const authorKey = card.dataset.authorKey || '';
+        const identity = sources.identities[authorKey] || {};
+        const avatarEntry = sources.avatars[authorKey] || {};
+
+        const name = identity.name || card.dataset.authorName || '';
+        const rawHandle = identity.handle || card.dataset.authorHandle || '';
+        const handle = rawHandle && rawHandle.startsWith('@') ? rawHandle : (rawHandle ? '@' + rawHandle : '');
+        const tag = identity.label || card.dataset.authorTag || '';
+        const avatar = avatarEntry.fileUrl || avatarEntry.localPath || card.dataset.authorAvatar || '';
+
+        const nameNode = card.querySelector('.author-name');
+        const tagNode = card.querySelector('.author-tag');
+        const handleNode = card.querySelector('.author-handle');
+        const avatarNode = card.querySelector('.avatar');
+        const avatarImg = card.querySelector('.avatar img');
+        const avatarFallback = card.querySelector('.avatar-fallback');
+
+        if (nameNode) nameNode.textContent = name;
+        if (tagNode) tagNode.textContent = tag;
+        if (handleNode) handleNode.textContent = handle;
+        if (avatarImg) {
+          avatarImg.src = avatar;
+          avatarImg.alt = name ? name + ' avatar' : 'Author avatar';
+        }
+        if (avatarNode) avatarNode.classList.toggle('is-fallback', !avatar);
+        if (avatarFallback) avatarFallback.textContent = getAuthorInitials(name);
+      });
+    }
+
+    function updateEditionStrip() {
+      const publishDate = document.body.dataset.publishDate;
+      const editionName = document.body.dataset.editionName || '双语精选版';
+      const editionStrip = document.getElementById('edition-strip-text');
+      if (!publishDate || !editionStrip) return;
+
+      const issueNumber = document.body.dataset.issueNumber || '';
+      if (!issueNumber) return;
+
+      const selectedCount = document.querySelectorAll('.card').length;
+      const authorCount = new Set([].slice.call(document.querySelectorAll('.author-handle')).map(function(node) { return node.textContent.trim(); }).filter(Boolean)).size;
+      const themeCount = document.querySelectorAll('.section-header').length;
+      const parts = ['第 ' + issueNumber + ' 期', publishDate, editionName, selectedCount + ' 条精选', authorCount + ' 位作者', themeCount + ' 个主题'];
+      editionStrip.innerHTML = parts.map(function(part) { return '<span class="edition-item">' + part + '</span>'; }).join('<span class="edition-sep">|</span>');
+    }
+
+    function measureVariantHeight(variant) {
+      const prevPosition = variant.style.position;
+      const prevInset = variant.style.inset;
+      const prevVisibility = variant.style.visibility;
+      const prevPointerEvents = variant.style.pointerEvents;
+      const prevOpacity = variant.style.opacity;
+      const prevTransform = variant.style.transform;
+      const prevTransition = variant.style.transition;
+      const prevOverflowY = variant.style.overflowY;
+      const prevDisplay = variant.style.display;
+
+      variant.style.position = 'relative';
+      variant.style.inset = 'auto';
+      variant.style.visibility = 'hidden';
+      variant.style.pointerEvents = 'none';
+      variant.style.opacity = '1';
+      variant.style.transform = 'none';
+      variant.style.transition = 'none';
+      variant.style.overflowY = 'visible';
+      variant.style.display = 'block';
+
+      const height = variant.scrollHeight;
+
+      variant.style.position = prevPosition;
+      variant.style.inset = prevInset;
+      variant.style.visibility = prevVisibility;
+      variant.style.pointerEvents = prevPointerEvents;
+      variant.style.opacity = prevOpacity;
+      variant.style.transform = prevTransform;
+      variant.style.transition = prevTransition;
+      variant.style.overflowY = prevOverflowY;
+      variant.style.display = prevDisplay;
+
+      return Math.ceil(height);
+    }
+
+    function getTargetHeight(shell, target) {
+      const variant = shell.querySelector('.content-variant[data-view="' + target + '"]');
+      return measureVariantHeight(variant);
+    }
+
+    function syncShellHeights() {
+      document.querySelectorAll('.content-shell').forEach(function(shell) {
+        const active = shell.querySelector('.content-variant.is-active');
+        const target = active ? active.dataset.view : 'rewrite';
+        shell.style.height = getTargetHeight(shell, target) + 'px';
+      });
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', function() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(syncShellHeights, 120);
+    });
+
+    document.querySelectorAll('.card').forEach(function(card) {
+      const buttons = card.querySelectorAll('.view-toggle');
+      const shells = card.querySelectorAll('.content-shell');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const target = button.dataset.viewTarget;
+          if (button.classList.contains('is-active')) return;
+
+          buttons.forEach(function(btn) {
+            btn.classList.toggle('is-active', btn === button);
+          });
+
+          shells.forEach(function(shell) {
+            const current = shell.querySelector('.content-variant.is-active');
+            const next = shell.querySelector('.content-variant[data-view="' + target + '"]');
+            if (!current || !next || current === next) return;
+
+            shell.style.height = shell.offsetHeight + 'px';
+            requestAnimationFrame(function() {
+              current.classList.remove('is-active');
+              next.classList.add('is-active');
+              shell.style.height = getTargetHeight(shell, target) + 'px';
+            });
+          });
+        });
+      });
+    });
+
+    hydrateTemplateCopy();
+    hydrateAuthorMeta();
+    updateEditionStrip();
+    syncShellHeights();
+  </script>
+</body>
+</html>

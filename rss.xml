@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 11 Jul 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 12 Jul 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-07-12 · 无护城河日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-12-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-12-rerun.html</guid>
+      <pubDate>Sun, 12 Jul 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[今天的 feed 是一条 podcast + 十条 X,主题意外收敛到一个词:护城河——或者说,护城河已经没了。Booking Holdings CEO Glenn Fogel 给 No Priors 开场就把这件事钉下来:There is no such thing as a moat。今天的 competitive advantage 明天就可能没,长期能赢的唯一办法是每个季度都出新服务。这个 operator 视角配上他手里的真实数字——去年 $186B 的 travel、10 亿+ room nights、Penny 这个 agent 过去几个月每月翻倍但绝对量「真的、真的很小」——就比任何战略 PPT 都具体。同一天 Box 的 Aaron Levie 把反直觉的数字摆出来:软件相关 job postings 的增速超过其他领域,跟「AI 取代程序员」那个叙事完全反过来;swyx 把 Jevons Paradox 从 coding 推到所有知识工作——单位成本塌方时,总需求上升,不下降。Fogel、Levie、swyx 是同一件事的三个面:incumbent 的优势是被一段段磨掉的,代码是 herald,不是例外。这一期就这两层。]]></description>
+      <category>Booking Holdings CEO Glenn Fogel 把 moat 那件事在 AI 时代重新讲了一遍:没有 moat,只有持续出新服务的 operator 节奏 + Penny agent 每月翻倍但相对 $186B 的盘子还「真的、真的很小」/ Booking Holdings CEO Glenn Fogel on AI-Era Moats: No Moat, Just Continuous New Services; Penny&apos;s Monthly Doubling Against the $186B Base, Post-Sol 验证:Levie 把软件需求往上抬的实证摆出来 + Swyx 把 Jevons 从 coding 推到所有知识工作 / Post-Sol Validation: Levie on Software Demand Bending Up + Swyx Extends Jevons from Coding to All Knowledge Work</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-07-11 · 代付上链日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-11-rerun.html</link>

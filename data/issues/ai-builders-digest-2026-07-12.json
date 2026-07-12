@@ -1,0 +1,157 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-07-12",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天的 feed 是一条 podcast + 十条 X,主题意外收敛到一个词:护城河——或者说,护城河已经没了。Booking Holdings CEO Glenn Fogel 给 No Priors 开场就把这件事钉下来:There is no such thing as a moat。今天的 competitive advantage 明天就可能没,长期能赢的唯一办法是每个季度都出新服务。这个 operator 视角配上他手里的真实数字——去年 $186B 的 travel、10 亿+ room nights、Penny 这个 agent 过去几个月每月翻倍但绝对量「真的、真的很小」——就比任何战略 PPT 都具体。同一天 Box 的 Aaron Levie 把反直觉的数字摆出来:软件相关 job postings 的增速超过其他领域,跟「AI 取代程序员」那个叙事完全反过来;swyx 把 Jevons Paradox 从 coding 推到所有知识工作——单位成本塌方时,总需求上升,不下降。Fogel、Levie、swyx 是同一件事的三个面:incumbent 的优势是被一段段磨掉的,代码是 herald,不是例外。这一期就这两层。"
+  },
+  "archive": {
+    "title": "无护城河日",
+    "desc": "今天一条 podcast + 十条 X,主轴是「护城河没了」:Booking Holdings CEO Glenn Fogel 给 No Priors 开场钉「no moat」+ Penny agent 每月翻倍但相对 $186B 旅行盘子还很小;Box 的 Aaron Levie 用软件 job postings 的反直觉增速把「需求往上抬」的实证摆出来;swyx 把 Jevons Paradox 从 coding 推到所有知识工作。Fogel、Levie、swyx 是同一件事的三个面。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-12 source feeds.",
+  "sections": [
+    {
+      "title": "Booking Holdings CEO Glenn Fogel 把 moat 那件事在 AI 时代重新讲了一遍:没有 moat,只有持续出新服务的 operator 节奏 + Penny agent 每月翻倍但相对 $186B 的盘子还「真的、真的很小」/ Booking Holdings CEO Glenn Fogel on AI-Era Moats: No Moat, Just Continuous New Services; Penny's Monthly Doubling Against the $186B Base",
+      "desc": "今天 feed 里只有一份 podcast,但这份分量够——No Priors 跟 Booking Holdings CEO Glenn Fogel 坐下来聊。整场最值得拎出来的是他开场那句「There is no such thing as a moat」,以及他这个 operator 给当下 AI 时代的具体回应:不押战略护城河,押持续出新服务的节奏;Penny 这个 agent 产品过去几个月每月翻倍,但放在 $186B 的 travel 盘子、10 亿+ room nights 的基数上,AI 在绝对量上「真的、真的很小」,Fogel 把 token economics 摆到 operator 第一问题(每个 trip 服务下来的成本 + ROI 都还没算清楚)。这一期两张 card 就分别落在「no moat + operator 节奏」与「$186B 规模下 Penny 的翻倍和 token 经济学」上。",
+      "cards": [
+        {
+          "authorKey": "podcast:no-priors",
+          "authorName": "No Priors",
+          "authorHandle": null,
+          "authorTag": "AI 与创业对话播客",
+          "sourceUrl": "https://www.youtube.com/watch?v=8nj_0wZkbtA",
+          "en": {
+            "rewrite": [
+              "Booking Holdings CEO Glenn Fogel opens No Priors with a thesis the AI era is forcing every operator to face: there is no such thing as a moat. What you have today is a competitive advantage; tomorrow it can be gone.",
+              "His frame is operator, not strategist. The only durable move is to keep developing new services — every quarter, not once. The classic trap he warns founders against: assuming you can walk into a complex industry and displace incumbents without first understanding what the business actually is.",
+              "For an AI-era audience the lesson is sharper. Priceline's bet on an agent (Penny) doubled every month for the past few months, but in absolute terms AI is still tiny against $186B of travel and 1B+ room nights. Scale makes the moat discussion concrete."
+            ],
+            "original": [
+              "There is no such thing as a moat. There is no such thing as somewhere you're gonna be protected against innovation. Today, we have a competitive advantage on areas. Absolutely. But those can go away tomorrow.",
+              "The only one to win long term is to continue to develop new services, new ways to do things. How can we do your business better? What do you need? Where you need more demand? Where are you hurting?",
+              "It's so much more complex. Complex. If you think you're just gonna come in and do this business and knock away these very big players, I'd say you should really understand what the business is before you decide to commit your capital."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Booking Holdings CEO Glenn Fogel 给 No Priors 开了个 thesis,AI 时代每个 operator 都要面对:没有 moat 这种东西。你今天有的是 competitive advantage,明天就可能没了。",
+              "他的框架是 operator,不是 strategist。唯一 long term 能赢的就是持续开发新服务——每个季度,不是一次。他提醒创始人别掉进一个经典坑:以为可以空手走进一个复杂行业,把 incumbent 推翻之前,先搞清楚这门生意到底是什么。",
+              "放在 AI 时代,这条经验更尖锐。Priceline 的 agent 产品(Penny)过去几个月每月翻倍,但放在 $186B 的旅行盘子、10 亿+ room nights 面前,AI 在绝对量上仍然很小。规模把 moat 这件事讲得很具体。"
+            ],
+            "original": [
+              "没有 moat 这种东西。没有什么地方能让你被保护住、不被创新颠覆。今天你在某些领域有 competitive advantage,绝对有。但这些明天可能就消失。",
+              "长期能赢的唯一办法就是持续开发新服务、新做事方式。怎么把你的生意做得更好?你需要什么?哪里需要更多需求?你哪里在痛?",
+              "这生意复杂得多。如果你觉得你直接进来就能把这些大玩家推翻,我的建议是先搞清楚这门生意是什么,再决定要不要把资本押上去。"
+            ]
+          }
+        },
+        {
+          "authorKey": "podcast:no-priors",
+          "authorName": "No Priors",
+          "authorHandle": null,
+          "authorTag": "AI 与创业对话播客",
+          "sourceUrl": "https://www.youtube.com/watch?v=8nj_0wZkbtA",
+          "en": {
+            "rewrite": [
+              "The hardest question Fogel says he's wrestling with on AI rollout: tell me how much it cost us to serve that trip — tokens, retries, model choice — and what's the ROI. Booking did $186B in travel last year; AI is still 'really, really small' against that base.",
+              "Token economics are now a first-class operator question: which model for which purpose, when to route, how to balance customer-service cost reduction (~10% already) against the risk of going too AI-only for customers who want a human.",
+              "His reported AI/AI-adjacent reinvestment for this year is about $700M. The interesting bit isn't the spend — it's that Fogel frames AI investment and customer-service ROI as the same problem, with the answers still TBD."
+            ],
+            "original": [
+              "Tell me how much was the cost of us getting that trip for that person, and what is our ROI going to be? Then the next thing is, well, what's the return long term? Did it mean lifetime value? Did they come back? Are the loyalties up or what? How much? And will it change?",
+              "The whole thing of token economics now, which model should we be using? For which purpose? And when? And stuff. You know, obviously, you can get tokens a lot cheaper and certain parts to different models.",
+              "Our costs per customer service per contact are down. Customer satisfaction is up. That's even better. But we have to make sure that we are able to always recognize some customers want a human being."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Fogel 说他在 AI rollout 上卡住的最难问题是:告诉我这一单 trip 的成本是多少——tokens、重试、模型选型——ROI 又是多少。去年 Booking 做了 $186B 的 travel,AI 相对这个基数「真的、真的很小」。",
+              "Token economics 现在是个一等公民的 operator 问题:哪个模型做哪个用途、什么时候 routing、客户服务成本怎么压(已经降了大概 10%)、又不能 AI 走到头、把想要真人的客户给丢了。",
+              "他披露今年 AI / 平台相关的再投资大概是 $700M。值得看的不是这个数字本身,是 Fogel 把 AI 投入和客服 ROI 当成同一个问题来看,答案目前都还 TBD。"
+            ],
+            "original": [
+              "告诉我:这趟 trip 服务下来我们花了多少钱,ROI 是多少?然后下一步是长期回报怎么样?是不是 LTV 涨了?用户回来了?loyalty 上去了?多少?会不会再变?",
+              "现在整个 token economics 的事——哪个模型做哪个用途,什么时候用。你知道,显然某些环节用某些模型能拿到便宜得多的 token。",
+              "我们每个客服 contact 的成本降了,客户满意度涨了。这更好。但我们要保证自己一直能识别——有些客户想要的是真人。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Post-Sol 验证:Levie 把软件需求往上抬的实证摆出来 + Swyx 把 Jevons 从 coding 推到所有知识工作 / Post-Sol Validation: Levie on Software Demand Bending Up + Swyx Extends Jevons from Coding to All Knowledge Work",
+      "desc": "GPT-5.6 Sol 发布(7-10)两天后,业界在用「需求往上抬」和「Jevons 扩面」这两条线回填它。Aaron Levie(Box CEO)把反直觉的数字摆出来:软件相关 job postings 的增速超过其他领域,跟「AI 取代程序员」那个叙事完全反过来——单位成本压下去,总需求上升,不下降。Swyx 同一天把 Jevons Paradox 从 coding 推到所有知识工作:三个条件——能驾驭 coding agent 的人类、coding agent 自己突破 containment 进到相邻知识工作、知识工作的单位成本塌方——叠加在一起,让代码身上发生的事不是例外,是 herald。Fogel 的「no moat」、Levie 的「需求往上抬」、Swyx 的「Jevons 扩面」是同一件事的三个面:incumbent 的优势是被一段段磨掉的,代码是 herald,不是例外。这一期的两张 card 就分别落在 Levie 和 Swyx 各自的展开上。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie/status/2076116544980214164",
+          "en": {
+            "rewrite": [
+              "Aaron Levie (Box CEO) is publishing the counter-intuitive number now: software job postings are outpacing other fields — the opposite of the 'AI replaces programmers' story. If you lower the cost of producing something with lots of use cases, people want more of it, not less.",
+              "The point isn't that AI doesn't change work — it does. The point is that the demand curve bends up faster than supply shifts, at least for the first product cycle. More software gets asked for, more people get hired to ship it, more capacity shows up in places nobody planned for.",
+              "Fogel's 'no moat' thesis and Levie's jobs data are the same argument from two angles: incumbent advantage erodes in steps, not in one blow. The moat isn't a wall — it's a moving cost curve that AI keeps bending."
+            ],
+            "original": [
+              "The job that AI was supposed to replace is experiencing the opposite of the expected outcome. Software job postings are outpacing other fields.",
+              "Why is that? If you lower the cost of production of something that has lots of use cases, people want more of it, not less.",
+              "This is the more nuanced take on what AI does to jobs. The demand curve bends up faster than the supply curve shifts."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Box CEO Aaron Levie 把这条反直觉的数字摆出来了:软件相关 job postings 的增速超过其他领域,跟「AI 取代程序员」那个叙事完全反过来。原因——如果你把某样有很多 use case 的东西的生产成本压下去,人们想要的是更多,不是更少。",
+              "重点不是 AI 不改变工作(它确实改变),重点是需求曲线比供给曲线先往上抬,至少在第一个 product cycle 是这样。会被要的软件变多,会雇来 ship 软件的人也变多,产能会冒到没人计划过的地方。",
+              "Fogel 的「no moat」和 Levie 的就业数据其实是同一个论点的两个面:incumbent 的优势是被一段段磨掉的,不是被一次性击穿的。moat 不是墙,是一条被 AI 不断往上抬的移动成本曲线。"
+            ],
+            "original": [
+              "那个 AI 据说要取代的岗位,正在经历预期之外的结果。软件相关 job postings 的增速超过其他领域。",
+              "为什么?如果你把某样有大量 use case 的东西的生产成本压下去,人们想要的是更多,不是更少。",
+              "这是关于 AI 对就业影响里更细的那一面。需求曲线比供给曲线先往上抬。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:swyx",
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师",
+          "sourceUrl": "https://x.com/swyx/status/2076155833428431012",
+          "en": {
+            "rewrite": [
+              "Swyx extends Jevons Paradox out of coding into all knowledge work — the same mechanism that exploded software demand in the agentic-engineering era is now visible wherever humans can wield coding-style agents.",
+              "Three conditions that make the Jevons move hit harder: humans who are good at wielding coding agents, coding agents themselves breaking containment into adjacent knowledge work, and a unit-cost collapse on labor that lifts total demand rather than lowering it.",
+              "His punchline: what happened to coding isn't the exception, it's the herald. If you only internalized Jevons as a software story, you missed the version that's about to hit every other knowledge-work domain."
+            ],
+            "original": [
+              "if you only learned about jevons paradox primarily wrt software demand in the age of agentic engineering, you may not have fully internalized jevons parodox's impact under the conditions of: humans who can wield coding agents well, coding agents breaking containment to all other knowledge work.",
+              "as the efficiency of labor goes up/unit cost of knowledge work goes broadly down, the demand for total work and better knowledge goes up, not down.",
+              "what happened to coding isn't the exception; it's the herald."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx 把 Jevons Paradox 从 coding 推到所有知识工作——在 agentic engineering 时代让软件需求爆掉的那套机制,正在向所有人类能用 coding-style agent 的领域同步显形。",
+              "让 Jevons 这一波打得更狠的三个条件:能驾驭 coding agent 的人类、coding agent 自己突破 containment 进到相邻知识工作、以及知识工作的单位成本塌方带来的是总需求上升而不是下降。",
+              "他的落点:代码身上发生的事不是例外,是 herald。如果你只把 Jevons 当成软件故事来理解,你会错过它接下来要在所有其他知识工作领域重现的那一面。"
+            ],
+            "original": [
+              "如果你主要是在 agentic engineering 时代的 software demand 上下文里学到 Jevons paradox,你可能还没有完整 get 到它在以下条件下的影响:能驾驭 coding agent 的人类、coding agent 自己突破 containment 进到所有其他知识工作。",
+              "当劳动效率上升 / 知识工作的单位成本普遍下降,总工作量和更好知识的需求是上升的,不是下降的。",
+              "代码身上发生的事不是例外,是 herald。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
