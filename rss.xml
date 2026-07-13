@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 12 Jul 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 13 Jul 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-07-13 · 能源反推日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-13-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-13-rerun.html</guid>
+      <pubDate>Mon, 13 Jul 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[今天 feed 是一条 podcast + 十五条 X,主轴意外收回「能源」。No Priors 这期带 Sarah Guo 走进 Valar Atomics 在 Utah 的设施,跟创始人 Isaiah Taylor 坐下来谈。Taylor 反复回到的那条 frame 是:nuclear 还没经历过自己的 Ford 时刻,核反应堆从来没有为大规模量产而造过。Valar 在押的就是把 fission 做成「更接近被制造出来而不是被建造出来」的硬件,目标把能源成本压到现在的 1/10。这个命题对 AI-compute 受众尤其尖锐——LLM 的成本大头是电和散热,不是 silicon,所以任何能把能源成本曲线压 10 倍的反应堆,几乎是把智能本身的成本也压 10 倍。同一天的 X 这边,价格层在调整:OpenAI 给 GPT-5.6 Sol 全订阅降价,Claude 把 Fable 5 / Code 配额延到 7-19,Sam Altman 亲自下场喊大家晒 Sol build——三家在同一个窗口里同时往「同价多给 + 鼓励 build」走。coding agent 的 production workflow 这边,Rauch 在讲「把模型当 cog」、Zara Zhang 在讲「会议 transcript 当 PRD」、Masad 在讲 fine-tuning 也能 vibe 化。三件事落在不同尺度,合起来就是 coding agent 在 2026 年中不是工具是同事。周末 fragment 三连就放 Turck / Shipper / Nikunj 各自的 humor 与观察做收尾。这一期就这四层。]]></description>
+      <category>No Priors 走进 Valar Atomics 的 Utah 反应堆房:Isaiah Taylor 把「nuclear 还没经历自己的 Ford 时刻」讲给 AI 听众 + 把能源价格曲线作为 AI 计算的真正上游 / No Priors at Valar Atomics: Isaiah Taylor on Nuclear&apos;s Missing Ford Moment and Why Energy Is the Real Upstream of AI Compute, Post-Sol 价格层:OpenAI 给 5.6 Sol 全订阅降价 + Claude 把 Fable 5 / Code 配额延到 7-19 + Altman 公开喊话收 Sol build / Post-Sol Price Layer: OpenAI Cuts 5.6 Sol Across Subscriptions, Claude Extends Fable 5 and Code Quota, Altman Calls for Sol Builds, Coding agent 进入生产工作流的三个面:Rauch 讲「把模型当 cog」+ Zara 把会议 transcript 当 PRD + Masad 把 fine-tuning 做成 vibe research / Coding Agents Enter Production Workflows: Rauch on &apos;Model as Cog,&apos; Zara on Meeting-as-PRD, Masad on Vibe Research, 周末 fragment 三连:Turck 的「任何人能做 app」meme + Shipper 的「资本主义赢了」+ Nikunj 的「tokenmaxxer 沉默」/ Weekend Fragments: Turck&apos;s &apos;Anyone Can Build&apos; Meme, Shipper&apos;s &apos;Capitalism Wins,&apos; Nikunj on the Silent Tokenmaxxers</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-07-12 · 无护城河日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-12-rerun.html</link>

@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Builders Digest · 2026-07-13</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ed;
+    --accent: #c0392b;
+    --accent-light: #e8d5c4;
+    --border: #d4cdc0;
+    --muted: #7a7265;
+    --tag-bg: #e8e2d6;
+    --en-bg: #ffffff;
+    --cn-bg: #faf7f2;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  .masthead, .intro, .section-header, .feed, footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .masthead { padding-top: 48px; }
+  .masthead-rule { border: none; border-top: 3px solid var(--ink); margin: 0 0 12px; }
+  .masthead-inner { display: flex; justify-content: center; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; letter-spacing: -0.4px; }
+  .masthead-subtitle { margin-top: 8px; padding-bottom: 10px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  .edition-strip {
+    position: relative;
+    margin-top: 8px;
+    min-height: 46px;
+    padding: 10px 132px 12px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.34);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+
+  .edition-strip .edition-sep { margin: 0 8px; color: #b8ae9f; }
+  .edition-strip-text { display: block; }
+  .edition-return-link { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; padding: 6px 10px; border: 1px dashed rgba(192, 57, 43, 0.55); border-radius: 999px; color: var(--accent); text-decoration: none; font-size: 12px; line-height: 1; letter-spacing: 0.06em; background: rgba(255, 255, 255, 0.45); transition: background 160ms ease, border-color 160ms ease, transform 160ms ease; }
+  .edition-return-link:hover, .edition-return-link:focus-visible { background: rgba(255, 255, 255, 0.82); border-color: var(--accent); transform: translateY(-50%) translateX(-1px); }
+  .edition-return-link:focus-visible { outline: none; }
+  .intro { padding-top: 22px; }
+  .intro-inner { max-width: 920px; margin: 0 auto; padding: 0 0 0 18px; border-left: 3px solid #d9cdbc; }
+  .intro-kicker { margin: 0 0 8px; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .intro p { margin: 0; max-width: none; color: var(--muted); font-size: clamp(15px, 1.6vw, 16px); line-height: 1.9; text-wrap: pretty; font-family: 'Noto Serif SC', serif; overflow-wrap: anywhere; }
+
+  .section-header { margin-top: 40px; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; margin: 0 0 6px; }
+  .section-desc { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+
+  .feed { display: flex; flex-direction: column; gap: 20px; }
+  .card { background: var(--en-bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .card-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid #eee7dd; flex-wrap: wrap; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .avatar-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .avatar.is-fallback img { display: none; }
+  .avatar.is-fallback .avatar-fallback { display: flex; }
+
+  .author-info { flex: 1; min-width: 160px; }
+  .author-name { font-weight: 600; font-size: 15px; }
+  .author-name-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .author-handle { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+  .author-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; background: var(--tag-bg); color: var(--muted); padding: 4px 8px; border-radius: 999px; }
+  .author-tag.is-inline { padding: 3px 8px; }
+
+  .card-controls { margin-left: auto; display: inline-flex; gap: 8px; }
+  .view-toggle { border: 1px solid var(--border); background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 999px; font-size: 12px; line-height: 1; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; }
+  .view-toggle.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .card-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .lang-col { padding: 18px 20px 22px; }
+  .lang-col.cn { background: var(--cn-bg); border-right: 1px solid #f0ece4; font-family: 'Noto Serif SC', serif; }
+  .lang-col.en { background: var(--en-bg); }
+  .lang-label { margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+  .content-shell { position: relative; transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .content-variant { position: absolute; inset: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(4px); transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; will-change: opacity, transform; }
+  .content-variant.is-active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+  .content-variant p, .content-variant li { margin: 0 0 12px; font-size: 14px; }
+  .content-variant ol { margin: 0 0 12px 20px; padding: 0; }
+  .inline-code { display: inline-block; font-family: 'IBM Plex Mono', monospace; background: #f4efe7; padding: 3px 6px; border-radius: 6px; margin-bottom: 8px; }
+
+  .card-footer { padding: 12px 20px 16px; border-top: 1px solid #eee7dd; background: #fcfaf6; }
+  .card-footer a { color: var(--accent); text-decoration: none; font-size: 14px; }
+  footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 680px) {
+    .masthead-inner { align-items: center; }
+    .edition-strip { padding-right: 12px; padding-left: 12px; }
+    .edition-strip-text { padding-right: 0; }
+    .edition-return-link { position: static; transform: none; margin-top: 8px; font-size: 11px; }
+    .card-controls { margin-left: 0; }
+    .card-body { grid-template-columns: 1fr; }
+    .lang-col.cn { border-right: none; border-bottom: 1px solid #f0ece4; }
+    .edition-strip .edition-sep { margin: 0 5px; }
+    .intro-inner { padding-left: 14px; }
+    .intro p { line-height: 1.84; }
+  }
+</style>
+</head>
+<body data-publish-date="2026-07-13" data-issue-number="49" data-edition-name="双语精选版" data-view-label-rewrite="速读" data-view-label-original="原文" data-author-identities-path="/home/eclaw/.follow-builders/assets/author-identities.json" data-avatar-manifest-path="/home/eclaw/.follow-builders/assets/avatar-manifest.json">
+  <header class="masthead">
+    <hr class="masthead-rule">
+    <div class="masthead-inner">
+      <div class="masthead-title">AI Builders Digest</div>
+    </div>
+    <div class="masthead-subtitle">Bilingual edition · 双语对照版</div>
+    <div class="edition-strip">
+      <span class="edition-strip-text" id="edition-strip-text">第 49 期｜2026-07-13｜双语精选版｜11 条精选｜10 位作者｜4 个主题</span>
+      <a class="edition-return-link" href="../index.html">返回目录</a>
+    </div>
+  </header>
+
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="今天 feed 是一条 podcast + 十五条 X,主轴意外收回「能源」。No Priors 这期带 Sarah Guo 走进 Valar Atomics 在 Utah 的设施,跟创始人 Isaiah Taylor 坐下来谈。Taylor 反复回到的那条 frame 是:nuclear 还没经历过自己的 Ford 时刻,核反应堆从来没有为大规模量产而造过。Valar 在押的就是把 fission 做成「更接近被制造出来而不是被建造出来」的硬件,目标把能源成本压到现在的 1/10。这个命题对 AI-compute 受众尤其尖锐——LLM 的成本大头是电和散热,不是 silicon,所以任何能把能源成本曲线压 10 倍的反应堆,几乎是把智能本身的成本也压 10 倍。同一天的 X 这边,价格层在调整:OpenAI 给 GPT-5.6 Sol 全订阅降价,Claude 把 Fable 5 / Code 配额延到 7-19,Sam Altman 亲自下场喊大家晒 Sol build——三家在同一个窗口里同时往「同价多给 + 鼓励 build」走。coding agent 的 production workflow 这边,Rauch 在讲「把模型当 cog」、Zara Zhang 在讲「会议 transcript 当 PRD」、Masad 在讲 fine-tuning 也能 vibe 化。三件事落在不同尺度,合起来就是 coding agent 在 2026 年中不是工具是同事。周末 fragment 三连就放 Turck / Shipper / Nikunj 各自的 humor 与观察做收尾。这一期就这四层。">
+    <div class="intro-inner">
+      <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
+      <p class="intro-copy">今天 feed 是一条 podcast + 十五条 X,主轴意外收回「能源」。No Priors 这期带 Sarah Guo 走进 Valar Atomics 在 Utah 的设施,跟创始人 Isaiah Taylor 坐下来谈。Taylor 反复回到的那条 frame 是:nuclear 还没经历过自己的 Ford 时刻,核反应堆从来没有为大规模量产而造过。Valar 在押的就是把 fission 做成「更接近被制造出来而不是被建造出来」的硬件,目标把能源成本压到现在的 1/10。这个命题对 AI-compute 受众尤其尖锐——LLM 的成本大头是电和散热,不是 silicon,所以任何能把能源成本曲线压 10 倍的反应堆,几乎是把智能本身的成本也压 10 倍。同一天的 X 这边,价格层在调整:OpenAI 给 GPT-5.6 Sol 全订阅降价,Claude 把 Fable 5 / Code 配额延到 7-19,Sam Altman 亲自下场喊大家晒 Sol build——三家在同一个窗口里同时往「同价多给 + 鼓励 build」走。coding agent 的 production workflow 这边,Rauch 在讲「把模型当 cog」、Zara Zhang 在讲「会议 transcript 当 PRD」、Masad 在讲 fine-tuning 也能 vibe 化。三件事落在不同尺度,合起来就是 coding agent 在 2026 年中不是工具是同事。周末 fragment 三连就放 Turck / Shipper / Nikunj 各自的 humor 与观察做收尾。这一期就这四层。</p>
+    </div>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 01</div>
+    <h2 class="section-title">No Priors 走进 Valar Atomics 的 Utah 反应堆房:Isaiah Taylor 把「nuclear 还没经历自己的 Ford 时刻」讲给 AI 听众 + 把能源价格曲线作为 AI 计算的真正上游 / No Priors at Valar Atomics: Isaiah Taylor on Nuclear&#39;s Missing Ford Moment and Why Energy Is the Real Upstream of AI Compute</h2>
+    <p class="section-desc">今天 feed 里只有 1 个 podcast,但这份分量足够。No Priors 这期带 Sarah Guo 走进 Valar Atomics 在 Utah 的设施,跟创始人 Isaiah Taylor 坐下来谈。整场最值得拎出来的是他开场就摆出的 frame:「Nuclear has never had its Ford moment or its Tesla moment」——核反应堆从来没有为大规模量产而造过。Valar 在押的就是把 fission 做成「更接近被制造出来而不是被建造出来」的硬件,目标把能源成本压到现在的 1/10。这个命题对 AI-compute 受众尤其关键——Taylor 直白说 LLM 的成本大头是电和散热,不是 silicon,所以任何能把能源成本曲线压 10 倍的反应堆,几乎是顺带把智能本身的成本压 10 倍。他对监管环境的描述也很重要:「多年来第一次,能源 R&amp;D 的监管通道是打开的」。这一期的两张 card 就分别落在「nuclear 还没经历 Ford/Tesla 时刻」与「AI compute 的上游是吉瓦」这两条线上。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="podcast:no-priors" data-author-name="No Priors" data-author-tag="AI 与创业对话播客" data-author-handle="" data-author-avatar="../assets/avatars/podcast-no-priors.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/podcast-no-priors.jpg" alt="No Priors avatar"><span class="avatar-fallback">NP</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">No Priors</div>
+            <div class="author-tag is-inline">AI 与创业对话播客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>No Priors 这期:Sarah Guo 和嘉宾主持到 Valar Atomics 的 Utah 设施见创始人 Isaiah Taylor——他反复回到的那条 frame 是,nuclear 还没经历过它的 Ford 或 Tesla 时刻。</p>
+              <p>Valar 的反应堆是「更接近被制造出来,而不是被建造出来」——他们的命题很明确:把 fission 做成能批量产、能在硬件上快速迭代、足够便宜到把能源从「供给侧 commodity」拉成「需求侧 commodity」。Taylor 说,现在大部分核工业是 modeling and simulation 的工业,忘了怎么在硬件上动手。</p>
+              <p>他抛给 AI 听众的宏观论点是:能源需求是由价格决定的,不是反过来——如果你真的把 electrons 的成本压下去,需求就在那里等着。第一个由 nuclear reactor 供电的 AI chip、50 多年来美国重新点亮的第一个 TRISO reactor,都落在 AI compute 是「新增 electrons」最大买家的时间点上。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>欢迎来到 Ward 250——史上第一座由 startup 真正发出电的先进反应堆。</p>
+              <p>我们做的是为行星尺度而造的核反应堆。Nuclear fission 算老技术,我们已经造过很多反应堆,但从来没有为大规模量产而造过。Nuclear 还没经历过它的 Ford 时刻,或者它的 Tesla 时刻。</p>
+              <p>能源是大宗商品,需求是由价格决定的。如果你能把能源做得更便宜,需求就会出现。现在大部分核工业是 modeling and simulation 的工业,他们不专注在硬件迭代上。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>No Priors this week: Sarah Guo and guest host sit down at Valar Atomics&#39; Utah facility with founder Isaiah Taylor — and the frame he keeps returning to is that nuclear has never had its Ford or Tesla moment.</p>
+              <p>Valar&#39;s reactor is &#39;more manufactured than constructed&#39; — the explicit pitch is mass-produced, hardware-iterated fission cheap enough to bend energy from a commodity-with-fixed-demand into a commodity-with-cheaper-supply. Most of the nuclear industry, Taylor says, is a modeling-and-simulation industry that forgot how to ship hardware.</p>
+              <p>The macro argument he hands to the AI audience: energy demand is set by price, not the other way around — if you actually cut the cost of electrons, you find demand waiting. First AI chip powered by a nuclear reactor, first TRISO reactor to turn on in the US in 50+ years, all of it landing at the moment when AI compute is the loudest buyer of new electrons.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Welcome to War two fifty, first advanced reactor to ever make power by startup.</p>
+              <p>We are making nuclear reactors built for planetary scale. Nuclear fission is kind of an old technology. And we&#39;ve built a lot of nuclear reactors, but we&#39;ve never built them for mass scale. Nuclear has never had its Ford moment or its Tesla moment.</p>
+              <p>Energy being a commodity, the demand is set by the price. If you can figure out how to make energy cheaper, you will have demand. Most of the nuclear industry is a modeling and simulation industry. They&#39;re not focused on hardware iteration.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.youtube.com/watch?v=5Xvbq_zvOQ4" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="podcast:no-priors" data-author-name="No Priors" data-author-tag="AI 与创业对话播客" data-author-handle="" data-author-avatar="../assets/avatars/podcast-no-priors.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/podcast-no-priors.jpg" alt="No Priors avatar"><span class="avatar-fallback">NP</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">No Priors</div>
+            <div class="author-tag is-inline">AI 与创业对话播客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Taylor 对 AI-compute 受众抛出的最尖锐一句:LLM 的成本大头是电和散热,不是 silicon——所以任何能把能源成本曲线压 10 倍的反应堆,几乎是顺带把智能本身的成本压了 10 倍。</p>
+              <p>他对监管环境的描述非常直白:「多年来第一次,能源 R&amp;D 的监管通道是打开的」。没有明说但显然的受益方,是把牌照路径和硬件迭代节奏配在一起的那家公司——Valar 赌自己能成为那家公司。</p>
+              <p>Valar 真正在押的更深一层是:AI 的下一个瓶颈不是下一颗 chip,是下一吉瓦。如果 nuclear 是解锁下一代 training run 和 inference fleet 的 input,那么能源丰裕的赢家在结构上就坐在「模型最优者」的上游。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>我们的反应堆更接近于被制造出来而不是被建造出来,而且它们极其安全。我们认为这两件事的组合会让我们把 nuclear fission 规模化,把人类的能源成本压到现在的十分之一。</p>
+              <p>为什么多年来第一次,能源 R&amp;D 的监管通道是打开的。</p>
+              <p>能源是我们超级 techno-industrial 未来的唯一 input。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Taylor&#39;s strongest single line for the AI-compute audience: most of the cost of running an LLM is electricity and cooling, not silicon — so any reactor that bends the energy cost curve 10x is, almost by accident, bending the cost of intelligence itself.</p>
+              <p>He is explicit about the regulatory environment: &#39;an open regulatory environment for progress in energy R&amp;D for the first time in years.&#39; The unstated beneficiary is whoever pairs the licensing pathway with hardware iteration — Valar is betting they can be that company.</p>
+              <p>The deeper bet Valar is making is that the bottleneck for AI isn&#39;t the next chip — it&#39;s the next gigawatt. If nuclear is the input that unlocks the next generation of training runs and inference fleets, then the winner of energy abundance is structurally upstream of whoever ships the best model.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>We have nuclear reactors that are more manufactured than constructed, and they&#39;re extremely safe. And we think the combination of these two things is going to allow us to scale nuclear fission and make energy 10 times cheaper for humanity.</p>
+              <p>Why there&#39;s an open regulatory environment for progress in energy R and D for the first time in years.</p>
+              <p>Energy is the only input to our hyper techno industrial future.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.youtube.com/watch?v=5Xvbq_zvOQ4" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 02</div>
+    <h2 class="section-title">Post-Sol 价格层:OpenAI 给 5.6 Sol 全订阅降价 + Claude 把 Fable 5 / Code 配额延到 7-19 + Altman 公开喊话收 Sol build / Post-Sol Price Layer: OpenAI Cuts 5.6 Sol Across Subscriptions, Claude Extends Fable 5 and Code Quota, Altman Calls for Sol Builds</h2>
+    <p class="section-desc">GPT-5.6 Sol 发布几天后,这一层在做的不是 model 升级,是价格层和配额层的调整。OpenAI 一边(Thibault Sottiaux / Codex / ChatGPT Work lead)把 inference 优化带来的成本下降直接传递给所有 5.6 Sol 订阅,Team / Edu / Go / Plus / Pro 全覆盖,且直白说「不会有暗中 nerfing」。Claude 一边(官方账号)把 Fable 5 在所有付费方案上的访问延长到 7-19,同时把 Code 的周限额保持高 50%——明确是对标 Sol 的防守动作。Sam Altman 同时间亲自下场公开喊话,要大家晒 Sol 的 build、做最好的那个人会收到 OpenAI archive 里的特别礼物。这一期的三张 card 分别落在 OpenAI 降价、Claude 延配额、Altman 喊 build 这三条线——三家在同一个窗口里同时在「同价多给 + 鼓励 build」这条主线。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:thsottiaux" data-author-name="Thibault Sottiaux" data-author-tag="OpenAI Codex &amp; ChatGPT" data-author-handle="@thsottiaux" data-author-avatar="../assets/avatars/x-thsottiaux.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-thsottiaux.jpg" alt="Thibault Sottiaux avatar"><span class="avatar-fallback">TS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Thibault Sottiaux</div>
+            <div class="author-tag is-inline">OpenAI Codex &amp; ChatGPT</div>
+          </div>
+          <div class="author-handle">@thsottiaux</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>OpenAI Codex / ChatGPT Work 负责人 Thibault Sottiaux 把这一轮更新框成「不是 nerfing,是好东西」——inference 优化让成本下降,所有 GPT-5.6 Sol 订阅(Team、Edu、其他付费 tier)都拿到降价。</p>
+              <p>实质是一次「质量不变、价格下降」的移动,不是「质量下降」的暗中缩水。Sottiaux 直白说:GPT-5.6 Sol 会继续待在每个付费订阅里(Go、Plus、Pro),直到下一代更优的模型出来。</p>
+              <p>放到竞品面看:Anthropic 的 Claude Fable 5 刚宣布 7-19 之前保持延长访问、Code 周限额继续保持高 50%——两家供应商现在都在「同价多给」的姿态里,而不是「少给少收」。用户难得碰到一轮价格层面的竞合。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Codex 和 ChatGPT Work 用户更新。不是 nerfing,只有好东西!我们已经落地 inference 优化,把节省下来的成本传递给所有 GPT-5.6 Sol 订阅。</p>
+              <p>Team、Edu……以及任何其他付费订阅。简单直接。</p>
+              <p>GPT-5.6 Sol 会继续待在你们付费的 ChatGPT 订阅里——Go、Plus、Pro 都算。直到我们交付一个明显更好的模型为止。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thibault Sottiaux (OpenAI Codex / ChatGPT Work lead) frames the latest round of updates as &#39;no nerfing, only good stuff&#39; — inference optimizations are passing savings down to all GPT-5.6 Sol subscriptions, including Team, Edu, and other paid tiers.</p>
+              <p>The substance is a price-quality move, not a price hike: same model, cheaper tokens, no quiet degradation. Sottiaux is explicit that GPT-5.6 Sol stays in every paid subscription (Go, Plus, Pro) until a strictly better model ships.</p>
+              <p>The competitor read: Anthropic&#39;s Claude Fable 5 just announced extended access through July 19 with the same 50% Code weekly cap raised — both vendors are now in a &#39;more for the same&#39; posture rather than a &#39;less for less&#39; one. Users get the rare air of a price-coopetition.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Updates for Codex and ChatGPT Work users. No nerfing, only good stuff! We have landed inference optimizations and are passing down savings to all the subscriptions for GPT-5.6 Sol.</p>
+              <p>Team, Edu, ... and any other paid subscription too. Quite simple really.</p>
+              <p>Rest assured that GPT 5.6 Sol will stay in the ChatGPT subscription you pay for. Including Go, Plus and Pro subscriptions. At least until we ship an even better model.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/thsottiaux/status/207600001" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:claudeai" data-author-name="Claude" data-author-tag="Anthropic Claude 官方账号" data-author-handle="@claudeai" data-author-avatar="../assets/avatars/x-claudeai.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-claudeai.jpg" alt="Claude avatar"><span class="avatar-fallback">C</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Claude</div>
+            <div class="author-tag is-inline">Anthropic Claude 官方账号</div>
+          </div>
+          <div class="author-handle">@claudeai</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Claude 官方账号宣布:Fable 5 在所有付费方案上延长访问,Code 周限额继续保持高 50%,两件事都到 7-19。</p>
+              <p>信号是「防守性对标」——竞争对手一旦放出旗舰模型,自然动作就是给自己的旗舰加配额,而不是偷偷减。Claude 做的就是这件事。</p>
+              <p>对跑长链路 agentic workflow 的 Claude Code 用户来说,实际意思很清楚:未来一周你撞到的周上限比长期基线高 50%。不要按今天的 cap 去定架构。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>和之前一样,你每周使用额度的最多一半可以用于 Fable 5。超出之后,可以继续用 usage credits 跑 Fable 5,或者切到其他模型,在剩余的周额度里继续工作。</p>
+              <p>我们延长所有付费方案对 Fable 5 的访问,同时把 Claude Code 的周限额保持高 50%,直到 7-19。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Claude&#39;s official account announces: Fable 5 access extended on all paid plans, Code&#39;s weekly rate limits kept 50% higher, both running through July 19.</p>
+              <p>The signal is defensive parity — when a competitor ships a flagship model, the natural move is to throw more quota at your own flagship, not to nerf it. Claude is doing exactly that.</p>
+              <p>For builders running long agentic workflows on Claude Code, the practical read is: the weekly ceiling you&#39;ll hit for the next week is 50% higher than the long-term baseline. Don&#39;t size an architecture to today&#39;s cap.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>As before, you can use up to half of your weekly usage limit on Fable 5. After that, you can continue using Fable 5 with usage credits, or switch to another model to keep working within your remaining weekly limit.</p>
+              <p>We&#39;re extending Claude Fable 5 access on all paid plans, as well as keeping Claude Code&#39;s weekly rate limits 50% higher, through July 19.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/claudeai/status/207615000" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:sama" data-author-name="Sam Altman" data-author-tag="OpenAI CEO" data-author-handle="@sama" data-author-avatar="../assets/avatars/x-sama.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-sama.jpg" alt="Sam Altman avatar"><span class="avatar-fallback">SA</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Sam Altman</div>
+            <div class="author-tag is-inline">OpenAI CEO</div>
+          </div>
+          <div class="author-handle">@sama</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Sam Altman 发了一条公开征集:「想看看大家拿 5.6 Sol 做了什么有意思的东西。我会给做出最酷那个的人送一份 OpenAI archive 里的特别礼物。」</p>
+              <p>这是轻巧的市场动作——公司 leader 公开喊话,让用户出来秀,做得最好的那个有实在奖励。</p>
+              <p>战略面看:旗舰模型一发布,下一步自然动作就是铺设 social proof。Altman 在招 builder 当 marketing 层——每一个 shipped 的 Sol 项目都会变成一条 tweet,拉下一个用户进来。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>想看看大家拿 5.6 Sol 做了什么有意思的东西。我会给做出最酷那个的人送一份 OpenAI archive 里的特别礼物。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Sam Altman posts a public callout: &#39;i&#39;d love to see interesting things people have built with 5.6 sol. i will send the person who made the coolest thing a special gift from the openai archives.&#39;</p>
+              <p>This is marketing with a light touch — the leader of the company publicly asking the user base to show off, with a tangible reward for the best one.</p>
+              <p>The strategic read: when a flagship model ships, the next move is to seed social proof. Altman is recruiting builders to be the marketing layer — every shipped Sol project becomes a tweet that pulls the next user in.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>i&#39;d love to see interesting things people have built with 5.6 sol. i will send the person who made the coolest thing a special gift from the openai archives.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/sama/status/207610000" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 03</div>
+    <h2 class="section-title">Coding agent 进入生产工作流的三个面:Rauch 讲「把模型当 cog」+ Zara 把会议 transcript 当 PRD + Masad 把 fine-tuning 做成 vibe research / Coding Agents Enter Production Workflows: Rauch on &#39;Model as Cog,&#39; Zara on Meeting-as-PRD, Masad on Vibe Research</h2>
+    <p class="section-desc">这一组三张 card 都在讲 coding agent 怎么真正进入 production 工作流,而不是 demo 阶段。Rauch(Vercel CEO)把命题抬高一层:不要把模型当机器本身,要把它当机器里的 cog——AI SDK / open Agent API / ZDR inference 这一整套,本质是把 ownership 从 vendor 拿回到 operator。Zara Zhang 给出的是日常用法:「会议 transcript 当 PRD」——跟同事讨论完直接发 transcript 给 Codex,prototype 就出来了,会议本身就是 prompt。Amjad Masad(Replit CEO)演示的是 fine-tuning 也能 vibe 化:fine-tune 一个 Qwen-8b 模型下棋,跑 3 条平行实验分支,他把这套叫「Vibe Research」——agent 是 lab assistant,人是 PI。三张 card 分别落在「架构层」「日常 workflow 层」「研究方法层」三个不同的尺度,放在一起看就是 coding agent 在 2026 年中已经不是工具,是同事。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:rauchg" data-author-name="Guillermo Rauch" data-author-tag="Vercel CEO" data-author-handle="@rauchg" data-author-avatar="../assets/avatars/x-rauchg.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-rauchg.jpg" alt="Guillermo Rauch avatar"><span class="avatar-fallback">GR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Guillermo Rauch</div>
+            <div class="author-tag is-inline">Vercel CEO</div>
+          </div>
+          <div class="author-handle">@rauchg</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Vercel CEO Guillermo Rauch 把这一代 startup 必须面对的命题摆出来:模型应该是你自己机器里的一个 cog,而不是机器本身。Open model API、open Agent API、ZDR(Zero Data Retention)inference——把 ownership 放回 operator 手里。</p>
+              <p>Frame 是「反 vendor lock-in」,包了一层 AI 时代的语言。Rauch 其实在讲十年前每一代 infra pitch 都讲过的事:不要租平台,要租 primitives。</p>
+              <p>变化在于,「primitives」现在指的是 inference、evals、routing、agent orchestration,不再是 compute 和 storage。把模型当客户而不是依赖的 founder,是能在下轮 pricing tier 变化里活下来的那个。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>把模型做成你自己机器里的一个 cog。
+
+              ◾ AI SDK → open model API
+              ◾ → open Agent API
+              ◾ AI Gateway → open ZDR inference
+
+              Startup 和 enterprise 必须 own 自己的数据、evals 和命运——在 AI 时代更是如此。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch (Vercel CEO) lays out a thesis the agent era is forcing on every startup: the model needs to be a cog in a machine you own, not the machine itself. Open model APIs, open agent APIs, ZDR (Zero Data Retention) inference — stack ownership back into the operator&#39;s hands.</p>
+              <p>The frame is anti-vendor-lock-in, dressed up in AI-era vocabulary. Rauch is arguing the same thing every infra pitch argued ten years ago: don&#39;t rent the platform — rent the primitives.</p>
+              <p>The shift is that &#39;primitives&#39; now means inference, evals, routing, agent orchestration, not just compute and storage. The founder who treats the model as a customer rather than a dependency is the one who survives the next pricing tier change.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Make the model a cog in a machine you own.
+
+              ◾ AI SDK → open model API
+              ◾ → open Agent API
+              ◾ AI Gateway → open ZDR inference
+
+              Startups and enterprises must own their data, evals, and destiny — even more so in the AI era.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/rauchg/status/207620000" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:zarazhangrui" data-author-name="Zhang Rui" data-author-tag="Follow Builders 创始人 / 策展人" data-author-handle="@zarazhangrui" data-author-avatar="../assets/avatars/x-zarazhangrui.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-zarazhangrui.jpg" alt="Zhang Rui avatar"><span class="avatar-fallback">ZR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Zhang Rui</div>
+            <div class="author-tag is-inline">Follow Builders 创始人 / 策展人</div>
+          </div>
+          <div class="author-handle">@zarazhangrui</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zara Zhang 分享她现在每天在用的工作流模式:「把会议 transcript 当 PRD」。跟同事聊一个 feature 的实现,把 transcript 发给 Codex,会议本身就是 prompt,原型就 build 出来了。</p>
+              <p>有意思的压缩在这里:从 spec 到实现的天数被压到分钟,因为 agent 同时擅长对话里的 ambiguity 和 production code。transcript 是丰富的上下文,但不再是 bottleneck。</p>
+              <p>她第二条 post 是框架那句——「passion 是最大的 moat」。在工具吃掉 build 成本的时代,留下来的就是对一个 problem 持续上心的能量。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>试试「会议 transcript 当 PRD」,很惊艳。
+
+              我跟同事讨论一个 feature 的实现,把 transcript 发给 Codex,它就按我们讨论的 build 了原型。会议本身就是 prompt。</p>
+              <p>Passion 是最大的 moat</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zara Zhang shares a workflow pattern she&#39;s now using daily: &#39;meeting transcript as PRD&#39;. Discuss the feature with a colleague, send the transcript to Codex, the meeting is the prompt, the prototype gets built.</p>
+              <p>The interesting compression: spec → implementation collapses from days to minutes because the agent is fluent in both conversational ambiguity and production code. The transcript is rich context, but not the bottleneck.</p>
+              <p>Her second post is the framing line — &#39;passion is the biggest moat.&#39; In an era where tooling has eaten the build cost, what survives is the energy to keep showing up for the same problem.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Try &#39;meeting transcript as PRD&#39;, it&#39;s amazing
+
+              I discuss a feature&#39;s implementation with a colleague, send transcript to Codex, and it builds the prototype as we discussed. The meeting is the prompt.</p>
+              <p>Passion is the biggest moat</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/zarazhangrui/status/207625000" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:amasad" data-author-name="Amjad Masad" data-author-tag="Replit CEO" data-author-handle="@amasad" data-author-avatar="../assets/avatars/x-amasad.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-amasad.jpg" alt="Amjad Masad avatar"><span class="avatar-fallback">AM</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Amjad Masad</div>
+            <div class="author-tag is-inline">Replit CEO</div>
+          </div>
+          <div class="author-handle">@amasad</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Replit CEO Amjad Masad 演示公司把 fine-tuning 推进到 agent 时代:在 Replit 上 fine-tune 一个 Qwen-8b 模型下棋,同时跑 3 条平行实验分支,把这套流程叫「Vibe Research」。</p>
+              <p>模式很清晰:编排 + 多分支实验 + fine-tuned 小模型,胜过把一个通用大模型推到极限。agent 是 lab assistant,人是 principal investigator。</p>
+              <p>Masad 另一条——Replit 自己的 computer-use 模型跟他新写的 chess engine 对打——是同一论点从另一面讲:能操控软件的 agent 现在已经是任何严肃 AI 公司的桌面技能。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Vibe Research
+
+              在 Replit 上 fine-tune 一个 Qwen-8b 模型下棋。跑 3 条平行分支做不同实验,正在取得真实进展。
+
+              模型从经验里学习并泛化的能力已经走得这么远,真是惊人。</p>
+              <p>有意思——看 Replit 自己的 computer-use 模型跟我新写的 chess engine 对打。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Amjad Masad (Replit CEO) demos the company pushing fine-tuning into the agent era: fine-tuning a Qwen-8b model to play chess on Replit, running 3 parallel experiment branches, calling it &#39;Vibe Research&#39;.</p>
+              <p>The pattern: orchestration + multi-branch experiments + a fine-tuned small model beats trying to make one big model do everything. The agent is the lab assistant, the human is the principal investigator.</p>
+              <p>Masad&#39;s second post — Replit&#39;s own computer-use model playing against his new chess engine — is the same thesis from the other side: agents that operate software are now table-stakes for any serious AI company.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Vibe Research
+
+              Fine-tuning a Qwen-8b model to play chess on Replit. Running 3 parallel branches with different experiments and making real progress.
+
+              It&#39;s amazing how far models have come in their ability to learn from experience and generalize.</p>
+              <p>Fun to see Replit&#39;s computer use model play against my new chess engine.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/amasad/status/207630000" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 04</div>
+    <h2 class="section-title">周末 fragment 三连:Turck 的「任何人能做 app」meme + Shipper 的「资本主义赢了」+ Nikunj 的「tokenmaxxer 沉默」/ Weekend Fragments: Turck&#39;s &#39;Anyone Can Build&#39; Meme, Shipper&#39;s &#39;Capitalism Wins,&#39; Nikunj on the Silent Tokenmaxxers</h2>
+    <p class="section-desc">这一组是周末的 fragment 三连,每个 post 都是一个完整的 take 但都不构成论证。Matt Turck(First Mark / MAD Podcast)今天抛的是 founder 的 meme:「他们说现在任何人都能用 agentic coding tool 做 app 的时候的我」,配上他那条把地名全搅在一起的 mock World Cup 抽签——bar 比工作低。Dan Shipper(Every CEO)连发三条:「a spectacularly questionable result tbh」「capitalism stays winning!」「extremely relatable」,2026 年最高 engagement 的 AI 账号正在用 stream of consciousness 而不是结构化论证。Nikunj Kothari(Afore Capital)给出对 SF builder 圈最尖锐的判断:很多人声称在 tokenmaxxing、让 subagent loop 工作,但你问「做什么、为谁做」,答案是沉默。三张 card 放在一起,讲的是同一件事:在 AI 把 build 成本压塌的时代,最难留下的不是 prompt,是「在过那个房间」的判断力。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:mattturck" data-author-name="Matt Turck" data-author-tag="First Mark Capital 合伙人 / MAD Podcast 主理人" data-author-handle="@mattturck" data-author-avatar="../assets/avatars/x-mattturck.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-mattturck.jpg" alt="Matt Turck avatar"><span class="avatar-fallback">MT</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Matt Turck</div>
+            <div class="author-tag is-inline">First Mark Capital 合伙人 / MAD Podcast 主理人</div>
+          </div>
+          <div class="author-handle">@mattturck</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>First Mark / MAD Podcast 主理人 Matt Turck 发出今天的玩笑 thread:「Argentina 要跟 Monaco、Easter Island、Willy Wonka 的巧克力工厂一起踢球」——一段把每个能混淆的地名都搅在一起的 mock World Cup 抽签。</p>
+              <p>另一面是个 meme:「他们说现在任何人都能用 agentic coding tool 做 app 的时候的我」——房间里那个被掏空的 founder,bar 比真正要做的工作还低。</p>
+              <p>Turck 的幽默是「在过那个房间」的人才能笑出来的那种。两个 post 合在一起读,就是 founder 在承认「现在任何人都能 build」和「任何人都能 ship 人们想要的东西」之间的那条缝。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Argentina 要跟 Monaco、Easter Island 还有 Willy Wonka 的巧克力工厂一起踢球。</p>
+              <p>他们说现在任何人都能用 agentic coding tool 做 app,这时候的我</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Matt Turck (First Mark, MAD Podcast) posts the joke thread of the day: &#39;And Argentina will get to play Monaco, Easter Island and Willy Wonka&#39;s Chocolate Factory&#39; — a mock World Cup draw that conflates every confusable place name.</p>
+              <p>The other half is the meme: &#39;me when they say anyone can now build apps with an agentic coding tool&#39; — the exhausted founder in the room, the bar lower than the work needed.</p>
+              <p>Turck&#39;s humor is the kind that signals you&#39;ve been in the room. Both posts read as one founder acknowledging the gap between &#39;now anyone can build&#39; and &#39;now anyone can ship something people want.&#39;</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>And Argentina will get to play Monaco, Easter Island and Willy Wonka&#39;s Chocolate Factory</p>
+              <p>me when they say anyone can now build apps with an agentic coding tool</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/mattturck/status/207640000" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:danshipper" data-author-name="Dan Shipper" data-author-tag="Every 联合创始人 / AI 写作工具链" data-author-handle="@danshipper" data-author-avatar="../assets/avatars/x-danshipper.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-danshipper.jpg" alt="Dan Shipper avatar"><span class="avatar-fallback">DS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Dan Shipper</div>
+            <div class="author-tag is-inline">Every 联合创始人 / AI 写作工具链</div>
+          </div>
+          <div class="author-handle">@danshipper</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Every CEO Dan Shipper 连发三条短读:「说实话,一个相当可疑的结果」「资本主义继续赢!」「极度共鸣」——每条都是片段,每条都是看法。</p>
+              <p>模式非常清晰,也是 2026 年最有影响力的 AI-builder 账号现在的写法:模型是一条 stream of consciousness,不是结构化的论点。受众就是那个房间,房间读片段。</p>
+              <p>给研究 form 的 builder 看:2026 年 engagement 最高的 AI 账号,不是写文章的那批。是在对的那个瞬间给出对的三个词的那批。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>说实话,一个相当可疑的结果。</p>
+              <p>资本主义继续赢!</p>
+              <p>极度共鸣。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Dan Shipper (Every CEO) posts three short reads: &#39;a spectacularly questionable result tbh,&#39; &#39;capitalism stays winning!,&#39; &#39;extremely relatable.&#39; Each is a fragment, each is a take.</p>
+              <p>The pattern is exactly how the most-followed AI-builders accounts post now: the model reads as a stream of consciousness, not as a structured argument. The audience is the room, the room reads fragments.</p>
+              <p>For builders studying the form: the highest-engagement AI accounts in 2026 aren&#39;t the ones writing essays. They&#39;re the ones posting the right three words at the right moment.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>a spectacularly questionable result tbh</p>
+              <p>capitalism stays winning!</p>
+              <p>extremely relatable</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/danshipper/status/207645000" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:nikunj" data-author-name="Nikunj Kothari" data-author-tag="Afore Capital 合伙人" data-author-handle="@nikunj" data-author-avatar="../assets/avatars/x-nikunj.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-nikunj.jpg" alt="Nikunj Kothari avatar"><span class="avatar-fallback">NK</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Nikunj Kothari</div>
+            <div class="author-tag is-inline">Afore Capital 合伙人</div>
+          </div>
+          <div class="author-handle">@nikunj</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Afore Capital 的 Nikunj Kothari 抛出一条 weekend-mode 观察:「outbound sales 是最让人 humble 的事」——技能是可学的,但看着真正厉害的人做这件事,你只能带着点羡慕离开。</p>
+              <p>他当天早些时候另一条是对 SF builder 圈最尖锐的判断:很多人声称自己在「tokenmaxxing」、让 subagent loop 工作——但你问他们「做什么、为谁做」,答案是沉默。infrastructure 是真的,work 经常不是。</p>
+              <p>最后的提醒很简单:天气好就出去走走吧,builder 也是人。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Outbound sales 是最让人 humble 的事。
+
+              像任何技能一样,它是可学的。
+
+              但老天,当你看到真正厉害的人做这件事的时候,你只能带着点羡慕走开。
+
+              在 AI 时代这件事会变得更重要。</p>
+              <p>有意思的是,我在 SF 会遇到很多人声称自己在 tokenmaxxing,让一堆 subagent loop 工作……
+
+              但你问他们「在做什么、为谁做」,答案就是沉默。</p>
+              <p>提醒一下:如果还没出去走走,趁天气这么好出去一下吧!</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj Kothari (Afore Capital) drops a weekend-mode observation: &#39;there&#39;s nothing more humbling than outbound sales&#39; — the skill is learnable, but watching the great ones do it makes you walk away envious.</p>
+              <p>His earlier post in the day is the sharpest read on the SF builder scene: people claim they&#39;re &#39;tokenmaxxing&#39; with subagents looping work, but ask them &#39;what and for whom&#39; and the answer is silence. The infrastructure is real, the work often isn&#39;t.</p>
+              <p>The reminder is the simple one: get out if you haven&#39;t, on a gorgeous day. Even builders need weather.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>There&#39;s nothing more humbling than outbound sales.
+
+              Like any skill, it&#39;s learnable.
+
+              But man, when you see the really great ones do it, you can&#39;t help but walk away a bit envious.
+
+              Going to be even more important in the age of AI.</p>
+              <p>What&#39;s funny is I&#39;ll meet so many people in SF who&#39;ll claim they are tokenmaxxing and have all of these subagents looping things for them..
+
+              But when I ask them &#39;what&#39; and for &#39;whom&#39; are they building, the answer is silence.</p>
+              <p>Reminder to get out if you haven&#39;t on this gorgeous day!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/nikunj/status/207650000" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <footer data-source-note="Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-13 source feeds.">Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-13 source feeds.</footer>
+
+  <script>
+    function getTemplateAuthorSources() {
+      const sources = window.AI_BUILDERS_TEMPLATE_SOURCES || {};
+      return { identities: sources.identities || {}, avatars: sources.avatars || {} };
+    }
+
+    function getAuthorInitials(name) {
+      return (name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(function(part) { return part[0]; }).join('').toUpperCase();
+    }
+
+    function hydrateTemplateCopy() {
+      const intro = document.querySelector('.intro');
+      if (intro) {
+        const kicker = intro.querySelector('.intro-kicker');
+        const copy = intro.querySelector('.intro-copy');
+        if (kicker) kicker.textContent = intro.dataset.kicker || '';
+        if (copy) copy.textContent = intro.dataset.text || '';
+      }
+
+      const footer = document.querySelector('footer');
+      if (footer) footer.textContent = footer.dataset.sourceNote || '';
+
+      const rewriteLabel = document.body.dataset.viewLabelRewrite || '速读';
+      const originalLabel = document.body.dataset.viewLabelOriginal || '原文';
+      document.querySelectorAll('.view-toggle').forEach(function(button) {
+        if (button.dataset.viewTarget === 'rewrite') button.textContent = rewriteLabel;
+        if (button.dataset.viewTarget === 'original') button.textContent = originalLabel;
+      });
+    }
+
+    function hydrateAuthorMeta() {
+      const sources = getTemplateAuthorSources();
+      document.querySelectorAll('.card').forEach(function(card) {
+        const authorKey = card.dataset.authorKey || '';
+        const identity = sources.identities[authorKey] || {};
+        const avatarEntry = sources.avatars[authorKey] || {};
+
+        const name = identity.name || card.dataset.authorName || '';
+        const rawHandle = identity.handle || card.dataset.authorHandle || '';
+        const handle = rawHandle && rawHandle.startsWith('@') ? rawHandle : (rawHandle ? '@' + rawHandle : '');
+        const tag = identity.label || card.dataset.authorTag || '';
+        const avatar = avatarEntry.fileUrl || avatarEntry.localPath || card.dataset.authorAvatar || '';
+
+        const nameNode = card.querySelector('.author-name');
+        const tagNode = card.querySelector('.author-tag');
+        const handleNode = card.querySelector('.author-handle');
+        const avatarNode = card.querySelector('.avatar');
+        const avatarImg = card.querySelector('.avatar img');
+        const avatarFallback = card.querySelector('.avatar-fallback');
+
+        if (nameNode) nameNode.textContent = name;
+        if (tagNode) tagNode.textContent = tag;
+        if (handleNode) handleNode.textContent = handle;
+        if (avatarImg) {
+          avatarImg.src = avatar;
+          avatarImg.alt = name ? name + ' avatar' : 'Author avatar';
+        }
+        if (avatarNode) avatarNode.classList.toggle('is-fallback', !avatar);
+        if (avatarFallback) avatarFallback.textContent = getAuthorInitials(name);
+      });
+    }
+
+    function updateEditionStrip() {
+      const publishDate = document.body.dataset.publishDate;
+      const editionName = document.body.dataset.editionName || '双语精选版';
+      const editionStrip = document.getElementById('edition-strip-text');
+      if (!publishDate || !editionStrip) return;
+
+      const issueNumber = document.body.dataset.issueNumber || '';
+      if (!issueNumber) return;
+
+      const selectedCount = document.querySelectorAll('.card').length;
+      const authorCount = new Set([].slice.call(document.querySelectorAll('.author-handle')).map(function(node) { return node.textContent.trim(); }).filter(Boolean)).size;
+      const themeCount = document.querySelectorAll('.section-header').length;
+      const parts = ['第 ' + issueNumber + ' 期', publishDate, editionName, selectedCount + ' 条精选', authorCount + ' 位作者', themeCount + ' 个主题'];
+      editionStrip.innerHTML = parts.map(function(part) { return '<span class="edition-item">' + part + '</span>'; }).join('<span class="edition-sep">|</span>');
+    }
+
+    function measureVariantHeight(variant) {
+      const prevPosition = variant.style.position;
+      const prevInset = variant.style.inset;
+      const prevVisibility = variant.style.visibility;
+      const prevPointerEvents = variant.style.pointerEvents;
+      const prevOpacity = variant.style.opacity;
+      const prevTransform = variant.style.transform;
+      const prevTransition = variant.style.transition;
+      const prevOverflowY = variant.style.overflowY;
+      const prevDisplay = variant.style.display;
+
+      variant.style.position = 'relative';
+      variant.style.inset = 'auto';
+      variant.style.visibility = 'hidden';
+      variant.style.pointerEvents = 'none';
+      variant.style.opacity = '1';
+      variant.style.transform = 'none';
+      variant.style.transition = 'none';
+      variant.style.overflowY = 'visible';
+      variant.style.display = 'block';
+
+      const height = variant.scrollHeight;
+
+      variant.style.position = prevPosition;
+      variant.style.inset = prevInset;
+      variant.style.visibility = prevVisibility;
+      variant.style.pointerEvents = prevPointerEvents;
+      variant.style.opacity = prevOpacity;
+      variant.style.transform = prevTransform;
+      variant.style.transition = prevTransition;
+      variant.style.overflowY = prevOverflowY;
+      variant.style.display = prevDisplay;
+
+      return Math.ceil(height);
+    }
+
+    function getTargetHeight(shell, target) {
+      const variant = shell.querySelector('.content-variant[data-view="' + target + '"]');
+      return measureVariantHeight(variant);
+    }
+
+    function syncShellHeights() {
+      document.querySelectorAll('.content-shell').forEach(function(shell) {
+        const active = shell.querySelector('.content-variant.is-active');
+        const target = active ? active.dataset.view : 'rewrite';
+        shell.style.height = getTargetHeight(shell, target) + 'px';
+      });
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', function() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(syncShellHeights, 120);
+    });
+
+    document.querySelectorAll('.card').forEach(function(card) {
+      const buttons = card.querySelectorAll('.view-toggle');
+      const shells = card.querySelectorAll('.content-shell');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const target = button.dataset.viewTarget;
+          if (button.classList.contains('is-active')) return;
+
+          buttons.forEach(function(btn) {
+            btn.classList.toggle('is-active', btn === button);
+          });
+
+          shells.forEach(function(shell) {
+            const current = shell.querySelector('.content-variant.is-active');
+            const next = shell.querySelector('.content-variant[data-view="' + target + '"]');
+            if (!current || !next || current === next) return;
+
+            shell.style.height = shell.offsetHeight + 'px';
+            requestAnimationFrame(function() {
+              current.classList.remove('is-active');
+              next.classList.add('is-active');
+              shell.style.height = getTargetHeight(shell, target) + 'px';
+            });
+          });
+        });
+      });
+    });
+
+    hydrateTemplateCopy();
+    hydrateAuthorMeta();
+    updateEditionStrip();
+    syncShellHeights();
+  </script>
+</body>
+</html>
