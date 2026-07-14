@@ -1,0 +1,475 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-07-14",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天 1 个 podcast + 1 个 blog + 16 条 X，主轴意外是 NVIDIA。MAD Podcast 把 Nemotron 负责人 Bryan Catanzaro 请去一次性讲清楚：open-weights 不是落后是另一种节奏；compute 已经撞极限，接下来推智能只能靠效率；每家公司都围着 secret 建，AI 跟 secret 贴得越紧价值越大。后半段讲 Nemotron 的 hybrid SSM + MoE 架构——这套设计是 Nemotron 3 Ultra 登顶 US open-weights 榜的相当一部分原因。OpenAI 周二的小节奏则来自另一头：Thariq 提前放 8M WAU 的预告，Thibault 跟一句 ChatGPT Work，Sama 用一句「design 终于好了」收尾，Aditya 那条「不知道用的是 Codex 还是 ChatGPT」正好把 GPT-5.6 Sol 推下来的终态一句话讲完。同一天 Claude 端了两件事——一个 Swift package 把 Claude 接进 Apple Foundation Models，Artifacts 升级成可被人类和本地 agent 同时编辑的共享 surface。R&D 这边，Aaron Levie 把 frontier x open-weight x applied 三层画清楚，Rauch 把 Vercel gateway 上 open-weight 已经 29% 的数字端出来——applied 层真正在卖的已经不是模型而是 harness。周末 fragment 由 Ryo / Steipete / Nikunj 三段单人 vibe coding 项目收尾。"
+  },
+  "archive": {
+    "title": "开源压顶日",
+    "desc": "今天 1 个 podcast + 1 个 blog + 16 条 X，主轴是「开源压顶」：NVIDIA Nemotron 负责人 Catanzaro 在 MAD Podcast 一次性讲清楚 open-weights 的节奏 + Nemotron hybrid SSM / MoE 架构；Vercel 给出 open-weight 在 gateway 上 29% 的 token 份额、 4 月才 11%。OpenAI 那一头 Thariq / Thibault / Sama / Aditya 把「Codex 和 ChatGPT 在用户视角已经模糊」这件事讲完。Claude 同一天接进 Apple Foundation Models + Artifacts 升级成共享 surface。Levie 把 frontier x open-weight x applied 三层画清楚，Ryo / Steipete / Nikunj 三段单人 vibe coding 收尾。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-14 source feeds.",
+  "sections": [
+    {
+      "title": "NVIDIA Nemotron 走进 MAD Podcast：Bryan Catanzaro 把开源 + 极限 + secret 三件事讲给 AI 受众 / NVIDIA Nemotron on MAD Podcast: Bryan Catanzaro on Open Source, Compute Limits, and the Company Secret",
+      "desc": "Catanzaro 这一期把 Nemotron 团队的 frame 一次性讲清楚：已经在 compute 极限上跑、所以智能只能来自效率；开源不是落后、而是另一种节奏；每家公司围着 secret 建，AI 跟 secret 贴得越紧价值越大。后半段讲架构——hybrid SSM + full attention 不是速度 trick、是模型真的更聪明了；MoE 的本质是「回答单条 query 不需要想整个宇宙」。",
+      "cards": [
+        {
+          "authorKey": "podcast:mad-podcast",
+          "authorName": "The MAD Podcast",
+          "authorHandle": null,
+          "authorTag": "Matt Turck 主理的 AI 与数据播客",
+          "sourceUrl": "https://www.youtube.com/@DataDrivenNYC/videos",
+          "en": {
+            "rewrite": [
+              "Bryan Catanzaro (NVIDIA, head of Nemotron) on this week's MAD Podcast: the question he keeps returning to is whether we're already at the limit of compute — and if so, the only path to more intelligence is efficiency, not more force.",
+              "Catanzaro pushes back on the framing that US open-source AI is lagging behind closed models. He argues the gap matters less than the field's overall pace, and credits China's open-source community with making the open ecosystem viable for everyone downstream.",
+              "His pragmatic case for customers picking open weights: every company is built around a secret — its data, its workflows, its customer context. AI tied tightly to that secret is more valuable than AI locked behind an API. Open weights let you keep the secret while still benefiting from frontier capability."
+            ],
+            "original": [
+              "If you accept as the truth that we're gonna be running at the limit, then what that means is that the way to get more intelligence is to be more efficient. We can't get more intelligence by applying more force if we're already at the limit.",
+              "I think it's absolutely false to say that, you know, the achievements of some other country are all being created by sort of, you know, copycat mentality. It's just not true.",
+              "Every company is built around a secret. This is a secret that has to do with not just their intellectual property, but also their platform... And it is always the case that the value of AI is greater when it can be more tightly connected with those secrets because AI depends on data critically."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Bryan Catanzaro（NVIDIA Nemotron 负责人）这周做客 MAD Podcast，他反复回到那条 frame 是：我们已经在 compute 的极限上跑，要把智能往前推，路径只剩一条——做更聪明的事，不是堆更多力。",
+              "他对「美国开源 AI 落后于闭源」这个 frame 不买账。整条 AI 行业三个月就翻一页，开源闭源之间的具体 gap 没你想的那么要紧；他反而点名中国 open-source 社区，说正是他们的开放让后续所有公司都能做产品，这是过去几年被低估的贡献。",
+              "他给客户的 practical case 也很直白：每家公司都是围着「secret」建的——数据、workflow、客户上下文。AI 跟这个 secret 贴得越紧，价值越大；open weights 让你在保留 secret 的同时还能蹏 frontier 的能力，这就是为什么「为这个客户 fine-tune 一个模型」这事不是 demo 是 production。"
+            ],
+            "original": [
+              "如果你接受「我们已经在极限上跑」这件事是真的，那么获得更多智能的唯一路径就是做更高效的事。我们没法靠堆力拿到更多智能，前提条件是我们已经在极限上了。",
+              "我认为「某个国家的成果全是 copycat 出来的」这件事完全不成立，真的不是这样。",
+              "每家公司都是围绕一个 secret 建起来的——这个 secret 不只是 IP，还包括平台：它怎么处理问题、怎么跟客户互动、怎么想解决方案。AI 的价值永远跟它和这些 secret 的贴合度成正比，因为 AI 取决于数据。"
+            ]
+          }
+        },
+        {
+          "authorKey": "podcast:mad-podcast",
+          "authorName": "The MAD Podcast",
+          "authorHandle": null,
+          "authorTag": "Matt Turck 主理的 AI 与数据播客",
+          "sourceUrl": "https://www.youtube.com/@DataDrivenNYC/videos",
+          "en": {
+            "rewrite": [
+              "On Nemotron's architecture: Catanzaro explains why Nemotron uses a hybrid state-space model + full-attention stack rather than either alone. SSMs compress the whole sequence into a constant-sized cache — better at global, impressionistic understanding. Full attention sees everything losslessly — better at picking out exact tokens.",
+              "The combination is more than a speed trick. The model is actually smarter than either component alone, and most frontier labs are now adopting some flavor of hybrid (Qwen has it, Kimi has 'linear attention'). Catanzaro credits this work with part of Nemotron 3 Ultra landing as the #1 US open-weights model.",
+              "On MoE: 'you want it to remember absolutely everything about the history of everything. But when you're answering a particular question, does it seem reasonable that it needs to actually think about the entire universe?' The point of mixture-of-experts is exactly that sparsity — most activations are wasted on any single query."
+            ],
+            "original": [
+              "That's how they work. Right? So instead of having the ability to look at the entire sequence randomly, they summarize everything at every step into a constant, cache or a little scratch pad that they're working on. And, that constraint seems to actually make them smarter at some tasks.",
+              "A lot of models these days are being built with hybrid SSM approaches. For example, QN has done that. Kimi is using what they call Kimi linear attention these days.",
+              "So mixture of experts is a form of sparsity. The idea is, wow, you wanna train a model on the entire Internet. You want it to remember absolutely everything about the history of everything. But when you're answering a particular question, does it seem reasonable that it needs to actually think about the entire universe in order to answer that question? Actually, no."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "聊到 Nemotron 的架构，Catanzaro 把 hybrid SSM + full attention 这条路讲得很具体：SSM 把整条 sequence 压成一个固定大小的 cache，擅长全局的、印象派的理解；full attention 是 lossless 的，擅长精确点出某个 token。两边各有强项，合起来比任一边单独用都更聪明——而且这不是速度 trick，是模型真的更聪明了。",
+              "Qwen 已经在用 hybrid SSM 路线，Kimi 推的叫 linear attention，几乎所有 frontier lab 都在往这个方向走。Nemotron 3 Ultra 这代能登顶 US open-weights 榜，hybrid 这套占了相当一部分原因。",
+              "讲 MoE 的时候 Catanzaro 给了一个很朴素的 frame：你想让模型记住整个互联网上的所有事，但你问它一个问题时，它真的需要把整个宇宙想一遍吗？其实不需要——所以 MoE 的本质就是这种 sparsity，大部分 activation 在任何一次 query 上都是浪费的。"
+            ],
+            "original": [
+              "它们的原理就是这样——不是任意看整条 sequence，而是每一步把全部内容压成一个 constant cache、一个小草稿区，然后基于这个工作。这种 constraint 反而让模型在一些任务上更聪明。",
+              "现在很多模型都在用 hybrid SSM 路线。Qwen 已经这么做了，Kimi 这段时间在用的是他们叫 linear attention 的方案。",
+              "MoE 是一种 sparsity。你想训练一个模型记住整个互联网、记住历史上所有事。但回答某个具体问题时，它真的需要把整个宇宙想一遍吗？其实不需要。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Sol 周二的两个数字 + Codex/ChatGPT 在用户视角里已经模糊 / Tuesday's Sol Numbers + The Codex/ChatGPT Boundary Has Blurred",
+      "desc": "Thariq 提前一天放 8M WAU 的预告；Thibault Sottiaux（Codex & ChatGPT 负责人）跟一句「Build your dreams」+ ChatGPT Work 链接；Sama 用「脑子转不过来」认可 design 上的进步；Aditya Agarwal 那条「不知道用的是 Codex 还是 ChatGPT」把 GPT-5.6 Sol 这一路推下来的终态一句话写完。",
+      "cards": [
+        {
+          "authorKey": "x:trq212",
+          "authorName": "Thariq",
+          "authorHandle": "@trq212",
+          "authorTag": "AI 研究员 / Follow Builders 维护者",
+          "sourceUrl": "https://x.com/trq212",
+          "en": {
+            "rewrite": [
+              "Thariq drops a one-line teaser: 'Tomorrow might be 8M active user celebration day. Just saying.' Posted the day before the announcement — implying Codex (or whatever the artifact/Claude Tag surface is) is about to cross an 8M WAU threshold."
+            ],
+            "original": [
+              "Tomorrow might be 8M active user celebration day. Just saying"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thariq 提前一天放了句 teaser：「明天可能是 800 万活跃用户的庆祝日。先说一句。」——意味着 Codex / Claude Tag 这一类表面，跨 8M WAU 的门槛就在明天。"
+            ],
+            "original": [
+              "明天可能是 800 万活跃用户的庆祝日。先说一句。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT",
+          "sourceUrl": "https://x.com/thsottiaux",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux (OpenAI Codex & ChatGPT lead) follows up the 8M teaser with two short lines — 'Build your dreams' and a link to 'ChatGPT Work'. The shape matches the recent GPT-5.6 Sol pattern: announce a milestone, then push a work-productivity surface on top of it."
+            ],
+            "original": [
+              "Build your dreams",
+              "ChatGPT Work presents"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux（OpenAI Codex & ChatGPT 负责人）在 8M 那条之后跟了两条——「Build your dreams」+「ChatGPT Work presents」的链接。形态跟最近 GPT-5.6 Sol 一致：先报 milestone，再往工作生产力方向叠一层 surface。"
+            ],
+            "original": [
+              "建你的梦想。",
+              "ChatGPT Work 上线推出。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:sama",
+          "authorName": "Sam Altman",
+          "authorHandle": "@sama",
+          "authorTag": "OpenAI CEO",
+          "sourceUrl": "https://x.com/sama",
+          "en": {
+            "rewrite": [
+              "Sama with a quiet win: 'still sorta breaks my brain to see our models be good at design finally'. Posted in the middle of the ChatGPT Work / Codex push — three lines from the same day, all oriented around taste and surface polish rather than benchmark wins."
+            ],
+            "original": [
+              "still sorta breaks my brain to see our models be good at design finally"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Sama 一句相对低调的认可：「看到我们的模型终于在 design 上做得好，脑子还是有点转不过来。」—— 这一天三条都是「taste / 表面精致度」方向，不是 benchmark 胜率。"
+            ],
+            "original": [
+              "看到我们的模型终于在 design 上做得好，脑子还是有点转不过来。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:adityaag",
+          "authorName": "Aditya Agarwal",
+          "authorHandle": "@adityaag",
+          "authorTag": "Dropbox Engineering VP / 前 Facebook 平台工程负责人",
+          "sourceUrl": "https://x.com/adityaag",
+          "en": {
+            "rewrite": [
+              "Aditya Agarwal (Dropbox Engineering VP / ex-Facebook platform lead) with a one-line demo of where the Codex/ChatGPT distinction has ended up: 'I don't know if I am using Codex or ChatGPT (wtf). But I do know that I am asking an AGI LEVEL coding agent: \"What necklaces does Benson Boone wear? (for my daughter)\"'.",
+              "The joke lands because it captures the actual end-state the GPT-5.6 Sol push has been steering toward: the surface area is now 'an agent' rather than 'Codex' or 'ChatGPT', and the user can't tell which one they're holding."
+            ],
+            "original": [
+              "I don't know if I am using Codex or ChatGPT (wtf) But I do know that I am asking an AGI LEVEL coding agent: \"What necklaces does Benson Boone wear? (for my daughter)\""
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aditya Agarwal（Dropbox Engineering VP / 前 Facebook 平台工程负责人）一句话就把 Codex / ChatGPT 区分到今天还剩多少讲清楚了：「我都不知道自己用的是 Codex 还是 ChatGPT（wtf）。但我知道我在问一个 AGI LEVEL 的 coding agent：『Benson Boone 戴什么链条？（帮我女儿问的）』」。",
+              "这个段子之所以成立，是因为它正好对应 GPT-5.6 Sol 这一路推下来的真实终态：surface 已经是「an agent」，不再是「Codex」或「ChatGPT」，用户自己也分不清拿的是哪一把钥匙。"
+            ],
+            "original": [
+              "我不知道我是在用 Codex 还是 ChatGPT（wtf）。但我确实在问一个 AGI LEVEL 的 coding agent：「Benson Boone 戴什么链条？（帮我女儿问的）」"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Claude 接进 Apple Foundation Models + Artifacts 升级成共享 surface / Claude Lands in Apple Foundation Models + Artifacts Becomes a Shared Surface",
+      "desc": "Claude Blog 发 Swift package，让 Apple developer 用 Foundation Models framework 的 @Generable 把 typed Swift 值传给 Claude，三行代码即可；本地的 Apple 模型负责快任务，Claude 负责多步推理 / 联网 / 代码执行。同一天 Cat Wu 发 Artifacts 升级，Thariq 演示用 Claude Tag 搭一个可被人类和本地 Claude Code session 同时编辑的 dashboard——artifact 变成共享可写 surface。",
+      "cards": [
+        {
+          "authorKey": "blog:claude-blog",
+          "authorName": "Claude Blog",
+          "authorHandle": null,
+          "authorTag": "Anthropic 官方博客",
+          "sourceUrl": "https://claude.com/blog/claude-for-foundation-models",
+          "en": {
+            "rewrite": [
+              "Claude ships a Swift package that lets Apple developers call Claude through Apple's new Foundation Models framework. The pitch: Apple's framework returns typed Swift values from @Generable annotations, so the developer arrives at the Claude API call with clean inputs rather than raw user text.",
+              "The actual handoff pattern is the interesting bit — on-device Apple models handle fast local tasks (summarization, extraction), and Claude picks up multi-step reasoning, code generation, web search, and code execution when the request needs more. The response streams back into the same Swift view.",
+              "Three lines of code is the explicit claim. The point is to make Claude an extension of the developer's typing model, not a remote chatbot bolted onto an app."
+            ],
+            "original": [
+              "Today we're releasing Foundation Models framework support for Claude through a new Swift package that lets Apple's Foundation Models framework call Claude for more complex workflows.",
+              "Developers can use this to tap into Apple's on-device models for fast, local tasks like summarization or extraction. Developers can now use Apple's Foundation Models framework to hand off to Claude when a request calls for multi-step reasoning, code generation, and more.",
+              "Because Apple's framework returns typed Swift values from @Generable annotations, developers arrive at the Claude API call with clean inputs instead of raw user text."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude 出了一个 Swift package，把 Claude 接进 Apple 新出的 Foundation Models framework。关键 frame 是：Apple 的 framework 从 @Generable 注解返回 typed Swift 值，所以 developer 走到 Claude 那一步时拿的是干净结构化输入，不是裸 user text。",
+              "真正值得看的是 handoff pattern：Apple 本地模型负责 summarization / extraction 这类快速任务；一旦请求需要多步推理、代码生成、联网搜索、或代码执行，就交给 Claude。response 直接 stream 回同一个 Swift view。",
+              "三行代码是他们的明面 claim。重点是把 Claude 变成 developer 类型系统的一部分，而不是一个贴在 app 上的远程 chatbot。"
+            ],
+            "original": [
+              "今天我们通过一个新的 Swift package 发布 Claude 对 Foundation Models framework 的支持，Apple 的 Foundation Models framework 可以把更复杂的 workflow 交给 Claude。",
+              "Developer 可以用这个来调用 Apple 本地模型处理快速、本地的任务，比如 summarization 或 extraction；一旦请求需要多步推理、代码生成，他们可以把请求交给 Claude。",
+              "因为 Apple 的 framework 从 @Generable 注解返回 typed Swift 值，developer 走到 Claude API 调用这一步时，输入是干净的，不是裸 user text。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:_catwu",
+          "authorName": "Cat Wu",
+          "authorHandle": "@_catwu",
+          "authorTag": "Anthropic 产品工程",
+          "sourceUrl": "https://x.com/_catwu",
+          "en": {
+            "rewrite": [
+              "Cat Wu (Claude Artifacts lead) ships a quiet upgrade: 'Artifacts just got an upgrade!' — the same day Thariq demos using Claude Tag (built on Artifacts) to spin up a project dashboard that other humans and local Claude Code sessions can edit."
+            ],
+            "original": [
+              "Artifacts just got an upgrade!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Cat Wu（Claude Artifacts 负责人）今天消消发了个升级：「Artifacts 又升级了！」—— 同一天 Thariq 在演示怎么用 Claude Tag（就是 Artifacts 之上叠的）快速搭一个项目 dashboard，既能被人改，也能被本地 Claude Code session 改。"
+            ],
+            "original": [
+              "Artifacts 又升级了！"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:trq212",
+          "authorName": "Thariq",
+          "authorHandle": "@trq212",
+          "authorTag": "AI 研究员 / Follow Builders 维护者",
+          "sourceUrl": "https://x.com/trq212",
+          "en": {
+            "rewrite": [
+              "Thariq shows what's newly possible with the Artifacts upgrade: 'create a dashboard for a project in Claude Tag that can be edited by others or by my local Claude Code sessions' — a single artifact, two co-editors (human + local agent), both reading the same live state.",
+              "This is the practical picture of the 'agent is a coworker' frame: artifacts become shared mutable surfaces that agents and humans both push into. The file is the room."
+            ],
+            "original": [
+              "This makes artifacts much more expressive and can be combined in creative ways. One of my favorites is to create a dashboard for a project in Claude Tag that can be edited by others or by my local Claude Code sessions."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thariq 把 Artifacts 升级后的新可能演示出来了：「用 Claude Tag 给一个项目建一个 dashboard，既能被别人改，也能被本地 Claude Code session 改」—— 一个 artifact，两个人类+本地 agent 同时编辑，共享同一份 live state。",
+              "这就是「agent 是同事」那个 frame 在生产场景里的具体形态：artifacts 变成共享可写 surface，agent 和人一起往里 push。文件即房间。"
+            ],
+            "original": [
+              "这让 Artifacts 表达力强多了，可以以很多有创造力的方式组合。我最喜欢的一个用法是：用 Claude Tag 给一个项目建一个 dashboard，这个 dashboard 能被别人改，也能被本地 Claude Code session 改。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Aaron Levie 把 frontier x open-weight x applied 三层画清楚 + routing 模板 / Aaron Levie Maps the Frontier x Open-Weight x Applied Stack + the Routing Template",
+      "desc": "Levie 把接下来一段时间的 AI 结构讲成四层：frontier、open weights、applied、enterprise。applied 层的护城河是 harness——怎么把 frontier 当 manager、open weight 当 workhorse 的分工做对。他给了一个具体的实验：Fable 2x premium 团队跑下来，有效 delegation 反而把总成本降了。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie",
+          "en": {
+            "rewrite": [
+              "Aaron Levie (Box CEO) lays out the four-layer AI structure he expects to hold for the foreseeable future: frontier labs (data + compute + breakthroughs), open weights (rapidly absorbs frontier breakthroughs, lets you run 'at cost'), the applied AI layer (frontier x open weights, with their own RLed models), and individual enterprises wiring their context into any of the above.",
+              "His punchline is that this isn't zero-sum — every layer has room. The applied layer's job is to combine frontier intelligence with open or cheap closed models, hold the eval set + domain context + enterprise trust, and have its own RLed models for high-volume predictable tasks."
+            ],
+            "original": [
+              "A few thoughts on what we will see in AI structurally for the foreseeable future: Frontier intelligence continues unabated... Open weights rapidly absorbs frontier breakthroughs... The Applied AI layer has a huge opportunity to combine frontier intelligence with open or cheap closed models to orchestrate workflows... Individual enterprises will generally focus on their enterprise context...",
+              "Net net: even though some of this gets framed as zero sum, there's just a ton of opportunity for all layers of the stack and approaches."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie（Box CEO）把 AI 接下来一段时间的结构讲成了四层：frontier lab（数据 + compute + 突破）、open weights（快速吸纳 frontier 突破、可以「at cost」跑）、applied AI 层（frontier x open weights 组合，有自己的 RLed model），以及单个 enterprise 把自己的 context 接进任何一层。",
+              "他的 punchline 是这事根本不是零和——每一层都有空间。applied 层的工作就是把 frontier 智能和 open / 便宜 closed model 组合起来，拿住 eval set、domain context、enterprise 信任，并为高频可预测的任务跑自己的 RLed model。"
+            ],
+            "original": [
+              "讲一下我对接下来一段时间 AI 结构性走向的几个判断：frontier 智能会继续往前走；open weights 会快速吸纳 frontier 突破；applied AI 层在把 frontier 智能和 open 或便宜的 closed model 组合编排 workflow 这件事上有巨大机会；单个 enterprise 则主要聚焦于把自己的 enterprise context 接进去。",
+              "总结：即便其中一些事会被框成零和，但所有层和路径都有大量机会。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie",
+          "en": {
+            "rewrite": [
+              "Levie with the practical routing template: a frontier model as manager, cheaper models for the workhorse. A team tried Fable's 2x premium expecting higher cost; instead Fable's effective delegation dropped total cost — it specified constraints and outcomes instead of spelling out implementation, gave feedback instead of making fixes.",
+              "'These are the habits of a good manager.' Levie argues this is the future template for model routing, and the applied layer's harness — how you split work between manager and worker models — is the new moat."
+            ],
+            "original": [
+              "Here's a great post on driving down costs, while maintaining high performance, with frontier intelligence as a manager and lower cost models for the workhorse tasks.",
+              "We started this experiment expecting to measure how much Fable's 2x premium would increase cost. We were surprised to find that Fable's effective delegation actually decreased cost overall. It specified constraints and outcomes instead of spelling out the implementation, gave feedback instead of making fixes itself, and in most cases never touched the code at all. These are the habits of a good manager."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Levie 给的 routing template 很具体：frontier model 当 manager，便宜模型当 workhorse。有一支团队试了 Fable 2x premium 期望成本涨，结果 Fable 的 delegation 让总成本反而降了——它只写约束和目标，不去规定实现；给反馈，而不是直接改代码；大多数情况下根本不碰代码。",
+              "「这就是好 manager 的习惯。」Levie 认为这是未来 model routing 的样板；applied 层真正的护城河就是它的 harness——怎么把 manager 和 worker 的分工做对。"
+            ],
+            "original": [
+              "这里有一篇关于「如何在保持高性能的同时压低成本」的好文，做法是 frontier 智能当 manager，便宜的模型当干活的 workhorse。",
+              "我们一开始做这个实验，是预期 Fable 2x 的溢价会让成本上涨。结果意外发现，Fable 的有效 delegation 反而把总成本降了下来。它只规定约束和目标，不去规定实现；它给反馈，而不是自己改；大多数情况下根本不碰代码。这就是好 manager 的习惯。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Vercel gateway 上 open-weight 29%、applied 层的 harness 在变贵 / Vercel Gateway: Open-Weight Share at 29%, the Harness Layer Is Getting Pricier",
+      "desc": "Rauch 把 Vercel AI Gateway 最受欢迎的两个能力列出来：易用性 + 可观测性；再把 headline 数字端出来——open-weight 模型在 gateway 上跑 29% 的 token，4 月才 11%。routing / observability 这一层正好把 Levie 预判的趋势具象化。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO",
+          "sourceUrl": "https://x.com/rauchg",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch (Vercel CEO) on what Vercel's customers actually like: 'The two most popular [Vercel AI Gateway] features so far have been: 1️⃣ The ease of use / filesystem API, 2️⃣ Observability. We're doubling down on both!'",
+              "The shape is the same as Levie's applied-layer frame: open weights absorbing frontier breakthroughs is only useful if the routing/observability around it is solid. Vercel is selling the harness."
+            ],
+            "original": [
+              "The two most popular features so far have been: 1️⃣ The ease of use / filesystem API, 2️⃣ Observability. We're doubling down on both!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch（Vercel CEO）讲 Vercel 客户最常用的两个能力：「到目前为止最受欢迎的两个特性是：1. 易用性 / filesystem API，2. 可观测性。两个都要加大投入！」",
+              "形态跟 Levie 的 applied 层 frame 是同一个：open weights 吸收 frontier 突破这件事要做成，routing 和 observability 这两层得先做扎实。Vercel 在卖的是 harness。"
+            ],
+            "original": [
+              "到目前为止最受欢迎的两个特性是：一、易用性 / filesystem API；二、可观测性。两个都要继续加大投入！"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO",
+          "sourceUrl": "https://x.com/rauchg",
+          "en": {
+            "rewrite": [
+              "Rauch cites the headline number: 'Open-weight models ran 29% of gateway tokens, up from 11% in April.' That's the routing/observability layer surfacing exactly the trend Levie predicted — open weights absorbing frontier breakthroughs faster than people expect."
+            ],
+            "original": [
+              "Open-weight models ran 29% of gateway tokens, up from 11% in April"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Rauch 把那个 headline 数字端出来：「Open-weight 模型现在跑 Vercel gateway 上 29% 的 token，4 月才 11%。」这就是 routing / observability 这一层把 Levie 预判的趋势具象化了——open weights 吸收 frontier 突破的速度比多数人预想的要快。"
+            ],
+            "original": [
+              "Open-weight 模型现在跑 Vercel gateway 29% 的 token，4 月才 11%。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "周末 fragment 三连：Ryo 的 e-reader 固件 + Steipete 的云端 maintainer agent + Nikunj 的 Ramp-Autofill / Weekend Fragments: Ryo's E-Reader Firmware + Steipete's Cloud Maintainer Agent + Nikunj's Ramp-Autofill",
+      "desc": "三个单人 CLI-built vibe coding 项目：用 Cursor 给 e-reader 写固件并适配 CJK 排版；把 maintainer agent 搬上云、agent 之间开始互損；Ramp CLI + Claude Fable 拼出自动填发票的 skill。三个都是「一个人、一段流程」就能 ship 的样板。",
+      "cards": [
+        {
+          "authorKey": "x:ryolu_",
+          "authorName": "Ryo Lu",
+          "authorHandle": "@ryolu_",
+          "authorTag": "AI 工程师",
+          "sourceUrl": "https://x.com/ryolu_",
+          "en": {
+            "rewrite": [
+              "Ryo Lu builds a custom e-reader firmware with Cursor — works on Xteink X3 + X4. The features are unusually specific: 'beautiful latin + CJK typography, vertical layout, line breaking, large character sets (纟書．禁則), syncs books + progress with ryOS, speedy rendering + caching.'",
+              "Hardware hacking as a vibe-coding demo. The 'just ask Cursor to flash it for you' line is the punchline."
+            ],
+            "original": [
+              "works on Xteink X3 + X4 ask Cursor to flash it for you",
+              "built a custom e-reader firmware with Cursor, hardware hacking is fun! made for: – beautiful latin + CJK typography – vertical layout, line breaking, large character sets (纟書．禁則) – syncs books + progress with ryOS – speedy rendering + caching"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Ryo Lu 用 Cursor 写了一套定制 e-reader 固件——适配 Xteink X3 + X4。feature 写得相当具体：「漂亮的中英排版、竖排、断行、大字符集（纟書．禁則）、跟 ryOS 同步书和阅读进度、渲染和缓存都做快。」",
+              "硬件 hack 当作 vibe coding 的 demo。「让 Cursor 帮你刷就行」这一句才是重点。"
+            ],
+            "original": [
+              "适配 Xteink X3 + X4，让 Cursor 帮你刷就行。",
+              "用 Cursor 写了一个定制 e-reader 固件，硬件 hack 很好玩！做这些是为了：漂亮的中英排版；竖排、断行、大字符集（纟書．禁則）；跟 ryOS 同步书和阅读进度；渲染和缓存都做快。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:steipete",
+          "authorName": "Peter Steinberger",
+          "authorHandle": "@steipete",
+          "authorTag": "OpenClaw 创始人",
+          "sourceUrl": "https://x.com/steipete",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger (maintainer of PSPDFKit / agent-builder) with a small operational milestone: 'I moved our maintainer agent to the cloud and they are fighting already.' — agent-on-agent conflict as a deployment event.",
+              "Second tweet in the same stream: iOS and Android apps shipped updates alongside the maintainer agent rollout; 'if the autoupdater doesn't work, run the web installer'."
+            ],
+            "original": [
+              "I moved our maintainer agent to the cloud and they are fighting already.",
+              "We shipped! iOS and Android apps also got updates and they look great. Had to bump Node to keep things smooth, if the autoupdater doesn't work, run the web installer and it'll take care of that for you."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger（PSPDFKit 作者 / agent-builder）分享一个运维侧的小里程碑：「我把我们的 maintainer agent 搬到云上，它们已经在互損了。」—— agent 对 agent 的 conflict 当成一次 deploy event 来写。",
+              "同一条线下的第二条：iOS 和 Android app 跟 maintainer agent 一起发了更新；「如果自动更新没生效，跑一下 web installer」。"
+            ],
+            "original": [
+              "我把我们的 maintainer agent 搬到云上，它们已经在互損了。",
+              "我们发了！iOS 和 Android app 也一起更新了，看起来都不错。为了让事情跑得顺，我们升了 Node；如果自动更新没生效，跑一下 web installer，它会帮你把剩下的事做完。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人",
+          "sourceUrl": "https://x.com/nikunj",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari (Afore Capital) ships Ramp-Autofill, a Claude Fable skill that finds receipts from iMessage + Gmail, converts web-page receipts to PDF via Playwright, and fills out Ramp expenses automatically. Built on Ramp CLI + Claude Fable, fully open source.",
+              "The vibe: 'Ramp's mission is save money AND time, but I was still spending time categorizing & adding receipts' — single-author CLI-built SaaS glue as the practical 2026 vibe-coding pattern."
+            ],
+            "original": [
+              "So @tryramp's core mission is 'save money AND time', but I was still spending time categorizing & adding receipts to my expenses.. at least till I discovered their CLI. Introducing the Ramp-Autofill skill: finds receipts automatically from my iMessage & Gmail. if it's in a link, it'll use playwright to convert the web page into a pdf and attach to the receipt automatically. fills in me"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kothari（Afore Capital）发布 Ramp-Autofill——一个 Claude Fable skill，自动从 iMessage 和 Gmail 找发票，把网页发票用 Playwright 转 PDF，再自动填进 Ramp 的报销。底层是 Ramp CLI + Claude Fable，完全开源。",
+              "vibe 写在前面：「Ramp 的使命是『节钱 AND 节时间』，但我还是在花时间分类发票」——单人 CLI-built SaaS glue 当作 2026 年 vibe coding 的实际样板。"
+            ],
+            "original": [
+              "Ramp 的核心使命是「节钱 AND 节时间」，但我还是在花时间给发票分类、往报销里加——直到我发现了他们的 CLI。Ramp-Autofill 这个 skill：自动从我的 iMessage 和 Gmail 找发票；如果是链接，就用 Playwright 把网页转成 PDF 附上；然后自动填进我的报销。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

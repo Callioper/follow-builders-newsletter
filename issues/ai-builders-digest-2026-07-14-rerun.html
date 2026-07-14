@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Builders Digest · 2026-07-14</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ed;
+    --accent: #c0392b;
+    --accent-light: #e8d5c4;
+    --border: #d4cdc0;
+    --muted: #7a7265;
+    --tag-bg: #e8e2d6;
+    --en-bg: #ffffff;
+    --cn-bg: #faf7f2;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  .masthead, .intro, .section-header, .feed, footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .masthead { padding-top: 48px; }
+  .masthead-rule { border: none; border-top: 3px solid var(--ink); margin: 0 0 12px; }
+  .masthead-inner { display: flex; justify-content: center; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; letter-spacing: -0.4px; }
+  .masthead-subtitle { margin-top: 8px; padding-bottom: 10px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  .edition-strip {
+    position: relative;
+    margin-top: 8px;
+    min-height: 46px;
+    padding: 10px 132px 12px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.34);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+
+  .edition-strip .edition-sep { margin: 0 8px; color: #b8ae9f; }
+  .edition-strip-text { display: block; }
+  .edition-return-link { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; padding: 6px 10px; border: 1px dashed rgba(192, 57, 43, 0.55); border-radius: 999px; color: var(--accent); text-decoration: none; font-size: 12px; line-height: 1; letter-spacing: 0.06em; background: rgba(255, 255, 255, 0.45); transition: background 160ms ease, border-color 160ms ease, transform 160ms ease; }
+  .edition-return-link:hover, .edition-return-link:focus-visible { background: rgba(255, 255, 255, 0.82); border-color: var(--accent); transform: translateY(-50%) translateX(-1px); }
+  .edition-return-link:focus-visible { outline: none; }
+  .intro { padding-top: 22px; }
+  .intro-inner { max-width: 920px; margin: 0 auto; padding: 0 0 0 18px; border-left: 3px solid #d9cdbc; }
+  .intro-kicker { margin: 0 0 8px; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .intro p { margin: 0; max-width: none; color: var(--muted); font-size: clamp(15px, 1.6vw, 16px); line-height: 1.9; text-wrap: pretty; font-family: 'Noto Serif SC', serif; overflow-wrap: anywhere; }
+
+  .section-header { margin-top: 40px; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; margin: 0 0 6px; }
+  .section-desc { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+
+  .feed { display: flex; flex-direction: column; gap: 20px; }
+  .card { background: var(--en-bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .card-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid #eee7dd; flex-wrap: wrap; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .avatar-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .avatar.is-fallback img { display: none; }
+  .avatar.is-fallback .avatar-fallback { display: flex; }
+
+  .author-info { flex: 1; min-width: 160px; }
+  .author-name { font-weight: 600; font-size: 15px; }
+  .author-name-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .author-handle { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+  .author-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; background: var(--tag-bg); color: var(--muted); padding: 4px 8px; border-radius: 999px; }
+  .author-tag.is-inline { padding: 3px 8px; }
+
+  .card-controls { margin-left: auto; display: inline-flex; gap: 8px; }
+  .view-toggle { border: 1px solid var(--border); background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 999px; font-size: 12px; line-height: 1; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; }
+  .view-toggle.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .card-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .lang-col { padding: 18px 20px 22px; }
+  .lang-col.cn { background: var(--cn-bg); border-right: 1px solid #f0ece4; font-family: 'Noto Serif SC', serif; }
+  .lang-col.en { background: var(--en-bg); }
+  .lang-label { margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+  .content-shell { position: relative; transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .content-variant { position: absolute; inset: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(4px); transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; will-change: opacity, transform; }
+  .content-variant.is-active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+  .content-variant p, .content-variant li { margin: 0 0 12px; font-size: 14px; }
+  .content-variant ol { margin: 0 0 12px 20px; padding: 0; }
+  .inline-code { display: inline-block; font-family: 'IBM Plex Mono', monospace; background: #f4efe7; padding: 3px 6px; border-radius: 6px; margin-bottom: 8px; }
+
+  .card-footer { padding: 12px 20px 16px; border-top: 1px solid #eee7dd; background: #fcfaf6; }
+  .card-footer a { color: var(--accent); text-decoration: none; font-size: 14px; }
+  footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 680px) {
+    .masthead-inner { align-items: center; }
+    .edition-strip { padding-right: 12px; padding-left: 12px; }
+    .edition-strip-text { padding-right: 0; }
+    .edition-return-link { position: static; transform: none; margin-top: 8px; font-size: 11px; }
+    .card-controls { margin-left: 0; }
+    .card-body { grid-template-columns: 1fr; }
+    .lang-col.cn { border-right: none; border-bottom: 1px solid #f0ece4; }
+    .edition-strip .edition-sep { margin: 0 5px; }
+    .intro-inner { padding-left: 14px; }
+    .intro p { line-height: 1.84; }
+  }
+</style>
+</head>
+<body data-publish-date="2026-07-14" data-issue-number="50" data-edition-name="双语精选版" data-view-label-rewrite="速读" data-view-label-original="原文" data-author-identities-path="/home/eclaw/.follow-builders/assets/author-identities.json" data-avatar-manifest-path="/home/eclaw/.follow-builders/assets/avatar-manifest.json">
+  <header class="masthead">
+    <hr class="masthead-rule">
+    <div class="masthead-inner">
+      <div class="masthead-title">AI Builders Digest</div>
+    </div>
+    <div class="masthead-subtitle">Bilingual edition · 双语对照版</div>
+    <div class="edition-strip">
+      <span class="edition-strip-text" id="edition-strip-text">第 50 期｜2026-07-14｜双语精选版｜16 条精选｜12 位作者｜6 个主题</span>
+      <a class="edition-return-link" href="../index.html">返回目录</a>
+    </div>
+  </header>
+
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="今天 1 个 podcast + 1 个 blog + 16 条 X，主轴意外是 NVIDIA。MAD Podcast 把 Nemotron 负责人 Bryan Catanzaro 请去一次性讲清楚：open-weights 不是落后是另一种节奏；compute 已经撞极限，接下来推智能只能靠效率；每家公司都围着 secret 建，AI 跟 secret 贴得越紧价值越大。后半段讲 Nemotron 的 hybrid SSM + MoE 架构——这套设计是 Nemotron 3 Ultra 登顶 US open-weights 榜的相当一部分原因。OpenAI 周二的小节奏则来自另一头：Thariq 提前放 8M WAU 的预告，Thibault 跟一句 ChatGPT Work，Sama 用一句「design 终于好了」收尾，Aditya 那条「不知道用的是 Codex 还是 ChatGPT」正好把 GPT-5.6 Sol 推下来的终态一句话讲完。同一天 Claude 端了两件事——一个 Swift package 把 Claude 接进 Apple Foundation Models，Artifacts 升级成可被人类和本地 agent 同时编辑的共享 surface。R&amp;D 这边，Aaron Levie 把 frontier x open-weight x applied 三层画清楚，Rauch 把 Vercel gateway 上 open-weight 已经 29% 的数字端出来——applied 层真正在卖的已经不是模型而是 harness。周末 fragment 由 Ryo / Steipete / Nikunj 三段单人 vibe coding 项目收尾。">
+    <div class="intro-inner">
+      <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
+      <p class="intro-copy">今天 1 个 podcast + 1 个 blog + 16 条 X，主轴意外是 NVIDIA。MAD Podcast 把 Nemotron 负责人 Bryan Catanzaro 请去一次性讲清楚：open-weights 不是落后是另一种节奏；compute 已经撞极限，接下来推智能只能靠效率；每家公司都围着 secret 建，AI 跟 secret 贴得越紧价值越大。后半段讲 Nemotron 的 hybrid SSM + MoE 架构——这套设计是 Nemotron 3 Ultra 登顶 US open-weights 榜的相当一部分原因。OpenAI 周二的小节奏则来自另一头：Thariq 提前放 8M WAU 的预告，Thibault 跟一句 ChatGPT Work，Sama 用一句「design 终于好了」收尾，Aditya 那条「不知道用的是 Codex 还是 ChatGPT」正好把 GPT-5.6 Sol 推下来的终态一句话讲完。同一天 Claude 端了两件事——一个 Swift package 把 Claude 接进 Apple Foundation Models，Artifacts 升级成可被人类和本地 agent 同时编辑的共享 surface。R&amp;D 这边，Aaron Levie 把 frontier x open-weight x applied 三层画清楚，Rauch 把 Vercel gateway 上 open-weight 已经 29% 的数字端出来——applied 层真正在卖的已经不是模型而是 harness。周末 fragment 由 Ryo / Steipete / Nikunj 三段单人 vibe coding 项目收尾。</p>
+    </div>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 01</div>
+    <h2 class="section-title">NVIDIA Nemotron 走进 MAD Podcast：Bryan Catanzaro 把开源 + 极限 + secret 三件事讲给 AI 受众 / NVIDIA Nemotron on MAD Podcast: Bryan Catanzaro on Open Source, Compute Limits, and the Company Secret</h2>
+    <p class="section-desc">Catanzaro 这一期把 Nemotron 团队的 frame 一次性讲清楚：已经在 compute 极限上跑、所以智能只能来自效率；开源不是落后、而是另一种节奏；每家公司围着 secret 建，AI 跟 secret 贴得越紧价值越大。后半段讲架构——hybrid SSM + full attention 不是速度 trick、是模型真的更聪明了；MoE 的本质是「回答单条 query 不需要想整个宇宙」。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="podcast:mad-podcast" data-author-name="The MAD Podcast" data-author-tag="Matt Turck 主理的 AI 与数据播客" data-author-handle="" data-author-avatar="../assets/avatars/podcast-mad-podcast.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/podcast-mad-podcast.jpg" alt="The MAD Podcast avatar"><span class="avatar-fallback">TM</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">The MAD Podcast</div>
+            <div class="author-tag is-inline">Matt Turck 主理的 AI 与数据播客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Bryan Catanzaro（NVIDIA Nemotron 负责人）这周做客 MAD Podcast，他反复回到那条 frame 是：我们已经在 compute 的极限上跑，要把智能往前推，路径只剩一条——做更聪明的事，不是堆更多力。</p>
+              <p>他对「美国开源 AI 落后于闭源」这个 frame 不买账。整条 AI 行业三个月就翻一页，开源闭源之间的具体 gap 没你想的那么要紧；他反而点名中国 open-source 社区，说正是他们的开放让后续所有公司都能做产品，这是过去几年被低估的贡献。</p>
+              <p>他给客户的 practical case 也很直白：每家公司都是围着「secret」建的——数据、workflow、客户上下文。AI 跟这个 secret 贴得越紧，价值越大；open weights 让你在保留 secret 的同时还能蹏 frontier 的能力，这就是为什么「为这个客户 fine-tune 一个模型」这事不是 demo 是 production。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>如果你接受「我们已经在极限上跑」这件事是真的，那么获得更多智能的唯一路径就是做更高效的事。我们没法靠堆力拿到更多智能，前提条件是我们已经在极限上了。</p>
+              <p>我认为「某个国家的成果全是 copycat 出来的」这件事完全不成立，真的不是这样。</p>
+              <p>每家公司都是围绕一个 secret 建起来的——这个 secret 不只是 IP，还包括平台：它怎么处理问题、怎么跟客户互动、怎么想解决方案。AI 的价值永远跟它和这些 secret 的贴合度成正比，因为 AI 取决于数据。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Bryan Catanzaro (NVIDIA, head of Nemotron) on this week&#39;s MAD Podcast: the question he keeps returning to is whether we&#39;re already at the limit of compute — and if so, the only path to more intelligence is efficiency, not more force.</p>
+              <p>Catanzaro pushes back on the framing that US open-source AI is lagging behind closed models. He argues the gap matters less than the field&#39;s overall pace, and credits China&#39;s open-source community with making the open ecosystem viable for everyone downstream.</p>
+              <p>His pragmatic case for customers picking open weights: every company is built around a secret — its data, its workflows, its customer context. AI tied tightly to that secret is more valuable than AI locked behind an API. Open weights let you keep the secret while still benefiting from frontier capability.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>If you accept as the truth that we&#39;re gonna be running at the limit, then what that means is that the way to get more intelligence is to be more efficient. We can&#39;t get more intelligence by applying more force if we&#39;re already at the limit.</p>
+              <p>I think it&#39;s absolutely false to say that, you know, the achievements of some other country are all being created by sort of, you know, copycat mentality. It&#39;s just not true.</p>
+              <p>Every company is built around a secret. This is a secret that has to do with not just their intellectual property, but also their platform... And it is always the case that the value of AI is greater when it can be more tightly connected with those secrets because AI depends on data critically.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.youtube.com/@DataDrivenNYC/videos" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="podcast:mad-podcast" data-author-name="The MAD Podcast" data-author-tag="Matt Turck 主理的 AI 与数据播客" data-author-handle="" data-author-avatar="../assets/avatars/podcast-mad-podcast.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/podcast-mad-podcast.jpg" alt="The MAD Podcast avatar"><span class="avatar-fallback">TM</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">The MAD Podcast</div>
+            <div class="author-tag is-inline">Matt Turck 主理的 AI 与数据播客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>聊到 Nemotron 的架构，Catanzaro 把 hybrid SSM + full attention 这条路讲得很具体：SSM 把整条 sequence 压成一个固定大小的 cache，擅长全局的、印象派的理解；full attention 是 lossless 的，擅长精确点出某个 token。两边各有强项，合起来比任一边单独用都更聪明——而且这不是速度 trick，是模型真的更聪明了。</p>
+              <p>Qwen 已经在用 hybrid SSM 路线，Kimi 推的叫 linear attention，几乎所有 frontier lab 都在往这个方向走。Nemotron 3 Ultra 这代能登顶 US open-weights 榜，hybrid 这套占了相当一部分原因。</p>
+              <p>讲 MoE 的时候 Catanzaro 给了一个很朴素的 frame：你想让模型记住整个互联网上的所有事，但你问它一个问题时，它真的需要把整个宇宙想一遍吗？其实不需要——所以 MoE 的本质就是这种 sparsity，大部分 activation 在任何一次 query 上都是浪费的。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>它们的原理就是这样——不是任意看整条 sequence，而是每一步把全部内容压成一个 constant cache、一个小草稿区，然后基于这个工作。这种 constraint 反而让模型在一些任务上更聪明。</p>
+              <p>现在很多模型都在用 hybrid SSM 路线。Qwen 已经这么做了，Kimi 这段时间在用的是他们叫 linear attention 的方案。</p>
+              <p>MoE 是一种 sparsity。你想训练一个模型记住整个互联网、记住历史上所有事。但回答某个具体问题时，它真的需要把整个宇宙想一遍吗？其实不需要。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>On Nemotron&#39;s architecture: Catanzaro explains why Nemotron uses a hybrid state-space model + full-attention stack rather than either alone. SSMs compress the whole sequence into a constant-sized cache — better at global, impressionistic understanding. Full attention sees everything losslessly — better at picking out exact tokens.</p>
+              <p>The combination is more than a speed trick. The model is actually smarter than either component alone, and most frontier labs are now adopting some flavor of hybrid (Qwen has it, Kimi has &#39;linear attention&#39;). Catanzaro credits this work with part of Nemotron 3 Ultra landing as the #1 US open-weights model.</p>
+              <p>On MoE: &#39;you want it to remember absolutely everything about the history of everything. But when you&#39;re answering a particular question, does it seem reasonable that it needs to actually think about the entire universe?&#39; The point of mixture-of-experts is exactly that sparsity — most activations are wasted on any single query.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>That&#39;s how they work. Right? So instead of having the ability to look at the entire sequence randomly, they summarize everything at every step into a constant, cache or a little scratch pad that they&#39;re working on. And, that constraint seems to actually make them smarter at some tasks.</p>
+              <p>A lot of models these days are being built with hybrid SSM approaches. For example, QN has done that. Kimi is using what they call Kimi linear attention these days.</p>
+              <p>So mixture of experts is a form of sparsity. The idea is, wow, you wanna train a model on the entire Internet. You want it to remember absolutely everything about the history of everything. But when you&#39;re answering a particular question, does it seem reasonable that it needs to actually think about the entire universe in order to answer that question? Actually, no.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.youtube.com/@DataDrivenNYC/videos" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 02</div>
+    <h2 class="section-title">Sol 周二的两个数字 + Codex/ChatGPT 在用户视角里已经模糊 / Tuesday&#39;s Sol Numbers + The Codex/ChatGPT Boundary Has Blurred</h2>
+    <p class="section-desc">Thariq 提前一天放 8M WAU 的预告；Thibault Sottiaux（Codex &amp; ChatGPT 负责人）跟一句「Build your dreams」+ ChatGPT Work 链接；Sama 用「脑子转不过来」认可 design 上的进步；Aditya Agarwal 那条「不知道用的是 Codex 还是 ChatGPT」把 GPT-5.6 Sol 这一路推下来的终态一句话写完。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:trq212" data-author-name="Tao Li" data-author-tag="AI 研究员 / Follow Builders 维护者" data-author-handle="@trq212" data-author-avatar="../assets/avatars/x-trq212.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-trq212.jpg" alt="Tao Li avatar"><span class="avatar-fallback">TL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Tao Li</div>
+            <div class="author-tag is-inline">AI 研究员 / Follow Builders 维护者</div>
+          </div>
+          <div class="author-handle">@trq212</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thariq 提前一天放了句 teaser：「明天可能是 800 万活跃用户的庆祝日。先说一句。」——意味着 Codex / Claude Tag 这一类表面，跨 8M WAU 的门槛就在明天。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>明天可能是 800 万活跃用户的庆祝日。先说一句。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thariq drops a one-line teaser: &#39;Tomorrow might be 8M active user celebration day. Just saying.&#39; Posted the day before the announcement — implying Codex (or whatever the artifact/Claude Tag surface is) is about to cross an 8M WAU threshold.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Tomorrow might be 8M active user celebration day. Just saying</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/trq212" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:thsottiaux" data-author-name="Thibault Sottiaux" data-author-tag="OpenAI Codex &amp; ChatGPT" data-author-handle="@thsottiaux" data-author-avatar="../assets/avatars/x-thsottiaux.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-thsottiaux.jpg" alt="Thibault Sottiaux avatar"><span class="avatar-fallback">TS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Thibault Sottiaux</div>
+            <div class="author-tag is-inline">OpenAI Codex &amp; ChatGPT</div>
+          </div>
+          <div class="author-handle">@thsottiaux</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thibault Sottiaux（OpenAI Codex &amp; ChatGPT 负责人）在 8M 那条之后跟了两条——「Build your dreams」+「ChatGPT Work presents」的链接。形态跟最近 GPT-5.6 Sol 一致：先报 milestone，再往工作生产力方向叠一层 surface。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>建你的梦想。</p>
+              <p>ChatGPT Work 上线推出。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thibault Sottiaux (OpenAI Codex &amp; ChatGPT lead) follows up the 8M teaser with two short lines — &#39;Build your dreams&#39; and a link to &#39;ChatGPT Work&#39;. The shape matches the recent GPT-5.6 Sol pattern: announce a milestone, then push a work-productivity surface on top of it.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Build your dreams</p>
+              <p>ChatGPT Work presents</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/thsottiaux" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:sama" data-author-name="Sam Altman" data-author-tag="OpenAI CEO" data-author-handle="@sama" data-author-avatar="../assets/avatars/x-sama.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-sama.jpg" alt="Sam Altman avatar"><span class="avatar-fallback">SA</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Sam Altman</div>
+            <div class="author-tag is-inline">OpenAI CEO</div>
+          </div>
+          <div class="author-handle">@sama</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Sama 一句相对低调的认可：「看到我们的模型终于在 design 上做得好，脑子还是有点转不过来。」—— 这一天三条都是「taste / 表面精致度」方向，不是 benchmark 胜率。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>看到我们的模型终于在 design 上做得好，脑子还是有点转不过来。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Sama with a quiet win: &#39;still sorta breaks my brain to see our models be good at design finally&#39;. Posted in the middle of the ChatGPT Work / Codex push — three lines from the same day, all oriented around taste and surface polish rather than benchmark wins.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>still sorta breaks my brain to see our models be good at design finally</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/sama" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:adityaag" data-author-name="Aditya Agarwal" data-author-tag="Dropbox Engineering VP / 前 Facebook 平台工程负责人" data-author-handle="@adityaag" data-author-avatar="../assets/avatars/x-adityaag.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-adityaag.jpg" alt="Aditya Agarwal avatar"><span class="avatar-fallback">AA</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aditya Agarwal</div>
+            <div class="author-tag is-inline">Dropbox Engineering VP / 前 Facebook 平台工程负责人</div>
+          </div>
+          <div class="author-handle">@adityaag</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aditya Agarwal（Dropbox Engineering VP / 前 Facebook 平台工程负责人）一句话就把 Codex / ChatGPT 区分到今天还剩多少讲清楚了：「我都不知道自己用的是 Codex 还是 ChatGPT（wtf）。但我知道我在问一个 AGI LEVEL 的 coding agent：『Benson Boone 戴什么链条？（帮我女儿问的）』」。</p>
+              <p>这个段子之所以成立，是因为它正好对应 GPT-5.6 Sol 这一路推下来的真实终态：surface 已经是「an agent」，不再是「Codex」或「ChatGPT」，用户自己也分不清拿的是哪一把钥匙。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>我不知道我是在用 Codex 还是 ChatGPT（wtf）。但我确实在问一个 AGI LEVEL 的 coding agent：「Benson Boone 戴什么链条？（帮我女儿问的）」</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aditya Agarwal (Dropbox Engineering VP / ex-Facebook platform lead) with a one-line demo of where the Codex/ChatGPT distinction has ended up: &#39;I don&#39;t know if I am using Codex or ChatGPT (wtf). But I do know that I am asking an AGI LEVEL coding agent: &quot;What necklaces does Benson Boone wear? (for my daughter)&quot;&#39;.</p>
+              <p>The joke lands because it captures the actual end-state the GPT-5.6 Sol push has been steering toward: the surface area is now &#39;an agent&#39; rather than &#39;Codex&#39; or &#39;ChatGPT&#39;, and the user can&#39;t tell which one they&#39;re holding.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I don&#39;t know if I am using Codex or ChatGPT (wtf) But I do know that I am asking an AGI LEVEL coding agent: &quot;What necklaces does Benson Boone wear? (for my daughter)&quot;</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/adityaag" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 03</div>
+    <h2 class="section-title">Claude 接进 Apple Foundation Models + Artifacts 升级成共享 surface / Claude Lands in Apple Foundation Models + Artifacts Becomes a Shared Surface</h2>
+    <p class="section-desc">Claude Blog 发 Swift package，让 Apple developer 用 Foundation Models framework 的 @Generable 把 typed Swift 值传给 Claude，三行代码即可；本地的 Apple 模型负责快任务，Claude 负责多步推理 / 联网 / 代码执行。同一天 Cat Wu 发 Artifacts 升级，Thariq 演示用 Claude Tag 搭一个可被人类和本地 Claude Code session 同时编辑的 dashboard——artifact 变成共享可写 surface。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="blog:claude-blog" data-author-name="Claude Blog" data-author-tag="Anthropic 官方博客" data-author-handle="" data-author-avatar="../assets/avatars/blog-claude-blog.png">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/blog-claude-blog.png" alt="Claude Blog avatar"><span class="avatar-fallback">CB</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Claude Blog</div>
+            <div class="author-tag is-inline">Anthropic 官方博客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Claude 出了一个 Swift package，把 Claude 接进 Apple 新出的 Foundation Models framework。关键 frame 是：Apple 的 framework 从 @Generable 注解返回 typed Swift 值，所以 developer 走到 Claude 那一步时拿的是干净结构化输入，不是裸 user text。</p>
+              <p>真正值得看的是 handoff pattern：Apple 本地模型负责 summarization / extraction 这类快速任务；一旦请求需要多步推理、代码生成、联网搜索、或代码执行，就交给 Claude。response 直接 stream 回同一个 Swift view。</p>
+              <p>三行代码是他们的明面 claim。重点是把 Claude 变成 developer 类型系统的一部分，而不是一个贴在 app 上的远程 chatbot。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>今天我们通过一个新的 Swift package 发布 Claude 对 Foundation Models framework 的支持，Apple 的 Foundation Models framework 可以把更复杂的 workflow 交给 Claude。</p>
+              <p>Developer 可以用这个来调用 Apple 本地模型处理快速、本地的任务，比如 summarization 或 extraction；一旦请求需要多步推理、代码生成，他们可以把请求交给 Claude。</p>
+              <p>因为 Apple 的 framework 从 @Generable 注解返回 typed Swift 值，developer 走到 Claude API 调用这一步时，输入是干净的，不是裸 user text。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Claude ships a Swift package that lets Apple developers call Claude through Apple&#39;s new Foundation Models framework. The pitch: Apple&#39;s framework returns typed Swift values from @Generable annotations, so the developer arrives at the Claude API call with clean inputs rather than raw user text.</p>
+              <p>The actual handoff pattern is the interesting bit — on-device Apple models handle fast local tasks (summarization, extraction), and Claude picks up multi-step reasoning, code generation, web search, and code execution when the request needs more. The response streams back into the same Swift view.</p>
+              <p>Three lines of code is the explicit claim. The point is to make Claude an extension of the developer&#39;s typing model, not a remote chatbot bolted onto an app.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Today we&#39;re releasing Foundation Models framework support for Claude through a new Swift package that lets Apple&#39;s Foundation Models framework call Claude for more complex workflows.</p>
+              <p>Developers can use this to tap into Apple&#39;s on-device models for fast, local tasks like summarization or extraction. Developers can now use Apple&#39;s Foundation Models framework to hand off to Claude when a request calls for multi-step reasoning, code generation, and more.</p>
+              <p>Because Apple&#39;s framework returns typed Swift values from @Generable annotations, developers arrive at the Claude API call with clean inputs instead of raw user text.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://claude.com/blog/claude-for-foundation-models" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:_catwu" data-author-name="Cat Wu" data-author-tag="Anthropic 产品工程" data-author-handle="@_catwu" data-author-avatar="../assets/avatars/x-_catwu.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-_catwu.jpg" alt="Cat Wu avatar"><span class="avatar-fallback">CW</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Cat Wu</div>
+            <div class="author-tag is-inline">Anthropic 产品工程</div>
+          </div>
+          <div class="author-handle">@_catwu</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Cat Wu（Claude Artifacts 负责人）今天消消发了个升级：「Artifacts 又升级了！」—— 同一天 Thariq 在演示怎么用 Claude Tag（就是 Artifacts 之上叠的）快速搭一个项目 dashboard，既能被人改，也能被本地 Claude Code session 改。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Artifacts 又升级了！</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Cat Wu (Claude Artifacts lead) ships a quiet upgrade: &#39;Artifacts just got an upgrade!&#39; — the same day Thariq demos using Claude Tag (built on Artifacts) to spin up a project dashboard that other humans and local Claude Code sessions can edit.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Artifacts just got an upgrade!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/_catwu" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:trq212" data-author-name="Tao Li" data-author-tag="AI 研究员 / Follow Builders 维护者" data-author-handle="@trq212" data-author-avatar="../assets/avatars/x-trq212.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-trq212.jpg" alt="Tao Li avatar"><span class="avatar-fallback">TL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Tao Li</div>
+            <div class="author-tag is-inline">AI 研究员 / Follow Builders 维护者</div>
+          </div>
+          <div class="author-handle">@trq212</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thariq 把 Artifacts 升级后的新可能演示出来了：「用 Claude Tag 给一个项目建一个 dashboard，既能被别人改，也能被本地 Claude Code session 改」—— 一个 artifact，两个人类+本地 agent 同时编辑，共享同一份 live state。</p>
+              <p>这就是「agent 是同事」那个 frame 在生产场景里的具体形态：artifacts 变成共享可写 surface，agent 和人一起往里 push。文件即房间。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>这让 Artifacts 表达力强多了，可以以很多有创造力的方式组合。我最喜欢的一个用法是：用 Claude Tag 给一个项目建一个 dashboard，这个 dashboard 能被别人改，也能被本地 Claude Code session 改。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thariq shows what&#39;s newly possible with the Artifacts upgrade: &#39;create a dashboard for a project in Claude Tag that can be edited by others or by my local Claude Code sessions&#39; — a single artifact, two co-editors (human + local agent), both reading the same live state.</p>
+              <p>This is the practical picture of the &#39;agent is a coworker&#39; frame: artifacts become shared mutable surfaces that agents and humans both push into. The file is the room.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>This makes artifacts much more expressive and can be combined in creative ways. One of my favorites is to create a dashboard for a project in Claude Tag that can be edited by others or by my local Claude Code sessions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/trq212" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 04</div>
+    <h2 class="section-title">Aaron Levie 把 frontier x open-weight x applied 三层画清楚 + routing 模板 / Aaron Levie Maps the Frontier x Open-Weight x Applied Stack + the Routing Template</h2>
+    <p class="section-desc">Levie 把接下来一段时间的 AI 结构讲成四层：frontier、open weights、applied、enterprise。applied 层的护城河是 harness——怎么把 frontier 当 manager、open weight 当 workhorse 的分工做对。他给了一个具体的实验：Fable 2x premium 团队跑下来，有效 delegation 反而把总成本降了。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:levie" data-author-name="Aaron Levie" data-author-tag="Box CEO" data-author-handle="@levie" data-author-avatar="../assets/avatars/x-levie.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-levie.jpg" alt="Aaron Levie avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie</div>
+            <div class="author-tag is-inline">Box CEO</div>
+          </div>
+          <div class="author-handle">@levie</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie（Box CEO）把 AI 接下来一段时间的结构讲成了四层：frontier lab（数据 + compute + 突破）、open weights（快速吸纳 frontier 突破、可以「at cost」跑）、applied AI 层（frontier x open weights 组合，有自己的 RLed model），以及单个 enterprise 把自己的 context 接进任何一层。</p>
+              <p>他的 punchline 是这事根本不是零和——每一层都有空间。applied 层的工作就是把 frontier 智能和 open / 便宜 closed model 组合起来，拿住 eval set、domain context、enterprise 信任，并为高频可预测的任务跑自己的 RLed model。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>讲一下我对接下来一段时间 AI 结构性走向的几个判断：frontier 智能会继续往前走；open weights 会快速吸纳 frontier 突破；applied AI 层在把 frontier 智能和 open 或便宜的 closed model 组合编排 workflow 这件事上有巨大机会；单个 enterprise 则主要聚焦于把自己的 enterprise context 接进去。</p>
+              <p>总结：即便其中一些事会被框成零和，但所有层和路径都有大量机会。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie (Box CEO) lays out the four-layer AI structure he expects to hold for the foreseeable future: frontier labs (data + compute + breakthroughs), open weights (rapidly absorbs frontier breakthroughs, lets you run &#39;at cost&#39;), the applied AI layer (frontier x open weights, with their own RLed models), and individual enterprises wiring their context into any of the above.</p>
+              <p>His punchline is that this isn&#39;t zero-sum — every layer has room. The applied layer&#39;s job is to combine frontier intelligence with open or cheap closed models, hold the eval set + domain context + enterprise trust, and have its own RLed models for high-volume predictable tasks.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>A few thoughts on what we will see in AI structurally for the foreseeable future: Frontier intelligence continues unabated... Open weights rapidly absorbs frontier breakthroughs... The Applied AI layer has a huge opportunity to combine frontier intelligence with open or cheap closed models to orchestrate workflows... Individual enterprises will generally focus on their enterprise context...</p>
+              <p>Net net: even though some of this gets framed as zero sum, there&#39;s just a ton of opportunity for all layers of the stack and approaches.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/levie" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:levie" data-author-name="Aaron Levie" data-author-tag="Box CEO" data-author-handle="@levie" data-author-avatar="../assets/avatars/x-levie.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-levie.jpg" alt="Aaron Levie avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie</div>
+            <div class="author-tag is-inline">Box CEO</div>
+          </div>
+          <div class="author-handle">@levie</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Levie 给的 routing template 很具体：frontier model 当 manager，便宜模型当 workhorse。有一支团队试了 Fable 2x premium 期望成本涨，结果 Fable 的 delegation 让总成本反而降了——它只写约束和目标，不去规定实现；给反馈，而不是直接改代码；大多数情况下根本不碰代码。</p>
+              <p>「这就是好 manager 的习惯。」Levie 认为这是未来 model routing 的样板；applied 层真正的护城河就是它的 harness——怎么把 manager 和 worker 的分工做对。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>这里有一篇关于「如何在保持高性能的同时压低成本」的好文，做法是 frontier 智能当 manager，便宜的模型当干活的 workhorse。</p>
+              <p>我们一开始做这个实验，是预期 Fable 2x 的溢价会让成本上涨。结果意外发现，Fable 的有效 delegation 反而把总成本降了下来。它只规定约束和目标，不去规定实现；它给反馈，而不是自己改；大多数情况下根本不碰代码。这就是好 manager 的习惯。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Levie with the practical routing template: a frontier model as manager, cheaper models for the workhorse. A team tried Fable&#39;s 2x premium expecting higher cost; instead Fable&#39;s effective delegation dropped total cost — it specified constraints and outcomes instead of spelling out implementation, gave feedback instead of making fixes.</p>
+              <p>&#39;These are the habits of a good manager.&#39; Levie argues this is the future template for model routing, and the applied layer&#39;s harness — how you split work between manager and worker models — is the new moat.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Here&#39;s a great post on driving down costs, while maintaining high performance, with frontier intelligence as a manager and lower cost models for the workhorse tasks.</p>
+              <p>We started this experiment expecting to measure how much Fable&#39;s 2x premium would increase cost. We were surprised to find that Fable&#39;s effective delegation actually decreased cost overall. It specified constraints and outcomes instead of spelling out the implementation, gave feedback instead of making fixes itself, and in most cases never touched the code at all. These are the habits of a good manager.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/levie" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 05</div>
+    <h2 class="section-title">Vercel gateway 上 open-weight 29%、applied 层的 harness 在变贵 / Vercel Gateway: Open-Weight Share at 29%, the Harness Layer Is Getting Pricier</h2>
+    <p class="section-desc">Rauch 把 Vercel AI Gateway 最受欢迎的两个能力列出来：易用性 + 可观测性；再把 headline 数字端出来——open-weight 模型在 gateway 上跑 29% 的 token，4 月才 11%。routing / observability 这一层正好把 Levie 预判的趋势具象化。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:rauchg" data-author-name="Guillermo Rauch" data-author-tag="Vercel CEO" data-author-handle="@rauchg" data-author-avatar="../assets/avatars/x-rauchg.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-rauchg.jpg" alt="Guillermo Rauch avatar"><span class="avatar-fallback">GR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Guillermo Rauch</div>
+            <div class="author-tag is-inline">Vercel CEO</div>
+          </div>
+          <div class="author-handle">@rauchg</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch（Vercel CEO）讲 Vercel 客户最常用的两个能力：「到目前为止最受欢迎的两个特性是：1. 易用性 / filesystem API，2. 可观测性。两个都要加大投入！」</p>
+              <p>形态跟 Levie 的 applied 层 frame 是同一个：open weights 吸收 frontier 突破这件事要做成，routing 和 observability 这两层得先做扎实。Vercel 在卖的是 harness。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>到目前为止最受欢迎的两个特性是：一、易用性 / filesystem API；二、可观测性。两个都要继续加大投入！</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch (Vercel CEO) on what Vercel&#39;s customers actually like: &#39;The two most popular [Vercel AI Gateway] features so far have been: 1️⃣ The ease of use / filesystem API, 2️⃣ Observability. We&#39;re doubling down on both!&#39;</p>
+              <p>The shape is the same as Levie&#39;s applied-layer frame: open weights absorbing frontier breakthroughs is only useful if the routing/observability around it is solid. Vercel is selling the harness.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The two most popular features so far have been: 1️⃣ The ease of use / filesystem API, 2️⃣ Observability. We&#39;re doubling down on both!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/rauchg" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:rauchg" data-author-name="Guillermo Rauch" data-author-tag="Vercel CEO" data-author-handle="@rauchg" data-author-avatar="../assets/avatars/x-rauchg.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-rauchg.jpg" alt="Guillermo Rauch avatar"><span class="avatar-fallback">GR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Guillermo Rauch</div>
+            <div class="author-tag is-inline">Vercel CEO</div>
+          </div>
+          <div class="author-handle">@rauchg</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Rauch 把那个 headline 数字端出来：「Open-weight 模型现在跑 Vercel gateway 上 29% 的 token，4 月才 11%。」这就是 routing / observability 这一层把 Levie 预判的趋势具象化了——open weights 吸收 frontier 突破的速度比多数人预想的要快。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Open-weight 模型现在跑 Vercel gateway 29% 的 token，4 月才 11%。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Rauch cites the headline number: &#39;Open-weight models ran 29% of gateway tokens, up from 11% in April.&#39; That&#39;s the routing/observability layer surfacing exactly the trend Levie predicted — open weights absorbing frontier breakthroughs faster than people expect.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Open-weight models ran 29% of gateway tokens, up from 11% in April</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/rauchg" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 06</div>
+    <h2 class="section-title">周末 fragment 三连：Ryo 的 e-reader 固件 + Steipete 的云端 maintainer agent + Nikunj 的 Ramp-Autofill / Weekend Fragments: Ryo&#39;s E-Reader Firmware + Steipete&#39;s Cloud Maintainer Agent + Nikunj&#39;s Ramp-Autofill</h2>
+    <p class="section-desc">三个单人 CLI-built vibe coding 项目：用 Cursor 给 e-reader 写固件并适配 CJK 排版；把 maintainer agent 搬上云、agent 之间开始互損；Ramp CLI + Claude Fable 拼出自动填发票的 skill。三个都是「一个人、一段流程」就能 ship 的样板。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:ryolu_" data-author-name="Ryan Lu" data-author-tag="AI 工程师" data-author-handle="@ryolu_" data-author-avatar="../assets/avatars/x-ryolu_.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-ryolu_.jpg" alt="Ryan Lu avatar"><span class="avatar-fallback">RL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Ryan Lu</div>
+            <div class="author-tag is-inline">AI 工程师</div>
+          </div>
+          <div class="author-handle">@ryolu_</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Ryo Lu 用 Cursor 写了一套定制 e-reader 固件——适配 Xteink X3 + X4。feature 写得相当具体：「漂亮的中英排版、竖排、断行、大字符集（纟書．禁則）、跟 ryOS 同步书和阅读进度、渲染和缓存都做快。」</p>
+              <p>硬件 hack 当作 vibe coding 的 demo。「让 Cursor 帮你刷就行」这一句才是重点。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>适配 Xteink X3 + X4，让 Cursor 帮你刷就行。</p>
+              <p>用 Cursor 写了一个定制 e-reader 固件，硬件 hack 很好玩！做这些是为了：漂亮的中英排版；竖排、断行、大字符集（纟書．禁則）；跟 ryOS 同步书和阅读进度；渲染和缓存都做快。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Ryo Lu builds a custom e-reader firmware with Cursor — works on Xteink X3 + X4. The features are unusually specific: &#39;beautiful latin + CJK typography, vertical layout, line breaking, large character sets (纟書．禁則), syncs books + progress with ryOS, speedy rendering + caching.&#39;</p>
+              <p>Hardware hacking as a vibe-coding demo. The &#39;just ask Cursor to flash it for you&#39; line is the punchline.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>works on Xteink X3 + X4 ask Cursor to flash it for you</p>
+              <p>built a custom e-reader firmware with Cursor, hardware hacking is fun! made for: – beautiful latin + CJK typography – vertical layout, line breaking, large character sets (纟書．禁則) – syncs books + progress with ryOS – speedy rendering + caching</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/ryolu_" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:steipete" data-author-name="Peter Steinberger" data-author-tag="OpenClaw 创始人" data-author-handle="@steipete" data-author-avatar="../assets/avatars/x-steipete.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-steipete.jpg" alt="Peter Steinberger avatar"><span class="avatar-fallback">PS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Steinberger</div>
+            <div class="author-tag is-inline">OpenClaw 创始人</div>
+          </div>
+          <div class="author-handle">@steipete</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Steinberger（PSPDFKit 作者 / agent-builder）分享一个运维侧的小里程碑：「我把我们的 maintainer agent 搬到云上，它们已经在互損了。」—— agent 对 agent 的 conflict 当成一次 deploy event 来写。</p>
+              <p>同一条线下的第二条：iOS 和 Android app 跟 maintainer agent 一起发了更新；「如果自动更新没生效，跑一下 web installer」。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>我把我们的 maintainer agent 搬到云上，它们已经在互損了。</p>
+              <p>我们发了！iOS 和 Android app 也一起更新了，看起来都不错。为了让事情跑得顺，我们升了 Node；如果自动更新没生效，跑一下 web installer，它会帮你把剩下的事做完。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Steinberger (maintainer of PSPDFKit / agent-builder) with a small operational milestone: &#39;I moved our maintainer agent to the cloud and they are fighting already.&#39; — agent-on-agent conflict as a deployment event.</p>
+              <p>Second tweet in the same stream: iOS and Android apps shipped updates alongside the maintainer agent rollout; &#39;if the autoupdater doesn&#39;t work, run the web installer&#39;.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I moved our maintainer agent to the cloud and they are fighting already.</p>
+              <p>We shipped! iOS and Android apps also got updates and they look great. Had to bump Node to keep things smooth, if the autoupdater doesn&#39;t work, run the web installer and it&#39;ll take care of that for you.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/steipete" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:nikunj" data-author-name="Nikunj Kothari" data-author-tag="Afore Capital 合伙人" data-author-handle="@nikunj" data-author-avatar="../assets/avatars/x-nikunj.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-nikunj.jpg" alt="Nikunj Kothari avatar"><span class="avatar-fallback">NK</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Nikunj Kothari</div>
+            <div class="author-tag is-inline">Afore Capital 合伙人</div>
+          </div>
+          <div class="author-handle">@nikunj</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj Kothari（Afore Capital）发布 Ramp-Autofill——一个 Claude Fable skill，自动从 iMessage 和 Gmail 找发票，把网页发票用 Playwright 转 PDF，再自动填进 Ramp 的报销。底层是 Ramp CLI + Claude Fable，完全开源。</p>
+              <p>vibe 写在前面：「Ramp 的使命是『节钱 AND 节时间』，但我还是在花时间分类发票」——单人 CLI-built SaaS glue 当作 2026 年 vibe coding 的实际样板。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Ramp 的核心使命是「节钱 AND 节时间」，但我还是在花时间给发票分类、往报销里加——直到我发现了他们的 CLI。Ramp-Autofill 这个 skill：自动从我的 iMessage 和 Gmail 找发票；如果是链接，就用 Playwright 把网页转成 PDF 附上；然后自动填进我的报销。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj Kothari (Afore Capital) ships Ramp-Autofill, a Claude Fable skill that finds receipts from iMessage + Gmail, converts web-page receipts to PDF via Playwright, and fills out Ramp expenses automatically. Built on Ramp CLI + Claude Fable, fully open source.</p>
+              <p>The vibe: &#39;Ramp&#39;s mission is save money AND time, but I was still spending time categorizing &amp; adding receipts&#39; — single-author CLI-built SaaS glue as the practical 2026 vibe-coding pattern.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>So @tryramp&#39;s core mission is &#39;save money AND time&#39;, but I was still spending time categorizing &amp; adding receipts to my expenses.. at least till I discovered their CLI. Introducing the Ramp-Autofill skill: finds receipts automatically from my iMessage &amp; Gmail. if it&#39;s in a link, it&#39;ll use playwright to convert the web page into a pdf and attach to the receipt automatically. fills in me</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/nikunj" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <footer data-source-note="Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-14 source feeds.">Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-14 source feeds.</footer>
+
+  <script>
+    function getTemplateAuthorSources() {
+      const sources = window.AI_BUILDERS_TEMPLATE_SOURCES || {};
+      return { identities: sources.identities || {}, avatars: sources.avatars || {} };
+    }
+
+    function getAuthorInitials(name) {
+      return (name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(function(part) { return part[0]; }).join('').toUpperCase();
+    }
+
+    function hydrateTemplateCopy() {
+      const intro = document.querySelector('.intro');
+      if (intro) {
+        const kicker = intro.querySelector('.intro-kicker');
+        const copy = intro.querySelector('.intro-copy');
+        if (kicker) kicker.textContent = intro.dataset.kicker || '';
+        if (copy) copy.textContent = intro.dataset.text || '';
+      }
+
+      const footer = document.querySelector('footer');
+      if (footer) footer.textContent = footer.dataset.sourceNote || '';
+
+      const rewriteLabel = document.body.dataset.viewLabelRewrite || '速读';
+      const originalLabel = document.body.dataset.viewLabelOriginal || '原文';
+      document.querySelectorAll('.view-toggle').forEach(function(button) {
+        if (button.dataset.viewTarget === 'rewrite') button.textContent = rewriteLabel;
+        if (button.dataset.viewTarget === 'original') button.textContent = originalLabel;
+      });
+    }
+
+    function hydrateAuthorMeta() {
+      const sources = getTemplateAuthorSources();
+      document.querySelectorAll('.card').forEach(function(card) {
+        const authorKey = card.dataset.authorKey || '';
+        const identity = sources.identities[authorKey] || {};
+        const avatarEntry = sources.avatars[authorKey] || {};
+
+        const name = identity.name || card.dataset.authorName || '';
+        const rawHandle = identity.handle || card.dataset.authorHandle || '';
+        const handle = rawHandle && rawHandle.startsWith('@') ? rawHandle : (rawHandle ? '@' + rawHandle : '');
+        const tag = identity.label || card.dataset.authorTag || '';
+        const avatar = avatarEntry.fileUrl || avatarEntry.localPath || card.dataset.authorAvatar || '';
+
+        const nameNode = card.querySelector('.author-name');
+        const tagNode = card.querySelector('.author-tag');
+        const handleNode = card.querySelector('.author-handle');
+        const avatarNode = card.querySelector('.avatar');
+        const avatarImg = card.querySelector('.avatar img');
+        const avatarFallback = card.querySelector('.avatar-fallback');
+
+        if (nameNode) nameNode.textContent = name;
+        if (tagNode) tagNode.textContent = tag;
+        if (handleNode) handleNode.textContent = handle;
+        if (avatarImg) {
+          avatarImg.src = avatar;
+          avatarImg.alt = name ? name + ' avatar' : 'Author avatar';
+        }
+        if (avatarNode) avatarNode.classList.toggle('is-fallback', !avatar);
+        if (avatarFallback) avatarFallback.textContent = getAuthorInitials(name);
+      });
+    }
+
+    function updateEditionStrip() {
+      const publishDate = document.body.dataset.publishDate;
+      const editionName = document.body.dataset.editionName || '双语精选版';
+      const editionStrip = document.getElementById('edition-strip-text');
+      if (!publishDate || !editionStrip) return;
+
+      const issueNumber = document.body.dataset.issueNumber || '';
+      if (!issueNumber) return;
+
+      const selectedCount = document.querySelectorAll('.card').length;
+      const authorCount = new Set([].slice.call(document.querySelectorAll('.author-handle')).map(function(node) { return node.textContent.trim(); }).filter(Boolean)).size;
+      const themeCount = document.querySelectorAll('.section-header').length;
+      const parts = ['第 ' + issueNumber + ' 期', publishDate, editionName, selectedCount + ' 条精选', authorCount + ' 位作者', themeCount + ' 个主题'];
+      editionStrip.innerHTML = parts.map(function(part) { return '<span class="edition-item">' + part + '</span>'; }).join('<span class="edition-sep">|</span>');
+    }
+
+    function measureVariantHeight(variant) {
+      const prevPosition = variant.style.position;
+      const prevInset = variant.style.inset;
+      const prevVisibility = variant.style.visibility;
+      const prevPointerEvents = variant.style.pointerEvents;
+      const prevOpacity = variant.style.opacity;
+      const prevTransform = variant.style.transform;
+      const prevTransition = variant.style.transition;
+      const prevOverflowY = variant.style.overflowY;
+      const prevDisplay = variant.style.display;
+
+      variant.style.position = 'relative';
+      variant.style.inset = 'auto';
+      variant.style.visibility = 'hidden';
+      variant.style.pointerEvents = 'none';
+      variant.style.opacity = '1';
+      variant.style.transform = 'none';
+      variant.style.transition = 'none';
+      variant.style.overflowY = 'visible';
+      variant.style.display = 'block';
+
+      const height = variant.scrollHeight;
+
+      variant.style.position = prevPosition;
+      variant.style.inset = prevInset;
+      variant.style.visibility = prevVisibility;
+      variant.style.pointerEvents = prevPointerEvents;
+      variant.style.opacity = prevOpacity;
+      variant.style.transform = prevTransform;
+      variant.style.transition = prevTransition;
+      variant.style.overflowY = prevOverflowY;
+      variant.style.display = prevDisplay;
+
+      return Math.ceil(height);
+    }
+
+    function getTargetHeight(shell, target) {
+      const variant = shell.querySelector('.content-variant[data-view="' + target + '"]');
+      return measureVariantHeight(variant);
+    }
+
+    function syncShellHeights() {
+      document.querySelectorAll('.content-shell').forEach(function(shell) {
+        const active = shell.querySelector('.content-variant.is-active');
+        const target = active ? active.dataset.view : 'rewrite';
+        shell.style.height = getTargetHeight(shell, target) + 'px';
+      });
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', function() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(syncShellHeights, 120);
+    });
+
+    document.querySelectorAll('.card').forEach(function(card) {
+      const buttons = card.querySelectorAll('.view-toggle');
+      const shells = card.querySelectorAll('.content-shell');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const target = button.dataset.viewTarget;
+          if (button.classList.contains('is-active')) return;
+
+          buttons.forEach(function(btn) {
+            btn.classList.toggle('is-active', btn === button);
+          });
+
+          shells.forEach(function(shell) {
+            const current = shell.querySelector('.content-variant.is-active');
+            const next = shell.querySelector('.content-variant[data-view="' + target + '"]');
+            if (!current || !next || current === next) return;
+
+            shell.style.height = shell.offsetHeight + 'px';
+            requestAnimationFrame(function() {
+              current.classList.remove('is-active');
+              next.classList.add('is-active');
+              shell.style.height = getTargetHeight(shell, target) + 'px';
+            });
+          });
+        });
+      });
+    });
+
+    hydrateTemplateCopy();
+    hydrateAuthorMeta();
+    updateEditionStrip();
+    syncShellHeights();
+  </script>
+</body>
+</html>

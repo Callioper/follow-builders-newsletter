@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 13 Jul 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 14 Jul 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-07-14 · 开源压顶日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-14-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-14-rerun.html</guid>
+      <pubDate>Tue, 14 Jul 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[今天 1 个 podcast + 1 个 blog + 16 条 X，主轴意外是 NVIDIA。MAD Podcast 把 Nemotron 负责人 Bryan Catanzaro 请去一次性讲清楚：open-weights 不是落后是另一种节奏；compute 已经撞极限，接下来推智能只能靠效率；每家公司都围着 secret 建，AI 跟 secret 贴得越紧价值越大。后半段讲 Nemotron 的 hybrid SSM + MoE 架构——这套设计是 Nemotron 3 Ultra 登顶 US open-weights 榜的相当一部分原因。OpenAI 周二的小节奏则来自另一头：Thariq 提前放 8M WAU 的预告，Thibault 跟一句 ChatGPT Work，Sama 用一句「design 终于好了」收尾，Aditya 那条「不知道用的是 Codex 还是 ChatGPT」正好把 GPT-5.6 Sol 推下来的终态一句话讲完。同一天 Claude 端了两件事——一个 Swift package 把 Claude 接进 Apple Foundation Models，Artifacts 升级成可被人类和本地 agent 同时编辑的共享 surface。R&D 这边，Aaron Levie 把 frontier x open-weight x applied 三层画清楚，Rauch 把 Vercel gateway 上 open-weight 已经 29% 的数字端出来——applied 层真正在卖的已经不是模型而是 harness。周末 fragment 由 Ryo / Steipete / Nikunj 三段单人 vibe coding 项目收尾。]]></description>
+      <category>NVIDIA Nemotron 走进 MAD Podcast：Bryan Catanzaro 把开源 + 极限 + secret 三件事讲给 AI 受众 / NVIDIA Nemotron on MAD Podcast: Bryan Catanzaro on Open Source, Compute Limits, and the Company Secret, Sol 周二的两个数字 + Codex/ChatGPT 在用户视角里已经模糊 / Tuesday&apos;s Sol Numbers + The Codex/ChatGPT Boundary Has Blurred, Claude 接进 Apple Foundation Models + Artifacts 升级成共享 surface / Claude Lands in Apple Foundation Models + Artifacts Becomes a Shared Surface, Aaron Levie 把 frontier x open-weight x applied 三层画清楚 + routing 模板 / Aaron Levie Maps the Frontier x Open-Weight x Applied Stack + the Routing Template, Vercel gateway 上 open-weight 29%、applied 层的 harness 在变贵 / Vercel Gateway: Open-Weight Share at 29%, the Harness Layer Is Getting Pricier, 周末 fragment 三连：Ryo 的 e-reader 固件 + Steipete 的云端 maintainer agent + Nikunj 的 Ramp-Autofill / Weekend Fragments: Ryo&apos;s E-Reader Firmware + Steipete&apos;s Cloud Maintainer Agent + Nikunj&apos;s Ramp-Autofill</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-07-13 · 能源反推日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-13-rerun.html</link>
