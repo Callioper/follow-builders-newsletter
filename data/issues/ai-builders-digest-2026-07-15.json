@@ -1,0 +1,435 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-07-15",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天 1 个 podcast + 15 条 X、零 blog，主轴意外是 Anthropic Platform。Training Data 把 Katelyn Lesse 和 Angela Jiang 请去一次性把「ecosystem 不是 walled garden」讲完——execution 层（sandboxes / storage / MCP tunnels）跟 Modal、Vercel、Cloudflare、Amazon micro VM 全做了 first-class 集成，skills / MCP 当 standards 给出去；下一层抽象是 coordination layer，harness 从 raw execution 变成 meta-harness 把 strategies 编排起来。OpenAI 这一头则是另一类信号：Sama 明说「5.6 sol 接下来很可能会有一些抖动」，Thibault 直接拿 100 美元 Codex credits 换用户反馈、把流量往 Codex surface 上拉——Codex / ChatGPT 在用户视角已经模糊（昨天 Aditya 那条），OpenAI 自己在尝试把使用往 Codex 端拽回来。Claude 同一天把第二个 vertical 端出来：Claude for Teachers，K-12 FERPA 合规 + state standards 作为输入、lesson plan 作为输出，形态跟昨天 Claude-for-Apple-Foundation-Models 是同一类「typed 结构化输入 → typed 结构化输出」。R&D 这边，Levie 把「code 为什么先被 agent 吃掉」讲成「knowledge work 里少见的有 evaluation loop 的 surface」，接着把 standards body 跟 regulatory agency 拆开——iteration 速度不一样，捆一起就只剩最慢那条。Rauch 把 Vercel AI Gateway 的 token flows 数据集开放出来，把昨天 29% 那个数字从推文变成可复用的数据；agentmail 那条「vercel install」把 agent-to-agent commerce 的 plumbing 推成 CLI primitive。Vibe coding 这边 Thariq 把 Claude Code 接进 Pokemon Champions——live data 走 npm 库、分析输出结构化报告，hobby + live data + 报告的样板定型；Dan Shipper 把「Codex pilled」那一周做成公开 receipts。Weekend fragment 由 Matt Turck 的世界杯残酷 + Garrytan 的 SF doom loop + Nikunj 的 AI 时代 IC 心智收尾。"
+  },
+  "archive": {
+    "title": "生态不封园日",
+    "desc": "今天 1 个 podcast + 15 条 X，主轴是 Anthropic Platform 在 Training Data 上把「ecosystem 不是 walled garden」一次性讲完——execution 层跟 Modal/Vercel/Cloudflare/Amazon 全做了集成、skills/MCP 当 standards 给出去、下一层抽象是 coordination layer。OpenAI 那一头是 inference 这层撞上 Sol 需求（Sama 提前预告抖动、Thibault 拿 $100 Codex credits 抓反馈）。Claude 同一天发 Claude for Teachers（K-12 FERPA + state standards 作为输入）。Levie 把「code 容易被 agent 化」+ standards ≠ regulation 拆开；Rauch 把 Vercel AI Gateway 的 token flows 数据集开放出来。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-15 source feeds.",
+  "sections": [
+    {
+      "title": "Training Data：Anthropic Platform 团队讲 coordination + ecosystem 不是 walled garden / Training Data: Anthropic Platform on Coordination Layers and an Open Ecosystem",
+      "desc": "Anthropic Platform 团队（Katelyn Lesse + Angela Jiang）这一期把下一层抽象讲清楚了：knowledge → execution → coordination，harness 要从 raw execution 变成 meta-harness 把 strategies 编排起来；同一条线把「ecosystem 不是 walled garden」的哲学展开——self-hosted sandboxes 跟 Modal/Vercel/Cloudflare/Amazon micro VM 全做了 first-class、MCP tunnels 穿透防火墙、skills / MCP 直接当 standards 给出去。",
+      "cards": [
+        {
+          "authorKey": "podcast:training-data",
+          "authorName": "Training Data Podcast",
+          "authorHandle": null,
+          "authorTag": "AI 播客",
+          "sourceUrl": "https://www.youtube.com/watch?v=vPnVTHYplrQ",
+          "en": {
+            "rewrite": [
+              "Anthropic Platform team (Katelyn Lesse + Angela Jiang) on this week's Training Data: the platform's next abstraction is the coordination layer — strategies as a meta-harness sitting on top of execution.",
+              "Katelyn Lesse frames the abstraction ladder: 'knowledge, execution, coordination.' The current low-level harness is built for execution, but the next one is about composing orchestrated strategies where some tokens advise and others execute — same primitives, different jobs.",
+              "Katelyn's road map claim: 'we'll move more and more from the execution layer to the kind of coordination layer in terms of the abstractions that you can see us put out.' The implication for builders is that the harness is about to get more meta, not more raw."
+            ],
+            "original": [
+              "The last layer of abstraction on top of this is probably the coordination layer. So you have knowledge, and you have execution, and you have coordination.",
+              "It's almost like a meta harness. The true low level harness is designed for execution. But the next one is about, okay, if tokens aren't really fungible and you need to give them different jobs, like maybe this token is advising versus this token is executing.",
+              "If you were to look at our road map and the maybe kind of project forward a little bit where you kind of expect us to go, we'll move more and more from the execution layer to the kind of coordination layer in terms of the abstractions that you can see us put out."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic Platform 团队（Katelyn Lesse + Angela Jiang）这周做客 Training Data，把平台下一层抽象讲清楚了：coordination layer——strategies 当 meta-harness 架在 execution 之上。",
+              "Katelyn Lesse 给的抽象 ladder 是「knowledge → execution → coordination」。现在这版低层 harness 还在做执行层面的事，下一版要解决的是把 orchestrated strategies 拼起来——同一种 token 拿不同 job，有的当 advisor，有的当 executor，原语一样、分工不一样。",
+              "Katelyn 把 roadmap 讲得很直：「你会看到我们从 execution 层一步步推到 coordination 层，抽象越堆越上面。」对 builder 的含义是：harness 接下来变 meta，不是变 raw。"
+            ],
+            "original": [
+              "在这一切之上的最后一层抽象，大概是 coordination layer。所以有 knowledge、有 execution、有 coordination。",
+              "它差不多是一个 meta-harness。真正的低层 harness 是为执行设计的，但下一层要解决的是：token 之间不完全 fungible，你需要给它们分配不同的工作——这个 token 在做 advisor，那个 token 在做 executor。",
+              "如果你看我们的 roadmap，再往前走一点，你会看到我们的抽象会从 execution 层一步步推向 coordination 层，这是你能看到我们放出来的东西。"
+            ]
+          }
+        },
+        {
+          "authorKey": "podcast:training-data",
+          "authorName": "Training Data Podcast",
+          "authorHandle": null,
+          "authorTag": "AI 播客",
+          "sourceUrl": "https://www.youtube.com/watch?v=vPnVTHYplrQ",
+          "en": {
+            "rewrite": [
+              "On the philosophy of ecosystem vs walled garden: Angela Jiang walks through 'Anthropic's layered cake.' On execution specifically (Cloud Managed Agents, sandboxes, storage), Anthropic isn't precious — they shipped self-hosted sandboxes, partnered with Modal/Vercel/Cloudflare/Amazon micro VMs, and launched MCP tunnels to punch through customer firewalls.",
+              "Angela's stance is that whether the workload runs on Anthropic infrastructure vs someone else's is not actually the interesting question. The interesting one is the architecture of how you compose these pieces together — plug-in first-class, not lock-in.",
+              "The same open posture extends up the stack: skills and MCP are given away as standards because Claude needs them to be useful — 'we can just give them out to the rest of the ecosystem.' Internal North Star is leverage for AGI-pilled internal products; external North Star is giving any builder the tools to build with Claude."
+            ],
+            "original": [
+              "For example, we launched self hosted sandboxes and we partnered with Modal and Vercel and Cloudflare and a bunch of other folks, even Amazon's new micro VMs, to have a first class offering where you can go plug any of those things in. We launched MCP tunnels so that you can call out to your MCP servers that are behind your firewall.",
+              "Whether it runs on our infrastructure versus somebody else's infrastructure is actually not important to us because the thing that's important to us is more that the architecture of how you put together these things.",
+              "Sometimes that comes in the form of just like standards. So for example, like skills and MCP, those are things just like Claude needs them to be useful. And we can just give them out to the rest of the ecosystem."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "讲到 ecosystem vs walled garden 的取舍，Angela Jiang 把 Anthropic 的「分层蛋糕」拆开讲：在 execution 层（Cloud Managed Agents、sandboxes、storage）他们根本不挑食——发了 self-hosted sandboxes，跟 Modal、Vercel、Cloudflare、甚至 Amazon 新出的 micro VM 都做了 first-class 集成，还发了 MCP tunnels 让你能穿透客户防火墙。",
+              "Angela 给的 stance 很清晰：跑在 Anthropic 的 infra 还是别人的 infra，这事其实不重要；真正重要的是「你怎么把这些 piece 拼起来」—— plug-in 是 first-class，lock-in 不是。",
+              "同一种 open posture 一路延伸到上层：skills 和 MCP 直接当 standards 给出去，因为「Claude 需要它们才有用」——「我们就直接给到整个 ecosystem」。内部 North Star 是给 AGI-pilled 的内部产品提供 leverage；外部 North Star 是给每个 builder 工具，让他们能用 Claude 造任何东西。"
+            ],
+            "original": [
+              "比如我们发了 self-hosted sandboxes，跟 Modal、Vercel、Cloudflare 还有一堆合作伙伴、Amazon 新的 micro VM 都做了 first-class 集成，你想接哪个都行。我们还发了 MCP tunnels，让你能穿透防火墙访问自己后面的 MCP server。",
+              "到底是跑在我们的 infra 还是别人的 infra 上，这事我们其实不在意；我们真正在意的，是这些 piece 怎么拼起来。",
+              "有时候它就是以 standard 的形式出来的。比如 skills 和 MCP——这些东西 Claude 必须有才有用，我们可以直接把它们给到整个 ecosystem。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Sol 增长撞 inference：Sama 提前预告抖动 + Thibault 用 $100 Codex credits 抓反馈 / Sol Growth Hits Inference: Sama Pre-Warns of Hiccups + Thibault Hunts Feedback with $100 Codex Credits",
+      "desc": "GPT-5.6 Sol 的需求曲线撞到 inference 这层——Sama 明说「接下来很可能会有一些抖动」，Thibault 直接拿 100 美元 Codex credits 换用户反馈、同时把流量往 Codex 这个 surface 上拉。Codex / ChatGPT 在用户视角已经模糊（昨天 Aditya 那条），但 Thibault 这条是 OpenAI 这一头在尝试重新把使用往 Codex 端拽。",
+      "cards": [
+        {
+          "authorKey": "x:sama",
+          "authorName": "Sam Altman",
+          "authorHandle": "@sama",
+          "authorTag": "OpenAI CEO",
+          "sourceUrl": "https://x.com/sama",
+          "en": {
+            "rewrite": [
+              "Sam Altman on GPT-5.6 Sol demand: '5.6 sol growth is insane. The inference team has done heroic work to be able to support demand. We are going to move mountains to continue to scale, but it is possible there are some hiccups soon.'",
+              "The shape is consistent with what Thibault is asking for in the next card — Sol is past the point where Anthropic/Claude-shaped routing saves you; OpenAI is also past the point where inference scaling is invisible to the user."
+            ],
+            "original": [
+              "5.6 sol growth is insane. the inference team has done heroic work to be able to support demand. we are going to move mountains to continue to scale, but it is possible there are some hiccups soon."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Sam Altman 把 GPT-5.6 Sol 的需求讲得很直：「5.6 sol 增长太快了。inference team 已经在拼了。我们会继续想尽办法扩 capacity，但接下来很可能会有一些抖动。」",
+              "形态跟 Thibault 下一条想收集的东西是同一根线——Sol 已经过了「模型能力是不是够用」的阶段，现在卡在 inference 这层；OpenAI 也是同一个阶段，规模一上去抖动就藏不住了。"
+            ],
+            "original": [
+              "5.6 sol 的增长太疯狂了。inference team 在拼命扛住需求。我们会想尽一切办法继续扩，但接下来很可能会有一些抖动。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT",
+          "sourceUrl": "https://x.com/thsottiaux",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux (OpenAI Codex & ChatGPT lead) with an unusual ask: '$100 in Codex credits if you tell us what you love about GPT-5.6 Sol or why you switched? Tweet it, claim your gift, enjoy more usage. First 10k get the free tokens!'",
+              "Read alongside Sama's 'some hiccups soon,' this is OpenAI harvesting structured positive feedback to absorb the demand shock — and converting it into Codex usage, which is the surface they actually want to push. The boundary between Codex and ChatGPT keeps dissolving from the user side (yesterday's Aditya line), but Thibault is still trying to bend usage toward Codex specifically."
+            ],
+            "original": [
+              "Or… what if we gave you $100 in Codex credits if you tell us what you love about GPT-5.6 Sol or why you switched?  Tweet it, claim your gift, enjoy more usage. First 10k get the free tokens!",
+              "Here you are! Thinking I am about to announce a reset. But no. I'm just scrolling twitter and looking for feedback on ChatGPT Work. What should we improve?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux（OpenAI Codex & ChatGPT 负责人）丢了一个非常规的请求：「告诉你喜欢 GPT-5.6 Sol 什么、或者你为什么切过来，就送你 100 美元 Codex credits。发推就能领，1 万人先到先得！」",
+              "跟 Sama 那条「接下来可能有抖动」放一起读，OpenAI 在干的事就清楚了：在需求冲击的窗口里抓结构化正反馈，然后把流量引到 Codex 这个 surface 上——这是他们真正想推的。Codex 和 ChatGPT 在用户视角越来越糊（昨天 Aditya 那条），但 Thibault 还在努力把使用往 Codex 这边拉。"
+            ],
+            "original": [
+              "要不这样——如果你告诉我们喜欢 GPT-5.6 Sol 什么、或者你为什么切过来，就送你 100 美元 Codex credits。发推就能领，1 万人先到先得！",
+              "来了来了！想着我是不是要宣布一次 reset。但没，我就在 Twitter 上逛，看看大家对 ChatGPT Work 的反馈。我们还有啥能改进的？"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Claude for Teachers：K-12 privacy + state standards 作为输入 / Claude for Teachers: K-12 Privacy + State Standards as the Input",
+      "desc": "Claude for Teachers 上线，三条 K-12 privacy claim（不训练 / FERPA DPA / 学生信息保护）+ 通过 Learning Commons 接 state standards 和 curriculum，先生成 lesson plan 和学生材料，老师改完进课堂。形态上跟前一天的 Claude-for-Apple-Foundation-Models 是同一类「typed 结构化输入 → typed 结构化输出」的设计。",
+      "cards": [
+        {
+          "authorKey": "x:claudeai",
+          "authorName": "Claude",
+          "authorHandle": "@claudeai",
+          "authorTag": "Anthropic Claude 官方账号",
+          "sourceUrl": "https://www.claude.com/blog/claude-for-teachers",
+          "en": {
+            "rewrite": [
+              "Claude for Teachers launches with three explicit privacy claims aimed at K-12: 'We never train our models on your conversations, and student information is protected by a data processing agreement written to comply with FERPA.'",
+              "The pedagogical pitch is that Claude starts from your state standards and high-quality curricula via Learning Commons — it then drafts a plan and student-facing materials you can revise and take into class. State standards as the input, classroom-ready materials as the output.",
+              "The interesting pattern: this is the second Claude vertical in two days that takes the 'typed structured inputs → typed structured outputs' approach Apple Foundation Models uses on the developer side. K-12 is a much harder privacy bar than enterprise."
+            ],
+            "original": [
+              "Claude for Teachers is built for K-12 privacy. We never train our models on your conversations, and student information is protected by a data processing agreement written to comply with FERPA.",
+              "Ask for a lesson plan, and Claude starts from your state standards and high-quality curricula by connecting through Learning Commons. It then drafts a plan and student-facing materials you can revise and take into class."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude for Teachers 上线，给 K-12 写了三条明面 privacy claim：「我们不会用你的对话训练模型，学生信息由一份为 FERPA 合规设计的 DPA 保护。」",
+              "教学侧的 frame 是：Claude 先从你所在州的 state standards 和高质量 curriculum（通过 Learning Commons 接进去）出发，先生成一份教学计划和学生端材料，老师改完就能直接拿去上课。输入是 state standards，输出是能直接进课堂的材料。",
+              "值得记的模式：这是两天内第二个 Claude vertical 用「typed 结构化输入 → typed 结构化输出」的形态，跟 Apple Foundation Models 在 developer 端那条路子是同一个形状。K-12 的 privacy 门槛比 enterprise 高得多。"
+            ],
+            "original": [
+              "Claude for Teachers 是为 K-12 的隐私要求而建。我们不会用你的对话训练模型，学生信息由一份为符合 FERPA 要求而设计的 DPA 保护。",
+              "要备课的时候，Claude 先通过 Learning Commons 接进你所在州的 state standards 和高质量 curriculum，然后生成一份教学计划和学生端材料，你可以修改、然后直接带去课堂。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Levie 拆 code 为什么先被 agent 吃掉 + AI standards ≠ regulation / Levie on Why Code Is Eaten by Agents First + Standards ≠ Regulation",
+      "desc": "Levie 把两件事讲得很清：code 是 knowledge work 里少见的「能很快测试」surface，所以 agent 先吞的是它；另一条他反对把 standards body 跟 regulatory agency 混在一起——这两件事的迭代速度要求不一样，捆一起就只剩最慢那条。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie",
+          "en": {
+            "rewrite": [
+              "Aaron Levie on why code is unusually amenable to agents: 'One of the many properties that code has that makes it highly amenable to agents is that you can more or less quickly test it. You can either go see if the application works manually, or you can actually run a test on what you built. Most knowledge work doesn't have anything close to that.'",
+              "Code has an evaluation loop every other knowledge-work surface is missing. The feedback is fast, the ground truth is roughly binary, the work is already in a format agents can produce — that's why agents are eating software first."
+            ],
+            "original": [
+              "One of the many properties that code has that makes it highly amenable to agents is that you can more or less quickly test it. You can either go see if the application works manually, or you can actually run a test on what you built. Most knowledge work doesn't have anything close to that."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 解释为什么 code 是最容易被 agent 化的 surface：「代码有很多属性让 agent 特别好上手，其中一个就是你可以很快去测它。你可以手动看应用跑得对不对，也可以跑一个测试去验证你写的东西。大部分知识工作根本没有这种闭环。」",
+              "code 有一个其他知识工作 surface 都没有的 evaluation loop——反馈快、真值近似二值、内容本身就是 agent 能直接产出的格式。这就是为什么 agent 先把软件业吃掉。"
+            ],
+            "original": [
+              "代码的很多属性让它特别容易被 agent 化，其中一个就是你可以很快测它。你可以手动看应用跑得对不对，也可以跑一个测试去看你造出来的东西。大部分知识工作根本没有这个。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie",
+          "en": {
+            "rewrite": [
+              "Levie also pushes back on the 'AI standards body = regulator' conflation: 'Thoughtful proposal for a standards body for AI. This is distinct from a regulatory agency, and would certainly allow for much faster improvement of standards and collaboration with the industry. What you definitely don't want is for AI policy to be set through the slowest possible process.'",
+              "His frame: standards (how systems interoperate) move fast and benefit from industry collaboration; regulation (what systems are allowed to do) moves slowly and should be a separate channel. Bundling them guarantees the slowest path wins."
+            ],
+            "original": [
+              "Thoughtful proposal for a standards body for AI. This is distinct from a regulatory agency, and would certainly allow for much faster improvement of standards and collaboration with the industry. What you definitely don't want is for AI p"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Levie 也在拆「AI standards body = regulator」这个混淆：「这是一份关于 AI standards body 的、很认真的提案。它跟 regulatory agency 不是一回事——分得开，standards 才能更快地迭代、跟行业一起协作。你最不想看到的，就是 AI policy 走最慢的那条流程。」",
+              "他的 frame：standards（系统怎么互通）可以快速迭代、跟行业共创；regulation（系统能做什么）必须慢、应该走另一条通道。把这两件事捆一起，最慢的那条会赢。"
+            ],
+            "original": [
+              "这是一份关于 AI standards body 的、很认真的提案。它跟 regulatory agency 是两回事——分得开，standards 才能更快迭代、跟行业一起协作。你最不想看到的，是 AI policy 走最慢的那条流程。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Vercel 公开 token-flows 数据集 + agentmail「vercel install」上线 / Vercel Opens Token-Flows Dataset + agentmail Ships 'vercel install'",
+      "desc": "Rauch 把 Vercel AI Gateway 上的 token flows 数据集开放出来——把昨天 29% open-weight 那个数字从推文变成可复用的数据；接着 agentmail 团队推了一条「vercel install agentmail」命令，agent-to-agent commerce 的 plumbing 开始变成 CLI primitive。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO",
+          "sourceUrl": "https://x.com/rauchg",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch (Vercel CEO) opens up 'the dataset of AI token flows on Vercel AI Gateway. Fascinating insights contained within!' — same shape as yesterday's 29%-open-weight number, but now open data instead of a tweet.",
+              "The interesting bet: Vercel is positioning itself as the measurement layer for applied AI. If Levie is right that the harness is the moat, the company that has the actual routing data has a structural advantage."
+            ],
+            "original": [
+              "We're opening up the dataset of AI token flows on @vercel AI Gateway. Fascinating insights contained within!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch（Vercel CEO）把 Vercel AI Gateway 上的 token flows 数据集直接公开：「我们把 AI token 在 Vercel AI Gateway 上的流量数据集开放出来了，里面有非常多有意思的洞察！」——跟昨天 29% open-weight 那个数字是同一类事，但这次是开放数据，不是发个推。",
+              "背后那个赌注是：Vercel 在把自己定位成 applied AI 的 measurement layer。如果 Levie 说得对（harness 才是护城河），那家有真实 routing 数据的公司就有结构优势。"
+            ],
+            "original": [
+              "我们把 Vercel AI Gateway 上的 AI token flows 数据集开放出来了。里面有非常多有意思的洞察！"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO",
+          "sourceUrl": "https://x.com/rauchg",
+          "en": {
+            "rewrite": [
+              "Second Rauch thread: agentmail is shipping a 'vercel install agentmail' command — no signup, automatic setup, unified billing. The vibe: agent-to-agent commerce plumbing is becoming a CLI primitive.",
+              "This connects back to yesterday's AgentMail + Vercel Gateway pairing. The integration is moving from 'API key you paste' to 'one shell command the agent runs'."
+            ],
+            "original": [
+              "The @agentmail team has been cooking. Tell your agent to vercel install agentmail – no signup, automatic setup and unified billing."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Rauch 第二条：agentmail 团队搞出来一个「vercel install agentmail」命令——不用注册、自动 setup、统一计费。vibe 是：agent 对 agent 的 commerce plumbing 开始变成 CLI primitive。",
+              "这跟昨天的 AgentMail + Vercel Gateway 那一对是同一条线。集成从「你自己粘 API key」演化成「agent 自己跑一条 shell」。"
+            ],
+            "original": [
+              "@agentmail 团队在搞事情。让你的 agent 跑 vercel install agentmail——不用注册、自动 setup、统一计费。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Codex 还在改 vibe coding 的形态：Thariq 的 Pokemon report + Dan 把 Codex 押注做成 receipts / Codex Keeps Reshaping Vibe Coding: Thariq's Pokemon Report + Dan's Receipts Page",
+      "desc": "Thariq 把 Claude Code 接进 Pokemon Champions——live data 走 npm 库、分析输出结构化报告，hobby + live data + 报告三件套的样板定型。Dan Shipper 同步把「Codex pilled」那一周做了个公开 archive，把 X 当成 Every 半年前那个 editorial call 的 receipts 页。",
+      "cards": [
+        {
+          "authorKey": "x:trq212",
+          "authorName": "Tao Li",
+          "authorHandle": "@trq212",
+          "authorTag": "AI 研究员 / Follow Builders 维护者",
+          "sourceUrl": "https://x.com/trq212",
+          "en": {
+            "rewrite": [
+              "Thariq on his latest Codex demo: 'I've been playing a lot of Pokemon Champions recently and started using Claude Code to help me. It writes code using Smogon's npm library, pulls live usage stats and then writes reports to understand matchups, breakpoints or theorycraft team comps.'",
+              "The interesting bit isn't Pokemon — it's the integration shape: live data via npm library → analysis → written report, all orchestrated by Claude Code. Domain hobby + live data + structured output. Same template generalizes."
+            ],
+            "original": [
+              "I've been playing a lot of Pokemon Champions recently and started using Claude Code to help me.  It writes code using Smogon's npm library, pulls live usage stats and then writes reports to understand matchup, breakpoints or theorycraft team comps."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thariq 把最新的 Codex demo 端出来：「我最近一直在打 Pokemon Champions，开始用 Claude Code 帮忙。它用 Smogon 的 npm 库写代码，拉 live usage 数据，然后写报告分析 matchup、breakpoint 和队伍理论。」",
+              "有意思的不是 Pokemon，是这个集成的形状：live data 走 npm 库 → 分析 → 输出结构化报告，全程 Claude Code 编排。领域爱好 + live data + 结构化输出——这个模板能直接 generalize。"
+            ],
+            "original": [
+              "我最近一直在打 Pokemon Champions，开始用 Claude Code 帮我。它用 Smogon 的 npm 库写代码，拉 live usage 统计，然后写报告分析 matchup、breakpoint 或者队伍理论。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "authorName": "Dan Shipper",
+          "authorHandle": "@danshipper",
+          "authorTag": "Every 联合创始人 / AI 写作工具链",
+          "sourceUrl": "https://x.com/danshipper",
+          "en": {
+            "rewrite": [
+              "Dan Shipper (Every co-founder) caps a Codex-pilled week: 'If you are reading @every, you knew codex was about to take off 6 months ago :) Success kid pointing to when I started getting extremely, absolutely, annoyingly codex pilled and we began covering it.'",
+              "The shape of this tweet is unusual: a public archive of his own Codex conviction arc. He's using X as a receipts page for the editorial call Every made half a year ago."
+            ],
+            "original": [
+              "if you are reading @every, you knew codex was about to take off 6 months ago :)  success kid pointing to when i started getting extremely, absolutely, annoyingly codex pilled and we began covering it"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Dan Shipper（Every 联合创始人）把「Codex pilled」这一周做了个收尾：「看 @every 的人，6 个月前就知道 Codex 要起飞了 :) Success kid 表情，配上我什么时候开始 extremely、absolutely、annoyingly codex pilled、我们开始报道它的那一刻。」",
+              "这条推的形态不太常见：把自己对 Codex 的 conviction 弧线做成公开 archive。他在把 X 当成 Every 半年前那个 editorial call 的 receipts 页。"
+            ],
+            "original": [
+              "如果你在读 @every，6 个月前你就知道 Codex 要起飞了 :) Success kid 表情，配上我什么时候开始 extremely、absolutely、annoyingly codex pilled、我们开始报道它的那一刻。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "周末 fragment 三连：Matt Turck 的世界杯残酷 + Garrytan 拆 SF doom loop + Nikunj 看 AI 时代的 IC 心智 / Weekend Fragments: Matt Turck on World Cup's Cruelty + Garrytan on SF's Doom Loop + Nikunj on the AI-Era IC Mindset",
+      "desc": "三段 weekend texture：Matt Turck 把世界杯 47/48 心碎数据讲完，外加法国 10/10 → 4/10 的反面教材；Garry Tan 把 SF 的 doom loop 拆成「tax dollars 怎么花」+ 「never go full omnicause」一对原则；Nikunj 接着昨天 engineering leader 的线，看 AI 时代最能打的 IC 怎么把间隙时间交给 X。",
+      "cards": [
+        {
+          "authorKey": "x:mattturck",
+          "authorName": "Matt Turck",
+          "authorHandle": "@mattturck",
+          "authorTag": "First Mark Capital 合伙人 / MAD Podcast 主理人",
+          "sourceUrl": "https://x.com/mattturck",
+          "en": {
+            "rewrite": [
+              "Matt Turck on the World Cup's cruelty: 'The cruel reality of the World Cup is that 47 out of 48 teams go home heartbroken. We love it anyway.'",
+              "Followed by a tactical note: 'How France played 10/10 football throughout the World Cup and 4/10 football in the semi final will need to be studied in football school as the ultimate cautionary tale.'"
+            ],
+            "original": [
+              "The cruel reality of the World Cup is that 47 out of 48 teams go home heartbroken.  We love it anyway.",
+              "How France played 10/10 football throughout the World Cup and 4/10 football in the semi final will need to be studied in football school as the ultimate cautionary tale."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Matt Turck 聊世界杯的残酷：「世界杯最残酷的现实是 48 支球队里 47 支回家时心碎。我们照样爱它。」",
+              "接着一条战术观察：「法国整届世界杯踢的是 10/10 的足球，半决赛踢的是 4/10 的——这事得进足球学校当终极反面教材。」"
+            ],
+            "original": [
+              "世界杯最残酷的现实是，48 支球队里 47 支回家时心碎。我们照样爱它。",
+              "法国整届世界杯踢的是 10/10 的足球，半决赛踢的是 4/10——这得进足球学校当终极反面教材。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁",
+          "sourceUrl": "https://x.com/garrytan",
+          "en": {
+            "rewrite": [
+              "Garry Tan (Y Combinator president) on SF's doom loop: 'Your tax dollars at work. The doom loop in SF isn't just about ruining the city for normal citizens. It's also about looting the public good.'",
+              "Two short fragments — 'Never go full omnicause' is the rule of thumb, the SF doom loop tweet is the worked example. Same pattern YC has been pushing for months on X."
+            ],
+            "original": [
+              "Your tax dollars at work  The doom loop in SF isn't just about ruining the city for normal citizens  It's also about looting the public good",
+              "Never go full omnicause"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan（Y Combinator 总裁）讲 SF 的 doom loop：「你的税款花在这里。SF 这个 doom loop 不仅仅是让普通市民没法正常生活，它还是对公共财产的掠夺。」",
+              "两条短 fragment——「Never go full omnicause」（永不全因化）是原则，SF doom loop 那条是 worked example。YC 这几个月在 X 上反复走的就是这个模式。"
+            ],
+            "original": [
+              "你的税款花在这里。SF 这个 doom loop 不只是让普通市民没法正常生活，它还在掠夺公共财产。",
+              "永远别全因化（Never go full omnicause）。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人",
+          "sourceUrl": "https://x.com/nikunj",
+          "en": {
+            "rewrite": [
+              "Nikunj Kothari (Afore Capital) on a pre-AI leadership mindset gap: 'The pre-AI engineering leader mind can't comprehend that their most cracked engineer is also extremely online. While the agents are working, X becomes the dopamine spike they need as they wait.'",
+              "Same shape as yesterday's Nikunj line about engineering leaders: the cracked IC is now spending cognitive cycles on something other than typing — and that something isn't necessarily work, it's the gap-filler."
+            ],
+            "original": [
+              "The pre-AI engineering leader mind can't comprehend that their most cracked engineer is also extremely online. While the agents are working, X becomes the dopamine spike they need as they wait. I think time on X numbers especially in te"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nikunj Kothari（Afore Capital）讲一个 pre-AI leadership 看不见的 mind gap：「pre-AI 时代的 engineering leader 想象不到，他们最能打的 engineer 同时也是个极度 online 的人。当 agent 在干活的时候，X 就成了他们等的间隙需要的 dopamine spike。」",
+              "跟昨天 Nikunj 那条 engineering leader 的口径是同一个形状：最能打的 IC 现在把认知 cycle 花在了「打字」之外的事上——而且这事不一定是工作，它是间隙填充。"
+            ],
+            "original": [
+              "pre-AI 时代的 engineering leader 想象不到，他们最能打的 engineer 同时也是一个极度 online 的人。当 agent 在干活的时候，X 就变成了他们等待时需要的 dopamine spike。我觉得 engineering 的 X 停留时间，特别是 te"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

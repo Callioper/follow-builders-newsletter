@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 14 Jul 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 15 Jul 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-07-15 · 生态不封园日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-15-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-15-rerun.html</guid>
+      <pubDate>Wed, 15 Jul 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[今天 1 个 podcast + 15 条 X、零 blog，主轴意外是 Anthropic Platform。Training Data 把 Katelyn Lesse 和 Angela Jiang 请去一次性把「ecosystem 不是 walled garden」讲完——execution 层（sandboxes / storage / MCP tunnels）跟 Modal、Vercel、Cloudflare、Amazon micro VM 全做了 first-class 集成，skills / MCP 当 standards 给出去；下一层抽象是 coordination layer，harness 从 raw execution 变成 meta-harness 把 strategies 编排起来。OpenAI 这一头则是另一类信号：Sama 明说「5.6 sol 接下来很可能会有一些抖动」，Thibault 直接拿 100 美元 Codex credits 换用户反馈、把流量往 Codex surface 上拉——Codex / ChatGPT 在用户视角已经模糊（昨天 Aditya 那条），OpenAI 自己在尝试把使用往 Codex 端拽回来。Claude 同一天把第二个 vertical 端出来：Claude for Teachers，K-12 FERPA 合规 + state standards 作为输入、lesson plan 作为输出，形态跟昨天 Claude-for-Apple-Foundation-Models 是同一类「typed 结构化输入 → typed 结构化输出」。R&D 这边，Levie 把「code 为什么先被 agent 吃掉」讲成「knowledge work 里少见的有 evaluation loop 的 surface」，接着把 standards body 跟 regulatory agency 拆开——iteration 速度不一样，捆一起就只剩最慢那条。Rauch 把 Vercel AI Gateway 的 token flows 数据集开放出来，把昨天 29% 那个数字从推文变成可复用的数据；agentmail 那条「vercel install」把 agent-to-agent commerce 的 plumbing 推成 CLI primitive。Vibe coding 这边 Thariq 把 Claude Code 接进 Pokemon Champions——live data 走 npm 库、分析输出结构化报告，hobby + live data + 报告的样板定型；Dan Shipper 把「Codex pilled」那一周做成公开 receipts。Weekend fragment 由 Matt Turck 的世界杯残酷 + Garrytan 的 SF doom loop + Nikunj 的 AI 时代 IC 心智收尾。]]></description>
+      <category>Training Data：Anthropic Platform 团队讲 coordination + ecosystem 不是 walled garden / Training Data: Anthropic Platform on Coordination Layers and an Open Ecosystem, Sol 增长撞 inference：Sama 提前预告抖动 + Thibault 用 $100 Codex credits 抓反馈 / Sol Growth Hits Inference: Sama Pre-Warns of Hiccups + Thibault Hunts Feedback with $100 Codex Credits, Claude for Teachers：K-12 privacy + state standards 作为输入 / Claude for Teachers: K-12 Privacy + State Standards as the Input, Levie 拆 code 为什么先被 agent 吃掉 + AI standards ≠ regulation / Levie on Why Code Is Eaten by Agents First + Standards ≠ Regulation, Vercel 公开 token-flows 数据集 + agentmail「vercel install」上线 / Vercel Opens Token-Flows Dataset + agentmail Ships &apos;vercel install&apos;, Codex 还在改 vibe coding 的形态：Thariq 的 Pokemon report + Dan 把 Codex 押注做成 receipts / Codex Keeps Reshaping Vibe Coding: Thariq&apos;s Pokemon Report + Dan&apos;s Receipts Page, 周末 fragment 三连：Matt Turck 的世界杯残酷 + Garrytan 拆 SF doom loop + Nikunj 看 AI 时代的 IC 心智 / Weekend Fragments: Matt Turck on World Cup&apos;s Cruelty + Garrytan on SF&apos;s Doom Loop + Nikunj on the AI-Era IC Mindset</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-07-14 · 开源压顶日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-14-rerun.html</link>
