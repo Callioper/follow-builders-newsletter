@@ -1,0 +1,606 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-07-16",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天 1 个 podcast + 15 条 X + 1 篇 blog，主轴意外是 Granola 的 CEO Chris Pedregal 在 AI & I by Every 上把 $1.5B 创业公司的 knife-fight 形态讲完——「做不起来难，做得起来也难」是真话，会议纪要不是奖品，真正的大头是 AI-native 工作的界面。Pedregal 把流程拆成 shaping → validate → make it good，把 token 花销的反应（直到上周才 track，触发点是 Fable）讲出来，把预生成百万条 brief 只为搞清楚正确体验的策略也讲清。Dan 的「pirate + architect」团队模型 + work 的 surface 二分（异步委托在 Slack、严肃工作在 Codex / Claude desktop）紧跟其后；推论是下一代 app 必须活在 Codex 这种 harness 里。Claude 这一头把 artifacts 端出来——Claude Code 的 session 翻成 live 视觉页面（PR walkthrough、可筛选 dashboard、甚至会自己填的 release checklist），还带 version history 和就地刷新。Boris Cherny 把 CLAUDE.md / REVIEW.md / skills 这条新规矩讲清楚——automation 不只是倍增你的产出，它倍增每一支 agent 军的产出；CLAUDE.md / REVIEW.md 让新人入职第一天就能给 codebase 提 PR，非工程师也能像工程师一样贡献。OpenAI 那一头是另一类信号：Thibault 拿 Codex credits 换 5h 限制的反馈（用户视角的 Codex 体验在主动 collect）、GPT-5.6 文件删除 post-mortem（基本都发生在 full-access + 没 sandbox + 没 auto review）、再往前看「既然 ChatGPT 和 Codex 已经合并，接下来合并什么」；Peter Yang 把 ChatGPT Live × Codex 的 missed opportunity 钉出来——两个旗舰产品不通，散步时让 ChatGPT Live 拉 Google Doc 它说不行，跟 Thibault 的「接下来合并什么」是同一根线。swyx 出来点名「低估 CUA 现有能力是个危险的 category error」，并给团队从 2017 World of Bits 起的多年 live 观察 log 作为背书；Steipete 把 5.6 relentless + automation failure 摆到一张桌上——5.6 的失败模式不在模型，而在缺位的 automation。Levie 把 enterprise agent 落地的五条 takeaways 整理出来（change management、内部 FDE、IT 中心化、agent 需要自己的角色和权限、所有 enterprise software 都得是 headless）；Rauch 把 Vercel Sandbox 月环比 DAU +100%、每天 350 万+ sandbox、per active CPU-second 的成本当竞争维度，连带 Web Analytics API 把访客事件和部署演化关联起来——主轴跟昨天 token-flows 数据集是同一根。Josh Woodward 把 Gemini Spark 的 native editing 四大新功能放出来（开/编辑 Docs、读 Sheets & Slides 评论、速度 +50%+、跨 source 并行）。编辑判断这一边：Madhu Guru 给「一读就知道是 AI 写的」感觉提出 semantic nausea / uncanny prose valley / synthetic shudder 三个候选词；Zara Zhang 说让 agent 在公司干活，先得把公司设计成它能读懂的样子（Shopify 的 agent 只能发公开频道，副作用是 peer learning）；Garry Tan 把 em dash 拿回来 + skill files 解耦 frontier model。周末 fragment 由 Nan Yu 关于 grind 叙事的反转收尾。"
+  },
+  "archive": {
+    "title": "白刃战日",
+    "desc": "今天 1 个 podcast + 15 条 X + 1 篇 blog，主轴意外是 Granola CEO Chris Pedregal 在 AI & I by Every 上把 $1.5B 创业公司的knife-fight 形态讲完——会议纪要从来不是奖品、shaping→validate→make it good 的流程、token 花销的真正 trigger 是 Fable。Dan 的 pirate+architect 模型 + work 的 surface 二分。Claude Code 上 artifacts 把 session 变 live 网页；Boris Cherny 把 CLAUDE.md/REVIEW.md/skills 这条规矩讲清楚。OpenAI 一头：Thibault 拿 $100 Codex credits 换 5h 限制反馈 + GPT-5.6 文件删除 post-mortem；Peter Yang 把 ChatGPT Live × Codex 的 missed opportunity 钉出来。swyx 出来说低估 CUA 是危险的 category error；Levie 把 enterprise agent 落地的五条 takeaways 整理出来；Rauch 把 Vercel Sandbox 月环比 DAU +100% 的数据端出来；Josh Woodward 把 Gemini Spark 的 native editing 四大新功能放出来；Steipete 把 5.6 relentless 和 automation failure 摆到一张桌上；Madhu Guru 给 AI 写作的体感起名字；Zara Zhang 说 agent 进公司的前置条件是公司先得可读；Garry Tan 把 em dash 拿回来 + skill files 解耦 frontier model。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-16 source feeds.",
+  "sections": [
+    {
+      "title": "Granola CEO Chris Pedregal on $1.5B startups as knife fights + meeting-notes-not-the-prize / Granola CEO Chris Pedregal：$1.5B 创业也是白刃战，会议纪要从来不是奖品",
+      "desc": "AI & I by Every 这期把 Granola 的 CEO / 联创 Chris Pedregal（估值 $1.5B、团队 55 人）请来，整期主线：把一家看起来「一切顺利」的 AI 创业公司跑起来，本身仍然是 knife fight；会议纪要不是真正的奖品，真正的大头是 AI-native 工作的界面。Pedregal 把流程拆成 shaping → validate → make it good，把 token 花销的反应（直到上周才 track，触发点是 Fable）和预生成百万条 brief 只为搞清楚正确体验的策略也讲清了。",
+      "cards": [
+        {
+          "authorKey": "podcast:ai-and-i-by-every",
+          "authorName": "AI & I by Every",
+          "authorHandle": null,
+          "authorTag": "AI 商业与产品深访",
+          "sourceUrl": "https://www.youtube.com/playlist?list=PLuMcoKK9mKgHtW_o9h5sGO2vXrffKHwJL",
+          "en": {
+            "rewrite": [
+              "AI & I by Every, this week: Dan Shipper sits down with Chris Pedregal (CEO/cofounder of Granola, raised at a $1.5B valuation, ~55 people). The central thread: even when a $1.5B AI startup is 'working,' running it is still a knife fight — and meeting notes are not the prize.",
+              "On competition: 'Meeting notes are not the end all, be all value everyone's running after. There's something much bigger. We are in the very, very early steps of a computing revolution and what has come thus far will pale in comparison to what will come soon.' Pedregal's read on why meeting-notes clones from Notion / OpenAI / Zoom don't move the needle: people are fighting for the wrong layer of the stack.",
+              "On team shape: Pedregal describes his process as 'shaping → validate → make it good.' Shaping explores as many possible solutions as possible for a job-to-be-done; validation proves it for a small number of people; only then do they invest in reliability and scale. The interesting claim is that the traditional PM/design/eng split doesn't survive this — roles become per-job allocations of responsibility.",
+              "On token spend: 'We pre-generate millions of these briefs even if only 10% get opened because we want to figure out what's the right experience for the user.' Granola didn't track token spend internally until last week — the trigger was Fable (engineers started spending thousands per day in credits, Kieran at Quora was on track for $1M).",
+              "The closing observation: there are canonical UI paradigms for AI-native work that haven't been invented yet. Chat threads work for one job at a time; cross-context work (today's meetings + this week's meetings + Slack + email) doesn't have a working metaphor yet. 'The normie user is going to need a simple metaphor that they can just grok and interface with.'"
+            ],
+            "original": [
+              "And I thought startups were just really hard when they weren't working. Turns out they're really hard when they're working as well. It's just, it's a knife fight when things are going well or not going well, and I was a bit unprepared for that.",
+              "We are in the very, very early steps of a computing revolution and that there's what has come thus far will pale in comparison to what will come soon. I think that it doesn't Meeting notes are not the end all, be all value that everyone's running after. There's something much bigger, and I think it's what interface we use for work and how we work and what does that look like in the AI native world.",
+              "We have this idea of stages. So like the first stage is like shaping. So it's we start with a job to be done. Like, here's a user need. Here's the job we would like the user to hire us to do. Right? And it's like, okay, this is the job. What are possible shapes of that solution? And you go and explore those shapes as quickly as possible.",
+              "We pre generate millions of these briefs even if only 10% of them get opened because we want to figure out what's that right experience for the user. And our belief is both cost will go down over time and we can optimize cost once we know what the best experiences are.",
+              "There are canonical UIs that haven't been invented yet. When I look around, I'm like, I've seen very little actually. We have a chat UI and chat threads are super valuable, actually surprisingly versatile and powerful when you're doing one thing. But when you're actually trying to do multiple things across varied contexts, I don't think we have the right metaphor there."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "AI & I by Every 这期请来 Granola 的 CEO / 联创 Chris Pedregal（团队约 55 人，估值 $1.5B）。主线很直接：哪怕一家 $1.5B 的 AI 创业公司「一切顺利」，把它跑起来本身仍然是一场 knife fight（白刃战）——而会议纪要从来不是真正的奖品。",
+              "聊到竞争：「会议纪要根本不是大家追逐的那个终极价值。更大的东西在外面。我们现在还处在一场 computing revolution 极其早期的阶段，迄今为止发生的事情跟接下来要发生的比起来都不算什么。」Pedregal 解释为什么 Notion / OpenAI / Zoom 的会议纪要 clone 没撼动 Granola：大家在栈的错的那一层打架。",
+              "聊团队组织：Pedregal 把流程拆成「shaping → validate → make it good」。Shaping 阶段围绕一个 job-to-be-done 尽可能多探索解；validate 阶段挑出一小撮用户证明「真的有人在用你」；通过了才投入做 reliability 和 scale。有意思的论断是：传统 PM / 设计 / 工程的拆分在这种流程里站不住，角色变成按 job 分配责任。",
+              "聊 token 花销：「我们预生成上百万条 brief，哪怕只有 10% 被打开——因为我们想搞清楚对用户来说什么是正确的体验。」Granola 直到上周才开始内部 track token 花销，触发点是 Fable——有工程师一天花掉几千美元，Quora 的 Kieran 差点花掉 $1M。",
+              "收尾观察：AI-native 工作流的 canonical UI 范式还没被发明出来。Chat thread 适合一次只做一件事；跨上下文的工作（今天的会 + 这周的会 + Slack + 邮件）至今没有合适的 metaphor。「普通用户需要的，是一个他们一眼能 get 到、能直接上手的 metaphor。」"
+            ],
+            "original": [
+              "我以为创业只有做不起来的时候才难。后来发现，做得起来的时候也一样难。事情顺或不顺，都是一场白刃战——这一点我完全没准备好。",
+              "我们现在还处在一场 computing revolution 极其早期的阶段，迄今为止发生的一切跟接下来要发生的比起来都不算什么。会议纪要根本不是大家追逐的终极价值。还有大得多的东西在前面——是工作界面本身，是 AI-native 的世界里我们到底怎样工作、怎样协作。",
+              "我们有一个 stages 的思路。第一步叫 shaping——从一个 job-to-be-done 出发，尽可能多地探索这个 job 的可能 shape；接着是 validate，证明有一小撮用户真的在用你；通过了才花力气做 reliability 和 scale。",
+              "我们预生成上百万条 brief，哪怕最终只有 10% 被打开，因为我们要搞清楚对用户来说什么样的体验才是对的。我们的判断是：成本会随时间下来，体验找对了之后再回头优化成本也来得及。",
+              "AI-native 工作流的 canonical UI 还没被发明出来。我环顾四周，看到的极少。我们现在只有 chat UI——chat thread 在做一件事的时候其实很强；但当你要跨越多种 context 干多件事，还没有合适的 metaphor。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Dan's pirate + architect team model + work bifurcates into 2 surfaces / Dan 的 pirate + architect 团队模型 + 工作界面二分",
+      "desc": "同一集后续：Dan Shipper 把 Every 的「pirate + architect」早期产品模型端出来——pirate 快速 build 找价值（可以 vibe-coded），architect 把 pirate 找到的东西做成可扩展的系统。有意思的不对称是「每 product 需要一个 pirate，但一个 architect 可以 cover 多个 product」。紧接着把 work 切成两个 surface：异步委托（Slack bots）+ 严肃工作（Codex / Claude desktop），推论是下一代 app 必须活在 Codex 这种 harness 里。",
+      "cards": [
+        {
+          "authorKey": "podcast:ai-and-i-by-every",
+          "authorName": "AI & I by Every",
+          "authorHandle": null,
+          "authorTag": "AI 商业与产品深访",
+          "sourceUrl": "https://www.youtube.com/playlist?list=PLuMcoKK9mKgHtW_o9h5sGO2vXrffKHwJL",
+          "en": {
+            "rewrite": [
+              "On Dan Shipper's 'pirate + architect' model for early product teams: there are two roles that matter at the early stage. The pirate builds as fast as possible to find something valuable — can be vibe-coded, no architecture required. The architect pairs with the pirate and thinks about how to turn what the pirate found into a system that's sustainable and scalable.",
+              "The interesting asymmetry: 'You need one pirate per product. But you can have one architect work on multiple products. You can have them bounce around because the tools now are so good that someone who's a really good programmer, really good architect can just drop into a code base and be like, I'm going to learn this code base in an hour because I just have Claude or Codex map it for me.'",
+              "On the bifurcation of work surfaces: 'Work is bifurcating into two surfaces. One is async delegation work that happens in Slack — collaborative, multiplayer, sometimes proactive. That happens with Slack bots.' The other is serious work that needs a better collaboration surface between you and the agent — Codex or Claude desktop, where you and the agent sit in the same app.",
+              "The implication for app builders: 'I use almost all of my software in the in-app browser of Codex. So I'm bringing Codex into my email or into whatever it is.' That means the next generation of apps has to be designed to live inside Codex/Claude-style harnesses, not alongside them."
+            ],
+            "original": [
+              "There are two roles that matter. One is called the pirate and one's called the architect. And the pirate's job is to just build as fast as possible to find something valuable. And it can be vibe coded. You don't have to really think about the architecture, all that kind of stuff. And the architect's job is to pair with the pirate and think about, as the pirate finds something that's valuable, how do we make this into a system that is sustainable, that we understand, that can scale.",
+              "You need one pirate per product. But you can have one architect work on multiple products. You can have them bounce around because the tools now are so good that someone who's a really good programmer, really good architect can just drop into a code base and be like, I'm going to learn this code base in an hour because I just have Claude or Codex or whatever map it for me.",
+              "Work is bifurcating into two surfaces. One is async delegation work that happens in Slack. That's collaborative, multiplayer, sometimes proactive. However, for serious work, you can't you're always going to get more out of it if you have a better collaboration service between you and the agent, and Slack is not good for that.",
+              "I use almost all of my software in the in app browser of Codex. So I'm bringing Codex into my email or into you know whatever it is in the same way that you're building something in Codex or cloud Code and it opens it in a browser and it lets you see the local host version."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "聊 Dan Shipper 提的「pirate + architect」早期产品团队模型：早期真正重要的就两个角色。Pirate 负责尽可能快地 build 来找到有价值的东西，可以 vibe-coded、不必考虑架构。Architect 跟 pirate 配对，负责把 pirate 找到的东西变成一个可持续、可扩展的系统。",
+              "这个模型有意思的不对称性：「每个 product 需要一个 pirate，但一个 architect 可以 cover 多个 product。Architect 可以跳来跳去，因为工具已经好到这种程度：一个真正强的架构师，让 Claude 或 Codex 一小时内把 codebase 摸一遍，就能上手。」",
+              "聊工作界面的二分：「Work 正在分成两类 surface。一类是异步委托的工作，发生在 Slack 里——多人协作、有时候是主动推送，靠 Slack bot 来跑。另一类是认真的工作，需要你跟 agent 之间有更好的协作 surface——Codex 或者 Claude desktop，你跟 agent 坐在同一个 app 里。」",
+              "对 app builder 的含义：「我几乎所有的软件都在 Codex 的 in-app browser 里用。我把 Codex 带进我的 email、带进任何地方。」这意味着下一代 app 必须设计成能活在 Codex / Claude 这种 harness 里，而不是跟它们并排。"
+            ],
+            "original": [
+              "早期真正重要的就两个角色：pirate 和 architect。Pirate 的职责就是尽可能快地 build，找到有价值的东西；可以 vibe-coded，架构什么的先不管。Architect 跟 pirate 配对，pirate 一旦找到价值，architect 就接手——把它变成一个可理解、可扩展、可持续的系统。",
+              "每个 product 需要一个 pirate，但一个 architect 可以 cover 多个 product。Architect 可以跳来跳去，因为工具已经好到这种程度——一个真正强的架构师，让 Claude 或 Codex 把 codebase 在一小时内摸完，就能上手。",
+              "工作界面正在分成两个 surface。一个是异步委托的工作，发生在 Slack 里——多人协作，有时候还是主动推送；另一边是认真干活，对你跟 agent 之间的协作 surface 要求更高，Slack 不够用。",
+              "我几乎所有的软件都在 Codex 的 in-app browser 里用。我把 Codex 带进我的邮件、带进任何东西——跟你用 Codex 或 Claude Code 写东西，Codex 在浏览器里打开给你看 local host 版本，是同一个形状。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Claude Code artifacts：把 session 变成 live 网页 / Claude Code Artifacts: Sessions Become Live Web Pages",
+      "desc": "Claude Blog：Claude Code 现在支持 artifacts——把 session 的工作翻成一份任何人能打开的 live 视觉页面（PR walkthrough、可筛选的 dashboard、甚至会自己填的 release checklist），并在你 session 推进时自动重新发布。形态上还是同一条「typed 结构化输入 → typed 结构化输出」的模板，但输入是完整 session context（code + connectors + 对话），输出带 version history 的 live 页面。",
+      "cards": [
+        {
+          "authorKey": "blog:claude-blog",
+          "authorName": "Claude Blog",
+          "authorHandle": null,
+          "authorTag": "Anthropic 官方博客",
+          "sourceUrl": "https://claude.com/blog/artifacts-in-claude-code",
+          "en": {
+            "rewrite": [
+              "Claude Code now supports artifacts: 'a Claude Code session can range from investigating an incident to refactoring a service to analyzing months of data. Artifacts translate the work into a web page anyone can open and explore, like a pull request walkthrough, a dashboard you can filter and sort, or even a release checklist that fills itself out as work gets done.'",
+              "The build shape: 'Claude Code builds an artifact using the full context of your session, including your codebase, your connectors, and the conversation itself. A single incident page can bring together the failing test and the function behind it from your code, the error spike from a connected monitoring tool, and the root-cause reasoning from the session you just ran.'",
+              "Live updates in place: 'When Claude Code updates an artifact, the open page refreshes in place and teammates see the updates the moment they're published. Every publish is a new version at the same link, with version history so you can restore at any time.' From internal testing, the most common use case has been debugging — Claude Code investigates an incident before standup, publishes a timeline with suspect commits and an error-rate chart, and republishes it as the investigation progresses.",
+              "Pattern to note: artifacts extend the same 'typed structured output' approach Apple Foundation Models use on the dev side, but the input is the full session context (code + connectors + conversation), and the output is a live web page with version history. Two days, two verticals, same template — typed structured inputs → typed structured outputs, this time with continuous refresh."
+            ],
+            "original": [
+              "Starting today, Claude Code can capture work progress as an artifact, which turn Claude Code's work into live, shareable visual pages— including PR walkthroughs, system explainers, dashboards, and release checklists—that update themselves as your session works.",
+              "Claude Code builds an artifact using the full context of your session, including your codebase, your connectors, and the conversation itself. A single incident page can bring together the failing test and the function behind it from your code, the error spike from a connected monitoring tool, and the root-cause reasoning from the session you just ran.",
+              "When Claude Code updates an artifact, the open page refreshes in place and teammates see the updates the moment they're published. Every publish is a new version at the same link, with version history so you can restore at any time."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude Code 现在支持 artifacts：「一次 Claude Code 会话可以是从排查事故、重构服务到分析几个月的数据。Artifacts 把这些工作翻译成一个任何人可以打开和探索的网页——可以是 PR walkthrough、可以筛选排序的 dashboard、甚至是会自己填起来的 release checklist。」",
+              "构建形态：「Claude Code 用你 session 的完整 context 构造一个 artifact——包括 codebase、connectors 和对话本身。一个 incident 页面可以把失败的测试和它背后的函数、连接的监控工具里的错误飙升、你这轮 session 的 root-cause 推理，全部放到同一页。」",
+              "实时就地更新：「Claude Code 更新 artifact 的时候，已经打开的页面就地刷新，团队成员在发布那一刻就看到更新。每次发布都是同一个链接上的新版本，带 version history，随时可以回滚。」内部测试里最常见的用例是 debugging——Claude Code 在 standup 前开始调查事故，发布一份带时间线、可疑 commit 和错误率图表的页面，随着调查推进持续 re-publish。",
+              "值得记的模式：artifacts 沿用了 Apple Foundation Models 在 dev 端那套「typed 结构化输出」的思路，但输入是完整 session context（代码 + connectors + 对话），输出是一个带版本历史的 live 页面。两天、两个 vertical、同一个模板——typed 结构化输入 → typed 结构化输出，这次加了连续刷新。"
+            ],
+            "original": [
+              "Claude Code 现在支持 artifacts：Claude Code 会做的事可以变成一份 live、可分享的视觉页面——包括 PR walkthrough、系统说明、可筛选的 dashboard、甚至会自己填起来的 release checklist，会跟着 session 的进展自己更新。",
+              "Claude Code 用 session 的完整 context 来构造 artifact——你的 codebase、connectors、还有对话本身。一个 incident 页面能把失败的测试 + 测试背后的函数 + 监控工具里的错误飙升 + 你这轮 session 的 root-cause 推理，全部串到同一页。",
+              "Claude Code 更新 artifact 时，已经打开的页面就地刷新，团队成员一发布就能看到。每次发布都是同一个链接上的新版本，带 version history，随时可以回滚到任何一个旧版本。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Boris Cherny：automation 才是 agent 时代的最高杠杆工程 / Boris Cherny: Automation Is the Highest-Leverage Engineering Work in the Agent Era",
+      "desc": "Boris Cherny（Anthropic Claude Code 作者）今天那条 thread 把「automation 是最高杠杆」这个老论断翻新了——现在 automation 不只是倍增你的产出，它倍增每一支 agent 军的产出。最重要的转移：CLAUDE.md / REVIEW.md / skills / code comments 把领域知识从人脑里搬到基础设施上，新人入职第一天就能给 codebase 提 PR，非工程师也能像工程师一样贡献。",
+      "cards": [
+        {
+          "authorKey": "x:bcherny",
+          "authorName": "Boris Cherny",
+          "authorHandle": "@bcherny",
+          "authorTag": "Salesforce AI 工程负责人",
+          "sourceUrl": "https://x.com/bcherny",
+          "en": {
+            "rewrite": [
+              "Boris Cherny (Anthropic Claude Code creator) on the renaissance of automation as the highest-leverage engineering work: 'In the past, the best engineers I knew spent a lot of time automating their work in various ways. Better vim/emacs automations, writing lint rules, building up e2e test suites. These were the highest leverage activities an engineer could do.'",
+              "Why this matters more now: 'If you are running an army of agents, each of those agents will be sped up also. More automation == more output per unit of time.' Automation isn't just multiplying your output — it's multiplying the output of every agent that ever touches your codebase.",
+              "On moving from one-off fixes to loops: 'Your agent could fix an issue every time it sees that issue happen, but that uses tokens and might miss cases. If Claude instead writes a lint rule, CI step, or routine, that class of issue can be fully automated forever.' This is what people mean by 'loops' — automating entire categories of busywork rather than solving them one-off.",
+              "The most important shift: 'Automation makes it possible for others to contribute to the codebase more easily. Increasingly what I am seeing is engineers contributing to codebases on day one because Claude can navigate the codebase for them, and that non-engineers are able to contribute to a codebase as effectively as engineers can.' Domain knowledge used to live in people's heads; now it can be encoded as CLAUDE.md / REVIEW.md / skills / code comments.",
+              "The closing argument: 'Every team should be writing the CLAUDE.md's, REVIEW.md's, skills, and docs that enable agents to productively work in their codebase with zero additional context from the prompter. This sounds crazy, and at the same time is a natural extension of the stuff engineers have always done: automate, and encode domain knowledge as infrastructure.'"
+            ],
+            "original": [
+              "Something I have been thinking about: in the past, the best engineers I knew spent a lot of time automating their work in various ways. Better vim/emacs automations, writing lint rules to catch repeat code issues, building up a suite of e2e tests so they don't need to smoke test the app manually. These kinds of things were the highest leverage activities an engineer could do.",
+              "First, infra and DevX automation speeds you up. And if you are running an army of agents, each of those agents will be sped up also. More automation == more output per unit of time.",
+              "Your agent could fix an issue every time it sees that issue happen, but that uses tokens and might miss cases. If Claude instead writes a lint rule, CI step, or routine, that class of issue can be fully automated forever. This is really what people are talking about when they talk about loops.",
+              "Automation makes it possible for others to contribute to the codebase more easily. Increasingly what I am seeing is engineers are contributing to codebases on day one because Claude can navigate the codebase for them, and that non-engineers are able to contribute to a codebase as effectively as engineers can.",
+              "Every team should be writing the CLAUDE.md's, REVIEW.md's, skills, and docs that enable agents to productively work in their codebase with zero additional context from the prompter. This sounds crazy, and at the same time is a natural extension of the stuff engineers have always done."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Boris Cherny（Anthropic Claude Code 的作者）聊 automation 为什么是这个时代最高杠杆的工程工作：「以前，最厉害的工程师会把大量时间花在把自己的工作自动化上——写更好的 vim/emacs 配置、写 lint rule、堆 e2e 测试。这些是工程师能做的最高杠杆的事。」",
+              "为什么现在更重要：「如果你在跑一支 agent 军，每个 agent 都会被这些 automation 加速。Automation 越多，单位时间的产出就越多。」Automation 不只是倍增你自己的产出——它倍增每一个将来会碰你 codebase 的 agent 的产出。",
+              "从一次性修复到 loop 的迁移：「你的 agent 每次看到这个问题都修一次，但那样要花 token，还可能漏 case。如果 Claude 改成写一条 lint rule、一个 CI step 或一个 routine，这一整类问题就永久自动化掉了。这就是大家说『loops』在指什么。」",
+              "更重要的转变：「Automation 让别人更容易给 codebase 贡献。我越来越多看到工程师入职第一天就能给 codebase 提 PR——因为 Claude 能替他们把 codebase 摸一遍——而非工程师现在也能像工程师一样贡献代码。」领域知识以前藏在人脑里；现在能被编码成 CLAUDE.md、REVIEW.md、skills 和代码注释。",
+              "收尾论断：「每个团队都应该写 CLAUDE.md、REVIEW.md、skills 和 docs，让 agent 能在零额外 context 的情况下 productive 地工作在你的 codebase 里。听起来很疯狂，但它其实是工程师一直在做的事的自然延伸——自动化，把领域知识编码成基础设施。」"
+            ],
+            "original": [
+              "我最近在想一件事：以前，我见过最厉害的工程师会把大量时间花在把自己的工作自动化上——写更好的 vim/emacs 配置、写 lint rule 抓重复问题、堆 e2e 测试免去人工 smoke test。这些事是一个工程师能做的最高杠杆的事。",
+              "第一，infra 和 DevX automation 让你自己更快；如果你在跑一支 agent 军，每个 agent 也都被这些 automation 加速。Automation 越多，单位时间产出越多。",
+              "你的 agent 每次看到这类问题都修一遍——那要花 token，还可能漏 case。如果 Claude 改成写一条 lint rule、一个 CI step 或一个 routine，这一整类问题就永久自动化掉了。这就是大家说『loops』的意思。",
+              "Automation 让别人更容易给 codebase 提贡献。我越来越多看到：工程师入职第一天就能给 codebase 提 PR——因为 Claude 能替他们摸清 codebase；非工程师现在也能像工程师一样有效贡献。",
+              "每个团队都应该写 CLAUDE.md、REVIEW.md、skills 和 docs，让 agent 能在零额外 context 的情况下 productive 地工作在你们的 codebase 里。听起来很疯，但这其实是工程师一直在做的事的自然延伸——自动化，把领域知识编码成基础设施。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Thibault 拿 $100 反馈换 GPT-5.6 文件删除 post-mortem / Thibault Trades $100 in Codex Credits for Feedback; GPT-5.6 File-Deletion Post-Mortem",
+      "desc": "OpenAI Codex & ChatGPT 负责人 Thibault Sottiaux 今天连发三条：第一条直接问用户 Codex 取消 5h 限制的体验，第二条是 GPT-5.6 文件被误删的 post-mortem（基本都发生在 full-access + 没 sandbox + 没 auto review 的组合下，模型把 $HOME 当临时目录删了），第三条往前看——既然 ChatGPT 和 Codex 已经合并，接下来合并什么。",
+      "cards": [
+        {
+          "authorKey": "x:thsottiaux",
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT",
+          "sourceUrl": "https://x.com/thsottiaux",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux (OpenAI Codex & ChatGPT lead) running an unusual product-feedback exchange: 'We've had no 5h limit in Codex plus and pro for a few days. Do you think it is better or are you finding it difficult to manage the usage included in the weekly limit effectively? If we were to make this different, what should it look like in an ideal world?'",
+              "On the GPT-5.6 file-deletion bug: 'We've investigated a handful of reports where GPT-5.6 unexpectedly deleted files. What we have found is that this most commonly occurs when: full access mode is enabled and codex is run without sandboxing protections; the model attempts to override the $HOME env var to define a temporary directory; the model makes an honest mistake and mistakenly deletes $HOME instead.'",
+              "Thibault's framing: 'This is of course not how we want the system to behave, even when a user operates the model in full-access mode without the safeguards of our sandbox or without using auto review which checks for these kinds of high risk actions and rejects them.' The mitigation is multi-layered — updated developer message, more guidance toward safer permission modes, additional harness safeguards.",
+              "And the forward-looking question: 'Now that we merged ChatGPT and Codex, what should we merge next? What's the double or nothing move.' Different shape from yesterday's Aditya 'Codex-pilled' thread — Thibault is asking OpenAI-side what to consolidate next, not what to integrate."
+            ],
+            "original": [
+              "We've had no 5h limit in Codex plus and pro for a few days. Do you think it is better or are you finding it difficult to manage the usage included in the weekly limit effectively?",
+              "On file deletions. We've investigated a handful of reports where GPT-5.6 unexpectedly deleted files. What we have found is that this most commonly occurs when: Full access mode is enabled and codex is run without sandboxing protections, including without auto review being enabled. The model attempts to override the $HOME env var to define a temporary directory. The model makes an honest mistake and mistakenly deletes $HOME instead.",
+              "This is of course not how we want the system to behave, even when a user operates the model in full-access mode without the safeguards of our sandbox or without using auto review which checks for these kinds of high risk actions and rejects them. We are taking steps to mitigate this risk.",
+              "Now that we merged ChatGPT and Codex, what should we merge next? What's the double or nothing move."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux（OpenAI Codex & ChatGPT 负责人）做了一次不寻常的产品反馈交换：「Codex Plus 和 Pro 已经好几天没有 5 小时限制了。你们觉得体验更好了，还是觉得一周配额里的额度反而更难管了？如果我们要把这改一改，理想世界应该长什么样？」",
+              "聊 GPT-5.6 文件被删的 bug：「我们调查了一批 GPT-5.6 误删文件的报告。结论是这种情况基本都发生在：开了 full access 模式、Codex 没开 sandbox 也没开 auto review；模型尝试 override $HOME 环境变量去定义临时目录；模型犯了一个老实的错误，把 $HOME 当临时目录删掉了。」",
+              "Thibault 的定调：「这当然不是我们想要系统的表现方式，即便用户明确选了 full-access 模式、没用 sandbox 也没用 auto review——auto review 本来就是用来检测并拒绝这类高风险动作的。」缓解措施是多层的：更新 developer message、更多引导用户走更安全的权限模式、加 harness safeguard。",
+              "再看一个前瞻性的问题：「我们已经把 ChatGPT 和 Codex 合并了，接下来应该合并什么？double or nothing 的下一步是什么。」跟昨天 Aditya 的『Codex-pilled』是不同方向——Thibault 问的是 OpenAI 内部接下来要 consolidation 什么，不是要 integrate 什么。"
+            ],
+            "original": [
+              "Codex Plus 和 Pro 已经好几天没有 5h 限制了。你们觉得体验变好了，还是觉得一周额度里的 usage 反而更难管了？如果我们真要改，理想世界里应该长什么样？",
+              "关于文件被误删这件事：我们调查了一批 GPT-5.6 误删文件的报告。结论是这种情况基本都发生在——开了 full access 模式、Codex 没跑在 sandbox 里、auto review 也没开；模型想 override $HOME 环境变量去设临时目录，结果犯了一个老实的错误，把 $HOME 当临时目录给删了。",
+              "这当然不是我们想要的系统表现——即便用户明确选了 full-access 模式，没用 sandbox、也没用本来就会拦这类高风险动作的 auto review。我们接下来会从几个层面降低这类风险。",
+              "我们已经把 ChatGPT 和 Codex 合并了，接下来应该合并什么？double or nothing 的下一步是什么。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Peter Yang：ChatGPT Live × Codex 是 OpenAI 最大的 missed opportunity / Peter Yang: ChatGPT Live × Codex Is OpenAI's Biggest Missed Opportunity",
+      "desc": "Peter Yang 把 OpenAI 眼下最大的 missed opportunity 钉出来——ChatGPT Live 和 Codex 是同一家公司的两个旗舰产品，但它们之间不通。具体场景：散步时让 ChatGPT Live 拉 Google Doc，它说不行；手动触发 Documents plugin 后 ChatGPT Live 突然拿到对的 context。Peter 给的修复路径是先让 ChatGPT Live 知道自己已经连了哪些 plugin，跟 Thibault「接下来合并什么」是同一根线。",
+      "cards": [
+        {
+          "authorKey": "x:petergyang",
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者",
+          "sourceUrl": "https://x.com/petergyang",
+          "en": {
+            "rewrite": [
+              "Peter Yang on OpenAI's biggest missed opportunity right now: 'ChatGPT Live and Codex are two incredible products that don't talk to each other. I went on a walk with ChatGPT Live and asked it to pull up my Google Doc. It said it couldn't. I then manually triggered the Documents plugin to find my Google Doc, and all of a sudden, ChatGPT Live had the right context.'",
+              "The product gap: 'It would be amazing to talk to ChatGPT Live and have it be able to use all the plugins, tools, and browser use that Codex has access to. Then I could ask it to reply to emails, schedule meetings, edit docs, ship code, and more all during a live conversation.' Two flagship products from the same company that don't share tool plumbing.",
+              "Peter's framing on the fix: 'I think the first step is to make ChatGPT Live aware of all the plugins that it's already connected to. Why build such a great voice assistant but have it not be able to do anything?' This is the same complaint shape as yesterday's Aditya thread — Codex and ChatGPT are converging on the user side but the underlying tool surfaces haven't been merged.",
+              "Combined with Thibault's question 'what should we merge next?', the throughline is clear: OpenAI's product surface is consolidating; the plumbing gap between Live and Codex is the most user-visible missing piece."
+            ],
+            "original": [
+              "ChatGPT Live and Codex are two incredible products that don't talk to each other. This is @OpenAI's biggest missed opportunity imo.",
+              "It would be amazing to talk to ChatGPT Live and have it be able to use all the plugins, tools, and browser use that Codex has access to. Then I could ask it to reply to emails, schedule meetings, edit docs, ship code, and more all during a live conversation.",
+              "I think the first step is to make ChatGPT Live aware of all the plugins that it's already connected to. Why build such a great voice assistant but have it not be able to do anything?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 把 OpenAI 眼下最大的 missed opportunity 钉出来：「ChatGPT Live 和 Codex 是两个超棒的产品，但它们之间不通。我散步时跟 ChatGPT Live 说话让它把 Google Doc 拉出来——它说不能。我手动触发了 Documents plugin 去找到 Google Doc，然后 ChatGPT Live 突然就拿到了对的 context。」",
+              "产品的 gap 是：「如果 ChatGPT Live 能用 Codex 已经能用的所有 plugin、tool 和 browser use，那就太厉害了。我就能在一次 live 对话里让它回邮件、安排会议、改 doc、ship code。」同一家公司的两个旗舰产品，没共享工具 plumbing。",
+              "Peter 给的修复方向：「我觉得第一步是先让 ChatGPT Live 知道它已经连了哪些 plugin。为什么要做一个这么棒的语音助手，然后让它什么都做不了？」跟昨天 Aditya 的 thread 是同一个抱怨的形状——Codex 和 ChatGPT 在用户视角已经合并了，但底层 tool surface 还没合。",
+              "再叠加 Thibault 今天问的「接下来应该合并什么」，主线就很清楚了：OpenAI 的产品 surface 正在 consolidation，Live 和 Codex 之间的 plumbing gap 是用户最看得见的那块缺失。"
+            ],
+            "original": [
+              "ChatGPT Live 和 Codex 是两个特别厉害的产品，但它们之间完全不通。这是 OpenAI 眼下最大的 missed opportunity。",
+              "如果 ChatGPT Live 能用上 Codex 已经能用的所有 plugin、tool 和 browser use，那体验就太厉害了——一次 live 对话就能让它回邮件、安排会议、改 doc、ship code。",
+              "我觉得第一步是先让 ChatGPT Live 知道它已经连了哪些 plugin。为什么要做一个这么强的语音助手，然后让它什么都做不了？"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Swyx：CUA 进展比公开 take 说的快得多 / Swyx: CUA Is Progressing Much Faster Than the Public Takes Suggest",
+      "desc": "Swyx 出来点名「低估 CUA 现有能力是个危险的 category error」，并给团队从 2017 年 World of Bits 起的多年 live 观察 log 作为背书。操作性建议是他让团队里非技术的同事尽量用 CUA 去处理所有「知识工作」类任务（注册 portal、跑数据请求）——这是同时能抓住进展上限和当前天花板的测试。",
+      "cards": [
+        {
+          "authorKey": "x:swyx",
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师",
+          "sourceUrl": "https://x.com/swyx",
+          "en": {
+            "rewrite": [
+              "Swyx on the current state of computer-use agents (CUA): 'GPT 5.6 + Superapp is even better at CUA than everything I just mentioned. Excited for our @AriX podcast to discuss the @skybysoftware story and Codex progress. If you actually use these things as intensely as we do, CUA is progressing so, so incredibly fast.'",
+              "The point he's making about category errors: 'If you found yourself nodding along to this take below, you are so not up to date that you don't know what you don't know, and underestimating capabilities is quite a dangerous category error if you are doing any ai decisionmaking.' He's calling out a specific Dwarkesh take on CUA as underestimating the field's progress.",
+              "The signal beyond the hot take: Swyx's team has been tracking CUA since World of Bits (2017 Shi/Fan/Karpathy paper), was the first technical pod to interview Jluan about Adept's work three years ago, was there when Anthropic first launched Computer Use two years ago, fanboyed over Claude Cowork three months ago, and ran their first full computer-use track at AI Engineer three weeks ago. CUA progress isn't a tweet — it's a multi-year live observation log.",
+              "Operational implication: 'I have asked my nontechnical team to CUA as much as possible, all their knowledge work with signing up for random payment and invoicing portals and speaker and sponsor and attendee and vendor and union data requests.' The internal eval bar is 'could your nontechnical teammate CUA this?' — that's the test that catches both progress and ceiling."
+            ],
+            "original": [
+              "GPT 5.6 + Superapp is even better at CUA than everything i just mentioned. excited for our @AriX podcast to discuss the @skybysoftware story and Codex progress. if you actually use these things as intensely as we do, CUA is progressing so, so incredibly fast.",
+              "if you found yourself nodding along to this take below, you are so not up to date that you don't know what you don't know, and underestimating capabilities is quite a dangerous category error if you are doing any ai decisionmaking.",
+              "we were the first technical pod to interview @jluan about Adept's work three years ago, we were there in the @AnthropicAI building when they first launched Computer Use 2 years ago, I fanboyed over Claude Cowork in our @felixrieseberg pod 3 months ago, and we ran our first full computer use track at @aidotengineer ft. @DhruvBatra_ @proceduralia @francedot 3 weeks ago.",
+              "i have asked my nontechnical team to CUA as much as possible, all their knowledge work with signing up for random payment and invoicing portals and speaker and sponsor and attendee and vendor and union data requests."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx 聊 computer-use agent（CUA）目前的进展：「GPT 5.6 + Superapp 在 CUA 上的表现比刚刚我列的每一项都强。期待我们 @AriX 播客里接着拆 @skybysoftware 的故事和 Codex 的进展。如果你真的像我们这样高强度在用这些东西，CUA 的进展快得难以置信。」",
+              "他真正想说的关于 category error 的话：「如果你看完下面那个 take 在点头，那你是真的没跟上——你不知道自己不知道，而低估现有能力在做任何 AI 决策时都是一个非常危险的 category error。」他点名的，是某条关于 CUA 的具体 take，认为它低估了这个领域的实际进展。",
+              "比 hot take 更重要的信号：Swyx 团队从 2017 年的 World of Bits（Shi / Fan / Karpathy 那篇 paper）就在跟踪 CUA，三年前第一个技术 podcast 去采访 Jluan 聊 Adept，两年前在 Anthropic 现场看他们首次发 Computer Use，三个月前在 pod 上吹爆 Claude Cowork，三周前在 AI Engineer 办了第一届 full computer-use track。CUA 的进展不是一条推文，是一份多年 live 的观察日志。",
+              "操作层的含义：「我让团队里非技术的同事尽量用 CUA——处理所有那些知识工作：注册各种支付和发票 portal、跑 speaker / sponsor / attendee / vendor / union 的数据请求。」内部的 eval bar 是「你那个非技术队友能用 CUA 搞定这件事吗？」——这是同时能抓住进展上限和当前天花板的测试。"
+            ],
+            "original": [
+              "GPT 5.6 + Superapp 在 CUA 上的表现比我刚列的每一项都强。如果你真的像我们这样高强度在用这些东西，CUA 的进展快得不可思议。",
+              "如果你看完下面那条 take 在点头，那你真的没跟上——你不知道自己不知道，而低估现有能力在做任何 AI 决策时都是一个非常危险的 category error。",
+              "三年前我们是第一个技术 podcast 去采访 Jluan 聊 Adept 的工作；两年前我们在 Anthropic 现场看他们首次发 Computer Use；三个月前我在 Felix Rieseberg 的 pod 里吹爆 Claude Cowork；三周前我们在 AI Engineer 办了第一届 full computer-use track。",
+              "我让团队里非技术的同事尽量用 CUA——所有那些知识工作：注册各种支付和发票 portal、跑 speaker / sponsor / attendee / vendor / union 的数据请求。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Levie 的 enterprise agent 晚餐笔记：change management + 内部 FDE / Levie's Enterprise Agent Dinner Notes: Change Management + Internal FDEs",
+      "desc": "Aaron Levie 昨晚跟一群大企业 IT 负责人吃了一顿饭——详细 takeaways 一长串：change management 是 workflow 转型最大的话题；把 full engineer 嵌入业务部门做 internal FDE 加速 agent 落地；IT 在公司里的位置前所未有地中心化；agentic 系统需要自己的角色和自己的权限；未来所有 enterprise software 都得是 headless 的，传统 vendor 警钟。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie",
+          "en": {
+            "rewrite": [
+              "Aaron Levie (Box CEO) hosted a dinner last night with enterprise IT leaders on agent adoption — long thread of detailed takeaways: 'Change management remains one of the biggest topics for driving workflow transformation. Still most processes need to be upgraded to modern operating models to work with agents.'",
+              "On internal FDEs: 'IT teams are finding increasing success embedding full engineers into the business functions (essentially internal FDE) that go and implement agents into the internal workflows. There's so much technical work to be done to make agents successful, that they can accelerate months or quarters of failed experiments by having someone technical in the workflow early.'",
+              "On IT becoming central: 'The tech function is becoming more important than ever. It's clear that the business could only expect automation to affect a minority of the business before (e.g. ERP) but now it can impact all of knowledge work. This means IT is becoming a more central role to the workflows across the company.'",
+              "On cross-functional agent permissions: 'Workflows are cross functional, and getting agents to work cross functionally is a complicated data modeling and permissions issue. Single users don't have access to this. Which means you need to have agentic systems take on their own roles and have their own privileges, which is non-trivial given agents can't keep things secure on their own.'",
+              "The closing observation: 'Clear sense that all enterprise software must be headless in the future. Relief that they don't need to train employees on hundreds of different apps. However, clear frustration with the traditional vendors that don't play extremely nice (technically or cost wise) with agents in a headless fashion. Huge warning for existing software vendors.'"
+            ],
+            "original": [
+              "Change management remains one of the biggest topics for driving workflow transformation. Still most processes need to be upgraded to modern operating models to work with agents, which is a mix of technology, data, and human process change.",
+              "IT teams are finding increasing success embedding full engineers into the business functions (essentially internal FDE) that go and implement agents into the internal workflows. There's so much technical work to be done to make agents successful.",
+              "The tech function is becoming more important than ever. It's clear that the business could only expect automation to affect a minority of the business before but now it can impact all of knowledge work. This means IT is becoming a more central role.",
+              "Workflows are cross functional, and getting agents to work cross functionally is a complicated data modeling and permissions issue. Which means you need to have agentic systems take on their own roles and have their own privileges.",
+              "Clear sense that all enterprise software must be headless in the future. However, clear frustration with the traditional vendors that don't play extremely nice with agents in a headless fashion. Huge warning for existing software vendors."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie（Box CEO）昨晚跟一群大企业 IT 负责人吃了一顿饭，聊 agent 在 enterprise 落地的现状——长长的 thread，归纳下来几条主线：「Change management 仍然是工作流转型里最大的话题之一。大多数流程还得升级到 modern operating model，才能跟 agent 协同——这事儿是技术、数据和人的流程改造混在一起的。」",
+              "聊内部 FDE：「IT 团队越来越发现，把 full engineer 嵌入到业务部门里（本质就是 internal FDE）去帮他们把 agent 接进内部 workflow，效果很好。能让 agent 跑起来的技术活太多，早点派个懂技术的人进场，可以把好几个月甚至几个季度的失败实验加速过去。」",
+              "聊 IT 的位置变化：「技术职能前所未有的重要。Automation 以前只能影响公司里一小块业务（比如 ERP），现在可以影响所有知识工作。这意味着 IT 在跨部门 workflow 里的位置越来越中心。」",
+              "聊跨职能 agent 的权限：「Workflow 是跨职能的，让 agent 跨职能工作是个复杂的数据建模和权限问题。单个用户本来就没有跨职能的访问权限——这意味着你得让 agentic 系统有自己的角色和自己的权限，而这件事一点都不简单，因为 agent 自己保不住安全。」",
+              "收尾观察：「大家一致觉得未来所有 enterprise software 都得是 headless 的。大家都松了口气——员工不用再学几百个 app。但对那些不能（技术上或成本上）跟 agent 很好 headless 协作的传统 vendor，意见大得不行。这是对现有软件 vendor 的一次巨大的预警。」"
+            ],
+            "original": [
+              "Change management 仍然是 workflow 转型里最大的话题之一。大多数流程还得升级到 modern operating model，才能跟 agent 协同——这是技术、数据和人的流程改造混在一起的活儿。",
+              "IT 团队越来越发现，把 full engineer 嵌入到业务部门里（本质就是 internal FDE），帮他们把 agent 接进内部 workflow——效果很好。让 agent 跑起来的技术活太多，早点派个懂技术的人进场，能把好几个月甚至几个季度的失败实验加速过去。",
+              "技术职能前所未有的重要。Automation 以前只能影响一小块业务（比如 ERP），现在能影响所有知识工作。这意味着 IT 在跨部门 workflow 里越来越中心。",
+              "Workflow 是跨职能的，让 agent 跨职能工作又是个复杂的数据建模和权限问题。单个用户本来就没有跨职能访问——这意味着你得让 agentic 系统有自己的角色和自己的权限，而这件事一点都不简单，agent 自己保不住安全。",
+              "一致的感觉：未来所有 enterprise software 都得是 headless 的。大家都松了口气——员工不用再学几百个 app。但对那些没法跟 agent 顺畅 headless 协作的传统 vendor，意见大得不行。这是对现有软件 vendor 的一次巨大预警。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Vercel Sandbox 月环比 DAU +100%：execution layer 的护城河 / Vercel Sandbox: 100% m/o/m DAU Growth, Execution-Layer Moat",
+      "desc": "Guillermo Rauch 把 Vercel Sandbox 的增长数据端出来——DAU 月环比 +100%，每天 350 万+ sandbox，已在为 Notion / Airtable / Meta / Zapier / CodeRabbitAI 这一整片客户提供能力。竞争维度不是裸基础设施价格，是 per active CPU-second 的成本。再把 Web Analytics API 的用例（让 agent 关联访客事件和部署演化）一起端出来，主轴跟昨天 token-flows 数据集是同一根——Vercel 在把自己定位成 agent-driven work 的 measurement layer。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO",
+          "sourceUrl": "https://x.com/rauchg",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch (Vercel CEO) on Vercel Sandbox's growth: 'Vercel Sandbox: Growing DAUs at 100% m/o/m, 3.5M+ sandboxes created per day, Best-in-class Active CPU pricing model, Powering @notion, @airtable, @meta, @zapier, @coderabbitai, @interaction, @conductor_build, @blackboxai… 🐐 farm.'",
+              "The interesting cluster of customers: Notion, Airtable, Meta, Zapier, CodeRabbitAI, Interaction, Conductor, Blackbox AI. That's a mix of established SaaS (Notion, Airtable, Zapier), a frontier lab (Meta), and a generation of AI-native coding tools (CodeRabbit, Interaction, Conductor, Blackbox). Sandbox-as-a-service is the execution layer underneath all of them.",
+              "The pricing model note ('Best-in-class Active CPU pricing model') plus the per-sandbox unit economics is the part most builders miss — sandbox providers compete on cost per active CPU-second, not on raw infrastructure price. Vercel's bet is that the per-sandbox cost line is where the real moat is for agent workloads.",
+              "On Web Analytics API as a measurement layer: 'Some really cool usecases of Web Analytics API: Ask your agent to correlate visitors, custom events (purchase, checkout), with the evolution of your deployments and performance; Build custom frontends, and plot this data alongside e.g. Stripe's and Resend's.' The throughline is the same as yesterday's token-flows dataset — Vercel is positioning itself as the measurement layer for agent-driven work."
+            ],
+            "original": [
+              "Vercel Sandbox: Growing DAUs at 100% m/o/m, 3.5M+ sandboxes created per day, Best-in-class Active CPU pricing model, Powering @notion, @airtable, @meta, @zapier, @coderabbitai, @interaction, @conductor_build, @blackboxai… 🐐 farm.",
+              "My DMs are open for migration help or if missing anything with:"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch（Vercel CEO）讲 Vercel Sandbox 的增长：「Vercel Sandbox：DAU 月环比 +100%，每天新建 350 万+ sandbox，best-in-class 的 Active CPU 定价模型，已经在为 @notion、@airtable、@meta、@zapier、@coderabbitai、@interaction、@conductor_build、@blackboxai……这一整片 🐐 farm 提供能力。」",
+              "值得玩味的客户名单：Notion、Airtable、Meta、Zapier、CodeRabbitAI、Interaction、Conductor、Blackbox AI。里面有成熟的 SaaS（Notion、Airtable、Zapier），有一家前沿实验室（Meta），还有一整代 AI-native 的 coding 工具（CodeRabbit、Interaction、Conductor、Blackbox）。Sandbox-as-a-service 成了它们底下共同的 execution 层。",
+              "定价模型那句（best-in-class Active CPU pricing model）和 per-sandbox 的单位经济学，是大多数 builder 没看到的部分——sandbox provider 真正的竞争维度是每个 active CPU-second 的成本，而不是裸基础设施价格。Vercel 的赌注是：agent 工作负载的护城河就是这条 per-sandbox 的成本线。",
+              "聊 Web Analytics API 作为 measurement layer：「Web Analytics API 有几个特别酷的用例：让你的 agent 把访客、自定义事件（购买、结账）跟你的部署和性能演化做关联；自己写前端，把这些数据跟 Stripe、Resend 那些一起 plot 出来。」主轴跟昨天 token-flows 数据集是同一条——Vercel 把自己定位成 agent-driven work 的 measurement layer。"
+            ],
+            "original": [
+              "Vercel Sandbox：DAU 月环比 +100%，每天新建 350 万+ sandbox，best-in-class 的 Active CPU 定价模型。已经在给 Notion、Airtable、Meta、Zapier、CodeRabbitAI、Interaction、Conductor、Blackbox AI……这一整片 🐐 farm 提供能力。",
+              "DM 开着，要迁移或者缺什么随时找我。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Gemini Spark 扩到更多 Ultra 用户 + native editing 四大新功能 / Gemini Spark Expands to More Ultra Subscribers + Four New Native-Editing Features",
+      "desc": "Josh Woodward 把 Gemini Spark 的扩展端出来：覆盖更多国家的 Ultra 订阅用户，外加四个新功能——能打开并编辑 Google Docs、能读 Sheets & Slides 评论、速度提升 50%+、跨 source 并行处理。Spark 跟 Google 的 Southeast Asia 报告（活跃用户翻倍、70% 本地语言 prompt、40% 只用语音/图像/视频）是同一条增长 story——native-language + multimodal + mobile-first。",
+      "cards": [
+        {
+          "authorKey": "x:joshwoodward",
+          "authorName": "Josh Woodward",
+          "authorHandle": "@joshwoodward",
+          "authorTag": "Google Labs 产品负责人",
+          "sourceUrl": "https://x.com/joshwoodward",
+          "en": {
+            "rewrite": [
+              "Josh Woodward (Google Labs product lead) on Gemini Spark expansion: 'Gemini Spark is headed to more Ultra subscribers around the world* plus 4 new features: 1) Spark can open and edit Google Docs, acting on feedback from last week; 2) It can read comments in Google Sheets & Slides, so critical info isn't missed; 3) It's >50% faster, you can feel it; 4) It can parallel process across multiple sources, so tasks complete faster e2e.'",
+              "The interesting shape: Spark's expanding not just in reach (more Ultra subscribers, more countries) but in *native editing capability*. Opening AND editing Google Docs is a real integration win — most agents stop at read, and edits usually require round-tripping through Drive's permission model.",
+              "The 50% speedup is the second-order point: Spark is one of those products where 'feels faster' actually matters because it's the differentiator vs. background-mode ChatGPT or Anthropic-style conversational agents. Speed is the visible feature, not a benchmark number.",
+              "Pattern to note alongside the Southeast Asia report: 'Active users more than doubled in the last year, 70% of prompts are submitted in native languages, 40% of prompts only use voice, image, or video.' Google's growth story is native-language + multimodal + mobile-first — three vectors Spark is built to serve."
+            ],
+            "original": [
+              "Gemini Spark is headed to more Ultra subscribers around the world plus 4 new features: 1) Spark can open and edit Google Docs, acting on feedback from last week; 2) It can read comments in Google Sheets & Slides, so critical info isn't missed; 3) It's >50% faster, you can feel it; 4) It can parallel process across multiple sources, so tasks complete faster e2e.",
+              "Pro members, stay tuned for an access update soon :)"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Josh Woodward（Google Labs 产品负责人）讲 Gemini Spark 的扩展：「Gemini Spark 即将面向更多国家的 Ultra 订阅用户开放*，外加 4 个新功能：1) Spark 能打开并编辑 Google Docs，回应上周的反馈；2) 它能读 Google Sheets & Slides 里的评论，关键信息不再漏；3) 速度提升超过 50%，体感很明显；4) 它能在多个 source 之间并行处理，end-to-end 任务跑得更快。」",
+              "有意思的形状：Spark 不光在 reach 上扩展（更多 Ultra 订阅用户、更多国家），还在 native editing capability 上加东西。能打开 AND 编辑 Google Docs 是个真正的 integration 胜利——大多数 agent 做到读就停了，编辑一般得绕一圈 Drive 的权限模型。",
+              "50% 的速度提升是第二序的论点：Spark 是那种「feels faster」真的重要的产品，因为它跟 background-mode 的 ChatGPT 或者 Anthropic 那种 conversational agent 区分开的就是这个。Speed 是可见的功能，不是 benchmark 数字。",
+              "再看今天同一条时间线上的 Southeast Asia 报告：「活跃用户在去年翻了一倍多，70% 的 prompt 是用本地语言提交的，40% 的 prompt 只用语音、图像或视频。」Google 的增长故事是 native-language + multimodal + mobile-first——Spark 就是为这三个向量造的。"
+            ],
+            "original": [
+              "Gemini Spark 即将面向更多国家的 Ultra 订阅用户开放*，外加 4 个新功能：1) Spark 能打开并编辑 Google Docs——回应上周的反馈；2) 它能读 Google Sheets & Slides 里的评论，关键信息不再漏；3) 速度提升超过 50%，体感很明显；4) 它能在多个 source 间并行处理，end-to-end 任务跑得更快。",
+              "Pro 订阅用户稍等一下，很快会有访问更新 :)"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Steipete：5.6 relentless + automation failure 的复述 / Steipete: 5.6 Is Relentless + The Automation-Failure Refrain",
+      "desc": "Peter Steinberger 今天的几条合在一起是把 5.6 时代模型和缺位的 automation 摆到同一张桌上：「5.6 is relentless」讲的是 5.6 更倾向于把任务做到底，少「快做完了」，多「我把整件事做完了」；转发 Boris Cherny 的那条挑出最狠的一句——陌生 iOS codebase 提 PR 被拒 / 设计师 feature 被拒都是「automation 的失败」。组合起来的论点：5.6 的失败模式不在模型，而在缺位的 automation。",
+      "cards": [
+        {
+          "authorKey": "x:steipete",
+          "authorName": "Peter Steinberger",
+          "authorHandle": "@steipete",
+          "authorTag": "OpenClaw 创始人",
+          "sourceUrl": "https://x.com/steipete",
+          "en": {
+            "rewrite": [
+              "Peter Steinberger (Steipete) on GPT-5.6's pressure profile: 'Mostly true, 5.6 is relentless.' Quote-tweeting a piece that captures how 5.6 keeps pushing to a fuller task completion than 5.x — fewer 'almost-done' outputs, more 'I did the whole thing' outputs.",
+              "He also amplifies the Boris Cherny thread (5th card above) with the line: 'If I put up a PR for an iOS codebase I don't know and a code reviewer rejects it because it doesn't use the right framework, or if a designer builds a new feature and it gets rejected because it doesn't follow the right architectural patterns, these are failures of automation.' This is the clearest articulation of the new CLAUDE.md / REVIEW.md / skills discipline from someone outside Anthropic.",
+              "The combination is the point: 5.6's relentless execution means the failure mode isn't the model — it's the missing automation that would let the model succeed in unfamiliar codebases. Steipete's third tweet of the day ('This is really clever') is unrelated but punctuates the day's wider release tempo — a lot is shipping, a lot is being quote-tweeted."
+            ],
+            "original": [
+              "Mostly true, 5.6 is relentless.",
+              "If I put up a PR for an iOS codebase I don't know and a code reviewer rejects it because it doesn't use the right framework, or if a designer builds a new feature and it gets rejected because it doesn't follow the right architectural patterns, these are failures of automation.",
+              "This is really clever."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Steinberger（Steipete）聊 GPT-5.6 的 pressure profile：「基本上是这样，5.6 真的 relentless。」在 quote-tweet 一篇抓 5.6 比之前版本更倾向于把任务做到底——少「快做完了」，多「我把整件事做完了」——的观察。",
+              "他同时转发了 Boris Cherny 那条 thread（第 5 张卡），挑出最狠的一句：「我给一个我不熟的 iOS codebase 提 PR，被 code reviewer 拒了，理由是没用对框架；或者设计师写了个新 feature 被拒，理由是没遵循对的架构 pattern——这些都是 automation 的失败。」这是来自 Anthropic 之外对 CLAUDE.md / REVIEW.md / skills 新规矩的最清晰复述。",
+              "组合起来才是重点：5.6 的 relentless 执行意味着失败模式不在模型——而在缺失的 automation，正是它让模型在陌生 codebase 里做不成事。Steipete 当天第三条推（'This is really clever'）跟主线无关，但点出了这天更广的 release tempo——很多东西在发，很多东西在被 quote-tweet。"
+            ],
+            "original": [
+              "基本上是这样，5.6 真的 relentless。",
+              "我给一个我不熟的 iOS codebase 提 PR，code reviewer 拒了，理由是没用对框架；或者设计师写了个新 feature 被拒，理由是没遵循对的架构 pattern——这些都是 automation 的失败。",
+              "这个真的挺 clever。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Madhu Guru 给「AI 写作的体感」取名字 / Madhu Guru Names the AI-Writing Tell",
+      "desc": "Madhu Guru 给那种「一读就知道是 AI 写的」感觉提出三个候选词：semantic nausea、uncanny prose valley、synthetic shudder。命名这件事本身有意义——在没有稳定的名字之前，每个读者都要重新发现这个 signal，meta 讨论就被拖慢。Madhu 同时给了一条自省式的 follow-up：brainstorming 用 AI + final write by hand，是 2026 年最常被引用的反模式。",
+      "cards": [
+        {
+          "authorKey": "x:realmadhuguru",
+          "authorName": "Madhusudhan",
+          "authorHandle": "@realmadhuguru",
+          "authorTag": "AI 工程师 / 开源贡献者",
+          "sourceUrl": "https://x.com/realmadhuguru",
+          "en": {
+            "rewrite": [
+              "Madhu Guru on the AI-writing tell: 'We need a term for that feeling when you're reading something and realize it's ai written. It's this primal feeling though the phenomenon itself is new. First the brain recoils, followed by a combination of disgust and mental nausea. I offer: semantic nausea, uncanny prose valley, synthetic shudder.'",
+              "The self-reflective follow-up: 'Btw, i have used ai to refine ideas and from time to time, some of the standard AI-isms leak into my writing. Have since moved to consciously using ai mainly during the brainstorming phase and keeping final writing human.' Madhu is naming the pattern and adopting a workflow rule to avoid being part of it.",
+              "The naming exercise matters: 'semantic nausea,' 'uncanny prose valley,' 'synthetic shudder' — three candidate terms for the same felt experience. Until the field has a stable name, every reader has to re-discover the signal, which slows the meta-discussion. A shared term would let writers critique a piece's voice without sounding precious.",
+              "On Madhu's workflow rule: brainstorming with AI + final write by hand is the most-cited counter-pattern in 2026. It's a deliberate trade — you accept losing some of the polish from AI rewrites to keep the prose voice from drifting into the uncanny-valley register readers now recognize."
+            ],
+            "original": [
+              "We need a term for that feeling when you're reading something and realize it's ai written. it's this primal feeling though the phenomenon itself is new. first the brain recoils, followed by a combination of disgust and mental nausea. I offer: semantic nausea, uncanny prose valley, synthetic shudder.",
+              "btw, i have used ai to refine ideas and from time to time, some of the standard AI-isms leak into my writing. have since moved to consciously using ai mainly during the brainstorming phase and keeping final writing human."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Madhu Guru 在给「一读就知道是 AI 写的」这种感觉取名字：「我们需要为这种感觉定一个名——你正在读一段东西，突然意识到是 AI 写的。虽然现象是新的，但这个反应本身很原始：先是脑子本能一缩，紧跟着是一阵恶心和心理性的反胃。我提几个候选：semantic nausea（语义反胃）、uncanny prose valley（诡异散文谷）、synthetic shudder（合成寒噤）。」",
+              "然后一条自省式的补充：「说实话，我自己也用过 AI 来 refine 想法，AI-isms 不时会漏进我的写作。后来我有意把 AI 限定在 brainstorming 阶段用，final writing 留给人。」Madhu 一边给这个现象命名，一边给自己立了一条工作流的规矩，避免自己成为这个现象的一部分。",
+              "这个命名练习是有意义的：semantic nausea、uncanny prose valley、synthetic shudder——三个候选词描述同一种体感。在领域有一个稳定的名字之前，每个读者都得重新发现这个 signal，meta 讨论就被拖慢。如果有一个共享的词，写作者批评一段文字的「声音」就不必显得做作。",
+              "看 Madhu 的工作流规则：brainstorming 用 AI + final write by hand，是 2026 年最常被引用的反模式——一个刻意的取舍，宁愿放弃 AI 重写带来的一些 polish，也不让 prose voice 滑进读者现在已经认得出的诡异谷。"
+            ],
+            "original": [
+              "我们需要为这种感觉起一个名字——你正在读一段东西，突然意识到是 AI 写的。现象本身是新的，但那个反应很原始：先是脑子本能一缩，紧跟着是一阵恶心和心理性反胃。我提议几个候选：semantic nausea、uncanny prose valley、synthetic shudder。",
+              "说真的，我自己也用过 AI refine 想法，AI-isms 时不时会漏进我的写作。后来我有意把 AI 限定在 brainstorming 阶段用，final writing 留给人。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Zara Zhang：让 agent 在公司干活，先得让公司可读 / Zara Zhang: For Agents to Work in a Company, the Company Has to Be Readable",
+      "desc": "Zara Zhang 把 agent 在企业里能工作的前置条件讲清楚了——Shopify 的 agent 根本没 DM 功能，只能在公开频道发。副作用是 peer learning：当 agent 没法私聊，它做的事大家都看得到、可以纠正、可以学。这个框架的延伸：约束从「agent 能看见什么」挪到了「我们一开始把多少东西做成了可读」。对一个 manager 来说，决定 agent 能不能进公司的真正问题，是你的公司对「读不了心、读不了私聊」的系统来说有多少是真正 legible 的。",
+      "cards": [
+        {
+          "authorKey": "x:zarazhangrui",
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人",
+          "sourceUrl": "https://x.com/zarazhangrui",
+          "en": {
+            "rewrite": [
+              "Zara Zhang on the preconditions for agents working inside a company: 'If you want agents to actually work inside a company, you have to design the company so they can read it. Shopify did this with an agent that had no private chat function at all, only public channels. The side effect was peer learning.'",
+              "The Shopify case is concrete: an agent that *can't* DM anyone, only post in public channels. The side effect is that other people on the team see what the agent is doing, can correct it, and learn from it — 'peer learning' as a downstream consequence of the agent's communication constraint.",
+              "This connects to Boris Cherny's thread (card 4): when agents can read everything and write everywhere, the constraint isn't the model, it's how much of the company's knowledge is actually accessible. Zara's frame is that the constraint moves from 'what can the agent see' to 'what did we make readable in the first place.'",
+              "Operational implication: if you're a manager deciding whether agents can work inside your company, the question isn't 'how good is the model?' — it's 'how much of our company is actually legible to a system that can't read minds and can't read private chats?' That question has a different answer for almost every team."
+            ],
+            "original": [
+              "If you want agents to actually work inside a company, you have to design the company so they can read it. Shopify did this with an agent that had no private chat function at all, only public channels. The side effect was peer learning."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zara Zhang 聊 agent 在公司里工作的前置条件：「如果你想让 agent 在一家公司里真的能干活，你得先把公司设计成它能读懂的样子。Shopify 是这么做的——他们的 agent 根本没有 DM 功能，只能在公开频道里发。副作用是 peer learning。」",
+              "Shopify 的 case 是具体的：一个 agent 不被允许给任何人私聊，只能发公共频道。副作用是团队里其他人能看到 agent 在做什么、可以纠正它、也能从它那里学到东西——「peer learning」是 agent 通信约束的下游产物。",
+              "这跟 Boris Cherny 那条 thread（第 4 张卡）是一根线：当 agent 能读一切、能写到任何地方时，约束不在模型，而在公司里有百分之多少的知识是真的可读的。Zara 的框架是：约束从「agent 能看见什么」挪到了「我们一开始把多少东西做成了可读」。",
+              "操作层的含义：如果你是个 manager，在决定 agent 能不能进你的公司，问题不是「模型有多好」——而是「我们公司里有多少东西，对一个没法读心也没法读私聊的系统来说是真正 legible 的？」这个问题在每个团队那儿答案都不一样。"
+            ],
+            "original": [
+              "如果想让 agent 在一家公司里真的能干活，你得先把公司设计成它能读懂的样子。Shopify 这么做——他们的 agent 根本没 DM 功能，只能在公开频道发。副作用是 peer learning。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Garry Tan：把 em dash 拿回来 + skill files 解耦 frontier model / Garry Tan: Reclaim the Em Dash + Skill Files Decouple You from the Frontier Model",
+      "desc": "Garry Tan 今天的两条推是一对——「我们应该把 em dash 拿回来」是文化位移：em dash 已经变成 AI 写作的视觉 tell，跟 Madhu 的命名是同一类 drift；「skill 文件是可移植的，让你不再依赖单一前沿模型」是 durability 的反论点，跟 Boris Cherny 的 CLAUDE.md / REVIEW.md 是同一条线。把两条合在一起：AI 写作的 tells 一旦作者不再刻意回避就会变回正常标点，而 skill files / 领域知识编码成基础设施让你的工作流不会卡在某一家模型的风格怪癖上。",
+      "cards": [
+        {
+          "authorKey": "x:garrytan",
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁",
+          "sourceUrl": "https://x.com/garrytan",
+          "en": {
+            "rewrite": [
+              "Garry Tan (Y Combinator president) on a small but real cultural shift: 'We should just bring back the em dash. Reclaim it for our own.' The em dash has become a visual tell for AI-written text — the same uncanny-valley drift Madhu names (card 12). Garry's reframe: stop avoiding it; treat it as a normal punctuation mark again.",
+              "On the same day, Garry posts the agent-skill counter-pattern: 'Skill files are portable and free you from frontier model dependency. This is a good thing.' Same shape as Boris Cherny's CLAUDE.md / REVIEW.md thread — encode domain knowledge in files, decouple your workflow from which model happens to be on top this quarter.",
+              "Both tweets together are a small editorial argument: the AI-writing tells (em dashes, certain phrasings) become normal again the moment writers stop optimizing to dodge them, and the durability argument (skill files / domain knowledge as infrastructure) is what makes that editorially safer — your workflow doesn't depend on a single model's stylistic quirks."
+            ],
+            "original": [
+              "We should just bring back the em dash. Reclaim it for our own.",
+              "Skill files are portable and free you from frontier model dependency. This is a good thing."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan（Y Combinator 总裁）聊一个小但真实的文化位移：「我们应该把破折号（em dash）拿回来。把它夺回自己手里。」em dash 已经被当成 AI 写作的视觉特征——跟 Madhu 提的 uncanny-valley 是同一类 drift。Garry 的反转是：别再回避它，把它当回正常的标点用。",
+              "同一天 Garry 又发了一条 agent-skill 的反向论点：「Skill 文件是可移植的，能让你不再依赖单一前沿模型。这是好事。」跟 Boris Cherny 的 CLAUDE.md / REVIEW.md thread 是一个形状——把领域知识编码在文件里，把工作流跟「这季度到底哪家模型最强」解耦。",
+              "两条推加在一起，是个小但完整的编辑论点：AI 写作的那些 tells（em dash、某些固定句式），作者一旦不再刻意回避，就会变回正常的标点；同时 durability 的论点（skill 文件 / 把领域知识做成基础设施）让这件事在编辑上更安全——你的工作流不会卡在某一家模型的风格怪癖上。"
+            ],
+            "original": [
+              "我们应该把 em dash 拿回来。把它夺回自己手里。",
+              "Skill 文件是可移植的，能让你不再依赖单一前沿模型。这是好事。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "周末 fragment：Nan Yu 关于 grind 叙事的反转 / Weekend Fragment: Nan Yu on the Reversal of the Grind Narrative",
+      "desc": "Nan Yu 在 weekend-texture 模式里：「不好意思，我以为必须得熬到眼睛流血、忘记怎么笑，才能被当回事呢。」Quote-tweet 的那条在说 founder grind 的叙事已经变了——你不必非得熬到流血才能被认真对待。模式上对得上：一条 one-liner，作为周末 fragment 的收尾，跟 Matt Turck 的世界杯残酷、Garry Tan 拆 SF doom loop、Nikunj 的旅行忏悔是同一个角色。",
+      "cards": [
+        {
+          "authorKey": "x:thenanyu",
+          "authorName": "Nan Yu",
+          "authorHandle": "@thenanyu",
+          "authorTag": "AI 创业者 / 投资人",
+          "sourceUrl": "https://x.com/thenanyu",
+          "en": {
+            "rewrite": [
+              "Nan Yu in weekend-texture mode: 'Excuse me, I thought you had to grind until your eyes bled and you forgot how to smile.' Quote-tweeting something (the link in the source) about how the founder grind narrative has shifted — you don't have to bleed anymore to be taken seriously as a builder.",
+              "Pattern fits: this is a one-liner that lands the weekend-fragment closer. Same role as last week's Matt Turck World Cup / Garry Tan SF doom loop / Nikunj travel prayer — a small reflective moment that contrasts with the day's heavier technical build threads."
+            ],
+            "original": [
+              "Excuse me, I thought you had to grind until your eyes bled and you forgot how to smile."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nan Yu 在 weekend-texture 的模式里：「不好意思，我以为必须得熬到眼睛流血、忘记怎么笑才能被认真对待呢。」Quote-tweet 的那条东西（链接在原推里）在说：founder grind 的叙事已经变了——你不必非得熬到流血才能被当回事。",
+              "模式上对得上：这是一条 one-liner，恰好作为周末 fragment 的收尾。跟上周 Matt Turck 的世界杯残酷、Garry Tan 拆 SF doom loop、Nikunj 的旅行忏悔是同一个角色——一个小的反思瞬间，去对照当天更重的技术 build 那些 thread。"
+            ],
+            "original": [
+              "不好意思，我以为必须得熬到眼睛流血、忘记怎么笑，才能被认真当回事呢。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

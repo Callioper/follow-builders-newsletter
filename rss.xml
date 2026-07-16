@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 15 Jul 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 16 Jul 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-07-16 · 白刃战日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-16-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-16-rerun.html</guid>
+      <pubDate>Thu, 16 Jul 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[今天 1 个 podcast + 15 条 X + 1 篇 blog，主轴意外是 Granola 的 CEO Chris Pedregal 在 AI & I by Every 上把 $1.5B 创业公司的 knife-fight 形态讲完——「做不起来难，做得起来也难」是真话，会议纪要不是奖品，真正的大头是 AI-native 工作的界面。Pedregal 把流程拆成 shaping → validate → make it good，把 token 花销的反应（直到上周才 track，触发点是 Fable）讲出来，把预生成百万条 brief 只为搞清楚正确体验的策略也讲清。Dan 的「pirate + architect」团队模型 + work 的 surface 二分（异步委托在 Slack、严肃工作在 Codex / Claude desktop）紧跟其后；推论是下一代 app 必须活在 Codex 这种 harness 里。Claude 这一头把 artifacts 端出来——Claude Code 的 session 翻成 live 视觉页面（PR walkthrough、可筛选 dashboard、甚至会自己填的 release checklist），还带 version history 和就地刷新。Boris Cherny 把 CLAUDE.md / REVIEW.md / skills 这条新规矩讲清楚——automation 不只是倍增你的产出，它倍增每一支 agent 军的产出；CLAUDE.md / REVIEW.md 让新人入职第一天就能给 codebase 提 PR，非工程师也能像工程师一样贡献。OpenAI 那一头是另一类信号：Thibault 拿 Codex credits 换 5h 限制的反馈（用户视角的 Codex 体验在主动 collect）、GPT-5.6 文件删除 post-mortem（基本都发生在 full-access + 没 sandbox + 没 auto review）、再往前看「既然 ChatGPT 和 Codex 已经合并，接下来合并什么」；Peter Yang 把 ChatGPT Live × Codex 的 missed opportunity 钉出来——两个旗舰产品不通，散步时让 ChatGPT Live 拉 Google Doc 它说不行，跟 Thibault 的「接下来合并什么」是同一根线。swyx 出来点名「低估 CUA 现有能力是个危险的 category error」，并给团队从 2017 World of Bits 起的多年 live 观察 log 作为背书；Steipete 把 5.6 relentless + automation failure 摆到一张桌上——5.6 的失败模式不在模型，而在缺位的 automation。Levie 把 enterprise agent 落地的五条 takeaways 整理出来（change management、内部 FDE、IT 中心化、agent 需要自己的角色和权限、所有 enterprise software 都得是 headless）；Rauch 把 Vercel Sandbox 月环比 DAU +100%、每天 350 万+ sandbox、per active CPU-second 的成本当竞争维度，连带 Web Analytics API 把访客事件和部署演化关联起来——主轴跟昨天 token-flows 数据集是同一根。Josh Woodward 把 Gemini Spark 的 native editing 四大新功能放出来（开/编辑 Docs、读 Sheets & Slides 评论、速度 +50%+、跨 source 并行）。编辑判断这一边：Madhu Guru 给「一读就知道是 AI 写的」感觉提出 semantic nausea / uncanny prose valley / synthetic shudder 三个候选词；Zara Zhang 说让 agent 在公司干活，先得把公司设计成它能读懂的样子（Shopify 的 agent 只能发公开频道，副作用是 peer learning）；Garry Tan 把 em dash 拿回来 + skill files 解耦 frontier model。周末 fragment 由 Nan Yu 关于 grind 叙事的反转收尾。]]></description>
+      <category>Granola CEO Chris Pedregal on $1.5B startups as knife fights + meeting-notes-not-the-prize / Granola CEO Chris Pedregal：$1.5B 创业也是白刃战，会议纪要从来不是奖品, Dan&apos;s pirate + architect team model + work bifurcates into 2 surfaces / Dan 的 pirate + architect 团队模型 + 工作界面二分, Claude Code artifacts：把 session 变成 live 网页 / Claude Code Artifacts: Sessions Become Live Web Pages, Boris Cherny：automation 才是 agent 时代的最高杠杆工程 / Boris Cherny: Automation Is the Highest-Leverage Engineering Work in the Agent Era, Thibault 拿 $100 反馈换 GPT-5.6 文件删除 post-mortem / Thibault Trades $100 in Codex Credits for Feedback; GPT-5.6 File-Deletion Post-Mortem, Peter Yang：ChatGPT Live × Codex 是 OpenAI 最大的 missed opportunity / Peter Yang: ChatGPT Live × Codex Is OpenAI&apos;s Biggest Missed Opportunity, Swyx：CUA 进展比公开 take 说的快得多 / Swyx: CUA Is Progressing Much Faster Than the Public Takes Suggest, Levie 的 enterprise agent 晚餐笔记：change management + 内部 FDE / Levie&apos;s Enterprise Agent Dinner Notes: Change Management + Internal FDEs, Vercel Sandbox 月环比 DAU +100%：execution layer 的护城河 / Vercel Sandbox: 100% m/o/m DAU Growth, Execution-Layer Moat, Gemini Spark 扩到更多 Ultra 用户 + native editing 四大新功能 / Gemini Spark Expands to More Ultra Subscribers + Four New Native-Editing Features, Steipete：5.6 relentless + automation failure 的复述 / Steipete: 5.6 Is Relentless + The Automation-Failure Refrain, Madhu Guru 给「AI 写作的体感」取名字 / Madhu Guru Names the AI-Writing Tell, Zara Zhang：让 agent 在公司干活，先得让公司可读 / Zara Zhang: For Agents to Work in a Company, the Company Has to Be Readable, Garry Tan：把 em dash 拿回来 + skill files 解耦 frontier model / Garry Tan: Reclaim the Em Dash + Skill Files Decouple You from the Frontier Model, 周末 fragment：Nan Yu 关于 grind 叙事的反转 / Weekend Fragment: Nan Yu on the Reversal of the Grind Narrative</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-07-15 · 生态不封园日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-15-rerun.html</link>
