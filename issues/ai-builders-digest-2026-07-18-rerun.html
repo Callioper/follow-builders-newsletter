@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Builders Digest · 2026-07-18</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ed;
+    --accent: #c0392b;
+    --accent-light: #e8d5c4;
+    --border: #d4cdc0;
+    --muted: #7a7265;
+    --tag-bg: #e8e2d6;
+    --en-bg: #ffffff;
+    --cn-bg: #faf7f2;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  .masthead, .intro, .section-header, .feed, footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .masthead { padding-top: 48px; }
+  .masthead-rule { border: none; border-top: 3px solid var(--ink); margin: 0 0 12px; }
+  .masthead-inner { display: flex; justify-content: center; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; letter-spacing: -0.4px; }
+  .masthead-subtitle { margin-top: 8px; padding-bottom: 10px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  .edition-strip {
+    position: relative;
+    margin-top: 8px;
+    min-height: 46px;
+    padding: 10px 132px 12px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.34);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+
+  .edition-strip .edition-sep { margin: 0 8px; color: #b8ae9f; }
+  .edition-strip-text { display: block; }
+  .edition-return-link { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; padding: 6px 10px; border: 1px dashed rgba(192, 57, 43, 0.55); border-radius: 999px; color: var(--accent); text-decoration: none; font-size: 12px; line-height: 1; letter-spacing: 0.06em; background: rgba(255, 255, 255, 0.45); transition: background 160ms ease, border-color 160ms ease, transform 160ms ease; }
+  .edition-return-link:hover, .edition-return-link:focus-visible { background: rgba(255, 255, 255, 0.82); border-color: var(--accent); transform: translateY(-50%) translateX(-1px); }
+  .edition-return-link:focus-visible { outline: none; }
+  .intro { padding-top: 22px; }
+  .intro-inner { max-width: 920px; margin: 0 auto; padding: 0 0 0 18px; border-left: 3px solid #d9cdbc; }
+  .intro-kicker { margin: 0 0 8px; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .intro p { margin: 0; max-width: none; color: var(--muted); font-size: clamp(15px, 1.6vw, 16px); line-height: 1.9; text-wrap: pretty; font-family: 'Noto Serif SC', serif; overflow-wrap: anywhere; }
+
+  .section-header { margin-top: 40px; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; margin: 0 0 6px; }
+  .section-desc { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+
+  .feed { display: flex; flex-direction: column; gap: 20px; }
+  .card { background: var(--en-bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .card-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid #eee7dd; flex-wrap: wrap; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .avatar-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .avatar.is-fallback img { display: none; }
+  .avatar.is-fallback .avatar-fallback { display: flex; }
+
+  .author-info { flex: 1; min-width: 160px; }
+  .author-name { font-weight: 600; font-size: 15px; }
+  .author-name-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .author-handle { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+  .author-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; background: var(--tag-bg); color: var(--muted); padding: 4px 8px; border-radius: 999px; }
+  .author-tag.is-inline { padding: 3px 8px; }
+
+  .card-controls { margin-left: auto; display: inline-flex; gap: 8px; }
+  .view-toggle { border: 1px solid var(--border); background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 999px; font-size: 12px; line-height: 1; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; }
+  .view-toggle.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .card-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .lang-col { padding: 18px 20px 22px; }
+  .lang-col.cn { background: var(--cn-bg); border-right: 1px solid #f0ece4; font-family: 'Noto Serif SC', serif; }
+  .lang-col.en { background: var(--en-bg); }
+  .lang-label { margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+  .content-shell { position: relative; transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .content-variant { position: absolute; inset: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(4px); transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; will-change: opacity, transform; }
+  .content-variant.is-active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+  .content-variant p, .content-variant li { margin: 0 0 12px; font-size: 14px; }
+  .content-variant ol { margin: 0 0 12px 20px; padding: 0; }
+  .inline-code { display: inline-block; font-family: 'IBM Plex Mono', monospace; background: #f4efe7; padding: 3px 6px; border-radius: 6px; margin-bottom: 8px; }
+
+  .card-footer { padding: 12px 20px 16px; border-top: 1px solid #eee7dd; background: #fcfaf6; }
+  .card-footer a { color: var(--accent); text-decoration: none; font-size: 14px; }
+  footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 680px) {
+    .masthead-inner { align-items: center; }
+    .edition-strip { padding-right: 12px; padding-left: 12px; }
+    .edition-strip-text { padding-right: 0; }
+    .edition-return-link { position: static; transform: none; margin-top: 8px; font-size: 11px; }
+    .card-controls { margin-left: 0; }
+    .card-body { grid-template-columns: 1fr; }
+    .lang-col.cn { border-right: none; border-bottom: 1px solid #f0ece4; }
+    .edition-strip .edition-sep { margin: 0 5px; }
+    .intro-inner { padding-left: 14px; }
+    .intro p { line-height: 1.84; }
+  }
+</style>
+</head>
+<body data-publish-date="2026-07-18" data-issue-number="53" data-edition-name="双语精选版" data-view-label-rewrite="速读" data-view-label-original="原文" data-author-identities-path="/home/eclaw/.follow-builders/assets/author-identities.json" data-avatar-manifest-path="/home/eclaw/.follow-builders/assets/avatar-manifest.json">
+  <header class="masthead">
+    <hr class="masthead-rule">
+    <div class="masthead-inner">
+      <div class="masthead-title">AI Builders Digest</div>
+    </div>
+    <div class="masthead-subtitle">Bilingual edition · 双语对照版</div>
+    <div class="edition-strip">
+      <span class="edition-strip-text" id="edition-strip-text">第 53 期｜2026-07-18｜双语精选版｜14 条精选｜13 位作者｜6 个主题</span>
+      <a class="edition-return-link" href="../index.html">返回目录</a>
+    </div>
+  </header>
+
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="今天 1 个 podcast + 18 条 X + 1 篇 blog，主线意外不是 Kimi K3 这一条头条——头条之后真正有意思的是整个产业对 open-source frontier 的实际反应速度：Vercel 同一天放出 benchmark 数据 + Levie 立刻把企业 token 经济学接上 + Agarwal 当天就把 Fable 切走。OpenAI 一头是 Sama 罕见的「承认 12 个月不是最好的 12 个月」+ Thibault 把桌面 app 第一版的迭代姿态摆出来；Anthropic Engineering 同一周把containment 三产品线 architecture 全盘托出。Evans 在 Redpoint 的 Unsupervised Learning 上把 value accrual 这条线拆开——「我们还在聊 AGI，但 LLM 第一个真正成立的市场已经在 model provider 那一层跑出来了」。">
+    <div class="intro-inner">
+      <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
+      <p class="intro-copy">今天 1 个 podcast + 18 条 X + 1 篇 blog，主线意外不是 Kimi K3 这一条头条——头条之后真正有意思的是整个产业对 open-source frontier 的实际反应速度：Vercel 同一天放出 benchmark 数据 + Levie 立刻把企业 token 经济学接上 + Agarwal 当天就把 Fable 切走。OpenAI 一头是 Sama 罕见的「承认 12 个月不是最好的 12 个月」+ Thibault 把桌面 app 第一版的迭代姿态摆出来；Anthropic Engineering 同一周把containment 三产品线 architecture 全盘托出。Evans 在 Redpoint 的 Unsupervised Learning 上把 value accrual 这条线拆开——「我们还在聊 AGI，但 LLM 第一个真正成立的市场已经在 model provider 那一层跑出来了」。</p>
+    </div>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 01</div>
+    <h2 class="section-title">Kimi K3 撞穿天花板：open model 第一次拿工程 benchmark 综合第一 / Kimi K3 Crashes Through the Ceiling: Open Model Tops a Comprehensive Engineering Benchmark</h2>
+    <p class="section-desc">三个独立信号：Vercel 给数据 + Rauch 的留白 + Levie 的企业解读 + Replit 把 distillation+GRPO 的反例当教材放出。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:rauchg" data-author-name="Guillermo Rauch" data-author-tag="Vercel CEO" data-author-handle="@rauchg" data-author-avatar="../assets/avatars/x-rauchg.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-rauchg.jpg" alt="Guillermo Rauch avatar"><span class="avatar-fallback">GR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Guillermo Rauch</div>
+            <div class="author-tag is-inline">Vercel CEO</div>
+          </div>
+          <div class="author-handle">@rauchg</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Vercel CEO Guillermo Rauch 把数据端出来：Kimi K3 在 web engineering 综合 benchmark 上排第一，超过 Fable，用更短时间就达到 comparable success rate。这是「open model 在所有 proprietary model 前面」这种 comprehensive web engineering benchmark 上的第一次。</p>
+              <p>Rauch 自己留了半句：benchmark 不是全部，但确实是 important signal，叠加越来越多的旁证说明这件事可能真的是 breakthrough。开源最强已经能在综合工程 benchmark 上拿第一，意味着 foundation-model 这一层的 access 差距在持续压缩。</p>
+              <p>Vercel 顺着这条线同时开了两条大腿：Pete Hunt（前 React 核心成员、当年 Instagram Web 的早期押注者）加入 lead Frameworks 和 Next.js；Nick Schrock（Prefect 创始人）加入 lead Elements 和 AI SDK。这波 hire 等于把 Vercel 的 execution layer 当作 AI 应用的主战场再押一注——上一期给的数据是 sandbox 月环比 DAU +100%。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Kimi K3 在 web engineering 综合 benchmark 上排第一，超过了 Fable，用更短时间就达到差不多的成功率。这是开源模型在这种综合工程 benchmark 上第一次排在所有闭源前面。</p>
+              <p>注：benchmark 永远不是全部，但这确实是 important signal——叠加越来越多旁证，这件事可能真是 breakthrough。</p>
+              <p>Vercel 同期还迎来了 Pete Hunt 和 Nick Schrock。Pete 是 React 在 Meta 的早期核心之一，把 Instagram Web 押上 React 的那个人，现在 lead Frameworks 和 Next.js。Nick 是 Prefect（开源 workflow orchestration）的创始人，现在 lead Elements 和 AI SDK。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Vercel CEO Guillermo Rauch 拿数据说话：Kimi K3 在 web engineering 综合 benchmark 上排到第一，超过 Fable，用更短时间达到 comparable success rate。这是「open model 在所有 proprietary model 前面」这种 comprehensive web engineering benchmark 上的第一次。</p>
+              <p>Rauch 的提醒：benchmark 不是全部，但它是 important signal，叠加越来越多的旁证说明这件事可能是 breakthrough。开源最强已经能拿综合工程 benchmark 第一，意味着 foundation-model 这一层的 access 差距在压缩。</p>
+              <p>Vercel 顺着这条线：Pete Hunt（前 React 核心）和 Nick Schrock（Prefect 创始人）同时加入，分别 lead Frameworks / Next.js 和 Elements / AI SDK。这一波 hire 等于把 Vercel 的 execution layer 当作 AI 应用的主战场押注——sandbox 上一期数据是月环比 DAU +100%。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Kimi K3 is the best performing model on web engineering benchmark, ahead of Fable, reaching a comparable success rate in less time. This is the first time that an open model is ahead of all proprietary ones for this comprehensive web engineering benchmark. Notes: benchmarks don&#39;t always tell the full story, although this is important signal, adding to mounting evidence that this could be a breakthrough.</p>
+              <p>I&#39;m excited to welcome two legends of developer tools, Pete Hunt and Nick Schrock, to Vercel. Pete was one of the pioneers of React at Meta. He made an early bet to power Instagram Web with React. He will be running Frameworks and leading Next.js. Nick is the creator of Prefect, an open-source workflow orchestration tool. He&#39;ll be leading our Elements and AI SDK efforts.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://twitter.com/rauchg/status/..." target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:levie" data-author-name="Aaron Levie" data-author-tag="Box CEO" data-author-handle="@levie" data-author-avatar="../assets/avatars/x-levie.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-levie.jpg" alt="Aaron Levie avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie</div>
+            <div class="author-tag is-inline">Box CEO</div>
+          </div>
+          <div class="author-handle">@levie</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Box CEO Aaron Levie 接力：open model 的 frontier 性能每次抬一档，frontier intelligence 的成本就下一次台阶，企业能接住的 use case 就往上一档。</p>
+              <p>Levie 的具体抓法：很多企业真正想部署的 workflow 一直都被 token 成本卡住——不是模型能力不够，是单位经济算不过来。开源把 frontier 价格打到一半以下，是 enterprise agent 真正进入生产部署的 trigger。</p>
+              <p>Box 同一天放出 enterprise agent 的新形态：和 Databricks 直接打通，把合同 / 财报 / 供应链这种结构化 enterprise content 喂到 Databricks 做 query，不再需要把 content 搬来搬去或重新处理一遍。Agent 在企业里的角色从「聊天机器人」切换到「能 query 大文档集的 analyst」。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>open model 拿到这个级别的性能是真的 wild。frontier intelligence 的成本每次下降，企业能 take on 的 use case 就往上一档。绝大多数企业想部署的 workflow 都被 token 成本卡住。</p>
+              <p>Box 现在跟 Databricks 打通了：把合同、财报、供应链这种 enterprise 结构化内容直接喂到 Databricks 里做 query，不用搬 content 也不用重新处理——直接 query 大文档集。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Box CEO Aaron Levie 接力：open model 的 frontier 性能持续抬升，意味着 frontier intelligence 的成本每次下台阶，企业能接住的 use case 就往上跳一档。</p>
+              <p>Levie 的具体抓法：很多企业真正想部署的 workflow 一直都被 token 成本卡住，不是模型能力不够，是单位经济算不过来。开源把 frontier 价格打到一半以下，是 enterprise agent 进入生产部署的真正 trigger。</p>
+              <p>Box 同一天放出 enterprise agent 的新场景——和 Databricks 直接打通，把合同 / 财报 / 供应链这种结构化 enterprise content 喂到 Databricks 做 query，不再需要把 content 搬来搬去或重新处理。agent 在企业里的形态从「聊天机器人」切换到「能 query 大文档集的 analyst」。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>It&#39;s truly wild that we&#39;re getting this level of performance from open models. Every time we lower the cost of frontier intelligence, the use-cases that enterprises can take on just go up. There&#39;s a tremendous amount of workflows that enterprises would love to deploy that are only gated by the cost of tokens.</p>
+              <p>Here&#39;s another awesome use-case for what we can now do with our unstructured data because of AI agents. Box now works with Databricks so you can take structured data from enterprise content (like contracts, financial documents, supply chain data) and connect that data into Databricks. This means that I can now query large document datasets without moving or reprocessing that content.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://twitter.com/levie/status/..." target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:amasad" data-author-name="Amjad Masad" data-author-tag="Replit CEO" data-author-handle="@amasad" data-author-avatar="../assets/avatars/x-amasad.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-amasad.jpg" alt="Amjad Masad avatar"><span class="avatar-fallback">AM</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Amjad Masad</div>
+            <div class="author-tag is-inline">Replit CEO</div>
+          </div>
+          <div class="author-handle">@amasad</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Replit CEO Amjad Masad 把自家 chess engine 当反例放出来：先在 2M stockfish-labeled positions 上 fine-tune，再做一轮短 GRPO RL pass，跑出来的模型对 frontier model 居然占优。</p>
+              <p>Masad 摆出来的反直觉案例：distillation（用 teacher model 跑出来的数据训练 student model）这一条路，student 是有可能 outperform teacher 的。Sutton 那条「bitter lesson」配 NVIDIA 把 K3 跑出来的那条路是「算力 + 数据规模」，Masad 这条路走的是「领域数据 + 窄 RL」——同样能打。</p>
+              <p>横向看 Replit 把这个实验做成带文档 + annotated code 的 tutorial，模型权重也开放。是给开发者的实操教材，不是 corporate demo。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>distillation model 有可能 outperform teacher model。我自己的 chess engine（WIP）就是这样：先在 2M stockfish-labeled positions 上 fine-tune，再做一轮短的 GRPO RL pass，已经能打过 frontier model。文档 + annotated code 都放出来。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Replit CEO Amjad Masad 拿自家 chess engine 做反例：先在 2M stockfish-labeled positions 上 fine-tune，再做一轮短 GRPO RL pass，跑出来的模型对 frontier model 居然占优。</p>
+              <p>Masad 摆出来的反直觉案例：distillation（用 teacher model 跑出来的数据训练 student model）这一条路，student 是有可能 outperform teacher 的。Sutton 那条「bitter lesson」配 Nvida 的 K3 拿的是另一条路，Masad 这条路走的是「领域数据 + 窄 RL」。</p>
+              <p>横向看 Replit 把这个实验做成带文档 + annotated code 的 tutorial，模型权重也开放——是给开发者的实操教材，不是 corporate demo。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Apparently the distillation model can outperform the teacher model. If you want to play my chess engine (WIP): it already seems to perform better than frontier models on chess. It&#39;s fine-tuned on 2M stockfish-labeled positions, then short GRPO RL pass. Documentation/tutorial with all the experiments and annotated code.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://twitter.com/amasad/status/..." target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 02</div>
+    <h2 class="section-title">OpenAI 反躬自省：voice 跨过阈值 + Altman 「最好的 12 个月即将到来」 + Codex 桌面 app 改一刀 / OpenAI Reflects: Voice Crosses the Threshold + Altman&#39;s &#39;Best 12 Months Ahead&#39; + Codex Desktop App Iterates</h2>
+    <p class="section-desc">Sama 把 voice 模型和未来 12 个月都讲清楚；Thibault 用一句「we didn&#39;t get totally quite right on the first try」把桌面 app 第一版的态度摆出来。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:sama" data-author-name="Sam Altman" data-author-tag="OpenAI CEO" data-author-handle="@sama" data-author-avatar="../assets/avatars/x-sama.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-sama.jpg" alt="Sam Altman avatar"><span class="avatar-fallback">SA</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Sam Altman</div>
+            <div class="author-tag is-inline">OpenAI CEO</div>
+          </div>
+          <div class="author-handle">@sama</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Sam Altman 给全体用户的两条 tweet：voice 这条是「我现在跟 ChatGPT 说话的次数比打字多」，原话「the new voice model really crossed a threshold」。voice 不再是 demo，是日常。</p>
+              <p>第二条是 Altman 的「不道歉但负责」姿态：直接承认过去 12 个月不是 OpenAI 最好的 12 个月，主要是我（Altman）的责任，但接下来 12 个月会是公司有史以来最好的 12 个月。</p>
+              <p>Altman 把这句话的「为谁」讲得很直白：希望我们的用户赢，AI 这件事最终是要把更多 freedom / agency / wealth 分给更多人——言下之意是研究阶段过了，接下来要给具体可感的回报。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>我现在跟 ChatGPT 说话的次数比打字多。新 voice model 真的跨过了一道门槛。</p>
+              <p>过去 12 个月不是 OpenAI 最好的 12 个月，主要是我（Altman）的责任。但接下来 12 个月会是公司有史以来最好的 12 个月。团队做的东西真的很牛，等着看吧。我高兴这个事有很多原因，但最重要的：我希望我们的用户赢。AI 这件事最终是要把更多 freedom、agency、wealth 分给更多人。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Sam Altman 给全体用户的两条 tweet：voice 这条是「我现在跟 ChatGPT 说话的次数比打字多」，原话「the new voice model really crossed a threshold」。Voice 不再是 demo，是日常。</p>
+              <p>第二条是 Altman 的「不道歉但负责」姿态：直接承认过去 12 个月不是 OpenAI 最好的 12 个月，主要是我（Altman）的责任，但接下来 12 个月会是公司有史以来最好的 12 个月。</p>
+              <p>Altman 把这句话的「为谁」讲得很直白：希望我们的用户赢，AI 这件事最终是要把更多 freedom / agency / wealth 分给更多人——言下之意是研究阶段过了，接下来要给具体可感的回报。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>i talk to chatgpt more than i type to it at this point. new voice model really crossed a threshold.</p>
+              <p>we did not have our best last 12 months ever, which is mostly my fault, but we are about to have our best 12 months to date. the team is doing amazing work and i think you&#39;ll be very happy with what they&#39;ve got cooking for you. i am happy about this for many reasons, but mostly because i care about our users winning. AI has to be about giving lots of people more freedom, agency, and wealth.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://twitter.com/sama/status/..." target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:thsottiaux" data-author-name="Thibault Sottiaux" data-author-tag="OpenAI Codex &amp; ChatGPT" data-author-handle="@thsottiaux" data-author-avatar="../assets/avatars/x-thsottiaux.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-thsottiaux.jpg" alt="Thibault Sottiaux avatar"><span class="avatar-fallback">TS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Thibault Sottiaux</div>
+            <div class="author-tag is-inline">OpenAI Codex &amp; ChatGPT</div>
+          </div>
+          <div class="author-handle">@thsottiaux</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thibault Sottiaux（Codex &amp; ChatGPT 负责人）今天在桌面端做了两条反馈驱动的具体改动：sidebar 现在能看到 conversation history 和 projects，Chat / Work history 在 web / mobile / desktop 之间自动 sync，本地任务仍然 stay on device。</p>
+              <p>第二条是一个空降需求：用户可以从 sidebar 轻易切换 ChatGPT 账户——也就是说 ChatGPT 想明白了「同一台设备上有多个账号」是常态不是例外。这件事对 B2B2C 场景（公司账号 + 个人账号）尤其关键。</p>
+              <p>Thibault 自己 day-1 写出来的话：「we didn&#39;t get totally quite right on the first try」——桌面 app 第一版没完全踩对，迭代是按用户反馈改而不是按 marketing 节奏改。这跟 Boris 那条「Claude Code 的权限模型也经历过类似重做」是同一个 pattern：找到 PMF 之前不装。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>晚上好！新 ChatGPT 桌面 app 收到很多反馈（第一版没完全踩对），所以今天改了一轮：1/ sidebar 现在能看到 conversation history 和 projects；Chat / Work history 在 web / mobile / desktop 自动 sync；本地任务仍然 stay on device。2/ sidebar 里现在可以轻松切换 ChatGPT 账户。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thibault Sottiaux（Codex &amp; ChatGPT 负责人）今天在桌面端做了两条反馈驱动的具体改动：sidebar 现在能看到 conversation history 和 projects，Chat / Work history 在 web / mobile / desktop 之间自动 sync，本地任务仍然 stay on device。</p>
+              <p>第二条是一个空降需求：用户可以从 sidebar 轻易切换 ChatGPT 账户——也就是说 ChatGPT 想明白了「同一台设备上有多个账号」是常态，不是例外。这件事对 B2B2C 场景（公司账号 + 个人账号）尤其关键。</p>
+              <p>Thibault 自己 day-1 写出来的话：「we didn&#39;t get totally quite right on the first try」——桌面 app 第一版没完全踩对，迭代是按用户反馈改而不是按 marketing 节奏改。这跟 Boris 那条「Claude Code 的权限模型也经历过类似重做」是同一个 pattern：找到 PMF 之前不装。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Evening! We&#39;ve gotten lots of great feedback on the new ChatGPT desktop app (which we didn&#39;t get totally quite right on the first try), and as a result, we&#39;ve made some changes. 1/ ChatGPT conversation history and projects are now visible in the sidebar. Also, your Chat and Work history now sync across web, mobile, and desktop. Local tasks still stay on your computer. 2/ You can now easily switch ChatGPT accounts from the sidebar.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://twitter.com/thsottiaux/status/..." target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 03</div>
+    <h2 class="section-title">NotebookLM 毕业：从 Project Tailwind 到 @Gemini_Notebook / NotebookLM Graduates: From Project Tailwind to @Gemini_Notebook</h2>
+    <p class="section-desc">Woodward 把内部代号正式掀开；Google Labs 同期打配合。Google 的应用层在 Labs → Gemini 品牌伞下加速收拢。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:joshwoodward" data-author-name="Josh Woodward" data-author-tag="Google Labs 产品负责人" data-author-handle="@joshwoodward" data-author-avatar="../assets/avatars/x-joshwoodward.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-joshwoodward.jpg" alt="Josh Woodward avatar"><span class="avatar-fallback">JW</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Josh Woodward</div>
+            <div class="author-tag is-inline">Google Labs 产品负责人</div>
+          </div>
+          <div class="author-handle">@joshwoodward</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Google Labs VP Josh Woodward 把 NotebookLM 的内部代号正式「掀开」：这个内部一直叫「Notebook」的项目，今天正式以 @Gemini_Notebook 的身份 graduate 出 Labs。30M 用户 / 600K 组织，比 Woodward 当时坐的那个房间看到 Steven Johnson 拆解写作的时候想象的要大得多。</p>
+              <p>Woodward 的语气很克制——「We all feel like it&#39;s just getting started」是真正有底气的产品人在产品向上的那天说的话，反过来对照很多「我们过几个月会重新定义这个产品」的发布会语气。</p>
+              <p>横向看：NotebookLM 从 Labs 里出来进 Gemini 主品牌，意味着 Google 把 AI 应用层的 experiment 推进到 production-grade 的节奏——Tailwind 当年也走过同样的路径。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>我还记得那个房间，看 Steven Johnson 拆解他怎么写书——那是这个项目的火种。今天 30M 用户、600K 组织在用，而且还在涨。我们都觉得这才刚开始。内部一直叫「Notebook」，今天正式对外更名。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Google Labs VP Josh Woodward 把 NotebookLM 的内部代号正式「掀开」：这个内部一直叫「Notebook」的项目，今天正式以 @Gemini_Notebook 的身份 graduate 出 Labs。30M 用户 / 600K 组织，比 Woodward 当时坐的那个房间看到 Steven Johnson 拆解写作的时候想象的要大得多。</p>
+              <p>Woodward 的语气很克制——「We all feel like it&#39;s just getting started」是真正有底气的产品人在产品向上的那天说的话，反过来对照很多「我们过几个月会重新定义这个产品」的发布会语气。</p>
+              <p>横向看：NotebookLM 从 Labs 里出来进 Gemini 主品牌，意味着 Google 把 AI 应用层的 experiment 推进到 production-grade 的节奏——Tailwind 当年也走过同样的路径。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>I still remember the exact room, watching Steven Johnson break down how he writes books. That was the spark for a little project we never imagined would grow this big. Today, over 30 million people and 600,000 organizations use it, and it keeps growing. We all feel like it&#39;s just getting started. For a while, we&#39;ve just called it &#39;Notebook&#39; internally. Today, we&#39;re making it official externally.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://twitter.com/joshwoodward/status/..." target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:googlelabs" data-author-name="Google Labs" data-author-tag="Google AI 实验产品" data-author-handle="@GoogleLabs" data-author-avatar="../assets/avatars/x-googlelabs.png">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-googlelabs.png" alt="Google Labs avatar"><span class="avatar-fallback">GL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Google Labs</div>
+            <div class="author-tag is-inline">Google AI 实验产品</div>
+          </div>
+          <div class="author-handle">@GoogleLabs</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Google Labs 官方账号呼应 Woodward：当年叫 Project Tailwind 的 baby Labs experiment，今天正式以 @Gemini_Notebook 的身份毕业。</p>
+              <p>Labs 的角度专门加了「恭喜团队」的语气——NotebookLM 是 Labs 体系里少有的「成功毕业」样本：很多 Labs 实验走不到 production，NotebookLM 走通了。</p>
+              <p>从这个命名顺序看：Tailwind（codename）→ Notebook（内部代号）→ NotebookLM（产品名）→ @Gemini_Notebook（品牌名）。Google 把应用层统一到 Gemini 品牌伞下的策略在收紧。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>还记得 Project Tailwind 只是个小小 baby Labs experiment 的时候吗？后来变成了 NotebookLM。今天正式升级成 @Gemini_Notebook，恭喜团队！</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Google Labs 官方账号呼应 Woodward：当年叫 Project Tailwind 的 baby Labs experiment，今天正式以 @Gemini_Notebook 的身份毕业。</p>
+              <p>Labs 的角度专门加了「恭喜团队」的语气——NotebookLM 是 Labs 体系里少有的「成功毕业」样本：很多 Labs 实验走不到 production，NotebookLM 走通了。</p>
+              <p>从这个命名顺序看：Tailwind（codename）→ Notebook（内部代号）→ NotebookLM（产品名）→ @Gemini_Notebook（品牌名）。Google 把应用层统一到 Gemini 品牌伞下的策略在收紧。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Who remembers when Project Tailwind was just a little, baby Labs experiment? Well, eventually that became NotebookLM. And today - many congrats to the team on becoming @Gemini_Notebook!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://twitter.com/GoogleLabs/status/..." target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 04</div>
+    <h2 class="section-title">Benedict Evans：先把 AGI 放到一边，看 foundation model 的 value 怎么落 / Benedict Evans: Set AGI Aside, Watch Where the Value Lands in Foundation Models</h2>
+    <p class="section-desc">Unsupervised Learning 第 91 期请来 Evans。两张卡：value accrual 那条 enterprise software 拆解 + 「像不像 electricity」那条反向拆。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="podcast:unsupervised-learning" data-author-name="Unsupervised Learning" data-author-tag="Redpoint 出品的 AI 投资与技术播客" data-author-handle="" data-author-avatar="../assets/avatars/podcast-unsupervised-learning.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/podcast-unsupervised-learning.jpg" alt="Unsupervised Learning avatar"><span class="avatar-fallback">UL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Unsupervised Learning</div>
+            <div class="author-tag is-inline">Redpoint 出品的 AI 投资与技术播客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Unsupervised Learning 第 91 期请来 Benedict Evans（Jacob Efron / Redpoint 主理）。Evans 整集的判断骨架：「如果我们不能定义 AGI 是什么，那就没法讨论它的影响——先把 AGI 放到一边，回到 enterprise software 这一层，否则聊的就是凌晨两点微醺哲学系研究生的自言自语。」</p>
+              <p>Evans 对 foundation model 估值的判断很具体：model provider 这一层目前「the one big market we&#39;ve had so far in LLM world has actually proven to be very good for the model providers」——头部模型公司在 LLM 第一个真正成立的市场里跑出了完整的盈利结构。</p>
+              <p>Evans 的反向论证：value accrual 不会自动落在 model 这一层。Mobile / PC / cloud 都有过类似的判断（每一层都说自己最值钱），最后的事实是「集成到最底层 substrate」和「拆出来做成 vertical SaaS」的两端都能赚钱，但中间那层通用工具最容易蒸发。foundation model 是不是同一张剧本，现在定不下来。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>我们这里其实已经进了 logical fallacy 的区域。Hinton 十年前说要停训放射科医生——问题是他根本不知道放射科医生实际在做什么。机器学习能自动化一个 narrow task，但 broad job 不等于做这个 narrow task。</p>
+              <p>LLM 至今跑出来的那一个真正能成立的市场，对 model provider 来说其实已经很好了。</p>
+              <p>如果回头看 enterprise software：半数 enterprise software 你去看它根本 get 不到，客户也 get 不到。我们每天用的工具里，一大半第一次见到都觉得「这有什么用」。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Unsupervised Learning 第 91 期请来 Benedict Evans（Jacob Efron / Redpoint 主理）。Evans 整集的判断骨架：「如果我们不能定义 AGI 是什么，那就没法讨论它的影响——先把 AGI 放到一边，回到 enterprise software 这一层，否则聊的就是凌晨两点微醺哲学系研究生的自言自语。」</p>
+              <p>Evans 对 foundation model 估值的判断很具体：model provider 这一层目前「the one big market we&#39;ve had so far in LLM world has actually proven to be very good for the model providers」——头部模型公司在 LLM 第一个真正成立的市场里跑出了完整的盈利结构。</p>
+              <p>Evans 的反向论证：value accrual 不会自动落在 model 这一层。Mobile / PC / cloud 都有过类似的判断（每一层都说自己最值钱），最后的事实是「集成到最底层 substrate」和「拆出来做成 vertical SaaS」的两端都能赚钱，但中间那层通用工具最容易蒸发。foundation model 是不是同一张剧本，现在定不下来。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>We get deep into logical fallacies here. So, we&#39;ve got Jeff Hinton, whatever it was ten years ago saying, stop radio, training radiologists. And the problem here is he doesn&#39;t actually understand what radiologists do. So the narrow problem is actually machine learning could automate a narrow task, but the broad job is not just doing the narrow task.</p>
+              <p>The one big market we&#39;ve had so far in LLM world has actually proven to be very good for the model providers. So, to provide think there&#39;s an interesting, there&#39;s a couple of like things you can ask about the specificity of why is it that it&#39;s coding that worked.</p>
+              <p>If you think about, like, most enterprise software, half of enterprise software, you look at it and you don&#39;t get it. The customer looks at it and they don&#39;t get it. Think about how many tools we all use every day, where the first time you saw it, you thought, what&#39;s the point of that?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.youtube.com/watch?v=vDY_ocrkQ5w" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="podcast:unsupervised-learning" data-author-name="Unsupervised Learning" data-author-tag="Redpoint 出品的 AI 投资与技术播客" data-author-handle="" data-author-avatar="../assets/avatars/podcast-unsupervised-learning.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/podcast-unsupervised-learning.jpg" alt="Unsupervised Learning avatar"><span class="avatar-fallback">UL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Unsupervised Learning</div>
+            <div class="author-tag is-inline">Redpoint 出品的 AI 投资与技术播客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Evans 对「像不像 electricity」这个比喻的拆解很老实：「你可以挥挥手说『不，这就是 electricity』，行吧，fine。但 electricity 之前的世界里人也并不笨——electricity 没出现的时候人类也是在解决真问题。模型也一样，先接受能力的存在，再看它怎么渗进工作流。」</p>
+              <p>Evans 的另一条更冷的具体判断：foundation model 的 cost curve 像 fab——「the cost of a cutting edge fab doubles every four years」。这意味着头部模型的算力门槛每四年翻一倍，capex 是真正的护城河，不是模型权重。</p>
+              <p>收尾给的是 Sam Walton 类比：「我相当同情 Sam Walton」——Evans 的意思是：和零售业的早期一样，今天的 AI 公司面对的「怎么选址、怎么控制 sku、怎么管员工」这些问题，都不是模型问题，是运营问题。foundation model 给你的不是答案，是新的运营难题。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>你可以挥挥手说「不，这就是 electricity」。好，fine，是 electricity 那又怎样？electricity 之前的世界里人也并不笨，electricity 没出现的时候人类也是在解决真问题。模型也一样——先接受能力的存在，再看它怎么渗进工作流。</p>
+              <p>尖端 fab 的成本每四年翻一倍。foundation model 的成本曲线有点像这个。</p>
+              <p>我相当同情 Sam Walton。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Evans 对「像不像 electricity」这个比喻的拆解很老实：「你可以挥挥手说『不，这就是 electricity』，行吧，fine。但 electricity 之前的世界里人也并不笨——electricity 没出现的时候人类也是在解决真问题。模型也一样，先接受能力的存在，再看它怎么渗进工作流。」</p>
+              <p>Evans 的另一条更冷的具体判断：foundation model 的 cost curve 像 fab——「the cost of a cutting edge fab doubles every four years」。这意味着头部模型的算力门槛每四年翻一倍，capex 是真正的护城河，不是模型权重。</p>
+              <p>收尾给的是 Sam Walton 类比：「我相当同情 Sam Walton」——Evans 的意思是：和零售业的早期一样，今天的 AI 公司面对的「怎么选址、怎么控制 sku、怎么管员工」这些问题，都不是模型问题，是运营问题。foundation model 给你的不是答案，是新的运营难题。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>You can wave your hands and say, no. This is like electricity. Okay. Fine. It&#39;s like electricity. Well, what happened with electricity? And there was a time before electricity, and people before electricity weren&#39;t dumb either. Do you think it&#39;s irrational that, like, the heads of these labs are talking so much about job loss?</p>
+              <p>Cost of a cutting edge fab doubles every four years. And that&#39;s and foundation models look a little bit like that. You can look at mobile and say, well, mobile had marginal cost. Like, adding more a lot of people don&#39;t take don&#39;t understand this. So mobile networks have marginal cost. You have if you double the number of traffic, you have to build a bunch more base stations and put a bunch more equipment on the base stations.</p>
+              <p>I have a lot of sympathy for Sam Walton. Given this discussion we&#39;ve had on the foundation models, would you be doing anything different in terms of, like, focus?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.youtube.com/watch?v=vDY_ocrkQ5w" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 05</div>
+    <h2 class="section-title">Anthropic agent containment 工程：把 blast radius 钉住，把 permission prompt 替代掉 / Anthropic&#39;s Agent Containment Engineering: Pinning the Blast Radius and Replacing Permission Prompts</h2>
+    <p class="section-desc">Engineering 这周发了 containment 三产品线 architecture 全盘点；Boris 把对应用户侧实操讲完（auto mode + Agent view + 多 agent 协同）。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="blog:anthropic-engineering" data-author-name="Anthropic Engineering" data-author-tag="Anthropic 官方工程博客" data-author-handle="" data-author-avatar="../assets/avatars/blog-anthropic-engineering.png">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/blog-anthropic-engineering.png" alt="Anthropic Engineering avatar"><span class="avatar-fallback">AE</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Anthropic Engineering</div>
+            <div class="author-tag is-inline">Anthropic 官方工程博客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic Engineering 这周发了《How we contain Claude across products》——一篇认真把过去两年在 claude.ai / Claude Code / Claude Cowork 三条产品线上的 containment architecture 全盘托出的工程 blog。</p>
+              <p>核心论点：「不是监督 agent 在做什么，而是监督它能做什么」——sandboxes / VMs / egress controls，把 blast radius 钉住。文章里给了一个具体数字：permission-prompt 这一套（每步问用户能不能做）失败率很高，因为 telemetry 显示用户对 permission prompt 的 approve 率是 93%——人已经不会真的看每一条 prompt，监督等于没有。</p>
+              <p>Anthropic 现在的方向是两层同时推进：(1) 自身的产品架构层（auto mode 替代每次 permission 询问、Agent view 多 agent 协同）；(2) 模型训练 + 评估层（Claude Mythos Preview 当年因为 blast radius 太大不上线，4 月份那波没达到 release threshold）。文章对每条防线都列了「我们用过、踩过什么坑、现在在哪一层」。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>十二个月前，给 Claude 那种「能拉掉一个 Anthropic 内部服务」的访问权限是不可想象的。现在这种权限是常态，开发者也因为它更有效率。这种部署的风险有两部分：失败有多频繁、一次失败能炸多大。safeguard 和模型训练把第一项压下去了；第二项——理论上能炸多大——只能随着能力扩张一起长大。</p>
+              <p>第一种方法是 human-in-the-loop 监督 agent 的行为。Claude Code 早先的做法是每一步都问用户「能不能做」，理论上管用，但 telemetry 显示用户对 permission prompt 的 approve 率是 93%。人看多了 prompt 注意力就涣散了。后来我们做了 Claude Code auto mode，把更安全的权限请求自动化。</p>
+              <p>Claude Mythos Preview 是一个当年因为 blast radius 太大没上线的模型。但我们预期，随着 defender 把关键系统加固、safeguard 成熟，类似 capability 级别的模型会逐渐适合 release。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic Engineering 这周发了《How we contain Claude across products》——一篇认真把过去两年在 claude.ai / Claude Code / Claude Cowork 三条产品线上的 containment architecture 全盘托出的工程 blog。</p>
+              <p>核心论点：「不是监督 agent 在做什么，而是监督它能做什么」——sandboxes / VMs / egress controls，把 blast radius 钉住。文章里给了一个具体数字：permission-prompt 这一套（每步问用户能不能做）失败率很高，因为 telemetry 显示用户对 permission prompt 的 approve 率是 93%——人已经不会真的看每一条 prompt，监督等于没有。</p>
+              <p>Anthropic 现在的方向是两层同时推进：(1) 自身的产品架构层（auto mode 替代每次 permission 询问、Agent view 多 agent 协同）；(2) 模型训练 + 评估层（Claude Mythos Preview 当年因为 blast radius 太大不上线，4 月份那波没达到 release threshold）。文章对每条防线都列了「我们用过、踩过什么坑、现在在哪一层」。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Twelve months ago, we&#39;d have rejected out of hand the idea of granting Claude access sufficient to take down an internal Anthropic service. Today that level of access is routine, and Anthropic developers are more productive for it. The risk of these deployments has two components: how likely a failure is, and how much damage one could do. Progress on safeguards and model training has steadily driven down the first; the second—the theoretical blast radius—only grows as capabilities and access expand.</p>
+              <p>The first is to supervise the agent&#39;s behavior via a human-in-the-loop. Claude Code previously protected against agents taking unintended actions by asking users for permission at each turn. Theoretically that works, but we&#39;ve found the approach to be fallible. Our telemetry showed users approved roughly 93% of permission prompts. The more approvals a user sees, the less attention they pay to each, becoming over time much less diligent in their supervision. We recently built Claude Code auto mode, which automates safer approvals in order to reduce this approval fatigue.</p>
+              <p>Claude Mythos Preview is an example of a model whose blast radius was deemed too high to ship in April 2026. However, we expect broader release of models with similar levels of capability to become appropriate as defenders harden critical systems and safeguards mature—even though some risk will always remain.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.anthropic.com/engineering/how-we-contain-claude" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:bcherny" data-author-name="Boris Cherny" data-author-tag="Salesforce AI 工程负责人" data-author-handle="@bcherny" data-author-avatar="../assets/avatars/x-bcherny.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-bcherny.jpg" alt="Boris Cherny avatar"><span class="avatar-fallback">BC</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Boris Cherny</div>
+            <div class="author-tag is-inline">Salesforce AI 工程负责人</div>
+          </div>
+          <div class="author-handle">@bcherny</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Claude Code 的 Boris Cherny 把 containment 那一套对应到用户侧的实操：给 Claude 端到端 verify 自己工作的能力、auto mode 默认开、自动 code review 和 security review、Agent view / Desktop / iOS / Android / Tag 几个面让多 agent 协同——每一条都对应到 containment architecture 的具体一环。</p>
+              <p>Boris 给的判断框架是「step 1 → step 4」：step 1 写代码让 AI 写，step 2 让 AI 自己看自己写的，step 3 让 AI 在 background 持续维护已有代码，step 4 是 fixing/maintaining 完全进入后台、团队只 build 新的。Anthropic 现在在 step 3 → step 4 之间。</p>
+              <p>ROI 这件事 Boris 直接给了可操作的方法论：usage dashboard 测的是 activity 不是 return；真要算 ROI 应该反问「如果没有 Claude Code，这部分 engineering effort 你本来会不会花？」，把那个数作为 baseline。和 containment 的逻辑一致——你要的不是控制 agent 动了多少，是控制 agent 失败时炸多大。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>更大的 payoff 来自 fixing/maintaining 整个进入后台，团队只 build 新的东西。那时候你能做之前根本不在射程内的事。Anthropic 现在在 step 3 → 4 之间，我自己刚到 step 4。你们团队到哪一步？</p>
+              <p>如果团队已经 buy-in 了，怎么 track？Usage dashboard 看的是 activity 不是 return。更对的问题应该是：这件事如果不交给 Claude Code，你本来会不会花 engineering effort？会的话，那部分 effort 的 manual eng-hour 成本就是你这次 AI 的 return。</p>
+              <p>实操上要做的：给 Claude 端到端 verify 自己工作的能力；auto mode 默认开；自动 code review + security review；用 Agent view / Desktop / iOS / Android / Tag 这种多 agent 协同的界面。更高一级还要 /loop、/batch、dynamic workflow、worktree isolation。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Claude Code 的 Boris Cherny 把 containment 那一套对应到用户侧的实操：给 Claude 端到端 verify 自己工作的能力、auto mode 默认开、自动 code review 和 security review、Agent view / Desktop / iOS / Android / Tag 几个面让多 agent 协同——每一条都对应到 containment architecture 的具体一环。</p>
+              <p>Boris 给的判断框架是「step 1 → step 4」：step 1 写代码让 AI 写，step 2 让 AI 自己看自己写的，step 3 让 AI 在 background 持续维护已有代码，step 4 是 fixing/maintaining 完全进入后台、团队只 build 新的。Anthropic 现在在 step 3 → step 4 之间。</p>
+              <p>ROI 这件事 Boris 直接给了可操作的方法论：usage dashboard 测的是 activity 不是 return；真要算 ROI 应该反问「如果没有 Claude Code，这部分 engineering effort 你本来会不会花？」，把那个数作为 baseline。和 containment 的逻辑一致——你要的不是控制 agent 动了多少，是控制 agent 失败时炸多大。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The bigger payoff comes when fixing and maintaining happens in the background and your teams can focus on building. That&#39;s when you start doing things that weren&#39;t even in range before. Anthropic is on step 3 and pushing toward 4. Personally, I just hit level 4. Curious where you are -- what step is your team on?</p>
+              <p>Once your teams are bought in, how do you track it? Usage is worth watching (e.g. a dashboard), but it measures activity, not return. A better question: would you have spent engineering effort on this anyway? If yes, how much and what would it have cost in manual eng-hours? That&#39;s your return.</p>
+              <p>In practice that means giving Claude ways to verify its own work end to end. It means enabling auto mode for permissions, defaulting on automated code review and security review, and using interfaces that let you manage multiple agents at once (Agent view in CLI, Desktop app, iOS and Android apps, Tag). To get to higher levels it means /loop, /batch, dynamic workflows, and worktree isolation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://twitter.com/bcherny/status/..." target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 06</div>
+    <h2 class="section-title">碎片拼接：K3 之后的 industry pulse + Cat Wu 招非工程岗位 screen share / Fragments: Industry Pulse After K3 + Cat Wu Recruits Non-Engineering Screen Shares</h2>
+    <p class="section-desc">Agarwal 切走 Fable + Shipper 自称 vibe check + Cat 反向收真实工作流——三条短信号拼一张桌。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:adityaag" data-author-name="Aditya Agarwal" data-author-tag="Dropbox Engineering VP / 前 Facebook 平台工程负责人" data-author-handle="@adityaag" data-author-avatar="../assets/avatars/x-adityaag.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-adityaag.jpg" alt="Aditya Agarwal avatar"><span class="avatar-fallback">AA</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aditya Agarwal</div>
+            <div class="author-tag is-inline">Dropbox Engineering VP / 前 Facebook 平台工程负责人</div>
+          </div>
+          <div class="author-handle">@adityaag</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aditya Agarwal（South Park Commons GP）连续发了两条对 Kimi K3 的实际反应：先说「我正在把系统里所有跑的 model 从 Fable 切走」——原因不是 Fable 不好，是「为什么付钱买一个好用且免费的替代品」。</p>
+              <p>前一条更狠：「如果你拥有的东西非常有价值，但让别人用之后就能复刻它，那它一开始就不是真的有价值。」这条话把整个 model-as-IP 的护城河逻辑掀了——K3 出现之后，「我们花了 X 亿训练的模型」这套话术在企业采购桌上失灵得更快。</p>
+              <p>Agarwal 当天还发了第三条：投资人 pulse——「到你越成功，被说 No 的次数其实越多，不是越少；运作在 ambition 的边缘反而被拒得最多。」这是他当天唯一一个跟 Kimi 无关的观察。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>如果你拥有的东西非常有价值，但让别人用之后就能复刻它，那它一开始就不是真的有价值。</p>
+              <p>我现在就在把系统里所有 model 从 Fable 切走。不是要夸张——有免费又好用的替代品，为什么还要付钱？</p>
+              <p>很多人以为越成功，被拒的次数越少。其实反过来：运作在 ambition 边缘的人被拒最多——赌得越大，被 No 的次数越多。今天我已经被 No 了 5 次。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aditya Agarwal（South Park Commons GP）连续发了两条对 Kimi K3 的实际反应：先说「我正在把系统里所有跑的 model 从 Fable 切走」——原因不是 Fable 不好，是「为什么付钱买一个好用且免费的替代品」。</p>
+              <p>前一条更狠：「如果你拥有的东西非常有价值，但让别人用之后就能复刻它，那它一开始就不是真的有价值。」这条话把整个 model-as-IP 的护城河逻辑掀了——K3 出现之后，「我们花了 X 亿训练的模型」这套话术在企业采购桌上失灵得更快。</p>
+              <p>Agarwal 当天还发了第三条：投资人 pulse——「到你越成功，被说 No 的次数其实越多，不是越少；运作在 ambition 的边缘反而被拒得最多。」这是他当天唯一一个跟 Kimi 无关的观察。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>If you have something very valuable....but letting people use it allows them to recreate it...then maybe it wasn&#39;t very valuable in the first place?</p>
+              <p>I am literally switching models off of Fable right now for our systems. This isn&#39;t trying to be hyperbolic....but why would you pay the price if there is a good and free alternative?</p>
+              <p>A lot of people assume that as you get more successful, the LESS you get said No to. This is actually false if you are operating at the edge of your ambition. At higher stakes, you get told No a lot. I see this with all founders who are punching up. I got told No 5 times today.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://twitter.com/adityaag/status/..." target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:danshipper" data-author-name="Dan Shipper" data-author-tag="Every 联合创始人 / AI 写作工具链" data-author-handle="@danshipper" data-author-avatar="../assets/avatars/x-danshipper.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-danshipper.jpg" alt="Dan Shipper avatar"><span class="avatar-fallback">DS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Dan Shipper</div>
+            <div class="author-tag is-inline">Every 联合创始人 / AI 写作工具链</div>
+          </div>
+          <div class="author-handle">@danshipper</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Every CEO Dan Shipper 把 K3 这条事放到 OpenAI 的 narrative 里：他说「we will vibe check Kimi K3 but i am extraordinarily skeptical of claims it&#39;s as good as fable」——明确表示要自己跑、不轻信 headline。</p>
+              <p>这条态度本身比结论重要：当 open-source frontier 出现之后，整个行业从前沿到用户中间的 credibility pipeline 都需要重排。Shipper 这种「我先 vibe check」的姿态，本质上是给媒体 K3 刷屏之外留了一条护栏——把 model benchmark 的可信度问题往用户 side 推。</p>
+              <p>横向看 Shipper 当天还发了一条对 OpenAI 的延伸观察：他说「not surprising that @OpenAI is firing on all cylinders right now, and it&#39;s an unbelievably interesting story」——把 K3 跟 OpenAI 的同期 narrative 摆在同一个桌上对照，但没给出结论，是给读者的留白。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>我们会 vibe check Kimi K3，但我对「它跟 Fable 一样好」这种说法异常怀疑。</p>
+              <p>OpenAI 现在 fire on all cylinders 完全不意外，story 也确实有意思——他们 2025 年夏天发 GPT-5 的时候定位是 pair programmer。我们当时在 Every 写过，OpenAI 完全错过了在 Claude Code 内部正在发生的 agentic coding 那条线——他们赌的是「在 browser / VM 里的 agentic coding」和「在 ChatGPT 里的 vibe coding」，结果赌对了。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Every CEO Dan Shipper 把 K3 这条事放到 OpenAI 的 narrative 里：他说「we will vibe check Kimi K3 but i am extraordinarily skeptical of claims it&#39;s as good as fable」——明确表示要自己跑、不轻信 headline。</p>
+              <p>这条态度本身比结论重要：当 open-source frontier 出现之后，整个行业从前沿到用户中间的 credibility pipeline 都需要重排。Shipper 这种「我先 vibe check」的姿态，本质上是给媒体 K3 刷屏之外留了一条护栏——把 model benchmark 的可信度问题往用户 side 推。</p>
+              <p>横向看 Shipper 当天还发了一条对 OpenAI 的延伸观察：他说「not surprising that @OpenAI is firing on all cylinders right now, and it&#39;s an unbelievably interesting story」——把 K3 跟 OpenAI 的同期 narrative 摆在同一个桌上对照，但没给出结论，是给读者的留白。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>we will vibe check Kimi K3 but i am extraordinarily skeptical of claims it&#39;s as good as fable</p>
+              <p>not surprising that @OpenAI is firing on all cylinders right now, and it&#39;s an unbelievably interesting story - they launched GPT-5 summer of 2025 and positioned it as a pair programmer. we wrote at the time @every that they completely missed the new agentic coding that was starting to happen inside of Claude Code. they bet on agentic coding in the browser / vms and vibe coding in ChatGPT but it worked out.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://twitter.com/danshipper/status/..." target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:_catwu" data-author-name="Cat Wu" data-author-tag="Anthropic 产品工程" data-author-handle="@_catwu" data-author-avatar="../assets/avatars/x-_catwu.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-_catwu.jpg" alt="Cat Wu avatar"><span class="avatar-fallback">CW</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Cat Wu</div>
+            <div class="author-tag is-inline">Anthropic 产品工程</div>
+          </div>
+          <div class="author-handle">@_catwu</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Cat Wu（Anthropic Claude Code + Cowork）反向发了一条 recruiting 帖：营销 / 销售 / 财务 / 法务 / 任何非工程岗位——30 分钟 screen share，告诉团队你实际怎么用 Cowork。这是产品人在 PMF 之后的 signal：开始反向采集「真实工作流」。</p>
+              <p>这条配合 Boris 今天的「step 3 → step 4」一起看：Anthropic 把 engineering 那一侧已经走到了「background maintenance」的边界，下一步要往非工程岗位走。Cat 这条就是在采集这些岗位的真实使用模式。</p>
+              <p>和传统的 user research 不同的是：Cat 在 ask 用户「show me」而不是「tell me」——团队要看的是你 screen share 时实际怎么用。这种行为数据比 survey 真实得多。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>你最了解自己的工作流。show 一下你怎么用 Cowork，我们才好把它做得更好！营销、销售、财务、法务、任何非工程岗位——sign up 一个 30 分钟 screen share。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Cat Wu（Anthropic Claude Code + Cowork）反向发了一条 recruiting 帖：营销 / 销售 / 财务 / 法务 / 任何非工程岗位——30 分钟 screen share，告诉团队你实际怎么用 Cowork。这是产品人在 PMF 之后的 signal：开始反向采集「真实工作流」。</p>
+              <p>这条配合 Boris 今天的「step 3 → step 4」一起看：Anthropic 把 engineering 那一侧已经走到了「background maintenance」的边界，下一步要往非工程岗位走。Cat 这条就是在采集这些岗位的真实使用模式。</p>
+              <p>和传统的 user research 不同的是：Cat 在 ask 用户「show me」而不是「tell me」——团队要看的是你 screen share 时实际怎么用。这种行为数据比 survey 真实得多。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>You know your workflows best. Show our team how you use Cowork so we can make it work better for you! If you&#39;re in marketing, sales, finance, legal, or any non-engineering role, sign up here for a 30 min screen share with our team.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://twitter.com/_catwu/status/..." target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <footer data-source-note="Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-18 source feeds.">Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-18 source feeds.</footer>
+
+  <script>
+    function getTemplateAuthorSources() {
+      const sources = window.AI_BUILDERS_TEMPLATE_SOURCES || {};
+      return { identities: sources.identities || {}, avatars: sources.avatars || {} };
+    }
+
+    function getAuthorInitials(name) {
+      return (name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(function(part) { return part[0]; }).join('').toUpperCase();
+    }
+
+    function hydrateTemplateCopy() {
+      const intro = document.querySelector('.intro');
+      if (intro) {
+        const kicker = intro.querySelector('.intro-kicker');
+        const copy = intro.querySelector('.intro-copy');
+        if (kicker) kicker.textContent = intro.dataset.kicker || '';
+        if (copy) copy.textContent = intro.dataset.text || '';
+      }
+
+      const footer = document.querySelector('footer');
+      if (footer) footer.textContent = footer.dataset.sourceNote || '';
+
+      const rewriteLabel = document.body.dataset.viewLabelRewrite || '速读';
+      const originalLabel = document.body.dataset.viewLabelOriginal || '原文';
+      document.querySelectorAll('.view-toggle').forEach(function(button) {
+        if (button.dataset.viewTarget === 'rewrite') button.textContent = rewriteLabel;
+        if (button.dataset.viewTarget === 'original') button.textContent = originalLabel;
+      });
+    }
+
+    function hydrateAuthorMeta() {
+      const sources = getTemplateAuthorSources();
+      document.querySelectorAll('.card').forEach(function(card) {
+        const authorKey = card.dataset.authorKey || '';
+        const identity = sources.identities[authorKey] || {};
+        const avatarEntry = sources.avatars[authorKey] || {};
+
+        const name = identity.name || card.dataset.authorName || '';
+        const rawHandle = identity.handle || card.dataset.authorHandle || '';
+        const handle = rawHandle && rawHandle.startsWith('@') ? rawHandle : (rawHandle ? '@' + rawHandle : '');
+        const tag = identity.label || card.dataset.authorTag || '';
+        const avatar = avatarEntry.fileUrl || avatarEntry.localPath || card.dataset.authorAvatar || '';
+
+        const nameNode = card.querySelector('.author-name');
+        const tagNode = card.querySelector('.author-tag');
+        const handleNode = card.querySelector('.author-handle');
+        const avatarNode = card.querySelector('.avatar');
+        const avatarImg = card.querySelector('.avatar img');
+        const avatarFallback = card.querySelector('.avatar-fallback');
+
+        if (nameNode) nameNode.textContent = name;
+        if (tagNode) tagNode.textContent = tag;
+        if (handleNode) handleNode.textContent = handle;
+        if (avatarImg) {
+          avatarImg.src = avatar;
+          avatarImg.alt = name ? name + ' avatar' : 'Author avatar';
+        }
+        if (avatarNode) avatarNode.classList.toggle('is-fallback', !avatar);
+        if (avatarFallback) avatarFallback.textContent = getAuthorInitials(name);
+      });
+    }
+
+    function updateEditionStrip() {
+      const publishDate = document.body.dataset.publishDate;
+      const editionName = document.body.dataset.editionName || '双语精选版';
+      const editionStrip = document.getElementById('edition-strip-text');
+      if (!publishDate || !editionStrip) return;
+
+      const issueNumber = document.body.dataset.issueNumber || '';
+      if (!issueNumber) return;
+
+      const selectedCount = document.querySelectorAll('.card').length;
+      const authorCount = new Set([].slice.call(document.querySelectorAll('.author-handle')).map(function(node) { return node.textContent.trim(); }).filter(Boolean)).size;
+      const themeCount = document.querySelectorAll('.section-header').length;
+      const parts = ['第 ' + issueNumber + ' 期', publishDate, editionName, selectedCount + ' 条精选', authorCount + ' 位作者', themeCount + ' 个主题'];
+      editionStrip.innerHTML = parts.map(function(part) { return '<span class="edition-item">' + part + '</span>'; }).join('<span class="edition-sep">|</span>');
+    }
+
+    function measureVariantHeight(variant) {
+      const prevPosition = variant.style.position;
+      const prevInset = variant.style.inset;
+      const prevVisibility = variant.style.visibility;
+      const prevPointerEvents = variant.style.pointerEvents;
+      const prevOpacity = variant.style.opacity;
+      const prevTransform = variant.style.transform;
+      const prevTransition = variant.style.transition;
+      const prevOverflowY = variant.style.overflowY;
+      const prevDisplay = variant.style.display;
+
+      variant.style.position = 'relative';
+      variant.style.inset = 'auto';
+      variant.style.visibility = 'hidden';
+      variant.style.pointerEvents = 'none';
+      variant.style.opacity = '1';
+      variant.style.transform = 'none';
+      variant.style.transition = 'none';
+      variant.style.overflowY = 'visible';
+      variant.style.display = 'block';
+
+      const height = variant.scrollHeight;
+
+      variant.style.position = prevPosition;
+      variant.style.inset = prevInset;
+      variant.style.visibility = prevVisibility;
+      variant.style.pointerEvents = prevPointerEvents;
+      variant.style.opacity = prevOpacity;
+      variant.style.transform = prevTransform;
+      variant.style.transition = prevTransition;
+      variant.style.overflowY = prevOverflowY;
+      variant.style.display = prevDisplay;
+
+      return Math.ceil(height);
+    }
+
+    function getTargetHeight(shell, target) {
+      const variant = shell.querySelector('.content-variant[data-view="' + target + '"]');
+      return measureVariantHeight(variant);
+    }
+
+    function syncShellHeights() {
+      document.querySelectorAll('.content-shell').forEach(function(shell) {
+        const active = shell.querySelector('.content-variant.is-active');
+        const target = active ? active.dataset.view : 'rewrite';
+        shell.style.height = getTargetHeight(shell, target) + 'px';
+      });
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', function() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(syncShellHeights, 120);
+    });
+
+    document.querySelectorAll('.card').forEach(function(card) {
+      const buttons = card.querySelectorAll('.view-toggle');
+      const shells = card.querySelectorAll('.content-shell');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const target = button.dataset.viewTarget;
+          if (button.classList.contains('is-active')) return;
+
+          buttons.forEach(function(btn) {
+            btn.classList.toggle('is-active', btn === button);
+          });
+
+          shells.forEach(function(shell) {
+            const current = shell.querySelector('.content-variant.is-active');
+            const next = shell.querySelector('.content-variant[data-view="' + target + '"]');
+            if (!current || !next || current === next) return;
+
+            shell.style.height = shell.offsetHeight + 'px';
+            requestAnimationFrame(function() {
+              current.classList.remove('is-active');
+              next.classList.add('is-active');
+              shell.style.height = getTargetHeight(shell, target) + 'px';
+            });
+          });
+        });
+      });
+    });
+
+    hydrateTemplateCopy();
+    hydrateAuthorMeta();
+    updateEditionStrip();
+    syncShellHeights();
+  </script>
+</body>
+</html>

@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 16 Jul 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 18 Jul 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-07-18 · 开源破防日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-18-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-18-rerun.html</guid>
+      <pubDate>Sat, 18 Jul 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[今天 1 个 podcast + 18 条 X + 1 篇 blog，主线意外不是 Kimi K3 这一条头条——头条之后真正有意思的是整个产业对 open-source frontier 的实际反应速度：Vercel 同一天放出 benchmark 数据 + Levie 立刻把企业 token 经济学接上 + Agarwal 当天就把 Fable 切走。OpenAI 一头是 Sama 罕见的「承认 12 个月不是最好的 12 个月」+ Thibault 把桌面 app 第一版的迭代姿态摆出来；Anthropic Engineering 同一周把containment 三产品线 architecture 全盘托出。Evans 在 Redpoint 的 Unsupervised Learning 上把 value accrual 这条线拆开——「我们还在聊 AGI，但 LLM 第一个真正成立的市场已经在 model provider 那一层跑出来了」。]]></description>
+      <category>Kimi K3 撞穿天花板：open model 第一次拿工程 benchmark 综合第一 / Kimi K3 Crashes Through the Ceiling: Open Model Tops a Comprehensive Engineering Benchmark, OpenAI 反躬自省：voice 跨过阈值 + Altman 「最好的 12 个月即将到来」 + Codex 桌面 app 改一刀 / OpenAI Reflects: Voice Crosses the Threshold + Altman&apos;s &apos;Best 12 Months Ahead&apos; + Codex Desktop App Iterates, NotebookLM 毕业：从 Project Tailwind 到 @Gemini_Notebook / NotebookLM Graduates: From Project Tailwind to @Gemini_Notebook, Benedict Evans：先把 AGI 放到一边，看 foundation model 的 value 怎么落 / Benedict Evans: Set AGI Aside, Watch Where the Value Lands in Foundation Models, Anthropic agent containment 工程：把 blast radius 钉住，把 permission prompt 替代掉 / Anthropic&apos;s Agent Containment Engineering: Pinning the Blast Radius and Replacing Permission Prompts, 碎片拼接：K3 之后的 industry pulse + Cat Wu 招非工程岗位 screen share / Fragments: Industry Pulse After K3 + Cat Wu Recruits Non-Engineering Screen Shares</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-07-16 · 白刃战日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-16-rerun.html</link>
