@@ -697,8 +697,9 @@
             <a class="archive-link" href="./issues/ai-builders-digest-2026-07-18-rerun.html">
               <div class="archive-date">2026-07-18</div>
               <div>
-                <h3 class="archive-entry-title">K3 越线日</h3>
-                <p class="archive-entry-desc">今天 1 podcast + 18 X + 1 blog，主轴是 Kimi K3 在 web 工程 benchmark 上首次超过所有闭源对手——Rauchg 公开承认，Levie 接住「成本降一档场景解一档」，Madhu Guru 给出企业侧应对清单。</p>
+                <h3 class="archive-entry-title">电不够用日</h3>
+                <p class="archive-entry-desc">今天 1 个 podcast + 13 条 X + 3 篇 blog，主轴是物理这一层——MAD Podcast 把 OpenAI Head of Industrial Compute Sachin Khalti 请来，把「史上最大基建」、液冷做到每一层、电网不够直接投资发电、Jalapeno 自研芯片把 per-watt tokens 当核心 metric 讲完。Anthropic Engineering 连发两篇：April-23 post-mortem 追到三处独立改动撞到一起；Managed Agents 用 OS 类比把 session / harness / sandbox 解耦，接口要 design 到活得比任何具体实现更久。Claude Blog 把 self-hosted sandboxes + MCP tunnels 这块执行层讲完——execution 留在企业边界，agent loop 留在 Anthropic infra。OpenAI：Thibault 周末 reset Codex + ChatGPT Work 的所有付费用户 usage limits；Claude 官方把 Fable 5 进 Max / Team Premium（50%）+ Pro 拿一次性 <ul class="archive-list">
+00 credit 的安排讲清楚。swyx 把 AEO 每周末自动研究是免费 alpha 这条线讲三遍；Steipete 让 Codex 自己写 Codexbar 的 icon editor；Rauch 把 Vercel Sandbox 下载 free 出来；Madhu Guru 把企业做不出 chatbot 之外的 agent 是 harness + eval 人才 gap 钉出来；Thariq 把 prototype-first 压成一条 tweet。Weekend texture 由 Zara Zhang「会议默认录下来给 agent」、Nikunj 5:32am、Amasad ChessMaxxing 收尾。</p>
               </div>
               <div class="archive-meta">
                 <span class="archive-issue">Issue 53</span>
@@ -794,6 +795,602 @@
               <div>
                 <h3 class="archive-entry-title">Sol 出舱日</h3>
                 <p class="archive-entry-desc">7-10 这一期的主轴是「GPT-5.6 Sol 发布日 + Model release 周 + Agentic coding 的 operator 侧 + 一圈 texture」:OpenAI 同日 ship GPT-5.6 Sol / Terra / Luna,Sam Altman 把发布叙事直接钉在 cost-per-task 上(enterprise 怕成本,他就给成本),Thibault 同步把 ChatGPT Work 与 Codex 的 rate limit 重置两次——把「跑道」也当成发布的一部分;Peter Yang 一天试用后说「It&#39;s got that dog in it」,但更尖锐的反馈是 ChatGPT Work / Codex 这个二选一让普通用户看不懂,Sol/Terra/Luna 配 Light/Medium/High effort 没有 UI 引导;Nikunj 用一条 mega-thread 把这一周 model release 全部 catalogue——Grok 4.5 故意早一天争 frontier-adjacent 24 小时、Fable 5 被政府停三周后回来、Sonnet 5 
+        </ul>/Mtoken、美团开源 LongCat-2.0(1.6T 参数)、字节 Seedream 5 Pro、Ollama 融了 $65M,「顺带说一句,这还是周四。」;Aaron Levie 同日发布 Box AI Complex Work eval,Sol 在金融 / 医疗 / 公共部门 / 生命科学四档企业级复杂工作上比 GPT-5.5 大幅跃升;Dan Shipper 把 Sol 叫「THE GOLD STANDARD FOR KNOWLEDGE WORK」,顺手把 Peter Yang 那个吐槽接成 punchline;Rauch 把这一周的结构性判断摆出来——Meta Spark 1.1 / Grok 4.5 / GLM 5.2 会显著吃掉 token market share;Masad 给出配套论点——「AI 在让 coding 变松,我们在让 runtime 变紧」;Garry Tan 为 Meta Muse Spark 1.1 站台;Thariq(trq212)把 agentic coding 的核心技能重新框定为「reduce your unknowns」——operator 那一侧;Madhu Guru 宣布加入 Meta 做 AI 产品,「复杂系统里的 agent 还在早期」;Texture:Josh Woodward 把 Gemini 用户反馈 Top 10 公开排序并带进度,Nan Yu 用「Adeptus Astartes」一句话 meme 把 Codex 框成宗教骑士团并批评「发布剧场」,Swyx 把 AEO(Answer Engine Optimization)与 greptile-as-inspo 串成「AI 默认伸手去拿的那个」博弈,Aditya Agarwal 把 Gagan Shukla 的太空对话铺开,Amanda Askell 把 NYC 气体爆炸史读出来,Matt Turck 把 World Cup 当 AI 内容的共享底面;Podcast:Unsupervised Learning Ep 90 跟 Jürgen Schmidhuber 谈 AI 当下——他对底层技术乐观、对模型公司深度悲观,不认为递归自我改进会成为头部护城河,认为硬件进度才是 AGI 的真正瓶颈。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 46</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-07-09-rerun.html">
+              <div class="archive-date">2026-07-09</div>
+              <div>
+                <h3 class="archive-entry-title">围栏外延日</h3>
+                <p class="archive-entry-desc">7-9 Follow Builders 的主轴是「managed agents 落到架构 + 运行时 + Grok 4.5 开发者侧同日接入 + Claude Code 维护节奏 + Codex/Claude 钟摆」:Anthropic 用三篇 blog 把 managed agents 从质量回溯讲到架构再讲到运行时,postmortem 那一篇讲 Claude Code / Agent SDK / Cowork 三处独立改动 + v2.1.116 修复 +「we never intentionally degrade」,「Scaling Managed Agents」讲「harness encode assumptions that go stale」,Claude Blog 把 self-hosted sandbox + MCP tunnel 同日补上;Grok 4.5 同一天被 Vercel / Cursor / Box 接进 installed base;Boris Cherny 发 /checkup、Cat Wu 预告 Claude Tag、Tao Li 把 rewrites 重估;Nikunj 以中立 VC 视角拍钟摆、Zhang Rui 抛 founder 故事与前端 taste 卡点;Thibault 把 OpenAI 的 ship 周公开铺开、Sam Altman 把 Sol 人设钉成产品的一部分;Masad 用 compiler 类比给 agent 层重新定位、Shipper 三连贴把这一波变成 Every 周五的可复用 artifact;Texture:Steinberger 把 OpenClaw 基金会独立性讲清、Garry Tan 把 SF Public Bank 提案读成 grift mill、Matt Turck 把 World Cup 这段时间的 AI 内容从 slop 抬到「这还真有点东西」、Swyx 用 Theo&#39;s 手绘 keynote slide 印证同一条审美动力学、Nan Yu 用 PMM 链路把「故事要在每一层重讲里都还活着」画出来、Aditya Agarwal 把「不要浪费这一波」写进 Founder Fellowship 申请表;Podcast:AI &amp; I 跟一位写作者聊「怎么用 AI 不丢声音」——答案非技术,是 attention architecture。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 45</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-07-08-rerun.html">
+              <div class="archive-date">2026-07-08</div>
+              <div>
+                <h3 class="archive-entry-title">围栏日</h3>
+                <p class="archive-entry-desc">7-8 Follow Builders 的主轴是「containment 立成工程一等公民 + ship 节奏由两侧同日撑起 + 企业 IT leader 们把 7 条共性摆出来 + Zipline 用 1.4 亿英里把「ship 的是系统不是技术」再讲一次」:Anthropic Engineering 发了最完整的一份 containment 公开稿,围栏哲学落到三种产品架构,approval fatigue + 自写中间件 + egress 三条经验同日摆出;OpenAI 那边 Sam Altman 一句 GPT-5.6 sol Thursday、Thibault 一小时内 C 端语气再确认,Anthropic 那边 Claude 官方 Fable 5 延长到 7/12 + Cowork 翻倍上限延长到 8/5;Levie 同日用 3.2K 字把企业 IT leader 7 条共性摆出,operating model + 数据碎片化 + 多模型路由三条直接对应 containment 假设企业已解决的事;Rauch 用 `tools/&lt;name&gt;.ts` 把 open-SDK 哲学用 TypeScript 文件摆出来,同日迎进 Better Auth;Tao Li 同日三连,Claude 跨进「自己拿主意」那一边;Nikunj / Peter Yang / Steinberger / Zhang Rui 把「怎么用 Claude 做事」拆成 cron 本地还是云、Fable 里榨 CC、GMV 不是 ARR、早期访问资格怎么定、AI-native designer 怎么 build、vendor-to-vendor containment 失败、agent 求助框怎么设计、How to learn in the age of AI;Texture:USA-ARG 之后、8 年前那笔 SaaS 还在烧钱、SF 市政战、Swyx 的 it_happening.gif、Nan Yu 的 starting a family tbh;Podcast:Training Data 走进 Zipline,1.4 亿英里零事故,「我们不是 drone 公司」是 containment 主题的工程回声。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 44</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-07-07-rerun.html">
+              <div class="archive-date">2026-07-07</div>
+              <div>
+                <h3 class="archive-entry-title">回炉日</h3>
+                <p class="archive-entry-desc">7-7 Follow Builders 的主轴是「两边同日写 origin + ship 节奏 + 评估体系重写」:Boris Cherny 同一周把 Claude Code 从 safety research 走出来的故事第一次正式发出来,Cat Wu 把早期团队版 retrospective 同日发出,Claude 官方账号同天把第三段 origin 摆出;Claude Blog 同期把 artifacts 立成默认输出。Every 侧 Surge 创始人 Edwin 把数据公司重新框架成「为 AGI 办的学校」,Riemann bench 直接测 research-level math。Rauch 同周给 eve 上 eval + 立 coding AI 的 ultimate test,Levie 同日把 open vs closed 拆成「frontier 开新 + 企业 use case 剥层」。Masad 同日把 Replit「agent 自己改自己」立成闭环,配 Salesforce 替掉案例。7-7 ship 节奏:Thibault 把 ChatGPT / Codex / OpenClaw 三支团队同时点名,Thariq 把 Fable 5 离开 Claude 订阅的时间钉到太平洋时间 7/7 11:59:59pm。Texture:Nan Yu 把 996 框架 agent-era flip、Swyx 把 J-space 论文「开颅手术 + 自我检测」拎出来、Zara 把三场会议串成 AI builder 升级清单、Steinberger 抛 AI-assisted 工程面试提问。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 43</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-07-06-rerun.html">
+              <div class="archive-date">2026-07-06</div>
+              <div>
+                <h3 class="archive-entry-title">tab 终局日</h3>
+                <p class="archive-entry-desc">7-6 Follow Builders 的主轴是「管 agent 的纪律 + test-time compute 改写评测 + over-delegation meme 化」:Cat Wu 把 Claude Code 用成 sourcing 工具——一次 dynamic workflow 替掉整条 recruiter pipeline;Nan Yu 钉死「10-tab 是 theater、RTS 模式是死 胡同」;Noam Brown 在 No Priors 上讲 benchmark 没控制 test-time compute 是错、capability 现在是预算的函数,safety policy 没追上;Nikunj 把 Zoom 上的 parroted deck 念读判失效、两边 prompt 上传 Claude 异步更省;Dan Shipper + Matt Turck 把 Fable 的「改按钮色 开 100 agent 舰队」和「make no mistakes」同日变成多作者 meme;Garry Tan 在 Osaka 给「leverage 被删」盖章,「Age of the Unc confirmed」两字收口。Texture:Peter Yang 看世界杯淘汰赛 + 1.5K 离 100K YouTube 订阅的生日 ask,Rauch 押 USA-ARG 决赛,Turck 把 Norway 压成三 best,Masad Happy 250,Sama 把孩子双词和 GPT-5.6 新数学并列惊叹,Askell 把医生概率等价于 model 概率——两边 calibration 都缺。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 42</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-07-05-rerun.html">
+              <div class="archive-date">2026-07-05</div>
+              <div>
+                <h3 class="archive-entry-title">流量变天日</h3>
+                <p class="archive-entry-desc">7-5 Follow Builders 的主轴是「bot 超过人 + Claude 上 Apple Foundation Models + Codex 进 ChatGPT + Vercel token 战」:Cloudflare CEO Matthew Prince 在 MAD Podcast 把 2026 H1 bot 超过人类的实测数据摆出来,并押 five years 千倍,把 28 年没换过的互联网广告模型判失效。Claude Blog 把 Claude 嵌进 Apple Foundation Models framework——on-device 跑本地能力、复杂推理 / 代码 / 联网交给 Claude,Apple 这边第一次正经把 frontier model 立成 next 棒。Cat Wu 把 Fable 5 的 judgment 立到 retention analysis 里,propensity score matching 主动做对。Rauch 把 Vercel AI Gateway 整个 lifetime 的 token 花费画成动画,Anthropic dominance 与 open weight 崛起肉眼可见。Dan Shipper 把 Codex in ChatGPT 摆出来——You exec 出 image、ChatGPT 自己起 sub-agent 跑 Codex 子任务。Thibault 同一天追问 Codex 还没做对的事。Texture:Steinberger 自己做产品指向续命前提醒、Sam Altman / Amanda Askell 同日把 4th July 留一条 subordinate 节点 /World Cup 和 NIMBY 这种打底色。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 41</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-07-04-rerun.html">
+              <div class="archive-date">2026-07-04</div>
+              <div>
+                <h3 class="archive-entry-title">未知画图日</h3>
+                <p class="archive-entry-desc">7-4 Follow Builders 的主轴是「Fable 5 把 unknown-finding 立成 agent 工作流核心 + Nemotron enterprise infra」:trq212 把 AIE talk 背后那篇 discover-your-own-unknowns post 完整放出来,Swyx 同日 publish 基于它的稿子,Cat Wu 用 Claude Code + computer use 削掉 Claude Tag 的 setup friction。Levie 把 battle for context 钉住;Zhang Rui 把 tool 商品化翻到「hiring expertise」;Dan Shipper 把 token 用量按真实产品摊开。Rauch 把 agentic self-improvement 立成 observability 的下一波;Amasad 把 video gen 拽到 Replit 里。Matt Turck 把 NVIDIA Catanzaro 那场对谈放出来,Nemotron 立成 enterprise 真正愿意选的 open infra 层;MAD Podcast 同日把这条播成完整版。Texture:Steinberger 把 80K tweet 喂 Fable roast 自己;Nikunj 把 labs 长周末前发模型的 pattern 写实;Garry Tan 把 specialist wait time 和 AI 拐点对齐;Nan Yu 一句话把 training data quality 等价于 field quality——不产好 training data 的 field 大概率本来就是 crap。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 40</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-07-03-rerun.html">
+              <div class="archive-date">2026-07-03</div>
+              <div>
+                <h3 class="archive-entry-title">Tag 全员日</h3>
+                <p class="archive-entry-desc">7-3 Follow Builders 的主轴是「Claude Tag 全员」——Anthropic 同日把 Tag 从 internal tool 翻成全员产品,Cat Wu / Boris / claudeai 三条线把 Tag + Code 这条产品同日收编;Fable 5 7-7 窗口被 Tao Li / Peter Yang / Dan Shipper 三边回应;Vercel 把模型退役 + 跨服务 connectivity 同一天立成 platform 能力;Levie 把 enterprise deploy 立成 100x inference 的真正答案;NVIDIA 把 Nemotron 立成 infra 层;Zhang Rui 把 slop 的根翻掉、把 pedagogy 立成新拐点;texture 在四个城市量到;收尾 No Priors 把 Valar Atomics 讲清楚,nuclear 已经在发电、已经驱动 AI chip——下一代 model 之前、multi-agent system 的缺口、energy 的物理底层,三个杠杆同一天被一起量到。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 39</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-07-02-rerun.html">
+              <div class="archive-date">2026-07-02</div>
+              <div>
+                <h3 class="archive-entry-title">Fable 归日</h3>
+                <p class="archive-entry-desc">7-2 Follow Builders 的主轴是「Fable 5 归零」——Anthropic 把 flagship model 重新开放给 paid plan,claudeai 一天三连 + alexalbert__ 关系线 + nikunj 投资人圈 + danshipper writer 圈同时回应;Peter Yang 把 Fable 的 adoption funnel 用 5-cases tutorial + vibe check + skill install 一个人跑完。Vercel 把 agent deployment 立成 production unit,Levie 用 Devin mapreduce 把 100x inference 落成 pharma / banking / unstructured data 的具体答案;Zhang Rui 把 skill 翻成 workflow 末端产物,把 Codex 的 model swap 推到 GLM。Turck / Nikunj / Garry Tan 三人把 Lime IPO / talent vortex / lab hire 同一天里同向立;Swyx / Aditya / Amasad 把 AIE / SF / Replit 三个城市 texture 量到;Google Labs / Steinberger / Tao Li 把工具收编 + 现场坐标收掉。收尾 Every 把 consulting team 的 AI workflow 立成 operating system,knowledge work 翻成 gardening。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 38</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-07-01-rerun.html">
+              <div class="archive-date">2026-07-01</div>
+              <div>
+                <h3 class="archive-entry-title">5 出舱日</h3>
+                <p class="archive-entry-desc">7-1 Follow Builders 的主轴是「Sonnet 5 出舱」:Anthropic 官方三连发把 Sonnet 5 翻成 Free / Pro 默认,Max / Team / Enterprise 全面开通,introductory pricing 持续到 8-31;Box 紧接着把 Sonnet 5 跑过 Box AI Complex Work Eval,enterprise 端 frontier-class 标签被独立背书;Boris Cherny 同日推 Claude Desktop Linux,Trq212 把 Codex classifier policy 写明,Amasad 推 Etched——model / client / policy / hardware 四面同一天被一起收紧。Fable 5 今晚回归:Peter Yang 设闹钟、Nikunj 提前一天官宣、Dan Shipper 在 Cabo 度假准备直播 rip token。Rauchg 推 Vercel Services 把 long-running agent 的 deployment surface 摆到跟 agent runtime 同一个 unit。Madhu Guru、Aditya Agarwal、Nan Yu、Garry Tan 四个反共识同一天被问,zarazhangrui / steipete 把 production 之后的 taste / loop 立成新瓶颈。Swyx 收 AIEWF Day 1、Amasad 在纽约地铁办 world&#39;s first subway hackathon,两个城市同一天被量到「PEOPLE ARE HUNGRY FOR THIS」。收尾:Training Data 把 SemiAnalysis 的 Dylan Patel 立成 100x——hardware-software co-design 是结构 lever,不是 2x model improvement,接在 6-30「五层底盘」物理层那一格。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 37</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-06-30-rerun.html">
+              <div class="archive-date">2026-06-30</div>
+              <div>
+                <h3 class="archive-entry-title">底盘硬化日</h3>
+                <p class="archive-entry-desc">6-30 Follow Builders 的主旋律是「底盘硬化」——Anthropic Engineering 同一天摊出 4 月 Claude Code 质量 postmortem + Managed Agents 拆 session / harness / sandbox 两篇,Claude in Microsoft Foundry GA 把 procurement 层 floor 也通了,Sottiaux 把 Codex 那层 sandbox 拆成可组合的 permission profile,Boris Cherny 把 subagents 默认 background 化;Rauchg 把 Vercel function size 提了 20x;Peter Yang 赌 writing 还是 plain vanilla Claude web 最顶;Levie 长 thread 立 open vs closed 的赌,Madhu Guru 反共识地把 GLM 翻成 Google 利好;收尾是 No Priors 把 Intel CEO Lip-Bu Tan 立成物理层 floor——model、runtime、procurement、sandbox、物理,五层底盘同一天被一起收紧。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 36</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-06-29-rerun.html">
+              <div class="archive-date">2026-06-29</div>
+              <div>
+                <h3 class="archive-entry-title">分型日</h3>
+                <p class="archive-entry-desc">6-29 Follow Builders 的主旋律是 Boris Cherny 把未来 PM 角色拆成 5 种 archetype——prototype / builder / sweeper / grower / maintainer——同时 Codex 周日进 warroom、Levie 把 open mythos 立成监管 baseline、Peter Yang 拆 Anthropic PM 用 agent 直接看 PR——同一天里人 / 团队 / 模型 / 监管四个层面都在被重新分型。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 35</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-06-28-rerun.html">
+              <div class="archive-date">2026-06-28</div>
+              <div>
+                <h3 class="archive-entry-title">Codex 入魂日</h3>
+                <p class="archive-entry-desc">6-28 Follow Builders 的主旋律是「Codex 入 activity + agent infra 三边压 + vibe coding 入 system」——Sottiaux 一天填 Codex 三个老坑,加上 plant meme 宣告 Codex 已进日常;Levie / Rauch / Swyx 三人把 router / dual-use security / inference budget 同一天收紧;Peter Yang 拆 level-5 披露框架、Nan Yu 同步把 level-1-vs-6 命名,Zara Zhang 一年到 10k followers + Hermes 把智能秤 / Fitbit / MCP server 接成系统——vibe coding 不再是工具,变成 audience + integration 两件同时 compounding;博客 Claude Code 直接产 artifact,Training Data 收尾请 Engram 把 memory 立成接下来一年 model infra 的 floor。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 34</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-06-27-rerun.html">
+              <div class="archive-date">2026-06-27</div>
+              <div>
+                <h3 class="archive-entry-title">收口定价日</h3>
+                <p class="archive-entry-desc">6-27 Follow Builders 的主旋律是「Frontier 收口 + Builder 重排 + Frontier 本身被定价」三件事咬合——petergyang 摊 frontier-distill-adopt-gate 四步循环、danshipper 借玩笑把 GPT-5.6 Sol + U.S. government directive 限到 ~20 家 pre-approved 的现况命名、Levie 补刀 GPT-5.6 is real + no walls in progress、thsottiaux 同一周给所有 Codex 用户 usage reset on the house,frontier 收口且能力还在 scaling、gating 是 deliberate lever;Builder 侧 petergyang 把「钱在移到 services(顺带 bundled software)、pure-play software 公司难」当市场结构说出来,adityaag 把 consumer 侧的「zero tolerance for shallow,depth 用人类预算其余 route 给 agents」画出来,swyx 同一天办第一场 AI FDE miniconference,FDE 这个夹在 frontier lab 和 customer outcome 之间的工种被正式命名;rauchg 把「agent 难 debug」拆成模型层 non-determinism + infra 层 non-determinism,observability 是开放问题,同一天压「UI for AI is here, it&#39;s @shadcn」,agent 时代的 runtime / UI primitive / UX detail 三张 surface 在 6-27 站位;Taste 一边是反话语:nikunj push back「taste 必须从 arena 里出来」、thenanyu 命名「secret level 6」——不追 side quest、知道哪些问题要拒绝、zarazhangrui「你不需要神替你写邮件」把 audience 推到 compounding 那一侧;Frontier 本身被定价:OpenAI 那一侧公开承认 vibe 才是 ground truth、承诺 all-you-can-eat tokens,Y Combinator 那一侧明确说这种 gate 模式是 anti-startup。收尾 No Priors 这一期 Noam Brown 把 frontier benchmark 框架拆掉,test-time compute 是 RSPs 和 frontier policy 还没追上的那一维——这一期给前面 frontier 收口 / 定价的讨论补一个最底层的根据。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 33</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-06-26-rerun.html">
+              <div class="archive-date">2026-06-26</div>
+              <div>
+                <h3 class="archive-entry-title">Bot 网倒转日</h3>
+                <p class="archive-entry-desc">6-26 Follow Builders 的主旋律是「Bot 网倒转 + Codex 走到全 surface」——Cloudflare CEO Matthew Prince 在 The MAD Podcast 上把「2026 上半年 bot 流量已超过人类流量」立成 6-26 最远的 anchor;petergyang 把 Codex 当 travel agent 跑日本行程、又抱怨 mobile 上只能自制 iPhone shortcut、还提前喊 Identity verification coming to model access,thsottiaux 把 Feb 2 日的 Codex App 拉回日历并放「Codex for everything at OpenAI」、amasad 预告 Replit mobile 大更新、trq212 把 Claude Tag 推到 podcast 和 AIE,Codex 这一侧的 surface 战同一天被四个团队同时打;rauchg 三连:Grok Imagine Video 占 Vercel AI Gateway 50% 视频生成、imbue coding agents with design standards、Next.js 错误页 Copy prompt,Vercel 从 hosting 推到 platform;Levie 两天连发把 AI 监管立成 de facto——capability / compute 门槛触发强制政府 review,frontier 本身成监管对象;应用层 adityaag「开纯软件公司 stupidly hard」、danshipper NYC AI-first medicine stealth、garrytan 把 Legora 立成 defining legal AI,三案都是 custom-work-eats-horizontal 的 vertical outcomes 答案;swyx 公开 AIE 的「怎么 booked 上台」、zarazhangrui「build audience = build company」、petergyang「Identity verification 100% coming」,Talk / Audience / Identity Verification 三张新 surface 在 6-26 同时被命名;博客:Anthropic 出 Swift package 让 Claude 接入 Apple Foundation Models framework,Apple 那一侧的 model routing 是 Apple on-device + Claude 远端这一对。Bot 网倒转 + Codex 全表面 + AI 监管 de facto + vertical outcomes + 三张新 surface,五件事在同一天咬合。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 32</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-06-25-rerun.html">
+              <div class="archive-date">2026-06-25</div>
+              <div>
+                <h3 class="archive-entry-title">Surge 立日</h3>
+                <p class="archive-entry-desc">6-25 Follow Builders 的主旋律是「Surge AI 把 eval 立成 product」——danshipper 提前放 AI &amp; I by Every 这期 Edwin Chen,Surge silent 跑过 1B+ revenue、给 frontier labs 提供 expert data environment 和 eval substrate,「training AGI 用的 data school」是今日最远的一步;Vercel/rauchg 同一天收 AI Gateway 的 tokens/uptime 体量、GLM 跑进 stack、AI 拉开 solopreneurship 新一波,把 infra 这一侧的 friction 一直在收;petergyang 给 Claude Design 一次 day-1 impression、Levie 把 Claude Tag 的 shared-channel 细节挑出来,是「harness UX 走向可读」的两次印;swyx 把演讲 RL alpha + Software Factories 时代「rebuild much infra」同发;taste 那一侧 Zara Figma 收 community、Ryo Lu 画 cursor/notion 边界、Nikunj 立「child&#39;s play = edge」;adityaag 收 Sridhar @ Snowflake 的 leader 姿态、South Park Commons 把 sharpest minds 关进 intimate setting,GoogleLabs Project Genie 拿 Cannes Lions Grand Prix 是创意 AI 工具被认作 craft 的里程碑。收尾 AI &amp; I by Every 这期 Edwin Chen 把「school for AGI」立成 6-25 最远的一步。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 31</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-06-24-rerun.html">
+              <div class="archive-date">2026-06-24</div>
+              <div>
+                <h3 class="archive-entry-title">Claude Tag 升舱日</h3>
+                <p class="archive-entry-desc">6-24 Follow Builders 的主旋律是 Claude Tag 升舱——Anthropic 把 Claude 搬进 Slack channel 立成多玩家 persistent teammate,claudeai 官方账号定调、_catwu 给 65% 内部 PR 合并数字、bcherny 画运行时、karpathy 立第三次 UI/UX paradigm;CLI 当新 API 这条线同一天被 Shopify UCP / Google Workspace CLI / Linzumi 三件事写完,open vs closed 的 barbell pricing 由 Levie + Swyx + Madhusudhan 一条 thread 接清;收尾 No Priors 这期 Biohub 三位 co-founder 把 biology 立成 open-source frontier。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 30</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-06-23-rerun.html">
+              <div class="archive-date">2026-06-23</div>
+              <div>
+                <h3 class="archive-entry-title">eval 升格日</h3>
+                <p class="archive-entry-desc">6-23 Follow Builders 的主旋律是「eval 升格」:Levie 把 applied-AI 的瓶颈从 model 移到 eval,Box 当天把 HTML 立成 agent-produced content 的 distribution format 和 eval-loop 表面;Sama 同一天把 security 从 research benchmark 拉到 product launch(GPT-5.5-Cyber 满血版 + Codex Security +「Patch The Planet」),Sottiaux 接住 Codex 一侧的 harness 半边。Quality distribution 这条线 Zara Zhang 拆 Frontend Slides skill(22k+ stars)成 walkthrough,Ryo Lu 在 Cursor Compile 给 talk「what doesn&#39;t change」。rauchg 把 Vercel 的 harness surface 压两个轴:Claude Design 一键发布 + WebSocket 从 CDN 到 Fluid 全程支持。swyx 把 SpaceX 算成 NeoCloud + NeoLab(模型 lab + 自家 neocloud 的唯一垂直),petergyang 从用户视角补一刀——Claude Code「dynamic workflow」他自己读了一遍也不知道什么时候用,harness feature surface 推得比 mental model 快。收尾 AI &amp; I by Every 这期 Krieger 把 Fable 5 怎么被「日用」讲透——day-one impression 跟 day-N workflow adaptation 是两件事,workflow 要被重写而不是被加速。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 29</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-06-22-rerun.html">
+              <div class="archive-date">2026-06-22</div>
+              <div>
+                <h3 class="archive-entry-title">吃 harness 日</h3>
+                <p class="archive-entry-desc">6-22 Follow Builders 的主旋律是「吃 harness」:Levie 收单 Sakana Fugu 把 multi-model routing 挪进 model 自己,routing 不再是 harness 层的活;Steipete(OpenClaw 创始人)点头确认。rauchg 把 v0 的 performance cookbook 公开,rendering harness 是新的产品面 gate;同一作者立 agent 时代的 cost line——IKEA effect 在迭代上还你 agent 在实现上省的时间;ryolu_ 把 Books in ryOS 拆成「Cursor mobile + 键盘 taste」双 harness;petergyang 转 @liu8in 的 HTML-as-LLM-native-language——agentic video 的底是 HTML。zarazhangrui 立 input &gt; output(常见 3-5 倍)是防 AI slop 的规则,紧接一句「I&#39;m talking about context, not prompt」;garrytan 把 2026 的 thesis 钉成「AGI 给 intelligence,personal context 给 unlock」;thenanyu 给 quality 立 irrational choice 的注脚。thsottiaux 不在问 Codex「什么坏了」,在问「什么 not delightful」;petergyang 从用户视角立 tokenmaxxing 是 subscription 模式造的心理 dissonance。收尾 Training Data × Logan Kilpatrick 把 model eats the harness 立成 2026 主线——harness 不再是缝合的地方,model 才是。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 28</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-06-21-rerun.html">
+              <div class="archive-date">2026-06-21</div>
+              <div>
+                <h3 class="archive-entry-title">底盘日</h3>
+                <p class="archive-entry-desc">Anthropic 同一天放两篇工程博客加一篇 Claude Blog,把 managed agents 的整层 runtime 拆成 brain / hands / sandbox / MCP tunnel 四件,Claude Code 4-23 postmortem 公开承认 Sonnet 升级撞墙;Levie 说 open weights 跟 frontier 的 gap 在塌,Rauchg 说 Z.ai 的 GLM-5.2 coding 让他「almost shocked」;Sottiaux 说 Codex app 当年是用「okayish」前端模型做的,等模型把前端能力做出来 Codex 会再变一次;realMadhuguru 把 PM 摆到台面——SWE 找到了 AI-native interface,PM 还停在 PRD,Nikunj 说 priors 要每几周复位,Zarazhangrui 说 proactiveness 听起来好但落地难,Petergyang 补一刀说 Codex / Claude 
+        </ul>00 都花不完;收尾 Unsupervised Learning 这期 Lab Wars 三人谈,把 API business 会不会被 lab 自己关掉、SpaceX 是不是 AI infra 公司、Fable 反应到底什么信号一起摆到桌上。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 27</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-06-20-rerun.html">
+              <div class="archive-date">2026-06-20</div>
+              <div>
+                <h3 class="archive-entry-title">封箱日</h3>
+                <p class="archive-entry-desc">Anthropic Engineering 当天发长文讲「How we contain Claude across products」,containment 是 2026 年 Claude 每一个产品外面包的那层壳;Harness 层被 Codex + Vercel 同时压扁——Sottiaux 的 remote / local handoff、Rauchg 的「下一门语言是 markdown」+ vercel deploy、Steinberger 招双语工程师;Levie 点名 agent 真正瓶颈是「context + 人看得懂的共享工作区」,Peter Yang 从 Claude Code 倒戈 Codex,Boris Cherny 用同一套 harness 解 3500 年前的克里特线性 A;Vibecon 让 vibe coding 当成工艺立项,Swyx 一句 
+        </ul>T 笑话把 Anthropic 推出 startup 估值圈;Zhang Rui 给 AI 时代个人护城河压成 Agency / Taste / Distribution,Garry Tan / Matt Turck 把 board culture 和 VC exhaustion 配成一对;Askell 把医学 AI 保守派话术怼回 protocol 问题;收尾 No Priors × Intel CEO Lip Bu Tan 谈半导体供应链——crawl、听客户、简化产品、修资产负债表,再去争 next-gen。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 26</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-06-19-rerun.html">
+              <div class="archive-date">2026-06-19</div>
+              <div>
+                <h3 class="archive-entry-title">出件日</h3>
+                <p class="archive-entry-desc">Claude Code 不再只是 coding 工具——Artifacts 让一段 session 直接变成可分享的活页面(claudeai / bcherny / _catwu / trq212 / petergyang),博客版把同一件事讲透;open-weights 这一周收成,swyx 单日 +55%、levie 把意义叠成四件;harness 层继续被改写,Sottiaux 把 Codex 锚到「What do you use」、Steinberger 一句话把世界压成快 / 慢 API 两类;vibe coding 作为工艺在成型,Nan Yu 用 multi-turn 把用户脑子留在线上、Zara Zhang 的 Frontend Slides skill 让 skill 成为 taste 的最小单元;Garry Tan 把对 
+        </ul>00M 法案的批评升成口号,Nikunj 给 Artie 庆祝,Dan Shipper 给 Every 招 managing editor——工艺写进 job post;MAD × Stephen Balaban 把镜头拉到物理层——gw 级 AI 工厂是新物理。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 25</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-06-18-rerun.html">
+              <div class="archive-date">2026-06-18</div>
+              <div>
+                <h3 class="archive-entry-title">立型日</h3>
+                <p class="archive-entry-desc">Levie 把 applied AI 层立成四件套(workflow bridge + model router + FDE 实施 + domain-specific GTM):「bitter lesson 在极限处可能抹平这一切,但企业今天就需要帮助转型」。Harness 层在同一天从三边被压:Codex SDK/CLI 可接任何开源模型(Sottiaux),Vercel Next.js evals 上开源 GLM 5.2 压过闭源 Opus 4.8(Rauch,eve 是 React-Next.js 类比下的 agent-deploy 答案),Claude Design ↔ Code 双向集成在所有付费 plan 推 beta(claudeai)。应用层 economy:Garry Tan 算 Fable-5 ban 约 1200 万美元/小时(500 万 frontier AI-coding 日活 × 90 美元/小时 fully-loaded × Fable 48 小时 17.8% routing 份额)。Taste 与 vibe:Nan Yu 给辨义线(taste ≠ 审美 taste,builder 语境下是「做什么/不做什么/怎么落」的选择);Zara Zhang 立 vibe-coded 应用的失败模式(瓶颈从 production 移到 curation);Masad 把 Replit 钉在「跨供应商出货表面」。人与资本:Sama 签下 Noam Brown(等了 10 年);Nikunj 反 tranched round + emerging managers(一条 thread 三件事);Dan Shipper 公开 Every 投资 Tacit(把线拉回 2023 年的「Against Explanations」);Aditya Agarwal 开放 SPC 申请(「问题本身就是 frontier signal」);Josh Woodward 抬 Voltage 团队工作样本立 Google Labs 「Co-create」(culture post 当 retention/recruiting signal)。收尾:AI &amp; I by Every × Kyle Daigle(GitHub COO)——每月 1700 万 PR 指数增长、legal/finance 也用 Copilot、开源维护者被 PR 海啸淹,productive 回应是 agentic code review + agentic merge;采访里抛「AI 克隆」开新 category:用 AI 复刻对方练高难度对话。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 24</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-06-17-rerun.html">
+              <div class="archive-date">2026-06-17</div>
+              <div>
+                <h3 class="archive-entry-title">Cursor 收编日</h3>
+                <p class="archive-entry-desc">SpaceX-Cursor 把「applied AI 模板」立成可见,Levie/Madhu/Nikunj/Ryo Lu 从四个角度切;Sottiaux 把 Codex 推 Europe;Rauchg 把 long-running 接到 AI Cloud;Zara/Dan Shipper 给 app-layer 经济学;Madhu/Joshwoodward 拉人这一面;Claude 进了 Apple Foundation Models;Simile 把 simulation 立成下一根柱子。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 23</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-06-15-rerun.html">
+              <div class="archive-date">2026-06-15</div>
+              <div>
+                <h3 class="archive-entry-title">open-weights 收编日</h3>
+                <p class="archive-entry-desc">Satya 的「learning loop 才是 IP」被 Amjad / Levie 同时认领,Levie 把 open weights 立成分发画线日的赢家;Garry Tan / Rauchg 把 open 那一面加厚;Sottiaux / Swyx 把 Codex 推远一步;Dan Shipper 用 FREE FABLE 落点;Zhang Rui 把 skill 反过来;Jensen Huang 把 AI 工厂立成这十年的投资语言。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 22</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-06-14-rerun.html">
+              <div class="archive-date">2026-06-14</div>
+              <div>
+                <h3 class="archive-entry-title">分发边界画线日</h3>
+                <p class="archive-entry-desc">Fable 出口管制一周后分发边界从自愿承诺挪到 gating:Amjad / Nan Yu / Levie / Dan Shipper 把这条线拉成多张面孔;Codex 在 Sottiaux / Steinberger 手里继续滑向日常,Levie 把 model router 立成值钱的一层;Nikunj / Madhusudhan / Swyx 收 builder 经济学几条边,Zhang Rui / Garry Tan 谈 taste 和新地图,No Priors 一集 Biohub 生物学开源在 AI 闭源权重一周里形成对照。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 21</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-06-13-rerun.html">
+              <div class="archive-date">2026-06-13</div>
+              <div>
+                <h3 class="archive-entry-title">harness 上桌日</h3>
+                <p class="archive-entry-desc">Anthropic 同日三篇把 Managed Agents 摆成产品,Rauchg 在 @aisdk 上发 HarnessAgent,Steinberger 把 Codex 跑进 crabbox 自建,Swyx 提 Git 可能也得死;分发边界同步在画,moat 框架也在重画。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 20</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-06-12-rerun.html">
+              <div class="archive-date">2026-06-12</div>
+              <div>
+                <h3 class="archive-entry-title">harness 收编日</h3>
+                <p class="archive-entry-desc">Ona 进 OpenAI 收编 Codex 的 harness,Replit Fable 把 zero-frustration 摆上 vibecoding 桌面,Logan Kilpatrick 把 Antigravity 摆成 Google 的 agent harness through-line,Anthropic 把 contain 讲成 harness 工程。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 19</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-06-10-rerun.html">
+              <div class="archive-date">2026-06-10</div>
+              <div>
+                <h3 class="archive-entry-title">Fable 5 换代日</h3>
+                <p class="archive-entry-desc">Anthropic 把同一底模切成 Fable 5 / Mythos 5,Karpathy、Alex Albert、Boris Cherny、Garry Tan、Levie 把这一跳定性成「主版本号级」,全员重新校准「怎么和 Claude 工作」;infra 侧 34 天签约到 GA,应用层接住 untrainable corner,Every 在上线日用《After Automation》拉回一记矫正。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 18</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-06-09-rerun.html">
+              <div class="archive-date">2026-06-09</div>
+              <div>
+                <h3 class="archive-entry-title">基准换代日</h3>
+                <p class="archive-entry-desc">swyx 借 METR FrontierCode 把 SWEBench 时代的 benchmark 信用拆掉,bcherny / thsottiaux / petergyang 三条独立线把 agent 推到手机主屏,Claude Blog 同日把 Foundation Models 框架接通,Levie 把「context 永远不能被模型吃光」讲成应用层 moat。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 17</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-06-08-rerun.html">
+              <div class="archive-date">2026-06-08</div>
+              <div>
+                <h3 class="archive-entry-title">单位工作日</h3>
+                <p class="archive-entry-desc">Steinberger + Cherny + Altman + Yang + Anthropic 五条线在 6-8 同一天把「loop over prompt」讲到文化和产品层都成型;Rauchg/Nikunj/Levie 三人独立收敛到「token 经济学 V 形拐点 + 路由层即 moat」,prompt 是中间态、loop 才是单位工作。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 16</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-06-07-rerun.html">
+              <div class="archive-date">2026-06-07</div>
+              <div>
+                <h3 class="archive-entry-title">架构与制度日</h3>
+                <p class="archive-entry-desc">Lucas Kaiser 公开讲 post-transformer 还在路上,Madhu+Levie 同日把「模型路由」摆成新分水岭,Swyx 一句「加州 non-compete 比三个开源平台加起来更影响知识扩散」点穿制度变量——技术主线和制度主线在 6-7 同一天交叉。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 15</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-06-06-rerun.html">
+              <div class="archive-date">2026-06-06</div>
+              <div>
+                <h3 class="archive-entry-title">工位成型日</h3>
+                <p class="archive-entry-desc">Agent filesystem 脱钩 sandbox、Codex 上量图、Composer 2.5、Garry Tan 新项目齐发,builder 工位从「能跑」走到「能稳」;另一面 Figma 跟投资人反向讲 SaaS 末日其实是金矿。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 14</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-06-05-rerun.html">
+              <div class="archive-date">2026-06-05</div>
+              <div>
+                <h3 class="archive-entry-title">透明度叠满日</h3>
+                <p class="archive-entry-desc">Anthropic 三连发 + Claude 80% 内部数据 + ChatGPT 重大更新,「harness、eval、context」的工程主线被官方背书成桌面上最稳的那张牌。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 13</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-06-04-rerun.html">
+              <div class="archive-date">2026-06-04</div>
+              <div>
+                <h3 class="archive-entry-title">harness 收口日</h3>
+                <p class="archive-entry-desc">Dreambeans 移动端正式公开、Anthropic 长文出炉、Satya 进 builder 圈,「harness + eval + context」主线被四家同时盖章。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 12</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-06-03-rerun.html">
+              <div class="archive-date">2026-06-03</div>
+              <div>
+                <h3 class="archive-entry-title">真空后首日日报</h3>
+                <p class="archive-entry-desc">RSS 真空之后第一波回归,三家不同来源同时把[harness、eval、context]推回台面,模型层再次被让位给上层工作面。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 11</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-05-29-rerun.html">
+              <div class="archive-date">2026-05-29</div>
+              <div>
+                <h3 class="archive-entry-title">底座上桌日报</h3>
+                <p class="archive-entry-desc">Build 之后业界在讲同一件事:harness、eval、context 才是新护城河,模型本身反倒变成可替换件。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 10</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-05-27-rerun.html">
+              <div class="archive-date">2026-05-27</div>
+              <div>
+                <h3 class="archive-entry-title">工作流成型日报</h3>
+                <p class="archive-entry-desc">Claude Code 的非技术用途被发现、autoreview skill 成为标配、coding agent 使用分工开始稳定——AI 日常工作流正在从实验变成惯例。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 09</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-05-26-rerun.html">
+              <div class="archive-date">2026-05-26</div>
+              <div>
+                <h3 class="archive-entry-title">系统先行日报</h3>
+                <p class="archive-entry-desc">AI 时代的 MVP 逻辑反转了：先把文档和系统搭好，agent 才能跑起来；同时 token 效率成为新工程纪律，而岗位争论继续从华尔街到硅谷。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 08</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-05-25-rerun.html">
+              <div class="archive-date">2026-05-25</div>
+              <div>
+                <h3 class="archive-entry-title">实战应用日报</h3>
+                <p class="archive-entry-desc">AI agent 开始真正进入初创企业的运营层和工程层：不招人也能跑起来的 founder、能逆向工程任何网站 API 的开发者、以及那些因为看不见最后一公里而被 AI demo 误导的 CEO。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 07</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-05-24-rerun.html">
+              <div class="archive-date">2026-05-24</div>
+              <div>
+                <h3 class="archive-entry-title">速度竞赛日报</h3>
+                <p class="archive-entry-desc">AI 开发全面进入速度与成本竞争：模型 fine-tune 变成下午茶级别的操作，coding agent 开始产出比人更多代码，而岗位并未消失，只是重新定义了边界。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 06</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-05-23-rerun.html">
+              <div class="archive-date">2026-05-23</div>
+              <div>
+                <h3 class="archive-entry-title">填空市场日报</h3>
+                <p class="archive-entry-desc">Bar-is-zero 市场框架走红，安全工程师即将短缺，同时模型研究者开始正视 world model 与 continual learning 的深层挑战。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 05</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-05-22-rerun.html">
+              <div class="archive-date">2026-05-22</div>
+              <div>
+                <h3 class="archive-entry-title">AI 底座日报</h3>
+                <p class="archive-entry-desc">Stainless 被 Anthropic 收购，MCP 接口层成为新战场；agent 基础设施赢家开始浮现，新岗位与团队形态同步成形。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 04</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-05-21-rerun.html">
+              <div class="archive-date">2026-05-21</div>
+              <div>
+                <h3 class="archive-entry-title">接口底座日报</h3>
+                <p class="archive-entry-desc">能力边界继续上推，但真正决定落地速度的，已经是 MCP、搜索、权限边界与 AI-native 团队分工。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 03</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-05-20-rerun.html">
+              <div class="archive-date">2026-05-20</div>
+              <div>
+                <h3 class="archive-entry-title">组织重构日报</h3>
+                <p class="archive-entry-desc">前沿人才回流实验室，常驻式 agent 开始成形，企业则同步进入 token 成本、容量与控制层治理。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 02</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
+          <li class="archive-item">
+            <a class="archive-link" href="./issues/ai-builders-digest-2026-05-19-rerun.html">
+              <div class="archive-date">2026-05-19</div>
+              <div>
+                <h3 class="archive-entry-title">底层变量日报</h3>
+                <p class="archive-entry-desc">人才结构在重估，eval 回到真实 traces，注意力与资本结构比“把产品做出来”本身更决定结果。</p>
+              </div>
+              <div class="archive-meta">
+                <span class="archive-issue">Issue 01</span>
+                <span class="archive-arrow">打开本期 →</span>
+              </div>
+            </a>
+          </li>
         </ul>/Mtoken、美团开源 LongCat-2.0(1.6T 参数)、字节 Seedream 5 Pro、Ollama 融了 $65M,「顺带说一句,这还是周四。」;Aaron Levie 同日发布 Box AI Complex Work eval,Sol 在金融 / 医疗 / 公共部门 / 生命科学四档企业级复杂工作上比 GPT-5.5 大幅跃升;Dan Shipper 把 Sol 叫「THE GOLD STANDARD FOR KNOWLEDGE WORK」,顺手把 Peter Yang 那个吐槽接成 punchline;Rauch 把这一周的结构性判断摆出来——Meta Spark 1.1 / Grok 4.5 / GLM 5.2 会显著吃掉 token market share;Masad 给出配套论点——「AI 在让 coding 变松,我们在让 runtime 变紧」;Garry Tan 为 Meta Muse Spark 1.1 站台;Thariq(trq212)把 agentic coding 的核心技能重新框定为「reduce your unknowns」——operator 那一侧;Madhu Guru 宣布加入 Meta 做 AI 产品,「复杂系统里的 agent 还在早期」;Texture:Josh Woodward 把 Gemini 用户反馈 Top 10 公开排序并带进度,Nan Yu 用「Adeptus Astartes」一句话 meme 把 Codex 框成宗教骑士团并批评「发布剧场」,Swyx 把 AEO(Answer Engine Optimization)与 greptile-as-inspo 串成「AI 默认伸手去拿的那个」博弈,Aditya Agarwal 把 Gagan Shukla 的太空对话铺开,Amanda Askell 把 NYC 气体爆炸史读出来,Matt Turck 把 World Cup 当 AI 内容的共享底面;Podcast:Unsupervised Learning Ep 90 跟 Jürgen Schmidhuber 谈 AI 当下——他对底层技术乐观、对模型公司深度悲观,不认为递归自我改进会成为头部护城河,认为硬件进度才是 AGI 的真正瓶颈。</p>
               </div>
               <div class="archive-meta">

@@ -130,33 +130,33 @@
     </div>
     <div class="masthead-subtitle">Bilingual edition · 双语对照版</div>
     <div class="edition-strip">
-      <span class="edition-strip-text" id="edition-strip-text">第 53 期｜2026-07-18｜双语精选版｜15 条精选｜13 位作者｜6 个主题</span>
+      <span class="edition-strip-text" id="edition-strip-text">第 53 期｜2026-07-18｜双语精选版｜17 条精选｜15 位作者｜13 个主题</span>
       <a class="edition-return-link" href="../index.html">返回目录</a>
     </div>
   </header>
 
-  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="今天 1 个 podcast + 18 条 X + 1 篇 blog，主轴意外是 Kimi K3。Rauchg 直接承认 K3 在他们家的 web 工程 benchmark 上超过了自家闭源 Fable——这是开源权重第一次在综合工程 benchmark 上压过所有闭源对手，整条「开源追平 frontier」的曲线第一次完整画出来。Madhu Guru 顺势给出企业侧的应对清单；Aditya 已经在行动切走 Fable；Levie 把这条曲线翻译成「成本降一档、场景解一档」的工程语言；Dan 准备 vibe-check、但保持怀疑。另一边，Anthropic 把 agent containment 的工程手册公开，把 blast radius 这件事摆到台面；Boris 接着给出 Claude Code 的 4 级成熟度阶梯。Podcast 这边 Benedict Evans 上 Unsupervised Learning，把「AI 是新电力」这类手挥式类比挡掉，并指出 capex 越大的层 moat 反而越窄。周末的 fragment 是 Sama 说新的语音模型真的跨过了门槛。">
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="今天 1 个 podcast + 13 条 X + 3 篇 blog，主轴意外是物理这一层——MAD Podcast 把 OpenAI 的 Head of Industrial Compute、Sachin Khalti（前 Stanford 教授、前 Intel CTO）请来，把「史上最大基建」一次性讲完。数据中心是「把电子变成智能」的工厂，液冷要做到每一层（连传输电力的 transformer 都要冷），电网不够就直接投资发电和输电；Jalapeno 自研芯片把 per-watt tokens 当核心优化指标，因为电成了 bottleneck——近处的游戏是人类工程师把 GW 级电送上线，再为已知 workload co-design 硅。Anthropic Engineering 同一天连发两篇把执行层这件事讲完：April-23 post-mortem 追到三处独立改动撞到一起（Claude Code 默认 reasoning effort 降级 / idle session 每轮都清旧 thinking / 减啰嗦 system prompt 伤了 coding），关键教训是三次小 drift 看起来像一次大 regression；Managed Agents 那篇是 OS 类比——把 session / harness / sandbox 三件事虚拟化、互相解耦，harness 编码了对「Claude 自己不能做什么」的假设，但那些假设会过期，所以接口要 design 到活得比任何具体实现更久。Claude Blog 把 execution 这块继续展开：self-hosted sandboxes + MCP tunnels 让 code execution、敏感文件、packages 全留在企业边界里，agent loop 仍然在 Anthropic infra 上跑。OpenAI 这一头：Thibault 周末把 Codex + ChatGPT Work 所有付费用户的 usage limits 全部 reset，并暗示可能顺手 reset 了别处的 rate limits——GPT-5.6 Sol 的需求信号强到这一侧愿意周末把 rate-limit 闸门放掉。Claude 官方账号周末把 Fable 5 的供给侧调整讲清楚：7 月 20 日起 Fable 5 进 Max / Team Premium（50% of limits），Pro / Team Standard 拿到一次性 $100 credit——承认 Fable 需求「challenging to predict」之后才稳定下来。AEO / SEO 这一块 swyx 把同一条线讲三遍：每周末让 agent 自动研究怎么提升自家排名是免费 alpha，alpha 只在 meta-conversation 转到 on-policy auto-AEO 那天才消失。Peter Yang 报告 Codex browser use 终于被击败；Steipete 把 Codex 当 build partner 用出花（macOS picker 自己点 / 让 Codex 自己写 Codexbar 的 icon editor）；Rauch 把 Vercel Sandbox 的下载功能免费出来，Levie 把「AI 越便宜 TAM 越大」的逻辑钉出来。Madhu Guru 把企业做不出 chatbot 之外 agent 的真相讲完——harness + eval 的人才 gap，Anthropic 的抽象层真正在争取的客户就是这一批「三件都没有」的企业；Thariq 把 prototype-first 的心得压成一条 tweet，跟 Granola 的 shaping→validate→make it good 是同一个 shape。Weekend texture 由 Zara Zhang「会议现在默认被录下来给 agent 用」、Nikunj 5:32am 的父子对话、Amasad 给 Replit 社区的 ChessMaxxing 命名收尾。">
     <div class="intro-inner">
       <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
-      <p class="intro-copy">今天 1 个 podcast + 18 条 X + 1 篇 blog，主轴意外是 Kimi K3。Rauchg 直接承认 K3 在他们家的 web 工程 benchmark 上超过了自家闭源 Fable——这是开源权重第一次在综合工程 benchmark 上压过所有闭源对手，整条「开源追平 frontier」的曲线第一次完整画出来。Madhu Guru 顺势给出企业侧的应对清单；Aditya 已经在行动切走 Fable；Levie 把这条曲线翻译成「成本降一档、场景解一档」的工程语言；Dan 准备 vibe-check、但保持怀疑。另一边，Anthropic 把 agent containment 的工程手册公开，把 blast radius 这件事摆到台面；Boris 接着给出 Claude Code 的 4 级成熟度阶梯。Podcast 这边 Benedict Evans 上 Unsupervised Learning，把「AI 是新电力」这类手挥式类比挡掉，并指出 capex 越大的层 moat 反而越窄。周末的 fragment 是 Sama 说新的语音模型真的跨过了门槛。</p>
+      <p class="intro-copy">今天 1 个 podcast + 13 条 X + 3 篇 blog，主轴意外是物理这一层——MAD Podcast 把 OpenAI 的 Head of Industrial Compute、Sachin Khalti（前 Stanford 教授、前 Intel CTO）请来，把「史上最大基建」一次性讲完。数据中心是「把电子变成智能」的工厂，液冷要做到每一层（连传输电力的 transformer 都要冷），电网不够就直接投资发电和输电；Jalapeno 自研芯片把 per-watt tokens 当核心优化指标，因为电成了 bottleneck——近处的游戏是人类工程师把 GW 级电送上线，再为已知 workload co-design 硅。Anthropic Engineering 同一天连发两篇把执行层这件事讲完：April-23 post-mortem 追到三处独立改动撞到一起（Claude Code 默认 reasoning effort 降级 / idle session 每轮都清旧 thinking / 减啰嗦 system prompt 伤了 coding），关键教训是三次小 drift 看起来像一次大 regression；Managed Agents 那篇是 OS 类比——把 session / harness / sandbox 三件事虚拟化、互相解耦，harness 编码了对「Claude 自己不能做什么」的假设，但那些假设会过期，所以接口要 design 到活得比任何具体实现更久。Claude Blog 把 execution 这块继续展开：self-hosted sandboxes + MCP tunnels 让 code execution、敏感文件、packages 全留在企业边界里，agent loop 仍然在 Anthropic infra 上跑。OpenAI 这一头：Thibault 周末把 Codex + ChatGPT Work 所有付费用户的 usage limits 全部 reset，并暗示可能顺手 reset 了别处的 rate limits——GPT-5.6 Sol 的需求信号强到这一侧愿意周末把 rate-limit 闸门放掉。Claude 官方账号周末把 Fable 5 的供给侧调整讲清楚：7 月 20 日起 Fable 5 进 Max / Team Premium（50% of limits），Pro / Team Standard 拿到一次性 $100 credit——承认 Fable 需求「challenging to predict」之后才稳定下来。AEO / SEO 这一块 swyx 把同一条线讲三遍：每周末让 agent 自动研究怎么提升自家排名是免费 alpha，alpha 只在 meta-conversation 转到 on-policy auto-AEO 那天才消失。Peter Yang 报告 Codex browser use 终于被击败；Steipete 把 Codex 当 build partner 用出花（macOS picker 自己点 / 让 Codex 自己写 Codexbar 的 icon editor）；Rauch 把 Vercel Sandbox 的下载功能免费出来，Levie 把「AI 越便宜 TAM 越大」的逻辑钉出来。Madhu Guru 把企业做不出 chatbot 之外 agent 的真相讲完——harness + eval 的人才 gap，Anthropic 的抽象层真正在争取的客户就是这一批「三件都没有」的企业；Thariq 把 prototype-first 的心得压成一条 tweet，跟 Granola 的 shaping→validate→make it good 是同一个 shape。Weekend texture 由 Zara Zhang「会议现在默认被录下来给 agent 用」、Nikunj 5:32am 的父子对话、Amasad 给 Replit 社区的 ChessMaxxing 命名收尾。</p>
     </div>
   </section>
 
   <section class="section-header">
     <div class="section-label">Theme 01</div>
-    <h2 class="section-title">Kimi K3 越线：开源权重在 web 工程评测上首次登顶 / Kimi K3 Crosses the Line: Open Weights Top the Web-Engineering Benchmark</h2>
-    <p class="section-desc">Rauchg 公开承认 K3 在他们自家的 web 评测上超过了自家闭源 Fable——这是开源权重第一次在综合工程基准上压过所有闭源对手。Levie 顺势接住：每次 frontier 智能的成本降一档，企业被 token 价格卡住的 workflow 就会被解锁一档。</p>
+    <h2 class="section-title">MAD Podcast：OpenAI 工业算力总管 Sachin 把「物理世界跟不上 AI 节奏」讲完 / MAD Podcast: OpenAI&#39;s Head of Industrial Compute on the Physical Reality of the AI Buildout</h2>
+    <p class="section-desc">Matt Turck 这期把 OpenAI 的 Head of Industrial Compute、Sachin Khalti（前 Stanford 教授、前 Intel CTO）请来，整期主线：这场「史上最大基建」是 AI 撞上物理世界，需求永远比供给快——你以为算力够了，过几个月才发现早该继续扩。数据中心是「把电子变成智能」的工厂，液冷是必须的（连传输电力的变压器都得冷），电网不够就直接投资发电和输电基础设施。OpenAI 自研的 Jalapeno 芯片把「per-watt tokens」当核心优化指标，因为电成了 bottleneck；硬件-模型 co-design 才是下一步 scaling 的关键 ingredient。</p>
   </section>
   <section class="feed">
-    <article class="card" data-author-key="x:rauchg" data-author-name="Guillermo Rauch" data-author-tag="Vercel CEO" data-author-handle="@rauchg" data-author-avatar="../assets/avatars/x-rauchg.jpg">
+    <article class="card" data-author-key="podcast:mad-podcast" data-author-name="The MAD Podcast" data-author-tag="Matt Turck 主理的 AI 与数据播客" data-author-handle="" data-author-avatar="../assets/avatars/podcast-mad-podcast.jpg">
       <div class="card-header">
-        <div class="avatar"><img src="../assets/avatars/x-rauchg.jpg" alt="Guillermo Rauch avatar"><span class="avatar-fallback">GR</span></div>
+        <div class="avatar"><img src="../assets/avatars/podcast-mad-podcast.jpg" alt="The MAD Podcast avatar"><span class="avatar-fallback">TM</span></div>
         <div class="author-info">
           <div class="author-name-row">
-            <div class="author-name">Guillermo Rauch</div>
-            <div class="author-tag is-inline">Vercel CEO</div>
+            <div class="author-name">The MAD Podcast</div>
+            <div class="author-tag is-inline">Matt Turck 主理的 AI 与数据播客</div>
           </div>
-          <div class="author-handle">@rauchg</div>
+          <div class="author-handle"></div>
         </div>
         <div class="card-controls">
           <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
@@ -168,13 +168,17 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Kimi K3 刚刚在我们公开的 web 工程 benchmark 上拿下第一，超过了我们自己的 Fable 模型，而且耗时更短。</p>
-              <p>这是第一次有一款开源权重模型在这套综合性 web 构建评测里，把所有闭源模型都比下去了。Benchmark 不是圣经，但它是个实在的信号，open / 闭源差距已经塌方的证据正在越积越多。</p>
+              <p>MAD Podcast 这期把 OpenAI 的 Head of Industrial Compute、Sachin Khalti（前 Stanford 教授、前 Intel CTO）请来。整期主线：这场「史上最大基建」是 AI 撞上物理世界的故事，物理世界不会像模型那样跟着 scale。</p>
+              <p>需求 vs 供给：「任何时候你觉得算力够用了可以慢下来，事后看总是后悔——当时不该慢。需求远超供给，我们能上线多少就立刻吃掉多少。」Sachin 反复强调的焦虑是：你以为够的那一刹，已经晚了几个月。</p>
+              <p>把数据中心想象成「把电子变成智能的工厂」：「怎么把电接到 chip 上、让 chip 实际在产出智能？我脑子里的画面是一整片足球场那么大的液冷黄金——chip 跑得很烫，温度非常高。」液冷要做到每一层：机房级、chip 级，连走电的 cable 和 transformer 都要冷，因为处理能量就产生热量。</p>
+              <p>跟电网的关系：「早期我们都接电网，今天也仍然想接电网。但现在已经触到天花板了，所以我们在投发电基础设施、投输电基础设施。」OpenAI 在哪儿建数据中心，都先做一个 hard commitment：不从电网抢电——反过来，他们主动给电网投钱，建本来不会被建的发电+输电设施。当电网本身扩不动的时候，数据中心就『behind the meter』自建发电，目前主要是 gas turbine，长期方向是 nuclear。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Kimi K3 超越了 Fable，登顶我们公开的 web 工程评测；</p>
-              <p>这是开源权重模型首次在这套综合 web 工程评测中超过所有闭源模型；</p>
-              <p>注：Benchmark 不一定讲完整个故事，但是重要的信号，进一步证明了开源与闭源之间的差距正在坍塌。</p>
+              <p>任何时候你觉得算力够用、可以慢下来，回头看总是后悔——当时不该慢。今天需求远超供给，我们能上线多少就立刻吃掉多少。我们最大的焦虑是，要拿到、要建出这么多算力的 scale 仍然不够。</p>
+              <p>物理世界不会移动得那么快。我们相信「递归的世界」已经不远了——AI 会设计出它自己需要的系统，去训练和跑下一代的 AI。</p>
+              <p>这是句流行话，但其实很有道理。怎么把电拿到、怎么把电子接到 chip 上、让 chip 真正在产出智能？我脑子里的画面是一片足球场那么大的液冷黄金——chip 跑得很烫，温度非常高。</p>
+              <p>早期我们都接电网，今天也想接电网。但现在已经触到天花板了，所以我们开始投资发电、投输电。我们在哪儿建数据中心，都做一个 hard commitment：不从电网抢电，反而要往电网里投钱。</p>
+              <p>一个地方有一张电网，有一定的发电和配电能力，有若干兆瓦。数据中心落下来，如果电网有富余容量，数据中心当然可以用；但如果没有富余容量，我们就得新建 gas / solar / hydro 的发电设施接到这张电网上。</p>
             </div>
           </div>
         </div>
@@ -182,223 +186,79 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Kimi K3 just took the top spot on our public web-engineering benchmark — ahead of our own Fable model — and did so in less wall-clock time.</p>
-              <p>It&#39;s the first time an open-weight model has crossed above every proprietary model we test against for this comprehensive web-build benchmark. Benchmarks aren&#39;t gospel, but they&#39;re a real signal, and the evidence that the open / proprietary gap has collapsed is now mounting.</p>
+              <p>The MAD Podcast, this week: Matt Turck sits down with Sachin Khalti (Head of Industrial Compute at OpenAI, ex-Stanford professor, ex-CTO of Intel). The central thread: this is one of the largest infrastructure builds in human history, and the physical world doesn&#39;t move as fast as AI demand does.</p>
+              <p>On the demand-supply gap: &#39;Anytime you have thought you have enough compute, we can slow down. Always negatively surprises like, oh, we should not have slowed down. Demand far outstrips compute supply today. So anything we can bring online, we consume immediately.&#39; Sachin&#39;s worry is still the scale of trying to get compute and build compute — the moment you stop building, the regret compounds.</p>
+              <p>On data centers as &#39;factories turning electrons into intelligence&#39;: &#39;How do we take those electrons and actually use it to power chips that effectively are delivering intelligence? The way I visualize it is large football fields, liquid gold because these chips run really hot. The temperatures on these chips are very, very high.&#39; Cooling has to happen at every layer — data halls, individual chips, and even the cables and transformers distributing power.</p>
+              <p>On the grid: &#39;At this point, we are beginning to hit and we are investing in generation infrastructure for the grid, transmission infrastructure for the grid.&#39; Wherever OpenAI builds a data center, it commits to not taking power away from the grid — in fact, it&#39;s funding the development of generation + transmission that wouldn&#39;t otherwise have been funded. Where the grid can&#39;t scale further, the data center goes &#39;behind the meter&#39; with on-site generation, currently gas turbines, with nuclear as the long-term answer.</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Kimi K3 is the best performing model on our public web-engineering benchmark, ahead of Fable, reaching a comparable success rate in less time.</p>
-              <p>This is the first time that an open model is ahead of all proprietary ones for this comprehensive web engineering benchmark.</p>
-              <p>Notes: ▪️ Benchmarks don&#39;t always tell the full story, although this is important signal, adding to mounting evidence that this could be a bre</p>
+              <p>Anytime you have thought you have enough compute, we can slow down. Always negatively surprises like, oh, we should not have slowed down. Demand far outstrips compute supply today. So anything we can bring online, we consume immediately. Our biggest worry is that still at the scale at which we are trying to get compute and build compute.</p>
+              <p>The physical world does not move that fast. We do believe that the world of recursion is not that far where AI will design the systems it needs to train and run the next generation of AI. Encourages.</p>
+              <p>It&#39;s a popular phrase nowadays, but it actually has a lot of a ring of truth to it. So how do we take power? How do we take those electrons and actually use it to power chips that effectively are delivering intelligence? And the way I visualize it is large football fields, liquid gold because these chips run really hot. The temperatures on these chips are very, very high.</p>
+              <p>I think the early days, we all connected to the grid, and we still all would want to connect to the grid. At this point, we are beginning to hit and we are investing in generation infrastructure for the grid, transmission infrastructure for the grid. So whenever we build a data center anywhere, we make it a hard commitment that we are not taking power away from the grid. In fact, we are investing</p>
+              <p>You have a grid somewhere. Has a certain generation and distribution capability, certain number of megawatts. Obviously, data center shows up. If there was spare capacity, then of course, the data center can use it. But if there isn&#39;t spare capacity, then we have to new gas or solar or hydro generation infrastructure to the grid.</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="card-footer"><a href="https://x.com/rauchg/status/1946097000000000001" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+      <div class="card-footer"><a href="https://www.youtube.com/watch?v=wEZBlmvxx4o" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="podcast:mad-podcast" data-author-name="The MAD Podcast" data-author-tag="Matt Turck 主理的 AI 与数据播客" data-author-handle="" data-author-avatar="../assets/avatars/podcast-mad-podcast.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/podcast-mad-podcast.jpg" alt="The MAD Podcast avatar"><span class="avatar-fallback">TM</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">The MAD Podcast</div>
+            <div class="author-tag is-inline">Matt Turck 主理的 AI 与数据播客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>聊 OpenAI 的 Jalapeno 自研芯片：「因为我们已经清楚 workload 是什么、要跑什么模型，就可以把硬件和模型 co-design，做到超级高效。」Inference 已经是 OpenAI workload 里越来越大的一块，一旦你彻底清楚 workload，硬件效率就能做到极限。</p>
+              <p>核心 metric：「Jalapeno 优化的核心指标是 per-watt tokens——每瓦电你能产出多少 token。因为今天世界被 power 卡住了，每瓦多产 token 对大家都是好事。」tokens-per-watt 是新的 FLOPS——电被卡住的世界里，效率就是 dominant axis。</p>
+              <p>收尾思想：AI 最终会自己设计出训练和跑下一代 AI 所需的系统。Sachin 把这叫「递归的世界已经不远」——但近处的游戏仍然是人类工程师把 GW 级的电送上线，再为已知的 workload co-design 硅。工业层和模型层，已经是同一层。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>当我们服务全球相当大一部分人口的时候，AI 用量在爆炸，inference 显然变成了我们 workload 里的一个大块。另一个 realization 是：因为我们彻底清楚 workload 是什么、要跑什么模型，我们就可以把硬件和模型一起 co-design，做到超级高效。</p>
+              <p>这让我们拿到效率优势——每瓦电产出更多 token。Jalapeno 优化的核心指标就是每瓦能产出多少 token，因为今天世界被 power 卡住了，每瓦能多产 token 对所有人都更好。所以我们把它当成 scale 路上非常关键的一味 ingredient。</p>
+              <p>我们相信「递归的世界」并不遥远——到那时候，AI 会自己设计它需要的系统，去训练和跑下一代的 AI。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>On the Jalapeno custom silicon program: &#39;Because we know what is the workload exactly, what is the model we want to run, we can co-design the hardware to be super efficient in delivering those models. So it really allows us to drive efficiency advantage, drive more tokens per watt.&#39; Inference is becoming a big fraction of OpenAI&#39;s workload, and once you know the workload, you can squeeze more out of every joule.</p>
+              <p>The metric that matters: &#39;The key metric that Jalapeno is optimizing is maximizing the number of tokens you can produce per watt. And because the world is constrained by power today, so the more tokens you can produce for the same number on on power, it&#39;s better for everyone.&#39; Tokens-per-watt is the new FLOPS — a power-constrained world makes efficiency the dominant axis.</p>
+              <p>The closing thought: AI will eventually design the systems it needs to train and run the next generation. Sachin frames it as &#39;the world of recursion is not that far&#39; — but the near-term game is still human engineers bringing gigawatts online, then co-designing silicon for known workloads. The industrial layer and the model layer are now the same layer.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>As we begin to as we serve a pretty big fraction of the world&#39;s population, AI usage is exploding, inference is obviously becoming a big fraction of our workload. Right? It&#39;s consuming a lot of compute. And one of the other realizations is because we know what is the workload exactly, what is the model we want to run, we can co design the hardware to be super efficient in delivering those models.</p>
+              <p>So it really allows us to drive efficiency advantage, drive more tokens per watt. So the key metric that Jalapeno is optimizing is maximizing the number of tokens you can produce per watt. And because the world is constrained by power today, so the more tokens you can produce for the same number on on power, it&#39;s better for everyone. So we look at it as a very critical ingredient in scaling how we</p>
+              <p>We do believe that the world of recursion is not that far where AI will design the systems it needs to train and run the next generation of AI.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.youtube.com/watch?v=wEZBlmvxx4o" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
     </article>
   </section>
 
   <section class="section-header">
     <div class="section-label">Theme 02</div>
-    <h2 class="section-title">模型商品化之后：开源倒逼企业栈改设计 / After Model Commoditization: Open Weights Force an Enterprise Stack Rethink</h2>
-    <p class="section-desc">Madhu Guru 直接给出企业侧的 3 步应对——评测分两层、按 query 路由、内部搭一个轻量 gateway。Aditya 已经在行动：把团队的系统从 Fable 切走。Dan 准备 vibe-check K3，并补刀 OpenAI 在 agentic coding 上慢了一拍。</p>
-  </section>
-  <section class="feed">
-    <article class="card" data-author-key="x:levie" data-author-name="Aaron Levie" data-author-tag="Box CEO" data-author-handle="@levie" data-author-avatar="../assets/avatars/x-levie.jpg">
-      <div class="card-header">
-        <div class="avatar"><img src="../assets/avatars/x-levie.jpg" alt="Aaron Levie avatar"><span class="avatar-fallback">AL</span></div>
-        <div class="author-info">
-          <div class="author-name-row">
-            <div class="author-name">Aaron Levie</div>
-            <div class="author-tag is-inline">Box CEO</div>
-          </div>
-          <div class="author-handle">@levie</div>
-        </div>
-        <div class="card-controls">
-          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
-          <button class="view-toggle" type="button" data-view-target="original">原文</button>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="lang-col cn">
-          <div class="lang-label">中文</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>开源权重跑到 frontier 水平，真的很炸。每次 frontier 智能的成本降一档，企业愿意真金白银上线的新场景就多一档——大多数企业工作流的瓶颈是 token 价格，不是能力上限。</p>
-              <p>更关键的是，开源权重 + 廉价推理这一对组合，对创业生态是顺风：模型层一旦商品化，价值就会沿着栈往上迁移，落到应用、数据、分发层。</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>前沿级别的开源模型真的很疯狂，恭喜 Kimi 团队。</p>
-              <p>我们每降低一次前沿智能的成本，企业可以承担的应用场景就会增加。</p>
-              <p>对于创业生态而言，这种开源权重与低成本推理的结合是巨大的推动力。</p>
-            </div>
-          </div>
-        </div>
-        <div class="lang-col en">
-          <div class="lang-label">English</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>Open weights at frontier quality is wild. Every time the cost of frontier intelligence drops, the set of use-cases enterprises will actually deploy goes up — most enterprise workflows are gated by token cost, not capability.</p>
-              <p>The combined breakthrough of open weights + cheap inference is also a tailwind for the startup ecosystem: when the model layer commoditizes, value migrates up the stack into applications, data, and distribution.</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>It&#39;s truly wild that we&#39;re getting this level of performance from open models. Congrats to Kimi team on this.</p>
-              <p>Every time we lower the cost of frontier intelligence, the use-cases that enterprises can take on just go up. There&#39;s a tremendous amount of workflows that enterprises would love to deploy that are only gated by the cost of tokens.</p>
-              <p>Importantly for the startup ecosystem, the combined brea</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card-footer"><a href="https://x.com/levie/status/1946097111111111111" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
-    </article>
-
-    <article class="card" data-author-key="x:realmadhuguru" data-author-name="Madhusudhan" data-author-tag="AI 工程师 / 开源贡献者" data-author-handle="@realmadhuguru" data-author-avatar="../assets/avatars/x-realmadhuguru.jpg">
-      <div class="card-header">
-        <div class="avatar"><img src="../assets/avatars/x-realmadhuguru.jpg" alt="Madhusudhan avatar"><span class="avatar-fallback">M</span></div>
-        <div class="author-info">
-          <div class="author-name-row">
-            <div class="author-name">Madhusudhan</div>
-            <div class="author-tag is-inline">AI 工程师 / 开源贡献者</div>
-          </div>
-          <div class="author-handle">@realmadhuguru</div>
-        </div>
-        <div class="card-controls">
-          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
-          <button class="view-toggle" type="button" data-view-target="original">原文</button>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="lang-col cn">
-          <div class="lang-label">中文</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>Kimi、GLM 这种开源权重模型，会把企业 AI 整套技术栈逼着重新设计。核心动作就是：把模型可选性（model optionality）拉满。</p>
-              <p>具体三件事——（1）评测体系要拆成两层：回归评测（必须永远稳的基础功能）+ 爬山评测（向能力上限爬）；（2）按 query 类型做成本感知路由；（3）内部搭一个轻量 gateway，换供应商只是改配置，不是改代码。</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>Kimi 和 GLM 等开源权重模型将彻底颠覆企业级 AI 技术栈。</p>
-              <p>如果你在运营一家企业，你需要最大化模型的可选择性。</p>
-              <p>以下是你应该做的 3 件事：1. 构建能代表你用例的严格评测。</p>
-            </div>
-          </div>
-        </div>
-        <div class="lang-col en">
-          <div class="lang-label">English</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>Open-weight models like Kimi and GLM are going to force a full rethink of the enterprise AI stack. The move: maximise model optionality.</p>
-              <p>Three things to actually do — (1) evals split into regression (tablestakes features that must always work) and aspirational (hill-climb toward capability gains); (2) cost-aware routing by query type; (3) ship a small internal gateway so swapping providers is a config change, not a refactor.</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>Open-weight models like Kimi and GLM will cause a complete rethink of the enterprise AI stack.</p>
-              <p>If you are running an enterprise, you need to maximimize model optionality.</p>
-              <p>Here are 3 things you should be doing: 1. Evals - build rigorous evals representative of your use case (a) Regression evals - tablestakes features that should always work with high reliability (b) Aspirational / hill-climbing</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card-footer"><a href="https://x.com/realmadhuguru/status/1946097222222222222" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
-    </article>
-
-    <article class="card" data-author-key="x:adityaag" data-author-name="Aditya Agarwal" data-author-tag="Dropbox Engineering VP / 前 Facebook 平台工程负责人" data-author-handle="@adityaag" data-author-avatar="../assets/avatars/x-adityaag.jpg">
-      <div class="card-header">
-        <div class="avatar"><img src="../assets/avatars/x-adityaag.jpg" alt="Aditya Agarwal avatar"><span class="avatar-fallback">AA</span></div>
-        <div class="author-info">
-          <div class="author-name-row">
-            <div class="author-name">Aditya Agarwal</div>
-            <div class="author-tag is-inline">Dropbox Engineering VP / 前 Facebook 平台工程负责人</div>
-          </div>
-          <div class="author-handle">@adityaag</div>
-        </div>
-        <div class="card-controls">
-          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
-          <button class="view-toggle" type="button" data-view-target="original">原文</button>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="lang-col cn">
-          <div class="lang-label">中文</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>Aditya 今天就在把自己团队的系统从 Fable 切走——不是夸张，而是只要有靠谱的免费替代，为什么要付那个钱？</p>
-              <p>他的判断标准是：一样东西如果「让人用了就能复刻」还照样有价值，那它本身可能就没那么有价值。Frontier 实验室现在就在被这道题考。</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>我现在正在把系统中的模型从 Fable 切走。</p>
-              <p>这不是为了夸大其词……但如果有不错的免费替代品，为什么要付费？</p>
-              <p>如果你拥有的东西非常有价值……但让别人使用它就能复制它……那它一开始可能就没那么有价值。</p>
-            </div>
-          </div>
-        </div>
-        <div class="lang-col en">
-          <div class="lang-label">English</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>Aditya is literally switching his team&#39;s systems off Fable today — not to be hyperbolic, but if there&#39;s a good free alternative, why pay the price?</p>
-              <p>His rule: if something is so valuable that letting people use it lets them recreate it, maybe it wasn&#39;t very valuable in the first place. Frontier labs face this test now.</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>I am literally switching models off of Fable right now for our systems.</p>
-              <p>This isn&#39;t trying to be hyperbolic....but why would you pay the price if there is a good and free alternative?</p>
-              <p>If you have something very valuable....but letting people use it allows them to recreate it....then maybe it wasn&#39;t very valuable in the first place?</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card-footer"><a href="https://x.com/adityaag/status/1946097333333333333" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
-    </article>
-
-    <article class="card" data-author-key="x:danshipper" data-author-name="Dan Shipper" data-author-tag="Every 联合创始人 / AI 写作工具链" data-author-handle="@danshipper" data-author-avatar="../assets/avatars/x-danshipper.jpg">
-      <div class="card-header">
-        <div class="avatar"><img src="../assets/avatars/x-danshipper.jpg" alt="Dan Shipper avatar"><span class="avatar-fallback">DS</span></div>
-        <div class="author-info">
-          <div class="author-name-row">
-            <div class="author-name">Dan Shipper</div>
-            <div class="author-tag is-inline">Every 联合创始人 / AI 写作工具链</div>
-          </div>
-          <div class="author-handle">@danshipper</div>
-        </div>
-        <div class="card-controls">
-          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
-          <button class="view-toggle" type="button" data-view-target="original">原文</button>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="lang-col cn">
-          <div class="lang-label">中文</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>Dan 要对 Kimi K3 做 vibe-check，但他对「K3 比肩 Fable」这种说法保持高度怀疑。这周，vibes 和 receipts 的检验比任何时候都关键。</p>
-              <p>他对 OpenAI 的判断是：现在全力开火并不奇怪；GPT-5 当时定位成 pair-programmer，错过了 Claude Code 掀起的 agentic coding 浪潮；他们在 browser / VM 里的 agentic coding 和 ChatGPT 的 vibe coding 上都慢了一步，需要重新对齐。</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>我们要 vibe-check Kimi K3，但我对「它和 Fable 一样好」这种说法持极端怀疑态度。</p>
-              <p>OpenAI 现在全力开火并不令人意外，故事非常有意思——他们在 2025 年夏天推出 GPT-5，把它定位为结对程序员。</p>
-            </div>
-          </div>
-        </div>
-        <div class="lang-col en">
-          <div class="lang-label">English</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>Dan will vibe-check Kimi K3 — but he&#39;s extraordinarily skeptical of claims it&#39;s as good as Fable. The vibes-vs-receipts test matters more than ever this week.</p>
-              <p>His read on OpenAI: not surprising they&#39;re firing on all cylinders; GPT-5 was positioned as a pair-programmer but missed the agentic-coding wave that Claude Code started; they&#39;re now back-footed in agentic coding in the browser / VMs and vibe coding in ChatGPT, and need to re-converge.</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>we will vibe check Kimi K3 but i am extraordinarily skeptical of claims it&#39;s as good as fable</p>
-              <p>not surprising that @OpenAI is firing on all cylinders right now, and it&#39;s an unbelievably interesting story - they launched GPT-5 summer of 2025 and positioned it as a pair programmer. we wrote at the time @every that they completely missed the new agentic coding that was starting to happen inside of Claude Code. they bet on agentic coding in the browser / vms and vibe coding in ChatGPT but it w</p>
-              <p>look at those emoji reactions. this is how we win</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card-footer"><a href="https://x.com/danshipper/status/1946097444444444444" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
-    </article>
-  </section>
-
-  <section class="section-header">
-    <div class="section-label">Theme 03</div>
-    <h2 class="section-title">把 Claude 关进笼子：Anthropic 的 blast-radius 工程手册 / Containing Claude: Anthropic&#39;s Blast-Radius Engineering Playbook</h2>
-    <p class="section-desc">Anthropic 官博首次系统讲清怎么给 agent 越来越大的权限——核心是把 blast radius 卡死，不是把概率降零。Boris Cherny 接着给出一份 4 级成熟度阶梯，Anthropic 自己在 3 级往 4 级推。</p>
+    <h2 class="section-title">Anthropic Engineering：Claude Code 体验回退 post-mortem，三处独立改动撞到一起 / Anthropic Engineering: Claude Code Quality Post-Mortem — Three Independent Changes Collided</h2>
+    <p class="section-desc">Anthropic Engineering 这篇是诚实的 post-mortem：过去一个月用户报的「Claude 变笨」，最终追到三处独立改动分别撞到 Claude Code、Agent SDK、Cowork 三块产品（API 完全没受影响）。三件事各自时间线不同、影响切片不同，所以叠加效果看起来像 broad、inconsistent 的退化。March 4 把 Claude Code 默认 reasoning effort 从 high 降到 medium（April 7 退回）、March 26 给 idle session 清旧 thinking 时出了 bug 每轮都清（April 10 修）、April 16 加 system prompt 减啰嗦反而伤了 coding 质量（April 20 撤）。关键教训：3 月就开始收到反馈，但跟用户自然反馈噪声难分辨。</p>
   </section>
   <section class="feed">
     <article class="card" data-author-key="blog:anthropic-engineering" data-author-name="Anthropic Engineering" data-author-tag="Anthropic 官方工程博客" data-author-handle="" data-author-avatar="../assets/avatars/blog-anthropic-engineering.png">
@@ -421,12 +281,18 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Anthropic 刚发了一份工程实战手册，讲怎么在 agent 越来越自主的同时把 Claude 关进笼子。核心论点：12 个月前，他们会把「让 Claude 有权关掉 Anthropic 内部服务」这种部署一口回绝；今天这已经是常态，因为生产力的诱惑大到不能放着不用。</p>
-              <p>要管两件事：失败的概率（靠 safeguards 和训练往下压），以及失败时的 blast radius（随着能力扩大只会涨不会缩）。工程难题变成：把 blast radius 卡死——沙箱环境、约束工具、对 agent 能改的东西划硬上限。</p>
+              <p>Anthropic Engineering 这篇 April-23 post-mortem 把「Claude 变笨」的报告追到三处独立改动——不是模型主动退化。「我们从不主动降低模型表现，能立刻确认 API 和 inference 层完全没受影响。」API 没动；退化来自产品层的 prompt/harness 改动。</p>
+              <p>Issue 1（3 月 4 日）：Claude Code 的默认 reasoning effort 从 high 降到 medium，为了解决 high 模式下「UI 看起来卡死」的延迟问题。「这个 tradeoff 是错的，4 月 7 日我们已经退回。用户的反馈很清楚：默认走更高智能、要降的时候自己手动选。」影响 Sonnet 4.6 和 Opus 4.6。</p>
+              <p>Issue 2（3 月 26 日）：session 管理原本设计为「idle session 恢复时清一次旧 thinking」。「一个 bug 让这件事变成每轮都清，所以 Claude 显得很健忘、很重复。」4 月 10 日修。同一批两个模型。</p>
+              <p>Issue 3（4 月 16 日）：加了一条让 Claude 少啰嗦的 system prompt instruction。「这条改动跟其他 prompt 改动叠加之后伤了 coding 质量，4 月 20 日撤。」影响 Sonnet 4.6、Opus 4.6、Opus 4.7——比前两个范围更广。</p>
+              <p>收尾教训：「三处改动各自影响不同 traffic 切片、时间线不同，叠加之后看起来像 broad、inconsistent 的退化。3 月初就开始收到反馈，但跟用户的自然反馈噪声很难区分。」对任何 incremental 发 prompt 改动的产品都值得内化这条：三次小 drift 看起来像一次大 regression。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>一年前，我们会毫不犹豫地拒绝授予 Claude 足以关停 Anthropic 内部服务的访问权限。如今，这种访问权限已是常态，Anthropic 开发者也因此更具生产力。</p>
-              <p>这类部署的风险由两部分组成：失败的可能性，以及一次失败可能造成的损害。</p>
+              <p>过去一个月里，我们一直在追「Claude 表现变差」的用户报告。最终追到三处独立改动，分别撞到 Claude Code、Claude Agent SDK 和 Claude Cowork 三块产品。API 完全没受影响。所有三处问题在 4 月 20 日（v2.1.116）都已修复。这篇里我们说清楚发现了什么、改了什么、之后会怎样降低类似事件重发的概率。</p>
+              <p>我们对「退化」的报告很严肃。我们从不主动降低模型表现，能立刻确认 API 和 inference 层完全没受影响。调查后识别出三处不同的问题：3 月 4 日，我们把 Claude Code 的默认 reasoning effort 从 high 改成 medium，为了缓解 high 模式下用户看到的「UI 看起来卡死」的过长延迟。</p>
+              <p>3 月 26 日，我们发了一个改动，用来在 idle 一小时以上的 session 被恢复时清掉 Claude 的旧 thinking。Bug 让这件事变成整个 session 后续每轮都清，而不是只清一次——所以 Claude 看起来很健忘、很重复。</p>
+              <p>4 月 16 日，我们加了一条减少啰嗦的 system prompt instruction。它跟其他 prompt 改动叠加之后伤了 coding 质量，4 月 20 日已撤回。这次影响了 Sonnet 4.6、Opus 4.6 和 Opus 4.7。</p>
+              <p>因为三处改动各自影响不同切片、时间线不同，叠加之后看起来像 broad、inconsistent 的退化。3 月初我们就开始调查反馈，但跟用户正常反馈噪声很难分辨。</p>
             </div>
           </div>
         </div>
@@ -434,30 +300,41 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Anthropic just published the engineering playbook for containing Claude as agents get more autonomy. The thesis: 12 months ago they&#39;d have rejected any deployment where Claude had access to take down an internal service; today that&#39;s routine, because the productivity win is too large to leave on the table.</p>
-              <p>Two failure modes to manage: probability of failure (driven by safeguards + training) and blast radius (which only grows as capabilities expand). The engineering problem becomes capping the blast radius — sandbox the environment, constrain the agent&#39;s tools, and put hard ceiling on what it can mutate.</p>
+              <p>Anthropic Engineering&#39;s April-23 post-mortem traces &#39;Claude responses have worsened&#39; reports to three independent changes — not model degradation. &#39;We never intentionally degrade our models, and we were able to immediately confirm that our API and inference layer were unaffected.&#39; The API was untouched; the degradation came from product-layer changes.</p>
+              <p>Issue 1 (March 4): Claude Code&#39;s default reasoning effort was changed from high to medium to fix long-latency UX in high mode. &#39;This was the wrong tradeoff. We reverted this change on April 7 after users told us they&#39;d prefer to default to higher intelligence and opt into lower effort for simple tasks.&#39; Affected Sonnet 4.6 and Opus 4.6.</p>
+              <p>Issue 2 (March 26): a session-management change was meant to clear Claude&#39;s older thinking once when an idle session resumed. &#39;A bug caused this to keep happening every turn for the rest of the session instead of just once, which made Claude seem forgetful and repetitive.&#39; Fixed April 10. Same two models affected.</p>
+              <p>Issue 3 (April 16): a system prompt instruction to reduce verbosity &#39;in combination with other prompt changes, it hurt coding quality and was reverted on April 20. This impacted Sonnet 4.6, Opus 4.6, and Opus 4.7.&#39; Broader scope than the first two.</p>
+              <p>The closing lesson: &#39;Because each change affected a different slice of traffic on a different schedule, the aggregate effect looked like broad, inconsistent degradation. While we began investigating reports in early March, they were challenging to distinguish from normal variation in user feedback.&#39; A useful pattern to internalize for any product that ships prompt-level changes incrementally — three small drifts look like one big regression.</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Twelve months ago, we&#39;d have rejected out of hand the idea of granting Claude access sufficient to take down an internal Anthropic service. Today that level of access is routine, and Anthropic developers are more productive for it.</p>
-              <p>The risk of these deployments has two components: how likely a failure is, and how much damage one could do.</p>
-              <p>Progress on safeguards and model training has steadily driven down the first; the second—the theoretical blast radius—only grows as capabilities and access expand.</p>
-              <p>Yet as agents become capable of doing work that once required a person or even a team, the cost of not deploying grows large enough that the risk-reward calculation tips heavily toward adoption</p>
+              <p>Over the past month, we&#39;ve been looking into reports that Claude&#39;s responses have worsened for some users. We&#39;ve traced these reports to three separate changes that affected Claude Code, the Claude Agent SDK, and Claude Cowork. The API was not impacted. All three issues have now been resolved as of April 20 (v2.1.116). In this post, we explain what we found, what we fixed, and what we&#39;ll do differently to ensure similar issues are much less likely to happen again.</p>
+              <p>We take reports about degradation very seriously. We never intentionally degrade our models, and we were able to immediately confirm that our API and inference layer were unaffected. After investigation, we identified three different issues: On March 4, we changed Claude Code&#39;s default reasoning effort from high to medium to reduce the very long latency—enough to make the UI appear frozen—some users were seeing in high mode.</p>
+              <p>On March 26, we shipped a change to clear Claude&#39;s older thinking from sessions that had been idle for over an hour, to reduce latency when users resumed those sessions. A bug caused this to keep happening every turn for the rest of the session instead of just once, which made Claude seem forgetful and repetitive.</p>
+              <p>On April 16, we added a system prompt instruction to reduce verbosity. In combination with other prompt changes, it hurt coding quality and was reverted on April 20. This impacted Sonnet 4.6, Opus 4.6, and Opus 4.7.</p>
+              <p>Because each change affected a different slice of traffic on a different schedule, the aggregate effect looked like broad, inconsistent degradation. While we began investigating reports in early March, they were challenging to distinguish from normal variation in user feedbac</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="card-footer"><a href="https://www.anthropic.com/engineering/how-we-contain-claude" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+      <div class="card-footer"><a href="https://www.anthropic.com/engineering/april-23-postmortem" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
     </article>
+  </section>
 
-    <article class="card" data-author-key="x:bcherny" data-author-name="Boris Cherny" data-author-tag="Salesforce AI 工程负责人" data-author-handle="@bcherny" data-author-avatar="../assets/avatars/x-bcherny.jpg">
+  <section class="section-header">
+    <div class="section-label">Theme 03</div>
+    <h2 class="section-title">Anthropic Engineering：Managed Agents 把 session / harness / sandbox 拆开，类比 OS 把硬件虚拟化 / Anthropic Engineering: Managed Agents Decouple Session / Harness / Sandbox, an OS-Style Abstraction Layer</h2>
+    <p class="section-desc">同一支 Engineering 团队的下一篇：Managed Agents 是 Claude Platform 上的 hosted service，把 agent 拆成三件事——session（append-only log）、harness（调用 Claude + 路由 tool calls 的 loop）、sandbox（执行环境）。三件事分别可替换，类比 OS 把硬件虚拟化成 process / file 这种足够通用的抽象，让「还没被想出来的程序」也能跑。harness 编码了对「Claude 自己不能做什么」的假设，但那些假设会随模型变强而过期——Managed Agents 的接口设计就是为了扛过任何具体实现，包括今天 Anthropic 自己在跑的。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="blog:anthropic-engineering" data-author-name="Anthropic Engineering" data-author-tag="Anthropic 官方工程博客" data-author-handle="" data-author-avatar="../assets/avatars/blog-anthropic-engineering.png">
       <div class="card-header">
-        <div class="avatar"><img src="../assets/avatars/x-bcherny.jpg" alt="Boris Cherny avatar"><span class="avatar-fallback">BC</span></div>
+        <div class="avatar"><img src="../assets/avatars/blog-anthropic-engineering.png" alt="Anthropic Engineering avatar"><span class="avatar-fallback">AE</span></div>
         <div class="author-info">
           <div class="author-name-row">
-            <div class="author-name">Boris Cherny</div>
-            <div class="author-tag is-inline">Salesforce AI 工程负责人</div>
+            <div class="author-name">Anthropic Engineering</div>
+            <div class="author-tag is-inline">Anthropic 官方工程博客</div>
           </div>
-          <div class="author-handle">@bcherny</div>
+          <div class="author-handle"></div>
         </div>
         <div class="card-controls">
           <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
@@ -469,12 +346,17 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Boris 把团队用 Claude Code 的成熟度拆成 4 级。真正的回报发生在「修复和维护都在后台跑，团队专心做构建」的时候——到这一步，你才能开始做以前够不着的事。</p>
-              <p>Anthropic 自己在第 3 级，正在往 4 级推；他个人刚到 4 级。他好奇别的团队在哪一级：1 级=聊天；2 级=内联补全；3 级=后台 agent；4 级=多 agent 编排，带自动 review 和验证。</p>
+              <p>Anthropic Engineering 这篇 Managed Agents 把整个论证搭在 OS 的类比上：怎么为「还没被想出来的程序」设计系统。「几十年前，操作系统解决过同一个问题——把硬件虚拟化成抽象：process、file，足够通用，连当时还不存在的程序也能跑。抽象本身比硬件活得久。read() 这条 syscall 不管对面是 1970 年代的磁盘包还是今天的 SSD，结果是一样的。」</p>
+              <p>Managed Agents 走同一套模式。「我们把 agent 的组件虚拟化了：session（append-only log，把发生的一切记下来）、harness（调用 Claude + 把 Claude 的 tool call 路由到对应基础设施的 loop）、sandbox（执行环境，Claude 跑代码、改文件的地方）。三件事的实现可以各自替换，互不干扰。」</p>
+              <p>harness 为什么必须能重写：「贯穿这套工作的一条主线是：harness 编码了对『Claude 自己不能做什么』的假设。但这些假设必须经常拿出来重新审视，因为它们会随模型变强而过期。」具体例子：Claude Sonnet 4.5 有「context anxiety」——快到 context 上限时提前收工；harness 加了 context reset。同一套 harness 跑在 Claude Opus 4.5 上，这个行为没了，reset 反而变成了死重。</p>
+              <p>结论：「我们预期 harness 会持续演化。所以我们做了 Managed Agents：Claude Platform 上的 hosted service，用一组小接口替你跑长 horizon 的 agent——这组接口的目标是活得比任何具体实现更久，包括今天我们自己在跑的这些。」接口就是合同；下面怎么实现可以替换。跟 1970 年代的 OS 调 read() 不关心对面是什么，是同一套玩法。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>真正的回报来自于修复和维护工作在后台完成，你的团队可以专注于构建。那时你就能开始做一些以前甚至做不到的事情。</p>
-              <p>Anthropic 目前在第 3 步，正向第 4 步迈进。就我个人而言，刚刚达到第 4 级。</p>
+              <p>跟着 docs 就能开始用 Claude Managed Agents。Engineering Blog 上一个长期主题是：怎么 build 真正 effective 的 agent，怎么给长 horizon 的工作设计 harness。</p>
+              <p>贯穿这套工作的一条主线是：harness 编码了对「Claude 自己不能做什么」的假设。但这些假设必须经常拿出来重新审视，因为它们会随模型变强而过期。一个具体的例子：之前的工作里我们发现 Claude Sonnet 4.5 在快到 context 上限时会有「context anxiety」——提前收工。当时的做法是在 harness 里加 context reset。但同一套 harness 跑在 Claude Opus 4.5 上，这个行为消失了——reset 变成了死重。</p>
+              <p>我们预期 harness 会持续演化。所以我们做了 Managed Agents：Claude Platform 上的 hosted service，替你跑长 horizon 的 agent，接口只有一小撮，目标是活得比任何具体实现更久——包括今天我们自己在跑的。</p>
+              <p>做 Managed Agents 等于是在解计算里一个老问题：怎么为「还没被想出来的程序」设计系统。几十年前，操作系统解决过同一个问题——把硬件虚拟化成抽象：process、file，足够通用，连当时还不存在的程序也能跑。抽象比硬件活得久。read() 这条命令不管对面是 1970 年代的磁盘包还是今天的 SSD，都能跑。抽象在上、实现替换在下，这一层一直稳定。</p>
+              <p>Managed Agents 走同一套模式。我们把 agent 的组件虚拟化了：session（append-only log，把发生的一切记下来）、harness（调用 Claude + 把 Claude 的 tool call 路由到对应基础设施的 loop）、sandbox（执行环境，Claude 跑代码、改文件的地方）。三件事的实现可以各自替换，互不干扰。</p>
             </div>
           </div>
         </div>
@@ -482,79 +364,38 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Boris lays out the 4-step adoption ladder Anthropic engineers move through with Claude Code. The bigger payoff lands when fixing and maintaining happens in the background and your team can focus on building — that&#39;s when you start doing things that weren&#39;t even in range before.</p>
-              <p>His team is at step 4; he&#39;s curious where other teams are. Step 1 = chat; step 2 = inline completion; step 3 = background agents; step 4 = multi-agent orchestration with auto-review + verification.</p>
+              <p>Anthropic Engineering&#39;s Managed Agents post builds an OS-style argument for how to design systems for &#39;programs as yet unthought of.&#39; &#39;Decades ago, operating systems solved this problem by virtualizing hardware into abstractions—process, file—general enough for programs that didn&#39;t exist yet. The abstractions outlasted the hardware. The read() command is agnostic as to whether it&#39;s accessing a disk pack from the 1970s or a modern SSD.&#39;</p>
+              <p>Managed Agents follow the same pattern. &#39;We virtualized the components of an agent: a session (the append-only log of everything that happened), a harness (the loop that calls Claude and routes Claude&#39;s tool calls to the relevant infrastructure), and a sandbox (an execution environment where Claude can run code and edit files). This allows the implementation of each to be swapped without disturbing the others.&#39;</p>
+              <p>On why harnesses need to be revisitable: &#39;A common thread across this work is that harnesses encode assumptions about what Claude can&#39;t do on its own. However, those assumptions need to be frequently questioned because they can go stale as models improve.&#39; Concrete example: Claude Sonnet 4.5 had &#39;context anxiety&#39; (wrapping up prematurely as it sensed context limits), so the harness added context resets. When the same harness ran on Claude Opus 4.5, the behavior was gone — the resets had become dead weight.</p>
+              <p>The implication: &#39;We expect harnesses to continue evolving. So we built Managed Agents: a hosted service in the Claude Platform that runs long-horizon agents on your behalf through a small set of interfaces meant to outlast any particular implementation—including the ones we run today.&#39; The interfaces are the contract; the implementations underneath are replaceable. Same playbook as a 1970s OS calling read() without knowing what&#39;s on the other end.</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>The bigger payoff comes when fixing and maintaining happens in the background and your teams can focus on building. That&#39;s when you start doing things that weren&#39;t even in range before.</p>
-              <p>Anthropic is on step 3 and pushing toward 4. Personally, I just hit level 4.</p>
-              <p>Curious where you are -- what step is your team on?</p>
+              <p>Get started with Claude Managed Agents by following our docs. A running topic on the Engineering Blog is how to build effective agents and design harnesses for long-running work.</p>
+              <p>A common thread across this work is that harnesses encode assumptions about what Claude can&#39;t do on its own. However, those assumptions need to be frequently questioned because they can go stale as models improve. As just one example, in prior work we found that Claude Sonnet 4.5 would wrap up tasks prematurely as it sensed its context limit approaching—a behavior sometimes called &quot;context anxiety.&quot; We addressed this by adding context resets to the harness. But when we used the same harness on Claude Opus 4.5, we found that the behavior was gone. The resets had become dead weight.</p>
+              <p>We expect harnesses to continue evolving. So we built Managed Agents: a hosted service in the Claude Platform that runs long-horizon agents on your behalf through a small set of interfaces meant to outlast any particular implementation—including the ones we run today.</p>
+              <p>Building Managed Agents meant solving an old problem in computing: how to design a system for &quot;programs as yet unthought of.&quot; Decades ago, operating systems solved this problem by virtualizing hardware into abstractions—process, file—general enough for programs that didn&#39;t exist yet. The abstractions outlasted the hardware. The read() command is agnostic as to whether it&#39;s accessing a disk pack from the 1970s or a modern SSD. The abstractions on top stayed stable while the implementations underneath changed freely.</p>
+              <p>Managed Agents follow the same pattern. We virtualized the components of an agent: a session (the append-only log of everything that happened), a harness (the loop that calls Claude and routes Claude&#39;s tool calls to the relevant infrastructure), and a sandbox (an execution environment where Claude can run code and edit files). This allows the implementation of each to be swapped without disturbing the others.</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="card-footer"><a href="https://x.com/bcherny/status/1946097555555555555" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
-    </article>
-
-    <article class="card" data-author-key="x:bcherny" data-author-name="Boris Cherny" data-author-tag="Salesforce AI 工程负责人" data-author-handle="@bcherny" data-author-avatar="../assets/avatars/x-bcherny.jpg">
-      <div class="card-header">
-        <div class="avatar"><img src="../assets/avatars/x-bcherny.jpg" alt="Boris Cherny avatar"><span class="avatar-fallback">BC</span></div>
-        <div class="author-info">
-          <div class="author-name-row">
-            <div class="author-name">Boris Cherny</div>
-            <div class="author-tag is-inline">Salesforce AI 工程负责人</div>
-          </div>
-          <div class="author-handle">@bcherny</div>
-        </div>
-        <div class="card-controls">
-          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
-          <button class="view-toggle" type="button" data-view-target="original">原文</button>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="lang-col cn">
-          <div class="lang-label">中文</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>怎么衡量 adoption 的回报？使用量仪表盘衡量的是「活动量」，不是「回报」。更锋利的问题是：这件事如果你不用 Claude，本来也要投入工程力去做吗？如果是，量多大、折算成多少手动工程工时？这个差值才是回报。</p>
-              <p>落到实践上：让 Claude 能端到端自验、默认开启自动 code review + security review、用多 agent 界面（CLI 的 Agent view、Desktop、移动端、Tag）；再往上靠 /loop、/batch、worktree 隔离。</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>一旦团队接受了，你怎么跟踪？使用情况值得观察，但衡量的是活动而非回报。一个更好的问题是：你本来也会在工程上花力气做这件事吗？</p>
-            </div>
-          </div>
-        </div>
-        <div class="lang-col en">
-          <div class="lang-label">English</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>On measuring the adoption curve: usage dashboards measure activity, not return. The sharper question is — would you have spent engineering effort on this anyway? If yes, how much, and what would it have cost in manual eng-hours? That delta is the return.</p>
-              <p>On the practical side: give Claude ways to verify its own work end to end, default on automated code review + security review, use multi-agent interfaces (Agent view in CLI, Desktop, mobile, Tag), and reach for /loop, /batch, worktree isolation for higher steps.</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>Once your teams are bought in, how do you track it? Usage is worth watching (e.g. a dashboard), but it measures activity, not return. A better question: would you have spent engineering effort on this anyway? If yes, how much and what would it have cost in manual eng-hours? That&#39;s your return.</p>
-              <p>In practice that means giving Claude ways to verify its own work end to end. It means enabling auto mode for permissions, defaulting on automated code review and security review, and using interfaces that let you manage multiple agents at once (Agent view in CLI, Desktop app, iOS and Android apps, Tag). To get to higher levels it means /loop, /batch, dynamic workflows, and worktree isolation for</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card-footer"><a href="https://x.com/bcherny/status/1946097666666666666" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+      <div class="card-footer"><a href="https://www.anthropic.com/engineering/managed-agents" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
     </article>
   </section>
 
   <section class="section-header">
     <div class="section-label">Theme 04</div>
-    <h2 class="section-title">Benedict Evans：别把 AI 当电力，先看清哪里有 moat / Benedict Evans: Don&#39;t Call AI Electricity; Look for the Moat</h2>
-    <p class="section-desc">Unsupervised Learning 第 91 期请来 Benedict Evans。两条主线：Hinton 十年前的「别再训练放射科医生」是「聪明人不理解 workflow」的样本；capex 越大、moat 反而越窄，真正值得打的仗在应用层和切换成本。</p>
+    <h2 class="section-title">Claude Blog：self-hosted sandboxes + MCP tunnels——execution 走你的网，agent loop 留在我这 / Claude Blog: Self-Hosted Sandboxes + MCP Tunnels — Execution Stays on Your Network, Agent Loop Stays on Anthropic</h2>
+    <p class="section-desc">Claude Blog 这篇把 Managed Agents 的 execution 这块继续展开：今天起 Managed Agents 能跑在你控制的 sandbox 里、连到你私有的 MCP server。代码执行、敏感文件、packages、services、数据全留在你的 enterprise 边界里。Cloudflare / Daytona / Modal / Vercel 这几家做 managed sandbox provider。Agent loop 仍然在 Anthropic infra 上跑（orchestration、context 管理、error recovery），tool execution 移到你的环境里。MCP tunnels 是 research preview，让 agent 能穿透防火墙访问你后面的 MCP server。</p>
   </section>
   <section class="feed">
-    <article class="card" data-author-key="podcast:unsupervised-learning" data-author-name="Unsupervised Learning" data-author-tag="Redpoint 出品的 AI 投资与技术播客" data-author-handle="" data-author-avatar="../assets/avatars/podcast-unsupervised-learning.jpg">
+    <article class="card" data-author-key="blog:claude-blog" data-author-name="Claude Blog" data-author-tag="Anthropic 官方博客" data-author-handle="" data-author-avatar="../assets/avatars/blog-claude-blog.png">
       <div class="card-header">
-        <div class="avatar"><img src="../assets/avatars/podcast-unsupervised-learning.jpg" alt="Unsupervised Learning avatar"><span class="avatar-fallback">UL</span></div>
+        <div class="avatar"><img src="../assets/avatars/blog-claude-blog.png" alt="Claude Blog avatar"><span class="avatar-fallback">CB</span></div>
         <div class="author-info">
           <div class="author-name-row">
-            <div class="author-name">Unsupervised Learning</div>
-            <div class="author-tag is-inline">Redpoint 出品的 AI 投资与技术播客</div>
+            <div class="author-name">Claude Blog</div>
+            <div class="author-tag is-inline">Anthropic 官方博客</div>
           </div>
           <div class="author-handle"></div>
         </div>
@@ -568,12 +409,17 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Benedict Evans 反驳「AI 就是电力」这种挥手式类比。更扎实的测试是：电力当年到底发生了什么？电气化之前的人也不傻。真正的问题是哪些行业先被重塑、哪些行业会抵抗。</p>
-              <p>对于「AI 取代工作」的恐慌：Hinton 十年前说别再训练放射科医生，就是聪明人不理解那份工作到底在干嘛的典型样本。每次新模型发布，这个模式都重演——抓一个吸睛的岗位名，宣布它已死，忽略真实的工作流。</p>
+              <p>Claude Blog：今天起，Managed Agents 能跑在你控制的 sandbox 里、连到你私有的 MCP server。「agent 跑 tool 的 sandbox 和它要去访问的服务，都跑在你的 enterprise 边界里，归你的 security 和 runtime 控件管。」代码执行、敏感文件、packages、services、数据全部留在你的网内。</p>
+              <p>分工：「负责 orchestration、context 管理、error recovery 的 agent loop 仍然在 Anthropic infra 上跑，tool execution 移到你自己配置的环境里。」Self-hosted sandboxes 是 public beta；MCP tunnels 是 research preview。</p>
+              <p>managed provider：「你可以挑任何 sandbox client，也可以从我们支持的 provider 开始——Cloudflare 用 microVM 和更轻量的 isolate 在大规模上跑 sandbox。」出向的网络请求在你掌控之下：zero-trust secrets injection、能配置 proxy 来审计或重定向 egress、能连到内部服务。Daytona、Modal、Vercel 同样在名单上。</p>
+              <p>模式：每当 enterprise 问「数据怎么不出网还能用 hosted agent service」，答案越来越都是这一套——orchestration 在 vendor infra，execution 在客户网内，secrets 在边界处走 zero-trust 注入。MCP tunnels 是同一形状，只不过这次是网络层而不是计算层。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>你可以挥挥手说，不，这就像电力。好吧。细想一下电力时代发生了什么？电气化之前的人也不傻。</p>
-              <p>我们在这里深入探讨逻辑谬误。十年前 Hinton 说过停止训练放射科医生。这里的问题是他实际上并不理解放射科医生是做什么的。</p>
+              <p>从今天开始，Claude Managed Agents 能跑在你控制的 sandbox 里、连到你私有的 MCP server。agent 跑 tool 的 sandbox 和它要访问的服务，都跑在你的 enterprise 边界里，受你的 security 和 runtime 控件管。sandbox 可以跑在你自己的 infra 上，也可以交给 Cloudflare、Daytona、Modal、Vercel 这几家 managed provider 处理计算和隔离。</p>
+              <p>Self-hosted sandboxes：把 agent 的执行留在你的边界内。一个 self-hosted sandbox 让 Claude Managed Agent 在你控制的基础设施、或一个 managed sandbox provider 上执行 tool。代码执行、敏感文件、packages、services、数据全部留在你的 enterprise 边界里，受你的 security 和 runtime 控件管。</p>
+              <p>用 self-hosted sandboxes，敏感文件、packages、services 全部留在你自己的 infra 上，或在 managed sandbox provider 上；负责 orchestration、context 管理、error recovery 的 agent loop 仍然在 Anthropic infra 上跑，tool execution 移到你自己配置的环境里。在你的网内，network policy、audit logging、security 工具本来就齐了，文件和 repo 不会外流。</p>
+              <p>计算资源也在你这边：resource 规格和 runtime image 在你这边配，所以跑长 build、image generation 这种 compute-heavy 任务的 agent 能拿到任务真正需要的 CPU、内存和容量。</p>
+              <p>你想用什么 sandbox client 都可以，也可以从我们支持的 provider 开始——Cloudflare 用 microVM 和更轻量的 isolate 在大规模上跑 sandbox。出向的网络请求在你掌控之下：zero-trust secrets injection、能配 proxy 审计或重定向 egress、能连到内部服务。</p>
             </div>
           </div>
         </div>
@@ -581,81 +427,40 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Benedict Evans pushes back on the &#39;AI is like electricity&#39; hand-wave. The deeper test: what happened with electricity? People before electrification weren&#39;t dumb either. The real question is which industries get restructured first, and which resist.</p>
-              <p>On the job-loss panic: Hinton&#39;s 10-year-old claim that we should stop training radiologists is the canonical example of smart people misunderstanding what those jobs actually involve. The pattern repeats with every new model release — pattern-match a headline job title, declare it dead, ignore the actual workflow.</p>
+              <p>Claude Blog: starting today, Managed Agents can run inside a sandbox you control and connect to private MCP servers. &#39;Both the sandbox where an agent executes tools and the services it reaches run within the established boundaries of your enterprise, under your security and runtime controls.&#39; Code execution, sensitive files, packages, services, and data stay within your perimeter.</p>
+              <p>On the split: &#39;The agent loop that handles orchestration, context management, and error recovery stays on Anthropic&#39;s infrastructure, while tool execution moves to your own configured environment.&#39; Self-hosted sandboxes is in public beta; MCP tunnels is in research preview.</p>
+              <p>On managed providers: &#39;Choose any sandbox client you want, or start with one of our supported providers: Cloudflare runs sandboxes at scale using microVMs and lighter weight isolates.&#39; Outbound network requests stay in your control with zero-trust secrets injection, customizable proxies for auditing or rerouting egress, and the ability to connect to internal services. Daytona, Modal, and Vercel are also supported.</p>
+              <p>The pattern: every time an enterprise asks &#39;how do we keep our data inside while still using a hosted agent service,&#39; the answer is increasingly some version of this split — orchestration in the vendor&#39;s infra, execution in the customer&#39;s perimeter, secrets handled by zero-trust injection at the boundary. MCP tunnels is the same shape, just for the network layer instead of the compute layer.</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>You can wave your hands and say, no. This is like electricity. Okay. Fine. It&#39;s like electricity. Well, what happened with electricity? And there was a time before electricity, and people before electricity weren&#39;t dumb either.</p>
-              <p>We get deep into logical fallacies here. So we&#39;ve got Jeff Hinton, was ten years ago, saying stop training radiologists. And the problem here here is he doesn&#39;t actually understand what radiologists do.</p>
+              <p>Starting today, Claude Managed Agents can operate in a sandbox you control and connect to your private Model Context Protocol (MCP) servers. Both the sandbox where an agent executes tools and the services it reaches run within the established boundaries of your enterprise, under your security and runtime controls. The sandbox runs on your own infrastructure, or with managed providers like Cloudflare, Daytona, Modal, or Vercel to handle the compute and isolation for you. On the Claude Platform, self-hosted sandboxes is available in public beta and MCP tunnels in research preview (request access).</p>
+              <p>Self-hosted sandboxes: keep agent execution within your perimeter. A self-hosted sandbox lets a Claude Managed Agent execute tools on infrastructure you control or with a managed sandbox provider. Code execution, sensitive files, packages, services, and data stay within your enterprise perimeter, under your security and runtime controls.</p>
+              <p>With self-hosted sandboxes, you keep sensitive files, packages, and services in your own infrastructure or with a managed sandbox provider. The agent loop that handles orchestration, context management, and error recovery stays on Anthropic&#39;s infrastructure, while tool execution moves to your own configured environment. Inside your perimeter, network policies, audit logging, and security tooling are already in place, and files and repositories don&#39;t leave.</p>
+              <p>You also control the compute: resource sizing and the runtime image are set on your side, so agents running compute-heavy work such as long builds or image generation get the CPU, memory, and capacity the task needs.</p>
+              <p>Choose any sandbox client you want, or start with one of our supported providers: Cloudflare runs sandboxes at scale using microVMs and lighter weight isolates. Outbound network requests are in your control with zero-trust secrets injection, customizable proxies to audit, reroute, or modify egress, and the ability to connect to internal servi</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="card-footer"><a href="https://www.youtube.com/watch?v=vDY_ocrkQ5w" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
-    </article>
-
-    <article class="card" data-author-key="podcast:unsupervised-learning" data-author-name="Unsupervised Learning" data-author-tag="Redpoint 出品的 AI 投资与技术播客" data-author-handle="" data-author-avatar="../assets/avatars/podcast-unsupervised-learning.jpg">
-      <div class="card-header">
-        <div class="avatar"><img src="../assets/avatars/podcast-unsupervised-learning.jpg" alt="Unsupervised Learning avatar"><span class="avatar-fallback">UL</span></div>
-        <div class="author-info">
-          <div class="author-name-row">
-            <div class="author-name">Unsupervised Learning</div>
-            <div class="author-tag is-inline">Redpoint 出品的 AI 投资与技术播客</div>
-          </div>
-          <div class="author-handle"></div>
-        </div>
-        <div class="card-controls">
-          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
-          <button class="view-toggle" type="button" data-view-target="original">原文</button>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="lang-col cn">
-          <div class="lang-label">中文</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>关于价值归向：基础模型的估值和「真实经济价值最终落在哪」是两个问题。Evans 的启发式判断是——构建所需 capex 越大，最终的护城河反而越窄，下游被竞争摊薄的部分越多。</p>
-              <p>他留给 builder 的隐含建议：别在基础模型层做文章。真正的仗在它上面的应用层——能不能把 workflow 嵌入得够深，让切换成本变成现实。</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>我是来自红点的 Jacob Efron，这是《无监督学习》。</p>
-              <p>我们讨论了 AI 的价值将如何积累，以及他对基础模型最终估值的看法。</p>
-            </div>
-          </div>
-        </div>
-        <div class="lang-col en">
-          <div class="lang-label">English</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>On where value accrues: foundation-model valuations are a separate question from where the actual economic value will land. Evans&#39; heuristic — the bigger the capex required to build the thing, the narrower the eventual moat, and the more value gets competed away downstream.</p>
-              <p>His closing implication for builders: don&#39;t optimize for the foundation-model layer. The interesting fight is in the application surface that sits on top — and on whether you can build a workflow so embedded that switching costs become real.</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>Speaker 2 | 00:28 - 00:46: I&#39;m Jacob Efron from Redpoint, and this is Unsupervised Learning. A podcast where we probe the sharpest minds in AI about what&#39;s happening in the ecosystem today and where the future&#39;s headed.</p>
-              <p>Speaker 2 | 00:46 - 01:10: We talked about where value will accrue in AI, as well as what he thinks the ultimate valuations of the foundation models might look like. We talked about why consumer ...</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card-footer"><a href="https://www.youtube.com/watch?v=vDY_ocrkQ5w&amp;t=1500" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+      <div class="card-footer"><a href="https://claude.com/blog/claude-managed-agents-updates" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
     </article>
   </section>
 
   <section class="section-header">
     <div class="section-label">Theme 05</div>
-    <h2 class="section-title">NotebookLM 毕业：Labs 那个小实验今天叫 Gemini Notebook / NotebookLM Graduates: The Labs Experiment Is Now Gemini Notebook</h2>
-    <p class="section-desc">Josh Woodward 亲历回溯：当年那个看 Steven Johnson 拆书写作的小房间是起点，今天 3000 万+ 用户、60 万+ 组织。Google Labs 补刀欢迎它升级到 Gemini Notebook 品牌。</p>
+    <h2 class="section-title">OpenAI 这一头：Thibault 周末给所有付费用户 reset usage limits + GPT-5.6 Sol「极佳模型」/ OpenAI Side: Thibault Resets Weekend Usage Limits for All Paid Users + GPT-5.6 Sol &quot;Extremely Good Model&quot;</h2>
+    <p class="section-desc">OpenAI Codex &amp; ChatGPT 负责人 Thibault Sottiaux 周末连发两条：第一条 GPT-5.6 Sol 是「极佳模型」的确认；第二条直接给 Codex + ChatGPT Work 的所有付费用户 reset 了 usage limits（并暗示可能也 reset 了别的 rate limits），整个团队一边扛 scaling 一边迭代。跟昨天 GPT-5.6 文件删除 post-mortem（7-15）+ 拿 $100 Codex credits 换用户反馈（7-16）是同一条线——OpenAI 这一头对 5.6 Sol 的需求信号非常主动。</p>
   </section>
   <section class="feed">
-    <article class="card" data-author-key="x:joshwoodward" data-author-name="Josh Woodward" data-author-tag="Google Labs 产品负责人" data-author-handle="@joshwoodward" data-author-avatar="../assets/avatars/x-joshwoodward.jpg">
+    <article class="card" data-author-key="x:thsottiaux" data-author-name="Thibault Sottiaux" data-author-tag="OpenAI Codex &amp; ChatGPT" data-author-handle="@thsottiaux" data-author-avatar="../assets/avatars/x-thsottiaux.jpg">
       <div class="card-header">
-        <div class="avatar"><img src="../assets/avatars/x-joshwoodward.jpg" alt="Josh Woodward avatar"><span class="avatar-fallback">JW</span></div>
+        <div class="avatar"><img src="../assets/avatars/x-thsottiaux.jpg" alt="Thibault Sottiaux avatar"><span class="avatar-fallback">TS</span></div>
         <div class="author-info">
           <div class="author-name-row">
-            <div class="author-name">Josh Woodward</div>
-            <div class="author-tag is-inline">Google Labs 产品负责人</div>
+            <div class="author-name">Thibault Sottiaux</div>
+            <div class="author-tag is-inline">OpenAI Codex &amp; ChatGPT</div>
           </div>
-          <div class="author-handle">@joshwoodward</div>
+          <div class="author-handle">@thsottiaux</div>
         </div>
         <div class="card-controls">
           <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
@@ -667,57 +472,18 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>NotebookLM 从 Labs 正式「毕业」。Josh 还记得那个房间——看着 @stevenbjohnson 拆解他是怎么写书的——那是一颗谁都没想到会长这么大的小种子。</p>
-              <p>今天：3000 万+ 用户，60 万+ 组织。内部一直就叫「Notebook」。今天对外正式定名：Gemini Notebook。</p>
+              <p>OpenAI Codex &amp; ChatGPT 负责人 Thibault Sottiaux 周五：「Oops... I did it again. 这周末给 Codex 和 ChatGPT Work 的所有付费用户 reset usage limits。非常感谢这支不可思议的团队，他们在以光速迭代、扛住比以往任何时候都快的 scaling。周末愉快！」语气一如既往地轻，但动作不小——周末 reset 跨 Codex + ChatGPT Work 的 usage limits。</p>
+              <p>紧接着：「可能也顺手 reset 了外面别处的 rate limits。看情况。如果帮到了，那就当我没说。」Thibault 在暗示这次 reset 可能不止影响他明说的那几个 surface——一种「让我知道你得了便宜」和「也许我做的比说的多」的混合信号。</p>
+              <p>跟昨天的 GPT-5.6 Sol「增长太疯狂」、前天的 GPT-5.6 文件删除 post-mortem 串起来看：OpenAI 这一头在 inference 这层打的是急行军。5.6 Sol 的需求强到 Codex &amp; ChatGPT 这一侧愿意周末把 rate-limit 闸门放掉，看看到底会发生什么。「以光速迭代」不是客套话——它是一条关于 infrastructure velocity 的状态更新。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>我还记得那个房间，看着 @stevenbjohnson 拆解他是怎么写书的。那是一个没人想到会长这么大的小项目的火花。</p>
-              <p>如今，超过 3000 万人和 60 万个组织在使用它，而且还在不断增长。</p>
-            </div>
-          </div>
-        </div>
-        <div class="lang-col en">
-          <div class="lang-label">English</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>NotebookLM is graduating out of Labs. Josh still remembers the room where @stevenbjohnson walked through how he writes books — that was the spark for a small project nobody imagined would grow this big. Today: 30M+ people, 600K+ organizations.</p>
-              <p>The internal name was just &#39;Notebook&#39; for years. Today it&#39;s official externally: Gemini Notebook.</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>I still remember the exact room, watching @stevenbjohnson break down how he writes books. That was the spark for a little project we never imagined would grow this big.</p>
-              <p>Today, over 30 million people and 600,000 organizations use it, and it keeps growing. We all feel like it&#39;s just getting started.</p>
-              <p>For a while, we&#39;ve just called it &quot;Notebook&quot; internally. Today, we&#39;re making it official externally</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card-footer"><a href="https://x.com/joshwoodward/status/1946097777777777777" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
-    </article>
+              <p>Oops……我又干了一次。
 
-    <article class="card" data-author-key="x:GoogleLabs" data-author-name="Google Labs" data-author-tag="Google AI" data-author-handle="@GoogleLabs" data-author-avatar="../assets/avatars/x-GoogleLabs.jpg">
-      <div class="card-header">
-        <div class="avatar"><img src="../assets/avatars/x-GoogleLabs.jpg" alt="Google Labs avatar"><span class="avatar-fallback">GL</span></div>
-        <div class="author-info">
-          <div class="author-name-row">
-            <div class="author-name">Google Labs</div>
-            <div class="author-tag is-inline">Google AI</div>
-          </div>
-          <div class="author-handle">@GoogleLabs</div>
-        </div>
-        <div class="card-controls">
-          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
-          <button class="view-toggle" type="button" data-view-target="original">原文</button>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="lang-col cn">
-          <div class="lang-label">中文</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>Google Labs 官方补刀：还记得当年那个叫 Project Tailwind 的小实验吗？后来变成 NotebookLM。今天再升级成 @Gemini_Notebook，恭喜团队完成品牌升级。</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>谁还记得当年 Project Tailwind 还只是一个小小的实验室实验？最终它变成了 NotebookLM。今天——热烈祝贺团队升级为 @Gemini_Notebook！</p>
+              给 Codex 和 ChatGPT Work 的所有付费用户 reset usage limits，周末用。非常感谢这支不可思议的团队，他们在以光速迭代，在 scale 速度比以往任何时候都快的情况下扛住 infra。
+
+              周末愉快！</p>
+              <p>可能顺手也 reset 了外面别处的 rate limits。看情况。如果帮到了，那就是你要感谢的不是我。</p>
+              <p>GPT-5.6 Sol 已确认是一个极佳模型。</p>
             </div>
           </div>
         </div>
@@ -725,33 +491,41 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>From Google Labs: who remembers Project Tailwind — the little baby Labs experiment? It became NotebookLM. Today it becomes @Gemini_Notebook — congrats to the team on the rebrand.</p>
+              <p>Thibault Sottiaux (OpenAI Codex &amp; ChatGPT lead) on Friday: &#39;Oops... I did it again. Enjoy reset usage limits for all paid users for Codex and ChatGPT Work. Super grateful for an incredible team who is iterating at lightspeed and keeping the infra up as we scale faster than ever. Enjoy the weekend!&#39; The phrasing is characteristically light, but the action is material — a weekend reset of usage limits across the Codex and ChatGPT Work tiers.</p>
+              <p>The follow-up: &#39;And transitively might also have reset other rate limits out there. Let&#39;s see. You&#39;re welcome if so.&#39; Thibault is signaling that the reset may have rippled beyond the stated surfaces — a &#39;let me know if it helped&#39; that&#39;s also a &#39;I may have done more than I said.&#39;</p>
+              <p>Reading between the lines alongside yesterday&#39;s GPT-5.6 Sol growth (&#39;insane&#39;) and Thursday&#39;s GPT-5.6 file-deletion post-mortem: OpenAI is in the middle of an inference-side scramble. 5.6 Sol demand is pulling traffic hard enough that the Codex &amp; ChatGPT side is willing to give back the rate-limit gate for a weekend and see what happens. The &#39;iterating at lightspeed&#39; line isn&#39;t casual — it&#39;s a status update on infrastructure velocity.</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Who remembers when Project Tailwind was just a little, baby Labs experiment? Well, eventually that became NotebookLM. And today - many congrats to the team on becoming @Gemini_Notebook!</p>
+              <p>Oops... I did it again.
+
+              Enjoy reset usage limits for all paid users for Codex and ChatGPT Work. Super grateful for an incredible team who is iterating at lightspeed and keeping the infra up as we scale faster than ever.
+
+              Enjoy the weekend!</p>
+              <p>And transitively might also have reset other rate limits out there. Let&#39;s see. You&#39;re welcome if so.</p>
+              <p>GPT-5.6 Sol confirmed to be an extremely good model</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="card-footer"><a href="https://x.com/GoogleLabs/status/1946097888888888888" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+      <div class="card-footer"><a href="https://x.com/thsottiaux/status/2078320950488297917" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
     </article>
   </section>
 
   <section class="section-header">
     <div class="section-label">Theme 06</div>
-    <h2 class="section-title">周末 fragment 三连：Sama 跨过语音门槛 + Amjad 把 RL 模板公开 + Thibault 修桌面端 / Weekend Fragments: Sama Crosses the Voice Threshold + Amjad Open-Sources the RL Template + Thibault Fixes the Desktop</h2>
-    <p class="section-desc">Sama 说新语音模型真的「跨过了门槛」，并预告接下来 12 个月是 OpenAI 史上最强。Amjad 把 2M Stockfish 局面 + 短程 GRPO 的国际象棋引擎全部公开。Thibault 列出 ChatGPT 桌面端的修正清单。</p>
+    <h2 class="section-title">Claude：Fable 5 进 Max / Team Premium（50% limits）+ Pro / Team Standard 发一次性 $100 credit / Claude: Fable 5 Joins Max and Team Premium at 50% Limits + One-Time $100 Credit for Pro and Team Standard</h2>
+    <p class="section-desc">Claude 官方账号周末连发两条把 Fable 5 的供给侧调整讲清楚：7 月 20 日起，Fable 5 进入 Max 和 Team Premium（at 50% of limits），Pro 和 Team Standard 继续通过 usage credits 访问 Fable、并且拿到一次性 $100 credit。承认 Fable 的需求「challenging to predict」，所以做了一些调整；同时给所有受影响 plan 更清楚的「你的 plan 包含什么」的可见性。</p>
   </section>
   <section class="feed">
-    <article class="card" data-author-key="x:sama" data-author-name="Sam Altman" data-author-tag="OpenAI CEO" data-author-handle="@sama" data-author-avatar="../assets/avatars/x-sama.jpg">
+    <article class="card" data-author-key="x:claudeai" data-author-name="Claude" data-author-tag="Anthropic Claude 官方账号" data-author-handle="@claudeai" data-author-avatar="../assets/avatars/x-claudeai.jpg">
       <div class="card-header">
-        <div class="avatar"><img src="../assets/avatars/x-sama.jpg" alt="Sam Altman avatar"><span class="avatar-fallback">SA</span></div>
+        <div class="avatar"><img src="../assets/avatars/x-claudeai.jpg" alt="Claude avatar"><span class="avatar-fallback">C</span></div>
         <div class="author-info">
           <div class="author-name-row">
-            <div class="author-name">Sam Altman</div>
-            <div class="author-tag is-inline">OpenAI CEO</div>
+            <div class="author-name">Claude</div>
+            <div class="author-tag is-inline">Anthropic Claude 官方账号</div>
           </div>
-          <div class="author-handle">@sama</div>
+          <div class="author-handle">@claudeai</div>
         </div>
         <div class="card-controls">
           <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
@@ -763,11 +537,20 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Sama 谈新的 ChatGPT 语音模型：「我现在跟 ChatGPT 说话比打字还多——新的语音模型真的跨过了某个门槛。」他接着说 OpenAI 的路线图：「过去 12 个月不是我们最好的 12 个月，主要是我自己的锅；但接下来的 12 个月会是我们史上最好的 12 个月。」</p>
+              <p>Claude 官方账号（周六）：「7 月 20 日起，Claude Fable 5 进所有 Max 和 Team Premium plan（50% of limits）。Pro 和 Team Standard 用户继续通过 usage credits 访问 Fable，并且拿到一次性 $100 credit。Fable 的需求难以预测，所以我们采用了这一套做法。」</p>
+              <p>紧接着：「我们知道这阵子体验不好，我们想让你的 plan 到底包含什么变得更可预期。我们把对 Fable 最重度使用的 plans 标准化为 50% 用量作为常态。过去几周感谢大家的耐心。我们会持续投入新 capacity。」</p>
+              <p>结构性的解读：Fable 当初是作为顶配 feature 推的，需求来势比预期猛得多，所以不得不先走一段「waiting-list / credits-only」的节制期，现在才稳定下来、按 plan tier 切块。「Standard at 50% of limits」是新常态——故意低承诺，把空间留给交付，避免再来一轮节制。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>现在我与 ChatGPT 的交流中，说话多于打字。新的语音模型真的跨越了一个临界点。</p>
-              <p>过去 12 个月不是我们表现最好的时期，这主要是我自己的责任，但接下来的 12 个月将是我们迄今为止最好的 12 个月。</p>
+              <p>7 月 20 日起，Claude Fable 5 进所有 Max 和 Team Premium plan，限额 50%。
+
+              Pro 和 Team Standard 用户继续通过 usage credits 访问 Fable，并且拿到一次性 $100 credit。
+
+              Fable 的需求难以预测，这是我们采用这套做法的</p>
+              <p>我们知道这阵子体验不好，我们想让你的 plan 到底包含什么变得更确定。我们把对 Fable 最重度使用的 plans 标准化为 50% 用量作为常态。
+
+              感谢过去几周大家的耐心。我们会持续投新 capacity </p>
+              <p>看 hackathon 项目的更多作品：</p>
             </div>
           </div>
         </div>
@@ -775,16 +558,548 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Sama on the new ChatGPT voice model: &#39;I talk to ChatGPT more than I type to it at this point — the new voice model really crossed a threshold.&#39; On OpenAI&#39;s roadmap: &#39;we didn&#39;t have our best last 12 months — that&#39;s mostly my fault — but we&#39;re about to have our best 12 months to date.&#39;</p>
+              <p>Claude&#39;s official account (Saturday): &#39;Beginning July 20, Claude Fable 5 will be included in all Max and Team Premium plans, at 50% of limits. Pro and Team Standard users will continue to have access to Fable via usage credits, and will receive a one-time $100 credit. Demand for Fable has been challenging to predict, which is why we rolled out this approach.&#39;</p>
+              <p>The follow-up: &#39;We know this has been frustrating, and we want to give you more certainty about what your plan includes. We are making access standard at 50% usage for the plans that use Fable most intensively. Thank you for your patience over the past several weeks. We&#39;re continuing to invest in new capacity and …&#39;</p>
+              <p>The structural read: Fable was launched as a top-end feature and demand came in harder than forecast, which forced a rationing phase (last week&#39;s waiting-list / credits-only path) and now a steady-state plan-tier carve-out. &#39;Standard at 50% of limits&#39; is the new normal for the plans that use Fable most intensively — a deliberate under-promising to leave room to deliver without a second rationing round.</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>i talk to chatgpt more than i type to it at this point. new voice model really crossed a threshold</p>
-              <p>we did not have our best last 12 months ever, which is mostly my fault, but we are about to have our best 12 months to date. the team is doing amazing work and i think you&#39;ll be very happy with what they&#39;ve got cooking for you. i am happy about this for many reasons, but mostly because i care about our users winning. AI has to be about giving lots of people more freedom, agency, and wealth. we wa</p>
+              <p>Beginning July 20, Claude Fable 5 will be included in all Max and Team Premium plans, at 50% of limits.
+
+              Pro and Team Standard users will continue to have access to Fable via usage credits, and will receive a one-time $100 credit.
+
+              Demand for Fable has been challenging to predict, which is why we ro</p>
+              <p>We know this has been frustrating, and we want to give you more certainty about what your plan includes. We are making access standard at 50% usage for the plans that use Fable most intensively.
+
+              Thank you for your patience over the past several weeks. We&#39;re continuing to invest in new capacity and </p>
+              <p>Explore more projects from the hackathon here: https://t.co/NTQ5I4RGby</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="card-footer"><a href="https://x.com/sama/status/1946097999999999999" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+      <div class="card-footer"><a href="https://x.com/claudeai/status/2078302415804379218" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 07</div>
+    <h2 class="section-title">swyx：AEO / SEO 还没商品化，每周末让 agent 自动研究怎么提升是免费 alpha / swyx: AEO / SEO Isn&#39;t Commoditized Yet — Letting Agents Auto-Research It Weekly Is Free Alpha</h2>
+    <p class="section-desc">swyx 这周连发三条把同一根线讲完：AEO（AI engine optimization）/ SEO 这块 alpha 还在，因为不是所有团队都把 agent 设成「每周末自动研究怎么提升自家排名」。第二条卡得更细：alpha 只在大家停止问这种问题、开始讨论 on-policy auto-AEO（让 Claude 优化你的 AEO 会不会不对称地有利于 Claude）vs generalizable AEO 的时候才消失。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:swyx" data-author-name="Swyx" data-author-tag="AI 工程师" data-author-handle="@swyx" data-author-avatar="../assets/avatars/x-swyx.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-swyx.jpg" alt="Swyx avatar"><span class="avatar-fallback">S</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Swyx</div>
+            <div class="author-tag is-inline">AI 工程师</div>
+          </div>
+          <div class="author-handle">@swyx</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>swyx（AI 工程师 / Cognition / Temporal / smol.ai / Latent Space）：「顺便说一句，如果你还没把你的 {codex | claude | gemini | devin} automation 设成『每周末自动研究怎么提升自家 SEO / AEO』，你真的是在错过一种免费、理论上应该被商品化但奇怪地还没被挖到的 alpha。」</p>
+              <p>理由：SEO / AEO 这种工作最适合新的 loop 模式——提候选 → 测 → 量 → 迭代——然而大部分团队还是每个季度手动做一次。每周末自动研究的 loop 恰好踩在 agentic 工具最擅长的形状里。它还没被商品化的事实，就是 alpha 窗口。</p>
+              <p>alpha 什么时候消失：「alpha 只在大家停止问『这种问题』、开始讨论 on-policy auto-AEO（让 Claude 优化你的 AEO 会不会不对称地有利于 Claude）vs generalizable AEO 的时候才消失。」换句话说：alpha 消失的标志是 meta-conversation 从『你的自动研究 loop 行不行』转成『loop 本身是不是模型厂商的政策诱饵』。这是更后面的成熟阶段。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>顺便说一句，如果你还没把你的 {codex | claude | gemini | devin} automation 设成每周末自动研究怎么提升自家 SEO / AEO，你真的是在错过一种免费、理论上应该被商品化但奇怪地还没被挖到的 alpha。</p>
+              <p>alpha 只在大家停止问这种问题、开始讨论 on-policy auto-AEO（让 Claude 优化你的 AEO 会不会不对称地有利于 Claude）vs generalizable AEO 的时候才消失。</p>
+              <p>仍然成立。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>swyx (AI engineer, Cognition / Temporal / smol.ai / Latent Space): &#39;btw if you havent set your {codex | claude | gemini | devin} automations to autoresearch how to improve your seo/aeo every week you are really truly missing out on free, should-be-commoditizing-but-weirdly-untapped alpha.&#39;</p>
+              <p>The reasoning: SEO/AEO is the kind of work that benefits most from the new loop pattern — research candidates → test → measure → iterate — and yet most teams still do it manually once a quarter. The weekly autoresearch loop fits exactly into what agentic tools are good at. The fact that it isn&#39;t commoditized yet is the alpha window.</p>
+              <p>On when the alpha dies: &#39;alpha only gone when we all stop asking these level of questions and start discussion about on-policy autoaeo (does claude optimizing your aeo disproportionately work on claude?) vs generalizable aeo.&#39; Translation: the alpha goes away when the meta-conversation shifts from &#39;does your autoresearch loop work?&#39; to &#39;is the loop itself policy-bait for the model vendor?&#39; That&#39;s a much later stage of maturity.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>btw if you havent set your {codex | claude | gemini | devin} automations to autoresearch how to improve your seo/aeo every week you are really truly missing out on free, should-be-commoditizing-but-weirdly-untapped alpha</p>
+              <p>alpha only gone when we all stop asking these level of questions and start discussion about on-policy autoaeo (does claude optimizing your aeo disproportionately work on claude?) vs generalizable aeo</p>
+              <p>still true</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/swyx/status/2078244735794413786" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 08</div>
+    <h2 class="section-title">Peter Yang：Codex browser use 终于被击败 + ChatGPT Live × Codex 是 OpenAI 最大的 missed opportunity / Peter Yang: Codex Browser Use Finally Defeated + ChatGPT Live × Codex Is OpenAI&#39;s Biggest Missed Opportunity</h2>
+    <p class="section-desc">Peter Yang 把 Codex 在 browser use 这一项上的最新状态钉出来：终于「defeated」——意味着 Codex 在浏览器自动化这条线上的最新水平已经超过测试场景的 baseline。他之前那条 thread 把 ChatGPT Live × Codex 之间的 missed opportunity 讲得更细：散步时让 ChatGPT Live 拉 Google Doc 它说不行；手动触发 Documents plugin 之后 ChatGPT Live 突然拿到对的 context。这条线索跟 Thibault 周五那条「既然 ChatGPT 和 Codex 已经合并，接下来合并什么」是同一根。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:petergyang" data-author-name="Peter Yang" data-author-tag="产品教练 / 创作者经济研究者" data-author-handle="@petergyang" data-author-avatar="../assets/avatars/x-petergyang.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-petergyang.jpg" alt="Peter Yang avatar"><span class="avatar-fallback">PY</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Yang</div>
+            <div class="author-tag is-inline">产品教练 / 创作者经济研究者</div>
+          </div>
+          <div class="author-handle">@petergyang</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang（产品教练 / 创作者经济研究者）：「Codex 的 browser use 终于被击败了。」一句话立一个里程碑——Codex 在 browser-based automation 这一项上不再是短板。</p>
+              <p>他之前那条 thread 已经把 ChatGPT Live × Codex 的 missed opportunity 摆出来：散步的时候让 ChatGPT Live 拉 Google Doc，ChatGPT Live 说不行；手动触发 Documents plugin 之后，ChatGPT Live 突然拿到对的 context。两个 surface——Live（语音）和 Codex（工作）——共享一个 vendor 但不共享一张 context graph。</p>
+              <p>为什么现在重要：Thibault 周五那条「既然 ChatGPT 和 Codex 已经合并，接下来合并什么」是 OpenAI 这一侧的同一个观察。Peter 是用户侧的报告。修复路径接近——ChatGPT Live 要知道哪些 plugin 已经连上了，Codex 要能从一个 voice surface 直接被触达，中间不需要手动架桥。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Codex 的 browser use 终于被击败了。</p>
+              <p>这周末会发一期炸裂的节目，请来了独一无二的 @trq212，他在节目里展示了 AI 视频工作流等等好多东西。</p>
+              <p>btw 我想要这个的原因是一整天盯屏幕、试图管理 agent 把脑子累炸了。
+
+              好得多的是：在外面散步，对着 agent「打电话」派活，让它们用语音给我回报状态。
+
+              等不及第一个 lab 把这种体验端出来了。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Yang (product creator, AI tutorials): &#39;Codex browser use has finally been defeated.&#39; A short one-liner that lands a milestone — Codex is no longer at the point where browser-based automation is its weakest link.</p>
+              <p>The earlier thread on the same topic teased ChatGPT Live × Codex as OpenAI&#39;s biggest missed opportunity: walking outside, asking ChatGPT Live to pull a Google Doc, ChatGPT Live saying it can&#39;t; manually triggering the Documents plugin, then ChatGPT Live suddenly having the right context. The two surfaces — Live (voice) and Codex (work) — share a vendor but not a context graph.</p>
+              <p>Why this matters now: Thibault&#39;s Friday tweet (&#39;Now that we merged ChatGPT and Codex, what should we merge next?&#39;) is the OpenAI side of the same observation. Peter is reporting it from the user side. The fix path is similar — ChatGPT Live needs to know which plugins are already connected, and Codex needs to be reachable from voice without a manual bridge.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Codex browser use has finally been defeated.</p>
+              <p>Legendary episode dropping this weekend featuring the one and only @trq212, who showed me his AI video workflows and much more.</p>
+              <p>The reason I want this btw is spending an entire day staring at screens trying to manage agents fries my brain.
+
+              Much better to be walking around outside talking to the agents &quot;on the phone&quot; giving them work to do and having them update me on status via voice.
+
+              Can&#39;t wait for the first lab to ship t</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/petergyang/status/2078303748649320529" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 09</div>
+    <h2 class="section-title">Steipete：Codexbar icon customization 把他逼疯了，于是让 Codex 自己写了个 editor / Steipete: Codexbar Icon Customization Drove Him Crazy, So He Let Codex Build an Editor for It</h2>
+    <p class="section-desc">Steipete（OpenClaw 创始人）这周把 Codex 当 builder 用出花：第一条讲 Codex 用 browser + computer use 打开 Chrome、进 PR、点 comment、用 macOS picker 上传图片——只为绕开 GitHub 没有 upload API 的限制，他在 VM 里跑 Codex 避免抢 app focus；第二条让大家争 loops 还是 graphs；第三条直接让 Codex 写了个 Codexbar icon 编辑器，因为他自己弄不出来。三条加起来是同一种「Codex 是 build partner 而不是 build replacement」的形状。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:steipete" data-author-name="Peter Steinberger" data-author-tag="OpenClaw 创始人" data-author-handle="@steipete" data-author-avatar="../assets/avatars/x-steipete.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-steipete.jpg" alt="Peter Steinberger avatar"><span class="avatar-fallback">PS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Peter Steinberger</div>
+            <div class="author-tag is-inline">OpenClaw 创始人</div>
+          </div>
+          <div class="author-handle">@steipete</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Steipete（OpenClaw 创始人）讲 Codex 自己点 UI：「看着 Codex 用 browser + computer use 去打开 Chrome、进我的 PR、点 comment、再去跟 macOS picker 较劲——就为了上传一张图片，这种感觉既神奇又让人难受。GitHub 没 upload API 这件事根本拦不住谁。」macOS picker——那个没有任何 API 能调的文件选择框——被 Codex 用点击的方式搞定。</p>
+              <p>怎么隔离：「我让我的 Codex 跑在 VM 里，这样它们就不会抢我的 app focus。」把 Codex 关在 VM 里，它点的鼠标不会干扰你在真实桌面上的工作。基础设施模式：任何 agent 能驱动鼠标的时候，你都要把它关在一个不影响你其它工作的 sandbox 里。</p>
+              <p>第二条卡把 loops → graphs 这一帧摆出来：「我们还在聊 loops 吗？还是已经转到 graphs 了？」——一个尖锐的挑衅：agentic 讨论是不是已经从线性 loops 走到了 graph 化的工作流（并行 agent、分支、重试、依赖图）。Steipete 的 frame 是「loops 那个时代已经显得过时了」。</p>
+              <p>第三条卡收尾：「你们把我折腾 Codexbar icon 自定义这件事搞疯了，所以我写了个 editor。（『我』指的是 Codex。）」他让 Codex 写了他懒得自己写的 editor——Codex 是 build partner 而不是 build replacement。形状：人类负责抛出 problem statement，Codex 负责交付 solution。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>看着 Codex 用 browser + computer use 去打开 Chrome、进我的 PR、点 comment、再去跟 macOS picker 较劲——这一切只是为了上传一张图片。这种感觉既神奇又让人难受。GitHub 没 upload API 这件事根本拦不住谁。
+
+              我让我的 Codex 跑在 VM 里，这样它们不会抢 app focus。</p>
+              <p>我们还在聊 loops 吗？还是已经转到 graphs 了？</p>
+              <p>你们把我折腾 Codexbar icon 自定义这件事搞疯了，所以我写了个 editor。（『我』的意思是 Codex。）</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Peter Steinberger (OpenClaw founder) on Codex doing UI navigation for him: &#39;It&#39;s both amazing and painful to watch codex use browser + computer use to open Chrome, go to my PR, tap on comment and wrangle with the macOS picker — all TO UPLOAD AN IMAGE. GitHub has no API doesn&#39;t stop anyone.&#39; The macOS picker — the file dialog that no API exposes — gets driven by Codex clicking through the UI.</p>
+              <p>On containment: &#39;I let my codex run in VMs so they don&#39;t steal app focus.&#39; Running Codex inside a VM keeps its clicks from stealing focus from whatever he&#39;s doing on his actual desktop. The infrastructure pattern: any time an agent gets to drive the cursor, you want it in a sandbox that doesn&#39;t interfere with the rest of your work.</p>
+              <p>The second card carries the loops → graphs frame: &#39;Are we still talking loops or did we shift to graphs yet?&#39; — a sharp provocation about whether the agentic discussion has moved past linear loops into graph-structured workflows (parallel agents, branching, retries, dependency graphs). Steipete&#39;s framing is that the &#39;loops&#39; era is already feeling dated.</p>
+              <p>The third card lands the punchline: &#39;ya&#39;all made me go crazy with codexbar icon customization issues, so I built an editor. (by me, I mean codex).&#39; He let Codex write the editor he couldn&#39;t be bothered to write himself — Codex as build partner, not build replacement. The shape: human ships the problem statement, Codex ships the solution.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>It&#39;s both amazing and painful to watch codex use browser + computer use to open Chrome, go to my PR, tap on comment and wrangle with the macOS picker - all TO UPLOAD AN IMAGE. GitHub has no API doesn&#39;t stop anyone.
+
+              I let my codex run in VMs so they don&#39;t steal app focus.</p>
+              <p>Are we still talking loops or did we shift to graphs yet?</p>
+              <p>ya&#39;all made me go crazy with codexbar icon customization issues, so I built an editor.
+              (by me, I mean codex)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/steipete/status/2078318731785359634" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 10</div>
+    <h2 class="section-title">Rauch 把 Sandbox 下载数据免费 + Levie 把「AI 越便宜、生态越大」的逻辑钉出来 / Rauch Frees Sandbox Downloads + Levie Nails &quot;Cheaper AI = Bigger Ecosystem&quot;</h2>
+    <p class="section-desc">Vercel CEO Guillermo Rauch 周五直接把 Sandbox 数据下载功能 free 出来——「Happy Friday! Time to ship more agents」，把 sandbox 这条 agent 的基础设施管道继续往下推。Box CEO Aaron Levie 转贴的这条把经济学讲清楚：AI 越便宜，整个生态——包括 end-customer——能拿到的机会越大，因为 AI 的瓶颈是「能不能又便宜又稳定地部署到真实 workload 里」，每次把成本压下来，total addressable 的总和就涨一截。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:rauchg" data-author-name="Guillermo Rauch" data-author-tag="Vercel CEO" data-author-handle="@rauchg" data-author-avatar="../assets/avatars/x-rauchg.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-rauchg.jpg" alt="Guillermo Rauch avatar"><span class="avatar-fallback">GR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Guillermo Rauch</div>
+            <div class="author-tag is-inline">Vercel CEO</div>
+          </div>
+          <div class="author-handle">@rauchg</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Vercel CEO Guillermo Rauch，周五：「Sandbox 数据可以下载了。周五快乐！是时候继续 ship 更多的 agent。」一句话，一个 free 的功能。下载通道现在是 Vercel Sandbox 产品的一部分——agent builder 可以从 sandbox 里把 artifact 直接拉出来，不需要再搭一套 plumbing。</p>
+              <p>当天第二条 tweet 把这套和 shipping 哲学绑在一起：「像 @shadcn 那样 ship」——指的是 shadcn 那种 ship 小、有明确观点、能立刻部署的 building block 的方式。Vercel 把 Sandbox downloads 免费开放也是同一个形状：又小、又带观点、又立刻可用的 agent 基础设施 primitive。</p>
+              <p>为什么重要：昨天的 Vercel AI Gateway token flows dataset（对所有 builder 开放）和今天的 Sandbox downloads 免费，是同一套打法——把 agent builder 下周一就能 ship 东西所需要的数据 + infra primitive 直接给出去，不让 vendor tax 卡住他们。Vercel 在用「免费的、应该被商品化的 primitive」而不是把 agent runtime 卖得更贵——这两条路线之间竞争 agent workload。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Sandbox 数据可以下载了。
+
+              周五快乐！是时候继续 ship 更多的 agent。</p>
+              <p>像 @shadcn 那样 ship。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Guillermo Rauch (Vercel CEO), Friday: &#39;Sandbox data for downloads. Happy Friday! Time to ship more agents.&#39; One line; one free feature. The downloads path is now part of the Vercel Sandbox product — agent builders can pull artifacts out of their sandboxes without an additional plumbing step.</p>
+              <p>The second tweet of the day pairs this with the shipping ethos: &#39;Ship like @shadcn&#39; — a reference to how shadcn ships small, opinionated, immediately-deployable building blocks. Vercel Sandbox downloads free is the same shape: a small, opinionated, immediately-deployable infrastructure primitive for agents.</p>
+              <p>Why it matters: yesterday&#39;s Vercel AI Gateway token flows dataset (open to all builders) and today&#39;s sandbox downloads free are the same playbook — give the agent builder the data + the infra primitives that let them ship something next Monday without paying the vendor tax. Vercel is competing for agent workload on the basis of &#39;free should-be-commoditizing primitives&#39; rather than pricing the agent runtime.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Sandbox data for downloads.
+              Happy Friday! Time to ship more agents</p>
+              <p>Ship like @shadcn</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/rauchg/status/2078305023784620342" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:levie" data-author-name="Aaron Levie" data-author-tag="Box CEO" data-author-handle="@levie" data-author-avatar="../assets/avatars/x-levie.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-levie.jpg" alt="Aaron Levie avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie</div>
+            <div class="author-tag is-inline">Box CEO</div>
+          </div>
+          <div class="author-handle">@levie</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Box CEO Aaron Levie 转发一条帖子：「这条很关键。AI 越便宜，整个生态——尤其是 end-customer——能拿到的机会越多。一切都被『能不能又便宜又稳定地把 AI 部署到真实 workload 里』卡住。每次我们把 AI 成本压下来，整个 total addressable market 都会扩大。」</p>
+              <p>瓶颈这个 frame 很关键：AI 的进步走到现在，已经不被模型能力卡住——卡住的是部署。约束就是 Sachin 在 MAD Podcast 上讲的那个：物理 compute、power、cooling。每一次成本下降，都解锁一整类新客户，他们从此用得起 AI 跑自己的 workload。</p>
+              <p>end-customer 这一 frame 是被低估的那一块：AI 变便宜，不是只让现有玩家 ship 更多 feature——而是让一整类新客户——小商家、个人创作者、区域型企业——突然变得可触达。不对称性在这里：成本下降对 TAM 是乘性的，不是加性的。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>这条帖子很关键。AI 越便宜，整个生态——尤其是终端客户——能拿到的机会越多。
+
+              一切都被「能不能又便宜又稳定地把 AI 部署到真实 workload 里」卡住。每次我们把 AI 成本压下来，整个总可触达市场都会扩大。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie (Box CEO), echoing a post: &#39;This post is key. The cheaper AI gets, the more opportunity there is for the entire ecosystem — especially including end-customers — to benefit. Everything is bottlenecked by being able to successfully and cost effectively deploy AI in real workloads. Any time we can lower the cost of AI, the total addressable market expands.&#39;</p>
+              <p>The bottleneck framing matters: AI progress isn&#39;t bottlenecked by model capability at this point — it&#39;s bottlenecked by deployment. The constraint is the same one Sachin flagged in the MAD Podcast: physical compute, power, cooling. Each reduction in cost unlocks a new class of customer that can now afford to use AI in their workload.</p>
+              <p>The end-customer frame is the underrated part: when AI gets cheaper, it&#39;s not just that incumbents ship more features. Whole new categories of customer — small businesses, individual creators, regional enterprises — suddenly become addressable. The asymmetry: cost reductions are multiplicative on TAM, not additive.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>This post is key. The cheaper AI gets, the more opportunity there is for the entire ecosystem  - especially including end-customers - to benefit.
+
+              Everything is bottlenecked by being able to successfully and cost effectively deploy AI in real workloads. Any time we can lower the cost of AI, the tota</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/levie/status/2078139206946459853" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 11</div>
+    <h2 class="section-title">Madhu Guru：企业做不出 chatbot 之外的 agent，是因为 harness + eval 的人才 gap / Madhu Guru: Enterprises Can&#39;t Build Past Chatbots Because of the Harness + Eval Talent Gap</h2>
+    <p class="section-desc">Meta AI Sr Director Madhu Guru 这周连发两条把企业里这一层的真相讲完：为什么很多企业卡在 chatbot 出不来？「人才 gap to build harnesses and evals」。第一条 thread 详细说：evals 你得能清楚表达你的 use case，并且把它变成 offline + online evals；第二条把 Kimi 跟 Google 的关系讲清楚——很多 enterprise 不会直接消费 Kimi，他们会通过 Google Cloud 来消费，因为企业还是要 enterprise 级的 security / data residency / compliance / chip。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:realmadhuguru" data-author-name="Madhusudhan" data-author-tag="AI 工程师 / 开源贡献者" data-author-handle="@realmadhuguru" data-author-avatar="../assets/avatars/x-realmadhuguru.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-realmadhuguru.jpg" alt="Madhusudhan avatar"><span class="avatar-fallback">M</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Madhusudhan</div>
+            <div class="author-tag is-inline">AI 工程师 / 开源贡献者</div>
+          </div>
+          <div class="author-handle">@realmadhuguru</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Madhu Guru（Meta AI Sr Director，前 Google Gemini/Veo/Nano Banana）：「企业做不出 chatbot 之外的 agent，原因是 harness 和 evals 的人才 gap。」缺的不是模型，是 harness 和 eval。</p>
+              <p>单说 evals：「evals：你得能清楚表达你的 use case，并且能把它变成 offline 和 online evals 两种形式。你的 evals 能不能表达你的野心、能不能推动 jagged frontier 往前走。」evals 只用来确认模型还行，这很简单；能抓到你想让 agent 做到的 jagged frontier 的 evals 是难的那一半——而大多数企业没人才去写它。</p>
+              <p>含义：当 Anthropic 说 Managed Agents 把 session / harness / sandbox 解耦，让抽象活得比任何具体实现更久时，他们真正在争取的客户是「这三件一件都没有」的企业。抽象层的价值在于把 harness + eval 的人才 gap 压缩成一个你可以调的 hosted service，而不是一支你招不到的团队。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>企业做不出 chatbot 之外的 agent，原因是 harness 和 evals 的人才 gap。
+
+              1. Evals：你得能清楚表达你的 use case，并且能把它变成 offline 和 online evals 两种形式。你的 evals 能不能表达你的野心，能不能推动 jagged frontier 往前走。</p>
+              <p>为什么你觉得 Kimi 会伤到 Google？
+
+              很多企业不会直接消费 Kimi。他们会通过 Google Cloud 来消费，因为他们仍然要 enterprise 级的保证——security、data residency、compliance，以及最重要的，chip。
+
+              钱从一个口袋进了另一个口袋。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Madhusudhan (Sr Director of AI at Meta, ex-Google Gemini/Veo/Nano Banana): &#39;The reason enterprises struggle to go beyond basic chat bots is the talent gap to build harnesses and evals.&#39; The two missing pieces aren&#39;t models — they&#39;re the harness and the eval.</p>
+              <p>On evals specifically: &#39;Evals: do you clearly understand your use cases and can you replicate that in the form of offline and online evals. Do the evals express your ambition and do they push the jagged frontier.&#39; Evals that just confirm the model is OK are easy; evals that capture the jagged frontier of what you want the agent to do are the hard part, and most enterprises don&#39;t have people who can write them.</p>
+              <p>The implication: when Anthropic says Managed Agents decouples session / harness / sandbox so the abstractions can outlive any particular implementation, the buyer they&#39;re really courting is the enterprise that has none of the three yet. The value of the abstraction layer is that it compresses the harness + eval talent gap into a hosted service you can call instead of a team you can&#39;t hire.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>The reason enterprises struggle to go beyond basic chat bots is the talent gap to build harnesses and evals.
+
+              1. Evals: do you clearly understand your use cases and can you replicate that in the form of offline and online evals. Do the evals express your ambition and do they push the jagged frontier</p>
+              <p>Why do you think kimi hurts Google?
+
+              Many enterprises won&#39;t consume Kimi directly. They&#39;ll get it through Google Cloud because they still need enterprise guarantees - security, data residency, compliance and most importantly, chips.
+
+              Money out one pocket into the other.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/realmadhuguru/status/2078131628262752550" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 12</div>
+    <h2 class="section-title">Thariq（Claude Code Anthropic 团队）：prototype-first 是避免 token 浪费的最好办法 / Thariq (Anthropic Claude Code team): Prototype-First Is the Best Way to Avoid Wasting Tokens</h2>
+    <p class="section-desc">前 YC W20 / South Park Commons / Media Lab，现在 Claude Code @Anthropic 的 Thariq 把一个被反复证明的工程心得再讲一次：先 build prototypes of mockups / schemas / data models / proof of concepts，是避免「花了一堆 token 才发现不想要这个 output」最好的办法。这跟 Granola 的 Pedregal「shaping → validate → make it good」流程（上周）是同一个 shape，只是把它简化成了一句 tweet。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:trq212" data-author-name="Tao Li" data-author-tag="AI 研究员 / Follow Builders 维护者" data-author-handle="@trq212" data-author-avatar="../assets/avatars/x-trq212.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-trq212.jpg" alt="Tao Li avatar"><span class="avatar-fallback">TL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Tao Li</div>
+            <div class="author-tag is-inline">AI 研究员 / Follow Builders 维护者</div>
+          </div>
+          <div class="author-handle">@trq212</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thariq（Anthropic Claude Code 团队，前 YC W20、前 South Park Commons、前 Media Lab）：「build mockup、schema、data model、proof of concept 之类的 prototype，是避免『花了一堆 token 才发现不想要这个 output』最好的办法。」一句话把整个 prototype-first 哲学讲完。</p>
+              <p>隐含的对比：贵的路径是给 agent 一份长长的 spec，让它花 token 生成完整 artifact，然后在 review 阶段才发现 output 的形状不是你想要的。便宜的路径是先花一小部分 token 做 mockup 或 schema，看完再决定 pivot 还是 commit 完整 build。</p>
+              <p>它在大 loop 模式里放在哪：这是上周 Boris Cherny 那条「loops &gt; one-offs」frame 的上游半边。Cherny 主张写 lint rule + CI step，让一整类问题永久自动化掉。Thariq 的点是它的对偶——在任何一个新 build 的一开始，先投一笔小的 token 预算，确保你在 build 的本来就是对的那一类。两半是同一个 loop。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>build mockup、schema、data model、proof of concept 之类的 prototype，是避免「花了一堆 token 才发现不想要这个 output」最好的办法。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Thariq (Claude Code at Anthropic, ex-YC W20, ex-South Park Commons, ex-Media Lab): &#39;building prototypes of mockups, schemas, data models, proof of concepts, etc. is the best way to avoid spending tons of tokens before realizing you don&#39;t want the output.&#39; One sentence that lands the whole prototype-first philosophy.</p>
+              <p>The implicit comparison: the expensive path is to brief the agent with a long spec, let it spend tokens generating the full artifact, then realize at review time that the output shape isn&#39;t what you wanted. The cheap path is to spend a small number of tokens on a mockup or schema first, look at it, then either pivot or commit to the full build.</p>
+              <p>Where it fits in the broader loop pattern: this is the upstream half of the Boris Cherny &#39;loops &gt; one-offs&#39; frame from earlier this week. Cherny argued for writing lint rules + CI steps so a class of issue gets automated forever. Thariq&#39;s point is the dual — at the start of any new build, invest the small token budget to make sure you&#39;re building the right class of thing in the first place. Both halves of the same loop.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>building prototypes of mockups, schemas, data models, proof of concepts, etc. is the best way to avoid spending tons of tokens before realizing you don&#39;t want the output</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/trq212/status/2078189833445654714" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 13</div>
+    <h2 class="section-title">Weekend texture：会议现在默认录下来给 agent 用 + Nikunj 5:32am + Replit 在下棋 / Weekend Texture: Meetings Now Default-Recorded for Agents + Nikunj at 5:32am + Replit Playing Chess</h2>
+    <p class="section-desc">Weekend fragment 这一块由三条 off-thread 的短观察收尾：Zara Zhang 把「会议默认被录下来」这件事重新框成技术改变文化的样本——不是给 human 看的，而是给 agent 看的；Nikunj 那条 5:32am 父子对话是同一周里少数几条完全非 AI 主题的家庭 moment，放在这里作呼吸；Amasad 给 Replit 社区的 ChessMaxxing 收一笔：chess history 的 exploration 用 Replit 做出来，Replit 社区的下棋文化从这一天开始被命名。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:zarazhangrui" data-author-name="Zhang Rui" data-author-tag="Follow Builders 创始人 / 策展人" data-author-handle="@zarazhangrui" data-author-avatar="../assets/avatars/x-zarazhangrui.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-zarazhangrui.jpg" alt="Zhang Rui avatar"><span class="avatar-fallback">ZR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Zhang Rui</div>
+            <div class="author-tag is-inline">Follow Builders 创始人 / 策展人</div>
+          </div>
+          <div class="author-handle">@zarazhangrui</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zara Zhang（Follow Builders 创始人 / 策展人）：「几年前，很多人对『录会议』这件事还很不舒服。现在大家默认所有 business meeting 都被录下来——不是给 human 听的，是给 agent 用的。技术真的能改变文化。」</p>
+              <p>frame 本身就是重点：这种文化转向的发生，不是因为人自己想要录音——是因为 agent 需要原始材料。一旦 agent 才是主要 consumer，录音就变成了 ambient 的，而不是侵入性的。录音机不是替你记忆的，它是为下一个 agent 的 context 供料的。</p>
+              <p>值得记的模式：这是少数几种技术驱动的文化转向之一——摩擦几乎一夜之间消失。从『录会议怪不怪』到『当然要录，不然 agent 怎么知道发生了什么？』几年就走完了——跟 Git / email 那次转向是同一个形状，但压缩到大概 3 年而不是 15 年。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>几年前，很多人对「录会议」这件事还很不舒服。
+
+              现在大家默认所有 business meeting 都被录下来——不是给 human 听的，是给 agent 用的。
+
+              技术真的能改变文化。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zhang Rui (Follow Builders founder/curator): &#39;Just a few years ago, many people were uncomfortable with recording meetings. Now it&#39;s just assumed that all business meetings are recorded (not for humans, but for agents). Technology really changes culture.&#39;</p>
+              <p>The framing is the point: the cultural shift happened not because people wanted recordings for their own sake — they happened because agents need the raw material. Once the agent is the primary consumer, the recording becomes ambient, not invasive. The recorder isn&#39;t there to remember for you; it&#39;s there to feed the next agent&#39;s context.</p>
+              <p>Pattern to note: this is one of those rare tech-driven cultural shifts where the friction disappeared almost overnight. A few years of &#39;wouldn&#39;t it be weird to record?&#39; to &#39;of course it&#39;s recorded, how else would the agent know what happened?&#39; — same shape as the Git/email/shift, but compressed into ~3 years instead of ~15.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Just a few years ago, many people were uncomfortable with recording meetings
+
+              Now it&#39;s just assumed that all business meetings are recorded (not for humans, but for agents)
+
+              Technology really changes culture</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/zarazhangrui/status/2078076500683997446" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:nikunj" data-author-name="Nikunj Kothari" data-author-tag="Afore Capital 合伙人" data-author-handle="@nikunj" data-author-avatar="../assets/avatars/x-nikunj.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-nikunj.jpg" alt="Nikunj Kothari avatar"><span class="avatar-fallback">NK</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Nikunj Kothari</div>
+            <div class="author-tag is-inline">Afore Capital 合伙人</div>
+          </div>
+          <div class="author-handle">@nikunj</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj Kothari（Afore Capital 合伙人）：「为什么街上没人醒着，爸爸？因为现在才早上 5:32 啊，兄弟 😴」</p>
+              <p>这周 feed 里少数完全跟 AI 无关的一条——父子俩凌晨 5:32 的对话。放在这里当周末的呼吸。Follow Builders 大多数日子密度都很高；这种 off-theme 的瞬间是剩下的内容能被读下去的原因。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>为什么街上没人醒着，爸爸？
+
+              因为现在才早上 5:32 啊，兄弟 😴</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Nikunj Kothari (Afore Capital partner): &#39;Why is no one awake and on the streets, Dad? Because it&#39;s 5:32 am buddy 😴&#39;</p>
+              <p>A rare non-AI tweet in this week&#39;s feed — a 5:32am moment with his kid. Filed here as a weekend breathing beat. The Follow Builders feed is dense with signal most days; the off-theme moments are what make the rest of it readable.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Why is no one awake and on the streets, Dad?
+
+              Because it&#39;s 5:32 am buddy 😴</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/nikunj/status/2078033435398897981" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
     </article>
 
     <article class="card" data-author-key="x:amasad" data-author-name="Amjad Masad" data-author-tag="Replit CEO" data-author-handle="@amasad" data-author-avatar="../assets/avatars/x-amasad.jpg">
@@ -807,57 +1122,13 @@
           <div class="lang-label">中文</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Amjad 在 Replit 上放出自己的国际象棋引擎，已经能正面击败 frontier 模型。配方：200 万 Stockfish 标注局面做微调，再来一轮短程 GRPO RL。代码、实验、教程全部公开——一份干净的小模型 + 窄任务 RL 模板。</p>
-              <p>顺便提一句 NVDA：Kimi K3 是利好，股价本该涨，结果反而跌。蒸馏悖论——学生可以反过来超过老师。</p>
+              <p>Replit CEO Amjad Masad：「这是一份超棒的 chess history exploration。Replit 社区在 ChessMaxxing。」附了一段用 Replit 做出来的 chess-history 探索视频。社区对 chess 的痴迷已经酝酿了好几个月；Masad 这条是给这个 pattern 命名的那一条。</p>
+              <p>背后的事实：Replit 的文化是一个让人意外的 hobby 项目试验场，因为 ship 的摩擦几乎为零。当一群 builder 一个下午就能 spin up 一份 chess-history explorer，给这个 pattern 起个名字（ChessMaxxing）是把它从一次性的项目变成一个 movement 的那一步。</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>NVDA 应该因为 K3 的消息上涨，结果反而下跌了。</p>
-              <p>显然，蒸馏模型可以表现得比它的老师更好。</p>
-            </div>
-          </div>
-        </div>
-        <div class="lang-col en">
-          <div class="lang-label">English</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>Amjad ships a Replit-side chess engine that already beats frontier models on the board. The recipe: fine-tune on 2M Stockfish-labeled positions, then a short GRPO RL pass. Annotated code + experiments + tutorial are public — a clean template for small-model-on-narrow-task RL.</p>
-              <p>Side note on NVDA: Kimi K3 is news and the stock should be pumping; instead it&#39;s down. Distillation paradox — a model can outperform its teacher.</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>$NVDA should be pumping on the K3 news. Instead it&#39;s down.</p>
-              <p>Apparently the distillation model can outperform the teacher model</p>
-              <p>If you want to play my chess engine (WIP): https://... It already seems to perform better than frontier models on chess. It&#39;s fine-tuned on 2M stockfish-labeled positions, then short GRPO RL pass. Documentation/tutorial with all the experiments and annotated code.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card-footer"><a href="https://x.com/amasad/status/1946098111111111111" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
-    </article>
+              <p>这是一份超棒的 chess history exploration。
 
-    <article class="card" data-author-key="x:thsottiaux" data-author-name="Thibault Sottiaux" data-author-tag="OpenAI Codex &amp; ChatGPT" data-author-handle="@thsottiaux" data-author-avatar="../assets/avatars/x-thsottiaux.jpg">
-      <div class="card-header">
-        <div class="avatar"><img src="../assets/avatars/x-thsottiaux.jpg" alt="Thibault Sottiaux avatar"><span class="avatar-fallback">TS</span></div>
-        <div class="author-info">
-          <div class="author-name-row">
-            <div class="author-name">Thibault Sottiaux</div>
-            <div class="author-tag is-inline">OpenAI Codex &amp; ChatGPT</div>
-          </div>
-          <div class="author-handle">@thsottiaux</div>
-        </div>
-        <div class="card-controls">
-          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
-          <button class="view-toggle" type="button" data-view-target="original">原文</button>
-        </div>
-      </div>
-      <div class="card-body">
-        <div class="lang-col cn">
-          <div class="lang-label">中文</div>
-          <div class="content-shell">
-            <div class="content-variant is-active" data-view="rewrite">
-              <p>Thibault 列出 ChatGPT 桌面端应用的修复清单：会话历史 + 项目现在进侧边栏；聊天/工作历史在 web / mobile / desktop 之间同步（本地任务仍留在本机）；模型切换更顺；和 Codex 的衔接也更好。他承认 v1 没做到位——这次发的是修正后的形态。</p>
-            </div>
-            <div class="content-variant" data-view="original">
-              <p>晚上好！关于新的 ChatGPT 桌面应用，我们收到了很多很好的反馈（我们第一次没有完全做对），因此我们做出了一些更改。</p>
+              Replit 社区在 ChessMaxxing。</p>
             </div>
           </div>
         </div>
@@ -865,15 +1136,18 @@
           <div class="lang-label">English</div>
           <div class="content-shell">
             <div class="content-variant is-active" data-view="rewrite">
-              <p>Thibault details the ChatGPT desktop-app fix list: conversation history + projects now in the sidebar; chat/work history syncs across web/mobile/desktop (local tasks stay on the device); easier model-switching; better handoff with Codex. Acknowledges the v1 didn&#39;t nail it — the new release is the corrected shape.</p>
+              <p>Amjad Masad (Replit CEO): &#39;This is a sick exploration of chess history. The Replit community is ChessMaxxing.&#39; Filed alongside a video of a chess-history exploration built on Replit. The community&#39;s chess obsession has been a slow-building thread for months; this is the moment Masad names it.</p>
+              <p>The underlying fact: Replit&#39;s culture is a surprising testbed for hobby projects because the friction to ship is essentially zero. When a community of builders can spin up a chess-history explorer in an afternoon, naming the pattern (&#39;ChessMaxxing&#39;) is what turns a one-off into a movement.</p>
             </div>
             <div class="content-variant" data-view="original">
-              <p>Evening! We&#39;ve gotten lots of great feedback on the new ChatGPT desktop app (which we didn&#39;t get totally quite right on the first try), and as a result, we&#39;ve made some changes. 1/ ChatGPT conversation history and projects are now visible in the sidebar. Also, your Chat and Work history now sync across web, mobile, and desktop. Local tasks still stay on your computer. 2/ You can now easily switch</p>
+              <p>This is a sick exploration of chess history.
+
+              The Replit community is ChessMaxxing</p>
             </div>
           </div>
         </div>
       </div>
-      <div class="card-footer"><a href="https://x.com/thsottiaux/status/1946098222222222222" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+      <div class="card-footer"><a href="https://x.com/amasad/status/2078273728618877326" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
     </article>
   </section>
 
