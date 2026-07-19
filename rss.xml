@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 18 Jul 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 19 Jul 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-07-19 · 乐观技术日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-19-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-19-rerun.html</guid>
+      <pubDate>Sun, 19 Jul 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[今天 1 个 podcast + 11 条 X + 0 篇 blog，主线意外是 Jürgen Schmidhuber——「AI 之父」在 Unsupervised Learning 第 90 期把整套主流叙事反着讲一遍：对 AI 技术乐观，对 model companies 极度悲观，CapEx 严重过度，RSI 不是 moat，safety 不需要 doomer 化。X 一侧把这套判断平行铺开：Levie 说 gatekeeping 走不通、Rauch 说 AGI 这个词已经过时、Matt Turck 把「model 层 commodotize」钉了三年的空响。这两天的中国模型（Kimi K3 / Sol）也进画面了，Rauch 自己做的 stealth eval 给出了三家对比。Thibault 在 ChatGPT Work 上 dogfood 出每天的工单流；trq212 把 Fable 发布的 credit 给了那群轮班倒的团队；Zhang Rui 把 personal eval set 和 enterprise adoption barrier 拆成两个独立但咬合的问题。Weekend texture 由 Garry Tan 的 SF journalism、Matt Turck 的 Didier Deschamps 告别、Nikunj 的巴黎橘园、Swyx 的欧洲 talent 重新定义来收尾。]]></description>
+      <category>Unsupervised Learning：Schmidhuber 把「AI 之父」的反共识讲完 / Schmidhuber pushes back on the consensus, Model 层没在 commodotize：Levie / Rauch / Matt Turck 三人把同一判断从不同角度讲清楚 / The model layer isn&apos;t commoditizing — three angles on the same diagnosis, Thibault 在 ChatGPT Work 上 dogfood，trq212 把 Fable 发布 credit 给了团队 / Thibault dogfoods ChatGPT Work; trq212 credits the Fable team, Rauch 的 stealth eval：Kimi K3 / Sol / Fable 三家 cybersecurity 横评 / Rauch&apos;s stealth cyber eval — three models, three verdicts, Zhang Rui：personal eval set + enterprise adoption barrier 是两个独立但咬合的问题 / Zhang Rui on personal evals and the enterprise two-pyramid, Weekend texture：欧洲 talent、SF journalism、巴黎橘园、Deschamps 卸任 / Weekend texture: Europe talent, SF journalism, Paris, Deschamps</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-07-18 · 电不够用日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-18-rerun.html</link>
