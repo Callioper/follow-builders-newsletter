@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 19 Jul 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 20 Jul 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-07-20 · 信任结算日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-20-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-20-rerun.html</guid>
+      <pubDate>Mon, 20 Jul 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[今天 1 个 podcast + 15 位 X builder + 0 篇 blog，主线从 Stripe 的 agentic commerce 往外展开：token theft 已经占到部分 AI 公司新增注册的六分之一，真正的支付底座先要补信任、权限与责任。Levie 把另一面讲透：token 越便宜，推理需求反而越大，但 AI diffusion 最终仍被现实世界的反馈速度限住。Garry Tan 与 Zhang Rui 给出一组很实用的搭配——长期知识放进 Markdown，临时界面和一次性分析软件则可以用完就扔。Claude Cowork 管日历、Every 自动完成七成 copy edit，说明 agent 正从 demo 进入重复工作；世界杯决赛则作为今天的周末底色收尾。]]></description>
+      <category>Agentic commerce 的真正缺口：token theft 与信任 / The missing layer in agentic commerce: token theft and trust, 成本下降，不会让 AI 支出下降 / Cheaper AI expands demand, 真实世界才是 AI diffusion 的限速器 / Reality rate-limits AI diffusion, 文件要长寿，软件可以一次性 / Durable files, disposable software, Agent 工作流开始长出日常习惯 / Agent workflows become everyday habits, 开放模型逼着监管逻辑重算 / Open weights force a regulatory rethink, 周末底色：世界杯决赛 / Weekend texture: the World Cup final</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-07-19 · 乐观技术日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-19-rerun.html</link>

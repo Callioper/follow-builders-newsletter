@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Builders Digest · 2026-07-20</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Noto+Serif+SC:wght@400;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --paper: #f6f3ed;
+    --accent: #c0392b;
+    --accent-light: #e8d5c4;
+    --border: #d4cdc0;
+    --muted: #7a7265;
+    --tag-bg: #e8e2d6;
+    --en-bg: #ffffff;
+    --cn-bg: #faf7f2;
+    --shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.7;
+  }
+
+  .masthead, .intro, .section-header, .feed, footer {
+    max-width: 980px;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .masthead { padding-top: 48px; }
+  .masthead-rule { border: none; border-top: 3px solid var(--ink); margin: 0 0 12px; }
+  .masthead-inner { display: flex; justify-content: center; gap: 16px; align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+  .masthead-title { font-family: 'Playfair Display', serif; font-size: 34px; font-weight: 700; letter-spacing: -0.4px; }
+  .masthead-subtitle { margin-top: 8px; padding-bottom: 10px; color: var(--muted); font-size: 13px; text-align: center; }
+
+  .edition-strip {
+    position: relative;
+    margin-top: 8px;
+    min-height: 46px;
+    padding: 10px 132px 12px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.34);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2px;
+    text-align: center;
+  }
+
+  .edition-strip .edition-sep { margin: 0 8px; color: #b8ae9f; }
+  .edition-strip-text { display: block; }
+  .edition-return-link { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; padding: 6px 10px; border: 1px dashed rgba(192, 57, 43, 0.55); border-radius: 999px; color: var(--accent); text-decoration: none; font-size: 12px; line-height: 1; letter-spacing: 0.06em; background: rgba(255, 255, 255, 0.45); transition: background 160ms ease, border-color 160ms ease, transform 160ms ease; }
+  .edition-return-link:hover, .edition-return-link:focus-visible { background: rgba(255, 255, 255, 0.82); border-color: var(--accent); transform: translateY(-50%) translateX(-1px); }
+  .edition-return-link:focus-visible { outline: none; }
+  .intro { padding-top: 22px; }
+  .intro-inner { max-width: 920px; margin: 0 auto; padding: 0 0 0 18px; border-left: 3px solid #d9cdbc; }
+  .intro-kicker { margin: 0 0 8px; color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; }
+  .intro p { margin: 0; max-width: none; color: var(--muted); font-size: clamp(15px, 1.6vw, 16px); line-height: 1.9; text-wrap: pretty; font-family: 'Noto Serif SC', serif; overflow-wrap: anywhere; }
+
+  .section-header { margin-top: 40px; }
+  .section-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 4px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 24px; margin: 0 0 6px; }
+  .section-desc { margin: 0 0 18px; color: var(--muted); font-size: 14px; }
+
+  .feed { display: flex; flex-direction: column; gap: 20px; }
+  .card { background: var(--en-bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; box-shadow: var(--shadow); }
+  .card-header { display: flex; align-items: center; gap: 12px; padding: 16px 20px 12px; border-bottom: 1px solid #eee7dd; flex-wrap: wrap; }
+  .avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--accent-light); color: var(--accent); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; flex-shrink: 0; overflow: hidden; }
+  .avatar img { width: 100%; height: 100%; display: block; object-fit: cover; }
+  .avatar-fallback { display: none; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  .avatar.is-fallback img { display: none; }
+  .avatar.is-fallback .avatar-fallback { display: flex; }
+
+  .author-info { flex: 1; min-width: 160px; }
+  .author-name { font-weight: 600; font-size: 15px; }
+  .author-name-row { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .author-handle { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); }
+  .author-tag { font-family: 'IBM Plex Mono', monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; background: var(--tag-bg); color: var(--muted); padding: 4px 8px; border-radius: 999px; }
+  .author-tag.is-inline { padding: 3px 8px; }
+
+  .card-controls { margin-left: auto; display: inline-flex; gap: 8px; }
+  .view-toggle { border: 1px solid var(--border); background: transparent; color: var(--muted); padding: 6px 10px; border-radius: 999px; font-size: 12px; line-height: 1; cursor: pointer; font-family: 'IBM Plex Mono', monospace; transition: all 160ms ease; }
+  .view-toggle.is-active { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .card-body { display: grid; grid-template-columns: 1fr 1fr; }
+  .lang-col { padding: 18px 20px 22px; }
+  .lang-col.cn { background: var(--cn-bg); border-right: 1px solid #f0ece4; font-family: 'Noto Serif SC', serif; }
+  .lang-col.en { background: var(--en-bg); }
+  .lang-label { margin-bottom: 10px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); }
+  .content-shell { position: relative; transition: height 220ms cubic-bezier(0.22, 1, 0.36, 1); }
+  .content-variant { position: absolute; inset: 0; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(4px); transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms; will-change: opacity, transform; }
+  .content-variant.is-active { opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0); transition: opacity 200ms cubic-bezier(0.22, 1, 0.36, 1), transform 200ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 0s; }
+  .content-variant p, .content-variant li { margin: 0 0 12px; font-size: 14px; }
+  .content-variant ol { margin: 0 0 12px 20px; padding: 0; }
+  .inline-code { display: inline-block; font-family: 'IBM Plex Mono', monospace; background: #f4efe7; padding: 3px 6px; border-radius: 6px; margin-bottom: 8px; }
+
+  .card-footer { padding: 12px 20px 16px; border-top: 1px solid #eee7dd; background: #fcfaf6; }
+  .card-footer a { color: var(--accent); text-decoration: none; font-size: 14px; }
+  footer { padding-top: 24px; padding-bottom: 48px; color: var(--muted); font-size: 13px; }
+
+  @media (max-width: 680px) {
+    .masthead-inner { align-items: center; }
+    .edition-strip { padding-right: 12px; padding-left: 12px; }
+    .edition-strip-text { padding-right: 0; }
+    .edition-return-link { position: static; transform: none; margin-top: 8px; font-size: 11px; }
+    .card-controls { margin-left: 0; }
+    .card-body { grid-template-columns: 1fr; }
+    .lang-col.cn { border-right: none; border-bottom: 1px solid #f0ece4; }
+    .edition-strip .edition-sep { margin: 0 5px; }
+    .intro-inner { padding-left: 14px; }
+    .intro p { line-height: 1.84; }
+  }
+</style>
+</head>
+<body data-publish-date="2026-07-20" data-issue-number="55" data-edition-name="双语精选版" data-view-label-rewrite="速读" data-view-label-original="原文" data-author-identities-path="/home/eclaw/.follow-builders/assets/author-identities.json" data-avatar-manifest-path="/home/eclaw/.follow-builders/assets/avatar-manifest.json">
+  <header class="masthead">
+    <hr class="masthead-rule">
+    <div class="masthead-inner">
+      <div class="masthead-title">AI Builders Digest</div>
+    </div>
+    <div class="masthead-subtitle">Bilingual edition · 双语对照版</div>
+    <div class="edition-strip">
+      <span class="edition-strip-text" id="edition-strip-text">第 55 期｜2026-07-20｜双语精选版｜13 条精选｜9 位作者｜7 个主题</span>
+      <a class="edition-return-link" href="../index.html">返回目录</a>
+    </div>
+  </header>
+
+  <section class="intro" data-kicker="编者导语 / Editor&#39;s Note" data-text="今天 1 个 podcast + 15 位 X builder + 0 篇 blog，主线从 Stripe 的 agentic commerce 往外展开：token theft 已经占到部分 AI 公司新增注册的六分之一，真正的支付底座先要补信任、权限与责任。Levie 把另一面讲透：token 越便宜，推理需求反而越大，但 AI diffusion 最终仍被现实世界的反馈速度限住。Garry Tan 与 Zhang Rui 给出一组很实用的搭配——长期知识放进 Markdown，临时界面和一次性分析软件则可以用完就扔。Claude Cowork 管日历、Every 自动完成七成 copy edit，说明 agent 正从 demo 进入重复工作；世界杯决赛则作为今天的周末底色收尾。">
+    <div class="intro-inner">
+      <div class="intro-kicker">编者导语 / Editor&#39;s Note</div>
+      <p class="intro-copy">今天 1 个 podcast + 15 位 X builder + 0 篇 blog，主线从 Stripe 的 agentic commerce 往外展开：token theft 已经占到部分 AI 公司新增注册的六分之一，真正的支付底座先要补信任、权限与责任。Levie 把另一面讲透：token 越便宜，推理需求反而越大，但 AI diffusion 最终仍被现实世界的反馈速度限住。Garry Tan 与 Zhang Rui 给出一组很实用的搭配——长期知识放进 Markdown，临时界面和一次性分析软件则可以用完就扔。Claude Cowork 管日历、Every 自动完成七成 copy edit，说明 agent 正从 demo 进入重复工作；世界杯决赛则作为今天的周末底色收尾。</p>
+    </div>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 01</div>
+    <h2 class="section-title">Agentic commerce 的真正缺口：token theft 与信任 / The missing layer in agentic commerce: token theft and trust</h2>
+    <p class="section-desc">MAD Podcast 再访 Stripe 数据与 AI 负责人 Emily Sands：agent 经济并不先卡在支付按钮，而是卡在 token 滥用、权限边界和谁来承担错误。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="podcast:mad-podcast" data-author-name="The MAD Podcast" data-author-tag="Matt Turck 主理的 AI 与数据播客" data-author-handle="" data-author-avatar="../assets/avatars/podcast-mad-podcast.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/podcast-mad-podcast.jpg" alt="The MAD Podcast avatar"><span class="avatar-fallback">TM</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">The MAD Podcast</div>
+            <div class="author-tag is-inline">Matt Turck 主理的 AI 与数据播客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Stripe 数据与 AI 负责人 Emily Sands 把 token theft 钉成 AI 圈最少被讨论的问题之一。骗子不必再偷钱或账号，直接盗用推理额度就能获利；AI 公司每六个新增注册里，可能就有一个属于这类滥用。</p>
+              <p>所以 agentic commerce 的底座不只是支付 API，还得补上身份、额度、撤销、审计，以及 agent 买错东西时究竟谁承担损失。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>骗子发现，在 AI 时代甚至不用偷钱或凭据，偷 token 就够了。</p>
+              <p>AI 公司新增注册中，超过六分之一可能就是这类滥用。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Stripe Head of Data and AI Emily Sands says token theft is one of AI&#39;s most under-discussed problems. Fraudsters no longer need to steal money or credentials; they can steal inference, and more than one in six new signups at AI companies can be this kind of abuse.</p>
+              <p>Agentic commerce therefore needs more than a checkout API. It needs identity, spend limits, revocation, auditability, and a clear answer to who pays when an agent gets the purchase wrong.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Fraudsters have figured out that in AI, you actually don&#39;t really need to steal money or credentials. You can just steal tokens.</p>
+              <p>More than one in six signups at AI companies are this kind of abuse.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.youtube.com/@DataDrivenNYC/videos" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="podcast:mad-podcast" data-author-name="The MAD Podcast" data-author-tag="Matt Turck 主理的 AI 与数据播客" data-author-handle="" data-author-avatar="../assets/avatars/podcast-mad-podcast.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/podcast-mad-podcast.jpg" alt="The MAD Podcast avatar"><span class="avatar-fallback">TM</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">The MAD Podcast</div>
+            <div class="author-tag is-inline">Matt Turck 主理的 AI 与数据播客</div>
+          </div>
+          <div class="author-handle"></div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>下一步不只是 agent 替人买东西，而是 agent 自己经营业务：采购投入、销售产出、持续追求利润。到了这里，per-seat 定价会失灵，因为真正执行经济活动的主体可能根本没有一个人类席位。</p>
+              <p>Emily 给出的十二个月图景，是 agent 持有预算并反复做商业决策。产品难点仍是信任：会不会超支、会不会买错，以及用户能否随时叫停。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>不再只是 Emily 授权 agent 代购，而是 Emily 拥有一个负责经营业务的 agent，它会买东西、卖东西并赚取利润。</p>
+              <p>我希望十二个月后，我们讨论的就是这样的世界。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>The next step is not merely an agent buying on a person&#39;s behalf. Sands expects agents to run businesses: buying inputs, selling outputs, and optimizing for profit. That shift breaks per-seat pricing because the economic actor may have no human seat at all.</p>
+              <p>Her twelve-month horizon is a market where agents hold budgets and make repeated commercial decisions. The hard product problem is trust: users care about overspending, wrong purchases, and whether they can stop the agent.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>It&#39;s Emily has an agent who&#39;s tasked with running a business, and that includes buying some things and selling some things and making some profits.</p>
+              <p>That&#39;ll be the world that I would like to be talking about twelve months from now.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://www.youtube.com/@DataDrivenNYC/videos" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 02</div>
+    <h2 class="section-title">成本下降，不会让 AI 支出下降 / Cheaper AI expands demand</h2>
+    <p class="section-desc">Levie 与 Amjad 从两侧讲同一件事：token 越便宜，使用面越大；但消费软件的付费习惯仍决定谁能真正收钱。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:levie" data-author-name="Aaron Levie" data-author-tag="Box CEO" data-author-handle="@levie" data-author-avatar="../assets/avatars/x-levie.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-levie.jpg" alt="Aaron Levie avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie</div>
+            <div class="author-tag is-inline">Box CEO</div>
+          </div>
+          <div class="author-handle">@levie</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie 的判断很直接：AI 越便宜，总支出反而越高。token 成本下降会放开更多写代码、安全审查、大数据处理和常驻 agent 的场景。</p>
+              <p>这也解释了开源模型为什么仍能养出大规模 infra 生意：大多数人不会在本地跑前沿模型，模型降价最终扩大的还是托管推理需求。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>AI 越便宜，消耗量就会越大。</p>
+              <p>任何降低 token 成本的变化，都会推高推理需求。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Aaron Levie argues that cheaper AI will increase total AI spend, not shrink it. Lower token costs unlock more coding, security review, data processing, and always-on agents.</p>
+              <p>This also explains why open-source AI can support large infrastructure businesses: most users will not run frontier-class models locally, so lower model prices expand hosted inference demand.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>When you make AI cheaper, it will get consumed more.</p>
+              <p>Anything that lowers the cost of tokens will drive up inference demand.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/levie/status/2078968158006939716" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:amasad" data-author-name="Amjad Masad" data-author-tag="Replit CEO" data-author-handle="@amasad" data-author-avatar="../assets/avatars/x-amasad.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-amasad.jpg" alt="Amjad Masad avatar"><span class="avatar-fallback">AM</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Amjad Masad</div>
+            <div class="author-tag is-inline">Replit CEO</div>
+          </div>
+          <div class="author-handle">@amasad</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Replit CEO Amjad Masad 提醒了消费软件的老约束：家庭愿意为食物、房租、娱乐、网络和购物付钱，但软件通常由公司采购。</p>
+              <p>所以除了 Netflix、Spotify 这类品类，巨型消费订阅一直很少。AI 产品光有能力还不够，它必须接进已有预算，或者创造一个足够清晰的新习惯。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>软件通常是由用户所在的公司购买。</p>
+              <p>除了 Netflix、Spotify 等少数例子，很难想到巨型消费订阅业务。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Replit CEO Amjad Masad points out the consumer-software constraint: households readily pay for food, rent, entertainment, connectivity, and shopping, while software is usually purchased by employers.</p>
+              <p>That makes giant consumer subscriptions rare outside Netflix- or Spotify-like categories. For AI products, capability alone is not enough; the product must attach itself to an existing consumer budget or create an obvious new habit.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Software is typically bought by their companies.</p>
+              <p>Outside of Netflix, Spotify, etc it&#39;s hard to think of huge consumer subscription businesses.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/amasad/status/2079086360703680583" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 03</div>
+    <h2 class="section-title">真实世界才是 AI diffusion 的限速器 / Reality rate-limits AI diffusion</h2>
+    <p class="section-desc">代码能快速采用 AI，因为反馈闭环几乎全在电脑里；药物、销售、合同和工业流程都得等现实世界回答。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:levie" data-author-name="Aaron Levie" data-author-tag="Box CEO" data-author-handle="@levie" data-author-avatar="../assets/avatars/x-levie.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-levie.jpg" alt="Aaron Levie avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie</div>
+            <div class="author-tag is-inline">Box CEO</div>
+          </div>
+          <div class="author-handle">@levie</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Levie 说 AI diffusion 最终会被现实世界限速。代码采用得快，是因为一个人能在电脑里生成、测试、运行大量代码，不必等待外部机构配合。</p>
+              <p>药物、销售、合同和工业设计则不同：实验、交易对手、监管和物理失败共同决定周期。所以真正的机会在 applied AI，把 workflow 围绕这些反馈回路重新设计，而不只是吐出一个模型答案。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>想出点子从来不是最难的，难的是现实世界多快给你答案。</p>
+              <p>多数场景里，只有模型输出远远不够。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Levie says AI diffusion is ultimately rate-limited by contact with the real world. Coding moved quickly because one person can generate, test, and deploy nearly unlimited code without waiting on external institutions.</p>
+              <p>Life sciences, sales, contracts, and industrial design are different: experiments, counterparties, regulation, and physical failure determine the cycle time. The opportunity is therefore in applied AI systems that redesign workflows around those feedback loops, not in raw model output alone.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Coming up with ideas was never the hard part. The hard part is how fast reality answers them.</p>
+              <p>Model outputs alone are not enough in most cases.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/levie/status/2078864191683969212" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:rauchg" data-author-name="Guillermo Rauch" data-author-tag="Vercel CEO" data-author-handle="@rauchg" data-author-avatar="../assets/avatars/x-rauchg.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-rauchg.jpg" alt="Guillermo Rauch avatar"><span class="avatar-fallback">GR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Guillermo Rauch</div>
+            <div class="author-tag is-inline">Vercel CEO</div>
+          </div>
+          <div class="author-handle">@rauchg</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Vercel CEO Guillermo Rauch 把 cybersecurity 称为 superintelligence 很好的 benchmark，也就是软件工程的 IQ test。一次性复刻一个应用很吸睛，却不太能检验深层推理。</p>
+              <p>发现、修复、逆向和利用漏洞，需要跨语言、runtime 与 framework 的边角思考。Kimi K3 在这里表现好，才是开源模型更值得重视的信号。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Cybersecurity 是检验 superintelligence 最好的 benchmark 之一。</p>
+              <p>发现、修复、逆向和利用漏洞，需要跨越编程语言、runtime 与 framework 的认知能力。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Vercel CEO Guillermo Rauch proposes cybersecurity as an unusually strong benchmark for superintelligence: the IQ test of software engineering. Cloning an app in one shot looks impressive but does not test deep reasoning.</p>
+              <p>Finding, patching, reversing, and exploiting vulnerabilities requires corner thinking across languages and runtimes. Kimi K3 performing well here is meaningful evidence for open models because the task resists superficial demo optimization.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Cybersecurity is one of the best benchmarks for superintelligence.</p>
+              <p>Finding, patching, reversing, and exploiting require a cognitive skill that transcends programming languages, runtimes, frameworks.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/rauchg/status/2078912929714356698" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 04</div>
+    <h2 class="section-title">文件要长寿，软件可以一次性 / Durable files, disposable software</h2>
+    <p class="section-desc">Garry Tan 选 Markdown 当长期底座，Zhang Rui 则把临时 UI 和一次性分析页当可丢弃工具；两者并不矛盾。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:garrytan" data-author-name="Garry Tan" data-author-tag="Y Combinator 总裁" data-author-handle="@garrytan" data-author-avatar="../assets/avatars/x-garrytan.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-garrytan.jpg" alt="Garry Tan avatar"><span class="avatar-fallback">GT</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Garry Tan</div>
+            <div class="author-tag is-inline">Y Combinator 总裁</div>
+          </div>
+          <div class="author-handle">@garrytan</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Garry Tan 认为，正因为 intelligence stack 变化太快，Markdown 才是更耐久的数据格式。纯文本能跨过工具更替，还能阅读、diff 和迁移。</p>
+              <p>给 builder 的简单规则是：长期知识放在无聊而稳定的文件里，agent 和界面随时可以换。上层变化越快，稳定底座越值钱。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Markdown 文件具有普适性，甚至能存续千年。</p>
+              <p>当 intelligence stack 以极端速度变化时，它是非常合适的数据格式。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Garry Tan argues that Markdown is a resilient data format precisely because the intelligence stack is changing so quickly. Plain text survives tool churn and remains readable, diffable, and portable.</p>
+              <p>The practical builder rule is to keep durable knowledge in boring files and let agents or interfaces change around it. The faster the stack moves, the more valuable the stable substrate becomes.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Markdown files are universal and will survive millennia.</p>
+              <p>They are a fantastic data format when the intelligence stack is in flux at this extreme pace.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/garrytan/status/2078803803659452624" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:zarazhangrui" data-author-name="Zhang Rui" data-author-tag="Follow Builders 创始人 / 策展人" data-author-handle="@zarazhangrui" data-author-avatar="../assets/avatars/x-zarazhangrui.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-zarazhangrui.jpg" alt="Zhang Rui avatar"><span class="avatar-fallback">ZR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Zhang Rui</div>
+            <div class="author-tag is-inline">Follow Builders 创始人 / 策展人</div>
+          </div>
+          <div class="author-handle">@zarazhangrui</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zhang Rui 说，我们得习惯软件也可以是一次性的：临时生成设计 playground、代码讲解页或检查 dashboard，用完就扔。</p>
+              <p>AI 把定制一个临时界面的成本压到比迁就永久工具还低。真正需要保存的可能是答案和决定，而不是产生它们的代码。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>我们需要习惯代码和软件现在可以被用完即弃。</p>
+              <p>为了只检查一次数据，临时搭一个可丢弃的 dashboard。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Zhang Rui says builders should get comfortable with disposable software. Generate a design playground, an HTML explainer, or a one-off inspection dashboard, use it once, then throw it away.</p>
+              <p>AI lowers the cost of making a purpose-built interface below the cost of adapting a permanent tool. The valuable artifact may be the answer or decision, not the code that produced it.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>We need to get used to the idea that code/software can now be disposable.</p>
+              <p>Spinning up a throwaway dashboard to inspect something once.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/zarazhangrui/status/2078835308905578660" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 05</div>
+    <h2 class="section-title">Agent 工作流开始长出日常习惯 / Agent workflows become everyday habits</h2>
+    <p class="section-desc">Claude Cowork 管日历、Every 自动完成七成 copy edit、ChatGPT Work 收集真实人生影响，agent 的价值正在从 demo 转向重复工作。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:_catwu" data-author-name="Cat Wu" data-author-tag="Anthropic 产品工程" data-author-handle="@_catwu" data-author-avatar="../assets/avatars/x-_catwu.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-_catwu.jpg" alt="Cat Wu avatar"><span class="avatar-fallback">CW</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Cat Wu</div>
+            <div class="author-tag is-inline">Anthropic 产品工程</div>
+          </div>
+          <div class="author-handle">@_catwu</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic 产品工程师 Cat Wu 用 Claude Cowork 管理日历，并把约束写得很具体：每周会议少于二十小时、冲突去重、参考过去的拒会习惯、晚餐不计入额度、改邀请前先确认。</p>
+              <p>关键不只是这条 prompt，而是让 Cowork 建一个会持续迭代的 skill。一次性助手由此变成带记忆、边界和审批门的日常流程。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>管理我本周的日历：会议少于二十小时，并去除冲突的重复会议。</p>
+              <p>建立一个可以持续改进的 skill，更新邀请前先问我。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Anthropic product engineer Cat Wu uses Claude Cowork to manage her calendar with explicit constraints: fewer than twenty meeting hours, deduplicate conflicts, learn decline patterns from prior weeks, exclude dinners, and ask before changing invites.</p>
+              <p>The key move is not the prompt itself but asking Cowork to build and refine a reusable skill. A one-off assistant becomes an operating routine with memory, limits, and approval gates.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Manage my calendar for the week. Requirements: 1. &lt;20 hours of meetings 2. Dedupe conflicting meetings.</p>
+              <p>Build a skill that you refine. Ask me before updating invites.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/_catwu/status/2079011428380602526" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:danshipper" data-author-name="Dan Shipper" data-author-tag="Every 联合创始人 / AI 写作工具链" data-author-handle="@danshipper" data-author-avatar="../assets/avatars/x-danshipper.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-danshipper.jpg" alt="Dan Shipper avatar"><span class="avatar-fallback">DS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Dan Shipper</div>
+            <div class="author-tag is-inline">Every 联合创始人 / AI 写作工具链</div>
+          </div>
+          <div class="author-handle">@danshipper</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Every CEO Dan Shipper 说内部编辑流程刚跨过一道坎：连续一周，系统自动完成了原本需要人工处理的大约七成 copy edit。</p>
+              <p>他为此试了很多年。真正的信号不是 benchmark 又涨了，而是模型开始稳定接管真实生产流程里的重复劳动。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>过去一周，我们已经能自动完成内部通常需要人工处理的大约七成 copy edit。</p>
+              <p>这是第一次做到，而我已经尝试了很多年。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Every CEO Dan Shipper says an internal editing workflow just crossed a threshold: for a week, the system has automatically completed about 70% of copy edits that editors would normally do by hand.</p>
+              <p>He has tried to reach this point for years. The signal is not a benchmark jump but sustained replacement of repetitive production work inside a real editorial process.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Have been able to automatically do ~70% of the copy edits we would ordinarily do by hand internally for the last week.</p>
+              <p>First time that&#39;s happened and I&#39;ve been trying it for years.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/danshipper/status/2078920115140358585" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+
+    <article class="card" data-author-key="x:thsottiaux" data-author-name="Thibault Sottiaux" data-author-tag="OpenAI Codex &amp; ChatGPT" data-author-handle="@thsottiaux" data-author-avatar="../assets/avatars/x-thsottiaux.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-thsottiaux.jpg" alt="Thibault Sottiaux avatar"><span class="avatar-fallback">TS</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Thibault Sottiaux</div>
+            <div class="author-tag is-inline">OpenAI Codex &amp; ChatGPT</div>
+          </div>
+          <div class="author-handle">@thsottiaux</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>OpenAI 的 Thibault Sottiaux 在收集 ChatGPT 对真实人生带来深度积极影响的故事；此前用户讲述 ChatGPT Work 的用法，让团队很受鼓舞。</p>
+              <p>这当然带有互动性质，但也是产品发现：有情感重量的结果，能暴露 usage dashboard 和任务分类看不到的价值。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>你什么时候见过 ChatGPT 对你或他人的生活产生深度积极影响？</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>OpenAI&#39;s Thibault Sottiaux is collecting stories of ChatGPT having a deeply positive impact on someone&#39;s life, after user messages about ChatGPT Work energized the team.</p>
+              <p>This is partly engagement, but it is also product discovery: emotionally meaningful outcomes reveal value that usage dashboards and task taxonomies miss.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>What&#39;s a time you saw ChatGPT have a deeply positive impact on your or someone&#39;s life?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/thsottiaux/status/2079058139207573541" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 06</div>
+    <h2 class="section-title">开放模型逼着监管逻辑重算 / Open weights force a regulatory rethink</h2>
+    <p class="section-desc">当开源模型只落后 frontier 一小步，单边 gatekeeping 可能让自己的公司失去工具，却拦不住其他生态。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:levie" data-author-name="Aaron Levie" data-author-tag="Box CEO" data-author-handle="@levie" data-author-avatar="../assets/avatars/x-levie.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-levie.jpg" alt="Aaron Levie avatar"><span class="avatar-fallback">AL</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Aaron Levie</div>
+            <div class="author-tag is-inline">Box CEO</div>
+          </div>
+          <div class="author-handle">@levie</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Levie 认为，强大的开源模型已经改写安全账本。如果其他生态仍能使用接近 frontier 的开放替代品，单方面限制本国公司获取能力，反而会让它们竞争力更弱、防御能力更差。</p>
+              <p>这不等于不要监管，而是政策必须承认开放模型比预期更强、传播更广；单边 gatekeeping 已经不能保证控制力。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>通过 gatekeeping 限制 frontier 模型能力，反而会让自己更不安全、更缺乏竞争力。</p>
+              <p>AI 监管的整套计算方式必须随之改变。</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>Levie argues that strong open-source models change the security calculus. If capable open alternatives remain available elsewhere, restricting domestic access to frontier capabilities can make local companies less competitive and less able to defend themselves.</p>
+              <p>The claim is not that regulation disappears. It is that policy must now account for models that are much stronger and more globally available than expected; unilateral gatekeeping no longer guarantees control.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>You make yourself less secure and competitive by gatekeeping access to frontier model capabilities.</p>
+              <p>The calculus of what you do about AI regulation simply must change.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/levie/status/2078992778449850769" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <section class="section-header">
+    <div class="section-label">Theme 07</div>
+    <h2 class="section-title">周末底色：世界杯决赛 / Weekend texture: the World Cup final</h2>
+    <p class="section-desc">这不是今天的主线，但多个高信号作者同时被世界杯决赛占据；保留一张合并卡，作为当天真实的信息环境。</p>
+  </section>
+  <section class="feed">
+    <article class="card" data-author-key="x:rauchg" data-author-name="Guillermo Rauch" data-author-tag="Vercel CEO" data-author-handle="@rauchg" data-author-avatar="../assets/avatars/x-rauchg.jpg">
+      <div class="card-header">
+        <div class="avatar"><img src="../assets/avatars/x-rauchg.jpg" alt="Guillermo Rauch avatar"><span class="avatar-fallback">GR</span></div>
+        <div class="author-info">
+          <div class="author-name-row">
+            <div class="author-name">Guillermo Rauch</div>
+            <div class="author-tag is-inline">Vercel CEO</div>
+          </div>
+          <div class="author-handle">@rauchg</div>
+        </div>
+        <div class="card-controls">
+          <button class="view-toggle is-active" type="button" data-view-target="rewrite">速读</button>
+          <button class="view-toggle" type="button" data-view-target="original">原文</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="lang-col cn">
+          <div class="lang-label">中文</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>世界杯决赛占据了今天 feed 的非 AI 一侧。Guillermo Rauch 感谢阿根廷的拼劲与 Messi 的表现，同时祝贺西班牙，也感谢美国主办这场赛事。</p>
+              <p>Matt Turck、Amanda Askell、Amjad Masad 和 Nikunj Kothari 也在看同一场比赛。这里不硬拗成 AI 新闻，只保留一张合并卡，当作周末底色。</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>感谢阿根廷再次拼尽全力，拿出韧性、激情、天赋与信念。</p>
+              <p>祝贺西班牙！</p>
+            </div>
+          </div>
+        </div>
+        <div class="lang-col en">
+          <div class="lang-label">English</div>
+          <div class="content-shell">
+            <div class="content-variant is-active" data-view="rewrite">
+              <p>The World Cup final dominated the non-AI side of the feed. Guillermo Rauch thanked Argentina for its grit and Messi&#39;s run, while congratulating Spain and the United States as host.</p>
+              <p>Matt Turck, Amanda Askell, Amjad Masad, and Nikunj Kothari were watching the same match from sharper angles. Rather than pretend these posts are AI news, the digest keeps one card as weekend texture.</p>
+            </div>
+            <div class="content-variant" data-view="original">
+              <p>Thankful to Argentina for once again giving it all. Grit, passion, talent, faith.</p>
+              <p>Enhorabuena tíos España!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"><a href="https://x.com/rauchg/status/2078975602028106050" target="_blank" rel="noopener noreferrer">原始链接 / Source →</a></div>
+    </article>
+  </section>
+
+  <footer data-source-note="Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-20 source feeds.">Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-20 source feeds.</footer>
+
+  <script>
+    function getTemplateAuthorSources() {
+      const sources = window.AI_BUILDERS_TEMPLATE_SOURCES || {};
+      return { identities: sources.identities || {}, avatars: sources.avatars || {} };
+    }
+
+    function getAuthorInitials(name) {
+      return (name || '').split(/\s+/).filter(Boolean).slice(0, 2).map(function(part) { return part[0]; }).join('').toUpperCase();
+    }
+
+    function hydrateTemplateCopy() {
+      const intro = document.querySelector('.intro');
+      if (intro) {
+        const kicker = intro.querySelector('.intro-kicker');
+        const copy = intro.querySelector('.intro-copy');
+        if (kicker) kicker.textContent = intro.dataset.kicker || '';
+        if (copy) copy.textContent = intro.dataset.text || '';
+      }
+
+      const footer = document.querySelector('footer');
+      if (footer) footer.textContent = footer.dataset.sourceNote || '';
+
+      const rewriteLabel = document.body.dataset.viewLabelRewrite || '速读';
+      const originalLabel = document.body.dataset.viewLabelOriginal || '原文';
+      document.querySelectorAll('.view-toggle').forEach(function(button) {
+        if (button.dataset.viewTarget === 'rewrite') button.textContent = rewriteLabel;
+        if (button.dataset.viewTarget === 'original') button.textContent = originalLabel;
+      });
+    }
+
+    function hydrateAuthorMeta() {
+      const sources = getTemplateAuthorSources();
+      document.querySelectorAll('.card').forEach(function(card) {
+        const authorKey = card.dataset.authorKey || '';
+        const identity = sources.identities[authorKey] || {};
+        const avatarEntry = sources.avatars[authorKey] || {};
+
+        const name = identity.name || card.dataset.authorName || '';
+        const rawHandle = identity.handle || card.dataset.authorHandle || '';
+        const handle = rawHandle && rawHandle.startsWith('@') ? rawHandle : (rawHandle ? '@' + rawHandle : '');
+        const tag = identity.label || card.dataset.authorTag || '';
+        const avatar = avatarEntry.fileUrl || avatarEntry.localPath || card.dataset.authorAvatar || '';
+
+        const nameNode = card.querySelector('.author-name');
+        const tagNode = card.querySelector('.author-tag');
+        const handleNode = card.querySelector('.author-handle');
+        const avatarNode = card.querySelector('.avatar');
+        const avatarImg = card.querySelector('.avatar img');
+        const avatarFallback = card.querySelector('.avatar-fallback');
+
+        if (nameNode) nameNode.textContent = name;
+        if (tagNode) tagNode.textContent = tag;
+        if (handleNode) handleNode.textContent = handle;
+        if (avatarImg) {
+          avatarImg.src = avatar;
+          avatarImg.alt = name ? name + ' avatar' : 'Author avatar';
+        }
+        if (avatarNode) avatarNode.classList.toggle('is-fallback', !avatar);
+        if (avatarFallback) avatarFallback.textContent = getAuthorInitials(name);
+      });
+    }
+
+    function updateEditionStrip() {
+      const publishDate = document.body.dataset.publishDate;
+      const editionName = document.body.dataset.editionName || '双语精选版';
+      const editionStrip = document.getElementById('edition-strip-text');
+      if (!publishDate || !editionStrip) return;
+
+      const issueNumber = document.body.dataset.issueNumber || '';
+      if (!issueNumber) return;
+
+      const selectedCount = document.querySelectorAll('.card').length;
+      const authorCount = new Set([].slice.call(document.querySelectorAll('.author-handle')).map(function(node) { return node.textContent.trim(); }).filter(Boolean)).size;
+      const themeCount = document.querySelectorAll('.section-header').length;
+      const parts = ['第 ' + issueNumber + ' 期', publishDate, editionName, selectedCount + ' 条精选', authorCount + ' 位作者', themeCount + ' 个主题'];
+      editionStrip.innerHTML = parts.map(function(part) { return '<span class="edition-item">' + part + '</span>'; }).join('<span class="edition-sep">|</span>');
+    }
+
+    function measureVariantHeight(variant) {
+      const prevPosition = variant.style.position;
+      const prevInset = variant.style.inset;
+      const prevVisibility = variant.style.visibility;
+      const prevPointerEvents = variant.style.pointerEvents;
+      const prevOpacity = variant.style.opacity;
+      const prevTransform = variant.style.transform;
+      const prevTransition = variant.style.transition;
+      const prevOverflowY = variant.style.overflowY;
+      const prevDisplay = variant.style.display;
+
+      variant.style.position = 'relative';
+      variant.style.inset = 'auto';
+      variant.style.visibility = 'hidden';
+      variant.style.pointerEvents = 'none';
+      variant.style.opacity = '1';
+      variant.style.transform = 'none';
+      variant.style.transition = 'none';
+      variant.style.overflowY = 'visible';
+      variant.style.display = 'block';
+
+      const height = variant.scrollHeight;
+
+      variant.style.position = prevPosition;
+      variant.style.inset = prevInset;
+      variant.style.visibility = prevVisibility;
+      variant.style.pointerEvents = prevPointerEvents;
+      variant.style.opacity = prevOpacity;
+      variant.style.transform = prevTransform;
+      variant.style.transition = prevTransition;
+      variant.style.overflowY = prevOverflowY;
+      variant.style.display = prevDisplay;
+
+      return Math.ceil(height);
+    }
+
+    function getTargetHeight(shell, target) {
+      const variant = shell.querySelector('.content-variant[data-view="' + target + '"]');
+      return measureVariantHeight(variant);
+    }
+
+    function syncShellHeights() {
+      document.querySelectorAll('.content-shell').forEach(function(shell) {
+        const active = shell.querySelector('.content-variant.is-active');
+        const target = active ? active.dataset.view : 'rewrite';
+        shell.style.height = getTargetHeight(shell, target) + 'px';
+      });
+    }
+
+    let resizeTimer = null;
+    window.addEventListener('resize', function() {
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(syncShellHeights, 120);
+    });
+
+    document.querySelectorAll('.card').forEach(function(card) {
+      const buttons = card.querySelectorAll('.view-toggle');
+      const shells = card.querySelectorAll('.content-shell');
+
+      buttons.forEach(function(button) {
+        button.addEventListener('click', function() {
+          const target = button.dataset.viewTarget;
+          if (button.classList.contains('is-active')) return;
+
+          buttons.forEach(function(btn) {
+            btn.classList.toggle('is-active', btn === button);
+          });
+
+          shells.forEach(function(shell) {
+            const current = shell.querySelector('.content-variant.is-active');
+            const next = shell.querySelector('.content-variant[data-view="' + target + '"]');
+            if (!current || !next || current === next) return;
+
+            shell.style.height = shell.offsetHeight + 'px';
+            requestAnimationFrame(function() {
+              current.classList.remove('is-active');
+              next.classList.add('is-active');
+              shell.style.height = getTargetHeight(shell, target) + 'px';
+            });
+          });
+        });
+      });
+    });
+
+    hydrateTemplateCopy();
+    hydrateAuthorMeta();
+    updateEditionStrip();
+    syncShellHeights();
+  </script>
+</body>
+</html>

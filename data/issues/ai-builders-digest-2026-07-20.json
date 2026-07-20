@@ -1,0 +1,412 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-07-20",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天 1 个 podcast + 15 位 X builder + 0 篇 blog，主线从 Stripe 的 agentic commerce 往外展开：token theft 已经占到部分 AI 公司新增注册的六分之一，真正的支付底座先要补信任、权限与责任。Levie 把另一面讲透：token 越便宜，推理需求反而越大，但 AI diffusion 最终仍被现实世界的反馈速度限住。Garry Tan 与 Zhang Rui 给出一组很实用的搭配——长期知识放进 Markdown，临时界面和一次性分析软件则可以用完就扔。Claude Cowork 管日历、Every 自动完成七成 copy edit，说明 agent 正从 demo 进入重复工作；世界杯决赛则作为今天的周末底色收尾。"
+  },
+  "archive": {
+    "title": "信任结算日",
+    "desc": "Stripe 把 agentic commerce 的真缺口指向 token theft、权限和责任；成本越低需求越大，但现实反馈仍是 AI diffusion 的限速器。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-20 source feeds.",
+  "sections": [
+    {
+      "title": "Agentic commerce 的真正缺口：token theft 与信任 / The missing layer in agentic commerce: token theft and trust",
+      "desc": "MAD Podcast 再访 Stripe 数据与 AI 负责人 Emily Sands：agent 经济并不先卡在支付按钮，而是卡在 token 滥用、权限边界和谁来承担错误。",
+      "cards": [
+        {
+          "authorKey": "podcast:mad-podcast",
+          "authorName": "The MAD Podcast",
+          "authorHandle": null,
+          "authorTag": "Matt Turck 主理的 AI 与数据播客",
+          "sourceUrl": "https://www.youtube.com/@DataDrivenNYC/videos",
+          "en": {
+            "rewrite": [
+              "Stripe Head of Data and AI Emily Sands says token theft is one of AI's most under-discussed problems. Fraudsters no longer need to steal money or credentials; they can steal inference, and more than one in six new signups at AI companies can be this kind of abuse.",
+              "Agentic commerce therefore needs more than a checkout API. It needs identity, spend limits, revocation, auditability, and a clear answer to who pays when an agent gets the purchase wrong."
+            ],
+            "original": [
+              "Fraudsters have figured out that in AI, you actually don't really need to steal money or credentials. You can just steal tokens.",
+              "More than one in six signups at AI companies are this kind of abuse."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Stripe 数据与 AI 负责人 Emily Sands 把 token theft 钉成 AI 圈最少被讨论的问题之一。骗子不必再偷钱或账号，直接盗用推理额度就能获利；AI 公司每六个新增注册里，可能就有一个属于这类滥用。",
+              "所以 agentic commerce 的底座不只是支付 API，还得补上身份、额度、撤销、审计，以及 agent 买错东西时究竟谁承担损失。"
+            ],
+            "original": [
+              "骗子发现，在 AI 时代甚至不用偷钱或凭据，偷 token 就够了。",
+              "AI 公司新增注册中，超过六分之一可能就是这类滥用。"
+            ]
+          }
+        },
+        {
+          "authorKey": "podcast:mad-podcast",
+          "authorName": "The MAD Podcast",
+          "authorHandle": null,
+          "authorTag": "Matt Turck 主理的 AI 与数据播客",
+          "sourceUrl": "https://www.youtube.com/@DataDrivenNYC/videos",
+          "en": {
+            "rewrite": [
+              "The next step is not merely an agent buying on a person's behalf. Sands expects agents to run businesses: buying inputs, selling outputs, and optimizing for profit. That shift breaks per-seat pricing because the economic actor may have no human seat at all.",
+              "Her twelve-month horizon is a market where agents hold budgets and make repeated commercial decisions. The hard product problem is trust: users care about overspending, wrong purchases, and whether they can stop the agent."
+            ],
+            "original": [
+              "It's Emily has an agent who's tasked with running a business, and that includes buying some things and selling some things and making some profits.",
+              "That'll be the world that I would like to be talking about twelve months from now."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "下一步不只是 agent 替人买东西，而是 agent 自己经营业务：采购投入、销售产出、持续追求利润。到了这里，per-seat 定价会失灵，因为真正执行经济活动的主体可能根本没有一个人类席位。",
+              "Emily 给出的十二个月图景，是 agent 持有预算并反复做商业决策。产品难点仍是信任：会不会超支、会不会买错，以及用户能否随时叫停。"
+            ],
+            "original": [
+              "不再只是 Emily 授权 agent 代购，而是 Emily 拥有一个负责经营业务的 agent，它会买东西、卖东西并赚取利润。",
+              "我希望十二个月后，我们讨论的就是这样的世界。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "成本下降，不会让 AI 支出下降 / Cheaper AI expands demand",
+      "desc": "Levie 与 Amjad 从两侧讲同一件事：token 越便宜，使用面越大；但消费软件的付费习惯仍决定谁能真正收钱。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie/status/2078968158006939716",
+          "en": {
+            "rewrite": [
+              "Aaron Levie argues that cheaper AI will increase total AI spend, not shrink it. Lower token costs unlock more coding, security review, data processing, and always-on agents.",
+              "This also explains why open-source AI can support large infrastructure businesses: most users will not run frontier-class models locally, so lower model prices expand hosted inference demand."
+            ],
+            "original": [
+              "When you make AI cheaper, it will get consumed more.",
+              "Anything that lowers the cost of tokens will drive up inference demand."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 的判断很直接：AI 越便宜，总支出反而越高。token 成本下降会放开更多写代码、安全审查、大数据处理和常驻 agent 的场景。",
+              "这也解释了开源模型为什么仍能养出大规模 infra 生意：大多数人不会在本地跑前沿模型，模型降价最终扩大的还是托管推理需求。"
+            ],
+            "original": [
+              "AI 越便宜，消耗量就会越大。",
+              "任何降低 token 成本的变化，都会推高推理需求。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:amasad",
+          "authorName": "Amjad Masad",
+          "authorHandle": "@amasad",
+          "authorTag": "Replit CEO",
+          "sourceUrl": "https://x.com/amasad/status/2079086360703680583",
+          "en": {
+            "rewrite": [
+              "Replit CEO Amjad Masad points out the consumer-software constraint: households readily pay for food, rent, entertainment, connectivity, and shopping, while software is usually purchased by employers.",
+              "That makes giant consumer subscriptions rare outside Netflix- or Spotify-like categories. For AI products, capability alone is not enough; the product must attach itself to an existing consumer budget or create an obvious new habit."
+            ],
+            "original": [
+              "Software is typically bought by their companies.",
+              "Outside of Netflix, Spotify, etc it's hard to think of huge consumer subscription businesses."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Replit CEO Amjad Masad 提醒了消费软件的老约束：家庭愿意为食物、房租、娱乐、网络和购物付钱，但软件通常由公司采购。",
+              "所以除了 Netflix、Spotify 这类品类，巨型消费订阅一直很少。AI 产品光有能力还不够，它必须接进已有预算，或者创造一个足够清晰的新习惯。"
+            ],
+            "original": [
+              "软件通常是由用户所在的公司购买。",
+              "除了 Netflix、Spotify 等少数例子，很难想到巨型消费订阅业务。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "真实世界才是 AI diffusion 的限速器 / Reality rate-limits AI diffusion",
+      "desc": "代码能快速采用 AI，因为反馈闭环几乎全在电脑里；药物、销售、合同和工业流程都得等现实世界回答。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie/status/2078864191683969212",
+          "en": {
+            "rewrite": [
+              "Levie says AI diffusion is ultimately rate-limited by contact with the real world. Coding moved quickly because one person can generate, test, and deploy nearly unlimited code without waiting on external institutions.",
+              "Life sciences, sales, contracts, and industrial design are different: experiments, counterparties, regulation, and physical failure determine the cycle time. The opportunity is therefore in applied AI systems that redesign workflows around those feedback loops, not in raw model output alone."
+            ],
+            "original": [
+              "Coming up with ideas was never the hard part. The hard part is how fast reality answers them.",
+              "Model outputs alone are not enough in most cases."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Levie 说 AI diffusion 最终会被现实世界限速。代码采用得快，是因为一个人能在电脑里生成、测试、运行大量代码，不必等待外部机构配合。",
+              "药物、销售、合同和工业设计则不同：实验、交易对手、监管和物理失败共同决定周期。所以真正的机会在 applied AI，把 workflow 围绕这些反馈回路重新设计，而不只是吐出一个模型答案。"
+            ],
+            "original": [
+              "想出点子从来不是最难的，难的是现实世界多快给你答案。",
+              "多数场景里，只有模型输出远远不够。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO",
+          "sourceUrl": "https://x.com/rauchg/status/2078912929714356698",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch proposes cybersecurity as an unusually strong benchmark for superintelligence: the IQ test of software engineering. Cloning an app in one shot looks impressive but does not test deep reasoning.",
+              "Finding, patching, reversing, and exploiting vulnerabilities requires corner thinking across languages and runtimes. Kimi K3 performing well here is meaningful evidence for open models because the task resists superficial demo optimization."
+            ],
+            "original": [
+              "Cybersecurity is one of the best benchmarks for superintelligence.",
+              "Finding, patching, reversing, and exploiting require a cognitive skill that transcends programming languages, runtimes, frameworks."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 把 cybersecurity 称为 superintelligence 很好的 benchmark，也就是软件工程的 IQ test。一次性复刻一个应用很吸睛，却不太能检验深层推理。",
+              "发现、修复、逆向和利用漏洞，需要跨语言、runtime 与 framework 的边角思考。Kimi K3 在这里表现好，才是开源模型更值得重视的信号。"
+            ],
+            "original": [
+              "Cybersecurity 是检验 superintelligence 最好的 benchmark 之一。",
+              "发现、修复、逆向和利用漏洞，需要跨越编程语言、runtime 与 framework 的认知能力。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "文件要长寿，软件可以一次性 / Durable files, disposable software",
+      "desc": "Garry Tan 选 Markdown 当长期底座，Zhang Rui 则把临时 UI 和一次性分析页当可丢弃工具；两者并不矛盾。",
+      "cards": [
+        {
+          "authorKey": "x:garrytan",
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁",
+          "sourceUrl": "https://x.com/garrytan/status/2078803803659452624",
+          "en": {
+            "rewrite": [
+              "Garry Tan argues that Markdown is a resilient data format precisely because the intelligence stack is changing so quickly. Plain text survives tool churn and remains readable, diffable, and portable.",
+              "The practical builder rule is to keep durable knowledge in boring files and let agents or interfaces change around it. The faster the stack moves, the more valuable the stable substrate becomes."
+            ],
+            "original": [
+              "Markdown files are universal and will survive millennia.",
+              "They are a fantastic data format when the intelligence stack is in flux at this extreme pace."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Garry Tan 认为，正因为 intelligence stack 变化太快，Markdown 才是更耐久的数据格式。纯文本能跨过工具更替，还能阅读、diff 和迁移。",
+              "给 builder 的简单规则是：长期知识放在无聊而稳定的文件里，agent 和界面随时可以换。上层变化越快，稳定底座越值钱。"
+            ],
+            "original": [
+              "Markdown 文件具有普适性，甚至能存续千年。",
+              "当 intelligence stack 以极端速度变化时，它是非常合适的数据格式。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2078835308905578660",
+          "en": {
+            "rewrite": [
+              "Zhang Rui says builders should get comfortable with disposable software. Generate a design playground, an HTML explainer, or a one-off inspection dashboard, use it once, then throw it away.",
+              "AI lowers the cost of making a purpose-built interface below the cost of adapting a permanent tool. The valuable artifact may be the answer or decision, not the code that produced it."
+            ],
+            "original": [
+              "We need to get used to the idea that code/software can now be disposable.",
+              "Spinning up a throwaway dashboard to inspect something once."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zhang Rui 说，我们得习惯软件也可以是一次性的：临时生成设计 playground、代码讲解页或检查 dashboard，用完就扔。",
+              "AI 把定制一个临时界面的成本压到比迁就永久工具还低。真正需要保存的可能是答案和决定，而不是产生它们的代码。"
+            ],
+            "original": [
+              "我们需要习惯代码和软件现在可以被用完即弃。",
+              "为了只检查一次数据，临时搭一个可丢弃的 dashboard。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Agent 工作流开始长出日常习惯 / Agent workflows become everyday habits",
+      "desc": "Claude Cowork 管日历、Every 自动完成七成 copy edit、ChatGPT Work 收集真实人生影响，agent 的价值正在从 demo 转向重复工作。",
+      "cards": [
+        {
+          "authorKey": "x:_catwu",
+          "authorName": "Cat Wu",
+          "authorHandle": "@_catwu",
+          "authorTag": "Anthropic 产品工程",
+          "sourceUrl": "https://x.com/_catwu/status/2079011428380602526",
+          "en": {
+            "rewrite": [
+              "Anthropic product engineer Cat Wu uses Claude Cowork to manage her calendar with explicit constraints: fewer than twenty meeting hours, deduplicate conflicts, learn decline patterns from prior weeks, exclude dinners, and ask before changing invites.",
+              "The key move is not the prompt itself but asking Cowork to build and refine a reusable skill. A one-off assistant becomes an operating routine with memory, limits, and approval gates."
+            ],
+            "original": [
+              "Manage my calendar for the week. Requirements: 1. <20 hours of meetings 2. Dedupe conflicting meetings.",
+              "Build a skill that you refine. Ask me before updating invites."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Anthropic 产品工程师 Cat Wu 用 Claude Cowork 管理日历，并把约束写得很具体：每周会议少于二十小时、冲突去重、参考过去的拒会习惯、晚餐不计入额度、改邀请前先确认。",
+              "关键不只是这条 prompt，而是让 Cowork 建一个会持续迭代的 skill。一次性助手由此变成带记忆、边界和审批门的日常流程。"
+            ],
+            "original": [
+              "管理我本周的日历：会议少于二十小时，并去除冲突的重复会议。",
+              "建立一个可以持续改进的 skill，更新邀请前先问我。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:danshipper",
+          "authorName": "Dan Shipper",
+          "authorHandle": "@danshipper",
+          "authorTag": "Every 联合创始人 / AI 写作工具链",
+          "sourceUrl": "https://x.com/danshipper/status/2078920115140358585",
+          "en": {
+            "rewrite": [
+              "Every CEO Dan Shipper says an internal editing workflow just crossed a threshold: for a week, the system has automatically completed about 70% of copy edits that editors would normally do by hand.",
+              "He has tried to reach this point for years. The signal is not a benchmark jump but sustained replacement of repetitive production work inside a real editorial process."
+            ],
+            "original": [
+              "Have been able to automatically do ~70% of the copy edits we would ordinarily do by hand internally for the last week.",
+              "First time that's happened and I've been trying it for years."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Every CEO Dan Shipper 说内部编辑流程刚跨过一道坎：连续一周，系统自动完成了原本需要人工处理的大约七成 copy edit。",
+              "他为此试了很多年。真正的信号不是 benchmark 又涨了，而是模型开始稳定接管真实生产流程里的重复劳动。"
+            ],
+            "original": [
+              "过去一周，我们已经能自动完成内部通常需要人工处理的大约七成 copy edit。",
+              "这是第一次做到，而我已经尝试了很多年。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT",
+          "sourceUrl": "https://x.com/thsottiaux/status/2079058139207573541",
+          "en": {
+            "rewrite": [
+              "OpenAI's Thibault Sottiaux is collecting stories of ChatGPT having a deeply positive impact on someone's life, after user messages about ChatGPT Work energized the team.",
+              "This is partly engagement, but it is also product discovery: emotionally meaningful outcomes reveal value that usage dashboards and task taxonomies miss."
+            ],
+            "original": [
+              "What's a time you saw ChatGPT have a deeply positive impact on your or someone's life?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenAI 的 Thibault Sottiaux 在收集 ChatGPT 对真实人生带来深度积极影响的故事；此前用户讲述 ChatGPT Work 的用法，让团队很受鼓舞。",
+              "这当然带有互动性质，但也是产品发现：有情感重量的结果，能暴露 usage dashboard 和任务分类看不到的价值。"
+            ],
+            "original": [
+              "你什么时候见过 ChatGPT 对你或他人的生活产生深度积极影响？"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "开放模型逼着监管逻辑重算 / Open weights force a regulatory rethink",
+      "desc": "当开源模型只落后 frontier 一小步，单边 gatekeeping 可能让自己的公司失去工具，却拦不住其他生态。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie/status/2078992778449850769",
+          "en": {
+            "rewrite": [
+              "Levie argues that strong open-source models change the security calculus. If capable open alternatives remain available elsewhere, restricting domestic access to frontier capabilities can make local companies less competitive and less able to defend themselves.",
+              "The claim is not that regulation disappears. It is that policy must now account for models that are much stronger and more globally available than expected; unilateral gatekeeping no longer guarantees control."
+            ],
+            "original": [
+              "You make yourself less secure and competitive by gatekeeping access to frontier model capabilities.",
+              "The calculus of what you do about AI regulation simply must change."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Levie 认为，强大的开源模型已经改写安全账本。如果其他生态仍能使用接近 frontier 的开放替代品，单方面限制本国公司获取能力，反而会让它们竞争力更弱、防御能力更差。",
+              "这不等于不要监管，而是政策必须承认开放模型比预期更强、传播更广；单边 gatekeeping 已经不能保证控制力。"
+            ],
+            "original": [
+              "通过 gatekeeping 限制 frontier 模型能力，反而会让自己更不安全、更缺乏竞争力。",
+              "AI 监管的整套计算方式必须随之改变。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "周末底色：世界杯决赛 / Weekend texture: the World Cup final",
+      "desc": "这不是今天的主线，但多个高信号作者同时被世界杯决赛占据；保留一张合并卡，作为当天真实的信息环境。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO",
+          "sourceUrl": "https://x.com/rauchg/status/2078975602028106050",
+          "en": {
+            "rewrite": [
+              "The World Cup final dominated the non-AI side of the feed. Guillermo Rauch thanked Argentina for its grit and Messi's run, while congratulating Spain and the United States as host.",
+              "Matt Turck, Amanda Askell, Amjad Masad, and Nikunj Kothari were watching the same match from sharper angles. Rather than pretend these posts are AI news, the digest keeps one card as weekend texture."
+            ],
+            "original": [
+              "Thankful to Argentina for once again giving it all. Grit, passion, talent, faith.",
+              "Enhorabuena tíos España!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "世界杯决赛占据了今天 feed 的非 AI 一侧。Guillermo Rauch 感谢阿根廷的拼劲与 Messi 的表现，同时祝贺西班牙，也感谢美国主办这场赛事。",
+              "Matt Turck、Amanda Askell、Amjad Masad 和 Nikunj Kothari 也在看同一场比赛。这里不硬拗成 AI 新闻，只保留一张合并卡，当作周末底色。"
+            ],
+            "original": [
+              "感谢阿根廷再次拼尽全力，拿出韧性、激情、天赋与信念。",
+              "祝贺西班牙！"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
