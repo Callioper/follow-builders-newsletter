@@ -1,0 +1,552 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-07-21",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天 1 个 podcast + 14 位 X builder + 0 篇 blog，主线是 Booking CEO Glenn Fogel 在节目里两次强调「不存在护城河」——AI 时代没有静态的竞争优势，今天的领先随时可能被抹掉。围绕这条主线，Nikunj 把 Webvan、Groupon、Blockbuster、Nokia 这些历史案例摆出来，提醒创始人们别把资本和规模当护城河；Levie 引 Cursor 的多模型研究，把 frontier model 当 planner、便宜模型当 worker 跑出 15 倍 token 成本下降；Fogel 自己则把 Pennny agentic 工具月对月翻倍、转化率提升、token 模型路由作为长期运营问题对待。另一面，开源权重与中文开源模型被 Mattturck、Peter Yang 反复点名，Swyx 还从 RLM 论文里挖出 frontier 训练其实可以在 test 近似集上刷分、然后靠「不开放数据集」取得合理的可否认性。最后是 Zhang Rui 把招聘流程改成 AI-friendly、把公司分成了 coding agent 之前和之后两个物种，外加几条短促的 offline 切片：Sam Altman 的「it is good now!」、Garry Tan 的 CREAM 改编。"
+  },
+  "archive": {
+    "title": "护城河翻日历",
+    "desc": "Booking CEO：AI 时代没有真正的护城河，竞争优势必须每天再挣；多模型编排把 token 成本打下 15 倍，开源权重逼所有人重算。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-21 source feeds.",
+  "sections": [
+    {
+      "title": "护城河已死，每天再挣一遍 / The moat is gone — earn it daily",
+      "desc": "Booking Holdings CEO Glenn Fogel 与 Afore Capital 的 Nikunj Kothari 从同一点出发：AI 时代没有静态护城河，竞争优势必须每天重新挣；上一轮靠资本和规模的领先者，往往是被更准的洞察或自己的规模取代。",
+      "cards": [
+        {
+          "authorKey": "podcast:no-priors",
+          "authorName": "No Priors",
+          "authorHandle": null,
+          "authorTag": "AI 与创业对话播客",
+          "sourceUrl": "https://www.youtube.com/watch?v=8nj_0wZkbtA",
+          "en": {
+            "rewrite": [
+              "Booking Holdings CEO Glenn Fogel opens with the operating truth he repeats to his 25,000 employees: there is no such thing as a moat. Today you have a competitive advantage in a few areas; tomorrow those can vanish, so the only durable answer is to keep developing new services and new ways to do the customer's business better."
+            ],
+            "original": [
+              "There is no such thing as a moat. There is no such thing as somewhere you're gonna be protected against innovation. Today, we have a competitive advantage on areas. Absolutely. But those can go away tomorrow."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Booking Holdings CEO Glenn Fogel 把一句话挂在全公司最显眼的位置：不存在真正的护城河。今天你可能在某些环节有竞争优势，明天就可能被抹平；唯一可持续的，是不断开发新服务、新做法，把客户的生意做得更顺。"
+            ],
+            "original": [
+              "没有真正的护城河，也没有谁能被保护着不被创新追上。今天你在某些领域有竞争优势，当然；但这些优势明天可能就会消失。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人",
+          "sourceUrl": "https://x.com/nikunj/status/2079328912912355470",
+          "en": {
+            "rewrite": [
+              "Afore Capital partner Nikunj Kothari says the next 18 months will be a reckoning for founders who quietly substituted capital and headcount for real moats. Webvan, Groupon, MySpace, Yahoo, AltaVista, Blockbuster and Nokia each had structurally strong positions and still got displaced by a sharper insight or crushed by their own scale."
+            ],
+            "original": [
+              "Many founders in the last 18 months are going to realize that just because there are no \"moats\" in AI left anymore doesn't mean \"scale and capital\" become your main moat. We have seen this movie before."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Afore Capital 合伙人 Nikunj Kothari 说，过去十八个月悄悄用资本和规模代替护城河的创始人，接下来会挨一轮现实。Webvan、Groupon、MySpace、Yahoo、AltaVista、Blockbuster、Nokia 当时的位置都算稳，但要么被更锐利的洞察掀翻，要么被自己的规模压垮。"
+            ],
+            "original": [
+              "过去十八个月，会有很多创始人意识到：AI 圈没有护城河，并不等于「规模+资本」就成了你的护城河。我们都看过类似的剧本。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Booking 的筹码：agentic travel 还在被低估 / Booking's bet: agentic travel is still underpriced",
+      "desc": "Fogel 反复表达同一个期待：未来每个人都会拥有一个了解你所有偏好、能做人类旅行顾问做不了的事的 personalized agent；而 Booking 内部已经在用 Penny 这类 agentic 工具，并把模型路由当核心运营问题对待。",
+      "cards": [
+        {
+          "authorKey": "podcast:no-priors",
+          "authorName": "No Priors",
+          "authorHandle": null,
+          "authorTag": "AI 与创业对话播客",
+          "sourceUrl": "https://www.youtube.com/watch?v=8nj_0wZkbtA",
+          "en": {
+            "rewrite": [
+              "Fogel calls the personalized travel agent the immediate frontier. A machine that remembers everything about you can run permutations no human advisor ever could, and Booking Holdings wants to ship this kind of agent across every brand in the portfolio."
+            ],
+            "original": [
+              "I can't wait until we, Booking Holdings in our companies, are offering up these personalized agents that they know everything about you, everything you want, and able to do so much more for you than any human travel agent could ever do because the machine never forgets anything. The machine has an infinite amount of permutation."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Fogel 形容，personalized travel agent 是眼下最重要的方向。一台机器记得你所有的偏好，能做人类旅行顾问永远做不完的排列组合；Booking Holdings 希望旗下各品牌都能交出这样的 agent。"
+            ],
+            "original": [
+              "我等不及 Booking Holdings 旗下公司推出这样的 personalized agent：它了解你的一切、你想要的一切，能做到任何人类旅行顾问都无法做到的事，因为机器不会遗忘任何东西。"
+            ]
+          }
+        },
+        {
+          "authorKey": "podcast:no-priors",
+          "authorName": "No Priors",
+          "authorHandle": null,
+          "authorTag": "AI 与创业对话播客",
+          "sourceUrl": "https://www.youtube.com/watch?v=8nj_0wZkbtA",
+          "en": {
+            "rewrite": [
+              "Fogel reveals that Penny, Priceline's agentic tool, has been doubling every month in adoption, lifting conversion, shortening the path-to-booking, lowering cancellations, and improving customer success. The hard problem now is model routing: which model for which purpose, and at what token cost — Fogel treats this as a permanent operating question, not a one-time build."
+            ],
+            "original": [
+              "Penny adoption, which again is this agentic tool that you've built for Priceline, has doubled every month for the past few months. And it's generated a lift in conversion plus faster search, shorter path to booking, lower cancellation, higher customer success. We need to work on develop till we know. And by the way, the whole thing of token economics now, which model should we be using? For which purpose? And when?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Fogel 透露，Priceline 的 Penny agentic 工具最近几个月每月用量翻倍：转化率上升、搜索更快、下单链路更短、取消率下降、客户满意度上升。接下来真正难的是 model routing：哪个模型用于哪个场景、token 成本怎么算——他把这件事当成长期运营问题，而不是一次性建好就完。"
+            ],
+            "original": [
+              "Priceline 的 Penny agentic 工具过去几个月每个月都在翻倍，转化率上升、搜索更快、下单链路更短、取消率下降、客户满意度更高。我们还得继续研发，因为我们还没看清边界。而 token 这件事，到底该用哪个模型、什么场景、什么时候用？"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "多模型编排成主路：planner 加 worker，token 成本 15 倍下降 / Multi-model orchestration becomes the default",
+      "desc": "Box CEO Aaron Levie 强调 frontier model 当 planner，廉价模型当 worker，可以拿下 15x token 成本下降；Vercel CEO Guillermo Rauch 则从另一个角度：AI 把一切都还原成 code。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie/status/2079402164988895293",
+          "en": {
+            "rewrite": [
+              "Levie cites new research from Cursor: a frontier model as planner, paired with a cheaper workhorse model, materially lowers token cost on long-horizon tasks. Only a few moments in a big task truly need frontier reasoning — the original decomposition, design decisions and key trade-offs — once those are collapsed into explicit instructions, cheaper models just have to follow them, yielding a 15× cost improvement."
+            ],
+            "original": [
+              "Multi-model agentic systems clearly are the future. Great post by cursor. Their new research shows that a frontier model as a planner and orchestrator with a workhorse cheaper model can materially lower the cost of total tokens on a project, resulting in a 15X cost improvement."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Levie 引 Cursor 的最新研究：让 frontier 模型当 planner 和 orchestrator，再配一个便宜的 workhorse 模型，长任务的总 token 成本能显著下降——具体到这篇报告是 15 倍。一项大任务真正需要 frontier 智能的只有少数几个节点：最初的拆解、关键设计决策和取舍；一旦被 planner 翻译成清晰的指令，剩下的部分交给便宜模型照做就行。"
+            ],
+            "original": [
+              "让 frontier 模型做 planner 和 orchestrator，再配一个更便宜的 workhorse 模型，整个项目的 token 成本可以显著下降，提升达 15 倍。大型任务里真正需要 frontier 智能的只有少数几个时刻：最初的拆解、关键设计决策以及某些取舍。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:rauchg",
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO",
+          "sourceUrl": "https://x.com/rauchg/status/2079274102129304026",
+          "en": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch sums up the shift in one breath: AI's big lesson is that everything is now code. A slide deck is code. Design is code. The promo video is code. Excel automation is code. The universe, he quips, probably is too."
+            ],
+            "original": [
+              "The big lesson from AI is that everything is code. A slide deck is code. Design is code. That cool promo video? Code. Excel automation? Code. The universe? Probably made of code too."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Vercel CEO Guillermo Rauch 用一句话总结这次位移：AI 给我们的最大启示，是一切都成了 code。一份 slide deck 是 code、设计是 code、那支很酷的宣传视频也是 code、Excel 自动化是 code，至于宇宙——大概也是 code 写的。"
+            ],
+            "original": [
+              "AI 给我们的最大启示就是：一切皆代码。一份 slide deck 是代码；设计是代码；那段很酷的宣传视频？是代码；Excel 自动化？是代码；宇宙？大概也是由代码构成的吧。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "开源权重逼所有人重算 / Open weights rewrite the playbook",
+      "desc": "First Mark Capital 的 Matt Turck 与 Peter Yang 都点到同一根弦：当开源模型只落后 frontier 一点点，单边 gatekeeping 几乎一定会反噬自身；Swyx 则从 RLM 论文里看到 frontier 训练里一种「对训练集做近似」的开源式漂白手法。",
+      "cards": [
+        {
+          "authorKey": "x:mattturck",
+          "authorName": "Matt Turck",
+          "authorHandle": "@mattturck",
+          "authorTag": "First Mark Capital 合伙人 / MAD Podcast 主理人",
+          "sourceUrl": "https://x.com/mattturck/status/2079198838741458989",
+          "en": {
+            "rewrite": [
+              "First Mark Capital partner Matt Turck points to the moment both OpenAI and Anthropic visibly flinch whenever a top free Chinese open-source model lands — a clear market signal that closed labs no longer hold the only card in the deck."
+            ],
+            "original": [
+              "OpenAI and Anthropic when a top free Chinese open source model drops."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "First Mark Capital 合伙人 Matt Turck 抓住一个画面：每次一个顶级的免费中国开源模型出炉，OpenAI 和 Anthropic 的反应都像是被人踹了一脚——这是一个很清楚的市场信号，闭源实验室已经不再是唯一牌面的持有者。"
+            ],
+            "original": [
+              "当一个顶级的免费中国开源模型发布时，OpenAI 和 Anthropic 的反应。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者",
+          "sourceUrl": "https://x.com/petergyang/status/2079273815004303477",
+          "en": {
+            "rewrite": [
+              "Product creator Peter Yang draws the line straight: banning Chinese models will replay the same self-own as banning Chinese EVs — domestic rules get stricter while the rest of the market keeps moving and tooling ends up rerouted around you."
+            ],
+            "original": [
+              "Banning Chinese models will be the same self own as banning Chinese EVs."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "产品创作者 Peter Yang 一句话点出套路：禁中国 AI 模型会重演当年禁中国电动车的剧本，自己受伤，全球还在走，工具最终还是会绕着你走。"
+            ],
+            "original": [
+              "禁止中国模型会重蹈当年禁止中国电动车的覆辙，自伤而已。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:swyx",
+          "authorName": "Swyx",
+          "authorHandle": "@swyx",
+          "authorTag": "AI 工程师",
+          "sourceUrl": "https://x.com/swyx/status/2079411861150429402",
+          "en": {
+            "rewrite": [
+              "Swyx surfaces a buried thread in the RLM paper from Alex Zhang and Omar Khattab: an open secret of frontier training is that you can effectively cheat benchmark scores by training on test-lookalikes, and once weights ship without their datasets or RL environments, no one downstream can reliably tell whether the model was cooked against any specific benchmark — plausible deniability by design."
+            ],
+            "original": [
+              "very notable trajectory comparison writeup here buried in the RLM paper from @a1zhang and @lateinteraction. an open secret of \"frontier\" model training is that even without training on test, you can basically cheat by training on test lookalikes, enabling you to goalseek almost any benchmark number you want. however when they are released open weights, 99% of the time the norm is that you do not get the datasets/rlenvs that would easily show you if someone was training on Temu Tbench, so there is plausible deniability."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Swyx 从 Alex Zhang 与 Omar Khattab 的 RLM 论文里挖出一段被埋掉的对比：frontier 模型训练其实有一个公开秘密——即使没有直接训练在 test 上，但只要在 test 的「近似集」上训练，就能在几乎任何 benchmark 上刷出想要的数字。一旦权重开源，但训练数据集和 RL environment 不开源，下游几乎没法判断模型是否专门针对某个 benchmark 做了优化，这就是「合理的可否认性」。"
+            ],
+            "original": [
+              "在 @a1zhang 与 @lateinteraction 的 RLM 论文里，藏着一段关于模型训练轨迹的对比。\"frontier\" 模型训练的一个公开秘密：即便没有直接训练在 test 上，你也能通过训练在 test 的近似分布上作弊，刷出想要的 benchmark 数字。但模型以开放权重发布时，99% 的情况下你拿不到能证明它是否针对某 benchmark 训练的数据集和 RL 环境，于是「合理的可否认性」就成立了。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "建公司与招人的方法都在被重写 / Founder and hiring playbooks are being rewritten",
+      "desc": "Zhang Rui 把招人流程改成 AI-friendly 的样子，并把「公司出生在 coding agent 之前 vs 之后」当作两种完全不同的物种；Nikunj Kothari 也接着给出他的 hiring playbook 提醒。",
+      "cards": [
+        {
+          "authorKey": "x:zarazhangrui",
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2079409165424799889",
+          "en": {
+            "rewrite": [
+              "Zhang Rui restructures her interview process around AI: round one is in-person with no AI allowed to test domain expertise on the fly; round two is a project you cannot finish without AI, where the chat transcript with the agent is part of what gets graded."
+            ],
+            "original": [
+              "If I were to hire today, this is how I would structure the interview process: Round 1: in-person & no AI allowed; test domain expertise and knowledge on the fly. Round 2: a project that must be done with AI (impossible to complete without AI). Candidate assessed not just on the result but also the chat transcript with agents."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zhang Rui 把自己的招人流程重新搭了一遍：第一轮面对面、不许用 AI，现场考领域功底；第二轮必须用 AI 才能完成的项目，最后不仅看交付结果，还要看你和 agent 的对话记录。"
+            ],
+            "original": [
+              "如果我今天还在招人，我会这样设计面试流程：第一轮：线下、不能用 AI，现场考察领域功底；第二轮：必须借助 AI 才能完成的项目。评估候选人时不仅看最终结果，也要看与 AI 的对话记录。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:zarazhangrui",
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2079225776545968166",
+          "en": {
+            "rewrite": [
+              "Zhang Rui sees a clear species split: companies born before coding agents are scrambling to retrofit, while companies founded after look different from day one — teams under ten because they don't need more, work organized by projects not departments, every person closes their own loop, almost no internal meetings."
+            ],
+            "original": [
+              "There are basically two kinds of companies now. The ones built before coding agents showed up, scrambling to retrofit. And the ones founded after. The second type is different from day one: Teams under ten people because they actually don't need more. Work organized by projects, not departments. Each person closes their own loop. Almost no internal meetings."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zhang Rui 把公司分成了两种物种：coding agent 出现之前成立的那批，正在手忙脚乱地改造；而之后才成立的公司，从第一天起就不一样：团队不到十人、按项目而不是按部门组织、每个人自己闭环、内部会议少到几乎没有。"
+            ],
+            "original": [
+              "现在的公司基本可以分为两类：一类是 coding agent 出现之前建立的，正在手忙脚乱地补做适配；另一类是在那之后成立的。后者从第一天起就不同：团队规模不到十人因为他们确实不需要更多人；工作按项目而非部门组织；每个人都能自己闭环；几乎不开内部会。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "通向 AGI 的路铺在经济任务上 / AGI runs on economically valuable tasks",
+      "desc": "Madhu Guru 把 AGI 之路等同于「找到越来越多经济上有价值、可计价的任务」，所以 enterprise AI 仍是主战场；同时也提醒早期 devtool 创业者警觉 web3 那轮 tokenomics 教训。",
+      "cards": [
+        {
+          "authorKey": "x:realmadhuguru",
+          "authorName": "Madhusudhan",
+          "authorHandle": "@realmadhuguru",
+          "authorTag": "AI 工程师 / 开源贡献者",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2079369965569003691",
+          "en": {
+            "rewrite": [
+              "Engineer Madhu Guru reframes the AGI road: it is paved with economically valuable tasks one by one, and that is why enterprise AI remains one of the most important frontiers — because that is where many of those tasks live."
+            ],
+            "original": [
+              "The road to AGI is paved with economically valuable tasks. That's why enterprise AI is one of the most important frontiers. It's where many of those tasks live."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "工程师 Madhu Guru 把通向 AGI 的路翻译成一句话：它是用一个又一个经济上有价值的任务铺出来的；这正是为什么 enterprise AI 仍是最重要的前线之一，因为大多数「值得做的任务」就住在那儿。"
+            ],
+            "original": [
+              "通往 AGI 的路是由一个个有经济价值的任务铺就的。这也是为什么 enterprise AI 是最重要的前线之一，因为大量这类任务正藏在企业场景里。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:realmadhuguru",
+          "authorName": "Madhusudhan",
+          "authorHandle": "@realmadhuguru",
+          "authorTag": "AI 工程师 / 开源贡献者",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2079227605031829700",
+          "en": {
+            "rewrite": [
+              "Madhu Guru also flags the live tokenomics debate: four years after peak web3, the one that actually matters turns out to be open-vs-closed weights, inference cost, and model routing — not the supply-and-demand curve on a coin."
+            ],
+            "original": [
+              "Four years post peak web3 and crypto tokenomics debates… turns out the tokenomics debate that matters is open vs closed weight, inference costs and model routing."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Madhu Guru 也指出真正的 tokenomics 之争：距离上一轮 web3 高峰四年后，今天真正值得争的是开源 vs 闭源权重、推理成本和模型路由——而不是某种代币的供需曲线。"
+            ],
+            "original": [
+              "距离 web3 与加密 tokenomics 论战的高峰已经过去四年……结果发现真正值得打的 tokenomics 之争，是开源权重与闭源权重、推理成本以及模型路由。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:nikunj",
+          "authorName": "Nikunj Kothari",
+          "authorHandle": "@nikunj",
+          "authorTag": "Afore Capital 合伙人",
+          "sourceUrl": "https://x.com/nikunj/status/2079211477127291350",
+          "en": {
+            "rewrite": [
+              "Kothari also calls out a frothy lateral pipeline: the past week saw another three VCs hop to so-called fast-growing startups, mirroring the IB/consultant-to-BizOps train from 2012 — a familiar late-cycle shape, with the new title du jour being something like 'Special Projects'."
+            ],
+            "original": [
+              "This VC to \"fast growing startup\" train is insane to watch.. another three people just this past week. I guess it's similar to the IB/consultant to BizOps train I saw in 2012. Top title for this cohort? Special projects."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Kothari 也提醒一条熟悉的人才横流：过去一周又有三个 VC 跳去所谓「高速增长」的 startup，套路非常像 2012 年他从 IB/咨询往 BizOps 那波横移。当下最时兴的抬头，大概是「Special Projects」。"
+            ],
+            "original": [
+              "这波 VC 跳去「高速增长 startup」的潮流真是让人目瞪口呆……光这一周就又有三个人。我猜这和 2012 年我从投行/咨询跳到 BizOps 那波很像。这波人最热的抬头是？Special projects。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Agent 实战：评审 / 翻车 / 声音 / Agent in production: rubric, bugs and voice",
+      "desc": "Peter Yang 引用 trq212 关于 video short 的 self-preferential bias；trq212 自己承认 Discord bug 刚下线；Amjad Masad 则把「被封号是一种选择」反复用到差不多成了一句 slogan。",
+      "cards": [
+        {
+          "authorKey": "x:petergyang",
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者",
+          "sourceUrl": "https://x.com/petergyang/status/2079257646939742542",
+          "en": {
+            "rewrite": [
+              "Peter Yang quotes Thariq on running video shorts: one agent should generate, a second should grade the output against a rubric — because the model that wrote the piece tends to be lenient judging itself, a self-preferential bias Thariq calls out by name."
+            ],
+            "original": [
+              "Use one agent to do the work and another to review it against a rubric. For something like, 'Is this a good video short or not?' you don't have a deterministic answer. You should have a separate verification agent read a rubric, review the short, and give feedback. We call it self-preferential bias."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 转述 Thariq 的实战经验：让一个 agent 生成视频短片，再让另一个 agent 对照 rubric 评审。短片「好不好」本来就没有标准答案，关键是让评审 agent 独立判断，因为模型天生对自己的输出更宽松——他们把这叫 self-preferential bias。"
+            ],
+            "original": [
+              "用一个 agent 完成工作，再用一个 agent 按 rubric 评审。短片「好不好」没有标准答案。你应该让一个独立的评审 agent 读 rubric、看片、再给反馈。我们把这种倾向叫做 self-preferential bias：模型对自己的输出更宽容，评审时自然会更宽松。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:trq212",
+          "authorName": "Tao Li",
+          "authorHandle": "@trq212",
+          "authorTag": "AI 研究员 / Follow Builders 维护者",
+          "sourceUrl": "https://x.com/trq212/status/2079105479125741675",
+          "en": {
+            "rewrite": [
+              "Thariq posts a short public note: a bug shipped to production only survived a few minutes, and the only account he caught it on was his own — a reminder that even the maintainers test your bug surface for you."
+            ],
+            "original": [
+              "this was a bug that was only live for a few minutes, ran into it on my personal account while doing some late night coding though"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thariq 公开贴了一句：这次上线几分钟就回滚的 bug，他是在半夜写自己代码时正好撞上的——这是说，连维护者自己也在帮你 test 那层用户最先碰到的表面。"
+            ],
+            "original": [
+              "这个 bug 上线只存活了几分钟；我自己深夜写代码的时候在个人账号上撞到了它。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:amasad",
+          "authorName": "Amjad Masad",
+          "authorHandle": "@amasad",
+          "authorTag": "Replit CEO",
+          "sourceUrl": "https://x.com/amasad/status/2079401256448340378",
+          "en": {
+            "rewrite": [
+              "Replit CEO Amjad Masad notes that 'being cancelled is a choice' turned into a clean repeatable sound bite — illustrating how online product voice keeps compressing into sharper, more shareable one-liners."
+            ],
+            "original": [
+              "'Being cancelled is a choice' turned out to be a nice sound bite."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Replit CEO Amjad Masad 提到「被封号是一种选择」被反复用到差不多成了一句 catchy 的 slogan——online product voice 一直在被压成更短、更脆、更便于传播的单句。"
+            ],
+            "original": [
+              "「被取消是一种选择」最后成了一个挺顺口的 slogan。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "今日信号切片 / Today's signal slices",
+      "desc": "几条短促的样本：Sam Altman 一句「it is good now!」、Garry Tan 把「Compute」挂在 C.R.E.A.M. 改编里、Thibault Sottiaux 在 OpenAI 高强度下「永不无聊」、Amjad Masad 抛出一道「coding agent 物理产品首发」。这些都不构成主线，但能让我们感知今天的真实噪声。",
+      "cards": [
+        {
+          "authorKey": "x:sama",
+          "authorName": "Sam Altman",
+          "authorHandle": "@sama",
+          "authorTag": "OpenAI CEO",
+          "sourceUrl": "https://x.com/sama/status/2079258683884917013",
+          "en": {
+            "rewrite": [
+              "Sam Altman posts a one-liner with a clip: 'it is good now!' — reading less as a product update and more as a temperature read of where the product team is sitting this week."
+            ],
+            "original": [
+              "it is good now!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Sam Altman 贴了一条「it is good now!」配上小片段——它既不像产品更新，更像是本周产品团队状态的一个温度计读数。"
+            ],
+            "original": [
+              "现在已经不错了！"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:garrytan",
+          "authorName": "Garry Tan",
+          "authorHandle": "@garrytan",
+          "authorTag": "Y Combinator 总裁",
+          "sourceUrl": "https://x.com/garrytan/status/2079240755135357356",
+          "en": {
+            "rewrite": [
+              "Y Combinator president Garry Tan recasts the Wu-Tang classic as Compute Rules Everything Around Me — a half-joke, half-flag that compute has fully replaced cream as the unit of account in today's AI industry."
+            ],
+            "original": [
+              "Compute rules everything around me CREAM"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Y Combinator 总裁 Garry Tan 把 Wu-Tang 那首老歌改成了 Compute Rules Everything Around Me——半玩笑半表态：今天 AI 行业里的「现金流」单位，已经从 C.R.E.A.M. 变成了 compute。"
+            ],
+            "original": [
+              "Compute 主导我周围一切 CREAM"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT",
+          "sourceUrl": "https://x.com/thsottiaux/status/2079355529101705264",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux of OpenAI Codex & ChatGPT fires a one-liner: working at OpenAI means 'never a dull moment' — a small temperature read from inside on what kind of week the team just had."
+            ],
+            "original": [
+              "Never a dull moment when you work at OpenAI. Absolutely incredible place."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "OpenAI Codex & ChatGPT 的 Thibault Sottiaux 简短一句：在 OpenAI 工作「永远不会无聊」——也是从内部读取这家公司这周温度的一条小窗口。"
+            ],
+            "original": [
+              "在 OpenAI 工作永远不会无聊。绝对是个不可思议的地方。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:amasad",
+          "authorName": "Amjad Masad",
+          "authorHandle": "@amasad",
+          "authorTag": "Replit CEO",
+          "sourceUrl": "https://x.com/amasad/status/2079282869063786541",
+          "en": {
+            "rewrite": [
+              "Amjad Masad asks: has any coding agent actually shipped a physical product yet? — a small but pointed probe about how much real-world reach current agent stacks still lack."
+            ],
+            "original": [
+              "First physical product shipped by a coding agent?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Amjad Masad 在抛一道小问题：到目前为止，有没有哪个 coding agent 真的把一个实体产品交付掉了？——是关于当下 agent 栈还差什么的一块探针。"
+            ],
+            "original": [
+              "第一个由 coding agent 交付的实体产品已经出现？"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

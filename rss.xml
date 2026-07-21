@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 20 Jul 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 21 Jul 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-07-21 · 护城河翻日历</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-21-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-21-rerun.html</guid>
+      <pubDate>Tue, 21 Jul 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[今天 1 个 podcast + 14 位 X builder + 0 篇 blog，主线是 Booking CEO Glenn Fogel 在节目里两次强调「不存在护城河」——AI 时代没有静态的竞争优势，今天的领先随时可能被抹掉。围绕这条主线，Nikunj 把 Webvan、Groupon、Blockbuster、Nokia 这些历史案例摆出来，提醒创始人们别把资本和规模当护城河；Levie 引 Cursor 的多模型研究，把 frontier model 当 planner、便宜模型当 worker 跑出 15 倍 token 成本下降；Fogel 自己则把 Pennny agentic 工具月对月翻倍、转化率提升、token 模型路由作为长期运营问题对待。另一面，开源权重与中文开源模型被 Mattturck、Peter Yang 反复点名，Swyx 还从 RLM 论文里挖出 frontier 训练其实可以在 test 近似集上刷分、然后靠「不开放数据集」取得合理的可否认性。最后是 Zhang Rui 把招聘流程改成 AI-friendly、把公司分成了 coding agent 之前和之后两个物种，外加几条短促的 offline 切片：Sam Altman 的「it is good now!」、Garry Tan 的 CREAM 改编。]]></description>
+      <category>护城河已死，每天再挣一遍 / The moat is gone — earn it daily, Booking 的筹码：agentic travel 还在被低估 / Booking&apos;s bet: agentic travel is still underpriced, 多模型编排成主路：planner 加 worker，token 成本 15 倍下降 / Multi-model orchestration becomes the default, 开源权重逼所有人重算 / Open weights rewrite the playbook, 建公司与招人的方法都在被重写 / Founder and hiring playbooks are being rewritten, 通向 AGI 的路铺在经济任务上 / AGI runs on economically valuable tasks, Agent 实战：评审 / 翻车 / 声音 / Agent in production: rubric, bugs and voice, 今日信号切片 / Today&apos;s signal slices</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-07-20 · 信任结算日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-20-rerun.html</link>
