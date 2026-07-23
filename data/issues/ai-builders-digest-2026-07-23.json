@@ -1,0 +1,389 @@
+{
+  "title": "AI Builders Digest",
+  "subtitle": "Bilingual edition · 双语对照版",
+  "publishDate": "2026-07-23",
+  "editionName": "双语精选版",
+  "intro": {
+    "kicker": "编者导语 / Editor's Note",
+    "text": "今天 1 个 podcast、17 位 X builder、0 篇 blog，主线不是又多了几个 AI 工具，而是 agent 开始接管能被业务结果验证的完整工作环：Claude Code 把安全扫描推到提交前，Fable 几乎自主地给 Turbopack 和 Next.js 找到 15% 到 30% 的内存效率提升，Every 的 agent 则在操作者去健身时跑完分群与邮件，并带回超过 2.5 万美元收入。另一面，模型路由的商业中立、open weights 的数据边界、厚上下文薄提示词，都在提醒团队：执行可以交给 agent，但选择权、评价标准和真实上下文仍然必须掌握在人手里。"
+  },
+  "archive": {
+    "title": "闭环验收日",
+    "desc": "Agent 从写代码跨进安全、优化与增长闭环，价值开始由可验收的工程和收入结果来证明。"
+  },
+  "viewLabels": {
+    "rewrite": "速读",
+    "original": "原文"
+  },
+  "footerNote": "Source: Follow Builders curated daily digest. Rebuilt from the 2026-07-23 source feeds.",
+  "sections": [
+    {
+      "title": "Claude Code 把安全扫描塞进提交前 / Claude Code moves security scanning before commit",
+      "desc": "Anthropic 把漏洞扫描做成 Claude Code 插件，另一边 Claude Design 也开始成为前端工作流里真正被调用的工具。",
+      "cards": [
+        {
+          "authorKey": "x:claudeai",
+          "authorName": "Claude",
+          "authorHandle": "@claudeai",
+          "authorTag": "Anthropic Claude 官方账号",
+          "sourceUrl": "https://x.com/claudeai/status/2079990597973057691",
+          "en": {
+            "rewrite": [
+              "Claude has released the Claude Security plugin for Claude Code in beta. Developers can scan a change before committing or inspect an entire codebase from the terminal, using the Claude inference they already run."
+            ],
+            "original": [
+              "The Claude Security plugin for Claude Code is now available in beta.",
+              "Scan your changes for vulnerabilities before you commit, or run a full scan across your codebase, all from your terminal on the Claude inference you already run."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Claude Code 的安全插件进入 beta，漏洞扫描不必等到 CI 或专门审计阶段。开发者可以在提交前扫当前改动，也能直接从终端跑整库检查，而且沿用现有 Claude 推理环境。"
+            ],
+            "original": [
+              "Claude Code 的 Claude Security 插件现已开放 beta。你可以在提交前扫描改动中的漏洞，也可以从终端对整个代码库执行完整扫描。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:trq212",
+          "authorName": "Tao Li",
+          "authorHandle": "@trq212",
+          "authorTag": "AI 研究员 / Follow Builders 维护者",
+          "sourceUrl": "https://x.com/trq212/status/2080090919832084753",
+          "en": {
+            "rewrite": [
+              "Thariq says typing /design much later than he should have changed his frontend workflow. Claude Design paired with Claude Code is already good enough to feel like one coherent building surface rather than two disconnected tools."
+            ],
+            "original": [
+              "I'm sad it took me this long to actually type /design but working on frontend with Claude Design and Claude Code is actually so good"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thariq 终于开始真正调用 /design，反馈不是「能用」，而是 Claude Design 与 Claude Code 配合做前端已经非常顺手。这个小观察说明设计和编码正在从两段交接，收进同一条 agent 工作流。"
+            ],
+            "original": [
+              "我很遗憾这么晚才真正输入 /design；用 Claude Design 和 Claude Code 做前端，体验确实非常好。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Fable 开始直接改动复杂工程 / Fable starts shipping real engineering gains",
+      "desc": "AI 工程能力正在从演示跨进复杂 Rust 代码、移动开发和可量化的内存优化。",
+      "cards": [
+        {
+          "authorKey": "x:rauchg",
+          "authorName": "Guillermo Rauch",
+          "authorHandle": "@rauchg",
+          "authorTag": "Vercel CEO",
+          "sourceUrl": "https://x.com/rauchg/status/2080098518535110913",
+          "en": {
+            "rewrite": [
+              "Guillermo Rauch says Fable found a 15-30% memory-efficiency improvement in Turbopack and Next.js nearly autonomously. His preferred progress metric is now WTFs per day: novel vulnerabilities days ago, a complex Rust optimization today, and 10-20x binary-size reductions already in view."
+            ],
+            "original": [
+              "Fable just found a 15-30% memory efficiency improvement in Turbopack / Next.js, nearly autonomously.",
+              "WTFs/day might just be my favorite metric for AI progress."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Guillermo Rauch 给出了比 benchmark 更硬的进展信号：Fable 几乎自主地为 Turbopack 和 Next.js 找到 15% 到 30% 的内存效率提升。几天前是发现漏洞，今天是复杂 Rust 优化，下一批结果还包括二进制体积缩小 10 到 20 倍。"
+            ],
+            "original": [
+              "Fable 几乎自主地为 Turbopack 与 Next.js 找到了 15% 到 30% 的内存效率改进。每天出现多少次「这也行」的时刻，可能才是衡量 AI 进展最直观的指标。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:amasad",
+          "authorName": "Amjad Masad",
+          "authorHandle": "@amasad",
+          "authorTag": "Replit CEO",
+          "sourceUrl": "https://x.com/amasad/status/2079978232024301848",
+          "en": {
+            "rewrite": [
+              "Replit says it invented mobile coding and is now pushing that interface further. The strategic point is simple: agentic development is escaping the desktop, so the product that owns the mobile loop can capture work whenever an idea appears."
+            ],
+            "original": [
+              "We invented mobile coding - now we're taking it to the next level."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Amjad Masad 把 Replit 的下一步继续押在移动编码上。Agent 开发一旦离开桌面，真正争夺的就不只是编辑器，而是谁能接住用户随时出现的想法和任务。"
+            ],
+            "original": [
+              "我们发明了移动编码，现在要把它推进到下一个层级。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thsottiaux",
+          "authorName": "Thibault Sottiaux",
+          "authorHandle": "@thsottiaux",
+          "authorTag": "OpenAI Codex & ChatGPT",
+          "sourceUrl": "https://x.com/thsottiaux/status/2080144499716800513",
+          "en": {
+            "rewrite": [
+              "Thibault Sottiaux is teasing a Codex announcement for tomorrow, and the engagement suggests the developer community expects a consequential release. There are no product details yet, so the signal is anticipation rather than a feature claim."
+            ],
+            "original": [
+              "Unbelievable excited for what's coming together. Tomorrow is feeling codexy"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Thibault Sottiaux 在预告明天会很「Codex」，但没有提前放出功能细节。值得记录的是开发者社区的预期已经被拉高，具体能力仍要等正式发布后再判断。"
+            ],
+            "original": [
+              "对正在成形的东西感到难以置信地兴奋，明天会很有 Codex 味道。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "模型路由必须真中立 / A model router must actually be neutral",
+      "desc": "路由器如果被商业激励绑住，就不再替用户选最优模型；开源权重则提醒团队把数据边界与训练来源分开看。",
+      "cards": [
+        {
+          "authorKey": "x:amasad",
+          "authorName": "Amjad Masad",
+          "authorHandle": "@amasad",
+          "authorTag": "Replit CEO",
+          "sourceUrl": "https://x.com/amasad/status/2080126960202903575",
+          "en": {
+            "rewrite": [
+              "Amjad Masad argues that a model router is only credible if it is economically neutral. Once the operator is rewarded for steering traffic toward particular models, routing becomes a marketing facade rather than an optimization layer."
+            ],
+            "original": [
+              "If you're incentivized to push certain models, your router is merely a facade."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Amjad Masad 把模型路由的利益冲突说得很清楚：平台只要因导流某些模型而获利，「自动选择最优模型」就可能变成包装。路由层要成为可信基础设施，先得证明它替用户优化，而不是替供应商分发。"
+            ],
+            "original": [
+              "如果你受到激励去推送某些模型，那么你的路由器就只是一层门面。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:realmadhuguru",
+          "authorName": "Madhusudhan",
+          "authorHandle": "@realmadhuguru",
+          "authorTag": "AI 工程师 / 开源贡献者",
+          "sourceUrl": "https://x.com/realmadhuguru/status/2080150245011509593",
+          "en": {
+            "rewrite": [
+              "Madhusudhan explains that using a Chinese-trained model does not automatically send data to its trainer. With downloadable open weights, the model can run inside a company's own cloud, leaving the original trainer outside the data path."
+            ],
+            "original": [
+              "Using a Chinese-trained LLM doesn't mean they get your data.",
+              "Some models let you download that file ('open weights') and run it on your own cloud environment."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Madhusudhan 提醒团队别把模型训练来源和数据去向混为一谈。可下载的 open weights 可以部署在自己的云里，训练方已经不在运行链路中，数据边界取决于部署方式而不是模型国籍。"
+            ],
+            "original": [
+              "使用在中国训练的 LLM，并不意味着训练方会拿到你的数据。有些模型允许下载 open weights 并在自己的云环境里运行。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "AI 增强劳动，而不是简单删掉岗位 / AI augments jobs before it replaces them",
+      "desc": "目前更常见的形态不是整份工作消失，而是具体任务被自动化后，专业人员用更高产出来承接新增需求。",
+      "cards": [
+        {
+          "authorKey": "x:levie",
+          "authorName": "Aaron Levie",
+          "authorHandle": "@levie",
+          "authorTag": "Box CEO",
+          "sourceUrl": "https://x.com/levie/status/2080156917373214900",
+          "en": {
+            "rewrite": [
+              "Aaron Levie points to Anthropic's labor data and argues that AI remains skill-biased and labor-augmenting. Models automate tasks inside jobs, but expert direction and evaluation are still necessary; higher productivity can therefore sustain or even raise demand through a Jevons-paradox effect."
+            ],
+            "original": [
+              "AI - at least so far - still requires people to operate to produce value in most cases.",
+              "Most jobs can't be fully automated with AI, only certain tasks in those jobs.",
+              "Jevons paradox is alive and well."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aaron Levie 引用 Anthropic 的劳动数据，认为现阶段 AI 更像专业能力放大器，而不是整份工作的删除键。模型能自动化岗位里的部分任务，但复杂工作仍需要专家指挥和验收；单位成本下降后，新增需求反而可能把就业总量托住。"
+            ],
+            "original": [
+              "至少到目前为止，多数场景里的 AI 仍需要人来操作才能产生价值。大多数岗位无法被完全自动化，只能自动化其中一些任务；杰文斯悖论依然有效。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:thenanyu",
+          "authorName": "Nan Yu",
+          "authorHandle": "@thenanyu",
+          "authorTag": "AI 创业者 / 投资人",
+          "sourceUrl": "https://x.com/thenanyu/status/2079996178687459693",
+          "en": {
+            "rewrite": [
+              "Nan Yu asks people to define exactly what they mean by systems thinking instead of using it as a prestige phrase. As AI takes over more execution, the ability to make causal boundaries and tradeoffs explicit becomes more valuable, not less."
+            ],
+            "original": [
+              "When you hear or say 'systems thinking', what is the exact definition you're thinking of in your head?"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Nan Yu 追问「系统思维」在每个人脑中到底指什么，而不是让它继续充当高级感词汇。AI 接管更多执行后，人真正稀缺的部分恰恰是把因果边界、约束和取舍说清楚。"
+            ],
+            "original": [
+              "当你听到或说出「系统思维」时，脑中想到的确切定义是什么？"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:adityaag",
+          "authorName": "Aditya Agarwal",
+          "authorHandle": "@adityaag",
+          "authorTag": "Dropbox Engineering VP / 前 Facebook 平台工程负责人",
+          "sourceUrl": "https://x.com/adityaag/status/2079993986283123147",
+          "en": {
+            "rewrite": [
+              "Aditya Agarwal says startup culture comes from the founder, the early team and the early product, with top-down choices and emergent behavior reinforcing each other. Strategy matters, but a weak founder can suppress emergence while fragmented values create incompatible pockets of culture."
+            ],
+            "original": [
+              "Culture always eats strategy for breakfast.",
+              "Startup culture stems from 3 areas: The founder's personality and DNA, the early team's personality and DNA, the early product's personality and DNA."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Aditya Agarwal 把创业公司文化拆成三个来源：创始人、早期团队和早期产品。它既有自上而下的塑造，也会自然涌现；真正危险的是领导者压住这种涌现，或者组织里长出彼此冲突的文化孤岛。"
+            ],
+            "original": [
+              "文化总会把战略当早餐吃掉。创业文化主要来自创始人的个性与底色、早期团队的个性与底色，以及早期产品自身的个性。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "厚上下文，薄提示词 / Thick context, thin prompts",
+      "desc": "好提示词不一定是更长的规格，而是把真实问题、目标和背景交给模型，让它参与寻找解法。",
+      "cards": [
+        {
+          "authorKey": "x:zarazhangrui",
+          "authorName": "Zhang Rui",
+          "authorHandle": "@zarazhangrui",
+          "authorTag": "Follow Builders 创始人 / 策展人",
+          "sourceUrl": "https://x.com/zarazhangrui/status/2080103288834510939",
+          "en": {
+            "rewrite": [
+              "Zhang Rui often describes the problem without prescribing a solution or spec, and the model frequently returns an approach better than the one she would have written. Her compact rule is thick context, thin prompt: provide reality, not micromanagement."
+            ],
+            "original": [
+              "Sometimes I just describe my problem without specifying a solution/spec",
+              "The model often pleasantly surprises me with a better solution that I could have thought of",
+              "Thick context, thin prompt"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Zhang Rui 的提示词方法不是把规格越写越厚，而是先把真实问题和上下文交代清楚，暂时不规定解法。模型因此有空间参与方案设计，常常能给出比预设方案更好的路径：厚上下文，薄提示词。"
+            ],
+            "original": [
+              "有时我只描述问题，不指定解决方案或规格，模型常会用更好的答案给我惊喜。厚上下文，薄提示词。"
+            ]
+          }
+        },
+        {
+          "authorKey": "x:petergyang",
+          "authorName": "Peter Yang",
+          "authorHandle": "@petergyang",
+          "authorTag": "产品教练 / 创作者经济研究者",
+          "sourceUrl": "https://x.com/petergyang/status/2080132334138151410",
+          "en": {
+            "rewrite": [
+              "Peter Yang says his no-ai-slop skill reached 1,000 GitHub stars in a day because people are tired of generic AI prose. The demand is a useful product signal: users do not merely want generated text; they want tools that preserve judgment and voice."
+            ],
+            "original": [
+              "Nice 1K stars in a day - people are sick of slop!"
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Peter Yang 的 no-ai-slop skill 一天拿到一千颗 GitHub star，说明用户已经把「去掉 AI 腔」当成明确需求。生成文字不是终点，保住判断、语气和个人表达才是产品价值。"
+            ],
+            "original": [
+              "一天拿到一千颗 star，很不错；大家已经受够了空泛的 AI 内容。"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "title": "Every 把 AI 工具包卖成增长产品 / Every turns an AI stack into a growth product",
+      "desc": "Builder Pack 不只是折扣集合，它展示了小团队如何用 agent 完成分群、邮件、发布和复盘，并把省下的执行时间重新投到创意上。",
+      "cards": [
+        {
+          "authorKey": "podcast:ai-and-i-by-every",
+          "authorName": "AI & I by Every",
+          "authorHandle": null,
+          "authorTag": "AI 商业与产品深访",
+          "sourceUrl": "https://www.youtube.com/playlist?list=PLuMcoKK9mKgHtW_o9h5sGO2vXrffKHwJL",
+          "en": {
+            "rewrite": [
+              "Every says its Builder Pack produced the largest subscription-revenue increase in company history. The $625 annual tier bundles ten AI-tool benefits, including Codex credits and Cursor access, turning the team's real working stack into a product customers can buy."
+            ],
+            "original": [
+              "We generated the largest subscription revenue increase in Every's history last week.",
+              "All Access is a new tier. At Every it's a $625 annual plan that gives you access to the builder pack, which is 10 benefits."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "Every 把团队每天真实使用的 AI 工具栈打包成年度会员权益，结果带来了公司历史上最大的订阅收入增量。关键不是折扣多，而是把内部已经验证的工作方式直接产品化，让用户用 625 美元年费买到十项工具权益。"
+            ],
+            "original": [
+              "上周我们创造了 Every 历史上最大的订阅收入增量。All Access 是一个每年 625 美元的新层级，包含 Builder Pack 的十项权益。"
+            ]
+          }
+        },
+        {
+          "authorKey": "podcast:ai-and-i-by-every",
+          "authorName": "AI & I by Every",
+          "authorHandle": null,
+          "authorTag": "AI 商业与产品深访",
+          "sourceUrl": "https://www.youtube.com/playlist?list=PLuMcoKK9mKgHtW_o9h5sGO2vXrffKHwJL",
+          "en": {
+            "rewrite": [
+              "The more instructive story is operational: an agent used Every's compound-engineering loop to segment checkout visitors, write targeted emails and suggest retargeting while the operator went to the gym. Those emails generated more than $25,000 within hours, showing that delegated execution matters when it closes a measurable business loop."
+            ],
+            "original": [
+              "I did slash LFG, which is the harness in our compound engineering plugin to tell an agent to take itself through a brainstorm, plan, work, review, compound loop.",
+              "In a couple hours the next morning, those emails alone had driven more than $25,000 in revenue."
+            ]
+          },
+          "cn": {
+            "rewrite": [
+              "更值得抄作业的是执行过程：agent 通过 Every 的 compound engineering 循环完成头脑风暴、计划、分群、邮件撰写与复盘，人去健身，任务继续跑。第二天几小时内，这些邮件带来超过 2.5 万美元收入；agent 的价值终于落到了可量化的业务闭环。"
+            ],
+            "original": [
+              "我输入了 slash LFG，让 agent 自己跑完头脑风暴、计划、执行、评审和沉淀循环。第二天早上几小时内，仅这些邮件就带来了超过 2.5 万美元收入。"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

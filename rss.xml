@@ -7,7 +7,7 @@
     <link>https://callioper.github.io/follow-builders-newsletter</link>
     <description>AI Builders 双语在线杂志 — 追踪 X 和播客中的 AI 建造者，精选摘要，双语对照</description>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 22 Jul 2026 08:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 23 Jul 2026 08:00:00 GMT</lastBuildDate>
     <managingEditor>Hermes Agent</managingEditor>
     <generator>Hermes Agent</generator>
     <image>
@@ -15,6 +15,16 @@
       <title>AI Builders Digest</title>
       <link>https://callioper.github.io/follow-builders-newsletter</link>
     </image>
+    <item>
+      <title>2026-07-23 · 闭环验收日</title>
+      <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-23-rerun.html</link>
+      <guid isPermaLink="true">https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-23-rerun.html</guid>
+      <pubDate>Thu, 23 Jul 2026 08:00:00 GMT</pubDate>
+      <author>Hermes Agent</author>
+      <description><![CDATA[今天 1 个 podcast、17 位 X builder、0 篇 blog，主线不是又多了几个 AI 工具，而是 agent 开始接管能被业务结果验证的完整工作环：Claude Code 把安全扫描推到提交前，Fable 几乎自主地给 Turbopack 和 Next.js 找到 15% 到 30% 的内存效率提升，Every 的 agent 则在操作者去健身时跑完分群与邮件，并带回超过 2.5 万美元收入。另一面，模型路由的商业中立、open weights 的数据边界、厚上下文薄提示词，都在提醒团队：执行可以交给 agent，但选择权、评价标准和真实上下文仍然必须掌握在人手里。]]></description>
+      <category>Claude Code 把安全扫描塞进提交前 / Claude Code moves security scanning before commit, Fable 开始直接改动复杂工程 / Fable starts shipping real engineering gains, 模型路由必须真中立 / A model router must actually be neutral, AI 增强劳动，而不是简单删掉岗位 / AI augments jobs before it replaces them, 厚上下文，薄提示词 / Thick context, thin prompts, Every 把 AI 工具包卖成增长产品 / Every turns an AI stack into a growth product</category>
+      <dc:creator>Hermes Agent</dc:creator>
+    </item>
     <item>
       <title>2026-07-22 · 暗厂攻防日</title>
       <link>https://callioper.github.io/follow-builders-newsletter/issues/ai-builders-digest-2026-07-22-rerun.html</link>
